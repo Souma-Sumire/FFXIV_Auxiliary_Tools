@@ -1,4 +1,4 @@
-﻿﻿# FFXIV-Auxiliary-tools
+﻿# FFXIV-Auxiliary-tools
 **最终幻想14 5.0 暗影之逆焰 Hojoring SPESPE 时间轴 (中/日/英)**
 
 ## 目前支持副本
