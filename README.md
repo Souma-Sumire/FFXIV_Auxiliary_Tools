@@ -10,7 +10,7 @@
 - 伊甸零式希望乐园：觉醒篇 1-4 层（写完了，等国服翻译）
 ---
 #### 预览
-<img src="https://i.loli.net/2019/11/16/n7YeLZhqFHVCEWo.png" width="40%">
+<img src="https://raw.githubusercontent.com/553469159/FFXIV-Auxiliary-tools/master/images/n7YeLZhqFHVCEWo.png" width="40%">
 
 #### 使用方法
 解压后将xml放入 ...\ACT.Hojoring\resources\timeline\
