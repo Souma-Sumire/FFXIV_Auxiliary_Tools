@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="b3af3532-24f7-45d8-9d05-c7625082df15" Name="Actor Tick Timer 1.1 国服" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Name="Actor tick track visual" Id="e2d72f15-572b-4676-a420-cced6397b9f9" RegularExpression=":HoT Tick on (?&lt;name&gt;\S+)" DebugLevel="Error">
+        <Actions>
+          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" ExecutionDelayExpression="50">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" AuraName="progress" AuraImage="C:\Users\553469159\Downloads\Actor Tick Timer\progress.png" AuraXIniExpression="979-450+700" AuraYIniExpression="702+205" AuraWIniExpression="1" AuraHIniExpression="17" AuraOIniExpression="100" AuraWTickExpression="((${_systemtimems}-${var:savedtick})%3000)/20" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${var:tickstop}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Name="Initiate" Id="3f094791-e310-4e31-981e-96f0e4dbcd7c" RegularExpression="!tickshow">
+        <Actions>
+          <Action OrderNumber="1" AuraName="outline" AuraImage="C:\Users\553469159\Downloads\Actor Tick Timer\outline.png" AuraXIniExpression="977-450+700" AuraYIniExpression="700+205" AuraWIniExpression="152" AuraHIniExpression="30" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="tickstop" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="3" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="d168ab33-7399-4d42-ba5f-f48ce49ce0ea" TriggerForce="regexp" ActionType="Trigger">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="Actor Tick Reset" Id="03807301-5828-47f8-b328-cf84a7b6b9fd" RegularExpression="Changed Zone to" RefirePeriodExpression="700">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="savedtick" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" AuraOp="DeactivateAura" AuraName="progress" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="Hide" Id="31dfea43-7fed-4dfd-bd3d-a4a631df50b2" RegularExpression="!tickhide">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="tickstop" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" AuraOp="DeactivateAura" AuraName="outline" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="3" AuraOp="DeactivateAura" AuraName="progress" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="CheckSaved" Id="d168ab33-7399-4d42-ba5f-f48ce49ce0ea" RegularExpression="">
+        <Actions>
+          <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="e2d72f15-572b-4676-a420-cced6397b9f9" TriggerForce="regexp,conditions" ActionType="Trigger">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${var:savedtick}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Name="Track ticks" Id="6d4bf9a2-e479-44f4-86a1-876c785f5d54" RegularExpression=":HoT Tick on (?&lt;name&gt;\S+)">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="savedtick" VariableExpression="${_systemtimems}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
