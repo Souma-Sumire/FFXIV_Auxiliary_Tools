@@ -6,11 +6,11 @@
 ## Hojoring-SST技能触发器
 - 团辅监控 (中/日/英)
     - 背刺 鼓励 连环计 灵护 义结金兰 战斗连祷 巨龙视线 战斗之声 技巧闭幕 进攻探戈 占卜
-## Hojoring-SPESPE时间轴 (中/日/英)
+## Hojoring-SPESPE时间轴 
 -  支持副本
-    - 伊甸希望乐园：觉醒篇
-    - 无瑕灵君歼殛战
-    - 缇坦妮雅歼殛战
+    - 伊甸希望乐园：觉醒篇 (中/日/英)
+    - 无瑕灵君歼殛战 (中/日/英)
+    - 缇坦妮雅歼殛战 (中/日/英)
 ## Triggernometry
 - Actor Tick Timer 1.1 国服适用版
     - 需自行配置Actor tick track visual与Initiate的Image aura Path
