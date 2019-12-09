@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+    <name>伊甸零式希望乐园：觉醒篇 4</name>
+    <zone>伊甸零式希望乐园 (觉醒之章4),Eden&quot;s Gate: Sepulture (Savage)</zone>
+    <rev>v1.0</rev>
+    <author>摩杜纳Souma</author>
+    <description>伊甸零式希望乐园：觉醒篇 4。</description>
+    <license>CC BY-SA</license>
+    <locale>@(Model.Locale)</locale>
+    <entry>P1</entry>
+    <start>00:0039:(戦闘開始！|Engage!|战斗开始！)</start>
+    @{
+        var Player_Stance_Successful        =   "设置成功";
+        var CrumblingDown                   =   "准备陨石";
+        var First_TH                        =   "左上,A点";
+        var First_DPS                       =   "左下币点";
+        var Second_TH                       =   "右上C点";
+        var Second_DPS                      =   "右下地点";
+        var TectonicUplift_1_DPS_Say        =   "北北北";
+        var TectonicUplift_1_TH_Say         =   "南南南";
+        var TectonicUplift_1_DPS_Blue_1     =   "右上角落";
+        var TectonicUplift_1_DPS_Blue_2     =   "左上角落";
+        var TectonicUplift_1_TH_Blue_1      =   "左下角落";
+        var TectonicUplift_1_TH_Blue_2      =   "右下角落";
+        var TectonicUplift_1_Orange         =   "222";
+        var TectonicUplift_1_Yellow         =   "333";
+        var TectonicUplift_2_Orange         =   "北北北";
+        var TectonicUplift_2_notOrange      =   "南南南";
+        var TectonicUplift_2_First_Blue     =   "低地角落";
+        var TectonicUplift_2_Second_Blue    =   "高地角落";
+        var TectonicUplift_2_Second_Orange  =   "222";
+        var TectonicUplift_Last             =   "中间刷血";
+        var Guruguru_D1_Odd                 =   "第一爆发点,最后穿";
+        var Guruguru_D2_Odd                 =   "第二爆发点";
+        var Guruguru_D3_Odd                 =   "左侧";
+        var Guruguru_D4_Odd                 =   "右侧";
+        var Guruguru_ST_Odd                 =   "第三爆发点";
+        var Guruguru_MT_Odd                 =   "第三爆发点";
+        var Guruguru_H1_Odd                 =   "第三爆发点";
+        var Guruguru_H2_Odd                 =   "第三爆发点";
+        var Guruguru_ST_Even                =   "第一爆发点,最后穿";
+        var Guruguru_MT_Even                =   "第二爆发点";
+        var Guruguru_H1_Even                =   "左侧";
+        var Guruguru_H2_Even                =   "右侧";
+        var Guruguru_D1_Even                =   "第三爆发点";
+        var Guruguru_D2_Even                =   "第三爆发点";
+        var Guruguru_D3_Even                =   "第三爆发点";
+        var Guruguru_D4_Even                =   "第三爆发点";
+        var Enrage                          =   "60秒狂暴";
+        var Rock_Throw                      =   "石牢";
+    }
+    <t name="车" sync="15:.{8}:.*:40E8:" notice="车车车,去侧面"/>
+    <t name="人" sync="15:.{8}:.*:40E6:" notice="人人人,先靠近后远离"/>
+    <t text="左左左，右右右" sync="14:412F:" notice="左左左，右右右">
+        <v-notice duration="5" duration-visible="false"/>
+    </t>
+    <t text="右右右，左左左" sync="14:4130:" notice="右右右，左左左">
+        <v-notice duration="5" duration-visible="false"/>
+    </t>
+    <t text="左左左，左左左" sync="14:4131:" notice="左左左，左左左">
+        <v-notice duration="5" duration-visible="false"/>
+    </t>
+    <t text="右右右，右右右" sync="14:4132:" notice="右右右，右右右">
+        <v-notice duration="5" duration-visible="false"/>
+    </t>
+    <t text="砸右上" sync="14:4125:" notice="右上">
+        <v-notice duration="5" duration-visible="false"/>
+    </t>
+    <t text="砸右下" sync="14:4126:" notice="右下">
+        <v-notice duration="5" duration-visible="false"/>
+    </t>
+    <t text="砸左下" sync="14:4127:" notice="左下">
+        <v-notice duration="5" duration-visible="false"/>
+    </t>
+    <t text="砸左上" sync="14:4128:" notice="左上">
+        <v-notice duration="5" duration-visible="false"/>
+    </t>
+    <t name="崩岩" sync="14:4116:" notice="死刑"/>
+    <t name="震级5.0" sync="14:4121:" notice="月环靠近"/>
+    <t name="大地之怒" sync="14:4124:" notice="AoE">
+        <expressions>
+            <set name="isOrange" value="false"/>
+        </expressions>
+    </t>
+    <t name="大地之叫" sync="14:4114:" notice="AoE"/>
+    <t name="激震" sync="14:412A:" notice="AoE"/>
+    <t name="大地两拳" sync="14:4135:" notice="准备击退"/>
+    <t name="大地粉碎" sync="14:4113:" notice="准备击退"/>
+    <t name="地震波" sync="14:4110:" notice="找掩体"/>
+    <t name="狂暴" sync="14:4140:" notice="狂暴"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <t name="石牢" sync="1B:.{8}:[mex]:.{4}:.{4}:00BF:" notice="@Rock_Throw"/>
+    <t sync="14:410A:" sync-count="1" call="2C1"/>
+    <s name="2C1">
+        <a notice="3" notice-o="2"/>
+        <a notice="2" notice-o="3"/>
+        <a notice="1" notice-o="4"/>
+    </s>
+    <t text="黄标" sync="1B:.{8}:[mex]:.{4}:.{4}:00B9:">
+        <v-notice duration="5" duration-visible="false" icon="Leave.png"/>
+    </t>
+    <t text="橙标" sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:">
+        <v-notice duration="5" duration-visible="false" icon="DamageShare.png"/>
+    </t>
+    <t text="蓝标" sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:">
+        <v-notice duration="5" duration-visible="false" icon="Bomb.png"/>
+    </t>
+    @if (Model.Player.InRole("DPS")){
+    <t name="构造隆升" sync="15:.*:4122:" sync-count="1" notice="@TectonicUplift_1_DPS_Say" call="升降梯1D">
+        <expressions>
+            <set name="TectonicUplift_1_Blue_Count" value="0"/>
+        </expressions>
+    </t>
+    <s name="升降梯1D">
+        <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="1">
+            <expressions>
+                <set name="TectonicUplift_1_Blue_Count" value="1"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="2">
+            <expressions>
+                <set name="TectonicUplift_1_Blue_Count" value="2"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@TectonicUplift_1_DPS_Blue_1">
+            <expressions>
+                <pre name="TectonicUplift_1_Blue_Count" value="1"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@TectonicUplift_1_DPS_Blue_2">
+            <expressions>
+                <pre name="TectonicUplift_1_Blue_Count" value="2"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:" notice="@TectonicUplift_1_Orange"/>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00B9:" notice="@TectonicUplift_1_Yellow"/>
+    </s>
+    }else{
+    <t name="构造隆升" sync="15:.*:4122:" sync-count="1" notice="@TectonicUplift_1_TH_Say" call="升降梯1TH">
+        <expressions>
+            <set name="TectonicUplift_1_Blue_Count" value="0"/>
+        </expressions>
+    </t>
+    <s name="升降梯1TH">
+        <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="1">
+            <expressions>
+                <set name="TectonicUplift_1_Blue_Count" value="1"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="2">
+            <expressions>
+                <set name="TectonicUplift_1_Blue_Count" value="2"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@TectonicUplift_1_TH_Blue_1">
+            <expressions>
+                <pre name="TectonicUplift_1_Blue_Count" value="1"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@TectonicUplift_1_TH_Blue_2">
+            <expressions>
+                <pre name="TectonicUplift_1_Blue_Count" value="2"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:" notice="@TectonicUplift_1_Orange"/>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00B9:" notice="@TectonicUplift_1_Yellow"/>
+        <a notice="@TectonicUplift_Last" notice-o="18"/>
+    </s>
+    }
+    <t no="1" sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:">
+        <expressions>
+            <set name="isOrange" value="true" ttl="10"/>
+        </expressions>
+    </t>
+    <t no="2" name="构造隆升" sync="15:.*:4122:" sync-count="2" notice="@TectonicUplift_2_Orange">
+        <expressions>
+            <pre name="isOrange" value="true"/>
+            <set name="TectonicUplift_2_Orange_Count" value="1"/>
+        </expressions>
+    </t>
+    <t no="3" name="构造隆升" sync="15:.*:4122:" sync-count="2" notice="@TectonicUplift_2_notOrange">
+        <expressions>
+            <pre name="isOrange" value="false"/>
+            <set name="TectonicUplift_2_Orange_Count" value="1"/>
+        </expressions>
+    </t>
+    <s name="升降梯2">
+        <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="1">
+            <expressions>
+                <set name="TectonicUplift_2_Blue_Count" value="1"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="3">
+            <expressions>
+                <set name="TectonicUplift_2_Blue_Count" value="2"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@TectonicUplift_2_First_Blue">
+            <expressions>
+                <pre name="TectonicUplift_2_Blue_Count" value="1"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@TectonicUplift_2_Second_Blue">
+            <expressions>
+                <pre name="TectonicUplift_2_Blue_Count" value="2"/>
+            </expressions>
+        </t>
+        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:" notice="@TectonicUplift_2_Second_Orange"/>
+        <a notice="中间刷血" notice-o="55"/>
+    </s>
+    <t name="陨石点名" sync="1B:.*:[pc]:.{4}:.{4}:00BB:" sync-count="1">
+        <expressions>
+            <set name="陨石" value="1"/>
+        </expressions>
+    </t>
+    <t name="陨石点名" sync="1B:.*:[pc]:.{4}:.{4}:00BB:" sync-count="2">
+        <expressions>
+            <set name="陨石" value="2"/>
+        </expressions>
+    </t>
+    <t name="陨石点名" sync="1B:.*:[pc]:.{4}:.{4}:00BB:" sync-count="3">
+        <expressions>
+            <set name="陨石" value="3"/>
+        </expressions>
+    </t>
+    <t name="陨石点名" sync="1B:.*:[pc]:.{4}:.{4}:00BB:" sync-count="4">
+        <expressions>
+            <set name="陨石" value="4"/>
+        </expressions>
+    </t>
+    @if (Model.Player.InRole("DPS")){
+    <t name="陨石点名" sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@First_DPS">
+        <expressions>
+            <pre name="陨石" value="1"/>
+        </expressions>
+    </t>
+    <t name="陨石点名" sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@First_DPS">
+        <expressions>
+            <pre name="陨石" value="2"/>
+        </expressions>
+    </t>
+    <t name="陨石点名" sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@Second_DPS">
+        <expressions>
+            <pre name="陨石" value="3"/>
+        </expressions>
+    </t>
+    <t name="陨石点名" sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@Second_DPS">
+        <expressions>
+            <pre name="陨石" value="4"/>
+        </expressions>
+    </t>
+    }else{
+    <t name="陨石点名" sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@First_TH">
+        <expressions>
+            <pre name="陨石" value="1"/>
+        </expressions>
+    </t>
+    <t name="陨石点名" sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@First_TH">
+        <expressions>
+            <pre name="陨石" value="2"/>
+        </expressions>
+    </t>
+    <t name="陨石点名" sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@Second_TH">
+        <expressions>
+            <pre name="陨石" value="3"/>
+        </expressions>
+    </t>
+    <t name="陨石点名" sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@Second_TH">
+        <expressions>
+            <pre name="陨石" value="4"/>
+        </expressions>
+    </t>
+    }
+    <t text="已设置ST" sync="00:000[ae]:.*[mex]:[sS][tT]" notice="@Player_Stance_Successful">
+        <v-notice duration="5" duration-visible="false"/>
+        <expressions>
+            <set name="My_Role" value="ST"/>
+        </expressions>
+    </t>
+    <t text="已设置MT" sync="00:000[ae]:.*[mex]:[mM][tT]" notice="@Player_Stance_Successful">
+        <v-notice duration="5" duration-visible="false"/>
+        <expressions>
+            <set name="My_Role" value="MT"/>
+        </expressions>
+    </t>
+    <t text="已设置H1" sync="00:000[ae]:.*[mex]:[hH]1" notice="@Player_Stance_Successful">
+        <v-notice duration="5" duration-visible="false"/>
+        <expressions>
+            <set name="My_Role" value="H1"/>
+        </expressions>
+    </t>
+    <t text="已设置H2" sync="00:000[ae]:.*[mex]:[hH]2" notice="@Player_Stance_Successful">
+        <v-notice duration="5" duration-visible="false"/>
+        <expressions>
+            <set name="My_Role" value="H2"/>
+        </expressions>
+    </t>
+    <t text="已设置D1" sync="00:000[ae]:.*[mex]:[dD]1" notice="@Player_Stance_Successful">
+        <v-notice duration="5" duration-visible="false"/>
+        <expressions>
+            <set name="My_Role" value="D1"/>
+        </expressions>
+    </t>
+    <t text="已设置D2" sync="00:000[ae]:.*[mex]:[dD]2" notice="@Player_Stance_Successful">
+        <v-notice duration="5" duration-visible="false"/>
+        <expressions>
+            <set name="My_Role" value="D2"/>
+        </expressions>
+    </t>
+    <t text="已设置D3" sync="00:000[ae]:.*[mex]:[dD]3" notice="@Player_Stance_Successful">
+        <v-notice duration="5" duration-visible="false"/>
+        <expressions>
+            <set name="My_Role" value="D3"/>
+        </expressions>
+    </t>
+    <t text="已设置D4" sync="00:000[ae]:.*[mex]:[dD]4" notice="@Player_Stance_Successful">
+        <v-notice duration="5" duration-visible="false"/>
+        <expressions>
+            <set name="My_Role" value="D4"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="1" notice="@Guruguru_D1_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D1"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="1" notice="@Guruguru_D2_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D2"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="1" notice="@Guruguru_D3_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D3"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="1" notice="@Guruguru_D4_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D4"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="1" notice="@Guruguru_ST_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="ST"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="1" notice="@Guruguru_MT_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="MT"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="1" notice="@Guruguru_H1_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="H1"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="1" notice="@Guruguru_H2_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="H2"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="2" notice="@Guruguru_D1_Even" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D1"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="2" notice="@Guruguru_D2_Even" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D2"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="2" notice="@Guruguru_D3_Even" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D3"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="2" notice="@Guruguru_D4_Even" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D4"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="2" notice="@Guruguru_ST_Even" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="ST"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="2" notice="@Guruguru_MT_Even" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="MT"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="2" notice="@Guruguru_H1_Even" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="H1"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="2" notice="@Guruguru_H2_Even" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="H2"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="3" notice="@Guruguru_D1_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D1"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="3" notice="@Guruguru_D2_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D2"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="3" notice="@Guruguru_D3_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D3"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="3" notice="@Guruguru_D4_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="D4"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="3" notice="@Guruguru_ST_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="ST"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="3" notice="@Guruguru_MT_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="MT"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="3" notice="@Guruguru_H1_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="H1"/>
+        </expressions>
+    </t>
+    <t sync="14:413A" sync-count="3" notice="@Guruguru_H2_Odd" notice-o="10">
+        <expressions>
+            <pre name="My_Role" value="H2"/>
+        </expressions>
+    </t>
+    <s name="P1">
+        <a time="00:00" text="--白流沙设置--\n请在小队发言自己的位置\n比如&quot;ST&quot; &quot;H1&quot; &quot;D1&quot; &quot;D3&quot;"/>
+        <a time="00:10" text="--同步--" sync="14:4116:"/>
+        <a time="00:15" text="[死刑]崩岩" sync="1[56]:.*:4116:" style="死刑"/>
+        <a time="00:34" text="[地板]大地之重" sync="15:.*:4108:"/>
+        <a time="00:37" text="--黄标--" style="AoE"/>
+        <a time="00:39" text="[扩散]邪土"/>
+        <a time="00:48" text="--橙标--" style="AoE"/>
+        <a time="00:54" text="[AoE]大地之号" style="AoE"/>
+        <a time="01:06" text="[跳跃]大地粉碎" style="AoE"/>
+        <a time="01:10" text="--分支判定--"/>
+        <t sync="15:.*:40E8:" goto="车人"/>
+        <t sync="15:.*:40E6:" goto="人车"/>
+    </s>
+    <s name="车人">
+        <a time="00:00" text="大地之车轮" sync="15:.*:40E8:"/>
+        <a time="00:05" text="[击退]断裂带"/>
+        <a time="00:07" text="--橙黄标--" style="AoE"/>
+        <a time="00:11" text="[挡车]断裂带" sync="1[56]:.*:411E:"/>
+        <a time="00:16" text="[月环]震级5.0"/>
+        <a time="00:19" text="大地之铠"/>
+        <a time="00:21" text="--黄标--" style="AoE"/>
+        <a time="00:37" text="岩层崩落" style="AoE" notice="@CrumblingDown" notice-o="-10"/>
+        <a time="00:45" text="爆破岩石"/>
+        <a time="00:57" text="地震波"/>
+        <a time="00:59" text="爆炸"/>
+        <a time="01:10" text="[AoE]大地之号" style="AoE"/>
+        <a time="01:19" text="[死刑]崩岩" sync="1[56]:.*:4116:" style="死刑"/>
+        <a time="01:42" text="[跳跃]大地粉碎" style="AoE"/>
+        <a time="01:45" text="大地之手甲" sync="15:.*:40E6:"/>
+        <a time="01:52" text="[先进后出]百万地裂"/>
+        <a time="01:52" text="--橙黄标--" style="AoE"/>
+        <a time="02:06" text="[AoE]大地之号" style="AoE"/>
+        <a time="02:17" text="[T字跳]地裂"/>
+        <a time="02:22" text="右侧地裂"/>
+        <a time="02:29" text="爆炸"/>
+        <a time="02:30" text="大地之铠"/>
+        <a time="02:33" text="爆炸"/>
+        <a time="02:35" text="--无法攻击--"/>
+        <a time="02:40" text="--阶段转换--"/>
+        <t text="P2" sync="15:.*:4371:" goto="P2"/>
+    </s>
+    <s name="人车">
+        <a time="00:00" text="大地之手甲" sync="15:.*:40E6:"/>
+        <a time="00:06" text="--橙黄标--" style="AoE"/>
+        <a time="00:06" text="[先进后出]百万地裂" sync="15:.*:4117:"/>
+        <a time="00:20" text="[AoE]大地之号" style="AoE"/>
+        <a time="00:32" text="[T字跳]地裂"/>
+        <a time="00:37" text="右侧地裂"/>
+        <a time="00:44" text="爆炸"/>
+        <a time="00:44" text="大地之铠"/>
+        <a time="00:48" text="爆炸"/>
+        <a time="01:02" text="岩层崩落" style="AoE" notice="@CrumblingDown" notice-o="-10"/>
+        <a time="01:10" text="爆破岩石"/>
+        <a time="01:22" text="地震波"/>
+        <a time="01:25" text="爆炸"/>
+        <a time="01:35" text="[AoE]大地之号" style="AoE"/>
+        <a time="01:45" text="[死刑]崩岩" sync="1[56]:.*:4116:" style="死刑"/>
+        <a time="02:07" text="[跳跃]大地粉碎" style="AoE"/>
+        <a time="02:11" text="大地之车轮" sync="15:.*:40E8:"/>
+        <a time="02:16" text="[击退]断裂带"/>
+        <a time="02:18" text="--橙黄标--" style="AoE"/>
+        <a time="02:21" text="[挡车]断裂带" sync="1[56]:.*:411E:"/>
+        <a time="02:27" text="[月环]震级5.0"/>
+        <a time="02:30" text="大地之铠"/>
+        <a time="02:32" text="--黄标--" style="AoE"/>
+        <a time="02:35" text="--无法攻击--"/>
+        <a time="02:40" text="--阶段转换--"/>
+        <t text="P2" sync="15:4371:" goto="P2"/>
+    </s>
+    <s name="P2">
+        <a time="00:26" text="--可攻击--"/>
+        <a time="00:33" text="[AoE]大地之怒" sync="15:.*:4124:" style="AoE"/>
+        <a time="00:48" text="[冲拳]大地之拳"/>
+        <a time="00:51" text="[冲拳]大地之拳"/>
+        <a time="00:53" text="[地板]大地之重" sync="15:.*:4108:"/>
+        <a time="01:01" text="[组合]大地两拳" sync="15:.*:4135:" style="AoE"/>
+        <a time="01:06" text="[死刑]大地之痛" style="死刑"/>
+        <a time="01:06" text="--蓝标--" style="伤害"/>
+        <a time="01:11" text="[死刑]巨石" style="死刑"/>
+        <a time="01:27" text="构造隆升" sync="15:.*:4122:"/>
+        <a time="01:30" text="(蓝下)--蓝标--" style="伤害"/>
+        <a time="01:40" text="[地板]大地之重" sync="15:.*:44D0:"/>
+        <a time="01:40" text="(橙2黄3蓝上)--三色标--" style="AoE"/>
+        <a time="01:48" text="[AoE]大地之怒" sync="15:.*:4124:" style="AoE"/>
+        <a time="02:02" text="花岗岩牢狱"/>
+        <a time="02:15" text="砸地板"/>
+        <a time="02:29" text="砸地板"/>
+        <a time="02:42" text="砸地板"/>
+        <a time="02:51" text="[AoE]大地之怒" sync="15:.*:4124:" style="AoE"/>
+        <a time="03:00" text="[AoE]激震x5" style="AoE"/>
+        <a time="03:17" text="[组合]大地两拳" sync="15:.*:4135:" style="AoE"/>
+        <a time="03:21" text="[死刑]大地之痛" style="死刑"/>
+        <a time="03:21" text="--蓝标--" style="伤害"/>
+        <a time="03:29" text="[冲拳]大地之拳"/>
+        <a time="03:29" text="[扩散]邪土"/>
+        <a time="03:32" text="[冲拳]大地之拳"/>
+        <a time="03:45" text="构造隆升" sync="15:.*:4122:"/>
+        <a time="03:46" text="--橙标--" style="AoE"/>
+        <a time="04:06" text="--黄标--" style="AoE"/>
+        <a time="04:22" text="(蓝下)--蓝标--" style="伤害"/>
+        <a time="04:34" text="[地板]大地之重" sync="15:.*:44D0:"/>
+        <a time="04:34" text="(蓝上)--蓝标--" style="伤害"/>
+        <a time="04:34" text="(橙2)--橙标--" style="AoE"/>
+        <a time="04:43" text="[AoE]大地之怒" sync="15:.*:4124:" style="AoE"/>
+        <a time="04:51" text="[AoE]激震x5" style="AoE"/>
+        <a time="05:14" text="砸地板"/>
+        <a time="05:23" text="[死刑]巨石" style="死刑"/>
+        <a time="05:37" text="砸地板"/>
+        <a time="05:40" text="--三色标--" style="AoE"/>
+        <a time="05:48" text="[AoE]大地之怒" sync="15:.*:4124:" style="AoE"/>
+        <a time="05:58" text="--形态转换--" sync="15:.*:4372:"/>
+        <a time="06:13" text="[AoE]大地之怒" style="AoE"/>
+        <a time="06:22" text="--白流沙1--"/>
+        <a time="06:32" text="--橙黄标--" style="AoE"/>
+        <a time="06:41" text="[AoE]大地两拳" sync="15:.*:4135:" style="AoE"/>
+        <a time="06:44" text="--蓝标--" style="伤害"/>
+        <a time="06:45" text="[死刑]大地之痛" style="死刑"/>
+        <a time="06:54" text="[AoE]大地之号" style="AoE"/>
+        <a time="06:57" text="[AoE]激震x5" style="AoE"/>
+        <a time="07:07" text="[AoE]大地之号" style="AoE"/>
+        <a time="07:18" text="[AoE]大地之怒" style="AoE"/>
+        <a time="07:26" text="--白流沙2--"/>
+        <a time="07:37" text="--橙黄标--" style="AoE"/>
+        <a time="07:48" text="[冲拳]大地之拳"/>
+        <a time="07:51" text="[冲拳]大地之拳"/>
+        <a time="08:00" text="[死刑]崩岩" style="死刑"/>
+        <a time="08:12" text="[死刑]巨石" style="死刑"/>
+        <a time="08:24" text="[AoE]大地之怒" style="AoE"/>
+        <a time="08:32" text="--白流沙3--"/>
+        <a time="08:42" text="--橙黄标--" style="AoE" notice="@Enrage" notice-o="0"/>
+        <a time="08:54" text="[冲拳]大地之拳"/>
+        <a time="08:57" text="[冲拳]大地之拳"/>
+        <a time="09:03" text="[AoE]大地之号" style="AoE"/>
+        <a time="09:06" text="[AoE]激震x5" style="AoE"/>
+        <a time="09:16" text="[AoE]大地之号" style="AoE"/>
+        <a time="09:18" text="[AoE]激震x5" style="AoE"/>
+        <a time="09:28" text="[AoE]大地之号" style="AoE"/>
+        <a time="09:42" text="[狂暴]大地之怒" style="狂暴"/>
+    </s>
+</timeline>
