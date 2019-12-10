@@ -2,7 +2,11 @@
 <timeline>
     <name>无瑕灵君歼殛战</name>
     <zone>无瑕灵君歼殛战,The Crown of the Immaculate (Extreme)</zone>
+<<<<<<< HEAD:Hojoring时间轴&触发器/Trial_Ex/无瑕灵君歼殛战.xml
     <rev>v1.10</rev>
+=======
+    <rev>v0.8</rev>
+>>>>>>> parent of bcf9bbe... Update 无瑕灵君歼殛战.xml:Hojoring时间轴/Trial_Ex/无瑕灵君歼殛战.xml
     <author>摩杜纳Souma</author>
     <description>极完美神时间轴。</description>
     <locale>@(Model.Locale)</locale>
@@ -26,15 +30,10 @@
     <t name="断罪飞翔" sync="14:40BD:" sync-count="8" notice="连线"/>
     <t name="断罪飞翔" sync="14:40BD:" sync-count="9" notice="大风车"/>
     <t name="断罪飞翔" sync="14:40BD:" sync-count="10" notice="连线"/>
-    <!-- <t name="断罪飞翔" sync="14:40BD:" sync-count="11" notice="直条"/> -->
+    <t name="断罪飞翔" sync="14:40BD:" sync-count="11" notice="直条"/>
     <t name="狂暴" sync="14:3EF1:" notice="狂暴"/>
-    @{  
-        var P2_ADD  ="";
-        if (Model.Player.InRole("TANK")){
-            P2_ADD  ="MT西,ST东";
-        }else{
-            P2_ADD  ="集火6点";
-        }
+    @if (Model.Player.InRole("TANK")){
+    <t name="P2" sync="Added new combatant.*HP: 664520" notice="MT西,ST东"/>
     }
     <t sync="23:.*:[mex]:.*:0000:0011:" call="断罪之桩"/>
     <s name="断罪之桩">
@@ -43,35 +42,41 @@
         <a notice="1" notice-o="5"/>
     </s>
     <s name="P1">
-        <a time="00:13" text="--同步--" sync="14:3EEA"/>
-        <a time="00:18" text="[AoE]夺影" sync="16:.*:3EEA:" style="AoE"/>
-        <a time="00:29" text="[连线]断罪飞翔"/>
-        <a time="00:48" text="[死刑]裁决之雷" style="死刑"/>
-        <a time="00:59" text="[连线]断罪飞翔"/>
-        <a time="01:02" text="--跳跃--" sync="15:.*:3EA2:"/>
-        <a time="01:06" text="[扇子]断罪回旋"/>
-        <a time="01:22" text="[大风车]断罪飞翔"/>
-        <a time="01:36" text="[点名]落光" style="伤害"/>
-        <a time="01:49" text="[死刑]裁决之雷" style="死刑"/>
-        <a time="02:00" text="[直线]断罪飞翔"/>
-        <a time="02:03" text="--跳跃--"/>
-        <a time="02:07" text="[米字]断罪回旋"/>
-        <a time="02:18" text="[分摊]光明柱" style="分摊"/>
-        <a time="02:25" text="[AoE]夺影" style="AoE"/>
-        <a time="02:36" text="[连线大风车]断罪飞翔"/>
-        <a time="02:59" text="--无法攻击--" notice="@P2_ADD" notice-o="-4"/>
-        <a time="03:02" text="--同步--" sync="15:.*:42B0:"/>
-        <a time="03:17" text="[AoE]毒舌钩" style="AoE"/>
-        <a time="03:17" text="[死刑]神圣剑x2" style="死刑"/>
-        <a time="03:19" text="[强化]指明灯"/>
-        <a time="03:33" text="[死刑]神圣剑x2" style="死刑"/>
-        <a time="03:35" text="[强化]指明灯"/>
-        <a time="03:49" text="[死刑]神圣剑x2" style="死刑"/>
-        <a time="03:52" text="--狂暴--"/>
+        <a time="00:17" text="[AoE]夺影" sync=":(无瑕灵君|Innocence|イノセンス):3EEA:" style="AoE"/>
+        <a time="00:28" text="[连线]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="00:47" text="[死刑]裁决之雷" sync=":(无瑕灵君|Innocence|イノセンス):3ECD:" style="死刑"/>
+        <a time="00:58" text="[连线]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="01:01" text="--跳跃--"/>
+        <a time="01:05" text="[扇子]断罪回旋" sync=":(无瑕灵君|Innocence|イノセンス):3EDC:"/>
+        <a time="01:12" text="(扇子返回 - 判定)"/>
+        <a time="01:21" text="[大风车]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="01:35" text="落光" sync=":(无瑕灵君|Innocence|イノセンス):3EEC:" style="伤害"/>
+        <a time="01:48" text="[死刑]裁决之雷" sync=":(无瑕灵君|Innocence|イノセンス):3ECD:" style="死刑"/>
+        <a time="01:59" text="[直线]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="02:02" text="--跳跃--"/>
+        <a time="02:05" text="(直线断罪 - 1)"/>
+        <a time="02:06" text="[米字]断罪回旋" sync=":(无瑕灵君|Innocence|イノセンス):3EDD:"/>
+        <a time="02:09" text="(直线断罪 - 2)"/>
+        <a time="02:13" text="(米字断罪 - 判定)"/>
+        <a time="02:14" text="(直线断罪 - 3)"/>
+        <a time="02:17" text="[分摊]光明柱" sync=":(无瑕灵君|Innocence|イノセンス):3EED:" style="分摊"/>
+        <a time="02:24" text="[AoE]夺影" sync=":(无瑕灵君|Innocence|イノセンス):3EEA:" style="AoE"/>
+        <a time="02:35" text="[连线大风车]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="02:58" text="--无法攻击--"/>
+        <a time="03:00" text="--可攻击--"/>
+        <a time="03:10" text="[AoE]毒舌钩" sync="16:.+:3EC8:" style="AoE"/>
+        <a time="03:15" text="[死刑]神圣剑x2" sync="15:.+:3EC9:" style="死刑"/>
+        <a time="03:17" text="[强化]指明灯"/>
+        <a time="03:31" text="[死刑]神圣剑x2" style="死刑"/>
+        <a time="03:33" text="[强化]指明灯"/>
+        <a time="03:47" text="[死刑]神圣剑x2" style="死刑"/>
+        <a time="03:50" text="--狂暴--"/>
         <a time="03:56" text="[AoE]回转火焰剑" style="AoE"/>
-        <t sync="16:.*:470A:" goto="P3"/>
+        <t text="P3" sync="00:0044:(无瑕灵君:连同你们的罪孽一起斩断！|イノセンス:その罪ごと、断たれて消えよッ！|Innocence: I Shall excise the sin of your existence!)" goto="P3"/>
     </s>
+
     <s name="P3">
+<<<<<<< HEAD:Hojoring时间轴&触发器/Trial_Ex/无瑕灵君歼殛战.xml
         <a time="00:14" text="创星" sync="15:.*:3EEF:"/>
         <a time="00:28" text="[AoE]夺影" style="AoE"/>
         <a time="00:39" text="[大风车]断罪飞翔" sync="15:.*:40BD:"/>
@@ -119,5 +124,73 @@
         <a time="07:14" text="--跳走--"/>
         <a time="07:18" text="创星"/>
         <a time="07:39" text="[狂暴]荣福直观" style="狂暴"/>
+=======
+        <a time="00:01" text="[AoE]回转火焰剑" style="AoE"/>
+        <a time="00:15" text="--可攻击--"/>
+        <a time="00:24" text="创星" sync=":(无瑕灵君|Innocence|イノセンス):3EEF:"/>
+        <a time="00:37" text="[AoE]夺影" sync=":(无瑕灵君|Innocence|イノセンス):3EEA:" style="AoE"/>
+        <a time="00:48" text="[大风车]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="01:00" text="--跳回场中--"/>
+        <a time="01:04" text="[米字]断罪回旋" sync=":(无瑕灵君|Innocence|イノセンス):3EDD:"/>
+        <a time="01:08" text="--跳走--"/>
+        <a time="01:11" text="(米字断罪 - 判定)"/>
+        <a time="01:15" text="[距离衰减]荣福直观" sync=":(无瑕灵君|Innocence|イノセンス):3EEE:" style="AoE"/>
+        <a time="01:28" text="--跳回场中--"/>
+        <a time="01:31" text="[死刑]裁决之雷" sync=":(无瑕灵君|Innocence|イノセンス):3ECD:" style="死刑"/>
+        <a time="01:42" text="创星" sync=":(无瑕灵君|Innocence|イノセンス):3EEF:"/>
+        <a time="01:49" text="(落光1 - 判定)x2" style="伤害"/>
+        <a time="01:54" text="(落光2 - 判定)x2" style="伤害"/>
+        <a time="02:01" text="[分摊]光明柱" sync=":(无瑕灵君|Innocence|イノセンス):3EED:" style="分摊"/>
+        <a time="02:03" text="--跳走--"/>
+        <a time="02:09" text="[距离衰减]荣福直观" sync=":(无瑕灵君|Innocence|イノセンス):3EEE:" style="AoE"/>
+        <a time="02:22" text="--跳回场中--"/>
+        <a time="02:26" text="[扇子]断罪回旋" sync=":(无瑕灵君|Innocence|イノセンス):3EDC:"/>
+        <a time="02:33" text="(扇子返回 - 判定)"/>
+        <a time="02:34" text="[躲扇形]神光x3" sync="15:3EE6:"/>
+        <a time="02:51" text="[AoE]夺影" sync=":(无瑕灵君|Innocence|イノセンス):3EEA:" style="AoE"/>
+        <a time="03:02" text="[死刑]裁决之雷" sync=":(无瑕灵君|Innocence|イノセンス):3ECD:" style="死刑"/>
+        <a time="03:11" text="创星" sync=":(无瑕灵君|Innocence|イノセンス):3EEF:"/>
+        <a time="03:16" text="[直条]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="03:22" text="(直条断罪 - 1)"/>
+        <a time="03:26" text="(直条断罪 - 2)"/>
+        <a time="03:31" text="(直条断罪 - 3)"/>
+        <a time="03:35" text="[分摊]光明柱" sync=":(无瑕灵君|Innocence|イノセンス):3EED:" style="分摊"/>
+        <a time="03:44" text="[AoE]夺影" sync=":(无瑕灵君|Innocence|イノセンス):3EEA:" style="AoE"/>
+        <a time="03:59" text="[死刑]裁决之雷" sync=":(无瑕灵君|Innocence|イノセンス):3ECD:" style="死刑"/>
+        <a time="04:08" text="[连线]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="04:14" text="(直条断罪 - 1)x6"/>
+        <a time="04:19" text="(直条断罪 - 2)x6"/>
+        <a time="04:22" text="[大风车]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="04:31" text="创星" sync=":(无瑕灵君|Innocence|イノセンス):3EEF:"/>
+        <a time="04:34" text="--跳走--"/>
+        <a time="04:41" text="[距离衰减]荣福直观" sync=":(无瑕灵君|Innocence|イノセンス):3EEE:" style="AoE"/>
+        <a time="04:54" text="--跳回场中--"/>
+        <a time="04:58" text="[扇子]断罪回旋" sync=":(无瑕灵君|Innocence|イノセンス):3EDC:"/>
+        <a time="05:00" text="(落光1 - 判定)x2"/>
+        <a time="05:05" text="(扇子返回 - 判定)"/>
+        <a time="05:06" text="(落光2 - 判定)x2"/>
+        <a time="05:14" text="[连线]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="05:24" text="[死刑]裁决之雷" sync=":(无瑕灵君|Innocence|イノセンス):3ECD:" style="死刑"/>
+        <a time="05:35" text="创星" sync=":(无瑕灵君|Innocence|イノセンス):3EEF:"/>
+        <a time="05:42" text="(落光1 - 判定)x2" style="伤害"/>
+        <a time="05:48" text="(落光2 - 判定)x2" style="伤害"/>
+        <a time="05:54" text="[分摊]光明柱" sync=":(无瑕灵君|Innocence|イノセンス):3EED:" style="分摊"/>
+        <a time="05:56" text="--跳走--"/>
+        <a time="06:03" text="[距离衰减]荣福直观" sync=":(无瑕灵君|Innocence|イノセンス):3EEE:" style="AoE"/>
+        <a time="06:16" text="--跳回场中--"/>
+        <a time="06:20" text="[扇子]断罪回旋" sync=":(无瑕灵君|Innocence|イノセンス):3EDC:"/>
+        <a time="06:27" text="(扇子返回 - 判定)"/>
+        <a time="06:28" text="[躲扇形]神光x3" sync="15:3EE6:"/>
+        <a time="06:45" text="[AoE]夺影" sync=":(无瑕灵君|Innocence|イノセンス):3EEA:" style="AoE"/>
+        <a time="06:56" text="[死刑]裁决之雷" sync=":(无瑕灵君|Innocence|イノセンス):3ECD:" style="死刑"/>
+        <a time="07:05" text="创星" sync=":(无瑕灵君|Innocence|イノセンス):3EEF:"/>
+        <a time="07:10" text="[直条]断罪飞翔" sync=":(无瑕灵君|Innocence|イノセンス):40BD:"/>
+        <a time="07:21" text="--跳走--"/>
+        <a time="07:25" text="(直条断罪 - 1)x6"/>
+        <a time="07:23" text="创星" sync=":(无瑕灵君|Innocence|イノセンス):3EEF:"/>
+        <a time="07:26" text="(直条断罪 - 2)x6"/>
+        <a time="07:46" text="[狂暴]荣福直观" sync=":(无瑕灵君|Innocence|イノセンス):3EF1:" style="狂暴"/>
+>>>>>>> parent of bcf9bbe... Update 无瑕灵君歼殛战.xml:Hojoring时间轴/Trial_Ex/无瑕灵君歼殛战.xml
     </s>
+
 </timeline>
