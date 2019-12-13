@@ -69,12 +69,12 @@
     [在线进制转换网站](https://tool.oschina.net/hexconvert)
 
 - 内部样式
-    样式名|填充颜色|轮廓颜色
-    -|-|-|
-    AoE|#FF9370DB|#FF000000
-    分摊|#FF00B2ED|#FF000000
-    死刑|#FFE93F00|#FF000000
-    伤害|#FFEDCA00|#FF000000
+  样式名|填充颜色|轮廓颜色
+  -|-|-|
+  AoE|#FF9370DB|#FF000000
+  分摊|#FF00B2ED|#FF000000
+  死刑|#FFE93F00|#FF000000
+  伤害|#FFEDCA00|#FF000000
 
 ## Hojoring-SST技能触发器(中/日/英)
 
