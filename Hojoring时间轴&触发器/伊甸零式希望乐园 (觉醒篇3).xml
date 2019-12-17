@@ -21,6 +21,8 @@
         <t sync="14:3FE4:" notice="@e3s.苟烈波动"/>
         <t sync="14:3FE2:" notice="@e3s.猛烈波动"/>
         <t sync="14:400[DE]:" notice="@e3s.混沌涡动"/>
+        <t sync="14:3FD[CE]:" notice="@e3s.潮汐之怒"/>
+        <t sync="14:3FF3:" notice="@e3s.大海啸"/>
 
         <t sync="14:3FFE:" notice="@e3s.Top_Left"/>
         if (Model.Player.InRole("Tank")){
@@ -50,19 +52,9 @@
         <t sync="14:3FEA:" notice="@e3s.Bottom_Left"/>
         <t sync="14:3FEB:" notice="@e3s.Bottom_Right"/>
         }
-        <t sync="14:3FD[CE]:" notice="@e3s.AoE"/>
-        <t sync="14:3FF3:" notice="@e3s.AoE">
-            <expressions>
-                <set name="Sweeping_Waters" value="false"/>
-                <set name="Surging_Waters" value="false"/>
-                <set name="Sundering_Waters" value="false"/>
-                <set name="Scouring_Waters" value="false"/>
-                <set name="Smothering_Waters" value="false"/>
-            </expressions>
-        </t>
     }
     <s name="P1">
-        <t text="断絶の兆し" sync="[mex] gains the effect of (断绝之兆|断絶の兆し|Sundering Waters)" notice="@e3s.tsunami_1_Sundering">
+        <t text="断絶の兆し" sync="[mex] gains the effect of (断绝之兆|断絶の兆し|Sundering Waters)">
             <v-notice duration="30" order="1" sync-to-hide="${_mex} loses the effect of (断绝之兆|断絶の兆し|Sundering Waters)" duration-visible="false" text="直线点你"/>
         </t>
 
@@ -94,104 +86,14 @@
     </s>
     <s name="P2">
         @if (@e3s.启用触发器 == "true"){
-            var tsunami_2_Timing_1 = "1";
-            var tsunami_2_Timing_2 = "9";
-            var tsunami_2_Timing_3 = "17";
-            var tsunami_2_Timing_4 = "23";
-            var tsunami_2_Timing_5 = "29";
             <t sync="14:3FE[A-D]" notice="@e3s.Temporary_Current_Part2" notice-o="2"/>
-            <t text="断絶の兆し" sync="[mex] gains the effect of (断绝之兆|断絶の兆し|Sundering Waters)" notice="@e3s.tsunami_2_Sundering" call="Sundering">
-                <v-notice duration="30" order="1" sync-to-hide="${_mex} loses the effect of (断绝之兆|断絶の兆し|Sundering Waters)" duration-visible="false" text="直线点你"/>
-                <expressions>
-                    <set name="Sundering_Waters" value="true"/>
-                </expressions>
-            </t>
-            <t text="暴風の兆し" sync="[mex] gains the effect of (暴风之兆|暴風の兆し|Scouring Waters)" notice="@e3s.tsunami_2_Scouring" call="Scouring">
-                <v-notice duration="30" order="1" sync-to-hide="${_mex} loses the effect of (暴风之兆|暴風の兆し|Scouring Waters)" duration-visible="false" text="大圈点你"/>
-                <expressions>
-                    <set name="Scouring_Waters" value="true"/>
-                </expressions>
-            </t>
-            <t text="拡散の兆し" sync="[mex] gains the effect of (扩散之兆|拡散の兆し|Sweeping Waters)" notice="@e3s.tsunami_2_Sweeping" call="Sweeping">
-                <v-notice duration="30" order="1" sync-to-hide="${_mex} loses the effect of (扩散之兆|拡散の兆し|Sweeping Waters)" duration-visible="false" text="三角点你"/>
-                <expressions>
-                    <set name="Sweeping_Waters" value="true"/>
-                </expressions>
-            </t>
-            <t text="強圧の兆し" sync="[mex] gains the effect of (强压之兆|強圧の兆し|Surging Waters)" notice="@e3s.tsunami_2_Surging" call="Surging">
-                <v-notice duration="30" order="1" sync-to-hide="${_mex} loses the effect of (强压之兆|強圧の兆し|Surging Waters)" duration-visible="false" text="强压点你"/>
-                <expressions>
-                    <set name="Surging_Waters" value="true"/>
-                </expressions>
-            </t>
-            <t text="溺没の兆し" sync="[mex] gains the effect of (溺没之兆|溺没の兆し|Smothering Waters)" call="Smothering">
-                <v-notice duration="30" order="1" sync-to-hide="${_mex} loses the effect of (溺没之兆|溺没の兆し|Smothering Waters)" duration-visible="false" text="分摊点你"/>
-                <expressions>
-                    <set name="Smothering_Waters" value="true"/>
-                </expressions>
-            </t>
-            if (Model.Player.InRole("TANK")){
-            <s name="Sundering">
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_1"/>
-                <a notice="@e3s.tsunami_2_Tank_Share" notice-o="@tsunami_2_Timing_2"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_3"/>
-                <a notice="@e3s.tsunami_2_isSundering" notice-o="@tsunami_2_Timing_4"/>
-                <a notice="@e3s.tsunami_2_Tank_Sundering_Last" notice-o="@tsunami_2_Timing_5"/>
-            </s>
-            <s name="Scouring">
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_1"/>
-                <a notice="@e3s.tsunami_2_Tank_Share" notice-o="@tsunami_2_Timing_2"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_3"/>
-                <a notice="@e3s.tsunami_2_Tank_Scouring_Last" notice-o="@tsunami_2_Timing_4"/>
-            </s>
-            }
-            if (Model.Player.InRole("Healer")){
-            <s name="Smothering">
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_1"/>
-                <a notice="@e3s.tsunami_2_Healer_Share" notice-o="@tsunami_2_Timing_2"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_3"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_4"/>
-            </s>
-            <s name="Scouring">
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_1"/>
-                <a notice="@e3s.tsunami_2_Healer_Sweeping" notice-o="@tsunami_2_Timing_2"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_3"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_4"/>
-            </s>
-            }
-            if (Model.Player.InRole("DPS")){
-            <s name="Sundering">
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_1"/>
-                <a notice="@e3s.tsunami_2_DPS_notSurging_Share" notice-o="@tsunami_2_Timing_2"/>
-                <a notice="@e3s.tsunami_2_isSundering" notice-o="@tsunami_2_Timing_3"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_4"/>
-            </s>
-            <s name="Surging">
-                <a notice="@e3s.tsunami_2_isSurging" notice-o="@tsunami_2_Timing_1"/>
-                <a notice="@e3s.tsunami_2_DPS_Surging_Share" notice-o="@tsunami_2_Timing_2"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_3"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_4"/>
-            </s>
-            <s name="Smothering">
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_1"/>
-                <a notice="@e3s.tsunami_2_DPS_notSurging_Share" notice-o="@tsunami_2_Timing_2"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_3"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_4"/>
-            </s>
-            <s name="Sweeping">
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_1"/>
-                <a notice="@e3s.tsunami_2_DPS_Sweeping_Share" notice-o="@tsunami_2_Timing_2"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_3"/>
-                <a notice="@e3s.tsunami_2_notSurging" notice-o="@tsunami_2_Timing_4"/>
-            </s>
-            }
         }
         <t sync="1B:.*:[mex]:.{4}:.{4}:0057:" notice="@e3s.Backbreaking_Wave"/>
         <a time="00:08" sync="14:3FDE"/>
         <a time="00:13" text="[AoE]潮汐之怒" style="AoE"/>
         <a time="00:18" text="(召唤巨浪)" sync="15:.*:3FF1:"/>
         <a time="00:25" text="[地板]海底地震"/>
-        <a time="00:28" text="[击退]巨浪" sync="16:.*:3FF2:" style="AoE" notice="@e3s.Tidal_Wave" notice-o="-3"/>
+        <a time="00:28" text="[击退]巨浪" sync="16:.*:3FF2:" style="AoE" notice="@e3s.巨浪判定" notice-o="-3"/>
         <a time="00:35" text="[俯冲]临时洋流"/>
         <a time="00:49" text="[俯冲]临时洋流"/>
         <a time="00:46" text="[集中放圈]猛烈波动" style="AoE"/>
