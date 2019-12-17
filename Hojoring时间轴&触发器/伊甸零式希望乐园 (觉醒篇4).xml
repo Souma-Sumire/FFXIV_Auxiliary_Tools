@@ -41,11 +41,7 @@
         </t>
         <t sync="14:4116:" notice="@e4s.崩岩"/>
         <t sync="14:4121:" notice="@e4s.震级5.0"/>
-        <t sync="14:4124:" notice="@e4s.大地之怒">
-            <expressions>
-                <set name="isOrange" value="false"/>
-            </expressions>
-        </t>
+        <t sync="14:4124:" notice="@e4s.大地之怒"/>
         <t sync="14:4114:" notice="@e4s.大地之叫"/>
         <t sync="14:412A:" notice="@e4s.激震"/>
         <t sync="14:4135:" notice="@e4s.大地两拳"/>
@@ -53,13 +49,6 @@
         <t sync="14:4110:" notice="@e4s.地震波"/>
         <t sync="14:4140:" notice="@e4s.狂暴"/>
 
-        <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BF:" notice="@e4s.Rock_Throw"/>
-        <t sync="14:410A:" sync-count="1" call="2C1"/>
-        <s name="2C1">
-            <a notice="3" notice-o="2"/>
-            <a notice="2" notice-o="3"/>
-            <a notice="1" notice-o="4"/>
-        </s>
         <t text="黄标" sync="1B:.{8}:[mex]:.{4}:.{4}:00B9:">
             <v-notice duration="5" duration-visible="false" icon="Leave.png"/>
         </t>
@@ -69,109 +58,7 @@
         <t text="蓝标" sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:">
             <v-notice duration="5" duration-visible="false" icon="Bomb.png"/>
         </t>
-        if (Model.Player.InRole("DPS")){
-        <t sync="15:.*:4122:" sync-count="1" notice="@e4s.TectonicUplift_1_DPS_Say" call="升降梯1D">
-            <expressions>
-                <set name="TectonicUplift_1_Blue_Count" value="0"/>
-            </expressions>
-        </t>
-        <s name="升降梯1D">
-            <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="1">
-                <expressions>
-                    <set name="TectonicUplift_1_Blue_Count" value="1"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="2">
-                <expressions>
-                    <set name="TectonicUplift_1_Blue_Count" value="2"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@e4s.TectonicUplift_1_DPS_Blue_1">
-                <expressions>
-                    <pre name="TectonicUplift_1_Blue_Count" value="1"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@e4s.TectonicUplift_1_DPS_Blue_2">
-                <expressions>
-                    <pre name="TectonicUplift_1_Blue_Count" value="2"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:" notice="@e4s.TectonicUplift_1_Orange"/>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00B9:" notice="@e4s.TectonicUplift_1_Yellow"/>
-        </s>
-        }else{
-        <t sync="15:.*:4122:" sync-count="1" notice="@e4s.TectonicUplift_1_TH_Say" call="升降梯1TH">
-            <expressions>
-                <set name="TectonicUplift_1_Blue_Count" value="0"/>
-            </expressions>
-        </t>
-        <s name="升降梯1TH">
-            <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="1">
-                <expressions>
-                    <set name="TectonicUplift_1_Blue_Count" value="1"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="2">
-                <expressions>
-                    <set name="TectonicUplift_1_Blue_Count" value="2"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@e4s.TectonicUplift_1_TH_Blue_1">
-                <expressions>
-                    <pre name="TectonicUplift_1_Blue_Count" value="1"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@e4s.TectonicUplift_1_TH_Blue_2">
-                <expressions>
-                    <pre name="TectonicUplift_1_Blue_Count" value="2"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:" notice="@e4s.TectonicUplift_1_Orange"/>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00B9:" notice="@e4s.TectonicUplift_1_Yellow"/>
-            <a notice="@e4s.TectonicUplift_Last" notice-o="18"/>
-        </s>
-        }
-        <t no="1" sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:">
-            <expressions>
-                <set name="isOrange" value="true" ttl="10"/>
-            </expressions>
-        </t>
-        <t no="2" name="构造隆升" sync="15:.*:4122:" sync-count="2" notice="@e4s.TectonicUplift_2_Orange">
-            <expressions>
-                <pre name="isOrange" value="true"/>
-                <set name="TectonicUplift_2_Orange_Count" value="1"/>
-            </expressions>
-        </t>
-        <t no="3" name="构造隆升" sync="15:.*:4122:" sync-count="2" notice="@e4s.TectonicUplift_2_notOrange">
-            <expressions>
-                <pre name="isOrange" value="false"/>
-                <set name="TectonicUplift_2_Orange_Count" value="1"/>
-            </expressions>
-        </t>
-        <s name="升降梯2">
-            <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="1">
-                <expressions>
-                    <set name="TectonicUplift_2_Blue_Count" value="1"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[pc]:.{4}:.{4}:00BB:" sync-count="3">
-                <expressions>
-                    <set name="TectonicUplift_2_Blue_Count" value="2"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@e4s.TectonicUplift_2_First_Blue">
-                <expressions>
-                    <pre name="TectonicUplift_2_Blue_Count" value="1"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:" notice="@e4s.TectonicUplift_2_Second_Blue">
-                <expressions>
-                    <pre name="TectonicUplift_2_Blue_Count" value="2"/>
-                </expressions>
-            </t>
-            <t sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:" notice="@e4s.TectonicUplift_2_Second_Orange"/>
-            <a notice="中间刷血" notice-o="55"/>
-        </s>
+        
         <t sync="1B:.*:[pc]:.{4}:.{4}:00BB:" sync-count="1">
             <expressions>
                 <set name="陨石" value="1"/>
