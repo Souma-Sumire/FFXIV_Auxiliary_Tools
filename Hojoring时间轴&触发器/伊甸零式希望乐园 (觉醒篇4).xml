@@ -5,7 +5,7 @@
     }
     <name>伊甸零式希望乐园：觉醒篇 4</name>
     <zone>伊甸零式希望乐园 (觉醒之章4),Eden's Gate: Sepulture (Savage)</zone>
-    <rev>v1.1</rev>
+    <rev>v1.1.1</rev>
     <author>摩杜纳:Souma</author>
     <description>E4S时间轴。</description>
     <license>CC BY-SA</license>
@@ -133,8 +133,14 @@
         <a time="00:54" text="[AoE]大地之号" style="AoE"/>
         <a time="01:06" text="[跳跃]大地粉碎" style="AoE"/>
         <a time="01:10" text="--分支判定--"/>
-        <t sync="15:.*:40E8:" goto="车人"/>
-        <t sync="15:.*:40E6:" goto="人车"/>
+        <t sync="15:.*:40E8:">
+            <load target="车人" truncate="true" />
+            <load target="P2"/>
+        </t>
+        <t sync="15:.*:40E6:">
+            <load target="人车" truncate="true" />
+            <load target="P2"/>
+        </t>
     </s>
     <s name="车人">
         <a time="00:00" text="大地之车轮" sync="15:.*:40E8:"/>
@@ -162,7 +168,7 @@
         <a time="02:33" text="爆炸"/>
         <a time="02:35" text="--无法攻击--"/>
         <a time="02:40" text="--阶段转换--"/>
-        <t text="P2" sync="15:.*:4371:" goto="P2"/>
+        <t sync="15:.*:4371:" goto="P2"/>
     </s>
     <s name="人车">
         <a time="00:00" text="大地之手甲" sync="15:.*:40E6:"/>
@@ -190,7 +196,7 @@
         <a time="02:32" text="--黄标--" style="AoE"/>
         <a time="02:35" text="--无法攻击--"/>
         <a time="02:40" text="--阶段转换--"/>
-        <t text="P2" sync="15:4371:" goto="P2"/>
+        <t sync="15:.*:4371:" goto="P2"/>
     </s>
     <s name="P2">
         <a time="00:26" text="--可攻击--"/>
