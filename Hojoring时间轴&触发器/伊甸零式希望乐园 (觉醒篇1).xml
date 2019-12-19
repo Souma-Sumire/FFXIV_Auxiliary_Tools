@@ -1,54 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <timeline>
-    @{
-        var e1s = Model.ParseJsonFile(@".\User settings\伊甸零式希望乐园：觉醒篇 1.json");
-    }
     <name>伊甸零式希望乐园：觉醒篇 1</name>
     <zone>伊甸零式希望乐园 (觉醒之章1),Eden's Gate: Resurrection (Savage)</zone>
-    <rev>v1.1</rev>
+    <rev>v1.2</rev>
     <author>摩杜纳:Souma</author>
     <description>E1S时间轴。</description>
     <license>CC BY-SA</license>
     <locale>@(Model.Locale)</locale>
     <entry>P1</entry>
     <start>00:0039:(戦闘開始！|Engage!|战斗开始！)</start>
-    @if (@e1s.启用触发器 == "true"){
-        <t sync="14:3D70:" notice="@e1s.伊甸重力" />
-        <t sync="14:3D7F:" notice="@e1s.空间转换" />
-        <t sync="14:3D73:" notice="@e1s.伊甸核爆" />
-        <t sync="14:3D88:" notice="@e1s.乐园之枪" />
-        <t sync="14:3D8A:" notice="@e1s.净土之光" />
-        <t sync="14:44F4:" notice="@e1s.三角攻击" />
-        if (Model.Player.InRole("Tank")) {
-        <t sync="14:44F8:" notice="@e1s.R三角攻击_TANK" />
-        }else{
-        <t sync="14:44F8:" notice="@e1s.R三角攻击_DPSH" />
-        }
-        if (Model.Player.InRole("DPS")){
-        <t sync="14:44EF:" notice="@e1s.恶习与美德_DPS" />
-        }
-        <t sync="14:44EE:" notice="@e1s.恶习与美德_TANK" />
-        <t sync="14:3D7A:" notice="@e1s.R恶习与美德_DPS" />
-        <t sync="14:3D78:" notice="@e1s.R恶习与美德_TANK" />
-        <t sync="14:3D8D:" notice="@e1s.魔力增幅" />
-        <t sync="14:45E4:" notice="@e1s.狂暴" />
-    }
+    	<default target-element="Activity" target-attr="notice-o" value="-12"/>
     <s name="P1">
         <a time="00:07" sync="14:3D70:" />
         <a time="00:11" text="[AoE]伊甸重力" sync="15:.*:3D70:" style="AoE" />
-        <a time="00:25" text="[伤害]恶习与美德" sync="15:.*:44EF:" style="伤害" />
+        <a time="00:25" text="[黑洞]恶习与美德" sync="15:.*:44EF:" style="伤害" />
         <a time="00:31" text="[月环]伊甸核爆" sync="15:.*:3D73:" />
         <a time="00:50" text="[双T激光]恶习与美德" style="死刑" />
         <a time="00:57" text="[死刑]乐园之枪" style="死刑" />
-        <a time="01:08" text="[H传给T]恶习与美德" style="死刑" notice="@e1s.治疗传毒坦克" />
-        <a time="01:11" text="--跳跃--" notice="@e1s.跳跃到角落" />
+        <a time="01:08" text="[H传给T]恶习与美德" style="死刑" />
+        <a time="01:11" text="--跳跃--" />
         <a time="01:20" text="[去背面]净土之光" />
         <a time="01:22" text="--跳回--" />
         <a time="01:33" text="[冰火雷]三角攻击" style="AoE" />
         <a time="01:45" text="[AoE]空间转换" sync="16:.*:3D7F:" style="AoE" />
         <a time="01:51" text="[黄圈]失乐园x5" />
         <a time="02:02" text="[白球诱导]净土射线" style="AoE" />
-        <a time="02:04" text="--跳跃--" notice="@e1s.跳跃到角落" />
+        <a time="02:04" text="--跳跃--" />
         <a time="02:13" text="[去背面]净土之光" />
         <a time="02:16" text="--跳回--" />
         <a time="02:22" text="[AoE]空间转换" sync="16:.*:3D7F:" style="AoE" />
@@ -73,12 +50,12 @@
         <a time="01:19" text="[左右分摊]恶习与美德" sync="15:.*:3D78:" style="分摊" />
         <a time="01:32" text="[4组分摊]恶习与美德" sync="15:.*:3D7A:" style="分摊" />
         <a time="01:45" text="[反]三角攻击" style="AoE" />
-        <a time="01:58" text="[H传给D]恶习与美德" style="伤害" notice="@e1s.治疗传毒DPS" />
+        <a time="01:58" text="[H传给D]恶习与美德" style="伤害" />
         <a time="02:06" text="[死刑]乐园之枪" style="死刑" />
         <a time="02:19" text="[AoE]空间转换" sync="16:.*:3D7F:" style="AoE" />
         <a time="02:29" text="[转转球]净土射线" sync="15:.*:3D82:" />
         <!-- P4 -->
-        <a time="02:41" text="--跳跃--" notice="@e1s.跳跃到角落" />
+        <a time="02:41" text="--跳跃--" />
         <a time="02:49" text="[去背面]净土之光" />
         <a time="02:52" text="--跳回--" />
         <a time="02:59" text="[AoE]空间转换" sync="16:.*:3D7F:" style="AoE" />
@@ -86,12 +63,12 @@
         <a time="03:23" text="[月环]伊甸核爆" sync="15:.*:3D73:" />
         <a time="03:38" text="[双T激光]恶习与美德" style="死刑" />
         <a time="03:46" text="[死刑]乐园之枪" style="死刑" />
-        <a time="03:57" text="[D放黑洞]恶习与美德" style="伤害" />
+        <a time="03:57" text="[黑洞]恶习与美德" style="伤害" />
         <a time="04:10" text="[冰火雷]三角攻击" style="AoE" />
-        <a time="04:24" text="[H传给T]恶习与美德" style="死刑" notice="@e1s.治疗传毒坦克" />
+        <a time="04:24" text="[H传给T]恶习与美德" style="死刑" />
         <a time="04:36" text="[AoE]空间转换" sync="16:.*:3D7F:" style="AoE" />
         <a time="04:47" text="[转转球]净土射线" sync="15:.*:3D82:" />
-        <a time="04:58" text="--跳跃--" notice="@e1s.跳跃到角落" />
+        <a time="04:58" text="--跳跃--" />
         <a time="05:07" text="[去背面]净土之光" />
         <a time="05:10" text="--跳回--" />
         <a time="05:17" text="[AoE]空间转换" sync="16:.*:3D7F:" style="AoE" />
@@ -102,7 +79,7 @@
         <a time="06:02" text="[左右分摊]恶习与美德" style="分摊" />
         <a time="06:15" text="[4组分摊]恶习与美德" style="分摊" />
         <a time="06:28" text="[反]三角攻击" style="AoE" />
-        <a time="06:42" text="[H传给D]恶习与美德" style="伤害" notice="@e1s.治疗传毒DPS" />
+        <a time="06:42" text="[H传给D]恶习与美德" style="伤害" />
         <a time="06:49" text="[死刑]乐园之枪" style="死刑" />
         <a time="07:00" text="[狂暴]极大爆炸" sync="1.:.*:45E4:" sync-s="-90" style="狂暴" />
     </s>
