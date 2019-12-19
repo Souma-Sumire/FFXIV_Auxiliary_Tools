@@ -1,36 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <timeline>
-    @{
-        var ex_I = Model.ParseJsonFile(@".\User settings\无瑕灵君歼殛战.json");
-    }
     <name>无瑕灵君歼殛战</name>
     <zone>无瑕灵君歼殛战,The Crown of the Immaculate (Extreme)</zone>
-    <rev>v1.10</rev>
+    <rev>v1.11</rev>
     <author>摩杜纳:Souma</author>
     <description>极完美神时间轴。</description>
     <locale>@(Model.Locale)</locale>
     <license>CC BY-SA</license>
     <entry>P1</entry>
     <start>00:0039:(戦闘開始！|Engage!|战斗开始！)</start>
-    @if (@ex_I.启用触发器 == "true"){
-        <t sync="14:3EEA:" notice="@ex_I.夺影" />
-        <t sync="14:3ECD:" notice="@ex_I.裁决之雷" />
-        <t sync="14:3EDC:" notice="@ex_I.断罪回旋" />
-        <t sync="14:3F3E:" notice="@ex_I.光明柱" />
-        <t sync="14:3EC8:" notice="@ex_I.毒舌钩" />
-        <t sync="14:3EC9:" notice="@ex_I.神圣剑" />
-        <t sync="14:3EEE:" notice="@ex_I.荣福直观" />
-        <t sync="14:3EE4:" notice="@ex_I.神光" />
-        <t sync="14:40BD:" sync-count="1" notice="@ex_I.断罪飞翔_1" />
-        <t sync="14:40BD:" sync-count="2" notice="@ex_I.断罪飞翔_2" />
-        <t sync="14:40BD:" sync-count="3" notice="@ex_I.断罪飞翔_3" />
-        <t sync="14:40BD:" sync-count="5" notice="@ex_I.断罪飞翔_5" />
-        <t sync="14:40BD:" sync-count="6" notice="@ex_I.断罪飞翔_6" />
-        <t sync="14:40BD:" sync-count="8" notice="@ex_I.断罪飞翔_8" />
-        <t sync="14:40BD:" sync-count="9" notice="@ex_I.断罪飞翔_9" />
-        <t sync="14:40BD:" sync-count="10" notice="@ex_I.断罪飞翔_10" />
-        <t sync="14:3EF1:" notice="@ex_I.狂暴" />
-    }
     <s name="P1">
         <a time="00:13" sync="14:3EEA" />
         <a time="00:18" text="[AoE]夺影" sync="16:.*:3EEA:" style="AoE" />
@@ -48,11 +26,6 @@
         <a time="02:18" text="[分摊]光明柱" style="分摊" />
         <a time="02:25" text="[AoE]夺影" style="AoE" />
         <a time="02:36" text="[连线大风车]断罪飞翔" />
-        if (Model.Player.InRole("TANK")){
-        <a time="02:59" text="--无法攻击--" notice="@ex_I.Add_T" notice-o="-4" />
-        }else{
-        <a time="02:59" text="--无法攻击--" notice="@ex_I.Add_HD" notice-o="-4" />
-        }
         <a time="03:02" sync="15:.*:42B0:" />
         <a time="03:17" text="[AoE]毒舌钩" style="AoE" />
         <a time="03:17" text="[死刑]神圣剑x2" style="死刑" />
