@@ -1,59 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <timeline>
-    @{
-        var ex_T = Model.ParseJsonFile(@".\User settings\缇坦妮雅歼殛战.json");
-    }
     <name>缇坦妮雅歼殛战</name>
     <zone>缇坦妮雅歼殛战,The Dancing Plague (Extreme)</zone>
-    <rev>v1.13</rev>
+    <rev>v1.2</rev>
     <author>摩杜纳:Souma</author>
     <description>极妖灵王时间轴。</description>
     <locale>@(Model.Locale)</locale>
     <license>CC BY-SA</license>
     <entry>P1</entry>
     <start>00:0039:(戦闘開始！|Engage!|战斗开始！)</start>
-    @if (@ex_T.启用触发器 == "true"){
-    <t sync="14:3D4C:" notice="@ex_T.幻之符文_远离" />
-    <t sync="14:3D4D:" notice="@ex_T.幻之符文_靠近" />
-    <t sync="14:3D4B:" notice="@ex_T.欢快的安息日" />
-    <t sync="14:3D45:" notice="@ex_T.水之符文" />
-    <t sync="14:3D47:" notice="@ex_T.火之符文" />
-    <t sync="14:3D4A:" notice="@ex_T.魔之符文" />
-    <t sync="14:3D37:" notice="@ex_T.殴打" />
-    <t sync="14:3D36:" notice="@ex_T.强烈重击" />
-        if (Model.Player.InRole("DPS")){
-    <t sync="14:42D7:" notice="@ex_T.荆棘链_DPS" />
-        }else{
-    <t sync="14:42D7:" notice="@ex_T.荆棘链_TH" />
-        }
-    <t sync="缇坦妮雅:噼里、啪啦……和谁、玩耍？|Titania: This may tingle a bit!|ビリビリ、カミナリ" notice="@ex_T.雷之符文" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="1" notice="1" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="2" notice="2" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="3" notice="3" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="4" notice="4" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="5" notice="5" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="6" notice="6" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="7" notice="1" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="8" notice="2" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="9" notice="3" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="10" notice="4" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="11" notice="5" />
-    <t sync="00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)" sync-count="12" notice="6" />
-    <t sync="14:3D2C:" notice="@ex_T.妖灵光" />
-    <t sync="14:3D2A:" notice="@ex_T.冰之符文" />
-    <t sync="14:3D41:" sync-count="1" notice="@ex_T.帕克的吐息_1" />
-    <t sync="14:3D41:" sync-count="2" notice="@ex_T.帕克的吐息_2" />
-        if (Model.Player.InRole("DPS")){
-    <t sync="14:40E2:" notice="@ex_T.P2拉线_DPS" notice-o="5" />
-        }else{
-    <t sync="14:40E2:" notice="@ex_T.P2拉线_TH" notice-o="5" />
-        }
-    <t sync="14:40E2:" notice="@ex_T.细语微风" />
-    <t sync="14:3DAE:" notice="@ex_T.狂暴" />
-        if (Model.Player.InRole("TANK")){
-    <t sync="Added new combatant (帕克|パックPuck).+Max HP: (843600|1124800)" notice="@ex_T.P2_Add" />
-        }
-    }
+
     <s name="P1">
         <a time="00:09" sync="14:3D4B:" />
         <a time="00:13" text="[AoE]欢快的安息日" style="AoE" />
