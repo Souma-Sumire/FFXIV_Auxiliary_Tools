@@ -1,72 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <timeline>
-    @{
-        var e3s = Model.ParseJsonFile(@".\User settings\伊甸零式希望乐园：觉醒篇 3.json");
-    }
     <name>伊甸零式希望乐园：觉醒篇 3</name>
     <zone>伊甸零式希望乐园 (觉醒之章3),Eden's Gate: Inundation (Savage)</zone>
-    <rev>v1.1.1</rev>
+    <rev>v1.2.0</rev>
     <author>摩杜纳:Souma</author>
     <description>E3S时间轴。</description>
     <license>CC BY-SA</license>
     <locale>@(Model.Locale)</locale>
     <entry>P1</entry>
     <start>00:0039:(戦闘開始！|Engage!|战斗开始！)</start>
-    @if (@e3s.启用触发器 == "true"){
-        <t sync="14:3FE0:" notice="@e3s.裂流"/>
-        <t sync="14:3FEE" notice="@e3s.海底地震_内"/>
-        <t sync="14:3FEF" notice="@e3s.海底地震_外"/>
-        <t sync="14:3FF1:" notice="@e3s.巨浪"/>
-        <t sync="14:3FFA:" notice="@e3s.巨漩涡"/>
-        <t sync="14:3FE4:" notice="@e3s.苟烈波动"/>
-        <t sync="14:3FE2:" notice="@e3s.猛烈波动"/>
-        <t sync="14:400[DE]:" notice="@e3s.混沌涡动"/>
-        <t sync="14:3FD[CE]:" notice="@e3s.潮汐之怒"/>
-        <t sync="14:3FF3:" notice="@e3s.大海啸"/>
 
-        <t sync="14:3FFE:" notice="@e3s.Top_Left"/>
-        if (Model.Player.InRole("Tank")){
-        <t sync="14:3FEA:" notice="@e3s.Top_Right"/>
-        <t sync="14:3FEB:" notice="@e3s.Top_Left"/>
-        <t sync="14:4007:" notice="@e3s.Black_Smoker_Tank"/>
-        }else{
-        <t sync="14:4007:" notice="@e3s.Black_Smoker_notTank"/>
-        }
-        if (Model.Player.InRole("MeleeDPS")){
-        <t sync="14:3FEA:" notice="@e3s.Top_Right"/>
-        <t sync="14:3FEB:" notice="@e3s.Top_Left"/>
-        }
-        if (Model.Player.InRole("MagicDPS")){
-        <t sync="14:3FEA:" notice="@e3s.Bottom_Left"/>
-        <t sync="14:3FEB:" notice="@e3s.Bottom_Right"/>
-        }
-        if (Model.Player.InRole("RangeDPS")){
-        <t sync="14:3FEA:" notice="@e3s.Bottom_Left"/>
-        <t sync="14:3FEB:" notice="@e3s.Bottom_Right"/>
-        }
-        if (Model.Player.InRole("MagicDPS")){
-        <t sync="14:3FEA:" notice="@e3s.Bottom_Left"/>
-        <t sync="14:3FEB:" notice="@e3s.Bottom_Right"/>
-        }
-        if (Model.Player.InRole("Healer")){
-        <t sync="14:3FEA:" notice="@e3s.Bottom_Left"/>
-        <t sync="14:3FEB:" notice="@e3s.Bottom_Right"/>
-        }
-    }
     <s name="P1">
-        <t text="断絶の兆し" sync="[mex] gains the effect of (断绝之兆|断絶の兆し|Sundering Waters)">
-            <v-notice duration="30" order="1" sync-to-hide="${_mex} loses the effect of (断绝之兆|断絶の兆し|Sundering Waters)" duration-visible="false" text="直线点你"/>
-        </t>
-
+        <a time="00:09" sync="14:3FDC:"/>
         <a time="00:13" text="[AoE]怒潮咆哮" style="AoE"/>
         <a time="00:24" text="[死刑]裂流" style="死刑"/>
-        <a time="00:36" text="(召唤巨浪)" sync="15:.*:3FF1:"/>
+        <a time="00:36" text="(召唤巨浪)"/>
         <a time="00:43" text="[地板]海底地震"/>
-        <a time="00:46" text="[击退]巨浪" sync="16:.*:3FF2:" style="AoE" notice="@e3s.Tidal_Wave" notice-o="-3"/>
+        <a time="00:46" text="[击退]巨浪" style="AoE"/>
         <a time="00:52" text="[俯冲]临时洋流"/>
         <a time="01:01" text="[集中放圈]猛烈波动" style="AoE"/>
         <a time="01:13" text="[俯冲]临时洋流"/>
-        <a time="01:28" text="巨漩涡" sync="15:.*:3FFA:"/>
+        <a time="01:28" text="巨漩涡"/>
         <a time="01:30" text="--无法攻击--"/>
         <a time="01:39" text="(旋转下潜 - 1)"/>
         <a time="01:41" text="(旋转下潜 - 2)"/>
@@ -86,21 +40,17 @@
         <t sync="15:.*:400F:" goto="P2"/>
     </s>
     <s name="P2">
-        @if (@e3s.启用触发器 == "true"){
-            <t sync="14:3FE[A-D]" notice="@e3s.Temporary_Current_Part2" notice-o="2"/>
-        }
-        <t sync="1B:.*:[mex]:.{4}:.{4}:0057:" notice="@e3s.Backbreaking_Wave"/>
         <a time="00:08" sync="14:3FDE"/>
         <a time="00:13" text="[AoE]潮汐之怒" style="AoE"/>
         <a time="00:18" text="(召唤巨浪)" sync="15:.*:3FF1:"/>
         <a time="00:25" text="[地板]海底地震"/>
-        <a time="00:28" text="[击退]巨浪" sync="16:.*:3FF2:" style="AoE" notice="@e3s.巨浪判定" notice-o="-3"/>
+        <a time="00:28" text="[击退]巨浪" style="AoE"/>
         <a time="00:35" text="[俯冲]临时洋流"/>
         <a time="00:49" text="[俯冲]临时洋流"/>
         <a time="00:46" text="[集中放圈]猛烈波动" style="AoE"/>
         <a time="00:59" text="[俯冲]临时洋流"/>
         <a time="01:03" text="[俯冲]临时洋流"/>
-        <a time="01:17" text="[上天]巨漩涡" sync="15:.*:3FFA:"/>
+        <a time="01:17" text="[上天]巨漩涡"/>
         <a time="01:19" text="--无法攻击--"/>
         <a time="01:31" text="(旋转下潜 - 1)"/>
         <a time="01:33" text="(旋转下潜 - 2)"/>
@@ -140,10 +90,10 @@
         <a time="05:56" text="[俯冲]临时洋流"/>
         <a time="06:07" text="[AoE]潮汐之怒" style="AoE"/>
         <a time="06:18" text="[AoE]潮汐之怒" style="AoE"/>
-        <a time="06:35" text="[强化]沉溺波动" notice="@e3s.Enrage" notice-o="-5"/>
+        <a time="06:35" text="[强化]沉溺波动"/>
         <a time="06:48" text="[AoE]潮汐之怒" style="AoE"/>
         <a time="06:56" text="[AoE]潮汐之怒" style="AoE"/>
         <a time="07:04" text="[AoE]潮汐之怒" style="AoE"/>
-        <a time="07:30" text="[狂暴]混沌涡动" sync=":(利维亚桑|Leviathan|リヴァイアサン):400D:" style="狂暴"/>
+        <a time="07:30" text="[狂暴]混沌涡动" style="狂暴"/>
     </s>
 </timeline>
