@@ -1,128 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <timeline>
-    @{
-        var e4s = Model.ParseJsonFile(@".\User settings\伊甸零式希望乐园：觉醒篇 4.json");
-    }
     <name>伊甸零式希望乐园：觉醒篇 4</name>
     <zone>伊甸零式希望乐园 (觉醒之章4),Eden's Gate: Sepulture (Savage)</zone>
-    <rev>v1.1.1</rev>
+    <rev>v1.2.0</rev>
     <author>摩杜纳:Souma</author>
     <description>E4S时间轴。</description>
     <license>CC BY-SA</license>
     <locale>@(Model.Locale)</locale>
     <entry>P1</entry>
     <start>00:0039:(戦闘開始！|Engage!|战斗开始！)</start>
-    @if (@e4s.启用触发器 == "true"){
-        <t sync="15:.{8}:.*:40E8:" notice="@e4s.车"/>
-        <t sync="15:.{8}:.*:40E6:" notice="@e4s.人"/>
-        <t text="左左左，右右右" sync="14:412F:" notice="@e4s.L_R">
-            <v-notice duration="5" duration-visible="false"/>
-        </t>
-        <t text="右右右，左左左" sync="14:4130:" notice="@e4s.R_L">
-            <v-notice duration="5" duration-visible="false"/>
-        </t>
-        <t text="左左左，左左左" sync="14:4131:" notice="@e4s.L_L">
-            <v-notice duration="5" duration-visible="false"/>
-        </t>
-        <t text="右右右，右右右" sync="14:4132:" notice="@e4s.R_R">
-            <v-notice duration="5" duration-visible="false"/>
-        </t>
-        <t text="砸右上" sync="14:4125:" notice="@e4s.Top_Right">
-            <v-notice duration="5" duration-visible="false"/>
-        </t>
-        <t text="砸右下" sync="14:4126:" notice="@e4s.Bottom_Right">
-            <v-notice duration="5" duration-visible="false"/>
-        </t>
-        <t text="砸左下" sync="14:4127:" notice="@e4s.Top_Left">
-            <v-notice duration="5" duration-visible="false"/>
-        </t>
-        <t text="砸左上" sync="14:4128:" notice="@e4s.Bottom_Left">
-            <v-notice duration="5" duration-visible="false"/>
-        </t>
-        <t sync="14:4116:" notice="@e4s.崩岩"/>
-        <t sync="14:4121:" notice="@e4s.震级5.0"/>
-        <t sync="14:4124:" notice="@e4s.大地之怒"/>
-        <t sync="14:4114:" notice="@e4s.大地之叫"/>
-        <t sync="14:412A:" notice="@e4s.激震"/>
-        <t sync="14:4135:" notice="@e4s.大地两拳"/>
-        <t sync="14:4113:" notice="@e4s.大地粉碎"/>
-        <t sync="14:4110:" notice="@e4s.地震波"/>
-        <t sync="14:4140:" notice="@e4s.狂暴"/>
 
-        <t text="黄标➜散开" sync="1B:.{8}:[mex]:.{4}:.{4}:00B9:">
-            <v-notice duration="5" duration-visible="false" icon="Leave.png"/>
-        </t>
-        <t text="橙标➜集合" sync="1B:.{8}:[mex]:.{4}:.{4}:00BA:">
-            <v-notice duration="5" duration-visible="false" icon="DamageShare.png"/>
-        </t>
-        <t text="蓝标➜远离" sync="1B:.{8}:[mex]:.{4}:.{4}:00BB:">
-            <v-notice duration="5" duration-visible="false" icon="Bomb.png"/>
-        </t>
-        
-        <t sync="1B:.*:[pc]:.{4}:.{4}:00BB:" sync-count="1">
-            <expressions>
-                <set name="陨石" value="1"/>
-            </expressions>
-        </t>
-        <t sync="1B:.*:[pc]:.{4}:.{4}:00BB:" sync-count="2">
-            <expressions>
-                <set name="陨石" value="2"/>
-            </expressions>
-        </t>
-        <t sync="1B:.*:[pc]:.{4}:.{4}:00BB:" sync-count="3">
-            <expressions>
-                <set name="陨石" value="3"/>
-            </expressions>
-        </t>
-        <t sync="1B:.*:[pc]:.{4}:.{4}:00BB:" sync-count="4">
-            <expressions>
-                <set name="陨石" value="4"/>
-            </expressions>
-        </t>
-        if (Model.Player.InRole("DPS")){
-        <t sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@e4s.First_DPS">
-            <expressions>
-                <pre name="陨石" value="1"/>
-            </expressions>
-        </t>
-        <t sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@e4s.First_DPS">
-            <expressions>
-                <pre name="陨石" value="2"/>
-            </expressions>
-        </t>
-        <t sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@e4s.Second_DPS">
-            <expressions>
-                <pre name="陨石" value="3"/>
-            </expressions>
-        </t>
-        <t sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@e4s.Second_DPS">
-            <expressions>
-                <pre name="陨石" value="4"/>
-            </expressions>
-        </t>
-        }else{
-        <t sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@e4s.First_TH">
-            <expressions>
-                <pre name="陨石" value="1"/>
-            </expressions>
-        </t>
-        <t sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@e4s.First_TH">
-            <expressions>
-                <pre name="陨石" value="2"/>
-            </expressions>
-        </t>
-        <t sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@e4s.Second_TH">
-            <expressions>
-                <pre name="陨石" value="3"/>
-            </expressions>
-        </t>
-        <t sync="1B:.*:[mex]:.{4}:.{4}:00BB:" notice="@e4s.Second_TH">
-            <expressions>
-                <pre name="陨石" value="4"/>
-            </expressions>
-        </t>
-        }
-    }
     <s name="P1">
         <a time="00:10" sync="14:4116:"/>
         <a time="00:15" text="[死刑]崩岩" sync="1[56]:.*:4116:" style="死刑"/>
@@ -142,6 +29,7 @@
             <load target="P2"/>
         </t>
     </s>
+
     <s name="车人">
         <a time="00:00" text="大地之车轮" sync="15:.*:40E8:"/>
         <a time="00:05" text="[击退]断裂带"/>
@@ -150,7 +38,7 @@
         <a time="00:16" text="[月环]震级5.0"/>
         <a time="00:19" text="大地之铠"/>
         <a time="00:21" text="--黄标--" style="AoE"/>
-        <a time="00:37" text="岩层崩落" style="AoE" notice="@e4s.CrumblingDown" notice-o="-10"/>
+        <a time="00:37" text="岩层崩落" style="AoE"/>
         <a time="00:45" text="爆破岩石"/>
         <a time="00:57" text="地震波"/>
         <a time="00:59" text="爆炸"/>
@@ -170,6 +58,7 @@
         <a time="02:40" text="--阶段转换--"/>
         <t sync="15:.*:4371:" goto="P2"/>
     </s>
+
     <s name="人车">
         <a time="00:00" text="大地之手甲" sync="15:.*:40E6:"/>
         <a time="00:06" text="--橙黄标--" style="AoE"/>
@@ -180,7 +69,7 @@
         <a time="00:44" text="爆炸"/>
         <a time="00:44" text="大地之铠"/>
         <a time="00:48" text="爆炸"/>
-        <a time="01:02" text="岩层崩落" style="AoE" notice="@e4s.CrumblingDown" notice-o="-10"/>
+        <a time="01:02" text="岩层崩落" style="AoE"/>
         <a time="01:10" text="爆破岩石"/>
         <a time="01:22" text="地震波"/>
         <a time="01:25" text="爆炸"/>
@@ -198,6 +87,7 @@
         <a time="02:40" text="--阶段转换--"/>
         <t sync="15:.*:4371:" goto="P2"/>
     </s>
+
     <s name="P2">
         <a time="00:26" text="--可攻击--"/>
         <a time="00:33" text="[AoE]大地之怒" sync="15:.*:4124:" style="AoE"/>
@@ -258,7 +148,7 @@
         <a time="08:12" text="[死刑]巨石" style="死刑"/>
         <a time="08:24" text="[AoE]大地之怒" style="AoE"/>
         <a time="08:32" text="--白流沙3--"/>
-        <a time="08:42" text="--橙黄标--" style="AoE" notice="@e4s.Enrage" notice-o="0"/>
+        <a time="08:42" text="--橙黄标--" style="AoE"/>
         <a time="08:54" text="[冲拳]大地之拳"/>
         <a time="08:57" text="[冲拳]大地之拳"/>
         <a time="09:03" text="[AoE]大地之号" style="AoE"/>
@@ -268,4 +158,5 @@
         <a time="09:28" text="[AoE]大地之号" style="AoE"/>
         <a time="09:42" text="[狂暴]大地之怒" style="狂暴"/>
     </s>
+    
 </timeline>
