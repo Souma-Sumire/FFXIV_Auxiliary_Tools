@@ -2,7 +2,7 @@
 
 #### 加入图标文件
 
-- 1.将SpellIcon内的技能图标解压放入`"...\ACT.Hojoring\resources\icon\"`
+- 1.将SpellIcon内的技能图标放入`"...\ACT.Hojoring\resources\icon\"`
 - 2.重启ACT
 
 #### 导入xml文件
