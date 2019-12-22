@@ -154,40 +154,40 @@
           <ConditionSingle Enabled="true" ExpressionL="${name2}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Name="显示" Id="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" RegularExpression="Souma_AstCard_Subtitle:(?&lt;text&gt;\S+):(?&lt;time&gt;[\d\.]+):(?&lt;offset_x&gt;[\d\.-]+):(?&lt;offset_y&gt;[\d\.-]+):(?&lt;id&gt;\S+)">
+      <Trigger Enabled="true" Name="显示（坐标在里面改）" Id="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" RegularExpression="Souma_AstCard_Subtitle:(?&lt;text&gt;\S+):(?&lt;time&gt;[\d\.]+):(?&lt;offset_x&gt;[\d\.-]+):(?&lt;offset_y&gt;[\d\.-]+):(?&lt;id&gt;\S+)">
         <Actions>
-          <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="15.75" TextAuraName="Souma_AstCard_Subtitle_MorR" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}-50" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
+          <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="15.75" TextAuraName="Souma_AstCard_Subtitle_MorR" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}-50" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="近战/远程">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="近" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="远" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraName="Souma_AstCard_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑 Light" ActionType="TextAura">
+          <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraName="Souma_AstCard_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑 Light" ActionType="TextAura" Description="日卡">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="日" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="3" TextAuraFontSize="15.75" TextAuraForeground="Yellow" TextAuraOutline="Black" TextAuraName="Souma_AstCard_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑 Light" ActionType="TextAura">
+          <Action OrderNumber="3" TextAuraFontSize="15.75" TextAuraForeground="Yellow" TextAuraOutline="Black" TextAuraName="Souma_AstCard_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑 Light" ActionType="TextAura" Description="月卡">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="月" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="4" TextAuraFontSize="15.75" TextAuraForeground="#0080C0" TextAuraOutline="Black" TextAuraName="Souma_AstCard_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑 Light" ActionType="TextAura">
+          <Action OrderNumber="4" TextAuraFontSize="15.75" TextAuraForeground="#0080C0" TextAuraOutline="Black" TextAuraName="Souma_AstCard_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑 Light" ActionType="TextAura" Description="星卡">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="星" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="5" TextAuraFontSize="15.75" TextAuraForeground="White" TextAuraOutline="Black" TextAuraName="Souma_AstCard_Subtitle_Need" TextAuraExpression="缺" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
+          <Action OrderNumber="5" TextAuraFontSize="15.75" TextAuraForeground="White" TextAuraOutline="Black" TextAuraName="Souma_AstCard_Subtitle_Need" TextAuraExpression="缺" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="日月星 缺">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="缺" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="6" TextAuraEffect="Bold" TextAuraFontSize="15.75" TextAuraForeground="Green" TextAuraName="Souma_AstCard_Subtitle_Fight" TextAuraExpression="未进入战斗" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="0" TextAuraOTickExpression="if(${_duration}≠0,0,75)" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
+          <Action OrderNumber="6" TextAuraEffect="Bold" TextAuraFontSize="15.75" TextAuraForeground="Green" TextAuraName="Souma_AstCard_Subtitle_Fight" TextAuraExpression="未进入战斗" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="0" TextAuraOTickExpression="if(${_duration}≠0,0,75)" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="战斗检测(脱战发卡不给日月星)">
             <Condition Enabled="false" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="非战斗状态" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
