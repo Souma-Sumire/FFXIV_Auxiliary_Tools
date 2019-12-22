@@ -589,21 +589,6 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="BUFF：延时咏唱" Id="92a90e97-2aee-4be2-b769-3e6ed4f3906d" RegularExpression="(?&lt;type&gt;gains|loses) the effect of (延迟咏唱|ディレイスペル|Spell-In-Waiting) from">
-                    <Actions>
-                      <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Spell_In_Waiting" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="2" VariableName="Souma_Spell_In_Waiting" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="loses" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
                   <Trigger Enabled="true" Name="黑暗神圣" Id="907d84df-844e-4492-b4b7-f7de33045712" RegularExpression="14:3E53:">
                     <Actions>
                       <Action OrderNumber="1" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
@@ -843,6 +828,21 @@
                   </Action>
                   <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:直线:3:0:100:main" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="BUFF：延时咏唱" Id="92a90e97-2aee-4be2-b769-3e6ed4f3906d" RegularExpression="(?&lt;type&gt;gains|loses) the effect of (延迟咏唱|ディレイスペル|Spell-In-Waiting) from">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Spell_In_Waiting" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="2" VariableName="Souma_Spell_In_Waiting" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="loses" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -1695,36 +1695,30 @@
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-3)*1000-200}">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" SystemBeepFreqExpression="2" UseTTSTextExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="1000">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" SystemBeepFreqExpression="1" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="1000">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${time}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Name="目标的位置（北侧基准）" Id="7506bd8d-d536-443e-beb7-1790a3c14327" RegularExpression="Souma_Distance:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):(?&lt;text&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):(?&lt;time&gt;[\d\.]+)">
+          <Trigger Enabled="true" Name="目标的位置（北基准）" Id="7506bd8d-d536-443e-beb7-1790a3c14327" RegularExpression="Souma_Distance:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):(?&lt;text&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):(?&lt;time&gt;[\d\.]+)">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraName="Souma_Map_YOU" TextAuraExpression="你" TextAuraXIniExpression="0.5*${_screenwidth}-10+if(${evar:Souma_Map_Offset_X}=1,${var:Souma_Map_Offset_X},0)" TextAuraYIniExpression="0.5*${_screenheight}-10+if(${evar:Souma_Map_Offset_Y}=1,${var:Souma_Map_Offset_Y},0)" TextAuraWIniExpression="20" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Red" TextAuraName="Souma_Map_${text}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*${_screenwidth}-15+(${_ffxiventity[${name}].x}-${_ffxiventity[${_ffxivplayer}].x})*5+if(${evar:Souma_Map_Offset_X}=1,${var:Souma_Map_Offset_X},0)" TextAuraYIniExpression="0.5*${_screenheight}-15+(${_ffxiventity[${name}].y}-${_ffxiventity[${_ffxivplayer}].y})*5+if(${evar:Souma_Map_Offset_Y}=1,${var:Souma_Map_Offset_Y},0)" TextAuraWIniExpression="30" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="目标的位置－设置坐标偏移" Id="d45c4d5e-724d-4966-a0de-66ebfe3918ed" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|21:........:40000010:">
-            <Actions>
-              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Map_Offset_X" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Map_Offset_Y" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -1790,7 +1784,7 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="切换职业－初始化" Id="bad84ba8-28f7-46c7-935c-cf14a9027de0" RegularExpression="] 1F:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):">
+          <Trigger Enabled="true" Name="职能位置－初始化" Id="bad84ba8-28f7-46c7-935c-cf14a9027de0" RegularExpression="] 1F:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):">
             <Actions>
               <Action OrderNumber="1" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_Subtitle_已设置${func:toupper:${var:Souma_Team_Role}}" TextAuraFontName="宋体" Enabled="False" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -1810,6 +1804,19 @@
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="目标的位置－设置偏移" Id="d45c4d5e-724d-4966-a0de-66ebfe3918ed" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|21:........:40000010:">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Map_Offset_X" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Map_Offset_Y" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
           </Trigger>
         </Triggers>
       </Folder>
