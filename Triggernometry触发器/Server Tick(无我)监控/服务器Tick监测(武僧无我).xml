@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="70eaf130-1b45-42b3-b4f5-7c463fe47ff1" Name="Server Tick检测" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Name="开（第一次用在这改图片路径）" Id="de7e50df-95e4-4a06-aa2c-986a45a562c1" RegularExpression="00:0038:!tickshow">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Server_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Server_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" AuraName="Souma_Server_Tick_1" AuraImage="outline.png" AuraXIniExpression="324-2" AuraYIniExpression="656-2" AuraWIniExpression="152" AuraHIniExpression="28" AuraOIniExpression="100" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" AuraName="Souma_Server_Tick_2" AuraImage="progress.png" AuraXIniExpression="324" AuraYIniExpression="656" AuraWIniExpression="0" AuraHIniExpression="28" AuraOIniExpression="100" AuraWTickExpression="if(${var:Souma_Server_Tick_Timing}=0,1,((${_systemtimems}-${var:Souma_Server_Tick_Timing})%3000)/3000*152)" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="关" Id="ec74a5fc-3770-4159-8601-14c67e9bc0d1" RegularExpression="00:0038:!tickhide">
+        <Actions>
+          <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="Souma_Server_Tick_1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" AuraOp="DeactivateAura" AuraName="Souma_Server_Tick_2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Souma_Server_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Server_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="Hot检测" Id="b9a3f55d-0422-48b2-adda-345ac832d72d" RegularExpression="] 18:HoT Tick on (?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) for \d+ damage.">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Server_Tick_Timing" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
