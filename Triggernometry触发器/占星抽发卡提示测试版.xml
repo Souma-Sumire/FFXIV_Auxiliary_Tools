@@ -315,19 +315,28 @@
       <Trigger Enabled="true" Name="奥秘卡废弃" Id="b47de91e-a95d-40a6-84b3-e2991556c144" RegularExpression="] 1E:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) loses the effect of (?&lt;card&gt;\S+) from (?&lt;name2&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+).">
         <Actions>
           <Action OrderNumber="1" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_Need" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="放浪神之箭（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="建筑神之塔（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="太阳神之衡（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="世界树之干（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="战争神之枪（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-            </Condition>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_MorR" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_AstCard" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="Or">
+        <Condition Enabled="true" Grouping="And">
           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${name2}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+          <ConditionGroup Enabled="true" Grouping="Or">
+            <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="放浪神之箭（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="建筑神之塔（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="太阳神之衡（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="世界树之干（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="战争神之枪（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+          </ConditionGroup>
         </Condition>
         <Conditions />
       </Trigger>
