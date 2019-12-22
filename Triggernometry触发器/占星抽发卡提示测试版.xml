@@ -208,7 +208,6 @@
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="世界树之干" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               </ConditionGroup>
-              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
             <Conditions />
           </Action>
@@ -222,7 +221,6 @@
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="世界树之干（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               </ConditionGroup>
-              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
             <Conditions />
           </Action>
@@ -236,7 +234,6 @@
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="世界树之干" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               </ConditionGroup>
-              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
             <Conditions />
           </Action>
@@ -286,7 +283,9 @@
             <Conditions />
           </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="And" />
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
       </Trigger>
       <Trigger Enabled="true" Name="初始化" Id="f8b16e5a-03b7-45c5-89c4-8f9c657daa88" RegularExpression="01:Changed Zone to [^天幕魔导城最终决战]|21:........:40000010:|00:082b:.*(マイナーアルカナ|占卜|Minor Arcana)">
         <Actions>
@@ -315,6 +314,10 @@
             <Conditions />
           </Action>
           <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="812cf129-5cac-41fc-9c74-9dcbbc81d3a6" TriggerForce="true" ActionType="Trigger">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
@@ -352,8 +355,20 @@
       </Trigger>
       <Trigger Enabled="true" Name="战斗状态检测" Id="812cf129-5cac-41fc-9c74-9dcbbc81d3a6" RegularExpression="">
         <Actions>
-          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:非战斗状态:9999:301:79:fight" ActionType="Trigger">
+          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:非战斗状态:9999:321:09:fight" ActionType="Trigger">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="切职业" Id="f5dc34f6-c1da-4b95-8a5e-ab7e202effce" RegularExpression="] 1F:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):">
+        <Actions>
+          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f8b16e5a-03b7-45c5-89c4-8f9c657daa88" ActionType="Trigger">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
             <Conditions />
           </Action>
         </Actions>
