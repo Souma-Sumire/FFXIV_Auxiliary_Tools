@@ -3,35 +3,19 @@
   <ExportedFolder Id="aea712f0-3ab6-4821-b401-13509f82c5a0" Name="自动发宏工具（依赖鲶鱼精邮差） by 海猫茶屋:Souma" Enabled="true">
     <Folders />
     <Triggers>
-      <Trigger Enabled="true" Name="进本（初次使用需要设置鲶鱼精端口与CSV路径）" Id="3e89bee9-5624-4114-9244-6f0ca9562829" RegularExpression="“(?&lt;zone&gt;.+)”任务开始。">
+      <Trigger Enabled="true" Name="动作（初次使用需要设置鲶鱼精端口与CSV路径）" Id="9e590e86-871a-45d9-b558-72bc96d80268" RegularExpression="] 00:0038:发送副本宏">
         <Actions>
           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Set_Catfish_postman_port" VariableExpression="2019" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="2" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="F:\系统文件夹\Documents\GitHub\FFXIV_Auxiliary_Tools\Triggernometry触发器\自动发宏\副本宏.csv" DiskFileOpVar="MacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
+          <Action OrderNumber="2" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="F:\系统文件夹\Documents\GitHub\FFXIV_Auxiliary_Tools\Triggernometry触发器\高难度副本自动发宏工具\副本宏.csv" DiskFileOpVar="MacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="3" VariableOp="SetString" VariableName="Last_Zone_Name" VariableExpression="${zone}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${var:Set_Catfish_postman_port}/command" JsonPayloadExpression="/p ${tvarrl:MacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-      </Trigger>
-      <Trigger Enabled="true" Name="发送动作" Id="9e590e86-871a-45d9-b558-72bc96d80268" RegularExpression="] 00:0038:发送副本宏">
-        <Actions>
-          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Set_Catfish_postman_port}/command" JsonPayloadExpression="/p ${tvarrl:MacroText[${var:Last_Zone_Name}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-      </Trigger>
-      <Trigger Enabled="true" Name="任务结束清空变量" Id="1ee1a4dd-4bd4-4cbe-8a72-3d0f40bde8ba" RegularExpression="] 00:0839:.*(任务结束了。|has ended.|の攻略を終了した。)">
-        <Actions>
-          <Action OrderNumber="1" VariableName="Last_Zone_Name" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-            <Condition Enabled="false" Grouping="Or" />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
