@@ -871,7 +871,7 @@
               <Folder Id="4727e64c-354f-4526-8b1f-4bca310c6299" Name="延迟咏唱" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="延迟咏唱：暗影之眼-点你" Id="bcae9452-9b77-46a6-96f8-8fb7d602409b" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds.">
+                  <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－点你" Id="bcae9452-9b77-46a6-96f8-8fb7d602409b" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds.">
                     <Actions>
                       <Action OrderNumber="1" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="249a3928-c8ae-4598-837f-5980d9bc12c3" TriggerText="Souma_Count_Down:${time}" ActionType="Trigger">
                         <Condition Enabled="true" Grouping="Or">
@@ -889,7 +889,7 @@
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="延迟咏唱：暗影之眼-他人" Id="96d5fe7b-9055-4c21-933b-12d1cd94bf2a" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds.">
+                  <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－他人" Id="96d5fe7b-9055-4c21-933b-12d1cd94bf2a" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds.">
                     <Actions>
                       <Action OrderNumber="1" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="249a3928-c8ae-4598-837f-5980d9bc12c3" TriggerText="Souma_Count_Down:${time}" ActionType="Trigger">
                         <Condition Enabled="true" Grouping="Or">
@@ -932,7 +932,9 @@
                         <Conditions />
                       </Action>
                       <Action OrderNumber="3" VariableName="Souma_I_Have_Hell_Wind" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="${time}*1000">
-                        <Condition Enabled="false" Grouping="Or" />
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
                         <Conditions />
                       </Action>
                     </Actions>
@@ -973,11 +975,34 @@
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="延迟咏唱：黑暗神圣" Id="eb92b696-bb64-403e-8523-9ef65d856c13" RegularExpression=":gains the effect of (延迟咏唱：黑暗神圣|ディレイスペル：ダークホーリー|Spell-In-Waiting: Unholy Darkness).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="true" Name="延迟咏唱：黑暗神圣" Id="eb92b696-bb64-403e-8523-9ef65d856c13" RegularExpression=" gains the effect of (延迟咏唱：黑暗神圣|ディレイスペル：ダークホーリー|Spell-In-Waiting: Unholy Darkness).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-4)*1000}">
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Waiting_Unholy_Darkness" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_I_Have_Hell_Wind}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Waiting_Unholy_Darkness" VariableExpression="${var:Souma_Waiting_Unholy_Darkness}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-4)*1000}">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionGroup Enabled="true" Grouping="Not">
+                            <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_I_Have_Hell_Wind}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_I_Have_Shadoweye}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          </ConditionGroup>
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
                         <Conditions />
                       </Action>
@@ -2251,67 +2276,75 @@
           </Trigger>
           <Trigger Enabled="true" Name="初始化" Id="8b6e52e3-45e8-41ce-9956-1589e05714c0" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|21:........:40000010:|] 00:0839:.+(”任务结束了。|has ended.|」の攻略を終了した。)">
             <Actions>
-              <Action OrderNumber="1" VariableName="Souma_Crumbling_Down" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_AstCard" TextAuraFontName="宋体" ActionType="TextAura">
+              <Action OrderNumber="1" VariableName="Souma_Crumbling_Down" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_Waiting_Unholy_Darkness" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" VariableName="Souma_Crumbling_Down" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="2" VariableName="Souma_Crumbling_Down" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_I_Have_Shadoweye" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="3" VariableName="Souma_Refreshing_Shower" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="3" VariableName="Souma_Crumbling_Down" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_AstCard" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="4" VariableName="Souma_GuruGuru" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="4" VariableName="Souma_Crumbling_Down" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="5" VariableName="Souma_Spell-In-Waiting" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="5" VariableName="Souma_Refreshing_Shower" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="6" VariableName="Souma_tsunami" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="6" VariableName="Souma_GuruGuru" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="7" VariableName="Souma_Thunder_Rune" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="7" VariableName="Souma_Spell-In-Waiting" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="8" VariableName="Souma_Tectonic_Uplift" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="8" VariableName="Souma_tsunami" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="9" VariableName="Souma_Rock_Throw" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="9" VariableName="Souma_Thunder_Rune" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="10" VariableName="Souma_Orange" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="10" VariableName="Souma_Tectonic_Uplift" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="11" VariableName="Souma_Blue" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="11" VariableName="Souma_Rock_Throw" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="12" VariableName="Souma_Pucks_Breath" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="12" VariableName="Souma_Orange" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="13" VariableName="Souma_Winged_Reprobation" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="13" VariableName="Souma_Blue" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="14" FolderOp="DisableFolder" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" Asynchronous="False">
+              <Action OrderNumber="14" VariableName="Souma_Pucks_Breath" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="15" FolderOp="DisableFolder" FolderId="e409c755-0490-43d3-bb3d-aea5cefda841" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" Asynchronous="False">
+              <Action OrderNumber="15" VariableName="Souma_Winged_Reprobation" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="16" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelAllTrigger" ActionType="Trigger">
+              <Action OrderNumber="16" FolderOp="DisableFolder" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="17" FolderOp="DisableFolder" FolderId="e409c755-0490-43d3-bb3d-aea5cefda841" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="18" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelAllTrigger" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
