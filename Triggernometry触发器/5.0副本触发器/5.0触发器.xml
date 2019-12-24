@@ -1668,13 +1668,15 @@
       <Folder Id="a0910d3d-281a-47c5-9e8a-8d6aa0754817" Name="通用功能" Enabled="true">
         <Folders />
         <Triggers>
-          <Trigger Enabled="true" Name="设置职能位置" Id="19a29f27-9090-46c1-90b2-84937e82e995" RegularExpression="00:000[ae]:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):(?&lt;role&gt;[sSmMhHdD][tT1-4])" Description="在/s或/p喊话：&#xD;&#xA;&#xD;&#xA;你是D1就喊话D1&#xD;&#xA;你是D2就喊话D2&#xD;&#xA;你是D3就喊话D3&#xD;&#xA;你是D4就喊话D4&#xD;&#xA;你是H1就喊话H1&#xD;&#xA;你是H2就喊话H2&#xD;&#xA;你是MT就喊话MT&#xD;&#xA;你是ST就喊话ST&#xD;&#xA;&#xD;&#xA;设置成功会有字幕提醒&#xD;&#xA;&#xD;&#xA;字母仅限英文半角，全角不可以">
+          <Trigger Enabled="true" Name="设置职能位置" Id="19a29f27-9090-46c1-90b2-84937e82e995" RegularExpression="00:000[ae]:?(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):(?&lt;role&gt;[sSmMhHdD][tT1-4])" Description="在/s或/p喊话：&#xD;&#xA;&#xD;&#xA;你是D1就喊话D1&#xD;&#xA;你是D2就喊话D2&#xD;&#xA;你是D3就喊话D3&#xD;&#xA;你是D4就喊话D4&#xD;&#xA;你是H1就喊话H1&#xD;&#xA;你是H2就喊话H2&#xD;&#xA;你是MT就喊话MT&#xD;&#xA;你是ST就喊话ST&#xD;&#xA;&#xD;&#xA;设置成功会有字幕提醒&#xD;&#xA;&#xD;&#xA;字母仅限英文半角，全角不可以">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="${name}" VariableOp="SetString" VariableName="Souma_Team_Role" VariableExpression="${role}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="20.25" TextAuraForeground="#FF8080" TextAuraName="Souma_Team_Role_Set" TextAuraExpression="已设置${func:toupper:${var:Souma_Team_Role}}" TextAuraXIniExpression="0.5*(${_screenwidth}-400)" TextAuraYIniExpression="0.5*(${_screenheight}-100)" TextAuraWIniExpression="400" TextAuraHIniExpression="60" TextAuraOIniExpression="100" TextAuraTTLTickExpression="2-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:已设置${func:toupper:${var:Souma_Team_Role}}:3.00:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
@@ -1769,22 +1771,45 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="职能位置－初始化" Id="bad84ba8-28f7-46c7-935c-cf14a9027de0" RegularExpression="] 1F:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):">
+          <Trigger Enabled="true" Name="职能位置－初始化" Id="bad84ba8-28f7-46c7-935c-cf14a9027de0" RegularExpression="] 1F:........:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):\w?(?&lt;jobid&gt;\w{2}):00:">
             <Actions>
-              <Action OrderNumber="1" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_Subtitle_已设置${func:toupper:${var:Souma_Team_Role}}" TextAuraFontName="宋体" Enabled="False" ActionType="TextAura" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:职业变动，${func:toupper:${var:Souma_Team_Role}}取消:2.50:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:职业变动，${func:toupper:${var:Souma_Team_Role}}取消:2.50:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Team_Role}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="3" VariableName="Souma_Team_Role" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+              <Action OrderNumber="2" VariableName="Souma_Team_Role" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
-            <Condition Enabled="true" Grouping="Or">
+            <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              <ConditionGroup Enabled="true" Grouping="Or">
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="15" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="20" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="25" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="18" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="1C" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="21" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="14" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="16" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="1E" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="22" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="17" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="1F" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="26" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="19" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="1B" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="23" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="24" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="13" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              </ConditionGroup>
             </Condition>
           </Trigger>
           <Trigger Enabled="true" Name="目标的位置－设置偏移" Id="d45c4d5e-724d-4966-a0de-66ebfe3918ed" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|21:........:40000010:">
