@@ -1771,7 +1771,7 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="职能位置－初始化" Id="bad84ba8-28f7-46c7-935c-cf14a9027de0" RegularExpression="] 1F:........:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):\w?(?&lt;jobid&gt;\w{2}):00:">
+          <Trigger Enabled="true" Name="职能位置－初始化" Id="bad84ba8-28f7-46c7-935c-cf14a9027de0" RegularExpression="] 00:0839:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+)(的职业转换成了|は「マイスター)">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:职业变动，${func:toupper:${var:Souma_Team_Role}}取消:2.50:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
@@ -1790,26 +1790,6 @@
             </Actions>
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionGroup Enabled="true" Grouping="Or">
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="15" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="20" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="25" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="18" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="1C" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="21" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="14" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="16" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="1E" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="22" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="17" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="1F" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="26" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="19" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="1B" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="23" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="24" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="String" ExpressionR="13" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              </ConditionGroup>
             </Condition>
           </Trigger>
           <Trigger Enabled="true" Name="目标的位置－设置偏移" Id="d45c4d5e-724d-4966-a0de-66ebfe3918ed" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|21:........:40000010:">
