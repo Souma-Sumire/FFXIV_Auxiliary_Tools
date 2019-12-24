@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="331570b5-22d1-4b6c-9532-3785df3aa2c2" Name="占星术士抽卡提示（测试版） by 海猫茶屋:Souma" Enabled="false">
+  <ExportedFolder Id="331570b5-22d1-4b6c-9532-3785df3aa2c2" Name="占星术士抽卡提示（测试版） by 海猫茶屋:Souma" Enabled="true">
     <Folders />
     <Triggers>
       <Trigger Enabled="true" Name="抽卡" Id="5b14055d-0fca-4aa4-bb6a-3529022fe7c9" RegularExpression="] 1[AE]:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) (?&lt;type&gt;gains|loses) the effect of (?&lt;card&gt;\S+)  ?from (?&lt;name2&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) for">
@@ -145,7 +145,7 @@
           <ConditionSingle Enabled="true" ExpressionL="${name2}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Name="显示（坐标在里面改）" Id="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" RegularExpression="Souma_AstCard_Subtitle:(?&lt;text&gt;\S+):(?&lt;time&gt;[\d\.]+):(?&lt;offset_x&gt;[\d\.-]+):(?&lt;offset_y&gt;[\d\.-]+):(?&lt;id&gt;\S+)">
+      <Trigger Enabled="true" Name="显示" Id="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" RegularExpression="Souma_AstCard_Subtitle:(?&lt;text&gt;\S+):(?&lt;time&gt;[\d\.]+):(?&lt;offset_x&gt;[\d\.-]+):(?&lt;offset_y&gt;[\d\.-]+):(?&lt;id&gt;\S+)">
         <Actions>
           <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="15.75" TextAuraName="Souma_AstCard_Subtitle_MorR" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-200)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}-50" TextAuraWIniExpression="200" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}-1000" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="近战/远程">
             <Condition Enabled="true" Grouping="Or">
@@ -273,27 +273,35 @@
         <Actions>
           <Action OrderNumber="1" ListVariableName="Souma_AstCard_Imprint" VariableName="Souma_AstCard_Imprint" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="2" VariableName="Souma_AstCard_Subtitle_AstCard" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="3" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_Fight" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
             <Condition Enabled="false" Grouping="And" />
+            <Conditions />
           </Action>
           <Action OrderNumber="4" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_MorR" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
             <Condition Enabled="false" Grouping="And" />
+            <Conditions />
           </Action>
           <Action OrderNumber="5" VariableName="Souma_AstCard_Subtitle_Need" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_Need" TextAuraFontName="宋体" ActionType="TextAura">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="6" VariableName="Souma_AstCard_Subtitle_Use" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_AstCard" TextAuraFontName="宋体" ActionType="TextAura">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
-          <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="812cf129-5cac-41fc-9c74-9dcbbc81d3a6" TriggerForce="true" ActionType="Trigger">
+          <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="812cf129-5cac-41fc-9c74-9dcbbc81d3a6" TriggerForce="true" Enabled="False" ActionType="Trigger">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
@@ -322,10 +330,11 @@
           </ConditionGroup>
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Name="战斗状态检测" Id="812cf129-5cac-41fc-9c74-9dcbbc81d3a6" RegularExpression="">
+      <Trigger Enabled="false" Name="战斗状态检测" Id="812cf129-5cac-41fc-9c74-9dcbbc81d3a6" RegularExpression="">
         <Actions>
-          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:非战斗状态:9999:0:0:fight" ActionType="Trigger">
+          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:非战斗状态:9999:0:-150:fight" ActionType="Trigger">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
