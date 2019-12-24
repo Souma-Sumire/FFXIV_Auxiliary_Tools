@@ -212,106 +212,210 @@
                   </Trigger>
                 </Triggers>
               </Folder>
+              <Folder Id="ec81fa01-c190-400c-8cbd-6e58e8a47bf4" Name="白流沙 二选一开启 需要设置职能位置" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="白流沙 菓子 区别：(D1:323 D2:121 MT:232 ST:212)" Id="f1d7f7ac-7d18-4aeb-bf1a-8614d49a0e18" RegularExpression="] 14:413A:">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="${var:Souma_GuruGuru}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="10000">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="5" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="6" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="7" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionGroup Enabled="true" Grouping="Or">
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          </ConditionGroup>
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="8" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="9" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="10" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="11" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="12" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                          <ConditionGroup Enabled="true" Grouping="Or">
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          </ConditionGroup>
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="false" Name="白流沙 子言 区别：(D1:131 D2:232 MT:323 ST:313)" Id="95564945-15bc-4981-a85b-7ac880c5fcd1" RegularExpression="] 14:413A:">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="${var:Souma_GuruGuru}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="10000">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="5" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="6" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="7" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionGroup Enabled="true" Grouping="Or">
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          </ConditionGroup>
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="8" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="9" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="10" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="11" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="12" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                          <ConditionGroup Enabled="true" Grouping="Or">
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          </ConditionGroup>
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                </Triggers>
+              </Folder>
             </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="白流沙 需要设置职能位置" Id="f1d7f7ac-7d18-4aeb-bf1a-8614d49a0e18" RegularExpression="] 14:413A:">
-                <Actions>
-                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="${var:Souma_GuruGuru}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="3" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="10000">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="4" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="5" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="6" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="7" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                      <ConditionGroup Enabled="true" Grouping="Or">
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      </ConditionGroup>
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="8" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="9" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="10" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="11" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="12" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                      <ConditionGroup Enabled="true" Grouping="Or">
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      </ConditionGroup>
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
               <Trigger Enabled="true" Name="升降梯判断" Id="9c41bb64-84a3-43dd-a1de-93fbebd36f60" RegularExpression="] 15:.{8}:.+:4122:.+:.{8}:.+:3B:0:1C:41228000:0:0:0:0:0:0:0:0:0:0:0:0:">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
