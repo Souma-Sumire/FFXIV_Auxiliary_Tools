@@ -10,10 +10,10 @@
               <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Server_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
           </Action>
-          <Action OrderNumber="2" AuraName="Souma_Server_Tick_1" AuraImage="D:\微云同步助手\553469159\FFXIV-Auxiliary-tools\Triggernometry触发器\Server Tick(无我)监控\images\outline.png" AuraXIniExpression="324-2" AuraYIniExpression="656-2" AuraWIniExpression="152" AuraHIniExpression="28" AuraOIniExpression="100" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
+          <Action OrderNumber="2" AuraName="Souma_Server_Tick_1" AuraImage="F:\系统文件夹\Documents\GitHub\FFXIV_Auxiliary_Tools\Triggernometry触发器\武僧无我监控\images\outline.png" AuraXIniExpression="324-2+920" AuraYIniExpression="656-2+270" AuraWIniExpression="152" AuraHIniExpression="28" AuraOIniExpression="100" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
           </Action>
-          <Action OrderNumber="3" AuraName="Souma_Server_Tick_2" AuraImage="D:\微云同步助手\553469159\FFXIV-Auxiliary-tools\Triggernometry触发器\Server Tick(无我)监控\images\progress.png" AuraXIniExpression="324" AuraYIniExpression="656" AuraWIniExpression="0" AuraHIniExpression="28" AuraOIniExpression="100" AuraWTickExpression="if(${var:Souma_Server_Tick_Timing}=0,1,((${_systemtimems}-${var:Souma_Server_Tick_Timing})%3000)/3000*152)" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
+          <Action OrderNumber="3" AuraName="Souma_Server_Tick_2" AuraImage="F:\系统文件夹\Documents\GitHub\FFXIV_Auxiliary_Tools\Triggernometry触发器\武僧无我监控\images\progress.png" AuraXIniExpression="324+920" AuraYIniExpression="656+270" AuraWIniExpression="0" AuraHIniExpression="28" AuraOIniExpression="100" AuraWTickExpression="if(${var:Souma_Server_Tick_Timing}=0,1,((${_systemtimems}-${var:Souma_Server_Tick_Timing})%3000)/3000*152)" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
           </Action>
         </Actions>
@@ -35,15 +35,18 @@
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" Name="Hot检测" Id="b9a3f55d-0422-48b2-adda-345ac832d72d" RegularExpression="] 18:HoT Tick on (?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) for \d+ damage.">
+      <Trigger Enabled="true" Name="Hot检测" Id="b9a3f55d-0422-48b2-adda-345ac832d72d" RegularExpression="] 18:HoT Tick on (?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) for \d+ damage.">
         <Actions>
           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Server_Tick_Timing" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Action>
         </Actions>
-        <Condition Enabled="false" Grouping="Or" />
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Server_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
       </Trigger>
     </Triggers>
   </ExportedFolder>
