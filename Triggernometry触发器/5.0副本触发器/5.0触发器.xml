@@ -6,45 +6,51 @@
         <Folders>
           <Folder Id="bc598c74-79f6-4486-9f85-1bd46a8a5461" Name="4层" Enabled="true">
             <Folders>
-              <Folder Id="ec81fa01-c190-400c-8cbd-6e58e8a47bf4" Name="白流沙 【二选一开启】 需要先设置职能位置" Enabled="true">
+              <Folder Id="ec81fa01-c190-400c-8cbd-6e58e8a47bf4" Name="白流沙（转圈圈） 需要先设置职能位置" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="白流沙 菓子 区别：(D1:323 D2:121 MT:232 ST:212)" Id="f1d7f7ac-7d18-4aeb-bf1a-8614d49a0e18" RegularExpression="] 14:413A:">
+                  <Trigger Enabled="true" Name="【二选一开启】 菓子 区别：(D1:323 D2:121 MT:232 ST:212)" Id="f1d7f7ac-7d18-4aeb-bf1a-8614d49a0e18" RegularExpression="] 14:413A:">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="${var:Souma_GuruGuru}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="10000">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="5" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="6" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="7" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
@@ -56,30 +62,35 @@
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="8" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="9" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="10" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="11" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="12" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
@@ -91,46 +102,53 @@
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="false" Name="白流沙 子言 区别：(D1:131 D2:232 MT:323 ST:313)" Id="95564945-15bc-4981-a85b-7ac880c5fcd1" RegularExpression="] 14:413A:">
+                  <Trigger Enabled="false" Name="【二选一开启】 子言 区别：(D1:131 D2:232 MT:323 ST:313)" Id="95564945-15bc-4981-a85b-7ac880c5fcd1" RegularExpression="] 14:413A:">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="${var:Souma_GuruGuru}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_GuruGuru}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="10000">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="5" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="6" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="7" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
@@ -142,30 +160,35 @@
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="8" UseTTSTextExpression="第一爆发点,最后穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="9" UseTTSTextExpression="第二爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="10" UseTTSTextExpression="左侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="11" UseTTSTextExpression="右侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_GuruGuru}%2" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="12" UseTTSTextExpression="第三爆发点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
@@ -177,15 +200,16 @@
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
                 </Triggers>
               </Folder>
-              <Folder Id="c3431e50-c6d5-4af0-8f2d-ca16dce764b9" Name="升降梯 修改之后没有进本测试过，可能有BUG（里面有未启用的是正常情况）" Enabled="true">
+              <Folder Id="c3431e50-c6d5-4af0-8f2d-ca16dce764b9" Name="升降梯（高低地） 未实测，可能有BUG" Enabled="true">
                 <Folders>
-                  <Folder Id="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" Name="升降梯1 默认关闭" Enabled="true">
+                  <Folder Id="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" Name="第1次" Enabled="true">
                     <Folders />
                     <Triggers>
                       <Trigger Enabled="true" Name="蓝标" Id="f0badac0-d6ce-4ffe-87ab-365a42c461aa" RegularExpression="] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):.{4}:.{4}:00BB:">
@@ -249,122 +273,7 @@
                       </Trigger>
                     </Triggers>
                   </Folder>
-                  <Folder Id="3ccc2f8d-7073-4f64-9130-ad85df000025" Name="打法 【二选一开启】" Enabled="true">
-                    <Folders />
-                    <Triggers>
-                      <Trigger Enabled="true" Name="固定前后 区别：(第二次高低地M1H1D1D2前 STH2D3D4后）" Id="9c41bb64-84a3-43dd-a1de-93fbebd36f60" RegularExpression="] 14:4122:">
-                        <Actions>
-                          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift_Fixed" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="${var:Souma_Tectonic_Uplift}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="4" UseTTSTextExpression="${var:Souma_Tectonic_Uplift}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS">
-                            <Condition Enabled="false" Grouping="Or" />
-                          </Action>
-                          <Action OrderNumber="5" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="6" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="北北北" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                            <Condition Enabled="true" Grouping="And">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="7" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="南南南" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                            <Condition Enabled="true" Grouping="And">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="8" FolderId="e409c755-0490-43d3-bb3d-aea5cefda841" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="9" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="北北北" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                            <Condition Enabled="true" Grouping="And">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                              <ConditionGroup Enabled="true" Grouping="Or">
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                              </ConditionGroup>
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="10" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="南南南" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                            <Condition Enabled="true" Grouping="And">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                              <ConditionGroup Enabled="true" Grouping="Or">
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                              </ConditionGroup>
-                            </Condition>
-                          </Action>
-                        </Actions>
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Trigger>
-                      <Trigger Enabled="false" Name="橙标去前 区别：(第二次高低地固定橙标去前）" Id="1c60ff9e-4e36-42f9-be47-c0f3ab728492" RegularExpression="] 14:4122:">
-                        <Actions>
-                          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="${var:Souma_Tectonic_Uplift}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="3" UseTTSTextExpression="${var:Souma_Tectonic_Uplift}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS">
-                            <Condition Enabled="false" Grouping="Or" />
-                          </Action>
-                          <Action OrderNumber="4" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="5" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="北北北" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                            <Condition Enabled="true" Grouping="And">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="6" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="南南南" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                            <Condition Enabled="true" Grouping="And">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
-                            </Condition>
-                          </Action>
-                          <Action OrderNumber="7" FolderId="e409c755-0490-43d3-bb3d-aea5cefda841" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                          </Action>
-                        </Actions>
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Trigger>
-                    </Triggers>
-                  </Folder>
-                  <Folder Id="e409c755-0490-43d3-bb3d-aea5cefda841" Name="升降梯2 默认关闭" Enabled="true">
+                  <Folder Id="e409c755-0490-43d3-bb3d-aea5cefda841" Name="第2次" Enabled="true">
                     <Folders />
                     <Triggers>
                       <Trigger Enabled="true" Name="蓝标" Id="a83a203f-d1e7-4822-b0ca-c87c10cf165f" RegularExpression="] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):.{4}:.{4}:00BB:">
@@ -451,7 +360,201 @@
                     </Triggers>
                   </Folder>
                 </Folders>
-                <Triggers />
+                <Triggers>
+                  <Trigger Enabled="true" Name="【二选一开启】 区别：(第二次高低地M1H1D1D2前 STH2D3D4后）" Id="9c41bb64-84a3-43dd-a1de-93fbebd36f60" RegularExpression="] 14:4122:">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift_Fixed" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="${var:Souma_Tectonic_Uplift}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="5" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="北北北" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="6" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="南南南" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="7" FolderId="e409c755-0490-43d3-bb3d-aea5cefda841" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="8" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="北北北" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionGroup Enabled="true" Grouping="Or">
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="MT" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          </ConditionGroup>
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="9" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="南南南" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionGroup Enabled="true" Grouping="Or">
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="ST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          </ConditionGroup>
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="false" Name="【二选一开启】 区别：(第二次高低地固定橙标去前）" Id="1c60ff9e-4e36-42f9-be47-c0f3ab728492" RegularExpression="] 14:4122:">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="${var:Souma_Tectonic_Uplift}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="北北北" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="5" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" UseTTSTextExpression="南南南" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="6" FolderId="e409c755-0490-43d3-bb3d-aea5cefda841" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+              <Folder Id="7a364ce0-b688-4a33-a0ea-e4ad6d3287ff" Name="拆地板的石牢" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="【二选一开启】 菓子：区别（H1前H2后）" Id="823489ee-d2b7-46f1-bef2-6328d28160d4" RegularExpression="] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):.{4}:.{4}:00BF:">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Rock_Throw" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Rock_Throw" VariableExpression="${var:Souma_Rock_Throw}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" UseTTSTextExpression="北侧石牢" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" UseTTSTextExpression="南侧石牢" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="false" Name="【二选一开启】 子言：区别（H1后H2前）" Id="639bfc10-ef75-4c1c-a1c2-cabd5dacc3e1" RegularExpression="] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):.{4}:.{4}:00BF:">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Rock_Throw" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Rock_Throw" VariableExpression="${var:Souma_Rock_Throw}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" UseTTSTextExpression="南侧石牢" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" UseTTSTextExpression="北侧石牢" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                </Triggers>
               </Folder>
             </Folders>
             <Triggers>
@@ -459,36 +562,6 @@
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="249a3928-c8ae-4598-837f-5980d9bc12c3" TriggerText="Souma_Count_Down:5" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-              <Trigger Enabled="true" Name="奶妈石牢" Id="823489ee-d2b7-46f1-bef2-6328d28160d4" RegularExpression="] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+):.{4}:.{4}:00BF:">
-                <Actions>
-                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Rock_Throw" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Rock_Throw" VariableExpression="${var:Souma_Rock_Throw}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="3" UseTTSTextExpression="南侧石牢" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="4" UseTTSTextExpression="北侧石牢" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="H2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Rock_Throw}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -515,21 +588,25 @@
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="2F" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" UseTTSTextExpression="右右右,左左左" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="30" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" UseTTSTextExpression="左左左,左左左" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="31" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" UseTTSTextExpression="右右右,右右右" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="32" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -728,180 +805,203 @@
           </Folder>
           <Folder Id="6e5513fc-d4d7-4fe8-a995-a3d1b5d39df7" Name="2层" Enabled="true">
             <Folders>
-              <Folder Id="074e786a-3763-4e1f-8477-3ff34eb517c2" Name="实时判定" Enabled="true">
-                <Folders />
-                <Triggers>
-                  <Trigger Enabled="true" Name="核爆" Id="b1119b63-ec4f-474f-91a8-12b9ad6af5b1" RegularExpression="] 14:4684:">
-                    <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                        </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="地狱之风" Id="c8772b7e-74fb-42e2-a314-4e3e06b3aac2" RegularExpression="gains the effect of (地狱之风|ヘルウィンド|Hell_Wind)">
-                    <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="伊雪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                        </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="黑暗神圣" Id="907d84df-844e-4492-b4b7-f7de33045712" RegularExpression="] 14:3E53:">
-                    <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                        </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="黑暗爆炎" Id="55c79609-0e4d-4e68-a2ae-76fb27a42523" RegularExpression="] 14:3E56:">
-                    <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                        </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                </Triggers>
-              </Folder>
-              <Folder Id="4727e64c-354f-4526-8b1f-4bca310c6299" Name="延迟咏唱" Enabled="true">
-                <Folders />
-                <Triggers>
-                  <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－点你" Id="bcae9452-9b77-46a6-96f8-8fb7d602409b" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds.">
-                    <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="249a3928-c8ae-4598-837f-5980d9bc12c3" TriggerText="Souma_Count_Down:${time}" ActionType="Trigger">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="2" VariableOp="SetString" VariableName="Souma_I_Have_Shadoweye" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="3" UseTTSTextExpression="石化" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-4)*1000}">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="4" VariableName="Souma_I_Have_Shadoweye" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="4000">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－他人" Id="96d5fe7b-9055-4c21-933b-12d1cd94bf2a" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds.">
-                    <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="249a3928-c8ae-4598-837f-5980d9bc12c3" TriggerText="Souma_Count_Down:${time}" ActionType="Trigger">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="2" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-5)*1000}">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7506bd8d-d536-443e-beb7-1790a3c14327" TriggerText="Souma_Distance:${name}:石化:3" ActionType="Trigger">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7506bd8d-d536-443e-beb7-1790a3c14327" TriggerText="Souma_Distance:${name}:石化:3" ActionType="Trigger" ExecutionDelayExpression="1000">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
-                        </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="延迟咏唱：地狱之风" Id="56db8b05-91d9-428b-b0a1-bc0dc855dc12" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of gains the effect of (延迟咏唱：地狱之风|ディレイスペル：ヘルウィンド|Spell-In-Waiting: Hell Wind).*for (?&lt;time&gt;[\d\.]+) Seconds.">
-                    <Actions>
-                      <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_I_Have_Hell_Wind" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="2" UseTTSTextExpression="衣雪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-3)*1000}">
-                        <Condition Enabled="true" Grouping="And">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="3" VariableName="Souma_I_Have_Hell_Wind" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="延迟咏唱：点你！qwq" Id="24cfefe3-fafa-4599-a570-380e01a7fa87" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：|ディレイスペル：|Spell-In-Waiting: )">
-                    <Actions>
-                      <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:点你:3:0:0:main" ActionType="Trigger">
+              <Folder Id="5dcba3e6-d003-4562-b415-a869d803e8fb" Name="延迟咏唱" Enabled="true">
+                <Folders>
+                  <Folder Id="4727e64c-354f-4526-8b1f-4bca310c6299" Name="延迟技" Enabled="true">
+                    <Folders />
+                    <Triggers>
+                      <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－点你" Id="bcae9452-9b77-46a6-96f8-8fb7d602409b" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds.">
+                        <Actions>
+                          <Action OrderNumber="1" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="249a3928-c8ae-4598-837f-5980d9bc12c3" TriggerText="Souma_Count_Down:${time}" ActionType="Trigger">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="2" VariableOp="SetString" VariableName="Souma_I_Have_Shadoweye" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="3" UseTTSTextExpression="石化" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-4)*1000}">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="4" VariableName="Souma_I_Have_Shadoweye" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="4000">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                        </Actions>
                         <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Trigger>
-                  <Trigger Enabled="true" Name="延迟咏唱：核爆" Id="37dc549c-f7c3-49e5-937b-4c10a6275b0c" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：核爆|ディレイスペル：フレア|Spell-In-Waiting: Flare).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
-                    <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-5)*1000}">
+                      </Trigger>
+                      <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－他人" Id="96d5fe7b-9055-4c21-933b-12d1cd94bf2a" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds.">
+                        <Actions>
+                          <Action OrderNumber="1" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="249a3928-c8ae-4598-837f-5980d9bc12c3" TriggerText="Souma_Count_Down:${time}" ActionType="Trigger">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="2" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-5)*1000}">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7506bd8d-d536-443e-beb7-1790a3c14327" TriggerText="Souma_Distance:${name}:石化:3" ActionType="Trigger">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7506bd8d-d536-443e-beb7-1790a3c14327" TriggerText="Souma_Distance:${name}:石化:3" ActionType="Trigger" ExecutionDelayExpression="1000">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                            </Condition>
+                          </Action>
+                        </Actions>
                         <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="延迟咏唱：黑暗爆炎" Id="3f4cc902-8c24-4bc6-b2df-325d01cd8a5a" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：黑暗爆炎|ディレイスペル：ダークファイガ|Spell-In-Waiting: Dark Fire III).*for (?&lt;time&gt;[\d\.]+) Seconds.">
-                    <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-5)*1000}">
+                      </Trigger>
+                      <Trigger Enabled="true" Name="延迟咏唱：地狱之风" Id="56db8b05-91d9-428b-b0a1-bc0dc855dc12" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of gains the effect of (延迟咏唱：地狱之风|ディレイスペル：ヘルウィンド|Spell-In-Waiting: Hell Wind).*for (?&lt;time&gt;[\d\.]+) Seconds.">
+                        <Actions>
+                          <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_I_Have_Hell_Wind" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="2" UseTTSTextExpression="衣雪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-3)*1000}">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="3" VariableName="Souma_I_Have_Hell_Wind" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="延迟咏唱：点你！qwq" Id="24cfefe3-fafa-4599-a570-380e01a7fa87" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：|ディレイスペル：|Spell-In-Waiting: )">
+                        <Actions>
+                          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:点你:3:0:0:main" ActionType="Trigger">
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Action>
+                        </Actions>
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="延迟咏唱：黑暗神圣" Id="eb92b696-bb64-403e-8523-9ef65d856c13" RegularExpression=" gains the effect of (延迟咏唱：黑暗神圣|ディレイスペル：ダークホーリー|Spell-In-Waiting: Unholy Darkness).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
+                      </Trigger>
+                      <Trigger Enabled="true" Name="延迟咏唱：核爆" Id="37dc549c-f7c3-49e5-937b-4c10a6275b0c" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：核爆|ディレイスペル：フレア|Spell-In-Waiting: Flare).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
+                        <Actions>
+                          <Action OrderNumber="1" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-5)*1000}">
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="延迟咏唱：黑暗爆炎" Id="3f4cc902-8c24-4bc6-b2df-325d01cd8a5a" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) gains the effect of (延迟咏唱：黑暗爆炎|ディレイスペル：ダークファイガ|Spell-In-Waiting: Dark Fire III).*for (?&lt;time&gt;[\d\.]+) Seconds.">
+                        <Actions>
+                          <Action OrderNumber="1" UseTTSTextExpression="散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-5)*1000}">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="延迟咏唱：黑暗神圣" Id="eb92b696-bb64-403e-8523-9ef65d856c13" RegularExpression=" gains the effect of (延迟咏唱：黑暗神圣|ディレイスペル：ダークホーリー|Spell-In-Waiting: Unholy Darkness).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
+                        <Actions>
+                          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Waiting_Unholy_Darkness" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Waiting_Unholy_Darkness" VariableExpression="${var:Souma_Waiting_Unholy_Darkness}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="3" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-4)*1000}">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                              <ConditionGroup Enabled="true" Grouping="Not">
+                                <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_I_Have_Hell_Wind}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                                <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_I_Have_Shadoweye}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                              </ConditionGroup>
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="4" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                    </Triggers>
+                  </Folder>
+                  <Folder Id="074e786a-3763-4e1f-8477-3ff34eb517c2" Name="实时技" Enabled="true">
+                    <Folders />
+                    <Triggers>
+                      <Trigger Enabled="true" Name="核爆" Id="b1119b63-ec4f-474f-91a8-12b9ad6af5b1" RegularExpression="] 14:4684:">
+                        <Actions>
+                          <Action OrderNumber="1" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="地狱之风" Id="c8772b7e-74fb-42e2-a314-4e3e06b3aac2" RegularExpression="gains the effect of (地狱之风|ヘルウィンド|Hell_Wind)">
+                        <Actions>
+                          <Action OrderNumber="1" UseTTSTextExpression="伊雪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="黑暗神圣" Id="907d84df-844e-4492-b4b7-f7de33045712" RegularExpression="] 14:3E53:">
+                        <Actions>
+                          <Action OrderNumber="1" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="黑暗爆炎" Id="55c79609-0e4d-4e68-a2ae-76fb27a42523" RegularExpression="] 14:3E56:">
+                        <Actions>
+                          <Action OrderNumber="1" UseTTSTextExpression="散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                    </Triggers>
+                  </Folder>
+                </Folders>
+                <Triggers>
+                  <Trigger Enabled="true" Name="延迟咏唱判断" Id="92a90e97-2aee-4be2-b769-3e6ed4f3906d" RegularExpression="(?&lt;type&gt;gains|loses) the effect of (延迟咏唱|ディレイスペル|Spell-In-Waiting) from">
                     <Actions>
-                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Waiting_Unholy_Darkness" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                      <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Spell_In_Waiting" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Waiting_Unholy_Darkness" VariableExpression="${var:Souma_Waiting_Unholy_Darkness}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                      <Action OrderNumber="2" VariableName="Souma_Spell_In_Waiting" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="3" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-4)*1000}">
-                        <Condition Enabled="true" Grouping="And">
-                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                          <ConditionGroup Enabled="true" Grouping="Not">
-                            <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_I_Have_Hell_Wind}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_I_Have_Shadoweye}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                          </ConditionGroup>
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="4" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="loses" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                         <Conditions />
                       </Action>
@@ -1031,21 +1131,6 @@
                   </Action>
                   <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:直线:3:0:100:main" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-              <Trigger Enabled="true" Name="BUFF：延时咏唱" Id="92a90e97-2aee-4be2-b769-3e6ed4f3906d" RegularExpression="(?&lt;type&gt;gains|loses) the effect of (延迟咏唱|ディレイスペル|Spell-In-Waiting) from">
-                <Actions>
-                  <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Spell_In_Waiting" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="2" VariableName="Souma_Spell_In_Waiting" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="loses" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -1945,60 +2030,83 @@
             <Actions>
               <Action OrderNumber="1" VariableName="Souma_Thunder_Rune" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableName="Souma_Pucks_Breath" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableName="Souma_Winged_Reprobation" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableName="Souma_Spell-In-Waiting" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableName="Souma_Crumbling_Down" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_Waiting_Unholy_Darkness" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableName="Souma_Crumbling_Down" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_I_Have_Shadoweye" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableName="Souma_Crumbling_Down" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_I_Have_Hell_Wind" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableName="Souma_tsunami" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="9" VariableName="Souma_Refreshing_Shower" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="10" VariableName="Souma_Crumbling_Down" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="11" VariableName="Souma_Tectonic_Uplift" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="12" VariableName="Souma_GuruGuru" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="13" VariableName="Souma_Rock_Throw" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="14" VariableName="Souma_Orange" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="15" VariableName="Souma_Blue" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="16" VariableName="Souma_Crumbling_Down" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_AstCard" TextAuraFontName="宋体" ActionType="TextAura">
+              <Action OrderNumber="16" VariableName="Souma_Tectonic_Uplift_Fixed" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="17" FolderOp="DisableFolder" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" Asynchronous="False">
+              <Action OrderNumber="17" VariableName="Souma_Crumbling_Down" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_AstCard" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="18" FolderOp="DisableFolder" FolderId="e409c755-0490-43d3-bb3d-aea5cefda841" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" Asynchronous="False">
+              <Action OrderNumber="18" FolderOp="DisableFolder" FolderId="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="19" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelAllTrigger" ActionType="Trigger">
+              <Action OrderNumber="19" FolderOp="DisableFolder" FolderId="e409c755-0490-43d3-bb3d-aea5cefda841" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="20" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelAllTrigger" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
