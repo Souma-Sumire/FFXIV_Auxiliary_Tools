@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="331570b5-22d1-4b6c-9532-3785df3aa2c2" Name="占星术士抽卡提示（测试版） by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="331570b5-22d1-4b6c-9532-3785df3aa2c2" Name="抽卡提示（测试版）" Enabled="true">
     <Folders />
     <Triggers>
       <Trigger Enabled="true" Name="抽卡" Id="5b14055d-0fca-4aa4-bb6a-3529022fe7c9" RegularExpression="] 1[AE]:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) (?&lt;type&gt;gains|loses) the effect of (?&lt;card&gt;放浪神之箭（抽卡）|Arrow Drawn|ドロー：オシュオンの矢|河流神之瓶（抽卡）|Ewer Drawn|ドロー：サリャクの水瓶|建筑神之塔（抽卡）|Spire Drawn|ドロー：ビエルゴの塔|世界树之干（抽卡）|Bole Drawn|ドロー：世界樹の幹|太阳神之衡（抽卡）|Balance Drawn|ドロー：アーゼマの均衡|战争神之枪（抽卡）|Spear Drawn|ドロー：ハルオーネの槍)  ?from (?&lt;name2&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) for">
@@ -61,35 +61,7 @@
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="5" UseTTSTextExpression="近" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionGroup Enabled="true" Grouping="And">
-                <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              </ConditionGroup>
-              <ConditionGroup Enabled="true" Grouping="Or">
-                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="太阳神之衡（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="放浪神之箭（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="战争神之枪（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              </ConditionGroup>
-            </Condition>
-            <Conditions />
-          </Action>
-          <Action OrderNumber="6" UseTTSTextExpression="远" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionGroup Enabled="true" Grouping="And">
-                <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              </ConditionGroup>
-              <ConditionGroup Enabled="true" Grouping="Or">
-                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="世界树之干（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="建筑神之塔（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              </ConditionGroup>
-            </Condition>
-            <Conditions />
-          </Action>
-          <Action OrderNumber="7" UseTTSTextExpression="近" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:缺:9999:271-18:139:AstCard" ActionType="Trigger" ExecutionDelayExpression="250" Asynchronous="False">
+          <Action OrderNumber="5" UseTTSTextExpression="近" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:缺:9999:271-18:139:AstCard" ActionType="Trigger" ExecutionDelayExpression="100" Asynchronous="False">
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               <ConditionGroup Enabled="true" Grouping="Or">
@@ -121,7 +93,53 @@
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="8" UseTTSTextExpression="远" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:远:9999:301:159:MorR" ActionType="Trigger">
+          <Action OrderNumber="6" UseTTSTextExpression="发" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" Enabled="False" ActionType="UseTTS" Asynchronous="False">
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              <ConditionGroup Enabled="true" Grouping="Or">
+                <ConditionGroup Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="建筑神之塔（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="Souma_AstCard_Imprint" ExpressionTypeL="String" ExpressionR="星" ExpressionTypeR="String" ConditionType="ListDoesNotContain" />
+                </ConditionGroup>
+                <ConditionGroup Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="战争神之枪（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="Souma_AstCard_Imprint" ExpressionTypeL="String" ExpressionR="星" ExpressionTypeR="String" ConditionType="ListDoesNotContain" />
+                </ConditionGroup>
+                <ConditionGroup Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="Souma_AstCard_Imprint" ExpressionTypeL="String" ExpressionR="月" ExpressionTypeR="String" ConditionType="ListDoesNotContain" />
+                </ConditionGroup>
+                <ConditionGroup Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="放浪神之箭（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="Souma_AstCard_Imprint" ExpressionTypeL="String" ExpressionR="月" ExpressionTypeR="String" ConditionType="ListDoesNotContain" />
+                </ConditionGroup>
+                <ConditionGroup Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="世界树之干（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="Souma_AstCard_Imprint" ExpressionTypeL="String" ExpressionR="日" ExpressionTypeR="String" ConditionType="ListDoesNotContain" />
+                </ConditionGroup>
+                <ConditionGroup Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="太阳神之衡（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="Souma_AstCard_Imprint" ExpressionTypeL="String" ExpressionR="日" ExpressionTypeR="String" ConditionType="ListDoesNotContain" />
+                </ConditionGroup>
+              </ConditionGroup>
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="7" UseTTSTextExpression="近" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS" ExecutionDelayExpression="200">
+            <Condition Enabled="true" Grouping="And">
+              <ConditionGroup Enabled="true" Grouping="And">
+                <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              </ConditionGroup>
+              <ConditionGroup Enabled="true" Grouping="Or">
+                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="太阳神之衡（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="放浪神之箭（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="战争神之枪（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              </ConditionGroup>
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="8" UseTTSTextExpression="远" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS">
             <Condition Enabled="true" Grouping="And">
               <ConditionGroup Enabled="true" Grouping="And">
                 <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -135,7 +153,22 @@
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="9" UseTTSTextExpression="近" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:近:9999:283:159:MorR" ActionType="Trigger">
+          <Action OrderNumber="9" UseTTSTextExpression="远" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:远:9999:301:159:MorR" ActionType="Trigger">
+            <Condition Enabled="true" Grouping="And">
+              <ConditionGroup Enabled="true" Grouping="And">
+                <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              </ConditionGroup>
+              <ConditionGroup Enabled="true" Grouping="Or">
+                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="世界树之干（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="建筑神之塔（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="王冠之贵妇（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              </ConditionGroup>
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="10" UseTTSTextExpression="近" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2dc9a5bc-92c3-43c9-8c71-3a7addf79b7d" TriggerText="Souma_AstCard_Subtitle:近:9999:283:159:MorR" ActionType="Trigger">
             <Condition Enabled="true" Grouping="And">
               <ConditionGroup Enabled="true" Grouping="And">
                 <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -145,6 +178,7 @@
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="太阳神之衡（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="放浪神之箭（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="战争神之枪（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="王冠之领主（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               </ConditionGroup>
             </Condition>
             <Conditions />
@@ -203,7 +237,6 @@
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               </ConditionGroup>
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="2" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_Need" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
             <Condition Enabled="true" Grouping="And">
@@ -216,7 +249,6 @@
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶（抽卡）" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               </ConditionGroup>
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="3" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_AstCard" TextAuraFontName="宋体" ActionType="TextAura">
             <Condition Enabled="true" Grouping="And">
@@ -229,14 +261,12 @@
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               </ConditionGroup>
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="4" ListVariableOp="PopFirst" ListVariableName="Souma_AstCard_Imprint" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${lvar:Souma_AstCard_Imprint.size}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
               <ConditionSingle Enabled="true" ExpressionL="${_duration}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="5" ListVariableOp="Push" ListVariableName="Souma_AstCard_Imprint" ListVariableExpression="日" VariableOp="SetString" VariableName="Souma_AstCard_Imprint" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
             <Condition Enabled="true" Grouping="And">
@@ -246,7 +276,6 @@
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="太阳神之衡" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               </ConditionGroup>
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="6" ListVariableOp="Push" ListVariableName="Souma_AstCard_Imprint" ListVariableExpression="月" VariableOp="SetString" VariableName="Souma_AstCard_Imprint" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
             <Condition Enabled="true" Grouping="And">
@@ -256,7 +285,6 @@
                 <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="河流神之瓶" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               </ConditionGroup>
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="7" ListVariableOp="Push" ListVariableName="Souma_AstCard_Imprint" ListVariableExpression="星" VariableOp="SetString" VariableName="Souma_AstCard_Imprint" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
             <Condition Enabled="true" Grouping="And">
@@ -266,69 +294,80 @@
               </ConditionGroup>
               <ConditionSingle Enabled="true" ExpressionL="${_duration}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="8" TextAuraFontSize="24" TextAuraName="0" TextAuraExpression="${lvar:Souma_AstCard_Imprint.size}" TextAuraXIniExpression="294" TextAuraYIniExpression="669" TextAuraWIniExpression="192" TextAuraHIniExpression="119" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="宋体" Enabled="False" ActionType="TextAura">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="9" TextAuraFontSize="24" TextAuraName="1" TextAuraExpression="${lvar:Souma_AstCard_Imprint[1]}${lvar:Souma_AstCard_Imprint[2]}${lvar:Souma_AstCard_Imprint[3]}" TextAuraXIniExpression="296" TextAuraYIniExpression="717" TextAuraWIniExpression="192" TextAuraHIniExpression="119" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="宋体" Enabled="False" ActionType="TextAura">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Name="初始化" Id="f8b16e5a-03b7-45c5-89c4-8f9c657daa88" RegularExpression="01:Changed Zone to [^天幕魔导城最终决战]|21:........:40000010:|00:082b:.*(マイナーアルカナ|占卜|Minor Arcana)">
+      <Trigger Enabled="true" Name="初始化" Id="f8b16e5a-03b7-45c5-89c4-8f9c657daa88" RegularExpression="01:Changed Zone to [^天幕魔导城最终决战]|21:........:40000010:|00:082b:.*(マイナーアルカナ|占卜|Minor Arcana)|:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+)(从无法战斗状态复苏了。|は、戦闘不能から蘇生した。|.*revived.)">
         <Actions>
           <Action OrderNumber="1" ListVariableName="Souma_AstCard_Imprint" VariableName="Souma_AstCard_Imprint" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="2" VariableName="Souma_AstCard_Subtitle_AstCard" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="3" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_Fight" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
             <Condition Enabled="false" Grouping="And" />
+            <Conditions />
           </Action>
           <Action OrderNumber="4" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_MorR" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
             <Condition Enabled="false" Grouping="And" />
+            <Conditions />
           </Action>
           <Action OrderNumber="5" VariableName="Souma_AstCard_Subtitle_Need" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_Need" TextAuraFontName="宋体" ActionType="TextAura">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="6" VariableName="Souma_AstCard_Subtitle_Use" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_AstCard" TextAuraFontName="宋体" ActionType="TextAura">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="812cf129-5cac-41fc-9c74-9dcbbc81d3a6" TriggerForce="true" Enabled="False" ActionType="Trigger">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
-        <Condition Enabled="false" Grouping="Or" />
+        <Condition Enabled="false" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${evar:name}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="NumericEqual" />
+        </Condition>
       </Trigger>
       <Trigger Enabled="true" Name="奥秘卡废弃" Id="b47de91e-a95d-40a6-84b3-e2991556c144" RegularExpression="] 1E:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+) loses the effect of (?&lt;card&gt;放浪神之箭（抽卡）|Arrow Drawn|ドロー：オシュオンの矢|河流神之瓶（抽卡）|Ewer Drawn|ドロー：サリャクの水瓶|建筑神之塔（抽卡）|Spire Drawn|ドロー：ビエルゴの塔|世界树之干（抽卡）|Bole Drawn|ドロー：世界樹の幹|太阳神之衡（抽卡）|Balance Drawn|ドロー：アーゼマの均衡|战争神之枪（抽卡）|Spear Drawn|ドロー：ハルオーネの槍) from (?&lt;name2&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D ]+).">
         <Actions>
           <Action OrderNumber="1" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_Need" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${name2}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
           </Action>
           <Action OrderNumber="2" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_MorR" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${name2}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
           </Action>
           <Action OrderNumber="3" UseTTSTextExpression="近" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="Souma_AstCard_Subtitle_AstCard" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:日:9999:301:139:AstCard" ActionType="TextAura" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${name2}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
           </Action>
         </Actions>
-        <Condition Enabled="true" Grouping="And">
-          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${name2}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-        </Condition>
+        <Condition Enabled="false" Grouping="And" />
       </Trigger>
       <Trigger Enabled="false" Name="战斗状态检测" Id="812cf129-5cac-41fc-9c74-9dcbbc81d3a6" RegularExpression="">
         <Actions>
@@ -345,7 +384,6 @@
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               <ConditionSingle Enabled="true" ExpressionL="${lang}" ExpressionTypeL="String" ExpressionR="you change to" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
