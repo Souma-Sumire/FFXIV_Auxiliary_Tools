@@ -6,18 +6,20 @@
         <Folders>
           <Folder Id="bc598c74-79f6-4486-9f85-1bd46a8a5461" Name="4层" Enabled="true">
             <Folders>
-              <Folder Id="ec81fa01-c190-400c-8cbd-6e58e8a47bf4" Name="转圈圈（白流沙）（该部分需要先用户在游戏里通过：说话、或小队、或默语频道，发送你的职业位置，例如D1 D2 D3 D4 H1 H2 MT ST）" Enabled="true">
+              <Folder Id="ec81fa01-c190-400c-8cbd-6e58e8a47bf4" Name="转圈圈（白流沙）（开启提醒需要先在游戏的中：说话、或小队、或默语频道，发送你的职业位置，例如D1 D2 D3 D4 H1 H2 MT ST）" Enabled="true">
                 <Folders>
                   <Folder Id="445ca4ab-d59f-4e43-aa9e-32d284bc9b03" Name="设置职能位置" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="设置" Id="19a29f27-9090-46c1-90b2-84937e82e995" RegularExpression="^(\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:000[ae]:?(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+)|\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:(?&lt;num&gt;0038)):(?&lt;role&gt;[sSmMhHdD][tT1-4])$" Description="在/s或/p喊话：&#xD;&#xA;&#xD;&#xA;你是D1就喊话D1&#xD;&#xA;你是D2就喊话D2&#xD;&#xA;你是D3就喊话D3&#xD;&#xA;你是D4就喊话D4&#xD;&#xA;你是H1就喊话H1&#xD;&#xA;你是H2就喊话H2&#xD;&#xA;你是MT就喊话MT&#xD;&#xA;你是ST就喊话ST&#xD;&#xA;&#xD;&#xA;设置成功会有字幕提醒&#xD;&#xA;&#xD;&#xA;字母仅限英文半角，全角不可以">
+                      <Trigger Enabled="true" Name="设置" Id="19a29f27-9090-46c1-90b2-84937e82e995" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:(000[ae]:[\ue090]?(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+)|(?&lt;num&gt;0038)):(?&lt;role&gt;[sSmMhHdD][tT1-4])$" Description="在/s或/p喊话：&#xD;&#xA;&#xD;&#xA;你是D1就喊话D1&#xD;&#xA;你是D2就喊话D2&#xD;&#xA;你是D3就喊话D3&#xD;&#xA;你是D4就喊话D4&#xD;&#xA;你是H1就喊话H1&#xD;&#xA;你是H2就喊话H2&#xD;&#xA;你是MT就喊话MT&#xD;&#xA;你是ST就喊话ST&#xD;&#xA;&#xD;&#xA;设置成功会有字幕提醒&#xD;&#xA;&#xD;&#xA;字母仅限英文半角，全角不可以">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="${name}" VariableOp="SetString" VariableName="Souma_Team_Role" VariableExpression="${role}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="20.25" TextAuraForeground="#FF8080" TextAuraName="Souma_Team_Role_Set" TextAuraExpression="已设置${func:toupper:${var:Souma_Team_Role}}" TextAuraXIniExpression="0.5*(${_screenwidth}-400)" TextAuraYIniExpression="0.5*(${_screenheight}-100)" TextAuraWIniExpression="400" TextAuraHIniExpression="60" TextAuraOIniExpression="100" TextAuraTTLTickExpression="2-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:已设置${func:toupper:${var:Souma_Team_Role}}:3.00:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="true" Grouping="Or">
@@ -223,7 +225,7 @@
               </Folder>
               <Folder Id="c3431e50-c6d5-4af0-8f2d-ca16dce764b9" Name="高低地（升降梯 构造隆起） 未实测，可能有BUG" Enabled="true">
                 <Folders>
-                  <Folder Id="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" Name="第1次" Enabled="false">
+                  <Folder Id="a04ea500-7ccc-4ef6-9143-29e0c2e17d60" Name="第1次" Enabled="true">
                     <Folders />
                     <Triggers>
                       <Trigger Enabled="true" Name="蓝标" Id="f0badac0-d6ce-4ffe-87ab-365a42c461aa" RegularExpression="] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BB:" PeriodRefire="Deny" RefirePeriodExpression="1000">
@@ -287,7 +289,7 @@
                       </Trigger>
                     </Triggers>
                   </Folder>
-                  <Folder Id="e409c755-0490-43d3-bb3d-aea5cefda841" Name="第2次" Enabled="false">
+                  <Folder Id="e409c755-0490-43d3-bb3d-aea5cefda841" Name="第2次" Enabled="true">
                     <Folders />
                     <Triggers>
                       <Trigger Enabled="true" Name="蓝标" Id="a83a203f-d1e7-4822-b0ca-c87c10cf165f" RegularExpression="] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BB:" PeriodRefire="Deny" RefirePeriodExpression="1000">
@@ -1810,7 +1812,6 @@
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="3FEA" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionGroup Enabled="true" Grouping="Or">
                         <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -1834,6 +1835,7 @@
                           <ConditionGroup Enabled="true" Grouping="Or">
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="9" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </ConditionGroup>
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -1870,6 +1872,7 @@
                           <ConditionGroup Enabled="true" Grouping="Or">
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="9" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </ConditionGroup>
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -1891,7 +1894,6 @@
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="3FEB" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionGroup Enabled="true" Grouping="Or">
                         <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                        <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -1915,6 +1917,7 @@
                           <ConditionGroup Enabled="true" Grouping="Or">
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="9" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </ConditionGroup>
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -1951,6 +1954,7 @@
                           <ConditionGroup Enabled="true" Grouping="Or">
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="9" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </ConditionGroup>
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -2019,161 +2023,6 @@
           </Folder>
         </Folders>
         <Triggers />
-      </Folder>
-      <Folder Id="e4e910a5-a5c6-4d6b-ae2a-8aa0d426ccf9" Name="极完美神" Enabled="true">
-        <Folders />
-        <Triggers>
-          <Trigger Enabled="true" Name="断罪之桩" Id="82326e3a-dda0-46bd-a5c6-9825c6b87584" RegularExpression="23:.{8}:(断罪之桩|断罪の杭|nails? of condemnation):.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):0000:0000:0011:">
-            <Actions>
-              <Action OrderNumber="1" LogMessageText="Souma_Count_Down:6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="249a3928-c8ae-4598-837f-5980d9bc12c3" TriggerText="Souma_Count_Down:6" ActionType="Trigger">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:点你:2.00:0:0:main" ActionType="Trigger">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="裁决之雷" Id="1ddfb437-efd5-41f9-ac81-18e1ced70ca5" RegularExpression="14:3ECD:">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="夺影" Id="df447144-5534-4e25-be5b-115226c16338" RegularExpression="14:3EEA:">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="断罪回旋" Id="e1ec561b-7e04-41e6-87d8-4055051ae5a8" RegularExpression="14:3EDC:">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="扇子" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="神光" Id="e1adecf7-e3a9-4f44-aa78-cc0010b217a8" RegularExpression="14:3EE4:">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="躲扇形" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="光明柱" Id="db82bb57-f092-448d-a747-e272f8d6d9a1" RegularExpression="14:3F3E:">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="毒舌钩" Id="1a31ff81-057c-4dea-901f-3871a1ed183b" RegularExpression="14:3EC8:">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="神圣剑" Id="69c8f8ad-4400-413d-ae94-3431c6334f8f" RegularExpression="14:3EC9:">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="荣福直观" Id="c073c7e7-02bd-439e-83f5-d1eeadfac30e" RegularExpression="14:3EEE:">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="远离中场" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="断罪飞翔" Id="e38fe5b5-98b1-4779-94b7-cdbc1b507ef1" RegularExpression="14:40BD:">
-            <Actions>
-              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Winged_Reprobation" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="11" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Winged_Reprobation" VariableExpression="${var:Souma_Winged_Reprobation}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="3" UseTTSTextExpression="连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="4" UseTTSTextExpression="连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="5" UseTTSTextExpression="大风车" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="6" UseTTSTextExpression="大风车连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="7" UseTTSTextExpression="大风车" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="8" UseTTSTextExpression="连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="9" UseTTSTextExpression="大风车" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="9" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="10" UseTTSTextExpression="连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="10" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="小怪" Id="33b04b1e-e0d9-4989-9479-43e2854bcfa3" RegularExpression="Added new combatant (得到宽恕的耻辱|フォーギヴン・シェイム|forgiven shame).+Max HP: 482480">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="MT西,ST东" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="2" UseTTSTextExpression="集火南侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
-                </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-        </Triggers>
       </Folder>
       <Folder Id="a0910d3d-281a-47c5-9e8a-8d6aa0754817" Name="通用功能" Enabled="true">
         <Folders />
@@ -2551,6 +2400,161 @@
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="陨石" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="e4e910a5-a5c6-4d6b-ae2a-8aa0d426ccf9" Name="极完美神" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="断罪之桩" Id="82326e3a-dda0-46bd-a5c6-9825c6b87584" RegularExpression="23:.{8}:(断罪之桩|断罪の杭|nails? of condemnation):.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):0000:0000:0011:">
+            <Actions>
+              <Action OrderNumber="1" LogMessageText="Souma_Count_Down:6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="249a3928-c8ae-4598-837f-5980d9bc12c3" TriggerText="Souma_Count_Down:6" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:点你:2.00:0:0:main" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="裁决之雷" Id="1ddfb437-efd5-41f9-ac81-18e1ced70ca5" RegularExpression="14:3ECD:">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="夺影" Id="df447144-5534-4e25-be5b-115226c16338" RegularExpression="14:3EEA:">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="断罪回旋" Id="e1ec561b-7e04-41e6-87d8-4055051ae5a8" RegularExpression="14:3EDC:">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="扇子" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="神光" Id="e1adecf7-e3a9-4f44-aa78-cc0010b217a8" RegularExpression="14:3EE4:">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="躲扇形" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="光明柱" Id="db82bb57-f092-448d-a747-e272f8d6d9a1" RegularExpression="14:3F3E:">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="毒舌钩" Id="1a31ff81-057c-4dea-901f-3871a1ed183b" RegularExpression="14:3EC8:">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="神圣剑" Id="69c8f8ad-4400-413d-ae94-3431c6334f8f" RegularExpression="14:3EC9:">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="荣福直观" Id="c073c7e7-02bd-439e-83f5-d1eeadfac30e" RegularExpression="14:3EEE:">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="远离中场" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="断罪飞翔" Id="e38fe5b5-98b1-4779-94b7-cdbc1b507ef1" RegularExpression="14:40BD:">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Winged_Reprobation" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="11" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Winged_Reprobation" VariableExpression="${var:Souma_Winged_Reprobation}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="3" UseTTSTextExpression="连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" UseTTSTextExpression="连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="5" UseTTSTextExpression="大风车" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="6" UseTTSTextExpression="大风车连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="7" UseTTSTextExpression="大风车" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="8" UseTTSTextExpression="连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="9" UseTTSTextExpression="大风车" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="9" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="10" UseTTSTextExpression="连线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Winged_Reprobation}" ExpressionTypeL="Numeric" ExpressionR="10" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="小怪" Id="33b04b1e-e0d9-4989-9479-43e2854bcfa3" RegularExpression="Added new combatant (得到宽恕的耻辱|フォーギヴン・シェイム|forgiven shame).+Max HP: 482480">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="MT西,ST东" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" UseTTSTextExpression="集火南侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
