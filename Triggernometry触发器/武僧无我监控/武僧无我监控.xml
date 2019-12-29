@@ -19,7 +19,30 @@
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" Name="关" Id="ec74a5fc-3770-4159-8601-14c67e9bc0d1" RegularExpression="00:0038:!tickhide|01:Changed Zone to">
+      <Trigger Enabled="true" Name="团灭" Id="ec74a5fc-3770-4159-8601-14c67e9bc0d1" RegularExpression="21:........:40000010:">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Server_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Server_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="Hot检测" Id="b9a3f55d-0422-48b2-adda-345ac832d72d" RegularExpression="] 18:HoT Tick on (?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) for \d+ damage.">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Server_Tick_Timing" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Server_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+      </Trigger>
+      <Trigger Enabled="true" Name="重置" Id="5a8f1a53-6290-4a97-bada-97b70853f42f" RegularExpression="00:0038:!tickhide|01:Changed Zone to">
         <Actions>
           <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="Souma_Server_Tick_1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
             <Condition Enabled="false" Grouping="Or" />
@@ -37,19 +60,7 @@
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-      </Trigger>
-      <Trigger Enabled="true" Name="Hot检测" Id="b9a3f55d-0422-48b2-adda-345ac832d72d" RegularExpression="] 18:HoT Tick on (?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) for \d+ damage.">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Server_Tick_Timing" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-            </Condition>
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Server_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-        </Condition>
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
