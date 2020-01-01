@@ -131,10 +131,11 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="%%频道%%" Id="9c9972a4-23a6-416c-a424-538cad4e0b49" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
+          <Trigger Enabled="true" Name="设置频道－发动技能" Id="9c9972a4-23a6-416c-a424-538cad4e0b49" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Raise_Channel" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -281,16 +282,19 @@
           <Folder Id="c0466d7d-6403-4cab-a1d7-b81b11923cfc" Name="N" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="巨星" Id="4a77b695-a7fa-4592-97d6-82a45cd308ea" RegularExpression="\] 1A:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?) gains the effect of (?&lt;AbilityName&gt;巨星主宰) from .+? for 10.00 Seconds.">
+              <Trigger Enabled="true" Name="巨星提醒" Id="4a77b695-a7fa-4592-97d6-82a45cd308ea" RegularExpression="\] 1A:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?) gains the effect of (?&lt;AbilityName&gt;巨星主宰) from .+? for 10.00 Seconds.">
                 <Actions>
                   <Action OrderNumber="-1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Great_Skill_Cd_Channel} ${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="10165579-c3c4-4cad-b6af-e83854efe3ec" TriggerText="Souma_Subtitle:巨星:3:0:0:main" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" UseTTSTextExpression="巨星" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -406,26 +410,29 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="%%CD提示开启%%" Id="0c0a225b-4611-4f40-9211-67e0531b039b" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
+          <Trigger Enabled="true" Name="开启CD提醒" Id="0c0a225b-4611-4f40-9211-67e0531b039b" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Great_Skill_Cd_Hint" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="%%CD提示频道%%" Id="3fe25480-4248-418a-bab0-380bc364126a" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
+          <Trigger Enabled="true" Name="设置频道－CD" Id="3fe25480-4248-418a-bab0-380bc364126a" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Great_Skill_Cd_Channel" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="%%发动提示频道%%" Id="edee2906-88ba-438d-9a8a-a4cb5b263c59" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
+          <Trigger Enabled="true" Name="设置频道－发动技能" Id="edee2906-88ba-438d-9a8a-a4cb5b263c59" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
             <Actions>
-              <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Great_Skill_Channel" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Great_Skill_Channel" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -437,15 +444,17 @@
           <Folder Id="704650dc-17a4-4de2-9b8c-e2fa9c58df2f" Name="T" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="暗黑布道" Id="fecf61f9-f284-4f96-87a7-b99b877c4ded" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;暗黑布道):">
+              <Trigger Enabled="true" Name="暗黑布道" Id="fecf61f9-f284-4f96-87a7-b99b877c4ded" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;暗黑布道):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -459,15 +468,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="摆脱" Id="86b50672-dddf-46f7-a68d-c6e39a532965" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;摆脱):">
+              <Trigger Enabled="true" Name="摆脱" Id="86b50672-dddf-46f7-a68d-c6e39a532965" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;摆脱):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -481,29 +492,34 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="亲疏自行" Id="8297a144-b373-447d-8a31-e80f586ac780" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;亲疏自行):">
+              <Trigger Enabled="true" Name="亲疏自行" Id="8297a144-b373-447d-8a31-e80f586ac780" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;亲疏自行):">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[1].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[2].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[3].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[4].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[5].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[7].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[6].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionGroup Enabled="true" Grouping="Or">
+                    <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[1].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[3].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[4].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[6].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[5].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[2].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[7].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  </ConditionGroup>
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="坦克通用30%" Id="88e22e01-9397-4511-830b-72176cc03195" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;预警|复仇|星云|暗影墙):">
+              <Trigger Enabled="true" Name="坦克通用30%" Id="88e22e01-9397-4511-830b-72176cc03195" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;预警|复仇|星云|暗影墙):">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -527,15 +543,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="铁壁" Id="6252de9c-ff6a-4507-9991-016d30a9fa44" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;铁壁):">
+              <Trigger Enabled="true" Name="铁壁" Id="6252de9c-ff6a-4507-9991-016d30a9fa44" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;铁壁):">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -549,15 +567,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="武装戍卫" Id="41b2a26b-2034-4452-b5ab-4899aba496a3" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;武装戍卫):">
+              <Trigger Enabled="true" Name="武装戍卫" Id="41b2a26b-2034-4452-b5ab-4899aba496a3" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;武装戍卫):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -571,15 +591,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="雪仇" Id="1ba780d4-dcce-4979-9a98-16e0a8102ffe" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;雪仇):">
+              <Trigger Enabled="true" Name="雪仇" Id="1ba780d4-dcce-4979-9a98-16e0a8102ffe" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;雪仇):">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="60*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -593,7 +615,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="圣光幕帘" Id="5485f1a3-83a8-485b-a698-fd9343fc2842" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;圣光幕帘):">
+              <Trigger Enabled="true" Name="圣光幕帘" Id="5485f1a3-83a8-485b-a698-fd9343fc2842" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;圣光幕帘):">
                 <Actions>
                   <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -617,20 +639,97 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[7].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
+              <Trigger Enabled="true" Name="至黑之夜" Id="9d1aa9a2-8327-46e4-a609-45099ebbd77d" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;至黑之夜):">
+                <Actions>
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15*1000" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[1].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[2].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[3].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[4].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[5].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[7].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[6].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="盾阵" Id="224ae8bf-19fc-45d4-9807-a39497b99a27" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;盾阵):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                <Actions>
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[1].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[2].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[3].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[4].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[5].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[7].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[6].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="干预" Id="118f15cb-866a-445d-b0d3-e09237d4e409" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;干预):[A-Z0-9]{8}:(?&lt;TargetName&gt;.+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                <Actions>
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[1].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[2].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[3].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[4].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[5].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[7].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[6].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
             </Triggers>
           </Folder>
           <Folder Id="7eef0d14-68ee-46a8-844c-9242d166e84b" Name="N" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="节制" Id="c66d179e-62f6-4e36-a292-d18d9c99bc95" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;节制):">
+              <Trigger Enabled="true" Name="节制" Id="c66d179e-62f6-4e36-a292-d18d9c99bc95" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;节制):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -644,15 +743,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="命运之轮" Id="dbd5daef-c9df-47e2-a6d4-5eaec1d443ee" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;命运之轮):">
+              <Trigger Enabled="true" Name="命运之轮" Id="dbd5daef-c9df-47e2-a6d4-5eaec1d443ee" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;命运之轮):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -671,15 +772,17 @@
           <Folder Id="d9d984cd-e34e-48b8-afec-ebefdebc0202" Name="D" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="策动" Id="4e54ea48-4680-476b-85ad-c71a027e4f9e" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;策动):">
+              <Trigger Enabled="true" Name="策动" Id="4e54ea48-4680-476b-85ad-c71a027e4f9e" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;策动):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -693,15 +796,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="行吟" Id="cdbf3ce3-11ad-45fd-acb9-ff3f755f1fdd" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;行吟):">
+              <Trigger Enabled="true" Name="行吟" Id="cdbf3ce3-11ad-45fd-acb9-ff3f755f1fdd" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;行吟):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -715,15 +820,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="守护之桑巴" Id="e34469b0-c884-496e-a4c2-bc8e46ac85d3" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;守护之桑巴):">
+              <Trigger Enabled="true" Name="守护之桑巴" Id="e34469b0-c884-496e-a4c2-bc8e46ac85d3" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;守护之桑巴):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -737,15 +844,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="真言" Id="85d5ee88-dfc9-42dd-8e64-221797a7b6d1" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;真言):">
+              <Trigger Enabled="true" Name="真言" Id="85d5ee88-dfc9-42dd-8e64-221797a7b6d1" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;真言):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -759,15 +868,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="昏乱" Id="54de0db3-d0bf-4954-9d77-0dd9431a488a" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;昏乱):">
+              <Trigger Enabled="true" Name="昏乱" Id="54de0db3-d0bf-4954-9d77-0dd9431a488a" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;昏乱):">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -781,15 +892,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivparty[8].name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="牵制" Id="2c4ab323-164b-4d26-b5ab-31159882a184" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;牵制):">
+              <Trigger Enabled="true" Name="牵制" Id="2c4ab323-164b-4d26-b5ab-31159882a184" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;牵制):">
                 <Actions>
                   <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Channel} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Damage_Mitigation_Skill_Cd_Channel} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Damage_Mitigation_Skill_Cd_Hint}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -807,23 +920,25 @@
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Name="%%CD提示开启%%" Id="b7fae3bd-5d31-4d0c-b679-9b1f7195c8fe" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
+          <Trigger Enabled="true" Name="开启CD提醒" Id="b7fae3bd-5d31-4d0c-b679-9b1f7195c8fe" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Damage_Mitigation_Skill_Cd_Hint" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="%%CD提示频道%%" Id="06960869-fb70-4cb9-98eb-1d26f0aa4acc" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
+          <Trigger Enabled="true" Name="设置频道－CD" Id="06960869-fb70-4cb9-98eb-1d26f0aa4acc" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Damage_Mitigation_Skill_Cd_Channel" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="%%发动频道%%" Id="c26ff828-c0c0-4a7c-bc5f-39aabd39c413" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
+          <Trigger Enabled="true" Name="设置频道－发动技能" Id="c26ff828-c0c0-4a7c-bc5f-39aabd39c413" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Damage_Mitigation_Skill_Channel" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
@@ -836,18 +951,23 @@
             <Actions>
               <Action OrderNumber="1" VariableName="Souma_Damage_Mitigation_Skill_Cd_Hint" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableName="Souma_Damage_Mitigation_Skill_Channel" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableName="Souma_Damage_Mitigation_Skill_Cd_Channel" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="88e22e01-9397-4511-830b-72176cc03195" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="fecf61f9-f284-4f96-87a7-b99b877c4ded" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
