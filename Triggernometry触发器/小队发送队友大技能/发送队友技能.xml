@@ -82,9 +82,11 @@
             <Actions>
               <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Raise_Channel} ${AbilityName}判定：${CasterName}→${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Raise_Channel} ${CasterName}（${var:${CasterName}职业}）MP:${_ffxivparty[${CasterName}].currentmp} 醒梦CD:${numeric:max(round(60-(${_systemtimems}-${var:${CasterName}醒梦})/1000,1),0)}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${var:Souma_Raise_Channel} ${CasterName}（${var:${CasterName}职业}）MP:${_ffxivparty[${CasterName}].currentmp} 醒梦CD:${numeric:max(round(60-(${_systemtimems}-${var:${CasterName}醒梦})/1000,1),0)}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
@@ -430,7 +432,7 @@
           </Trigger>
           <Trigger Enabled="true" Name="设置频道－发动技能" Id="edee2906-88ba-438d-9a8a-a4cb5b263c59" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
             <Actions>
-              <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Great_Skill_Channel" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Great_Skill_Channel" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
