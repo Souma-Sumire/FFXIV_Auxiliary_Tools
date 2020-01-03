@@ -2,7 +2,7 @@
 <TriggernometryExport Version="1">
   <ExportedFolder Id="74d8f310-8a7d-47ea-96f6-524d051d7874" Name="5.0轮椅辅助工具 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
-      <Folder Id="a926817a-60a3-4f26-9162-0972aa776b72" Name="队友技能监控 最后更新:1月4日 06:49" Enabled="true">
+      <Folder Id="a926817a-60a3-4f26-9162-0972aa776b72" Name="队友技能监控 最后更新:1月4日 07:15" Enabled="true">
         <Folders>
           <Folder Id="90584cbb-fcdf-4bda-aaab-7305ea11559b" Name="功能开关" Enabled="true">
             <Folders>
@@ -11,7 +11,7 @@
                 <Triggers>
                   <Trigger Enabled="true" Name="读条" Id="0a763200-c578-4871-af2e-d44ff635990b" RegularExpression="\] 14:[A-Z0-9]{0,4}:(?&lt;SourceName&gt;.+?) starts using (?&lt;AbilityName&gt;生辰|Ascend|アセンド|复(活|生)|Raise|蘇生|赤复活|Verraise|ヴァルレイズ) on (?&lt;TargetName&gt;.+?)\.">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Raise_Channel}} [${var:${SourceName}职业}] 正在读条${AbilityName} [${var:${TargetName}职业}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Raise_Channel}} 读条${AbilityName}：${var:${SourceName}职业} → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -30,7 +30,7 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="判定" Id="679f55fd-23f4-4b68-8da4-dbf7bb1b2370" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;生辰|Ascend|アセンド|复(活|生)|Raise|蘇生|赤复活|Verraise|ヴァルレイズ):[A-Z0-9]{8}:(?&lt;TargetName&gt;.+?):">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Raise_Channel}} ${AbilityName}判定：${CasterName}（${var:${CasterName}职业}）→${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Raise_Channel}} ${AbilityName}判定：${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -82,7 +82,7 @@
                   <Folder Id="b3d11303-2727-4b48-8a04-16be01f9585e" Name="T" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="超火流星" Id="a30a084c-bce5-47ec-8c5c-f17eb66f1d7b" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;超火流星):">
+                      <Trigger Enabled="false" Name="超火流星" Id="a30a084c-bce5-47ec-8c5c-f17eb66f1d7b" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;超火流星):">
                         <Actions>
                           <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -107,7 +107,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="行尸走肉" Id="b056e07c-a036-40f3-b5c3-f9c3985c088f" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;行尸走肉):">
+                      <Trigger Enabled="false" Name="行尸走肉" Id="b056e07c-a036-40f3-b5c3-f9c3985c088f" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;行尸走肉):">
                         <Actions>
                           <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -132,7 +132,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="神圣领域" Id="d0c825cf-4d0e-4503-b5b9-235687b2d02e" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;神圣领域):">
+                      <Trigger Enabled="false" Name="神圣领域" Id="d0c825cf-4d0e-4503-b5b9-235687b2d02e" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;神圣领域):">
                         <Actions>
                           <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -157,7 +157,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="死斗" Id="bfd7bfde-4e0b-4d05-8673-9c71de249181" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;死斗):">
+                      <Trigger Enabled="false" Name="死斗" Id="bfd7bfde-4e0b-4d05-8673-9c71de249181" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;死斗):">
                         <Actions>
                           <Action OrderNumber="0" JsonCacheRequest="True" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -184,7 +184,19 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="死而不僵" Id="12bb19c9-4d9a-4038-a49d-9e677efd3d9d" RegularExpression="\] 1A:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?) gains the effect of (?&lt;AbilityName&gt;死而不僵) from .+? for 10.00 Seconds.">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} ${CasterName}陷入了“死而不僵”效果。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} 死而不僵 3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="7000" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} 死而不僵 2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} 死而不僵 1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
@@ -203,7 +215,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="死而不僵解除" Id="34588406-2c4a-4c34-8cd8-59d8e28071fe" RegularExpression="\] 1.:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?) loses the effect of (?&lt;AbilityName&gt;死而不僵) from">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} [${AbilityName}]被解除了" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="12bb19c9-4d9a-4038-a49d-9e677efd3d9d" ActionType="Trigger">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} “${AbilityName}”被解除了" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
@@ -225,9 +241,9 @@
                   <Folder Id="09e8447f-bbc7-4e04-8ec0-bbefbe642fd5" Name="N" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="巨星提醒" Id="1f26f7bd-6fb2-4c2b-aa22-fe9f7999527c" RegularExpression="\] 1A:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?) gains the effect of (?&lt;AbilityName&gt;巨星主宰) from .+? for 10.00 Seconds.">
+                      <Trigger Enabled="true" Name="巨星字幕提醒" Id="1f26f7bd-6fb2-4c2b-aa22-fe9f7999527c" RegularExpression="\] 1A:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?) gains the effect of (?&lt;AbilityName&gt;巨星主宰) from .+? for 10.00 Seconds.">
                         <Actions>
-                          <Action OrderNumber="-1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Cd_Channel}} ${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="-1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Cd_Channel}} ${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
@@ -252,7 +268,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="地星" Id="12660f51-e0f0-4c77-8e2b-8fa181fe9242" RegularExpression="\] 16:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;地星):">
+                      <Trigger Enabled="false" Name="地星" Id="12660f51-e0f0-4c77-8e2b-8fa181fe9242" RegularExpression="\] 16:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;地星):">
                         <Actions>
                           <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Damage_Mitigation_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -277,7 +293,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="秘策" Id="bb5a3d55-d9c0-4d30-a7c5-69c4d2044919" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;秘策):">
+                      <Trigger Enabled="false" Name="秘策" Id="bb5a3d55-d9c0-4d30-a7c5-69c4d2044919" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;秘策):">
                         <Actions>
                           <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Damage_Mitigation_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -304,7 +320,7 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="天赐祝福" Id="f5b7aa31-d144-4605-8540-eaf2dd04de8c" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;天赐祝福):[A-Z0-9]{8}:(?&lt;TargetName&gt;.+?):">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Great_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}] → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
@@ -610,7 +626,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="盾阵" Id="60282c7f-36d9-4e3e-9da1-1126a68d2d84" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;盾阵):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                      <Trigger Enabled="false" Name="盾阵" Id="60282c7f-36d9-4e3e-9da1-1126a68d2d84" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;盾阵):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
                           <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Damage_Mitigation_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -635,7 +651,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="干预" Id="5d9c9ddb-840a-46b2-af51-176b4cd3f41f" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;干预):[A-Z0-9]{8}:(?&lt;TargetName&gt;.+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                      <Trigger Enabled="false" Name="干预" Id="5d9c9ddb-840a-46b2-af51-176b4cd3f41f" RegularExpression="\] 1[56]:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;干预):[A-Z0-9]{8}:(?&lt;TargetName&gt;.+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
                           <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Damage_Mitigation_Skill_Channel}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
