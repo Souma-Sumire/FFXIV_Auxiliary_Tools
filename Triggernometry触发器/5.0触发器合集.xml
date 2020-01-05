@@ -2,9 +2,9 @@
 <TriggernometryExport Version="1">
   <ExportedFolder Id="74d8f310-8a7d-47ea-96f6-524d051d7874" Name="5.0轮椅辅助工具 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
-      <Folder Id="a926817a-60a3-4f26-9162-0972aa776b72" Name="队友技能监控 最后更新:1月5日 20:56 记得在[通用功能]中填写鲶鱼精邮差监听端口" Enabled="true">
+      <Folder Id="a926817a-60a3-4f26-9162-0972aa776b72" Name="队友技能监控 最后更新:1月5日 23:34 记得在[通用功能]中填写鲶鱼精邮差监听端口" Enabled="true">
         <Folders>
-          <Folder Id="90584cbb-fcdf-4bda-aaab-7305ea11559b" Name="功能开关（一般用户不需要改动触发器内容）" Enabled="true">
+          <Folder Id="90584cbb-fcdf-4bda-aaab-7305ea11559b" Name="功能开关" Enabled="true">
             <Folders>
               <Folder Id="aafebb30-e1a3-4cc8-b9aa-b409b6df4eb5" Name="复活&amp;MP&amp;醒梦" Enabled="true">
                 <Folders />
@@ -807,7 +807,7 @@
               <Folder Id="943eea13-f379-4214-92a3-d611ff4387fc" Name="死亡&amp;即刻" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Sequential="True" Name="死亡" Id="351adce5-91ef-40d2-8c03-0c99b0a64d6b" RegularExpression="^\[\d\d:\d\d:\d\d\.\d\d\d\] 19:(?&lt;name&gt;.+?) was defeated by (?&lt;target&gt;.+?)\.$|TEST:19:(?&lt;name&gt;.+?) was defeated by (?&lt;target&gt;.+?)\.">
+                  <Trigger Enabled="true" Sequential="True" Name="死亡" Id="351adce5-91ef-40d2-8c03-0c99b0a64d6b" RegularExpression="^\[\d\d:\d\d:\d\d\.\d\d\d\] 19:(?&lt;name&gt;.+?) was defeated by (?&lt;target&gt;.+?)\.$">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="Souma_Defeated_Swiftcast_Party_CD_.+" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
@@ -946,11 +946,25 @@
                 </Triggers>
               </Folder>
             </Folders>
-            <Triggers />
+            <Triggers>
+              <Trigger Enabled="true" Name="伊甸BOSS 普攻非T玩家" Id="bd07333b-45e1-4383-9352-3e715945a695" RegularExpression="\] 15:[A-Z0-9]{0,8}:(?&lt;BossName&gt;至尊伊甸|伊甸守护者|虚无行者|利维亚桑|泰坦|极大泰坦):[A-Z0-9]{0,8}:(攻击|Unknown_(42D9|413D|3E60|367)):[A-Z0-9]{0,8}:(?&lt;TargetName&gt;.+?):[A-Z0-9]{0,8}:(?&lt;damage&gt;[A-Z0-9]{0,8})">
+                <Actions>
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Attack_Role_Channel}} BOSS对${var:${TargetName}职业}造成了${numeric:hex2dec(${func:substring(0,4):${func:padleft(48,8):${damage}}})}点伤害，注意仇恨！&lt;se.2&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${TargetName}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${func:substring(4,1):${func:padleft(48,8):${damage}}}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="StringNotEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+            </Triggers>
           </Folder>
-          <Folder Id="45fe021a-6b16-401e-b67b-f5f0d75a85ee" Name="用户设置" Enabled="true">
+          <Folder Id="45fe021a-6b16-401e-b67b-f5f0d75a85ee" Name="用户设置（野队最好不要发到小队频道！）" Enabled="true">
             <Folders>
-              <Folder Id="bb7a1370-2349-4a12-a69e-91080a30bb91" Name="&quot;CD提醒&quot;的聊天频道（野队请谨慎使用）" Enabled="true">
+              <Folder Id="bb7a1370-2349-4a12-a69e-91080a30bb91" Name="&quot;CD提醒&quot;的聊天频道" Enabled="true">
                 <Folders />
                 <Triggers>
                   <Trigger Enabled="true" Name="减伤类" Id="2615cee0-9f74-4f39-9e07-1cd04ccda4ef" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
@@ -971,7 +985,7 @@
                   </Trigger>
                 </Triggers>
               </Folder>
-              <Folder Id="4b85ae88-88b6-4942-8714-1aceac5802dd" Name="&quot;发动技能&quot;的聊天频道（野队请谨慎使用）" Enabled="true">
+              <Folder Id="4b85ae88-88b6-4942-8714-1aceac5802dd" Name="&quot;发动技能&quot;的聊天频道" Enabled="true">
                 <Folders />
                 <Triggers>
                   <Trigger Enabled="true" Name="死亡检测" Id="5b875894-4f68-4373-b7bc-de9235f836d1" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
@@ -1009,7 +1023,18 @@
                 </Triggers>
               </Folder>
             </Folders>
-            <Triggers />
+            <Triggers>
+              <Trigger Enabled="true" Name="&quot;普攻非T玩家&quot;的聊天频道" Id="a30124c6-084f-45eb-90d5-ce0063fa98e8" RegularExpression="00:0039:(戦闘開始！|Engage!|战斗开始！)|01:Changed Zone to">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Attack_Role_Channel" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+            </Triggers>
           </Folder>
         </Folders>
         <Triggers />
