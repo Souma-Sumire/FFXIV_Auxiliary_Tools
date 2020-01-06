@@ -2,7 +2,7 @@
 <TriggernometryExport Version="1">
   <ExportedFolder Id="74d8f310-8a7d-47ea-96f6-524d051d7874" Name="5.0轮椅辅助工具 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
-      <Folder Id="a926817a-60a3-4f26-9162-0972aa776b72" Name="队友技能监控 最后更新:1月6日 00:41 记得在[通用功能]中填写鲶鱼精邮差监听端口" Enabled="true">
+      <Folder Id="a926817a-60a3-4f26-9162-0972aa776b72" Name="队友技能监控 最后更新:1月6日 17:41 记得在[通用功能]中填写鲶鱼精邮差监听端口" Enabled="true">
         <Folders>
           <Folder Id="90584cbb-fcdf-4bda-aaab-7305ea11559b" Name="功能开关" Enabled="true">
             <Folders>
@@ -28,11 +28,13 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="判定" Id="679f55fd-23f4-4b68-8da4-dbf7bb1b2370" RegularExpression="\] 15:[A-Z0-9]{8}:(?&lt;CasterName&gt;.+?):[A-Z0-9]{0,4}:(?&lt;AbilityName&gt;生辰|Ascend|アセンド|复(活|生)|Raise|蘇生|赤复活|Verraise|ヴァルレイズ):[A-Z0-9]{8}:(?&lt;TargetName&gt;.+?):">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Raise_Channel}} ${AbilityName}判定：${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Raise_Channel}} ${AbilityName}判定：${CasterName}（${var:${CasterName}职业}）→ ${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Raise_Channel}} ${CasterName}（${var:${CasterName}职业}）MP:${_ffxivparty[${CasterName}].currentmp} 醒梦CD:${numeric:max(round(60-(${_systemtimems}-${var:${CasterName}醒梦})/1000,1),0)}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="true" Grouping="Or">
@@ -50,12 +52,11 @@
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${CasterName}醒梦" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="初始化" Id="035714d4-03d6-41b2-957d-d33a877b6910" RegularExpression="\] 21:........:40000010:00:00:00:00">
+                  <Trigger Enabled="true" Name="初始化" Id="035714d4-03d6-41b2-957d-d33a877b6910" RegularExpression="\] 21:........:40000010:00:00:00:00|任务开始">
                     <Actions>
                       <Action OrderNumber="1" VariableName="Souma_Raise_Channel" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
@@ -894,7 +895,6 @@
                     <Actions>
                       <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="Souma_Defeated_Swiftcast_Party_CD_.+" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" VariableOp="SetString" VariableName="Souma_Defeated_Swiftcast_Party_CD_WHM" VariableExpression="白魔:${numeric:max(round(60-(${_systemtimems}-${lvar:Souma_Defeated_Swiftcast_Party_CD[1]})/1000,1),0)};" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -907,7 +907,6 @@
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" VariableOp="SetString" VariableName="Souma_Defeated_Swiftcast_Party_CD_SCH" VariableExpression="学者:${numeric:max(round(60-(${_systemtimems}-${lvar:Souma_Defeated_Swiftcast_Party_CD[2]})/1000,1),0)};" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -920,7 +919,6 @@
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" VariableOp="SetString" VariableName="Souma_Defeated_Swiftcast_Party_CD_AST" VariableExpression="占星:${numeric:max(round(60-(${_systemtimems}-${lvar:Souma_Defeated_Swiftcast_Party_CD[3]})/1000,1),0)};" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -933,7 +931,6 @@
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="5" VariableOp="SetString" VariableName="Souma_Defeated_Swiftcast_Party_CD_SMN" VariableExpression="召唤:${numeric:max(round(60-(${_systemtimems}-${lvar:Souma_Defeated_Swiftcast_Party_CD[4]})/1000,1),0)};" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -946,11 +943,9 @@
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${var:Souma_Raise_Reset_Port}/command" JsonPayloadExpression="/${func:tolower:${var:Souma_Defeated_Channel}} ${name}死亡。即刻CD:${var:Souma_Defeated_Swiftcast_Party_CD_WHM}${var:Souma_Defeated_Swiftcast_Party_CD_SCH}${var:Souma_Defeated_Swiftcast_Party_CD_AST}${var:Souma_Defeated_Swiftcast_Party_CD_SMN}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="true" Grouping="Or">
@@ -997,7 +992,7 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="初始化" Id="f7db7d74-5ddf-4ea4-9e78-3ede63f6d5b2" RegularExpression="\] 21:........:40000010:00:00:00:00">
+                  <Trigger Enabled="true" Name="初始化" Id="f7db7d74-5ddf-4ea4-9e78-3ede63f6d5b2" RegularExpression="\] 21:........:40000010:00:00:00:00|任务开始">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="Souma_Defeated_.+" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1023,78 +1018,6 @@
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="7" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[1].name}即刻" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="8" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[2].name}即刻" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="9" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[3].name}即刻" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="10" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[4].name}即刻" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="11" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[5].name}即刻" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="12" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[6].name}即刻" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="13" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[7].name}即刻" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="14" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[8].name}即刻" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
@@ -1109,11 +1032,9 @@
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${TargetName}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                       <ConditionSingle Enabled="true" ExpressionL="${func:substring(4,1):${func:padleft(48,8):${damage}}}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="StringNotEqualNocase" />
                     </Condition>
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -1147,7 +1068,6 @@
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Defeated_Channel" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -1156,7 +1076,6 @@
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Raise_Channel" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -1185,11 +1104,9 @@
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Attack_Role_Channel" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -1432,11 +1349,9 @@
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="${name}" VariableOp="SetString" VariableName="Souma_Team_Role" VariableExpression="${role}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="20.25" TextAuraForeground="#FF8080" TextAuraName="Souma_Team_Role_Set" TextAuraExpression="已设置${func:toupper:${var:Souma_Team_Role}}" TextAuraXIniExpression="0.5*(${_screenwidth}-400)" TextAuraYIniExpression="0.5*(${_screenheight}-100)" TextAuraWIniExpression="400" TextAuraHIniExpression="60" TextAuraOIniExpression="100" TextAuraTTLTickExpression="2-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:已设置${func:toupper:${var:Souma_Team_Role}}:3.00:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -1450,11 +1365,9 @@
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Team_Role}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" VariableName="Souma_Team_Role" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="And">
@@ -1609,7 +1522,7 @@
           </Trigger>
         </Triggers>
       </Folder>
-      <Folder Id="d31de722-8f3c-4fe7-8fb5-246061cab25b" Name="副本触发器 最后更新:1月5日 19:20" Enabled="true">
+      <Folder Id="d31de722-8f3c-4fe7-8fb5-246061cab25b" Name="副本触发器 最后更新:1月6日 17:41" Enabled="true">
         <Folders>
           <Folder Id="2fb973cb-fda9-4d98-abba-a0477fd3bbfa" Name="极完美神" Enabled="true">
             <Folders />
@@ -2351,40 +2264,34 @@
                               <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="${var:Souma_Tectonic_Uplift}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="4" FolderId="997709d8-ff7c-4216-9928-6c029a42e589" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="5" FolderId="997709d8-ff7c-4216-9928-6c029a42e589" UseTTSTextExpression="北北北" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="6" FolderId="997709d8-ff7c-4216-9928-6c029a42e589" UseTTSTextExpression="南南南" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="7" FolderId="997709d8-ff7c-4216-9928-6c029a42e589" UseTTSTextExpression="北北北" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
@@ -2396,7 +2303,6 @@
                                 <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               </ConditionGroup>
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="8" FolderId="997709d8-ff7c-4216-9928-6c029a42e589" UseTTSTextExpression="南南南" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
@@ -2408,13 +2314,11 @@
                                 <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="D4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               </ConditionGroup>
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="9" FolderId="4f79b5aa-1747-48d0-9c7f-36688cc4e0cd" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" ExecutionDelayExpression="3000">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -2426,39 +2330,33 @@
                               <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="${var:Souma_Tectonic_Uplift}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="3" FolderId="997709d8-ff7c-4216-9928-6c029a42e589" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="4" FolderId="997709d8-ff7c-4216-9928-6c029a42e589" UseTTSTextExpression="北北北" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="5" FolderId="997709d8-ff7c-4216-9928-6c029a42e589" UseTTSTextExpression="南南南" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="6" FolderId="4f79b5aa-1747-48d0-9c7f-36688cc4e0cd" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder" ExecutionDelayExpression="3000">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Tectonic_Uplift}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -2916,13 +2814,11 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="石化" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:你的石化:3:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -2933,31 +2829,26 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="b866fc19-8212-498f-99cb-9b733cda1e7c" TriggerText="Souma_Count_Down:${time}-0.5" ActionType="Trigger" Asynchronous="False">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="3" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-4.5)*1000}">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1b66aba1-8d21-49cf-85c6-9fa100a33261" TriggerText="Souma_Distance:${name}:石化:3.5" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1b66aba1-8d21-49cf-85c6-9fa100a33261" TriggerText="Souma_Distance:${name}:石化:3.5" ActionType="Trigger" ExecutionDelayExpression="1000">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -2968,25 +2859,21 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="即将空雪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-3)*1000}">
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="3" UseTTSTextExpression="衣雪" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:即将空血:3:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="4" VariableName="Souma_I_Have_Hell_Wind" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="${time}*1000">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -2998,35 +2885,30 @@
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                   <ConditionSingle Enabled="true" ExpressionL="${skill}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:获得延迟核爆:3:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                   <ConditionSingle Enabled="true" ExpressionL="${skill}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:获得延迟分散:3:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                   <ConditionSingle Enabled="true" ExpressionL="${skill}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:获得延迟分摊:3:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                   <ConditionSingle Enabled="true" ExpressionL="${skill}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:获得延迟石化:3:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                   <ConditionSingle Enabled="true" ExpressionL="${skill}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -3037,13 +2919,11 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="核爆远离" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:场中集合:6:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -3054,11 +2934,9 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:散开:6:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="false" Grouping="Or" />
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -3070,32 +2948,27 @@
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                                   <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Waiting_Unholy_Darkness" VariableExpression="${var:Souma_Waiting_Unholy_Darkness}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="3" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-6)*1000}">
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_I_Have_Hell_Wind}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="4" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="5" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:分摊:6:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Waiting_Unholy_Darkness}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -3104,19 +2977,16 @@
                             <Actions>
                               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="af8fa636-2e8f-4a3b-980b-49fff467fb60" ActionType="Trigger" ExecutionDelayExpression="500">
                                 <Condition Enabled="false" Grouping="Or" />
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="核爆远离" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-5.5)*1000}">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="3" UseTTSTextExpression="核爆远离" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:远离人群:5.5:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -3132,13 +3002,11 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:即时核爆:6:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -3150,14 +3018,12 @@
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="伊雪" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:远离分摊:6:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -3168,13 +3034,11 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:即时分摊:6:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -3185,13 +3049,11 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:即时分散:6:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Spell_In_Waiting}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -3893,11 +3755,13 @@
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="9" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Temporary_Current" VariableExpression="${var:Souma_Temporary_Current}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" UseTTSTextExpression="右上右上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
@@ -3906,22 +3770,6 @@
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            <ConditionGroup Enabled="true" Grouping="And">
-                              <ConditionGroup Enabled="true" Grouping="Or">
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="PLD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="WAR" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="GNB" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="SAM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DRK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                              </ConditionGroup>
-                              <ConditionGroup Enabled="true" Grouping="Or">
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                              </ConditionGroup>
-                            </ConditionGroup>
                             <ConditionGroup Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxiventity[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                               <ConditionGroup Enabled="true" Grouping="Or">
@@ -3934,8 +3782,16 @@
                               <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="7" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_I_Have_Flare}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </ConditionGroup>
+                            <ConditionGroup Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxiventity[${_ffxivplayer}].y}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                              <ConditionGroup Enabled="true" Grouping="Or">
+                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                                <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                              </ConditionGroup>
+                            </ConditionGroup>
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" UseTTSTextExpression="左下左下" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
@@ -3943,20 +3799,10 @@
                           <ConditionGroup Enabled="true" Grouping="Or">
                             <ConditionGroup Enabled="true" Grouping="And">
                               <ConditionGroup Enabled="true" Grouping="Or">
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="BRD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="MCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="BLM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                              </ConditionGroup>
-                              <ConditionGroup Enabled="true" Grouping="Or">
                                 <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               </ConditionGroup>
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxiventity[${_ffxivplayer}].y}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                             </ConditionGroup>
                             <ConditionGroup Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxiventity[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
@@ -3972,11 +3818,13 @@
                             </ConditionGroup>
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="5" UseTTSTextExpression="左下左下" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:↘↘↘:3:0:0:main" ActionType="Trigger">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="3FEA" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="6" UseTTSTextExpression="左上左上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
@@ -3987,19 +3835,10 @@
                             <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             <ConditionGroup Enabled="true" Grouping="And">
                               <ConditionGroup Enabled="true" Grouping="Or">
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="PLD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="WAR" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="GNB" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="SAM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DRK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                              </ConditionGroup>
-                              <ConditionGroup Enabled="true" Grouping="Or">
                                 <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               </ConditionGroup>
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxiventity[${_ffxivplayer}].y}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                             </ConditionGroup>
                             <ConditionGroup Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxiventity[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
@@ -4015,6 +3854,7 @@
                             </ConditionGroup>
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="7" UseTTSTextExpression="右下右下" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
@@ -4022,20 +3862,10 @@
                           <ConditionGroup Enabled="true" Grouping="Or">
                             <ConditionGroup Enabled="true" Grouping="And">
                               <ConditionGroup Enabled="true" Grouping="Or">
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="BRD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="MCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                                <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="BLM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                              </ConditionGroup>
-                              <ConditionGroup Enabled="true" Grouping="Or">
                                 <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Temporary_Current}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               </ConditionGroup>
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxiventity[${_ffxivplayer}].y}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                             </ConditionGroup>
                             <ConditionGroup Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxiventity[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
@@ -4051,16 +3881,19 @@
                             </ConditionGroup>
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="8" UseTTSTextExpression="左下左下" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="50978bef-7a5d-4c48-b6f9-4f2bd38d0c1d" TriggerText="Souma_Subtitle:↙↙↙:3:0:0:main" ActionType="Trigger">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="3FEB" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="9" UseTTSTextExpression="二连" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="4000">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Refreshing_Shower}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -4173,26 +4006,31 @@
         <Actions>
           <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" Description="初次导入记得设置鲶鱼精邮差的端口。" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" Description="获取更新：&#xD;&#xA;https://github.com/553469159/FFXIV_Auxiliary_Tools" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" Description="QQ群：868116069" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" Description="任何“初始化”触发器都不要随意关闭，否则将无法正常运作。" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" Description="如果你有队友名字叫&quot;YOU&quot;，产生任何问题与我无关。" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="我的位置" Id="0e1288bc-4840-4fae-94b6-eeb019e6d88e" RegularExpression="">
+        <Actions>
+          <Action OrderNumber="1" TextAuraFontSize="14.25" TextAuraExpression="X ${_ffxivparty[${_ffxivplayer}].x} Y ${_ffxivparty[${_ffxivplayer}].y}" TextAuraXIniExpression="663" TextAuraYIniExpression="92" TextAuraWIniExpression="500" TextAuraHIniExpression="80" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="TextAura">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
