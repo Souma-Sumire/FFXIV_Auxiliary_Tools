@@ -4140,19 +4140,53 @@
         </Folders>
         <Triggers />
       </Folder>
-      <Folder Id="5d0d109e-2ff9-4fd9-b792-67b7d4b4c18d" Name="发送站位宏 更新:1月3日 21:25 需要：鲶鱼精邮差" Enabled="true">
+      <Folder Id="5d0d109e-2ff9-4fd9-b792-67b7d4b4c18d" Name="自动发宏工具 更新:1月9日 4:13 需要：鲶鱼精邮差" Enabled="true">
         <Folders />
         <Triggers>
           <Trigger Enabled="true" Name="动作" Id="9e590e86-871a-45d9-b558-72bc96d80268" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:发送副本宏 ?(?&lt;channel&gt;\w+?)( ?(?&lt;map&gt;.+?))?$">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_PostNamazu_Port}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_PostNamazu_Port}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${evar:map}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="p" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="e" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="s" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="y" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="h" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="t" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="a" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="c" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="5" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="6" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="7" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="8" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_PostNamazu_Port}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_PostNamazu_Port}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="Not">
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="p" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="e" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="s" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="y" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="h" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="t" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="a" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="c" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="5" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="6" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="7" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="8" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  </ConditionGroup>
+                </Condition>
                 <Conditions />
               </Action>
             </Actions>
@@ -4160,8 +4194,9 @@
           </Trigger>
           <Trigger Enabled="true" Name="设置 - csv路径" Id="3b6ebcea-3af5-4e01-81ef-3afbdedc500b" RegularExpression="01:Changed Zone to ">
             <Actions>
-              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="D:\微云同步助手\553469159\Github\FFXIV_Auxiliary_Tools\Triggernometry触发器\站位宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
+              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="D:\微云同步助手\553469159\Github\FFXIV_Auxiliary_Tools\Triggernometry触发器\【说明】自动发宏工具 需要鲶鱼精邮差\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
