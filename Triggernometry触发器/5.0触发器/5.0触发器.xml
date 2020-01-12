@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月12日 14:57 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月12日 15:01 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="da002a90-f506-4a86-baf0-4d445bd17c69" Name="*通用方法" Enabled="true">
         <Folders>
@@ -315,7 +315,7 @@
                 </Condition>
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="初始化" Id="47c6ffdc-0440-4a7d-a7e8-30448a377912" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0839:((?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+)(的职业转换成了|は「マイスター)|you change to)">
+              <Trigger Enabled="true" Name="切换职业" Id="47c6ffdc-0440-4a7d-a7e8-30448a377912" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0839:((?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+)(的职业转换成了|は「マイスター)|you change to)">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:职业变动，${func:toupper:${var:Souma_Team_Role}}取消:3:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -5209,7 +5209,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="README:第一次使用的配置方法 (查看内部的说明Description)" Id="6b54df26-d54e-422d-94dc-5655b8646c9e" RegularExpression="" Description="第一步：如果你用的是 本地触发器(Local triggers) → 直接跳到第二步&#xD;&#xA;&#xD;&#xA;        如果你用的是 远程触发器(Remote triggers) → 找到[*轮椅初始化]触发器，将他复制到 '本地触发器' 分类下并启用，然后禁用远程触发器里的[*轮椅初始化]&#xD;&#xA;&#xD;&#xA; （如果你找不到这个触发器，需要在远程导入的时候在勾选倒数第二个选项“XXXXX允许文件夹操作” &quot;Allow triggers to perform file operations&quot;）&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第二步：配置：修改变量赋值的内容。&#xD;&#xA;&#xD;&#xA;        第一行：鲶鱼精邮差的监听端口：没什么可说的，是多少就写多少。&#xD;&#xA;        第二行：文件夹的本地绝对路径：打开FFXIV_Auxiliary_Tools文件夹，然后复制地址栏的内容就可以。非常简单，但要注意最后是没有斜线&quot;\&quot;的。&#xD;&#xA;        XXX坐标：X是横坐标，Y是纵坐标。偏移是屏幕中心为0的偏移。&#xD;&#xA;        XXX发送频道：想往哪发就把内容改成什么字母，比如小队是p，默语是e。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第三步：英文版:右上角找到&quot;Options&quot; - &quot;Edit Configuration&quot; - &quot;General&quot; - &quot;Startup trigger/foloder&quot; &#xD;&#xA;&#xD;&#xA;        汉化版:右上角找到&quot;选项&quot; - &quot;编辑选项&quot; - &quot;通用&quot; - &quot;我不知道怎么翻译的,反正就在下面&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;        在下方的目录中，选择[轮椅初始化]触发器(就在这个README的旁边)，然后点击 &quot;OK&quot; ，这样每次启动ACT都会自动触发这个触发器来进行初始化设置。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第四步：重启ACT使配置生效。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;        如果修改了里面的设置又不想重启ACT来生效，可以使用手动触发，方法：在游戏中使用宏 &quot;/e !AT INIT&quot; (不包括引号)。或使用开发者模式进行右键fire。">
+          <Trigger Enabled="true" Name="README:第一次使用的配置方法 (查看内部的说明Description)" Id="6b54df26-d54e-422d-94dc-5655b8646c9e" RegularExpression="" Description="第一步：如果你用的是 本地触发器(Local triggers) → 直接跳到第二步&#xD;&#xA;&#xD;&#xA;        如果你用的是 远程触发器(Remote triggers) → 找到[*轮椅初始化]触发器，将他复制到 '本地触发器' 分类下并启用，然后禁用远程触发器里的[*轮椅初始化]&#xD;&#xA;&#xD;&#xA; （如果你找不到这个触发器，需要在远程导入的时候在勾选倒数第二个选项 '允许触发器操作文件'(Allow triggers to perform file operations）&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第二步：配置：修改变量赋值的内容。&#xD;&#xA;&#xD;&#xA;        第一行：鲶鱼精邮差的监听端口：没什么可说的，是多少就写多少。&#xD;&#xA;        第二行：文件夹的本地绝对路径：打开FFXIV_Auxiliary_Tools文件夹，然后复制地址栏的内容就可以。非常简单，但要注意最后是没有斜线&quot;\&quot;的。&#xD;&#xA;        XXX坐标：X是横坐标，Y是纵坐标。偏移是屏幕中心为0的偏移。&#xD;&#xA;        XXX发送频道：想往哪发就把内容改成什么字母，比如小队是p，默语是e。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第三步：英文版:右上角找到&quot;Options&quot; - &quot;Edit Configuration&quot; - &quot;General&quot; - &quot;Startup trigger/foloder&quot; &#xD;&#xA;&#xD;&#xA;        汉化版:右上角找到&quot;选项&quot; - &quot;编辑选项&quot; - &quot;通用&quot; - &quot;我不知道怎么翻译的,反正就在下面&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;        在下方的目录中，选择[轮椅初始化]触发器(就在这个README的旁边)，然后点击 &quot;OK&quot; ，这样每次启动ACT都会自动触发这个触发器来进行初始化设置。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第四步：※※※重启ACT使配置生效。※※※&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;        如果修改了里面的设置又不想重启ACT，可以使用手动触发，方法：在游戏中使用宏 &quot;/e !AT INIT&quot; (不包括引号)。或使用开发者模式进行右键fire。">
             <Actions />
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
