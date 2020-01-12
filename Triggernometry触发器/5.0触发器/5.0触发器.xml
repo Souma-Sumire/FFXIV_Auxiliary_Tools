@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月12日 15:24 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月12日 17:45 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="da002a90-f506-4a86-baf0-4d445bd17c69" Name="*通用方法" Enabled="true">
         <Folders>
@@ -4902,9 +4902,15 @@
       <Folder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏" Enabled="true">
         <Folders />
         <Triggers>
-          <Trigger Enabled="true" Name="动作" Id="64604d21-8737-44f7-a910-9c76887a785e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:发送副本宏 ?(?&lt;channel&gt;\w+?)( ?(?&lt;map&gt;.+?))?$">
+          <Trigger Enabled="true" Sequential="True" Name="动作" Id="64604d21-8737-44f7-a910-9c76887a785e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:发送副本宏 ?(?&lt;channel&gt;\w+?)( ?(?&lt;map&gt;.+?))?$">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="${var:AT_项目文件夹路径}\Triggernometry触发器\自动发宏工具\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${elvar:ExtremeMacroText}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="p" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="e" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -4925,7 +4931,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionGroup Enabled="true" Grouping="Not">
                     <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="p" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -4946,16 +4952,6 @@
                     <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="8" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   </ConditionGroup>
                 </Condition>
-                <Conditions />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Trigger>
-          <Trigger Enabled="true" Name="加载csv" Id="1dd36fbf-6f95-4b0b-97b9-3ad175b4fc41" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:重新加载csv$">
-            <Actions>
-              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="${var:AT_项目文件夹路径}\Triggernometry触发器\自动发宏工具\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
             </Actions>
@@ -5113,7 +5109,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" VariableOp="SetString" VariableName="AT_项目文件夹路径" VariableExpression="d:\GitHub\FFXIV_Auxiliary_Tools" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="2" VariableOp="SetString" VariableName="AT_项目文件夹路径" VariableExpression="d:\Users\Ql-01\Documents\GitHub\FFXIV_Auxiliary_Tools" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -5198,10 +5194,6 @@
                 <Conditions />
               </Action>
               <Action OrderNumber="23" VariableOp="SetString" VariableName="AT_伊甸平A职能_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="24" DiskFileOp="ReadCSVIntoTableVariable" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1dd36fbf-6f95-4b0b-97b9-3ad175b4fc41" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="1000" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
