@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月11日 11:53 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月12日 8:16 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="da002a90-f506-4a86-baf0-4d445bd17c69" Name="*通用方法" Enabled="true">
         <Folders>
@@ -256,7 +256,7 @@
           </Trigger>
           <Trigger Enabled="true" Name="显示字幕" Id="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" RegularExpression="Souma_Subtitle:(?&lt;text&gt;\S+):(?&lt;time&gt;[\d\.]+):(?&lt;offset_x&gt;[\d\.-]+):(?&lt;offset_y&gt;[\d\.-]+):(?&lt;id&gt;\S+)">
             <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraEffect="Bold" TextAuraFontSize="24" TextAuraForeground="Red" TextAuraName="Souma_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+              <Action OrderNumber="1" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraEffect="Bold" TextAuraFontSize="24" TextAuraForeground="Red" TextAuraName="Souma_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_显示字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}${var:AT_显示字幕Y偏移}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -269,6 +269,92 @@
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:点你:6:0:0:main" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Sequential="True" Name="倒计时字幕" Id="f1514cd2-fbb8-4d60-ae57-a7b56a6cf606" RegularExpression="Souma_Countdown_Caption:(?&lt;text&gt;\S+):(?&lt;time&gt;[\d\.]+):(?&lt;offset_x&gt;[\d\.]+):(?&lt;offset_y&gt;[\d\.]+)" PeriodRefire="Deny" RefirePeriodExpression="1000">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraName="Souma_Countdown_Caption" TextAuraExpression="${text}${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Not">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraName="Souma_Countdown_Caption_E2S_1" TextAuraExpression="一血${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*1" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraName="Souma_Countdown_Caption_E2S_2" TextAuraExpression="核爆${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*2" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraName="Souma_Countdown_Caption_E2S_3" TextAuraExpression="分散${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*3" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraName="Souma_Countdown_Caption_E2S_4" TextAuraExpression="分摊${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*4" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraName="Souma_Countdown_Caption_E2S_5" TextAuraExpression="石化${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*5" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="Souma_Countdown_Caption" TextAuraExpression="${text}${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" ExecutionDelayExpression="(${time}-${var:AT_X秒前改为警报颜色})*1000" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Not">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="Souma_Countdown_Caption_E2S_1" TextAuraExpression="一血${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*1" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="Souma_Countdown_Caption_E2S_2" TextAuraExpression="核爆${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*2" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="10" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="Souma_Countdown_Caption_E2S_3" TextAuraExpression="分散${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*3" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="11" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="Souma_Countdown_Caption_E2S_4" TextAuraExpression="分摊${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*4" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="12" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="Souma_Countdown_Caption_E2S_5" TextAuraExpression="石化${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}+${var:AT_倒计时字幕Y间隔}*5" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
                 <Conditions />
               </Action>
@@ -1920,7 +2006,7 @@
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Trigger>
-                          <Trigger Enabled="true" Name="延迟咏唱：点你！qwq" Id="b3e9fbda-3987-4951-91bd-31d00cd9eb91" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (延迟咏唱：|ディレイスペル：|Spell-In-Waiting: )(?&lt;skill&gt;.*) from ">
+                          <Trigger Enabled="true" Name="延迟咏唱：点你！qwq" Id="b3e9fbda-3987-4951-91bd-31d00cd9eb91" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (延迟咏唱：|ディレイスペル：|Spell-In-Waiting: )(?&lt;skill&gt;.*) from  for (?&lt;time&gt;[\d\.]+?) Seconds\.$">
                             <Actions>
                               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:获得延迟一血:3:0:0:main" ActionType="Trigger">
                                 <Condition Enabled="true" Grouping="And">
@@ -2049,6 +2135,16 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                                 </Condition>
+                                <Conditions />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Trigger>
+                          <Trigger Enabled="true" Name="延迟倒计时" Id="d8dd1c08-8357-448a-b28a-5706d4639f43" RegularExpression=" gains the effect of (延迟咏唱：|ディレイスペル：|Spell-In-Waiting: )(?&lt;skill&gt;[^:]+?) from  for (?&lt;time&gt;[\d\.]+?) Seconds\.">
+                            <Actions>
+                              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f1514cd2-fbb8-4d60-ae57-a7b56a6cf606" TriggerText="Souma_Countdown_Caption:${skill}:${time}:0:0" ActionType="Trigger">
+                                <Condition Enabled="false" Grouping="Or" />
                                 <Conditions />
                               </Action>
                             </Actions>
@@ -3168,7 +3264,7 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="水之觉醒" Id="cdbc39c8-40e4-441c-9af2-a5817f9b99ef" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:400F:">
                     <Actions>
-                      <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Refreshing_Shower" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                      <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Refreshing_Shower" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -3426,7 +3522,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="false" Name="地星" Id="d7fe4cc5-445f-40b0-a239-78e1308e5ca6" RegularExpression="\] 16:\w{8}:(?&lt;CasterName&gt;[^:]+?):1D0F:(?&lt;AbilityName&gt;[^:]+?):">
+                  <Trigger Enabled="false" Name="地星" Id="d7fe4cc5-445f-40b0-a239-78e1308e5ca6" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):1D0F:(?&lt;AbilityName&gt;[^:]+?):">
                     <Actions>
                       <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3694,7 +3790,7 @@
               <Folder Id="41546ddc-f5f7-4b49-b795-e0df83a068bc" Name="T" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="暗黑布道" Id="0d4d324b-c77b-449d-98f0-104f08424448" RegularExpression="\] 16:\w{8}:(?&lt;CasterName&gt;[^:]+?):4057:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="true" Name="暗黑布道" Id="0d4d324b-c77b-449d-98f0-104f08424448" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):4057:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
                       <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3719,7 +3815,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="摆脱" Id="ff611b0b-b3a0-4dfc-a6e8-55fad5de9b40" RegularExpression="\] 16:\w{8}:(?&lt;CasterName&gt;[^:]+?):1CDC:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="true" Name="摆脱" Id="ff611b0b-b3a0-4dfc-a6e8-55fad5de9b40" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):1CDC:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
                       <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3982,7 +4078,7 @@
               <Folder Id="d3de7394-396e-4769-ab7c-07c72c447724" Name="D" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="策动" Id="19bceec1-fa6d-4d7b-b22e-b60e61a837e7" RegularExpression="\] 16:\w{8}:(?&lt;CasterName&gt;[^:]+?):41F9:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="true" Name="策动" Id="19bceec1-fa6d-4d7b-b22e-b60e61a837e7" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):41F9:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
                       <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
@@ -4007,7 +4103,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="行吟" Id="2bf7834a-dfe7-4ff5-9923-8ae324b92008" RegularExpression="\] 16:\w{8}:(?&lt;CasterName&gt;[^:]+?):1CED:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="true" Name="行吟" Id="2bf7834a-dfe7-4ff5-9923-8ae324b92008" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):1CED:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
                       <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
@@ -4032,7 +4128,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="防守之桑巴" Id="46ca69fc-da12-4775-bbd9-f17d2e6ab4f0" RegularExpression="\] 16:\w{8}:(?&lt;CasterName&gt;[^:]+?):3E8C:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="true" Name="防守之桑巴" Id="46ca69fc-da12-4775-bbd9-f17d2e6ab4f0" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):3E8C:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
                       <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
@@ -4057,7 +4153,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="真言" Id="2780a5e9-912d-4a8a-84df-948b89c183d4" RegularExpression="\] 16:\w{8}:(?&lt;CasterName&gt;[^:]+?):41:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="true" Name="真言" Id="2780a5e9-912d-4a8a-84df-948b89c183d4" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):41:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
                       <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
@@ -4513,7 +4609,7 @@
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="死星核爆" Id="7b92d5fa-5a69-4b7e-b618-2f5c94be698d" RegularExpression="\] 16:\w{8}:(?&lt;CasterName&gt;[^:]+?):DFE:">
+                      <Trigger Enabled="true" Name="死星核爆" Id="7b92d5fa-5a69-4b7e-b618-2f5c94be698d" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):DFE:">
                         <Actions>
                           <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="63980c3a-4d8d-4c21-b897-f95fca2f4e5a" ActionType="Trigger">
                             <Condition Enabled="false" Grouping="Or" />
@@ -4939,47 +5035,71 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="7" VariableOp="SetString" VariableName="AT_大技能_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="AT_显示字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="8" VariableOp="SetString" VariableName="AT_大技能_CD刷新提示" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="AT_显示字幕Y偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="9" VariableOp="SetString" VariableName="AT_大技能CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="9" VariableOp="SetNumeric" VariableName="AT_X秒前改为警报颜色" VariableExpression="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="10" VariableOp="SetString" VariableName="AT_减伤_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="10" VariableOp="SetNumeric" VariableName="AT_倒计时字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="11" VariableOp="SetString" VariableName="AT_减伤_CD刷新提示" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="11" VariableOp="SetNumeric" VariableName="AT_倒计时字幕Y偏移" VariableExpression="-300" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="12" VariableOp="SetString" VariableName="AT_减伤CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="12" VariableOp="SetNumeric" VariableName="AT_倒计时字幕Y间隔" VariableExpression="40" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="13" VariableOp="SetString" VariableName="AT_复活_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="13" VariableOp="SetString" VariableName="AT_大技能_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="14" VariableOp="SetString" VariableName="AT_死亡_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="14" VariableOp="SetString" VariableName="AT_大技能_CD刷新提示" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="15" VariableOp="SetString" VariableName="AT_迫害队友_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="15" VariableOp="SetString" VariableName="AT_大技能CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="16" VariableOp="SetString" VariableName="AT_伊甸技能判定_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="16" VariableOp="SetString" VariableName="AT_减伤_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="17" VariableOp="SetString" VariableName="AT_伊甸平A职能_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="17" VariableOp="SetString" VariableName="AT_减伤_CD刷新提示" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="18" VariableOp="SetString" VariableName="AT_减伤CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="19" VariableOp="SetString" VariableName="AT_复活_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="20" VariableOp="SetString" VariableName="AT_死亡_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="21" VariableOp="SetString" VariableName="AT_迫害队友_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="22" VariableOp="SetString" VariableName="AT_伊甸技能判定_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="23" VariableOp="SetString" VariableName="AT_伊甸平A职能_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
@@ -4987,7 +5107,7 @@
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
       </Trigger>
-      <Trigger Enabled="true" Name="配置方法(看这里面的说明Description)" Id="6b54df26-d54e-422d-94dc-5655b8646c9e" RegularExpression="" Description="第一步：如果你用的是 本地触发器(Local triggers) → 直接跳到第二步&#xD;&#xA;&#xD;&#xA;        如果你用的是 远程触发器(Remote triggers) → 找到[*初始化]这个触发器，将他拖动/复制到 '本地触发器' 分类下 &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第二步：配置：修改变量赋值的内容。&#xD;&#xA;&#xD;&#xA;	第一行：鲶鱼精邮差的监听端口：没什么可说的，是多少就写多少。&#xD;&#xA;	第三行：文件夹的本地绝对路径：打开FFXIV_Auxiliary_Tools文件夹，然后复制地址栏的内容就可以。非常简单，但要注意最后是没有斜线&quot;\&quot;的。&#xD;&#xA;	第五行以后：想往哪发就把内容改成什么字母，比如小队是p，默语是e。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第三步：英文版:右上角找到&quot;Options&quot; - &quot;Edit Configuration&quot; - &quot;General&quot; - &quot;Startup trigger/foloder&quot; &#xD;&#xA;&#xD;&#xA;	汉化版:右上角找到&quot;选项&quot; - &quot;编辑选项&quot; - &quot;通用&quot; - &quot;我不知道怎么翻译的,反正就在下面&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;	在下方的目录中，选择上[*初始化]触发器，然后点击 &quot;OK&quot; ，这样每次启动ACT都会自动触发这个触发器来进行初始化设置。&#xD;&#xA;&#xD;&#xA;	如果修改了里面的设置又不想重启ACT来生效，可以使用手动触发，方法：在游戏中使用宏 &quot;/e !AT INIT&quot; (不包括引号)。或使用开发者模式进行右键fire。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;	（应该已经是手把手教学了，再问也不知道该如何更详细的说明了……）">
+      <Trigger Enabled="true" Name="配置方法(看这里面的说明Description)" Id="6b54df26-d54e-422d-94dc-5655b8646c9e" RegularExpression="" Description="第一步：如果你用的是 本地触发器(Local triggers) → 直接跳到第二步&#xD;&#xA;&#xD;&#xA;        如果你用的是 远程触发器(Remote triggers) → 找到[*初始化]这个触发器，将他拖动到 '本地触发器' 分类下 &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第二步：配置：修改变量赋值的内容。&#xD;&#xA;&#xD;&#xA; 第一行：鲶鱼精邮差的监听端口：没什么可说的，是多少就写多少。&#xD;&#xA; 第三行：文件夹的本地绝对路径：打开FFXIV_Auxiliary_Tools文件夹，然后复制地址栏的内容就可以。非常简单，但要注意最后是没有斜线&quot;\&quot;的。&#xD;&#xA; 第五行以后：想往哪发就把内容改成什么字母，比如小队是p，默语是e。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第三步：英文版:右上角找到&quot;Options&quot; - &quot;Edit Configuration&quot; - &quot;General&quot; - &quot;Startup trigger/foloder&quot; &#xD;&#xA;&#xD;&#xA; 汉化版:右上角找到&quot;选项&quot; - &quot;编辑选项&quot; - &quot;通用&quot; - &quot;我不知道怎么翻译的,反正就在下面&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA; 在下方的目录中，选择上[*初始化]触发器，然后点击 &quot;OK&quot; ，这样每次启动ACT都会自动触发这个触发器来进行初始化设置。&#xD;&#xA;&#xD;&#xA; 如果修改了里面的设置又不想重启ACT来生效，可以使用手动触发，方法：在游戏中使用宏 &quot;/e !AT INIT&quot; (不包括引号)。或使用开发者模式进行右键fire。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA; （应该已经是手把手教学了，再问也不知道该如何更详细的说明了……）">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
