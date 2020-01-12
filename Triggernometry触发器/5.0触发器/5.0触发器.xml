@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月12日 14:28 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月12日 14:32 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="da002a90-f506-4a86-baf0-4d445bd17c69" Name="*通用方法" Enabled="true">
         <Folders>
@@ -4904,7 +4904,7 @@
         <Triggers>
           <Trigger Enabled="true" Name="动作" Id="64604d21-8737-44f7-a910-9c76887a785e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:发送副本宏 ?(?&lt;channel&gt;\w+?)( ?(?&lt;map&gt;.+?))?$">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:Souma_PostNamazu_Port}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="p" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="e" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -4925,7 +4925,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:Souma_PostNamazu_Port}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionGroup Enabled="true" Grouping="Not">
                     <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="p" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
