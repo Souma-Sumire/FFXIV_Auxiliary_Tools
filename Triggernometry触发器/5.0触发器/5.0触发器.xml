@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月12日 8:52 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 更新:1月12日 09:47 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="da002a90-f506-4a86-baf0-4d445bd17c69" Name="*通用方法" Enabled="true">
         <Folders>
           <Folder Id="7b6b0d76-55a2-47f2-a8c4-27adbd8feb33" Name="获取职业" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Sequential="True" Name="动作" Id="00501ec3-caee-411b-aee5-db4eb76af3a9" RegularExpression="^\[\d\d:\d\d:\d\d\.\d\d\d\] 00:0038:获取职业（长）$">
+              <Trigger Enabled="true" Sequential="True" Name="长" Id="00501ec3-caee-411b-aee5-db4eb76af3a9" RegularExpression="^\[\d\d:\d\d:\d\d\.\d\d\d\] 00:0038:获取职业（长）$">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -149,6 +149,144 @@
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="00501ec3-caee-411b-aee5-db4eb76af3a9" TriggerText="[00:00:00.000] 00:0038:获取职业（长）" ActionType="Trigger" ExecutionDelayExpression="1000" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7da6cca5-e5f0-4c02-a062-29174d469d7c" TriggerText="[00:00:00.000] 00:0038:获取职业（短）" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Sequential="True" Name="短" Id="7da6cca5-e5f0-4c02-a062-29174d469d7c" RegularExpression="^\[\d\d:\d\d:\d\d\.\d\d\d\] 00:0038:获取职业（短）$">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Get_Team_Role_Reset_Short" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Get_Team_Role_Reset_Short}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset_Short}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Get_Team_Role_Reset_Short" VariableExpression="${var:Souma_Get_Team_Role_Reset_Short}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Get_Team_Role_Reset_Short}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="骑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="PLD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="战" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="WAR" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="暗" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="DRK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="6" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="枪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="GNB" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="7" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="白" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="8" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="学" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="9" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="詹" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="10" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="僧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="11" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="龙" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="12" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="忍" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="13" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="侍" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="SAM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="14" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="诗" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="BRD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="15" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="机" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="MCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="16" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="舞" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="17" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="黑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="BLM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="18" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="召" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="19" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].name}职业短" VariableExpression="赤" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset_Short}].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="20" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:已获取小队职业:1:0:0:main" Enabled="False" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="21" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7da6cca5-e5f0-4c02-a062-29174d469d7c" TriggerText="[00:00:00.000] 00:0038:获取职业（短）" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
                     <Conditions />
                   </Action>
                 </Actions>
@@ -1509,11 +1647,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Sequential="True" Name="(判断用)" Id="919b9c15-3b36-491c-b1d9-2deffa5dbeaf" RegularExpression="\] 14:4116:">
                         <Actions>
-                          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="b7e87d71-9a60-4cd1-a0d6-2493e474faf4" ActionType="Trigger">
+                          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="b7e87d71-9a60-4cd1-a0d6-2493e474faf4" ActionType="Trigger" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="919b9c15-3b36-491c-b1d9-2deffa5dbeaf" ActionType="Trigger">
+                          <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="919b9c15-3b36-491c-b1d9-2deffa5dbeaf" ActionType="Trigger" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
@@ -1526,46 +1664,9 @@
                   <Folder Id="e8dc677f-eb2e-4bde-a14a-6a4cb357466a" Name="蓝标职业" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="false" Sequential="True" Name="下一次蓝标职业(平时关闭)" Id="4d79e843-04b0-4131-bfc9-1c83e9c4ffcf" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;.+?):.{4}:.{4}:00BB:">
+                      <Trigger Enabled="true" Sequential="True" Name="单点" Id="4d79e843-04b0-4131-bfc9-1c83e9c4ffcf" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;.+?):.{4}:.{4}:00BB:" PrevActions="Interrupt" PrevActionsRefire="Deny">
                         <Actions>
-                          <Action OrderNumber="1" UseTTSTextExpression="${var:${name}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                            <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
-                          </Action>
-                          <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="4d79e843-04b0-4131-bfc9-1c83e9c4ffcf" ActionType="Trigger">
-                            <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
-                          </Action>
-                        </Actions>
-                        <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
-                      </Trigger>
-                      <Trigger Enabled="true" Name="(判断用:砸地板)" Id="e5b2f06e-af5d-4768-b82a-6a2445949f20" RegularExpression="\] 14:4138:">
-                        <Actions>
-                          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Megalith" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Megalith}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                              <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Megalith}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                            <Conditions />
-                          </Action>
-                          <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Megalith" VariableExpression="${var:Souma_Megalith}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                            <Condition Enabled="true" Grouping="Or">
-                              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Megalith}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                            </Condition>
-                            <Conditions />
-                          </Action>
-                          <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="4d79e843-04b0-4131-bfc9-1c83e9c4ffcf" ActionType="Trigger">
-                            <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
-                          </Action>
-                        </Actions>
-                        <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
-                      </Trigger>
-                      <Trigger Enabled="true" Name="(判断用:大地的双拳)" Id="436dc934-b557-46ce-af1a-cff220bbae75" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4135:">
-                        <Actions>
-                          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="4d79e843-04b0-4131-bfc9-1c83e9c4ffcf" ActionType="Trigger">
+                          <Action OrderNumber="1" UseTTSTextExpression="${var:${name}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="100" Asynchronous="False" RefireInterrupt="True" RefireRequeue="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
@@ -3407,19 +3508,15 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="30" FolderOp="DisableFolder" FolderId="e8dc677f-eb2e-4bde-a14a-6a4cb357466a" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="4d79e843-04b0-4131-bfc9-1c83e9c4ffcf" ActionType="Trigger" Asynchronous="False">
+              <Action OrderNumber="30" FolderOp="DisableFolder" FolderId="faa783bf-ec60-4245-af25-bd9f86064acd" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="b7e87d71-9a60-4cd1-a0d6-2493e474faf4" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="31" FolderOp="DisableFolder" FolderId="faa783bf-ec60-4245-af25-bd9f86064acd" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="b7e87d71-9a60-4cd1-a0d6-2493e474faf4" ActionType="Trigger" Asynchronous="False">
+              <Action OrderNumber="31" FolderOp="DisableFolder" FolderId="faa783bf-ec60-4245-af25-bd9f86064acd" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="919b9c15-3b36-491c-b1d9-2deffa5dbeaf" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="32" FolderOp="DisableFolder" FolderId="faa783bf-ec60-4245-af25-bd9f86064acd" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="919b9c15-3b36-491c-b1d9-2deffa5dbeaf" ActionType="Trigger" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="33" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelAllTrigger" ActionType="Trigger">
+              <Action OrderNumber="32" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelAllTrigger" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -4855,16 +4952,6 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="读取" Id="97dbdd1e-324c-44c4-a0c4-862cee5f99c5" RegularExpression="01:Changed Zone to ">
-            <Actions>
-              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="${var:AT_项目文件夹路径}\Triggernometry触发器\自动发宏工具\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Trigger>
         </Triggers>
       </Folder>
       <Folder Id="5ca3fe26-2c41-4353-a3d1-a2cd75c1f1a1" Name="黑魔回蓝监控" Enabled="true">
@@ -5103,11 +5190,15 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
+          <Action OrderNumber="24" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="${var:AT_项目文件夹路径}\Triggernometry触发器\自动发宏工具\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
       </Trigger>
-      <Trigger Enabled="true" Name="【醒目】【先看这里】配置方法 (查看内部的说明Description)" Id="6b54df26-d54e-422d-94dc-5655b8646c9e" RegularExpression="" Description="第一步：如果你用的是 本地触发器(Local triggers) → 直接跳到第二步&#xD;&#xA;&#xD;&#xA;        如果你用的是 远程触发器(Remote triggers) → 找到[*轮椅初始化]触发器，将他拖动到 '本地触发器' 分类下 &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第二步：配置：修改变量赋值的内容。&#xD;&#xA;&#xD;&#xA;	第一行：鲶鱼精邮差的监听端口：没什么可说的，是多少就写多少。&#xD;&#xA;	第二行：文件夹的本地绝对路径：打开FFXIV_Auxiliary_Tools文件夹，然后复制地址栏的内容就可以。非常简单，但要注意最后是没有斜线&quot;\&quot;的。&#xD;&#xA;	XXX坐标：X是横坐标，Y是纵坐标。偏移是屏幕中心为0的偏移。&#xD;&#xA;	XXX发送频道：想往哪发就把内容改成什么字母，比如小队是p，默语是e。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第三步：英文版:右上角找到&quot;Options&quot; - &quot;Edit Configuration&quot; - &quot;General&quot; - &quot;Startup trigger/foloder&quot; &#xD;&#xA;&#xD;&#xA; 汉化版:右上角找到&quot;选项&quot; - &quot;编辑选项&quot; - &quot;通用&quot; - &quot;我不知道怎么翻译的,反正就在下面&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA; 在下方的目录中，选择上[*轮椅初始化]触发器，然后点击 &quot;OK&quot; ，这样每次启动ACT都会自动触发这个触发器来进行初始化设置。&#xD;&#xA;&#xD;&#xA; 如果修改了里面的设置又不想重启ACT来生效，可以使用手动触发，方法：在游戏中使用宏 &quot;/e !AT INIT&quot; (不包括引号)。或使用开发者模式进行右键fire。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA; （应该已经是手把手教学了，再问也不知道该如何更详细的说明了……）">
+      <Trigger Enabled="true" Name="【醒目】【先看这里】配置方法 (查看内部的说明Description)" Id="6b54df26-d54e-422d-94dc-5655b8646c9e" RegularExpression="" Description="第一步：如果你用的是 本地触发器(Local triggers) → 直接跳到第二步&#xD;&#xA;&#xD;&#xA;        如果你用的是 远程触发器(Remote triggers) → 找到[*轮椅初始化]触发器，将他拖动到 '本地触发器' 分类下 &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第二步：配置：修改变量赋值的内容。&#xD;&#xA;&#xD;&#xA;        第一行：鲶鱼精邮差的监听端口：没什么可说的，是多少就写多少。&#xD;&#xA;        第二行：文件夹的本地绝对路径：打开FFXIV_Auxiliary_Tools文件夹，然后复制地址栏的内容就可以。非常简单，但要注意最后是没有斜线&quot;\&quot;的。&#xD;&#xA;        XXX坐标：X是横坐标，Y是纵坐标。偏移是屏幕中心为0的偏移。&#xD;&#xA;        XXX发送频道：想往哪发就把内容改成什么字母，比如小队是p，默语是e。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;第三步：英文版:右上角找到&quot;Options&quot; - &quot;Edit Configuration&quot; - &quot;General&quot; - &quot;Startup trigger/foloder&quot; &#xD;&#xA;&#xD;&#xA;        汉化版:右上角找到&quot;选项&quot; - &quot;编辑选项&quot; - &quot;通用&quot; - &quot;我不知道怎么翻译的,反正就在下面&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA; 在下方的目录中，选择上[*轮椅初始化]触发器，然后点击 &quot;OK&quot; ，这样每次启动ACT都会自动触发这个触发器来进行初始化设置。&#xD;&#xA;&#xD;&#xA; 如果修改了里面的设置又不想重启ACT来生效，可以使用手动触发，方法：在游戏中使用宏 &quot;/e !AT INIT&quot; (不包括引号)。或使用开发者模式进行右键fire。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA; （应该已经是手把手教学了，再问也不知道该如何更详细的说明了……）">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
