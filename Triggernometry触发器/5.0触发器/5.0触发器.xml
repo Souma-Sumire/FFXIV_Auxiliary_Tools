@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.14.1 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.14.2 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="4fe2c4b9-bf1b-48a1-bdc7-f7b6ac77cb56" Name="*设置文件夹" Enabled="true">
         <Folders />
@@ -2201,7 +2201,7 @@
                       </Folder>
                       <Folder Id="d159841f-add5-4422-a48b-90c14f124f66" Name="高低地（升降梯 构造隆起）" Enabled="true">
                         <Folders>
-                          <Folder Id="d97f9b2f-2981-4625-a86f-cb7d9737e249" Name="第1次" Enabled="false">
+                          <Folder Id="d97f9b2f-2981-4625-a86f-cb7d9737e249" Name="第1次" Enabled="true">
                             <Folders />
                             <Triggers>
                               <Trigger Enabled="true" Name="蓝标" Id="5d0a8711-5a76-423e-9791-4578a3a759af" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BB:">
@@ -2271,7 +2271,7 @@
                               </Trigger>
                             </Triggers>
                           </Folder>
-                          <Folder Id="faa783bf-ec60-4245-af25-bd9f86064acd" Name="第2次" Enabled="false">
+                          <Folder Id="faa783bf-ec60-4245-af25-bd9f86064acd" Name="第2次" Enabled="true">
                             <Folders />
                             <Triggers>
                               <Trigger Enabled="true" Name="蓝标" Id="92a05fa5-8955-4444-a20d-01feccb7f977" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BB:">
@@ -9321,9 +9321,79 @@
       </Folder>
     </Folders>
     <Triggers>
-      <Trigger Enabled="true" Name="README" Id="6b54df26-d54e-422d-94dc-5655b8646c9e" RegularExpression="" Description="1-本地触发器(Local triggers) → 直接跳到第二步&#xD;&#xA;  远程触发器(Remote triggers) →将&quot;*设置文件夹&quot;，复制到 [本地触发器(Local triggers)] 分类下，禁用远程触发器中的原&quot;*设置文件夹&quot;。&#xD;&#xA;&#xD;&#xA;2-修改设置内容。&#xD;&#xA;&#xD;&#xA;  ※项目文件夹：打开FFXIV_Auxiliary_Tools-master文件夹，然后复制地址栏的内容就可以。注意最后是没有斜线\的。&#xD;&#xA;&#xD;&#xA;  鲶鱼精邮差端口：保持一致即可，如果你懒得改也可以把鲶鱼精邮差那边设置成2019。&#xD;&#xA;&#xD;&#xA;  坐标：X是横坐标，Y是纵坐标。&#xD;&#xA;  偏移：以屏幕中心为原点的XY偏移。&#xD;&#xA;&#xD;&#xA;  发送频道：小队是p，默语是e。&#xD;&#xA;  ...&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;3-在“选项”-&gt;“编辑配置”-&gt;“常规”-&gt;“启动文件夹”下选择[*设置文件夹]作为启动文件夹&#xA;&#xA;&#xD;&#xA;&#xD;&#xA;4-重新启动或禁用/启用Triggernometry插件">
+      <Trigger Enabled="true" Name="README" Id="6b54df26-d54e-422d-94dc-5655b8646c9e" RegularExpression="" Description="1-本地触发器(Local triggers) → 直接跳到第二步&#xD;&#xA;  远程触发器(Remote triggers) →将&quot;*设置文件夹&quot;，复制到 [本地触发器(Local triggers)] 分类下，禁用远程触发器中的原&quot;*设置文件夹&quot;&#xD;&#xA;&#xD;&#xA;2-修改设置内容&#xD;&#xA;&#xD;&#xA;  ※项目文件夹：打开FFXIV_Auxiliary_Tools-master文件夹，然后复制地址栏的内容就可以。注意最后是没有斜线\的&#xD;&#xA;&#xD;&#xA;  鲶鱼精邮差端口：保持一致即可，如果你懒得改也可以把鲶鱼精邮差那边设置成2019&#xD;&#xA;&#xD;&#xA;  坐标：X是横坐标，Y是纵坐标&#xD;&#xA;  偏移：以屏幕中心为原点的XY偏移&#xD;&#xA;&#xD;&#xA;  发送频道：小队是p，默语是e&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;3-在“选项”-&gt;“编辑配置”-&gt;“常规”-&gt;“启动文件夹”下选择[*设置文件夹]作为启动文件夹&#xA;&#xA;&#xD;&#xA;&#xD;&#xA;4-重新启动ACT">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Sequential="True" Name="使用宏&quot;/e !AT INIT&quot; 清空所有变量与文字图片，重新触发[*设置文件夹]。" Id="efd7040a-73cf-4649-abec-3080430a35ba" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraOp="DeactivateAllAura" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TextAura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="4" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="55ab3ac6-811b-48fa-bc37-b6bf385b2a78" ActionType="Trigger" ExecutionDelayExpression="1" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="5" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="387aacaa-6fd0-4fa7-83c7-cc75f6302698" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="6" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="b3966241-b7ff-4ce9-9bcb-5640d2e93af4" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="7" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="908b834c-f2d8-4164-933f-b239d1d28fcc" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="8" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="35766129-d793-4375-a073-aa33af912eb7" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="9" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2c4e0367-619a-4a88-9954-d69a8f8cc9d4" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="10" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="5c333d35-7679-4315-84a9-40982f4649d5" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="11" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="e5b1e0c4-6299-4744-bd70-62e624e6b20e" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="12" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="fbde9a62-fae7-44d5-88b0-5f294559d805" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="13" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="980a3c93-de61-4399-848a-c034d7d4353c" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="14" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="387f8536-b279-4e3c-9442-3a99ad8d5856" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="15" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1c6afdb8-72d9-47c4-9e4a-571a15435a5e" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="16" AuraOp="DeactivateAllAura" VariableOp="UnsetAll" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="b8fce629-86dd-421b-ad0f-657204bb3d2f" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
