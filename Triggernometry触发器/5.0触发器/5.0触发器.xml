@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.15.4 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.15.5 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="dc3011c3-2a01-4626-b94a-84cc1f8de13c" Name="功能" Enabled="true">
         <Folders>
@@ -13,19 +13,19 @@
                     <Triggers>
                       <Trigger Enabled="true" Name="死而不僵" Id="d0bb07d6-286d-4b42-9aa0-81afb1dfa43c" RegularExpression="\] 1A:\w{8}:(?&lt;CasterName&gt;[^:]+?) gains the effect of (?&lt;AbilityName&gt;死而不僵|Walking Dead|ウォーキングデッド) from [^:]+? for 10\.00 Seconds\.$">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} ${CasterName}陷入了“死而不僵”效果。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} ${CasterName}陷入了“死而不僵”效果。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} 死而不僵 3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="7000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} 死而不僵 3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="7000" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} 死而不僵 2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
+                          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} 死而不僵 2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} 死而不僵 1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
+                          <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} 死而不僵 1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
@@ -41,7 +41,7 @@
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} “${AbilityName}”被解除了" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} “${AbilityName}”被解除了" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
@@ -58,7 +58,7 @@
                     <Triggers>
                       <Trigger Enabled="true" Name="巨星字幕提醒" Id="99833e27-9c6a-480e-af43-ac7de448a27d" RegularExpression="\] 1A:\w{8}:(?&lt;CasterName&gt;[^:]+?) gains the effect of (?&lt;AbilityName&gt;巨星主宰|Giant Dominance|巨星の支配者) from [^:]+? for 10\.00 Seconds\.$">
                         <Actions>
-                          <Action OrderNumber="-1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="-1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
@@ -78,11 +78,11 @@
                       </Trigger>
                       <Trigger Enabled="false" Name="地星" Id="d7fe4cc5-445f-40b0-a239-78e1308e5ca6" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):1D0F:(?&lt;AbilityName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="60*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="60*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_大技能_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -96,11 +96,11 @@
                       </Trigger>
                       <Trigger Enabled="false" Name="秘策" Id="7a0f503a-8656-4943-af4c-e2e1b3cb645b" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):409E:(?&lt;AbilityName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_大技能_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -114,11 +114,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="天赐祝福" Id="54f65a5d-76b4-4950-8fb6-9707f506687b" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):8C:(?&lt;AbilityName&gt;[^:]+?):\w{8}:(?&lt;TargetName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_大技能_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -167,7 +167,7 @@
                 <Triggers>
                   <Trigger Enabled="true" Name="读条" Id="95d5c27f-6150-4985-88f9-843503c175be" RegularExpression="\] 14:\w{0,4}:(?&lt;SourceName&gt;[^:]+?) starts using (?&lt;AbilityName&gt;生辰|Ascend|アセンド|复(活|生)|Raise|蘇生|赤复活|Verraise|ヴァルレイズ) on (?&lt;TargetName&gt;[^:]+?)\.$">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_复活_发送频道}} 读条${AbilityName}：${var:${SourceName}职业} → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_复活_发送频道}} 读条${AbilityName}：${var:${SourceName}职业} → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -179,11 +179,11 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="判定" Id="f0c40074-e2a4-4cd4-8107-20d2349a345c" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):\w{0,4}:(?&lt;AbilityName&gt;生辰|Ascend|アセンド|复(活|生)|Raise|蘇生|赤复活|Verraise|ヴァルレイズ):\w{8}:(?&lt;TargetName&gt;[^:]+?):">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）→${AbilityName} → ${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）→${AbilityName} → ${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）MP:${_ffxivparty[${CasterName}].currentmp} 醒梦CD:${numeric:max(round(60-(${_systemtimems}-${var:${CasterName}醒梦})/1000,1),0)}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）MP:${_ffxivparty[${CasterName}].currentmp} 醒梦CD:${numeric:max(round(60-(${_systemtimems}-${var:${CasterName}醒梦})/1000,1),0)}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -304,11 +304,11 @@
                     <Triggers>
                       <Trigger Enabled="true" Name="暗黑布道" Id="0d4d324b-c77b-449d-98f0-104f08424448" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):4057:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -322,11 +322,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="摆脱" Id="ff611b0b-b3a0-4dfc-a6e8-55fad5de9b40" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):1CDC:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -340,11 +340,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="亲疏自行" Id="61003f07-00ea-4d2a-a4bb-455e69602d46" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):1D7C:(?&lt;AbilityName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -359,11 +359,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="坦克通用30%" Id="165abba5-0c27-4e44-a684-9a8d9145e567" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):(11|2C|3F14|E34):(?&lt;AbilityName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -377,11 +377,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="铁壁" Id="54b5f2d3-8016-49d0-9a4d-84e0ee1ee059" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):1D6B:(?&lt;AbilityName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -395,11 +395,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="武装戍卫" Id="ba84e20f-dbd3-4273-94e9-3fa846d45832" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):1CD9:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -413,11 +413,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="雪仇" Id="05f1bd09-d1c9-4077-8f43-cc122fbc70ae" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):1D6F:(?&lt;AbilityName&gt;[^:]+?):\w{8}:(?&lt;TargetName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="60*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="60*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -431,11 +431,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="圣光幕帘" Id="71fa110f-292c-478d-9393-f7e9557c03a3" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):DD4:(?&lt;AbilityName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -449,11 +449,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="至黑之夜" Id="b65c9060-1a82-4ec6-984b-80ed262a60f9" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):1CE1:(?&lt;AbilityName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -472,11 +472,11 @@
                     <Triggers>
                       <Trigger Enabled="true" Name="节制" Id="dc981381-ce94-4f23-b7f4-3c81c54f69ac" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):4098:(?&lt;AbilityName&gt;[^:]+?):\w{8}:(?&lt;TargetName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -490,11 +490,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="命运之轮" Id="f2536331-4ae8-487f-8a03-21735cb2d142" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):E1D:(?&lt;AbilityName&gt;[^:]+?):\w{8}:(?&lt;TargetName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -513,11 +513,11 @@
                     <Triggers>
                       <Trigger Enabled="true" Name="策动" Id="19bceec1-fa6d-4d7b-b22e-b60e61a837e7" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):41F9:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -531,11 +531,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="行吟" Id="2bf7834a-dfe7-4ff5-9923-8ae324b92008" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):1CED:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -549,11 +549,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="防守之桑巴" Id="46ca69fc-da12-4775-bbd9-f17d2e6ab4f0" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):3E8C:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -567,11 +567,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="真言" Id="2780a5e9-912d-4a8a-84df-948b89c183d4" RegularExpression="\] 1[56]:\w{8}:(?&lt;CasterName&gt;[^:]+?):41:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -585,11 +585,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="昏乱" Id="4eca6222-3bdf-4d32-ad62-6d9bc077ea39" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):1D88:(?&lt;AbilityName&gt;[^:]+?):\w{8}:(?&lt;TargetName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -603,11 +603,11 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="牵制" Id="d00f42aa-6b15-4594-9164-4bdcb6fa3942" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):1D7D:(?&lt;AbilityName&gt;[^:]+?):\w{8}:(?&lt;TargetName&gt;[^:]+?):">
                         <Actions>
-                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                          <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
                             <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -856,7 +856,7 @@
                         </Condition>
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_死亡_发送频道}} ${name}（${var:${name}职业}）死亡。即刻CD:${var:Souma_Defeated_Swiftcast_Party_CD_WHM}${var:Souma_Defeated_Swiftcast_Party_CD_SCH}${var:Souma_Defeated_Swiftcast_Party_CD_AST}${var:Souma_Defeated_Swiftcast_Party_CD_SMN}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                      <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_死亡_发送频道}} ${name}（${var:${name}职业}）死亡。即刻CD:${var:Souma_Defeated_Swiftcast_Party_CD_WHM}${var:Souma_Defeated_Swiftcast_Party_CD_SCH}${var:Souma_Defeated_Swiftcast_Party_CD_AST}${var:Souma_Defeated_Swiftcast_Party_CD_SMN}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Defeated_Swiftcast_Party_CD_WHM}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Defeated_Swiftcast_Party_CD_SCH}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
@@ -865,7 +865,7 @@
                         </Condition>
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_死亡_发送频道}} ${name}（${var:${name}职业}）死透了。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                      <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_死亡_发送频道}} ${name}（${var:${name}职业}）死透了。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Defeated_Swiftcast_Party_CD_WHM}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="String" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Defeated_Swiftcast_Party_CD_SCH}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="String" ConditionType="NumericEqual" />
@@ -959,7 +959,7 @@
                     <Triggers>
                       <Trigger Enabled="true" Name="背刺歪了" Id="47faad70-e679-424a-a714-2abf4b8c7284" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):8D2:[^:]+?:\w{1,8}:[^:]+?:710\d{3}:">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}的背刺打歪了，他好菜啊！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}的背刺打歪了，他好菜啊！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                             </Condition>
@@ -971,7 +971,7 @@
                       </Trigger>
                       <Trigger Enabled="true" Name="搓兔" Id="1485e7de-aa83-4b1b-a4e5-28953c33376b" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):8E0:">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}搓兔了，大家一起笑他！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}搓兔了，大家一起笑他！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                             </Condition>
@@ -990,7 +990,7 @@
                         <Triggers>
                           <Trigger Enabled="true" Name="龙神附体" Id="63980c3a-4d8d-4c21-b897-f95fca2f4e5a" RegularExpression="\] 15:\w{8}:(?&lt;CasterName&gt;[^:]+?):DFD:">
                             <Actions>
-                              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}的龙神附体居然没有打死星核爆，他在想什么啊！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15000">
+                              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}的龙神附体居然没有打死星核爆，他在想什么啊！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15000">
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                                 </Condition>
@@ -1029,7 +1029,7 @@
                                 </Condition>
                                 <Conditions />
                               </Action>
-                              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}本次巴哈：真龙波（${var:迫害召唤_真龙波数量}/8） 死亡轮回（${var:迫害召唤_死亡轮回数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
+                              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}本次巴哈：真龙波（${var:迫害召唤_真龙波数量}/8） 死亡轮回（${var:迫害召唤_死亡轮回数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
                                 <Condition Enabled="false" Grouping="Or" />
                                 <Conditions />
                               </Action>
@@ -1094,7 +1094,7 @@
                                 </Condition>
                                 <Conditions />
                               </Action>
-                              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}本次不死鸟：赤焰（${var:迫害召唤_赤焰数量}/8） 天启（${var:迫害召唤_天启数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
+                              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}本次不死鸟：赤焰（${var:迫害召唤_赤焰数量}/8） 天启（${var:迫害召唤_天启数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
                                 <Condition Enabled="false" Grouping="Or" />
                                 <Conditions />
                               </Action>
@@ -1151,18 +1151,18 @@
                 <Triggers>
                   <Trigger Enabled="true" Name="判定" Id="2e873c66-de90-4426-91dc-064f53ded0b5" RegularExpression="\] 15:\w{1,8}:(?&lt;CasterName&gt;伊甸|至尊伊甸|伊甸守护者|虚无行者|厄瑞玻斯的巨腕|利维亚桑|泰坦|极大泰坦|guardian of paradise|エデン・ガーデナー|Voidwalker|ヴォイドウォーカー|the Hand of Erebos|エレボスの巨腕|Leviathan|リヴァイアサン|Titan|タイタン|Titan Maximum|マキシタイタン):\w{1,8}:(?&lt;AbilityName&gt;(?!Unknown_)[^:]+?):">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_伊甸技能判定_发送频道}} BOSS → ${AbilityName} 已判定。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_伊甸技能判定_发送频道}} BOSS → ${AbilityName} 已判定。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${AbilityName}" ExpressionTypeL="String" ExpressionR="${var:Souma_Eden_Ability_Last_Ability}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_systemtimems}-${var:Souma_Eden_Ability_Last_Timems}" ExpressionTypeL="Numeric" ExpressionR="3000" ExpressionTypeR="String" ConditionType="NumericGreaterEqual" />
                         </Condition>
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="{$AbilityName}" VariableOp="SetString" VariableName="Souma_Eden_Ability_Last_Ability" VariableExpression="${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="{$AbilityName}" VariableOp="SetString" VariableName="Souma_Eden_Ability_Last_Ability" VariableExpression="${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="{$AbilityName}" VariableOp="SetString" VariableName="Souma_Eden_Ability_Last_Timems" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="{$AbilityName}" VariableOp="SetString" VariableName="Souma_Eden_Ability_Last_Timems" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -1181,7 +1181,7 @@
                 <Triggers>
                   <Trigger Enabled="true" Name="攻击" Id="4fe1237d-b636-46f2-91d1-9e3a78411b12" RegularExpression="\] 15:\w{1,8}:(?&lt;BossName&gt;至尊伊甸|伊甸守护者|虚无行者|利维亚桑|泰坦|极大泰坦):\w{1,8}:(?&lt;AbilityName&gt;攻击|Unknown_(42D9|413D|3E60|367)):\w{1,8}:(?&lt;TargetName&gt;[^:]+?):\w{1,8}:(?&lt;damage&gt;\w{1,8}):">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_伊甸平A职能_发送频道}} BOSS对${var:${TargetName}职业}的${AbilityName}造成了${numeric:hex2dec(${func:substring(0,4):${func:padleft(48,8):${damage}}})}点伤害！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${var:AT_伊甸平A职能_发送频道}} BOSS对${var:${TargetName}职业}的${AbilityName}造成了${numeric:hex2dec(${func:substring(0,4):${func:padleft(48,8):${damage}}})}点伤害！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${TargetName}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${func:substring(4,1):${func:padleft(48,8):${damage}}}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="StringNotEqualNocase" />
@@ -1208,7 +1208,7 @@
                     </Condition>
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="p" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="e" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1229,7 +1229,7 @@
                     </Condition>
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionGroup Enabled="true" Grouping="Not">
                         <ConditionSingle Enabled="true" ExpressionL="${func:substring(${numeric:${func:length:${_event}}-1}):${_event}}" ExpressionTypeL="String" ExpressionR="p" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -4577,7 +4577,27 @@
                   <Trigger Enabled="true" Name="倒计时321音频" Id="f7811f38-d5bb-4445-a06f-4c29635a8d29" RegularExpression="Souma_Count_Down:(?&lt;time&gt;[\d\.]+)">
                     <Actions>
                       <Action OrderNumber="1" PlaySoundFileExpression="${var:AT_项目文件夹路径}\Triggernometry触发器\5.0触发器\倒计时321录音音频\${var:倒计时文件名称}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound" ExecutionDelayExpression="${numeric:(${time}-3)*1000-200}">
-                        <Condition Enabled="false" Grouping="Or" />
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:AT_使用自定义配置}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" PlaySoundVolumeExpression="" UseTTSTextExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:AT_使用自定义配置}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" PlaySoundVolumeExpression="" UseTTSTextExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="1000">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:AT_使用自定义配置}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" PlaySoundVolumeExpression="" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="1000">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:AT_使用自定义配置}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
                         <Conditions />
                       </Action>
                     </Actions>
