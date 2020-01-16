@@ -84,6 +84,12 @@ Hojoring插件
 Triggernometry插件
 [Github](https://github.com/paissaheavyindustriesTriggernometry)
 
+设置战斗间隔为50秒以上
+![设置战斗间隔](screenshots/设置战斗间隔.png)
+
+确保游戏中聊天框的消息没有被过滤（重要）
+[视频演示](https://www.bilibili.com/video/av83704576/)
+
 ### 组装轮椅
 
 1. 下载 [最新版本](https://github.com/553469159/FFXIV_Auxiliary_Tools/archive/master.zip)
