@@ -18,48 +18,47 @@
 
 * Hojoring - 技能监控 :
 
-![Hojoring技能监控](screenshots/Hojoring技能监控.png)
+  ![Hojoring技能监控](screenshots/Hojoring技能监控.png)
 
 * Hojoring - 时间轴:
 
-![Hojoring时间轴](screenshots/Hojoring时间轴.png)
+  ![Hojoring时间轴](screenshots/Hojoring时间轴.png)
 
 * Triggernometry - 武僧无我/黑魔回蓝监控
 
-![无我回蓝Tick监控](screenshots/无我回蓝Tick监控.gif)
+  ![无我回蓝Tick监控](screenshots/无我回蓝Tick监控.gif)
 
 * Triggernometry - 副本发宏工具
 
-![副本发宏工具](screenshots/副本发宏工具.gif)
+  ![副本发宏工具](screenshots/副本发宏工具.gif)
 
 * Triggernometry - 队友技能监控
 
-没图...
-<!-- ![队友技能监控](screenshots/队友技能监控.png) -->
+  没图...
 
 * Triggernometry - 副本触发器
 
-没图...
+  没图...
 
 * Triggernometry - Zeff - 可视化Buff跟踪器
 
-![可视化Buff跟踪器](screenshots/可视化Buff跟踪器.png)
+  ![可视化Buff跟踪器](screenshots/可视化Buff跟踪器.png)
 
 * Triggernometry - Zeff - 可视化DoT计时器
 
-![可视化DoT计时器](screenshots/可视化DoT计时器.png)
+  ![可视化DoT计时器](screenshots/可视化DoT计时器.png)
 
 * Triggernometry - Zeff - 可视化队友冷却
 
-![可视化队友冷却](screenshots/可视化队友冷却.png)
+  ![可视化队友冷却](screenshots/可视化队友冷却.png)
 
 * Triggernometry - Zeff - 可视化冷却跟踪器
 
-![可视化冷却跟踪器](screenshots/可视化冷却跟踪器.png)
+  ![可视化冷却跟踪器](screenshots/可视化冷却跟踪器.png)
 
 * Triggernometry - Zeff - 可视化团辅冷却
 
-![可视化冷却跟踪器](screenshots/可视化团辅冷却.png)
+  ![可视化冷却跟踪器](screenshots/可视化团辅冷却.png)
 
 ### 视频效果
 
@@ -125,36 +124,31 @@
 
 #### Triggernometry
 
-如果是第一次开启，会弹出欢迎界面，跳过。在右上角可以切换语言，以下说明以国服咖啡整合版ACT的简体中文翻译作为示范
+ 如果是第一次开启，会弹出欢迎界面，跳过。在右上角可以切换语言，以下说明以国服咖啡整合版ACT的简体中文翻译作为示范
 
----
+* 导入方法二选一
+  * 本地触发器
 
-开始分支
+    * 右键 本地触发器 选择 导入 选择 `...\Triggernometry触发器\5.0触发器\5.0触发器.xml`
 
-* 导入到本地触发器
+  * 网络触发器（网络要好 最好能FQ）
 
-  1. 右键 本地触发器 选择 导入 选择 `...\Triggernometry触发器\5.0触发器\5.0触发器.xml`
+    1. 右键 网络触发器 选择 (Add) - (Repository)
 
-* 或 导入到网络触发器（网络要好 最好能FQ）
-
-  1. 右键 网络触发器 选择 (Add) - (Repository)
-
-  1. 仓库名称 (Repository name) 随便填
+    1. 仓库名称 (Repository name) 随便填
   
-  1. 仓库地址 (Address) `https://raw.githubusercontent.com/553469159/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8.xml`
+    1. 仓库地址 (Address) `https://raw.githubusercontent.com/553469159/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8.xml`
 
-  1. 勾选 **允许触发器操作文件** (Allow triggers to perform file operations)
+    1. 勾选 **允许触发器操作文件** (Allow triggers to perform file operations)
 
-  ![远程导入触发器](screenshots/远程导入触发器.png)
+    ![远程导入触发器](screenshots/远程导入触发器.png)
 
-  1. 复制'设置文件夹'到 **本地触发器组** 下，**禁用** 网络的 `设置文件夹`，**开启** 本地的 `设置文件夹`
-  ![复制设置文件夹到本地](screenshots/复制设置文件夹到本地.png)
-
-分支合并
+    1. 复制'设置文件夹'到 **本地触发器组** 下，**禁用** 网络的 `设置文件夹`，**开启** 本地的 `设置文件夹`
+    ![复制设置文件夹到本地](screenshots/复制设置文件夹到本地.png)
 
 ---
 
-1. 展开 5.0轮椅 - *设置文件夹
+1. 导入后，展开 5.0轮椅 - `*设置文件夹`
 
    双击 `*设置 - 项目文件夹` 更改变量值为 FFXIV_Auxiliary_Tools 文件夹目录
     ![设置项目文件夹](screenshots/设置项目文件夹.png)
