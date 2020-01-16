@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.16.4 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.16.5 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="dc3011c3-2a01-4626-b94a-84cc1f8de13c" Name="功能" Enabled="true">
         <Folders>
-          <Folder Id="28b5a9ef-f62b-4c86-b387-4980bd6505d3" Name="小队监控" Enabled="true">
+          <Folder Id="28b5a9ef-f62b-4c86-b387-4980bd6505d3" Name="小队监控" Enabled="false">
             <Folders>
-              <Folder Id="590d84c5-2662-4bb2-a74d-fa0092b0dd07" Name="大技能" Enabled="false">
+              <Folder Id="590d84c5-2662-4bb2-a74d-fa0092b0dd07" Name="大技能" Enabled="true">
                 <Folders>
                   <Folder Id="13451dd1-e133-44b5-9d95-ebdf30807eff" Name="T" Enabled="true">
                     <Folders />
@@ -297,7 +297,7 @@
                   </Trigger>
                 </Triggers>
               </Folder>
-              <Folder Id="4eea2204-14b2-4b77-a726-ddda813c4231" Name="减伤类技能" Enabled="false">
+              <Folder Id="4eea2204-14b2-4b77-a726-ddda813c4231" Name="减伤类技能" Enabled="true">
                 <Folders>
                   <Folder Id="41546ddc-f5f7-4b49-b795-e0df83a068bc" Name="T" Enabled="true">
                     <Folders />
@@ -952,7 +952,7 @@
                   </Trigger>
                 </Triggers>
               </Folder>
-              <Folder Id="ad5f20c7-0135-451b-afeb-a306133e4a3f" Name="迫害队友" Enabled="false">
+              <Folder Id="ad5f20c7-0135-451b-afeb-a306133e4a3f" Name="迫害队友" Enabled="true">
                 <Folders>
                   <Folder Id="9d88ac97-7eca-46f9-8aab-1b5d3e817558" Name="迫害忍者" Enabled="true">
                     <Folders />
@@ -1143,10 +1143,45 @@
                     </Folders>
                     <Triggers />
                   </Folder>
+                  <Folder Id="3d1b0ddb-a56f-4cb0-a780-273050aa703d" Name="迫害战士" Enabled="true">
+                    <Folders />
+                    <Triggers>
+                      <Trigger Enabled="true" Name="原初的解放" Id="7492e693-a095-4a86-ae79-f16892ed7584" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CDD:">
+                        <Actions>
+                          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${caster}裂石飞环计时器" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${numeric:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${caster}本次原初的解放：裂石飞环（${var:${caster}裂石飞环计时器}/5）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="10000">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="裂石飞环" Id="ce92f376-4acb-47ac-b2e6-a3349dbbabc0" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;caster&gt;.+?):DDD:">
+                        <Actions>
+                          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${caster}裂石飞环计时器" VariableExpression="${var:${caster}裂石飞环计时器}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Trigger>
+                    </Triggers>
+                  </Folder>
                 </Folders>
                 <Triggers />
               </Folder>
-              <Folder Id="7a588c94-bc0e-4230-bb13-58edf3fd9349" Name="伊甸-BOSS技能判定" Enabled="false">
+              <Folder Id="7a588c94-bc0e-4230-bb13-58edf3fd9349" Name="伊甸-BOSS技能判定" Enabled="true">
                 <Folders />
                 <Triggers>
                   <Trigger Enabled="true" Name="判定" Id="2e873c66-de90-4426-91dc-064f53ded0b5" RegularExpression="\] 15:\w{1,8}:(?&lt;CasterName&gt;伊甸|至尊伊甸|伊甸守护者|虚无行者|厄瑞玻斯的巨腕|利维亚桑|泰坦|极大泰坦|guardian of paradise|エデン・ガーデナー|Voidwalker|ヴォイドウォーカー|the Hand of Erebos|エレボスの巨腕|Leviathan|リヴァイアサン|Titan|タイタン|Titan Maximum|マキシタイタン):\w{1,8}:(?&lt;AbilityName&gt;(?!Unknown_)[^:]+?):">
@@ -4894,9 +4929,9 @@
               </Trigger>
             </Triggers>
           </Folder>
-          <Folder Id="56a40852-b1b5-49ec-98b0-833bee32b719" Name="Zeff的触发器库 Zeffuro's Trigger Repository" Enabled="true">
+          <Folder Id="56a40852-b1b5-49ec-98b0-833bee32b719" Name="Zeff的触发器库 Zeffuro's Trigger Repository" Enabled="false">
             <Folders>
-              <Folder Id="c14f8e5e-98d9-44eb-bb26-eb04c454334d" Name="可视化冷却跟踪器 Visual Cooldown Tracker" Enabled="false">
+              <Folder Id="c14f8e5e-98d9-44eb-bb26-eb04c454334d" Name="可视化冷却跟踪器 Visual Cooldown Tracker" Enabled="true">
                 <Folders>
                   <Folder Id="0795221e-8a8f-4bc0-8eff-decc50ff7112" Name="内部方法 Internal" Enabled="true">
                     <Folders />
@@ -5237,7 +5272,7 @@
                 </Folders>
                 <Triggers />
               </Folder>
-              <Folder Id="1ce0cf8d-6366-40d5-bd5b-a7662588787f" Name="可视化Buff跟踪器 Visual Buff Tracker" Enabled="false">
+              <Folder Id="1ce0cf8d-6366-40d5-bd5b-a7662588787f" Name="可视化Buff跟踪器 Visual Buff Tracker" Enabled="true">
                 <Folders>
                   <Folder Id="6afa2226-fdd6-4b13-ae66-cd91f3589519" Name="内部方法 Internal" Enabled="true">
                     <Folders>
@@ -7411,7 +7446,7 @@
                 </Folders>
                 <Triggers />
               </Folder>
-              <Folder FFXIVJobFilter="4194304" Id="c27a991a-bf32-4a80-a4e4-05074df5072e" Name="可视化DoT计时器 Visual DoT Timers" Enabled="false">
+              <Folder FFXIVJobFilter="4194304" Id="c27a991a-bf32-4a80-a4e4-05074df5072e" Name="可视化DoT计时器 Visual DoT Timers" Enabled="true">
                 <Folders>
                   <Folder Id="2a112142-a876-4ba6-8714-3484e74c2b2c" Name="能力技触发 Ability Triggers" Enabled="true">
                     <Folders>
@@ -8787,7 +8822,7 @@
                   </Trigger>
                 </Triggers>
               </Folder>
-              <Folder Id="815f8f69-bc15-41ef-bbcd-51bd2e803efb" Name="可视化团辅冷却 Visual DPS Cooldowns" Enabled="false">
+              <Folder Id="815f8f69-bc15-41ef-bbcd-51bd2e803efb" Name="可视化团辅冷却 Visual DPS Cooldowns" Enabled="true">
                 <Folders>
                   <Folder Id="78b69695-6a87-400e-a293-5d845e118cb0" Name="内部方法 Internal" Enabled="true">
                     <Folders />
@@ -10434,52 +10469,43 @@
         </Folders>
         <Triggers />
       </Folder>
-      <Folder Id="4fe2c4b9-bf1b-48a1-bdc7-f7b6ac77cb56" Name="*设置文件夹" Enabled="true">
+      <Folder Id="ed8da93a-b7bd-4ee2-b2b0-c14d41f1fad8" Name="*设置文件夹" Enabled="true">
         <Folders />
         <Triggers>
-          <Trigger Enabled="true" Name="设置 - AT - 鲶鱼精邮差监听端口" Id="b3966241-b7ff-4ce9-9bcb-5640d2e93af4" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+          <Trigger Enabled="true" Name="设置 - AT - 鲶鱼精邮差监听端口" Id="0faaccf1-788a-4bea-9ddb-641134f7a065" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_鲶鱼精邮差监听端口" VariableExpression="2019" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - AT - 武僧无我、黑魔MP监控" Id="908b834c-f2d8-4164-933f-b239d1d28fcc" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+          <Trigger Enabled="true" Name="设置 - AT - 武僧无我、黑魔MP监控" Id="d8a7e9c5-ca6a-45c7-91dc-69bc75bbb12c" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_武僧无我监控X坐标" VariableExpression="1242" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="AT_武僧无我监控Y坐标" VariableExpression="924" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="AT_黑魔回蓝监控X坐标" VariableExpression="1242" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="AT_黑魔回蓝监控Y坐标" VariableExpression="944" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="*设置 - 项目文件夹" Id="55ab3ac6-811b-48fa-bc37-b6bf385b2a78" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+          <Trigger Enabled="true" Name="*设置 - 项目文件夹" Id="62e19a25-add9-4dc6-bc64-5bee5b58bae1" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="AT_项目文件夹路径" VariableExpression="D:\微云同步助手\553469159\Github\FFXIV_Auxiliary_Tools" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - AT - 小队监控" Id="2c4e0367-619a-4a88-9954-d69a8f8cc9d4" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+          <Trigger Enabled="true" Name="设置 - AT - 小队监控" Id="96d5046f-9d32-4e72-ad30-1fb6da42190d" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="AT_大技能_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
@@ -10527,343 +10553,263 @@
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - Zeff - 常规 Settings - General" Id="5c333d35-7679-4315-84a9-40982f4649d5" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+          <Trigger Enabled="true" Name="设置 - Zeff - 常规 Settings - General" Id="9d94cb71-f073-4a34-a7b1-e09dcff039f6" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Zeff使用自定义设置" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - Zeff - 可视化Buff跟踪器 Settings - Visual Buff Tracker" Id="e5b1e0c4-6299-4744-bd70-62e624e6b20e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
+          <Trigger Enabled="true" Name="设置 - Zeff - 可视化Buff跟踪器 Settings - Visual Buff Tracker" Id="621c3708-fa8e-4c15-8449-6faeae7bd73b" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" AuraName="DoubleClick this to check X and Y coordinates" AuraXIniExpression="1" AuraYIniExpression="1" AuraWIniExpression="1" AuraHIniExpression="1" AuraOIniExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" Enabled="False" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Buff监控X坐标" VariableExpression="650" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Buff监控Y坐标" VariableExpression="780" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="Buff监控图片开启" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="Buff监控闪烁开启" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="Buff监控冷却开启" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="Buff监控在DroppedOff时隐藏" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="Buff监控在死亡与读图时隐藏" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="9" VariableOp="SetNumeric" VariableName="Buff监控替代条样式" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="10" VariableOp="SetString" VariableName="Buff监控替代条样式网络地址" VariableExpression="${var:AT_项目文件夹路径}\Triggernometry触发器\Zeff\Images\Bar-Dark.png" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - Zeff - 可视化Dot计时器 Settings - Visual DoT Timers" Id="fbde9a62-fae7-44d5-88b0-5f294559d805" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
+          <Trigger Enabled="true" Name="设置 - Zeff - 可视化Dot计时器 Settings - Visual DoT Timers" Id="3730b74e-1c68-4845-8806-6723a45ad01a" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" AuraName="DoubleClick this to check X and Y coordinates" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" Enabled="False" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Dot监控X坐标" VariableExpression="650" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Dot监控Y坐标" VariableExpression="690" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="Dot监控图片开启" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="Dot监控闪烁开启" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="DoT监控在DroppedOff时隐藏" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="DoT监控在死亡与读图时隐藏" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="Dot监控替代条样式" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="9" VariableOp="SetString" VariableName="Dot监控替代条样式网络地址" VariableExpression="${var:AT_项目文件夹路径}\Triggernometry触发器\Zeff\Images\Bar-Dark.png" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - Zeff - 可视化队友冷却 Settings - Visual Party Cooldowns" Id="980a3c93-de61-4399-848a-c034d7d4353c" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
+          <Trigger Enabled="true" Name="设置 - Zeff - 可视化队友冷却 Settings - Visual Party Cooldowns" Id="c66d559a-d5d0-472d-a0d2-87327cd0cee6" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" AuraName="DoubleClick this to check X and Y coordinates" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" Enabled="False" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="队友监控X坐标" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="队友监控Y坐标" VariableExpression="421" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="队友监控小队列表缩放级别" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False" Description="小队列表缩放比例">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="队友监控图标覆盖" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="队友监控显示冷却" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="队友监控显示持续时间" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="队友监控向右增长" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - Zeff - 可视化冷却监控 Settings - Visual Cooldown Tracker" Id="387f8536-b279-4e3c-9442-3a99ad8d5856" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
+          <Trigger Enabled="true" Name="设置 - Zeff - 可视化冷却监控 Settings - Visual Cooldown Tracker" Id="93050296-ca52-4279-b65c-c2895c50c357" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" AuraName="DoubleClick this to check X and Y coordinates" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" Enabled="False" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="冷却监控X坐标" VariableExpression="345" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="冷却监控Y坐标" VariableExpression="935" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="冷却监控长度" VariableExpression="300" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="冷却监控缩放级别" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="冷却监控图标覆盖" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="冷却监控显示冷却" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="冷却监控显示标记" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="9" VariableOp="SetNumeric" VariableName="冷却监控时间压缩" VariableExpression="0.3" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="10" VariableOp="SetNumeric" VariableName="冷却监控滞后补偿" VariableExpression="200" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="11" VariableOp="SetNumeric" VariableName="冷却监控最大时间" VariableExpression="120" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="12" VariableOp="SetNumeric" VariableName="冷却监控垂直" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="13" VariableOp="SetNumeric" VariableName="冷却监控翻转" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="14" VariableOp="SetNumeric" VariableName="冷却监控TTS呼出启动" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="设置 - Zeff - 可视化冷却监控技能黑名单 Settings - Visual Cooldown Tracker - Skill Blacklist" Id="1c6afdb8-72d9-47c4-9e4a-571a15435a5e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+          <Trigger Enabled="true" Sequential="True" Name="设置 - Zeff - 可视化冷却监控技能黑名单 Settings - Visual Cooldown Tracker - Skill Blacklist" Id="25d46f89-c1c9-4649-b8d6-d0ff91f1ae6d" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
             <Actions>
               <Action OrderNumber="1" ListVariableExpressionType="Numeric" ListVariableName="VCTrackerSkillBlacklist" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" ListVariableOp="Push" ListVariableExpressionType="Numeric" ListVariableName="VCTrackerSkillBlacklist" ListVariableExpression="3" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" ListVariableOp="Push" ListVariableExpressionType="Numeric" ListVariableName="VCTrackerSkillBlacklist" ListVariableExpression="7" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" ListVariableOp="Push" ListVariableExpressionType="Numeric" ListVariableName="VCTrackerSkillBlacklist" ListVariableExpression="8" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - Zeff - 可视化团辅冷却 Settings - Visual DPS Cooldowns" Id="b8fce629-86dd-421b-ad0f-657204bb3d2f" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
+          <Trigger Enabled="true" Name="设置 - Zeff - 可视化团辅冷却 Settings - Visual DPS Cooldowns" Id="9c9ec93c-76bc-4834-b01a-611727362579" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" AuraName="DoubleClick this to check X and Y coordinates" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" Enabled="False" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="团辅冷却X坐标" VariableExpression="1310" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="团辅冷却Y坐标" VariableExpression="260" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="团辅冷却缩放级别" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="团辅冷却图标覆盖" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="团辅监控显示冷却" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="团辅监控显示持续时间" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="团辅监控显示状态" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="9" VariableOp="SetNumeric" VariableName="团辅监控行" VariableExpression="3" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="10" VariableOp="SetNumeric" VariableName="团辅监控列" VariableExpression="5" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="11" VariableOp="SetNumeric" VariableName="团辅监控向右增长" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="12" VariableOp="SetNumeric" VariableName="团辅监控向上增长" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="13" VariableOp="SetNumeric" VariableName="团辅监控图标持续存在" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - AT - 倒计时音频文件名称" Id="387aacaa-6fd0-4fa7-83c7-cc75f6302698" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+          <Trigger Enabled="true" Name="设置 - AT - 倒计时音频文件名称" Id="59f1b324-f135-4d4c-b047-6d8fa2ababda" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="倒计时文件名称" VariableExpression="百度 度小美.mp3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - AT - 常规" Id="27936b4c-2931-4668-9b2f-58b2bd1f99c8" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+          <Trigger Enabled="true" Name="设置 - AT - 常规" Id="8b34289a-1e8e-40d1-9640-0f4ddcc03a35" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_使用自定义配置" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="设置 - AT - 显示字幕" Id="d3a0ef00-d49a-4b6f-9bac-b3485f6409d2" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
+          <Trigger Enabled="true" Name="设置 - AT - 显示字幕" Id="0f894d55-b6f2-44ff-9f2c-1aa955ba801f" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_显示字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="AT_显示字幕Y偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="AT_倒计时字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="AT_倒计时字幕Y偏移" VariableExpression="-300" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="AT_倒计时字幕Y间隔" VariableExpression="40" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="AT_X秒前改为警报颜色" VariableExpression="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="AT_目标的位置X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="AT_目标的位置Y偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
