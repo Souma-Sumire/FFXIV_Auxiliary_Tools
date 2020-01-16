@@ -140,10 +140,9 @@
     1. 仓库地址 (Address) `https://raw.githubusercontent.com/553469159/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8.xml`
 
     1. 勾选 **允许触发器操作文件** (Allow triggers to perform file operations)
-
     ![远程导入触发器](screenshots/远程导入触发器.png)
 
-    1. 复制'设置文件夹'到 **本地触发器组** 下，**禁用** 网络的 `设置文件夹`，**开启** 本地的 `设置文件夹`
+    1. 复制 `设置文件夹` 到 **本地触发器组** 下，**禁用** 网络的 `设置文件夹`，**开启** 本地的 `设置文件夹`
     ![复制设置文件夹到本地](screenshots/复制设置文件夹到本地.png)
 
 ---
