@@ -8,6 +8,8 @@
 
 1. [自定义](#自定义)
 
+1. [杂项说明](#杂项说明)
+
 ## 关于
 
 此项目是依赖于ACT的 [最终幻想14](http://ff.sdo.com/) 副本辅助工具
@@ -135,13 +137,13 @@
 
 * 或 导入到网络触发器（网络要好 最好能FQ）
 
-  1. 右键 网络触发器 选择 Add - Repository 
+  1. 右键 网络触发器 选择 (Add) - (Repository)
 
-  1. 名称随便填
+  1. 仓库名称 (Repository name) 随便填
   
-  1. 地址写`https://raw.githubusercontent.com/553469159/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8.xml`
+  1. 仓库地址 (Address) `https://raw.githubusercontent.com/553469159/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8.xml`
 
-  1. 勾选 **允许文件夹操作**
+  1. 勾选 **允许触发器操作文件** (Allow triggers to perform file operations)
 
   ![远程导入触发器](screenshots/远程导入触发器.png)
 
@@ -176,7 +178,7 @@
 
 * 在 5.0轮椅 - 功能 内取消勾选对应组 （而**不在**设置文件夹中）
 
-### 修改某某功能的位置：
+### 修改某某功能的位置
 
 * 找到设置内对应的X坐标Y坐标的值进行修改
 
@@ -188,6 +190,14 @@
 
 * 在 5.0轮椅 - 功能 - 副本触发器 - 内部方法 - 字幕提示 编辑文本Aura的属性 在第四行可以找到字体 点击小齿轮便可以进行颜色设置，右侧的 浏览 可以调整字体与字体大小与粗细
   ![设置字幕](screenshots/设置字幕.png)
+
+### 触发器改自定义语音包
+
+* ![TTS改自定义语音包](screenshots/TTS改自定义语音包.gif)
+
+### TTS是怎么大妈，我的TTS插件明明不是这个声音
+
+* ![让触发器调用ACT的TTS](screenshots/让触发器调用ACT的TTS.gif)
 
 ### Hojoring时间轴背景
 
@@ -213,3 +223,27 @@
   | 伤害   | #FFEDCA00 | #FF000000 |
   | 分摊   | #FF00B2ED | #FF000000 |
   | 死刑   | #FFE93F00 | #FF000000 |
+
+## 杂项说明
+
+* 设置E4S职能位置
+  ![设置职能位置](screenshots/设置职能位置.gif)
+
+* 触发器延迟 原因非常多，不保证解决，毕竟圆明园不是我烧的。
+
+  * 尝试更改ACT的CPU优先级
+    ![调整CPU优先级](screenshots/调整CPU优先级.jpg)
+
+  * 减少各种其他资源占用
+
+    * 关闭不需要的触发器组
+
+    * 关闭后台软件
+
+    * 对游戏进行锁帧
+
+    * 降低画面显示效果
+
+  * 改善机箱内部散热
+
+  * ~~加钱上i9-10980XE + Titan RTX~~
