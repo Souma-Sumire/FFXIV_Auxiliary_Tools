@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.17.3 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.18.1 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="dc3011c3-2a01-4626-b94a-84cc1f8de13c" Name="功能" Enabled="true">
         <Folders>
@@ -4285,7 +4285,7 @@
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="重置" Id="6b3f7594-5284-4332-9372-51fa9e945791" RegularExpression="任务开始。|has begun.|の攻略を開始した。|\] 00:0839:((?&lt;name&gt;.+?)(的职业转换成了|は「マイスター)|you change to)|^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" PrevActions="Interrupt">
+                      <Trigger Enabled="true" Name="重置" Id="6b3f7594-5284-4332-9372-51fa9e945791" RegularExpression="任务开始。|has begun.|の攻略を開始した。|(\] 00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.))|^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:!AT INIT$" PrevActions="Interrupt">
                         <Actions>
                           <Action OrderNumber="1" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -4325,7 +4325,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="切换职业" Id="47c6ffdc-0440-4a7d-a7e8-30448a377912" RegularExpression="\] 00:0839:((?&lt;name&gt;.+?)(的职业转换成了|は「マイスター)|you change to)">
+                      <Trigger Enabled="true" Name="切换职业" Id="47c6ffdc-0440-4a7d-a7e8-30448a377912" RegularExpression="\] 00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.)">
                         <Actions>
                           <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:职业变动，${func:toupper:${var:Souma_Team_Role}}取消:3:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
@@ -4338,8 +4338,9 @@
                             <Conditions />
                           </Action>
                         </Actions>
-                        <Condition Enabled="true" Grouping="And">
+                        <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${isyou}" ExpressionTypeL="String" ExpressionR="you" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                         <Conditions />
                       </Trigger>
@@ -5197,10 +5198,13 @@
                       </Folder>
                     </Folders>
                     <Triggers>
-                      <Trigger Enabled="true" Name="职业转换 Job Change" Id="27233863-17e6-45dd-a3df-6572f6b99180" RegularExpression="You change to (?&lt;class&gt;[^:]+?)\.|的职业转换成了|は「マイスター">
+                      <Trigger Enabled="true" Name="职业转换 Job Change" Id="27233863-17e6-45dd-a3df-6572f6b99180" RegularExpression="\] 00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.)">
                         <Actions>
                           <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="694bb1d3-6c1f-4452-b0f7-e99e3939baf0" TriggerForce="regexp" ActionType="Trigger">
-                            <Condition Enabled="false" Grouping="Or" />
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${isyou}" ExpressionTypeL="String" ExpressionR="you" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
                             <Conditions />
                           </Action>
                         </Actions>
@@ -8321,10 +8325,13 @@
                       </Folder>
                     </Folders>
                     <Triggers>
-                      <Trigger Enabled="true" Name="职业转换 Job Change" Id="7f625973-1b20-4400-a090-ae1a686474d4" RegularExpression="You change to (?&lt;class&gt;[^:]+?)\.|的职业转换成了|は「マイスター">
+                      <Trigger Enabled="true" Name="职业转换 Job Change" Id="7f625973-1b20-4400-a090-ae1a686474d4" RegularExpression="\] 00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.)">
                         <Actions>
                           <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="be50d971-9b36-4876-8cee-5d2bfb94986a" TriggerForce="regexp" ActionType="Trigger">
-                            <Condition Enabled="false" Grouping="Or" />
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${isyou}" ExpressionTypeL="String" ExpressionR="you" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
                             <Conditions />
                           </Action>
                         </Actions>
