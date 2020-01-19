@@ -70,12 +70,13 @@
 
 1. 你必须启用 [DirectX 11](https://support.microsoft.com/zh-cn/help/179113/how-to-install-the-latest-version-of-directx) 来运行 最终幻想14
 
-1. 安装64位版本的 ACT
+1. 安装64位版本的 ACT 
 [原版](http://advancedcombattracker.com/) /
 [国服适配整合版](https://nga.178.com/read.php?tid=17412506) /
 [国服非绿色化整合](https://nga.178.com/read.php?tid=19019884)
 
-1. 加载FF14解析插件 (双整合版均自带) [国服原版ACT](https://github.com/TundraWork/FFXIV_ACT_Plugin_CN/releases),
+1. 加载FF14解析插件 整合版自带 /
+[国服原版ACT](https://github.com/TundraWork/FFXIV_ACT_Plugin_CN/releases)/
 [国际服](https://github.com/ravahn/FFXIV_ACT_Plugin/releases/latest)
 的最新版本，启用网络解析，并确保没有防火墙或安全软件阻止ACT。并勾选解析设置中的"解析日止包含HP值" (Include HP for Triggers)
 
@@ -83,12 +84,14 @@
 [Triggernometry](https://github.com/paissaheavyindustriesTriggernometry)
 
 1. **确保游戏中聊天框的消息没有被过滤（重要）**
-[视频演示](https://www.bilibili.com/video/av83704576/)
+[设置过滤 - 视频演示](https://www.bilibili.com/video/av83704576/)
 
 1. 设置战斗间隔为50秒以上
 ![设置战斗间隔](screenshots/设置战斗间隔.png)
 
 ### 组装轮椅
+
+[快速安装- 视频演示](https://www.bilibili.com/video/av84208037/)
 
 1. 下载 [最新版本](https://github.com/553469159/FFXIV_Auxiliary_Tools/archive/master.zip)
 
