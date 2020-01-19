@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="8a2e51ae-f3fd-4b5f-9121-e0dde2f06329" Name="OBS自动录制" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Name="结束录制" Id="0d62adaf-0854-41be-8d76-5aeb52e6429a" RegularExpression="21:[A-F0-9]{8}:40000010">
+        <Actions>
+          <Action OrderNumber="1" OBSControlType="StopRecording" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ObsControl">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="开始录制" Id="3fdda306-2dff-4276-9002-c2556f97776c" RegularExpression="距离战斗开始还有5秒！|Battle commencing in 5 seconds|戦闘開始まで[５5]秒！">
+        <Actions>
+          <Action OrderNumber="1" OBSControlType="StartRecording" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ObsControl">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="false" Name="需要在OBS里安装&quot;OBS-WebSocket&quot;插件 内附地址" Id="8eda74e5-d49a-4406-a85a-ac3f036d4b39" RegularExpression="">
+        <Actions>
+          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" Description="https://obsproject.com/forum/resources/obs-websocket-remote-control-of-obs-studio-made-easy.466/" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
