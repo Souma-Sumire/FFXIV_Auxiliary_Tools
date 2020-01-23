@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.23.2 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.24.1 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="dc3011c3-2a01-4626-b94a-84cc1f8de13c" Name="功能" Enabled="true">
         <Folders>
@@ -253,7 +253,7 @@
                   </Trigger>
                 </Triggers>
               </Folder>
-              <Folder Id="4eea2204-14b2-4b77-a726-ddda813c4231" Name="减伤类技能" Enabled="false">
+              <Folder Id="4eea2204-14b2-4b77-a726-ddda813c4231" Name="减伤类技能" Enabled="true">
                 <Folders>
                   <Folder Id="41546ddc-f5f7-4b49-b795-e0df83a068bc" Name="T" Enabled="true">
                     <Folders />
@@ -817,9 +817,9 @@
                   </Trigger>
                 </Triggers>
               </Folder>
-              <Folder Id="ad5f20c7-0135-451b-afeb-a306133e4a3f" Name="迫害队友" Enabled="false">
+              <Folder Id="ad5f20c7-0135-451b-afeb-a306133e4a3f" Name="迫害队友" Enabled="true">
                 <Folders>
-                  <Folder Id="9d88ac97-7eca-46f9-8aab-1b5d3e817558" Name="迫害忍者" Enabled="true">
+                  <Folder Id="9d88ac97-7eca-46f9-8aab-1b5d3e817558" Name="忍者" Enabled="true">
                     <Folders />
                     <Triggers>
                       <Trigger Enabled="true" Name="背刺歪了" Id="47faad70-e679-424a-a714-2abf4b8c7284" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;CasterName&gt;[^:]+?):8D2:[^:]+?:\w{1,8}:[^:]+?:710\d{3}:">
@@ -844,7 +844,7 @@
                       </Trigger>
                     </Triggers>
                   </Folder>
-                  <Folder Id="4d7ad5a9-e727-4780-b4be-2c509b5e08b1" Name="迫害召唤" Enabled="true">
+                  <Folder Id="4d7ad5a9-e727-4780-b4be-2c509b5e08b1" Name="召唤" Enabled="true">
                     <Folders>
                       <Folder Id="523c512c-69ba-4082-8488-eac588181e9c" Name="龙神" Enabled="true">
                         <Folders />
@@ -855,6 +855,7 @@
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                                 </Condition>
+                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -863,6 +864,7 @@
                             <Actions>
                               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="63980c3a-4d8d-4c21-b897-f95fca2f4e5a" ActionType="Trigger">
                                 <Condition Enabled="false" Grouping="Or" />
+                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -897,13 +899,11 @@
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:迫害召唤_真龙波数量}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                   <ConditionSingle Enabled="false" ExpressionL="${var:迫害召唤_死亡轮回数量}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="迫害召唤_真龙波数量" VariableExpression="${var:迫害召唤_真龙波数量}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:迫害召唤_真龙波数量}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -915,13 +915,11 @@
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:迫害召唤_死亡轮回数量}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                   <ConditionSingle Enabled="false" ExpressionL="${var:迫害召唤_死亡轮回数量}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="迫害召唤_死亡轮回数量" VariableExpression="${var:迫害召唤_死亡轮回数量}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:迫害召唤_死亡轮回数量}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -955,13 +953,11 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:迫害召唤_赤焰数量}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="迫害召唤_赤焰数量" VariableExpression="${var:迫害召唤_赤焰数量}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:迫害召唤_赤焰数量}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -972,13 +968,11 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:迫害召唤_天启数量}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="迫害召唤_天启数量" VariableExpression="${var:迫害召唤_天启数量}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:迫害召唤_天启数量}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -988,7 +982,7 @@
                     </Folders>
                     <Triggers />
                   </Folder>
-                  <Folder Id="3d1b0ddb-a56f-4cb0-a780-273050aa703d" Name="迫害战士" Enabled="true">
+                  <Folder Id="3d1b0ddb-a56f-4cb0-a780-273050aa703d" Name="战士" Enabled="true">
                     <Folders />
                     <Triggers>
                       <Trigger Enabled="true" Name="原初的解放" Id="7492e693-a095-4a86-ae79-f16892ed7584" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CDD:">
@@ -997,11 +991,13 @@
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                             </Condition>
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${numeric:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${caster}本次原初的解放：裂石飞环（${var:${caster}裂石飞环计时器}/5）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="10000">
+                          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${numeric:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${caster} 原初的解放：裂石飞环（${var:${caster}裂石飞环计时器}/5）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="11000">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                             </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -1015,6 +1011,171 @@
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                    </Triggers>
+                  </Folder>
+                  <Folder Id="1fbe4359-16a0-4d0c-9755-99b63401f2ca" Name="黑魔" Enabled="true">
+                    <Folders />
+                    <Triggers>
+                      <Trigger Enabled="true" Name="天语" Id="b1bcad95-5c0b-4d9a-a6ca-e2ed49266466" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;CasterName&gt;[^:]+?):DF7:" PrevActions="Interrupt">
+                        <Actions>
+                          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${CasterName}天语" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="森林冰火人" Id="e4daca42-d3cf-43b9-909b-c11e3f8d10a5" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;CasterName&gt;[^:]+?):(98|8D|A2|4079|9A|8E|9F|92|95):" PrevActions="Interrupt">
+                        <Actions>
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}天语断了，快笑话他！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15000" Asynchronous="False" RefireInterrupt="True">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:${CasterName}天语}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" VariableName="${CasterName}天语" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="重置" Id="4ce606ee-771c-441c-a9f9-f632e7c5cb68" RegularExpression="\] 21:........:40000010:00:00:00:00|任务开始|has begun\.|の攻略を開始した。">
+                        <Actions>
+                          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="e4daca42-d3cf-43b9-909b-c11e3f8d10a5" ActionType="Trigger">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" VariableOp="UnsetRegex" VariableName=".+天语" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Trigger>
+                    </Triggers>
+                  </Folder>
+                  <Folder Id="aeb7d547-a36a-49af-afb2-c3143416f28c" Name="暗黑骑士" Enabled="true">
+                    <Folders>
+                      <Folder Id="0893900f-6d24-4e18-a752-71b5cc2520ef" Name="血乱" Enabled="true">
+                        <Folders />
+                        <Triggers>
+                          <Trigger Enabled="true" Name="寂灭" Id="b41521ec-e957-44d1-8066-1e75c29473a7" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;caster&gt;.+?):1CDF:">
+                            <Actions>
+                              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${caster}寂灭计时器" VariableExpression="${var:${caster}寂灭计时器}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                                <Condition Enabled="true" Grouping="Or">
+                                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                                </Condition>
+                                <Conditions />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Trigger>
+                          <Trigger Enabled="true" Name="血溅" Id="20f75360-dac5-4ff9-9d75-cf3ef4ab9ab1" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;caster&gt;.+?):1CE0:">
+                            <Actions>
+                              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${caster}血溅计时器" VariableExpression="${var:${caster}血溅计时器}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                                <Condition Enabled="true" Grouping="Or">
+                                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                                </Condition>
+                                <Conditions />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Trigger>
+                          <Trigger Enabled="true" Name="血乱" Id="3d9f5bda-0a88-4aa2-9626-5f48934805be" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CDE:">
+                            <Actions>
+                              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${caster}血溅计时器" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                                <Condition Enabled="true" Grouping="Or">
+                                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
+                                </Condition>
+                                <Conditions />
+                              </Action>
+                              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="${caster}寂灭计时器" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                                <Condition Enabled="true" Grouping="Or">
+                                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
+                                </Condition>
+                                <Conditions />
+                              </Action>
+                              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${numeric:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${caster} 血乱：（血溅 ${var:${caster}血溅计时器}/5 寂灭 ${var:${caster}寂灭计时器}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="11000">
+                                <Condition Enabled="true" Grouping="And">
+                                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
+                                </Condition>
+                                <Conditions />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Trigger>
+                        </Triggers>
+                      </Folder>
+                      <Folder Id="07d8a803-ca96-4f00-ab25-79a5d3254efd" Name="嗜血GCD" Enabled="true">
+                        <Folders />
+                        <Triggers>
+                          <Trigger Enabled="true" Name="嗜血" Id="344c4389-7948-4ed2-a76a-5a9190b3eb3e" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):E29:">
+                            <Actions>
+                              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${caster}嗜血计数器" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                                <Condition Enabled="true" Grouping="Or">
+                                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
+                                </Condition>
+                                <Conditions />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Trigger>
+                          <Trigger Enabled="true" Name="GCD" Id="97ee0918-c1c6-4da1-9c02-61b29433646c" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;caster&gt;.+?):(E28|E21|E27|E30|1CDF|1CE0):">
+                            <Actions>
+                              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${caster}嗜血计数器" VariableExpression="${var:${caster}嗜血计数器}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                                <Condition Enabled="true" Grouping="Or">
+                                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                                </Condition>
+                                <Conditions />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Trigger>
+                          <Trigger Enabled="true" Name="失去嗜血" Id="2e20b8a9-b0db-489c-9c73-a3476ff3c883" RegularExpression="\] 1[AE]:[A-F0-9]{8}:(?&lt;caster&gt;.+?) loses the effect of (嗜血|Blood Weapon|ブラッドウェポン) from">
+                            <Actions>
+                              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${numeric:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${caster} 嗜血覆盖G.CD（${var:${caster}嗜血计数器}/5）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                                <Condition Enabled="true" Grouping="Or">
+                                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                                </Condition>
+                                <Conditions />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Trigger>
+                        </Triggers>
+                      </Folder>
+                    </Folders>
+                    <Triggers />
+                  </Folder>
+                  <Folder Id="3e10f910-24f6-4cd9-aa55-395a32be64a9" Name="骑士" Enabled="true">
+                    <Folders />
+                    <Triggers>
+                      <Trigger Enabled="true" Name="安魂祈祷" Id="6952e57a-8166-460a-a67b-eea3b6e3ca30" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;CasterName&gt;.+?):1CD7:.+?:[A-F0-9]{8}:.+?:[0-9-\.]+?:[A-F0-9]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:(?&lt;CasterCurrentMp&gt;[0-9-]+?):">
+                        <Actions>
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}不到8000蓝就打了安魂祈祷，真牛！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False" RefireInterrupt="True">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                              <ConditionSingle Enabled="true" ExpressionL="${CasterCurrentMp}" ExpressionTypeL="Numeric" ExpressionR="8000" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Trigger>
                     </Triggers>
                   </Folder>
@@ -3637,12 +3798,15 @@
                         <Actions>
                           <Action OrderNumber="1" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" VariableOp="UnsetRegex" VariableName=".*职业" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                           <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="00501ec3-caee-411b-aee5-db4eb76af3a9" TriggerText="[00:00:00.000] 00:0038:获取职业（长）" ActionType="Trigger" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -3913,7 +4077,7 @@
               </Trigger>
             </Triggers>
           </Folder>
-          <Folder Id="5ca3fe26-2c41-4353-a3d1-a2cd75c1f1a1" Name="黑魔回蓝监控" Enabled="false">
+          <Folder Id="5ca3fe26-2c41-4353-a3d1-a2cd75c1f1a1" Name="黑魔回蓝监控" Enabled="true">
             <Folders />
             <Triggers>
               <Trigger Enabled="true" Name="呼出宏 /e !mpshow" Id="fd967e01-41b7-49b0-8ed3-077df9099040" RegularExpression="00:0038:!mpshow">
@@ -3970,7 +4134,7 @@
               </Trigger>
             </Triggers>
           </Folder>
-          <Folder Id="070f059b-0b89-44c4-8bb0-33eea966acd9" Name="武僧无我监控" Enabled="false">
+          <Folder Id="070f059b-0b89-44c4-8bb0-33eea966acd9" Name="武僧无我监控" Enabled="true">
             <Folders />
             <Triggers>
               <Trigger Enabled="true" Name="呼出宏 /e !tickshow" Id="fa892758-66b9-4ad2-ba2f-05318a86e9d7" RegularExpression="00:0038:!tickshow">
@@ -8664,36 +8828,47 @@
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="AT_大技能_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="AT_大技能_CD刷新提示" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetString" VariableName="AT_大技能CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetString" VariableName="AT_减伤_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="AT_减伤_CD刷新提示" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetString" VariableName="AT_减伤CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetString" VariableName="AT_复活_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetString" VariableName="AT_死亡_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="9" VariableOp="SetString" VariableName="AT_迫害队友_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="10" VariableOp="SetString" VariableName="AT_伊甸技能判定_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="11" VariableOp="SetString" VariableName="AT_伊甸平A职能_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -8806,45 +8981,59 @@
             <Actions>
               <Action OrderNumber="1" AuraName="DoubleClick this to check X and Y coordinates" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" Enabled="False" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="冷却监控X坐标" VariableExpression="345" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="冷却监控Y坐标" VariableExpression="935" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="冷却监控长度" VariableExpression="300" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="冷却监控缩放级别" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="冷却监控图标覆盖" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="冷却监控显示冷却" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="冷却监控显示标记" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="9" VariableOp="SetNumeric" VariableName="冷却监控时间压缩" VariableExpression="0.3" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="10" VariableOp="SetNumeric" VariableName="冷却监控滞后补偿" VariableExpression="200" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="11" VariableOp="SetNumeric" VariableName="冷却监控最大时间" VariableExpression="120" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="12" VariableOp="SetNumeric" VariableName="冷却监控垂直" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="13" VariableOp="SetNumeric" VariableName="冷却监控翻转" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="14" VariableOp="SetNumeric" VariableName="冷却监控TTS呼出启动" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
