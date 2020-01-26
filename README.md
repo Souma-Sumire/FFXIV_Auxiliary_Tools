@@ -23,7 +23,7 @@
 * Hojoring - 时间轴:
 
   ![Hojoring时间轴](screenshots/Hojoring时间轴.png)
-
+  
 * Triggernometry - 武僧无我/黑魔回蓝监控
 
   ![无我回蓝Tick监控](screenshots/无我回蓝Tick监控.gif)
@@ -35,11 +35,9 @@
 * Triggernometry - 队友技能监控
 
   没图...
-
 * Triggernometry - 副本触发器
 
   没图...
-
 * Triggernometry - Zeff - 可视化Buff跟踪器
 
   ![可视化Buff跟踪器](screenshots/可视化Buff跟踪器.png)
@@ -60,9 +58,9 @@
 
   ![可视化冷却跟踪器](screenshots/可视化团辅冷却.png)
 
-### 视频效果
+* Triggernometry - Aho's Raid Buff
 
-* [待更新...](http://)
+  ![Aho](screenshots/Aho.png)
 
 ## 安装过程
 
@@ -90,8 +88,6 @@
 ![设置战斗间隔](screenshots/设置战斗间隔.png)
 
 ### 组装轮椅
-
-[快速安装- 视频演示](https://www.bilibili.com/video/av84208037/)
 
 1. 下载 [最新版本](https://github.com/553469159/FFXIV_Auxiliary_Tools/archive/master.zip)
 
@@ -127,52 +123,28 @@
 
 #### Triggernometry
 
- 如果是第一次开启，会弹出欢迎界面，跳过。在右上角可以切换语言，以下说明以国服咖啡整合版ACT的简体中文翻译作为示范
+* **运行 `添加当前目录到环境变量.bat`**
+  ![环境变量](screenshots/环境变量.png)
 
-* 导入方法二选一
-  * 本地触发器
 
-    * 右键 本地触发器 选择 导入 选择 `...\Triggernometry触发器\5.0触发器\5.0触发器.xml`
+* 导入本地触发器
 
-  * 网络触发器（网络要好 最好能FQ）
+  1. 在 Triggernometry中 右键 本地触发器 选择 导入 选择 `...\Triggernometry触发器\5.0触发器\5.0触发器.xml`
 
-    1. 右键 网络触发器 选择 (Add) - (Repository)
-
-    1. 仓库名称 (Repository name) 随便填
-  
-    1. 仓库地址 (Address) `https://raw.githubusercontent.com/553469159/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8.xml`
-
-    1. 勾选 **允许触发器操作文件** (Allow triggers to perform file operations)
-    ![远程导入触发器](screenshots/远程导入触发器.png)
-
-    1. 复制 `设置文件夹` 到 **本地触发器组** 下，**禁用** 网络的 `设置文件夹`，**开启** 本地的 `设置文件夹`
-    ![复制设置文件夹到本地](screenshots/复制设置文件夹到本地.png)
-
----
-
-1. 导入后，展开 5.0轮椅 - `*设置文件夹`
-
-   双击 `*设置 - 项目文件夹` 更改变量值为 FFXIV_Auxiliary_Tools 文件夹目录
-    ![设置项目文件夹](screenshots/设置项目文件夹.png)
-
-1. 在“选项”->“编辑配置”->“常规”->“启动文件夹”下选择[*设置文件夹]作为启动文件夹
+  1. 在“选项”->“编辑配置”->“常规”->“启动文件夹”下选择[※※配置※※]作为启动文件夹
   ![设置启动文件夹](screenshots/设置启动文件夹.png)
   
-1. 重启ACT，或在游戏中使用宏 `/e !AT INIT` 对刚才修改的内容进行设置
+  1. 重启ACT
 
 #### 鲶鱼精邮差
 
-1. 下载并运行 [鲶鱼精邮差](https://nga.178.com/read.php?tid=19724323)，方法不再赘述，帖子里也写了
+1. 下载并运行 [鲶鱼精邮差](https://nga.178.com/read.php?tid=19724323)
 
-1. 找一个顺眼的，不被你电脑中其他程序占用的端口 开始监听。比如我默认设置为2019
+1. 找一个端口 开始监听。比如我默认设置为2019
 
-1. 如果不是2019，在*设置文件夹 - "设置 - AT - 鲶鱼精邮差监听端口" 中设置成你监听的端口，并使设置生效
+1. 如果不是2019，在※※配置※※- AT - 鲶鱼精邮差监听端口 修改为你监听的端口
 
 ## 自定义
-
-### 关掉不需要的功能
-
-* 在 5.0轮椅 - 功能 内取消勾选对应组 （而**不在**设置文件夹中）
 
 ### 修改某某功能的位置
 
@@ -191,7 +163,7 @@
 
 * ![TTS改自定义语音包](screenshots/TTS改自定义语音包.gif)
 
-### TTS是怎么大妈，我的TTS插件明明不是这个声音
+### 让Triggernometry触发器使用ACT的TTS插件
 
 * ![让触发器调用ACT的TTS](screenshots/让触发器调用ACT的TTS.gif)
 
@@ -225,7 +197,7 @@
 * 设置E4S职能位置
   ![设置职能位置](screenshots/设置职能位置.gif)
 
-* 触发器延迟 原因非常多，不保证解决，毕竟圆明园不是我烧的。
+* 触发器延迟 原因非常多，不保证解决，毕竟**圆明园不是我烧的**。
 
   * 尝试更改ACT的CPU优先级
     ![调整CPU优先级](screenshots/调整CPU优先级.jpg)
@@ -239,7 +211,5 @@
     * 对游戏进行锁帧
 
     * 降低画面显示效果
-
-  * 改善机箱内部散热
 
   * ~~加钱上i9-10980XE + Titan RTX~~
