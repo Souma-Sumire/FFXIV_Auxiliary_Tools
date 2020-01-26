@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.26.3 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.26.4 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="dc3011c3-2a01-4626-b94a-84cc1f8de13c" Name="功能" Enabled="true">
         <Folders>
-          <Folder Id="28b5a9ef-f62b-4c86-b387-4980bd6505d3" Name="小队监控 到聊天框" Enabled="true">
+          <Folder Id="28b5a9ef-f62b-4c86-b387-4980bd6505d3" Name="小队监控 到聊天框（需要鲶鱼精邮差）" Enabled="true">
             <Folders>
               <Folder Id="590d84c5-2662-4bb2-a74d-fa0092b0dd07" Name="大技能" Enabled="true">
                 <Folders>
@@ -1138,13 +1138,14 @@
                   <Folder Id="3e10f910-24f6-4cd9-aa55-395a32be64a9" Name="骑士" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="安魂祈祷" Id="6952e57a-8166-460a-a67b-eea3b6e3ca30" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;CasterName&gt;.+?):1CD7:.+?:[A-F0-9]{8}:.+?:[0-9-\.]+?:[A-F0-9]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:[0-9-\.]+?:(?&lt;CasterCurrentMp&gt;[0-9-]+?):">
+                      <Trigger Enabled="true" Name="安魂祈祷" Id="6952e57a-8166-460a-a67b-eea3b6e3ca30" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;CasterName&gt;.+?):1CD7.*:(?&lt;CasterCurrentMp&gt;[A-F0-9]+?):10000:0:1000:">
                         <Actions>
-                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}不到8000蓝就打了安魂祈祷，真牛！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False" RefireInterrupt="True">
+                          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}${CasterCurrentMp}蓝就打了安魂祈祷，真牛！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False" RefireInterrupt="True">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${CasterCurrentMp}" ExpressionTypeL="Numeric" ExpressionR="8000" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                             </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -2182,9 +2183,11 @@
                         <Actions>
                           <Action OrderNumber="1" LogMessageText="Souma_Count_Down:5" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8ce3c888-4ba4-42c7-b228-f3a69cd291db" ActionType="LogMessage">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" UseTTSTextExpression="穿" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS" ExecutionDelayExpression="4500">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
