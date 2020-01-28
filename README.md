@@ -68,7 +68,7 @@
 
 1. 你必须启用 [DirectX 11](https://support.microsoft.com/zh-cn/help/179113/how-to-install-the-latest-version-of-directx) 来运行 最终幻想14
 
-1. 安装64位版本的 ACT 
+1. 安装64位版本的 ACT
 [原版](http://advancedcombattracker.com/) /
 [国服适配整合版](https://nga.178.com/read.php?tid=17412506) /
 [国服非绿色化整合](https://nga.178.com/read.php?tid=19019884)
@@ -124,8 +124,12 @@
 #### Triggernometry
 
 * **运行 `添加当前目录到环境变量.bat`**
+
   ![环境变量](screenshots/环境变量.png)
 
+  出现这个字样代表成功
+
+  ![环境变量成功](screenshots/环境变量成功.png)
 
 * 导入本地触发器
 
