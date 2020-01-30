@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.30.1 by 海猫茶屋:Souma" Enabled="true">
+  <ExportedFolder Id="69fdf528-f0dd-4909-a7b4-4dd644d1e8ff" Name="5.0轮椅 v1.1.30.2 by 海猫茶屋:Souma" Enabled="true">
     <Folders>
       <Folder Id="dc3011c3-2a01-4626-b94a-84cc1f8de13c" Name="原功能" Enabled="true">
         <Folders>
@@ -878,17 +878,14 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" VariableName="迫害召唤_死亡轮回数量" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${numeric:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 巴哈：真龙波（${var:迫害召唤_真龙波数量}/8） 死亡轮回（${var:迫害召唤_死亡轮回数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
                                 <Condition Enabled="false" Grouping="Or" />
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -936,17 +933,14 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" VariableName="迫害召唤_天启数量" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${numeric:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 不死鸟：赤焰（${var:迫害召唤_赤焰数量}/8） 天启（${var:迫害召唤_天启数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
                                 <Condition Enabled="false" Grouping="Or" />
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -1029,16 +1023,18 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="森林冰火人" Id="e4daca42-d3cf-43b9-909b-c11e3f8d10a5" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;CasterName&gt;[^:]+?):(98|8D|A2|4079|9A|8E|9F|92|95):" PrevActions="Interrupt">
+                      <Trigger Enabled="true" Name="森林冰火人" Id="e4daca42-d3cf-43b9-909b-c11e3f8d10a5" RegularExpression="\] 15:[A-F0-9]{8}:(?&lt;CasterName&gt;[^:]+?):(98|8D|A2|4079|9A|8E|9F|92|95|407A):" PrevActions="Interrupt">
                         <Actions>
                           <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:AT_鲶鱼精邮差监听端口}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}天语断了，快笑话他！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15000" Asynchronous="False" RefireInterrupt="True">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${evar:${CasterName}天语}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
+                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" VariableName="${CasterName}天语" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -1087,19 +1083,16 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="${caster}寂灭" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${numeric:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${caster} 血乱：（血溅 ${var:${caster}血溅}/5 寂灭 ${var:${caster}寂灭}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="11000">
                                 <Condition Enabled="true" Grouping="And">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -1135,7 +1128,6 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
@@ -1151,11 +1143,9 @@
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${TargetName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
                           </Trigger>
                           <Trigger Enabled="true" Name="失去" Id="686b2ef0-6878-4d05-8bf9-cca9c8b8d9be" RegularExpression="\] 1E:[A-F0-9]{8}:(?&lt;TargetName&gt;[^:]+?) loses the effect of (至黑之夜|Blackest Night|ブラックナイト) from" Description="\] 1E:[A-F0-9]{8}:(?&lt;TargetName&gt;[^:]+?) loses the effect of (至黑之夜|Blackest Night|ブラックナイト) from&#xD;&#xA;\] 00:(08b0|1130):.*(至黑之夜|Blackest Night|ブラックナイト)">
                             <Actions>
@@ -1165,17 +1155,14 @@
                                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${TargetName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:${TargetName}获得至黑之夜}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                               <Action OrderNumber="2" VariableName="${TargetName}获得至黑之夜" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                                 <Condition Enabled="true" Grouping="Or">
                                   <ConditionSingle Enabled="true" ExpressionL="${evar:${TargetName}获得至黑之夜}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                                 </Condition>
-                                <Conditions />
                               </Action>
                             </Actions>
                             <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
                           </Trigger>
                         </Triggers>
                       </Folder>
@@ -1220,15 +1207,12 @@
                     <Actions>
                       <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName=".*(寂灭|血溅|计数器|至黑之夜|天语|裂石飞环)" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" VariableOp="UnsetRegex" VariableName="迫害召唤.*" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Trigger>
                 </Triggers>
               </Folder>
@@ -1283,17 +1267,14 @@
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${numeric:if(${evar:AT_使用自定义配置},${var:AT_鲶鱼精邮差监听端口},2019)}/command" JsonPayloadExpression="/mk circle &lt;${_ffxivparty[${CasterName}].order}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Trigger>
                 </Triggers>
               </Folder>
