@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+    <name>伊甸希望乐园：觉醒篇 4</name>
+    <zone>伊甸希望乐园 (觉醒之章4),Eden's Gate: Sepulture</zone>
+    <rev>v1.1.0</rev>
+    <author>海猫茶屋:Souma</author>
+    <description>伊甸希望乐园：觉醒篇 4。</description>
+    <license>CC BY-SA</license>
+    <locale>@(Model.Locale)</locale>
+    <entry>P1</entry>
+    <start>15:.{8}:.*:413D:</start>
+    
+    <s name="判断">
+        <t sync="15:.*:40E6:" goto="大地之手甲"/>
+        <t sync="15:.*:40E8:" goto="大地之车轮"/>
+        <a time="00:10" text="-"/>
+    </s>
+
+    <s name="大地之手甲">
+        <t sync="15:.*:40E[79]:" goto="P3">
+            <expressions>
+                <pre name="PP" value="false"/>
+            </expressions>
+        </t>
+        <t sync="15:.*:40E[79]:" goto="P5">
+            <expressions>
+                <pre name="PP" value="true"/>
+            </expressions>
+        </t>
+        <a time="00:08" text="[先进后出]百万地裂" sync="15:.*:40FA:"/>
+        <a time="00:16" text="T字冲"/>
+        <a time="00:23" text="左/右侧地裂"/>
+        <a time="00:31" text="T字冲"/>
+        <a time="00:37" text="左/右侧地裂" sync="15:.*:40FF:"/>
+    </s>
+
+    <s name="大地之车轮">
+        <t sync="15:.*:40E[79]:" goto="P3">
+            <expressions>
+                <pre name="PP" value="false"/>
+            </expressions>
+        </t>
+        <t sync="15:.*:40E[79]:" goto="P5">
+            <expressions>
+                <pre name="PP" value="true"/>
+            </expressions>
+        </t>
+        <a time="00:08" text="[击退]断裂带"/>
+        <a time="00:16" text="[击退]断裂带"/>
+        <a time="00:23" text="[击退]断裂带"/>
+        <a time="00:31" text="[月环]震级5.0" sync="15:.*:4104:"/>
+    </s>
+
+    <s name="P1">
+        <a time="00:09" text="--同步--" sync="14:40F7:"/>
+        <a time="00:12" text="[AoE]大地之号" sync="16:.*:40F7:" style="AoE"/>
+        <a time="00:30" text="[地板]大地之重" sync="15:.*:40EA:"/>
+        <a time="00:41" text="[死刑]崩岩" sync="15:.*:40F9:" style="死刑"/>
+        <a time="00:47" text="岩层崩落" sync="15:.*:40F1:" style="AoE"/>
+        <a time="01:05" text="地震波"/>
+        <a time="01:18" text="[跳跃]大地粉碎" sync="16:.*:40F6:" style="AoE"/>
+        <a time="01:22" text="大地之手甲"/>
+        <a time="01:30" text="百万地裂" sync="15:.*:40FA:"/>
+        <a time="01:36" text="大地之铠"/>
+        <a time="01:48" text="[死刑]崩岩" sync="15:.*:40F9:" style="死刑"/>
+        <a time="01:55" text="爆破岩石"/>
+        <a time="02:16" text="[AoE]大地之号" sync="16:.*:40F7:" style="AoE"/>
+        <a time="02:29" text="[跳跃]大地粉碎" sync="16:.*:40F6:" style="AoE"/>
+        <a time="02:32" text="大地之车轮"/>
+        <a time="02:40" text="[击退]断裂带"/>
+        <a time="02:42" text="大地之铠"/>
+        <a time="03:01" text="[AoE]大地之怒" sync="15:.*:40F8:" style="AoE"/>
+        <a time="03:16" text="[死刑]崩岩" sync="15:.*:40F9:" style="死刑"/>
+        <a time="03:22" text="爆破岩石"/>
+        <a time="03:40" text="[地板]大地之重" sync="15:.*:40EA:"/>
+        <a time="03:50" text="[AoE]大地之号" sync="16:.*:40F7:" style="AoE"/>
+        <a time="03:58" text="岩层崩落" sync="15:.*:40F1:" style="AoE"/>
+        <a time="04:16" text="地震波"/>
+        <a time="04:26" text="[死刑]崩岩" sync="15:.*:40F9:" style="死刑"/>
+        <a time="04:33" text="[跳跃]大地粉碎" sync="16:.*:40F6:" style="AoE"/>
+        <a time="04:34" text="分支" goto="判断"/>
+    </s>
+
+    <s name="P3">
+        <t sync=":40F9:">
+            <expressions>
+                <set name="PP" value="true"/>
+            </expressions>
+        </t>
+        <a time="00:10" text="--同步--" sync="14:40F9:"/>
+        <a time="00:15" text="[死刑]崩岩" sync="15:.*:40F9:" style="死刑"/>
+        <a time="00:21" text="爆破岩石"/>
+        <a time="00:49" text="[AoE]大地之号" sync="16:.*:40F7:" style="AoE"/>
+        <a time="01:08" text="[地板]大地之重" sync="15:.*:40EA:"/>
+        <a time="01:18" text="[死刑]崩岩" sync="15:.*:40F9:" style="死刑"/>
+        <a time="01:28" text="[跳跃]大地粉碎" sync="16:.*:40F6:" style="AoE"/>
+        <a time="01:29" text="--分支--" goto="判断"/>
+    </s>
+
+    <s name="P5">
+        <t sync=":40F9:">
+            <expressions>
+                <set name="PP" value="false"/>
+            </expressions>
+        </t>
+        <a time="00:09" text="--同步--" sync="14:40F8:"/>
+        <a time="00:15" text="[AoE]大地之怒" sync="15:.*:40F8:" style="AoE"/>
+        <a time="00:30" text="[死刑]崩岩" sync="15:.*:40F9:" style="死刑"/>
+        <a time="00:36" text="爆破岩石"/>
+        <a time="00:54" text="[地板]大地之重" sync="15:.*:40EA:"/>
+        <a time="01:04" text="[AoE]大地之号" sync="16:.*:40F7:" style="AoE"/>
+        <a time="01:12" text="岩层崩落" sync="15:.*:40F1:" style="AoE"/>
+        <a time="01:30" text="地震波"/>
+        <a time="01:40" text="[死刑]崩岩" sync="15:.*:40F9:" style="死刑"/>
+        <a time="01:47" text="[跳跃]大地粉碎" style="AoE"/>
+        <a time="01:48" text="--分支--" goto="判断"/>
+    </s>
+
+</timeline>
