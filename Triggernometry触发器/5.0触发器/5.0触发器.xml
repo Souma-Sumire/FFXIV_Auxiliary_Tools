@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f70e86ec-4af7-4a29-8c21-a1e66db8d3d6" Name="副本触发器 v1.2.7.3" Enabled="true">
+  <ExportedFolder Id="f70e86ec-4af7-4a29-8c21-a1e66db8d3d6" Name="副本触发器 v1.2.7.5" Enabled="true">
     <Folders>
       <Folder Id="711bf2ab-e83e-431c-9aaf-beb6c4d2ebf7" ZoneFilterRegularExpression="伊甸希望乐园.*" Name="普通伊甸" Enabled="true">
         <Folders />
@@ -2197,7 +2197,6 @@
             <Actions>
               <Action OrderNumber="1" PlaySoundFileExpression="${_env[SoumaTriggerFolder]}\Triggernometry触发器\5.0触发器\倒计时321录音音频\${var:倒计时文件名称}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound" ExecutionDelayExpression="${numeric:(${time}-3)*1000-200}">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
@@ -3160,103 +3159,186 @@
           <Folder ZoneFilterEnabled="True" Id="e794a647-a998-496a-a0c4-a9e2e191babb" ZoneFilterRegularExpression="复制工厂废墟|The Copied Factory|複製サレタ工場廃墟" Name="复制工厂废墟" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="AoE" Id="f0586e50-5986-46a5-acd5-1fbb804743b6" RegularExpression="00:282b:.*正在发动“(大震动|耐激光检测|攻击：周边导弹轰炸|扩散射线|全方位激光)”|14:(48CF|4805|4941|4755|48F6):">
+              <Trigger Enabled="true" Name="AoE" Id="f0586e50-5986-46a5-acd5-1fbb804743b6" RegularExpression="00:282b:.*正在发动“(大震动|耐激光检测|攻击：周边导弹轰炸|扩散射线|全方位激光)”|14:(48CF|4805|4941|4755|48F6):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="去中间" Id="b0943ea5-f64d-4b7f-921f-13d85b5bbf57" RegularExpression="00:282b:.*正在发动“(侧方旋转攻击)|14:4A87:">
+              <Trigger Enabled="true" Name="去中间" Id="b0943ea5-f64d-4b7f-921f-13d85b5bbf57" RegularExpression="14:48CA:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="去中间" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="死刑" Id="d4a6dbd7-70d9-4ebd-a2f6-231a7a29bea7" RegularExpression="00:282b:.*正在发动“(强攻击|压制射击)|14:(48CE|48F5):">
+              <Trigger Enabled="true" Name="死刑" Id="d4a6dbd7-70d9-4ebd-a2f6-231a7a29bea7" RegularExpression="\] 14:(48CE|48F5|4753|48F0):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="去两侧" Id="429aa610-f31a-4554-8612-4a220b2fa3a9" RegularExpression="00:282b:.*正在发动“(中央旋转攻击)|14:4A84:">
+              <Trigger Enabled="true" Name="去两侧" Id="429aa610-f31a-4554-8612-4a220b2fa3a9" RegularExpression="14:48C8:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="去两侧" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="远离正面" Id="161008e0-d34a-4a51-b811-3117f9a133fb" RegularExpression="00:282b:.*正在发动“(连续能量弹|主炮激光)|14:(48B5|4A74):">
+              <Trigger Enabled="true" Name="远离正面" Id="161008e0-d34a-4a51-b811-3117f9a133fb" RegularExpression="14:(48B5|4A74):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="远离正面" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="麦喀士打击" Id="2cd11537-dc6f-4bd9-8cfc-687b64747167" RegularExpression="14:472(?&lt;type&gt;6|7|E|A):">
+              <Trigger Enabled="true" Name="麦喀士打击" Id="2cd11537-dc6f-4bd9-8cfc-687b64747167" RegularExpression="14:472(?&lt;type&gt;6|7|E|A):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="1" UseTTSTextExpression="左" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                  <Action OrderNumber="1" UseTTSTextExpression="左左左" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="2" UseTTSTextExpression="右" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                  <Action OrderNumber="2" UseTTSTextExpression="右右右" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="7" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" UseTTSTextExpression="前面中间" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="E" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" UseTTSTextExpression="后面两侧" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="A" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="能量弹幕" Id="eeb4c0c9-75e5-482e-bdaa-8ef4abf57380" RegularExpression="00:282b:.*正在发动“能量弹幕|14:473C:">
+              <Trigger Enabled="true" Name="能量弹幕" Id="eeb4c0c9-75e5-482e-bdaa-8ef4abf57380" RegularExpression="00:282b:.*正在发动“能量弹幕|14:473C:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="去两侧，然后踩塔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="麦喀士启动|请求支援：麦喀士" Id="2696d378-74cb-44a7-bf38-39e8581b77b5" RegularExpression="00:282b:.*正在发动“麦喀士启动|请求支援：麦喀士”|14:(48A8|48D3):">
+              <Trigger Enabled="true" Name="麦喀士启动|请求支援：麦喀士" Id="2696d378-74cb-44a7-bf38-39e8581b77b5" RegularExpression="00:282b:.*正在发动“麦喀士启动|请求支援：麦喀士”|14:(48A8|48D3):" PeriodRefire="Deny" RefirePeriodExpression="5000">
                 <Actions>
-                  <Action OrderNumber="1" UseTTSTextExpression="远离电锯" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                  <Action OrderNumber="1" UseTTSTextExpression="远离电锯" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3000">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="前后/侧面齐射" Id="0e90336b-2add-48b0-9d40-f00bb1b477a3" RegularExpression="00:282b:.*正在发动“(?&lt;type&gt;(前后|侧面)齐射)|14:(48DF|48DE):">
+              <Trigger Enabled="true" Name="前后/侧面齐射" Id="0e90336b-2add-48b0-9d40-f00bb1b477a3" RegularExpression="14:(?&lt;type&gt;48DF|48DE):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="去两侧" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="前后" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="48DF" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" UseTTSTextExpression="去前后" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="侧面" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="48DE" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="喷火器" Id="6e819d3d-757a-47ad-a59a-7d3d41e85ad0" RegularExpression="墙面的火炎放射器开始运作|The wall-mounted flamethrowers activate|壁面の火炎放射器が稼働を始めた……">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="回头看喷火" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="箱子" Id="1cf3aa58-3766-4fec-948c-f577404dc8ed" RegularExpression="墙面的左臂开始运作……|The wall-mounted left arm begins to move\.\.\.|壁面のレフトアームが稼働を始めた……！">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="远离中场" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" UseTTSTextExpression="躲墙体" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="6000">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" UseTTSTextExpression="坦克截线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="2000">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="死刑点名" Id="fc7934a2-1dd5-4eae-9e37-b20afd690adf" RegularExpression="] 1B:[A-F0-9]{8}:(?&lt;name&gt;.+?):....:....:00C6:">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="远离人群" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="黄圈点名" Id="fd099aa0-0ef6-4095-8c50-f336ecf9aa72" RegularExpression="] 1B:[A-F0-9]{8}:(?&lt;name&gt;.+?):....:....:0017:">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="远离人群" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="昂格士拥抱" Id="c926c41d-ce3a-47aa-879e-95c0c424d878" RegularExpression="14:474E:">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="前面中间" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="自爆攻击" Id="bf80c2fb-cf23-4b60-afc5-326be0afaf57" RegularExpression="14:48E7:">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="去没连线的坦克后方" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -3278,27 +3360,35 @@
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_显示字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="AT_显示字幕Y偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="AT_倒计时字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="AT_倒计时字幕Y偏移" VariableExpression="-300" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="AT_倒计时字幕Y间隔" VariableExpression="40" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="AT_X秒前改为警报颜色" VariableExpression="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="AT_目标的位置X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="AT_目标的位置Y偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
