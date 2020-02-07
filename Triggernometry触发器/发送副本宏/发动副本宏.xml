@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏（需要鲶鱼精邮差）" Enabled="true">
+  <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏 v1.2.7.1" Enabled="true">
     <Folders />
     <Triggers>
       <Trigger Enabled="true" Sequential="True" Name="动作" Id="64604d21-8737-44f7-a910-9c76887a785e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:0038:发送副本宏 ?(?&lt;channel&gt;\w+?)( ?(?&lt;map&gt;.+?))?$">
         <Actions>
-          <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="${_env[SoumaTriggerFolder]}\Triggernometry触发器\自动发宏工具\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+          <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="${_env[SoumaTriggerFolder]}\Triggernometry触发器\发送副本宏\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${elvar:ExtremeMacroText}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
@@ -57,6 +57,7 @@
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
