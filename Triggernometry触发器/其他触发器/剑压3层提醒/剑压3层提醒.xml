@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="88ed4488-0d52-4fe0-ad81-22fb2187cb90" Name="剑压3层提醒" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Name="loses" Id="8d6cd317-b1d4-4558-b729-3fd7a7f3be0a" RegularExpression="\] 1E:[A-F0-9]{8}:(?&lt;name&gt;.+?) loses the effect of 剑压 from ">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_剑压" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Sequential="True" Name="gains" Id="9c8e602c-562a-41f6-ab93-b850bbac72b6" RegularExpression="\] 1A:[A-F0-9]{8}:(?&lt;name&gt;.+?) gains the effect of 剑压 from ">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_剑压" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:AT_剑压}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="AT_剑压" VariableExpression="${var:AT_剑压}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:AT_剑压}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${var:AT_剑压}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" PlaySoundFileExpression="${_env[SoumaTriggerFolder]}\Triggernometry触发器\其他触发器\剑压3层提醒\Sound.mp3" PlaySoundVolumeExpression="30" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${var:AT_剑压}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
