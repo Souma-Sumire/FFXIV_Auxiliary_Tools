@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f70e86ec-4af7-4a29-8c21-a1e66db8d3d6" Name="副本触发器 v1.2.11.1" Enabled="true">
+  <ExportedFolder Id="f70e86ec-4af7-4a29-8c21-a1e66db8d3d6" Name="副本触发器 v1.2.12" Enabled="true">
     <Folders>
       <Folder Id="711bf2ab-e83e-431c-9aaf-beb6c4d2ebf7" ZoneFilterRegularExpression="伊甸希望乐园.*" Name="普通伊甸" Enabled="true">
         <Folders />
@@ -2203,7 +2203,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${time}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="TTS传入玩家名称的职业" Id="94278783-12fe-45a0-8a67-e5ce67aef5e9" RegularExpression="Souma_TTS_Job:(?&lt;name&gt;.+)" Scheduling="FromRefirePeriod" RefirePeriodExpression="750">
+          <Trigger Enabled="true" Sequential="True" Name="TTS传入玩家名称的职业" Id="94278783-12fe-45a0-8a67-e5ce67aef5e9" RegularExpression="Souma_TTS_Job:(?&lt;name&gt;.+)" Scheduling="FromRefirePeriod" RefirePeriodExpression="500">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="骑士" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="true" Grouping="Or">
@@ -3117,7 +3117,6 @@
                     <Actions>
                       <Action OrderNumber="1" UseTTSTextExpression="地火" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -3126,17 +3125,14 @@
                     <Actions>
                       <Action OrderNumber="1" UseTTSTextExpression="AoE" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" UseTTSTextExpression="左右踩塔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3000">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" UseTTSTextExpression="AoE" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="12000">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
