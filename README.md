@@ -16,38 +16,49 @@
 提供以下功能:
 
 * Hojoring - 技能监控 :
+
   ![Hojoring技能监控](screenshots/Hojoring技能监控.png)
 
 * Hojoring - 时间轴:
+
   ![Hojoring时间轴](screenshots/Hojoring时间轴.png)
   
-* Triggernometry - 武僧无我/黑魔回蓝监控
+* Triggernometry - 武僧无我/黑魔回蓝/诗人Dot监控
+
   ![无我回蓝Tick监控](screenshots/无我回蓝Tick监控.gif)
 
 * Triggernometry - 副本发宏工具
+
   ![副本发宏工具](screenshots/副本发宏工具.gif)
 
 * Triggernometry - 队友技能监控
-  没图...
+
+  ![减伤警察](screenshots/减伤警察.png)
+
 * Triggernometry - 副本触发器
+
   没图...
-* Triggernometry - Zeff - 可视化Buff跟踪器
+
+* Triggernometry - Zeffuro's Dot timers
+
   ![可视化Buff跟踪器](screenshots/可视化Buff跟踪器.png)
-
-* Triggernometry - Zeff - 可视化DoT计时器
   ![可视化DoT计时器](screenshots/可视化DoT计时器.png)
-
-* Triggernometry - Zeff - 可视化队友冷却
   ![可视化队友冷却](screenshots/可视化队友冷却.png)
-
-* Triggernometry - Zeff - 可视化冷却跟踪器
   ![可视化冷却跟踪器](screenshots/可视化冷却跟踪器.png)
-
-* Triggernometry - Zeff - 可视化团辅冷却
   ![可视化冷却跟踪器](screenshots/可视化团辅冷却.png)
 
 * Triggernometry - Aho's Raid Buff
+
   ![Aho](screenshots/Aho.png)
+
+* Triggernomety - 其他触发器
+  * 武士剑压3层音效提醒
+  * DK一键单体GCD循环
+  * 舞者一键标准舞步
+  * OBS自动录制
+  * 监控某单位的目标
+  * 生产物品数量计数
+  * more..
 
 ## 安装过程
 
@@ -56,13 +67,12 @@
 1. 你必须启用 [DirectX 11](https://support.microsoft.com/zh-cn/help/179113/how-to-install-the-latest-version-of-directx) 来运行 最终幻想14
 1. 安装64位版本的 ACT
 [原版](http://advancedcombattracker.com/) /
-[国服适配整合版](https://nga.178.com/read.php?tid=17412506) /
-[国服非绿色化整合](https://nga.178.com/read.php?tid=19019884)
-1. 加载FF14解析插件 整合版自带 /
-[国服原版ACT](https://github.com/TundraWork/FFXIV_ACT_Plugin_CN/releases)/
+[咖啡整合](https://nga.178.com/read.php?tid=17412506) /
+[呆萌整合](https://nga.178.com/read.php?tid=19019884)
+1. 加载FF14解析插件 整合版 /
 [国际服](https://github.com/ravahn/FFXIV_ACT_Plugin/releases/latest)
-的最新版本，启用网络解析，并确保没有防火墙或安全软件阻止ACT。并勾选解析设置中的"解析日止包含HP值" (Include HP for Triggers)
-1. 加载 [Hojoring](https://github.com/anoyetta/ACT.Hojoring)
+的最新版本，启用网络解析，并确保没有防火墙或安全软件阻止ACT。
+1. [Hojoring](https://github.com/anoyetta/ACT.Hojoring)
 [Triggernometry](https://github.com/paissaheavyindustriesTriggernometry)
 1. **确保游戏中聊天框的消息没有被过滤（重要）**
 [设置过滤 - 视频演示](https://www.bilibili.com/video/av83704576/)
@@ -96,6 +106,7 @@
 
 1. **以管理员身份运行** `添加触发器目录与鲶鱼精邮差端口到环境变量.bat`
   ![环境变量](screenshots/环境变量.png)
+
 1. 出现这个字样代表成功
   ![环境变量成功](screenshots/环境变量成功.png)
 1. **重新启动ACT**
@@ -105,7 +116,7 @@
 ##### 鲶鱼精邮差
 
 1. 下载并运行 [鲶鱼精邮差](https://nga.178.com/read.php?tid=19724323)
-1. 找一个端口 开始监听。比如我默认设置为2019
+1. 找一个端口 开始监听。比如2019
 1. 如果不是2019，在 Bat右键编辑 倒数第二行 修改为你监听的端口，并重新运行Bat。
   ![修改邮差端口](screenshots/修改邮差端口.png)
 
