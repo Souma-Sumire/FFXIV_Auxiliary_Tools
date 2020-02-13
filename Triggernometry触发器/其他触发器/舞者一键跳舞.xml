@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="ff5742b3-0736-46dd-a8c9-f1f789c69dfd" Name="舞娘一键舞步 v1.0.2" Enabled="true">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="137438953472" Id="ff5742b3-0736-46dd-a8c9-f1f789c69dfd" Name="舞娘一键舞步 v1.0.3" Enabled="true">
     <Folders>
       <Folder Id="4c3f2816-e4f5-4d51-8fd8-fed05f7c51a6" Name="标准舞步" Enabled="true">
         <Folders>
           <Folder Id="4992be73-ef20-4ec3-b0b2-1ff3d5026a62" Name="分支" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="false" Name="to4" Id="5f078f10-d3cd-475b-93c0-b75dc1f4ac9d" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):(3E7F|3E80|3E81|3E82):">
+              <Trigger Enabled="true" Name="to4" Id="5f078f10-d3cd-475b-93c0-b75dc1f4ac9d" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):(3E7F|3E80|3E81|3E82):">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill4}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -186,6 +186,28 @@
             <Actions>
               <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set ${skill} ${num1} ${num2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="重置" Id="98710877-19a7-4ea2-ad3c-c48833c45afa" RegularExpression="的职业转换成了“舞者”。|距离战斗开始还有10秒">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="903a52ba-4325-4b22-8145-752856473404" TriggerForce="true" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="死亡" Id="f698c61d-c35c-4b69-9330-35ca86156940" RegularExpression="\] 19:(?&lt;name&gt;.+?) was defeated by ">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="903a52ba-4325-4b22-8145-752856473404" TriggerForce="true" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
                 <Conditions />
               </Action>
             </Actions>
