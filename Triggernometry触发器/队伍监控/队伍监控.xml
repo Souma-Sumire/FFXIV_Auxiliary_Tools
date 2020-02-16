@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="7ac0b969-d7af-4a84-8851-c232b596b500" Name="队伍监控 v1.2.15.1" Enabled="true">
+  <ExportedFolder Id="7ac0b969-d7af-4a84-8851-c232b596b500" Name="队伍监控 v1.2.16" Enabled="true">
     <Folders>
       <Folder Id="cb501ed1-bb27-4e17-b2c3-b93aa4fbf4cc" Name="大技能" Enabled="true">
         <Folders>
@@ -870,7 +870,7 @@
               </Trigger>
             </Triggers>
           </Folder>
-          <Folder Id="25e30f45-81c4-4ff8-ab6d-5b4b963566b7" Name="召唤" Enabled="true">
+          <Folder Id="25e30f45-81c4-4ff8-ab6d-5b4b963566b7" Name="召唤" Enabled="false">
             <Folders>
               <Folder Id="b414524d-14fe-41fb-8879-0e60802cd951" Name="龙神" Enabled="true">
                 <Folders />
@@ -881,7 +881,6 @@
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                         </Condition>
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -1238,25 +1237,21 @@
                 <Actions>
                   <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 的回返五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="天下五剑" Id="e5b7a3bf-00b0-43ec-8f9a-6a744b289a95" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;.+?):1D40:(天下五剑|Tenka Goken|天下五剣):.{8}:(?&lt;Target&gt;.+?):" PrevActions="Interrupt" PrevActionsRefire="Deny">
                 <Actions>
                   <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 的天下五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -1284,22 +1279,24 @@
                   <Folder Id="a3a28b4a-24b5-4f55-89a2-e6b494d0ad34" Name="战栗" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="loses" Id="97c8d7bd-2eb7-461c-8903-5d671cf221b6" RegularExpression="\] 1[AE]:.{8}:(?&lt;CasterName&gt;.+?) loses the effect of (战栗|Thrill of Battle|スリル・オブ・バトル) from">
+                      <Trigger Enabled="true" Name="loses" Id="97c8d7bd-2eb7-461c-8903-5d671cf221b6" RegularExpression="\] 1E:.{8}:(?&lt;CasterName&gt;.+?) loses the effect of (战栗|Thrill of Battle|スリル・オブ・バトル) from">
                         <Actions>
                           <Action OrderNumber="1" VariableName="${CasterName}战栗" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                             </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="gains" Id="d918fbb4-3f07-48a2-9532-3e5cc16c39a2" RegularExpression="\] 1[AE]:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (战栗|Thrill of Battle|スリル・オブ・バトル) from .+? for 10\.00 Seconds\.">
+                      <Trigger Enabled="true" Name="gains" Id="d918fbb4-3f07-48a2-9532-3e5cc16c39a2" RegularExpression="\] 1A:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (战栗|Thrill of Battle|スリル・オブ・バトル) from .+? for 10\.00 Seconds\.">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${CasterName}战栗" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                             </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -1309,22 +1306,24 @@
                   <Folder Id="026c89bd-5335-44b8-9f44-78e3247da584" Name="复仇" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="loses" Id="b974eb26-d297-4362-b34e-035d848dd0d5" RegularExpression="\] 1[AE]:.{8}:(?&lt;CasterName&gt;.+?) loses the effect of (复仇|Vengeance|ヴェンジェンス) from">
+                      <Trigger Enabled="true" Name="loses" Id="b974eb26-d297-4362-b34e-035d848dd0d5" RegularExpression="\] 1E:.{8}:(?&lt;CasterName&gt;.+?) loses the effect of (复仇|Vengeance|ヴェンジェンス) from">
                         <Actions>
                           <Action OrderNumber="1" VariableName="${CasterName}复仇" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                             </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="gains" Id="7f6b205e-a7d5-4480-b3a7-41d4d6ad5088" RegularExpression="\] 1[AE]:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (复仇|Vengeance|ヴェンジェンス) from .+? for 15\.00 Seconds\.">
+                      <Trigger Enabled="true" Name="gains" Id="7f6b205e-a7d5-4480-b3a7-41d4d6ad5088" RegularExpression="\] 1A:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (复仇|Vengeance|ヴェンジェンス) from .+? for 15\.00 Seconds\.">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${CasterName}复仇" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                             </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -1334,22 +1333,24 @@
                   <Folder Id="1bdf56ba-6f34-413e-adc8-0654aff3f011" Name="原初的直觉" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="loses" Id="f151928a-2e44-4dda-9dac-c955df5879bb" RegularExpression="\] 1[AE]:.{8}:(?&lt;CasterName&gt;.+?) loses the effect of (原初的直觉|Raw Intuition|原初の直感) from">
+                      <Trigger Enabled="true" Name="loses" Id="f151928a-2e44-4dda-9dac-c955df5879bb" RegularExpression="\] 1E:.{8}:(?&lt;CasterName&gt;.+?) loses the effect of (原初的直觉|Raw Intuition|原初の直感) from">
                         <Actions>
                           <Action OrderNumber="1" VariableName="${CasterName}原初的直觉" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                             </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="gains" Id="98bdc26e-62ff-43f1-ae7b-6c990eac622b" RegularExpression="\] 1[AE]:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (原初的直觉|Raw Intuition|原初の直感) from .+? for 6\.00 Seconds\.">
+                      <Trigger Enabled="true" Name="gains" Id="98bdc26e-62ff-43f1-ae7b-6c990eac622b" RegularExpression="\] 1E:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (原初的直觉|Raw Intuition|原初の直感) from .+? for 6\.00 Seconds\.">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${CasterName}原初的直觉" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                             </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -1363,6 +1364,7 @@
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetString" VariableName="团减_摆脱" VariableExpression="${var:摆脱百分比}%摆脱(${numeric:round(${_ffxivparty[${_ffxivplayer}].maxhp}/100*${var:摆脱百分比})}) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="true" Grouping="Or">
@@ -1398,7 +1400,6 @@
                         <Actions>
                           <Action OrderNumber="1" VariableName="团减_摆脱" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                             <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="true" Grouping="Or">
@@ -1413,7 +1414,7 @@
               <Folder Id="c01beea9-da8b-484b-bc8c-440b8bcf43e8" Name="圣光幕帘" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="gains" Id="9162ba99-8af8-40f0-a19e-65130e03ad9e" RegularExpression="\] 1[AE]:.{8}:(?&lt;PlayerName&gt;.+?) gains the effect of (圣光幕帘|Divine Veil|ディヴァインヴェール) from (?&lt;CasterName&gt;.+?) for \d+\.\d+ Seconds\.">
+                  <Trigger Enabled="true" Name="gains" Id="9162ba99-8af8-40f0-a19e-65130e03ad9e" RegularExpression="\] 1A:.{8}:(?&lt;PlayerName&gt;.+?) gains the effect of (圣光幕帘|Divine Veil|ディヴァインヴェール) from (?&lt;CasterName&gt;.+?) for \d+\.\d+ Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetString" VariableName="团减_圣光幕帘" VariableExpression="幕帘(${numeric:round(${_ffxivparty[${CasterName}].maxhp}*0.1)}) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="And">
@@ -1422,16 +1423,18 @@
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].job}" ExpressionTypeL="String" ExpressionR="PLD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="loses" Id="87143980-c5a1-4725-bee1-25d4cc46dd43" RegularExpression="\] 1[AE]:.{8}:(?&lt;PlayerName&gt;.+?) loses the effect of (圣光幕帘|Divine Veil|ディヴァインヴェール) from">
+                  <Trigger Enabled="true" Name="loses" Id="87143980-c5a1-4725-bee1-25d4cc46dd43" RegularExpression="\] 1E:.{8}:(?&lt;PlayerName&gt;.+?) loses the effect of (圣光幕帘|Divine Veil|ディヴァインヴェール) from">
                     <Actions>
                       <Action OrderNumber="1" VariableName="团减_圣光幕帘" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${PlayerName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -1441,23 +1444,25 @@
               <Folder Id="098349ae-2b88-45eb-a0c0-ab1e4ceae906" Name="鼓舞" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="loses" Id="ad69350b-d65f-48ec-8085-91be52136a00" RegularExpression="\] 1[AE]:.{8}:(?&lt;name&gt;.+?) loses the effect of (鼓舞|Galvanize|鼓舞) from">
+                  <Trigger Enabled="true" Name="loses" Id="ad69350b-d65f-48ec-8085-91be52136a00" RegularExpression="\] 1E:.{8}:(?&lt;name&gt;.+?) loses the effect of (鼓舞|Galvanize|鼓舞) from">
                     <Actions>
                       <Action OrderNumber="1" VariableName="单减_鼓舞" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="gains" Id="9ae39175-5352-4d6a-abbe-d6bcb28d82df" RegularExpression="\] 1[AE]:.{8}:(?&lt;name&gt;.+?) gains the effect of (鼓舞|Galvanize|鼓舞) from (?&lt;CasterName&gt;.+)? for (?&lt;time&gt;[\d\.]+) Seconds\.">
+                  <Trigger Enabled="true" Name="gains" Id="9ae39175-5352-4d6a-abbe-d6bcb28d82df" RegularExpression="\] 1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (鼓舞|Galvanize|鼓舞) from (?&lt;CasterName&gt;.+)? for (?&lt;time&gt;[\d\.]+) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetString" VariableName="单减_鼓舞" VariableExpression="鼓舞盾 " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -1471,22 +1476,24 @@
               <Folder Id="6d291a97-daaf-417b-82a9-a5135b347293" Name="炽天的幕帘" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="loses" Id="84ba959a-8d91-4605-9d80-ac6c0fb21c37" RegularExpression="\] 1[AE]:.{8}:(?&lt;name&gt;.+?) loses the effect of (炽天的幕帘|Seraphic Veil|セラフィックヴェール) from">
+                  <Trigger Enabled="true" Name="loses" Id="84ba959a-8d91-4605-9d80-ac6c0fb21c37" RegularExpression="\] 1E:.{8}:(?&lt;name&gt;.+?) loses the effect of (炽天的幕帘|Seraphic Veil|セラフィックヴェール) from">
                     <Actions>
                       <Action OrderNumber="1" VariableName="单减_炽天的幕帘" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="gains" Id="b489809b-c11e-465a-85c3-7231e9f70596" RegularExpression="\] 1[AE]:.{8}:(?&lt;name&gt;.+?) gains the effect of (炽天的幕帘|Seraphic Veil|セラフィックヴェール) from ">
+                  <Trigger Enabled="true" Name="gains" Id="b489809b-c11e-465a-85c3-7231e9f70596" RegularExpression="\] 1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (炽天的幕帘|Seraphic Veil|セラフィックヴェール) from ">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetString" VariableName="单减_炽天的幕帘" VariableExpression="炽天盾 " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
