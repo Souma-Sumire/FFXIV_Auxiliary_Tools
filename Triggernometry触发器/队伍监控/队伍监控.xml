@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="7ac0b969-d7af-4a84-8851-c232b596b500" Name="队伍监控 v1.2.16" Enabled="true">
+  <ExportedFolder Id="7ac0b969-d7af-4a84-8851-c232b596b500" Name="队伍监控 v1.2.16.1" Enabled="true">
     <Folders>
       <Folder Id="cb501ed1-bb27-4e17-b2c3-b93aa4fbf4cc" Name="大技能" Enabled="true">
         <Folders>
@@ -1235,8 +1235,9 @@
             <Triggers>
               <Trigger Enabled="true" Name="回返五剑" Id="21c50ba5-74ea-4c4a-afd1-327fe6a73306" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;.+?):4065:(回返五剑|Kaeshi: Goken|返し五剣):.{8}:(?&lt;Target&gt;.+?):" PrevActions="Interrupt" PrevActionsRefire="Deny">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 的回返五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 的回返五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500" RefireInterrupt="True" RefireRequeue="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -1245,8 +1246,9 @@
               </Trigger>
               <Trigger Enabled="true" Name="天下五剑" Id="e5b7a3bf-00b0-43ec-8f9a-6a744b289a95" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;.+?):1D40:(天下五剑|Tenka Goken|天下五剣):.{8}:(?&lt;Target&gt;.+?):" PrevActions="Interrupt" PrevActionsRefire="Deny">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 的天下五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 的天下五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500" RefireInterrupt="True" RefireRequeue="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
