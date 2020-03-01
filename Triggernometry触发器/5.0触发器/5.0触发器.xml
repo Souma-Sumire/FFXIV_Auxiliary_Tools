@@ -7,7 +7,7 @@
           <Folder Id="767428aa-259c-40b5-99d0-c24e0f700805" Name="职能位置" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="动作" Id="ecf8ff61-5ccc-411e-b825-3f60417fef70" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:(000[ae]:[\ue090]?(?&lt;name&gt;.+?)|(?&lt;num&gt;0038)):(?&lt;role&gt;[sSmMhHdD][tT1-4])$" Description="在/s或/p喊话：&#xD;&#xA;&#xD;&#xA;你是D1就喊话D1&#xD;&#xA;你是D2就喊话D2&#xD;&#xA;你是D3就喊话D3&#xD;&#xA;你是D4就喊话D4&#xD;&#xA;你是H1就喊话H1&#xD;&#xA;你是H2就喊话H2&#xD;&#xA;你是MT就喊话MT&#xD;&#xA;你是ST就喊话ST&#xD;&#xA;&#xD;&#xA;设置成功会有字幕提醒&#xD;&#xA;&#xD;&#xA;字母仅限英文半角，全角不可以">
+              <Trigger Enabled="true" Name="动作" Id="ecf8ff61-5ccc-411e-b825-3f60417fef70" RegularExpression="^.{15}00:(000[ae]:[\ue090]?(?&lt;name&gt;.+?)|(?&lt;num&gt;0038)):(?&lt;role&gt;[sSmMhHdD][tT1-4])$" Description="在/s或/p喊话：&#xD;&#xA;&#xD;&#xA;你是D1就喊话D1&#xD;&#xA;你是D2就喊话D2&#xD;&#xA;你是D3就喊话D3&#xD;&#xA;你是D4就喊话D4&#xD;&#xA;你是H1就喊话H1&#xD;&#xA;你是H2就喊话H2&#xD;&#xA;你是MT就喊话MT&#xD;&#xA;你是ST就喊话ST&#xD;&#xA;&#xD;&#xA;设置成功会有字幕提醒&#xD;&#xA;&#xD;&#xA;字母仅限英文半角，全角不可以">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="${name}" VariableOp="SetString" VariableName="Souma_Team_Role" VariableExpression="${role}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -41,7 +41,7 @@
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Name="目标的位置（北基准）" Id="94e9bfce-124f-4c1d-995d-b8caeb3146c1" RegularExpression="Souma_Distance:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):(?&lt;text&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):(?&lt;time&gt;[\d\.]+)">
+          <Trigger Enabled="true" Name="目标的位置（北基准）" Id="94e9bfce-124f-4c1d-995d-b8caeb3146c1" RegularExpression="Souma_Distance:(?&lt;name&gt;[^:]+?):(?&lt;text&gt;[^:]+?):(?&lt;time&gt;[\d\.]+?)">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraName="Souma_Map_YOU" TextAuraExpression="你" TextAuraXIniExpression="0.5*${_screenwidth}-15+${var:AT_目标的位置X偏移}" TextAuraYIniExpression="0.5*${_screenheight}-15+${var:AT_目标的位置Y偏移}" TextAuraWIniExpression="30" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraOTickExpression="(75+(cos(${_sincems}/50)*25))" TextAuraTTLTickExpression="${time}-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -52,7 +52,7 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="字幕提示" Id="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" RegularExpression="Souma_Subtitle:(?&lt;text&gt;[^:]+?):(?&lt;time&gt;[\d\.]+):(?&lt;offset_x&gt;[\d\.-]+):(?&lt;offset_y&gt;[\d\.-]+):(?&lt;id&gt;.+)">
+          <Trigger Enabled="true" Name="字幕提示" Id="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" RegularExpression="Souma_Subtitle:(?&lt;text&gt;[^:]+?):(?&lt;time&gt;[\d\.]+?):(?&lt;offset_x&gt;[\d\.-]+?):(?&lt;offset_y&gt;[\d\.-]+?):(?&lt;id&gt;.+?)">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraEffect="Bold" TextAuraFontSize="24" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraName="Souma_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_显示字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_显示字幕Y偏移}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -60,7 +60,7 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="红标点名" Id="17de39cd-e31c-43a7-a63f-f5c7495c9618" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;.+?):0000:0000:0017:0000:0000:0000">
+          <Trigger Enabled="true" Name="红标点名" Id="17de39cd-e31c-43a7-a63f-f5c7495c9618" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;.+?):0000:0000:0017:0000:0000:0000">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:点你:6:0:0:main" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="Or">
@@ -70,7 +70,7 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="倒计时字幕" Id="f1514cd2-fbb8-4d60-ae57-a7b56a6cf606" RegularExpression="Souma_Countdown_Caption:(?&lt;text&gt;\S+):(?&lt;time&gt;[\d\.]+):(?&lt;offset_x&gt;[\d\.]+):(?&lt;offset_y&gt;[\d\.]+)" PeriodRefire="Deny" RefirePeriodExpression="1000">
+          <Trigger Enabled="true" Sequential="True" Name="倒计时字幕" Id="f1514cd2-fbb8-4d60-ae57-a7b56a6cf606" RegularExpression="Souma_Countdown_Caption:(?&lt;text&gt;\S+?):(?&lt;time&gt;[\d\.]+?):(?&lt;offset_x&gt;[\d\.]+?):(?&lt;offset_y&gt;[\d\.]+?)" PeriodRefire="Deny" RefirePeriodExpression="1000">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="${var:Souma_Team_Role}" TextAuraFontSize="21.75" TextAuraName="Souma_Countdown_Caption" TextAuraExpression="${text}${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:AT_倒计时字幕Y偏移}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Not">
@@ -143,7 +143,7 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="倒计时321音频" Id="f7811f38-d5bb-4445-a06f-4c29635a8d29" RegularExpression="Souma_Count_Down:(?&lt;time&gt;[\d\.]+)">
+          <Trigger Enabled="true" Name="倒计时321音频" Id="f7811f38-d5bb-4445-a06f-4c29635a8d29" RegularExpression="Souma_Count_Down:(?&lt;time&gt;[\d\.]+?)">
             <Actions>
               <Action OrderNumber="1" PlaySoundFileExpression="${_env[SoumaTriggerFolder]}\Triggernometry触发器\5.0触发器\倒计时321录音音频\${var:倒计时文件名称}" PlaySoundVolumeExpression="66" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound" ExecutionDelayExpression="${numeric:(${time}-3)*1000-200}">
                 <Condition Enabled="false" Grouping="Or" />
@@ -156,7 +156,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${time}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="TTS职业" Id="94278783-12fe-45a0-8a67-e5ce67aef5e9" RegularExpression="Souma_TTS_Job:(?&lt;name&gt;.+)" Scheduling="FromRefirePeriod" RefirePeriodExpression="500">
+          <Trigger Enabled="true" Sequential="True" Name="TTS职业" Id="94278783-12fe-45a0-8a67-e5ce67aef5e9" RegularExpression="Souma_TTS_Job:(?&lt;name&gt;.+?)" Scheduling="FromRefirePeriod" RefirePeriodExpression="500">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="骑士" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="true" Grouping="Or">
@@ -433,7 +433,7 @@
           <Folder Id="6ecfa8ba-576f-40a7-94da-b69e89bc308d" ZoneFilterRegularExpression="无瑕灵君歼殛战|the Crown of the Immaculate \(Extreme\)|極イノセンス討滅" Name="极完美神" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="断罪之桩" Id="3df83037-2d14-4c01-8a48-2720dbe391a6" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 23:\w{8}:(断罪之桩|断罪の杭|nails? of condemnation):\w{8}:(?&lt;name&gt;[^:]+?):0000:0000:0011:">
+              <Trigger Enabled="true" Name="断罪之桩" Id="3df83037-2d14-4c01-8a48-2720dbe391a6" RegularExpression="^.{15}23:\w{8}:(断罪之桩|断罪の杭|nails? of condemnation):\w{8}:(?&lt;name&gt;[^:]+?):0000:0000:0011:">
                 <Actions>
                   <Action OrderNumber="1" LogMessageText="Souma_Count_Down:6" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8ce3c888-4ba4-42c7-b228-f3a69cd291db" TriggerText="Souma_Count_Down:6" ActionType="LogMessage">
                     <Condition Enabled="true" Grouping="Or">
@@ -448,7 +448,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="裁决之雷" Id="910619e3-f6c1-42c0-9827-cfa4e46298f0" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3ECD:">
+              <Trigger Enabled="true" Name="裁决之雷" Id="910619e3-f6c1-42c0-9827-cfa4e46298f0" RegularExpression="^.{15}14:3ECD:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -456,7 +456,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="夺影" Id="275a3f4f-d3d7-4afa-87d1-b020ac3d12a7" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3EEA:">
+              <Trigger Enabled="true" Name="夺影" Id="275a3f4f-d3d7-4afa-87d1-b020ac3d12a7" RegularExpression="^.{15}14:3EEA:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -464,7 +464,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="断罪回旋" Id="91cd92c4-2834-4305-8ff8-6d4ef2ed6670" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3EDC:">
+              <Trigger Enabled="true" Name="断罪回旋" Id="91cd92c4-2834-4305-8ff8-6d4ef2ed6670" RegularExpression="^.{15}14:3EDC:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="扇子" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -472,7 +472,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="神光" Id="6e585d36-0df1-4e96-9806-40646f1a227b" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3EE4:">
+              <Trigger Enabled="true" Name="神光" Id="6e585d36-0df1-4e96-9806-40646f1a227b" RegularExpression="^.{15}14:3EE4:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="躲扇形" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -480,7 +480,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="光明柱" Id="c2dc4836-4de7-404a-a555-a72a8a43ef19" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3F3E:">
+              <Trigger Enabled="true" Name="光明柱" Id="c2dc4836-4de7-404a-a555-a72a8a43ef19" RegularExpression="^.{15}14:3F3E:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -488,7 +488,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="毒舌钩" Id="27b88e45-b2f6-48bb-9265-a975355c3e9e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3EC8:">
+              <Trigger Enabled="true" Name="毒舌钩" Id="27b88e45-b2f6-48bb-9265-a975355c3e9e" RegularExpression="^.{15}14:3EC8:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -496,7 +496,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="神圣剑" Id="988ac027-03ff-46b2-b36f-f0107b287568" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3EC9:">
+              <Trigger Enabled="true" Name="神圣剑" Id="988ac027-03ff-46b2-b36f-f0107b287568" RegularExpression="^.{15}14:3EC9:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -504,7 +504,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="荣福直观" Id="d09fdc67-0bcf-4de7-81bb-a6159bcc3612" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3EEE:">
+              <Trigger Enabled="true" Name="荣福直观" Id="d09fdc67-0bcf-4de7-81bb-a6159bcc3612" RegularExpression="^.{15}14:3EEE:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="远离中场" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -512,7 +512,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="断罪飞翔" Id="35dc5d35-9047-414c-b534-ed1c6f444009" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:40BD:">
+              <Trigger Enabled="true" Name="断罪飞翔" Id="35dc5d35-9047-414c-b534-ed1c6f444009" RegularExpression="^.{15}14:40BD:">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Winged_Reprobation" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -588,7 +588,7 @@
           <Folder Id="4fb1dadc-36ab-40b3-b2a6-779b7a3b42c1" ZoneFilterRegularExpression="缇坦妮雅歼殛战|the Dancing Plague \(Extreme\)|極ティターニア討滅戦" Name="极妖灵王" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="幻之符文" Id="c4ffa7c0-3445-4a88-8218-3417af8d7227" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D4(?&lt;type&gt;[CD]):">
+              <Trigger Enabled="true" Name="幻之符文" Id="c4ffa7c0-3445-4a88-8218-3417af8d7227" RegularExpression="^.{15}14:3D4(?&lt;type&gt;[CD]):">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="钢铁远离" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
@@ -603,7 +603,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="火之符文" Id="19c7fc18-d884-4447-bf6e-57e89c945c9c" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D47:">
+              <Trigger Enabled="true" Name="火之符文" Id="19c7fc18-d884-4447-bf6e-57e89c945c9c" RegularExpression="^.{15}14:3D47:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -611,7 +611,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="欢快的安息日" Id="eef7960b-8e22-49ce-a81a-2342f409d21d" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D4B:">
+              <Trigger Enabled="true" Name="欢快的安息日" Id="eef7960b-8e22-49ce-a81a-2342f409d21d" RegularExpression="^.{15}14:3D4B:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -619,7 +619,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="魔之符文" Id="a4d481e4-67ff-448b-9b2a-4b1de42ecf9e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D4A:">
+              <Trigger Enabled="true" Name="魔之符文" Id="a4d481e4-67ff-448b-9b2a-4b1de42ecf9e" RegularExpression="^.{15}14:3D4A:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="扇形死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -627,7 +627,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="水之符文" Id="fa160fb6-0995-40e5-8b9e-94927c1071d4" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D45:">
+              <Trigger Enabled="true" Name="水之符文" Id="fa160fb6-0995-40e5-8b9e-94927c1071d4" RegularExpression="^.{15}14:3D45:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="水圈" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -635,7 +635,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="强烈重击" Id="0c46d44a-7f06-40b1-b294-e3976a063423" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D36:">
+              <Trigger Enabled="true" Name="强烈重击" Id="0c46d44a-7f06-40b1-b294-e3976a063423" RegularExpression="^.{15}14:3D36:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -646,7 +646,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="殴打" Id="e572db74-cc8a-4e15-add1-4b8b45c3de7c" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D37:">
+              <Trigger Enabled="true" Name="殴打" Id="e572db74-cc8a-4e15-add1-4b8b45c3de7c" RegularExpression="^.{15}14:3D37:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -657,7 +657,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="荆棘链" Id="964d09c6-2a62-4d9f-88d6-06438b8408f4" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:42D7:">
+              <Trigger Enabled="true" Name="荆棘链" Id="964d09c6-2a62-4d9f-88d6-06438b8408f4" RegularExpression="^.{15}14:42D7:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="拉线,向北" TextAuraFontSize="9" TextAuraName="锁链，向上" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
@@ -680,7 +680,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="雷之符文" Id="bfad06ec-1367-4d42-bb82-7a73c6eaf2f4" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)">
+              <Trigger Enabled="true" Name="雷之符文" Id="bfad06ec-1367-4d42-bb82-7a73c6eaf2f4" RegularExpression="^.{15}00:282b:(缇坦妮雅|ティターニア|Titania).*(咏唱了“雷之符文”。|雷のルーン|Thunder Rune)">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Thunder_Rune" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -699,7 +699,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="妖灵光" Id="06cae73e-b0eb-47ae-84a2-5962686977dd" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D2C:">
+              <Trigger Enabled="true" Name="妖灵光" Id="06cae73e-b0eb-47ae-84a2-5962686977dd" RegularExpression="^.{15}14:3D2C:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -707,7 +707,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="冰之符文" Id="d2c4040d-e836-46fd-9197-34c993a6b338" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D2A:">
+              <Trigger Enabled="true" Name="冰之符文" Id="d2c4040d-e836-46fd-9197-34c993a6b338" RegularExpression="^.{15}14:3D2A:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="九连环" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -715,7 +715,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="帕克的吐息" Id="951e4308-eeb0-4ab3-9900-10ebb6a1e65a" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D41:">
+              <Trigger Enabled="true" Name="帕克的吐息" Id="951e4308-eeb0-4ab3-9900-10ebb6a1e65a" RegularExpression="^.{15}14:3D41:">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Pucks_Breath" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -741,7 +741,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="细语微风" Id="8ec7dced-aac7-44b6-94c3-a886b633870d" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:40E2:">
+              <Trigger Enabled="true" Name="细语微风" Id="8ec7dced-aac7-44b6-94c3-a886b633870d" RegularExpression="^.{15}14:40E2:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -826,7 +826,7 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="魔法阵记述" Id="133fab27-1289-44f2-9cc4-724fd8a1623e" RegularExpression="Pos: \((?&lt;pos&gt;[A-F0-9\.,-]+),[A-F0-9\.-]+\) \((?&lt;type&gt;91840000011305|91850000011306)\)\.">
+                  <Trigger Enabled="true" Name="魔法阵记述" Id="133fab27-1289-44f2-9cc4-724fd8a1623e" RegularExpression="Pos: \((?&lt;pos&gt;[A-F0-9\.,-]+?),[A-F0-9\.-]+\) \((?&lt;type&gt;91840000011305|91850000011306)\)\.">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="AT_球体魔法阵" ListVariableExpression="${pos}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                         <Condition Enabled="true" Grouping="Or">
@@ -1910,7 +1910,7 @@
               <Folder Id="d0bff393-6f3e-4cf6-9a7c-ec1a0bc08b0e" Name="转圈圈（白流沙）" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="*菓子 区别：(D1:323 D2:121 MT:232 ST:212)" Id="0d21384e-19fc-4d78-a162-cb6fa75e374c" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:413A:">
+                  <Trigger Enabled="true" Name="*菓子 区别：(D1:323 D2:121 MT:232 ST:212)" Id="0d21384e-19fc-4d78-a162-cb6fa75e374c" RegularExpression="^.{15}14:413A:">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -1996,7 +1996,7 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="false" Name="子言 区别：(D1:131 D2:232 MT:323 ST:313)" Id="e159959a-dd5d-45ec-af7a-c53960e9038d" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:413A:">
+                  <Trigger Enabled="false" Name="子言 区别：(D1:131 D2:232 MT:323 ST:313)" Id="e159959a-dd5d-45ec-af7a-c53960e9038d" RegularExpression="^.{15}14:413A:">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_GuruGuru" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -2089,7 +2089,7 @@
                   <Folder Id="d97f9b2f-2981-4625-a86f-cb7d9737e249" Name="第1次" Enabled="false">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="蓝标" Id="5d0a8711-5a76-423e-9791-4578a3a759af" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BB:">
+                      <Trigger Enabled="true" Name="蓝标" Id="5d0a8711-5a76-423e-9791-4578a3a759af" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00BB:">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Blue" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
@@ -2123,7 +2123,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="橙标" Id="4189c1ee-1eca-4915-a094-91f571ad7dcc" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BA:">
+                      <Trigger Enabled="true" Name="橙标" Id="4189c1ee-1eca-4915-a094-91f571ad7dcc" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00BA:">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="二二二" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
@@ -2133,7 +2133,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="黄标" Id="9d7db93a-6069-445d-81c6-8a9595982f6d" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00B9:">
+                      <Trigger Enabled="true" Name="黄标" Id="9d7db93a-6069-445d-81c6-8a9595982f6d" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00B9:">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="三三三" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
@@ -2143,7 +2143,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="回合结束" Id="9bdf0306-8758-43d6-9c4e-a34eeae647cc" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] (14:4124:|15:.*:4124:)">
+                      <Trigger Enabled="true" Name="回合结束" Id="9bdf0306-8758-43d6-9c4e-a34eeae647cc" RegularExpression="^.{15}(14:4124:|15:.*:4124:)">
                         <Actions>
                           <Action OrderNumber="1" VariableName="Souma_Blue" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -2159,7 +2159,7 @@
                   <Folder Id="faa783bf-ec60-4245-af25-bd9f86064acd" Name="第2次" Enabled="false">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="蓝标" Id="92a05fa5-8955-4444-a20d-01feccb7f977" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BB:">
+                      <Trigger Enabled="true" Name="蓝标" Id="92a05fa5-8955-4444-a20d-01feccb7f977" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00BB:">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Blue" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
@@ -2193,7 +2193,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="回合结束" Id="6a682036-e1c0-4f1b-a55d-a09dbb54aadc" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] (14:4124:|15:.*:4124:)">
+                      <Trigger Enabled="true" Name="回合结束" Id="6a682036-e1c0-4f1b-a55d-a09dbb54aadc" RegularExpression="^.{15}(14:4124:|15:.*:4124:)">
                         <Actions>
                           <Action OrderNumber="1" VariableName="Souma_Orange" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
@@ -2207,7 +2207,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="黄标" Id="a9dd85ae-2563-4989-bed7-5b76f69c1d7d" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00B9:">
+                      <Trigger Enabled="true" Name="黄标" Id="a9dd85ae-2563-4989-bed7-5b76f69c1d7d" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00B9:">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
@@ -2217,7 +2217,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="橙标" Id="002d666a-6809-4f3a-8509-741be0fefb95" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BA:">
+                      <Trigger Enabled="true" Name="橙标" Id="002d666a-6809-4f3a-8509-741be0fefb95" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00BA:">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="二二二" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
@@ -2232,7 +2232,7 @@
                   <Folder Id="2dfe9ff1-4edf-4c31-84b4-37531b8d4d07" Name="打法" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="false" Name="橙标式" Id="a23017ba-a037-4ddb-8d65-8e80e9ee5e5b" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4122:">
+                      <Trigger Enabled="false" Name="橙标式" Id="a23017ba-a037-4ddb-8d65-8e80e9ee5e5b" RegularExpression="^.{15}14:4122:">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
@@ -2270,7 +2270,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="固定式" Id="7f95fc23-5fc5-455e-b8d6-2a91f14742fb" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4122:">
+                      <Trigger Enabled="true" Name="固定式" Id="7f95fc23-5fc5-455e-b8d6-2a91f14742fb" RegularExpression="^.{15}14:4122:">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Tectonic_Uplift_Fixed" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
@@ -2344,7 +2344,7 @@
               <Folder Id="1fa410cc-97a1-48ae-bd96-710a8223b636" Name="第一次石牢" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="H1前H2后" Id="82004605-92eb-40b2-9399-f2d22f60e22a" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BF:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="true" Name="H1前H2后" Id="82004605-92eb-40b2-9399-f2d22f60e22a" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00BF:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Rock_Throw" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -2374,7 +2374,7 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="false" Name="H1后H2前" Id="a4128f57-84c6-45b9-9f24-ca50a353f946" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00BF:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="false" Name="H1后H2前" Id="a4128f57-84c6-45b9-9f24-ca50a353f946" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00BF:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Rock_Throw" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -2408,7 +2408,7 @@
               </Folder>
             </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="爆炸" Id="3bc14ca2-c8b5-4252-a341-a660d7c49cc7" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:410A:" PeriodRefire="Deny" RefirePeriodExpression="30000">
+              <Trigger Enabled="true" Name="爆炸" Id="3bc14ca2-c8b5-4252-a341-a660d7c49cc7" RegularExpression="^.{15}14:410A:" PeriodRefire="Deny" RefirePeriodExpression="30000">
                 <Actions>
                   <Action OrderNumber="1" LogMessageText="Souma_Count_Down:5" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8ce3c888-4ba4-42c7-b228-f3a69cd291db" ActionType="LogMessage">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2419,7 +2419,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="大地之车轮（车）" Id="0831f5d4-4f10-47eb-8a3c-520d017cd065" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 15:.{8}:.+:40E8:">
+              <Trigger Enabled="true" Name="大地之车轮（车）" Id="0831f5d4-4f10-47eb-8a3c-520d017cd065" RegularExpression="^.{15}15:.{8}:.+:40E8:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="旁边旁边" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2427,7 +2427,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="大地之手甲（人）" Id="fc7f60fd-688e-4b2c-89d6-112c95acd6c6" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 15:.{8}:.+:40E6:">
+              <Trigger Enabled="true" Name="大地之手甲（人）" Id="fc7f60fd-688e-4b2c-89d6-112c95acd6c6" RegularExpression="^.{15}15:.{8}:.+:40E6:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="中间中间" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2435,7 +2435,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="大地之拳（场地半场）" Id="e15c3f28-0864-453d-bfce-4d521ce78195" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:41(?&lt;type&gt;2F|30|31|32):" Description="锤你胸口！">
+              <Trigger Enabled="true" Name="大地之拳（场地半场）" Id="e15c3f28-0864-453d-bfce-4d521ce78195" RegularExpression="^.{15}14:41(?&lt;type&gt;2F|30|31|32):" Description="锤你胸口！">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="左左左，右右右" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
@@ -2480,7 +2480,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="岩盘粉碎（拆地板）" Id="4b97dabe-3e8a-477e-91ee-ee8575217773" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:412(?&lt;type&gt;5|6|7|8):">
+              <Trigger Enabled="true" Name="岩盘粉碎（拆地板）" Id="4b97dabe-3e8a-477e-91ee-ee8575217773" RegularExpression="^.{15}14:412(?&lt;type&gt;5|6|7|8):">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Plate_Fracture" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -2606,7 +2606,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="崩岩（死刑）" Id="e33e389c-17b8-489c-8fac-3d75a82856a8" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4116:">
+              <Trigger Enabled="true" Name="崩岩（死刑）" Id="e33e389c-17b8-489c-8fac-3d75a82856a8" RegularExpression="^.{15}14:4116:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2614,7 +2614,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="震级5.0（月环）" Id="f4ee95c4-a682-44db-879c-ed08ce0d47b0" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4121:">
+              <Trigger Enabled="true" Name="震级5.0（月环）" Id="f4ee95c4-a682-44db-879c-ed08ce0d47b0" RegularExpression="^.{15}14:4121:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="月环靠近" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2622,7 +2622,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="大地之怒（强AoE）" Id="a63e74c7-30aa-4623-b0d1-d4bafa4f4bc4" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:41(24|39):">
+              <Trigger Enabled="true" Name="大地之怒（强AoE）" Id="a63e74c7-30aa-4623-b0d1-d4bafa4f4bc4" RegularExpression="^.{15}14:41(24|39):">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2630,7 +2630,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="大地之声（AoE）" Id="149b3372-70fa-4ceb-b865-fa6af538b99c" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4114:">
+              <Trigger Enabled="true" Name="大地之声（AoE）" Id="149b3372-70fa-4ceb-b865-fa6af538b99c" RegularExpression="^.{15}14:4114:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2638,7 +2638,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="激震（怒震）" Id="876f8be1-bcf5-4e16-a416-eb870f7a9b67" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:412A:">
+              <Trigger Enabled="true" Name="激震（怒震）" Id="876f8be1-bcf5-4e16-a416-eb870f7a9b67" RegularExpression="^.{15}14:412A:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2646,7 +2646,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="大地粉碎（击退跳跃）" Id="4fc73036-8614-4889-b804-ff1025f44116" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4113:">
+              <Trigger Enabled="true" Name="大地粉碎（击退跳跃）" Id="4fc73036-8614-4889-b804-ff1025f44116" RegularExpression="^.{15}14:4113:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="跳跃" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2654,7 +2654,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="地震波" Id="18efb9df-a8d7-4a43-a499-e3ee9a47aff2" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4110:">
+              <Trigger Enabled="true" Name="地震波" Id="18efb9df-a8d7-4a43-a499-e3ee9a47aff2" RegularExpression="^.{15}14:4110:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="防击退" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:找掩体:3:0:0:main" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2662,7 +2662,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="三色标" Id="1b03df0c-a4c8-4be5-a1c0-375e615b5f16" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:00B(?&lt;type&gt;9|A|B):">
+              <Trigger Enabled="true" Name="三色标" Id="1b03df0c-a4c8-4be5-a1c0-375e615b5f16" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00B(?&lt;type&gt;9|A|B):">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:黄标➜散开:4:0:0:main" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
@@ -2684,7 +2684,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="地裂（T字跳）" Id="a8a998e8-b728-49ab-83c8-9ca9aee2220c" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:411B:|正在发动“地裂”" PeriodRefire="Deny" RefirePeriodExpression="1000">
+              <Trigger Enabled="true" Name="地裂（T字跳）" Id="a8a998e8-b728-49ab-83c8-9ca9aee2220c" RegularExpression="^.{15}14:411B:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="踢字" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2692,7 +2692,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="大地的双拳" Id="bec13d5a-948a-42e5-9804-8224e06ed7f0" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4135:">
+              <Trigger Enabled="true" Name="大地的双拳" Id="bec13d5a-948a-42e5-9804-8224e06ed7f0" RegularExpression="^.{15}14:4135:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="防击退" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2700,7 +2700,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Sequential="True" Name="蓝标职业" Id="4d79e843-04b0-4131-bfc9-1c83e9c4ffcf" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;.+?):.{4}:.{4}:00BB:" PrevActions="Interrupt" PrevActionsRefire="Deny">
+              <Trigger Enabled="true" Sequential="True" Name="蓝标职业" Id="4d79e843-04b0-4131-bfc9-1c83e9c4ffcf" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;.+?):.{4}:.{4}:00BB:" PrevActions="Interrupt" PrevActionsRefire="Deny">
                 <Actions>
                   <Action OrderNumber="1" LogMessageText="Souma_TTS_Job:${name}" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2708,7 +2708,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="岩层崩落" Id="b7e87d71-9a60-4cd1-a0d6-2493e474faf4" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[^:]+?):0000:0000:0017:0000:0000:0000">
+              <Trigger Enabled="true" Name="岩层崩落" Id="b7e87d71-9a60-4cd1-a0d6-2493e474faf4" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):0000:0000:0017:0000:0000:0000">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Crumbling_Down" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -2781,7 +2781,7 @@
                   <Folder Id="fed8538e-16c1-4820-8a66-a7c6571d5a62" Name="延迟技" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－点你" Id="de94d3bc-cea5-4c45-8564-58810c07091c" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds.">
+                      <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－点你" Id="de94d3bc-cea5-4c45-8564-58810c07091c" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+?) Seconds.">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="石化" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:你的石化:3:0:0:main" ActionType="Trigger">
                             <Condition Enabled="true" Grouping="Or">
@@ -2791,7 +2791,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－他人" Id="48177430-5c56-4434-90d3-608eb013ebb0" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
+                      <Trigger Enabled="true" Name="延迟咏唱：暗影之眼－他人" Id="48177430-5c56-4434-90d3-608eb013ebb0" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (延迟咏唱：暗影之眼|ディレイスペル：シャドウアイ|Spell-In-Waiting: Shadoweye).*for (?&lt;time&gt;[\d\.]+?) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
                           <Action OrderNumber="1" LogMessageText="Souma_Count_Down:${time}" LogProcess="True" UseTTSTextExpression="准备背对" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8ce3c888-4ba4-42c7-b228-f3a69cd291db" ActionType="LogMessage" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
@@ -2816,7 +2816,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="延迟咏唱：地狱之风" Id="36852231-a28c-4e8a-a8e7-e092027c04e7" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (延迟咏唱：地狱之风|ディレイスペル：ヘルウィンド|Spell-In-Waiting: Hell Wind).*for (?&lt;time&gt;[\d\.]+) Seconds.">
+                      <Trigger Enabled="true" Name="延迟咏唱：地狱之风" Id="36852231-a28c-4e8a-a8e7-e092027c04e7" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (延迟咏唱：地狱之风|ディレイスペル：ヘルウィンド|Spell-In-Waiting: Hell Wind).*for (?&lt;time&gt;[\d\.]+?) Seconds.">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_I_Have_Hell_Wind" VariableExpression="TRUE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                             <Condition Enabled="true" Grouping="Or">
@@ -2841,7 +2841,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="延迟咏唱：点你！qwq" Id="b3e9fbda-3987-4951-91bd-31d00cd9eb91" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (延迟咏唱：|ディレイスペル：|Spell-In-Waiting: )(?&lt;skill&gt;.*) from  for (?&lt;time&gt;[\d\.]+?) Seconds\.$">
+                      <Trigger Enabled="true" Name="延迟咏唱：点你！qwq" Id="b3e9fbda-3987-4951-91bd-31d00cd9eb91" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (延迟咏唱：|ディレイスペル：|Spell-In-Waiting: )(?&lt;skill&gt;.*) from  for (?&lt;time&gt;[\d\.]+?) Seconds\.$">
                         <Actions>
                           <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Souma_Subtitle:获得延迟一血:3:0:0:main" ActionType="Trigger">
                             <Condition Enabled="true" Grouping="And">
@@ -2876,7 +2876,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="延迟咏唱：核爆－他人" Id="a9ddd19b-5113-4133-8178-a0fa3131d9c0" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (延迟咏唱：核爆|ディレイスペル：フレア|Spell-In-Waiting: Flare).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
+                      <Trigger Enabled="true" Name="延迟咏唱：核爆－他人" Id="a9ddd19b-5113-4133-8178-a0fa3131d9c0" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (延迟咏唱：核爆|ディレイスペル：フレア|Spell-In-Waiting: Flare).*for (?&lt;time&gt;[\d\.]+?) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-6)*1000}">
                             <Condition Enabled="true" Grouping="Or">
@@ -2891,7 +2891,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="延迟咏唱：黑暗爆炎" Id="41ee0f8e-03cc-444e-8bc1-9879be7c07bd" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (延迟咏唱：黑暗爆炎|ディレイスペル：ダークファイガ|Spell-In-Waiting: Dark Fire III).*for (?&lt;time&gt;[\d\.]+) Seconds.">
+                      <Trigger Enabled="true" Name="延迟咏唱：黑暗爆炎" Id="41ee0f8e-03cc-444e-8bc1-9879be7c07bd" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (延迟咏唱：黑暗爆炎|ディレイスペル：ダークファイガ|Spell-In-Waiting: Dark Fire III).*for (?&lt;time&gt;[\d\.]+?) Seconds.">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="${numeric:(${time}-6)*1000}">
                             <Condition Enabled="true" Grouping="Or">
@@ -2904,7 +2904,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="延迟咏唱：黑暗神圣" Id="99e9b115-7191-4c83-81ec-a66491ebfcaa" RegularExpression=" gains the effect of (延迟咏唱：黑暗神圣|ディレイスペル：ダークホーリー|Spell-In-Waiting: Unholy Darkness).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
+                      <Trigger Enabled="true" Name="延迟咏唱：黑暗神圣" Id="99e9b115-7191-4c83-81ec-a66491ebfcaa" RegularExpression=" gains the effect of (延迟咏唱：黑暗神圣|ディレイスペル：ダークホーリー|Spell-In-Waiting: Unholy Darkness).*for (?&lt;time&gt;[\d\.]+?) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Waiting_Unholy_Darkness" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
@@ -2936,7 +2936,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="延迟咏唱：核爆－点你" Id="fdbd1d23-6982-4797-95ac-edfc7ef0f95a" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (延迟咏唱：核爆|ディレイスペル：フレア|Spell-In-Waiting: Flare).*for (?&lt;time&gt;[\d\.]+) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
+                      <Trigger Enabled="true" Name="延迟咏唱：核爆－点你" Id="fdbd1d23-6982-4797-95ac-edfc7ef0f95a" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (延迟咏唱：核爆|ディレイスペル：フレア|Spell-In-Waiting: Flare).*for (?&lt;time&gt;[\d\.]+?) Seconds." PeriodRefire="Deny" RefirePeriodExpression="1000">
                         <Actions>
                           <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="a9ddd19b-5113-4133-8178-a0fa3131d9c0" ActionType="Trigger" ExecutionDelayExpression="500">
                             <Condition Enabled="false" Grouping="Or" />
@@ -2967,7 +2967,7 @@
                   <Folder Id="3183b57b-f510-47b1-9b94-948acd2c1253" Name="实时技" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="核爆" Id="c80da523-19ee-437c-becb-67a259d599c8" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4684:">
+                      <Trigger Enabled="true" Name="核爆" Id="c80da523-19ee-437c-becb-67a259d599c8" RegularExpression="^.{15}14:4684:">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
@@ -2982,7 +2982,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="地狱之风（空血）" Id="43b3b615-6fc4-4229-bfc7-c45ecd04856e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1A:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (猎物|Prey|マーキング) from.*for 9999.00 Seconds.">
+                      <Trigger Enabled="true" Name="地狱之风（空血）" Id="43b3b615-6fc4-4229-bfc7-c45ecd04856e" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;[^:]+?) gains the effect of (猎物|Prey|マーキング) from.*for 9999.00 Seconds.">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="伊雪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
@@ -2999,7 +2999,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="黑暗神圣（分摊）" Id="6c5975e0-23cf-47a9-a591-6cb3140c64d0" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E53:">
+                      <Trigger Enabled="true" Name="黑暗神圣（分摊）" Id="6c5975e0-23cf-47a9-a591-6cb3140c64d0" RegularExpression="^.{15}14:3E53:">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
@@ -3014,7 +3014,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="黑暗爆炎（红圈分散）" Id="23b5d9e2-824b-49be-85ad-9d4418015783" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E56:">
+                      <Trigger Enabled="true" Name="黑暗爆炎（红圈分散）" Id="23b5d9e2-824b-49be-85ad-9d4418015783" RegularExpression="^.{15}14:3E56:">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
@@ -3052,7 +3052,7 @@
               </Folder>
             </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="空无的恶意（红线）" Id="2cd0a569-17f6-4a8a-a450-cba7729909a4" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E6B:(?&lt;name&gt;厄瑞玻斯的巨腕|エレボスの巨腕|The Hand of Erebos) starts">
+              <Trigger Enabled="true" Name="空无的恶意（红线）" Id="2cd0a569-17f6-4a8a-a450-cba7729909a4" RegularExpression="^.{15}14:3E6B:(?&lt;name&gt;厄瑞玻斯的巨腕|エレボスの巨腕|The Hand of Erebos) starts">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="远离" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3060,7 +3060,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="虚无的恶意（击退手）" Id="bd26462d-ba15-4577-ade5-68c4102fd547" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E59:">
+              <Trigger Enabled="true" Name="虚无的恶意（击退手）" Id="bd26462d-ba15-4577-ade5-68c4102fd547" RegularExpression="^.{15}14:3E59:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="防击退" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3068,7 +3068,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="熵（普通AoE）" Id="34071f78-c929-4d03-aded-c384d314764c" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E6F:">
+              <Trigger Enabled="true" Name="熵（普通AoE）" Id="34071f78-c929-4d03-aded-c384d314764c" RegularExpression="^.{15}14:3E6F:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3076,7 +3076,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="寂灭（软狂暴AoE）" Id="2d5422ae-8a3f-47eb-8f2d-1f4510c69911" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E71:">
+              <Trigger Enabled="true" Name="寂灭（软狂暴AoE）" Id="2d5422ae-8a3f-47eb-8f2d-1f4510c69911" RegularExpression="^.{15}14:3E71:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3084,7 +3084,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="末日虚无劈（水波）" Id="4a60b454-8192-4105-8ae5-69c0d03add6b" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E63:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+              <Trigger Enabled="true" Name="末日虚无劈（水波）" Id="4a60b454-8192-4105-8ae5-69c0d03add6b" RegularExpression="^.{15}14:3E63:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="万变水波" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3092,7 +3092,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="末日虚无断（直线）" Id="72520b49-ad95-4b5f-8be6-d29ff0a66854" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E4F:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+              <Trigger Enabled="true" Name="末日虚无断（直线）" Id="72520b49-ad95-4b5f-8be6-d29ff0a66854" RegularExpression="^.{15}14:3E4F:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="直线直线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3100,7 +3100,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="暗影炎（死刑）" Id="c7b41666-ffa4-423b-8564-a8858bdc3d1d" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E61:">
+              <Trigger Enabled="true" Name="暗影炎（死刑）" Id="c7b41666-ffa4-423b-8564-a8858bdc3d1d" RegularExpression="^.{15}14:3E61:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3108,7 +3108,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="末日虚无切（月环）" Id="fb170458-b391-4bf5-a9fa-f9a35dd86709" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E50:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+              <Trigger Enabled="true" Name="末日虚无切（月环）" Id="fb170458-b391-4bf5-a9fa-f9a35dd86709" RegularExpression="^.{15}14:3E50:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="月环靠近" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3116,7 +3116,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="混沌连续剑" Id="fdf1dbfd-ebf2-4a0a-834a-cb1e18badad6" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:40B9:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+              <Trigger Enabled="true" Name="混沌连续剑" Id="fdf1dbfd-ebf2-4a0a-834a-cb1e18badad6" RegularExpression="^.{15}14:40B9:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="直线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3139,7 +3139,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="复仇连续剑" Id="94980844-004f-45e4-8fd5-f42324a4fa33" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:4659:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+              <Trigger Enabled="true" Name="复仇连续剑" Id="94980844-004f-45e4-8fd5-f42324a4fa33" RegularExpression="^.{15}14:4659:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="月环" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3167,7 +3167,7 @@
           <Folder Id="8a3eabbe-b057-4b6a-8ea8-d378f5e60efb" ZoneFilterRegularExpression="伊甸零式希望乐园 \(?觉醒之章1\)?|Eden's Gate: Resurrection \(Savage\)|希望の園エデン零式：覚醒編1" Name="E1S" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="失乐园（黄圈）" Id="a103ab4b-a301-4226-8d7c-2d831d7df66a" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D86:">
+              <Trigger Enabled="true" Name="失乐园（黄圈）" Id="a103ab4b-a301-4226-8d7c-2d831d7df66a" RegularExpression="^.{15}14:3D86:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="4000">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3187,7 +3187,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="空间转换（AoE）" Id="8161e04d-aebd-4d0f-aa30-b8a4bcac036a" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D7F:">
+              <Trigger Enabled="true" Name="空间转换（AoE）" Id="8161e04d-aebd-4d0f-aa30-b8a4bcac036a" RegularExpression="^.{15}14:3D7F:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3195,7 +3195,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="乐园之枪（死刑）" Id="49d09554-3446-47cd-9bc1-7c0f4ffdd121" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D88:">
+              <Trigger Enabled="true" Name="乐园之枪（死刑）" Id="49d09554-3446-47cd-9bc1-7c0f4ffdd121" RegularExpression="^.{15}14:3D88:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3203,7 +3203,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="伊甸核爆（月环）" Id="7e26228b-e45e-45e5-bce1-f8eac2851c88" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D73:">
+              <Trigger Enabled="true" Name="伊甸核爆（月环）" Id="7e26228b-e45e-45e5-bce1-f8eac2851c88" RegularExpression="^.{15}14:3D73:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="月环靠近" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3211,7 +3211,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="净土之光（攻击正面）" Id="f8544c4c-adf6-47a2-b0ad-364bcf4ca2b4" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D8A:">
+              <Trigger Enabled="true" Name="净土之光（攻击正面）" Id="f8544c4c-adf6-47a2-b0ad-364bcf4ca2b4" RegularExpression="^.{15}14:3D8A:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="躲背后" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3219,7 +3219,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="三角攻击（Delta Attack）" Id="c5f7384f-612b-472f-a5ae-a6ae9fbb15cb" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:44F4:">
+              <Trigger Enabled="true" Name="三角攻击（Delta Attack）" Id="c5f7384f-612b-472f-a5ae-a6ae9fbb15cb" RegularExpression="^.{15}14:44F4:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="三角散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3227,7 +3227,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="伊甸重力（百分比AoE）" Id="b68493e7-6816-4d40-94b9-b9c8de6f6379" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D70:">
+              <Trigger Enabled="true" Name="伊甸重力（百分比AoE）" Id="b68493e7-6816-4d40-94b9-b9c8de6f6379" RegularExpression="^.{15}14:3D70:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3235,7 +3235,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="复乐园－三角攻击" Id="247c315f-3a59-4dc6-9624-4b9ef0b3dc7b" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:44F8:">
+              <Trigger Enabled="true" Name="复乐园－三角攻击" Id="247c315f-3a59-4dc6-9624-4b9ef0b3dc7b" RegularExpression="^.{15}14:44F8:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="月环激光" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
@@ -3250,7 +3250,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="恶习与美德－TANK" Id="56c8cf1c-734d-4d69-9449-0b84f661671a" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:44EE:">
+              <Trigger Enabled="true" Name="恶习与美德－TANK" Id="56c8cf1c-734d-4d69-9449-0b84f661671a" RegularExpression="^.{15}14:44EE:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="双替激光" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or">
@@ -3260,7 +3260,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="恶习与美德－DPS" Id="dea1156d-e239-440a-91a1-b91c3fe99159" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:44EF:">
+              <Trigger Enabled="true" Name="恶习与美德－DPS" Id="dea1156d-e239-440a-91a1-b91c3fe99159" RegularExpression="^.{15}14:44EF:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="黑洞" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or">
@@ -3270,7 +3270,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="复乐园－恶习与美德－TANK" Id="5af679c3-3a7b-44b3-a773-316bb3377e59" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D78:">
+              <Trigger Enabled="true" Name="复乐园－恶习与美德－TANK" Id="5af679c3-3a7b-44b3-a773-316bb3377e59" RegularExpression="^.{15}14:3D78:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="左右挡枪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3278,7 +3278,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="复乐园－恶习与美德－DPS" Id="e95268d4-debf-4e76-bde7-8ac0c607652a" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D7A:">
+              <Trigger Enabled="true" Name="复乐园－恶习与美德－DPS" Id="e95268d4-debf-4e76-bde7-8ac0c607652a" RegularExpression="^.{15}14:3D7A:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="两两分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3286,7 +3286,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="魔力增幅（小怪强化）" Id="2adc8836-9952-4328-9262-6d268196567d" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D8D:" PeriodRefire="Deny" RefirePeriodExpression="200">
+              <Trigger Enabled="true" Name="魔力增幅（小怪强化）" Id="2adc8836-9952-4328-9262-6d268196567d" RegularExpression="^.{15}14:3D8D:" PeriodRefire="Deny" RefirePeriodExpression="200">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="沉默打断" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3294,7 +3294,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="复乐园－恶习与美德－HEALER" Id="41568771-4d34-4df0-aa55-b8371281503f" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D7D:">
+              <Trigger Enabled="true" Name="复乐园－恶习与美德－HEALER" Id="41568771-4d34-4df0-aa55-b8371281503f" RegularExpression="^.{15}14:3D7D:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="传毒D" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3317,7 +3317,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="恶习与美德－HEALER" Id="f2967d9b-7a26-4ba0-9307-b8ab56c411ae" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:44F0:">
+              <Trigger Enabled="true" Name="恶习与美德－HEALER" Id="f2967d9b-7a26-4ba0-9307-b8ab56c411ae" RegularExpression="^.{15}14:44F0:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="传毒T" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3340,7 +3340,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="魔力爆发（小怪AoE）" Id="73bc19af-b865-46e8-ba6d-8e6ab554d08c" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D8F:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+              <Trigger Enabled="true" Name="魔力爆发（小怪AoE）" Id="73bc19af-b865-46e8-ba6d-8e6ab554d08c" RegularExpression="^.{15}14:3D8F:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3348,7 +3348,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="极大爆炸（上天）" Id="b7f2f6a2-d289-41a3-b29a-cdc2e0432a15" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3D8B:">
+              <Trigger Enabled="true" Name="极大爆炸（上天）" Id="b7f2f6a2-d289-41a3-b29a-cdc2e0432a15" RegularExpression="^.{15}14:3D8B:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE,上天" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3365,7 +3365,7 @@
                   <Folder Id="3823d824-2dfa-4d2f-b7e9-0c3ab38ab3cc" Name="大海啸1" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="断绝之兆" Id="1c034d70-450d-4a78-80eb-f59298b9ec39" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (断绝之兆|断絶の兆し|Sundering Waters|Unknown_73E)">
+                      <Trigger Enabled="true" Name="断绝之兆" Id="1c034d70-450d-4a78-80eb-f59298b9ec39" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (断绝之兆|断絶の兆し|Sundering Waters|Unknown_73E)">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="去最后" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
@@ -3393,7 +3393,7 @@
                   <Folder Id="a7e7d8f8-d1ed-45b0-afbd-e9d12afb2ff4" Name="大海啸2" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="坦克：大圈T" Id="6ee3c837-ac88-48be-b576-03cd63afd52f" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (暴风之兆|暴風の兆し|Scouring Waters|Unknown_765)">
+                      <Trigger Enabled="true" Name="坦克：大圈T" Id="6ee3c837-ac88-48be-b576-03cd63afd52f" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (暴风之兆|暴風の兆し|Scouring Waters|Unknown_765)">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="圈T" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="false" Grouping="Or" />
@@ -3425,7 +3425,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Trigger>
-                      <Trigger Enabled="true" Name="坦克：瀑布T（浪T）" Id="cef5c954-65b0-4a94-b924-43388602ee28" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (断绝之兆|断絶の兆し|Sundering Waters|Unknown_73E)">
+                      <Trigger Enabled="true" Name="坦克：瀑布T（浪T）" Id="cef5c954-65b0-4a94-b924-43388602ee28" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (断绝之兆|断絶の兆し|Sundering Waters|Unknown_73E)">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="浪T" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="false" Grouping="Or" />
@@ -3457,7 +3457,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Trigger>
-                      <Trigger Enabled="true" Name="输出：瀑布D（浪D 直线D）" Id="91f0bcab-69d3-4520-b205-d3c5568f267c" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (断绝之兆|断絶の兆し|Sundering Waters|Unknown_73E)">
+                      <Trigger Enabled="true" Name="输出：瀑布D（浪D 直线D）" Id="91f0bcab-69d3-4520-b205-d3c5568f267c" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (断绝之兆|断絶の兆し|Sundering Waters|Unknown_73E)">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="浪D" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="false" Grouping="Or" />
@@ -3487,7 +3487,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Trigger>
-                      <Trigger Enabled="true" Name="治疗：分摊H" Id="d2e57df8-8973-42b6-851f-dd67912370af" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (溺没之兆|溺没の兆し|Smothering Waters)">
+                      <Trigger Enabled="true" Name="治疗：分摊H" Id="d2e57df8-8973-42b6-851f-dd67912370af" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (溺没之兆|溺没の兆し|Smothering Waters)">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="分奶" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="false" Grouping="Or" />
@@ -3517,7 +3517,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Trigger>
-                      <Trigger Enabled="true" Name="治疗：三角H" Id="dd6fe7e2-fee0-4584-b37e-b5a3d1306c5b" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (扩散之兆|拡散の兆し|Sweeping Waters|Unknown_73F)">
+                      <Trigger Enabled="true" Name="治疗：三角H" Id="dd6fe7e2-fee0-4584-b37e-b5a3d1306c5b" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (扩散之兆|拡散の兆し|Sweeping Waters|Unknown_73F)">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="三角奶" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="false" Grouping="Or" />
@@ -3547,7 +3547,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Trigger>
-                      <Trigger Enabled="true" Name="输出：分摊D" Id="e7e7e05f-6271-43d1-9871-ffbca82da98b" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (溺没之兆|溺没の兆し|Smothering Waters)">
+                      <Trigger Enabled="true" Name="输出：分摊D" Id="e7e7e05f-6271-43d1-9871-ffbca82da98b" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (溺没之兆|溺没の兆し|Smothering Waters)">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="分D" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="false" Grouping="Or" />
@@ -3577,7 +3577,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Trigger>
-                      <Trigger Enabled="true" Name="输出：菊花D（强压D）" Id="d639e149-82e5-4872-ac54-3ede39db2964" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (强压之兆|強圧の兆し|Surging Waters|Unknown_73A)">
+                      <Trigger Enabled="true" Name="输出：菊花D（强压D）" Id="d639e149-82e5-4872-ac54-3ede39db2964" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (强压之兆|強圧の兆し|Surging Waters|Unknown_73A)">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="菊D，去最前" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="false" Grouping="Or" />
@@ -3604,7 +3604,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Trigger>
-                      <Trigger Enabled="true" Name="输出：三角D（扇D）" Id="4e1ac73c-3cc3-4c5c-bb87-2690f8e4d332" RegularExpression=":(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+) gains the effect of (扩散之兆|拡散の兆し|Sweeping Waters|Unknown_73F)">
+                      <Trigger Enabled="true" Name="输出：三角D（扇D）" Id="4e1ac73c-3cc3-4c5c-bb87-2690f8e4d332" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (扩散之兆|拡散の兆し|Sweeping Waters|Unknown_73F)">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="三角弟" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="false" Grouping="Or" />
@@ -3638,7 +3638,7 @@
                   </Folder>
                 </Folders>
                 <Triggers>
-                  <Trigger Enabled="true" Name="大海啸" Id="a9f6d2aa-b1d5-48d0-a152-e25a6fd6e55b" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3FF3:">
+                  <Trigger Enabled="true" Name="大海啸" Id="a9f6d2aa-b1d5-48d0-a152-e25a6fd6e55b" RegularExpression="^.{15}14:3FF3:">
                     <Actions>
                       <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3661,7 +3661,7 @@
               </Folder>
             </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="裂流（死刑）" Id="48f4d10e-d08e-4f51-9c50-b768ddc9ed14" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3FE0:">
+              <Trigger Enabled="true" Name="裂流（死刑）" Id="48f4d10e-d08e-4f51-9c50-b768ddc9ed14" RegularExpression="^.{15}14:3FE0:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3669,7 +3669,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="海底地震（拆地板）" Id="4964ceef-932d-44d4-b4ec-d71273e30a82" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3FE(?&lt;type&gt;E|F):">
+              <Trigger Enabled="true" Name="海底地震（拆地板）" Id="4964ceef-932d-44d4-b4ec-d71273e30a82" RegularExpression="^.{15}14:3FE(?&lt;type&gt;E|F):">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="两边两边" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="Or">
@@ -3684,7 +3684,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="巨浪（水柱）" Id="e3e1f3f3-c47a-48d5-9afb-68b7624c07a1" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3FF2:">
+              <Trigger Enabled="true" Name="巨浪（水柱）" Id="e3e1f3f3-c47a-48d5-9afb-68b7624c07a1" RegularExpression="^.{15}14:3FF2:">
                 <Actions>
                   <Action OrderNumber="1" LogMessageText="Souma_Count_Down:10" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8ce3c888-4ba4-42c7-b228-f3a69cd291db" TriggerText="Souma_Count_Down:10" ActionType="LogMessage">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3695,7 +3695,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="巨漩涡（上天）" Id="79c0a81b-b290-48ff-a06e-c7c2933f8bad" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3FFA:">
+              <Trigger Enabled="true" Name="巨漩涡（上天）" Id="79c0a81b-b290-48ff-a06e-c7c2933f8bad" RegularExpression="^.{15}14:3FFA:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="上天" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3703,7 +3703,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="剧烈波动（觉醒：猛烈波动）" Id="2b3d7ae7-29ff-42d5-9580-ee305d47aa50" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3FE[24]:">
+              <Trigger Enabled="true" Name="剧烈波动（觉醒：猛烈波动）" Id="2b3d7ae7-29ff-42d5-9580-ee305d47aa50" RegularExpression="^.{15}14:3FE[24]:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="集中放圈" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3711,7 +3711,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="潮汐咆哮（觉醒：怒潮肆虐）" Id="a767a6d5-6775-46a0-88f1-9bbaccbaa007" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:(3FD[CE]|400[CB]):">
+              <Trigger Enabled="true" Name="潮汐咆哮（觉醒：怒潮肆虐）" Id="a767a6d5-6775-46a0-88f1-9bbaccbaa007" RegularExpression="^.{15}14:(3FD[CE]|400[CB]):">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3719,7 +3719,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="临时洋流（俯冲）" Id="15e8f000-67cc-491f-af54-6b69c86b49f6" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:(?&lt;type&gt;3FEA|3FEB):">
+              <Trigger Enabled="true" Name="临时洋流（俯冲）" Id="15e8f000-67cc-491f-af54-6b69c86b49f6" RegularExpression="^.{15}14:(?&lt;type&gt;3FEA|3FEB):">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Temporary_Current" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -3860,7 +3860,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="核爆点你" Id="e824af96-50a3-45e1-be2a-ffb383d4d60a" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 1B:.{8}:(?&lt;name&gt;[\w\u4E00-\u9FA5\uF900-\uFA2D· ]+):.{4}:.{4}:0057:">
+              <Trigger Enabled="true" Name="核爆点你" Id="e824af96-50a3-45e1-be2a-ffb383d4d60a" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:0057:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="核爆" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3879,7 +3879,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="水之觉醒" Id="cdbc39c8-40e4-441c-9af2-a5817f9b99ef" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:400F:">
+              <Trigger Enabled="true" Name="水之觉醒" Id="cdbc39c8-40e4-441c-9af2-a5817f9b99ef" RegularExpression="^.{15}14:400F:">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetString" VariableName="Souma_Refreshing_Shower" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3887,7 +3887,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="大时化（大暴风雨）" Id="e69a218d-161f-4230-b2e0-87fcabbac515" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3FFE:">
+              <Trigger Enabled="true" Name="大时化（大暴风雨）" Id="e69a218d-161f-4230-b2e0-87fcabbac515" RegularExpression="^.{15}14:3FFE:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="左上左上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3900,7 +3900,7 @@
           <Folder Id="711bf2ab-e83e-431c-9aaf-beb6c4d2ebf7" ZoneFilterRegularExpression="伊甸希望乐园.*" Name="普通伊甸" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="AoE" Id="cdf3ed55-2d20-43a0-87ec-a65a3eaceaf9" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:(3D94|3D9C|3DA4|3E6D|3FC4|441B|40F7|40F8):">
+              <Trigger Enabled="true" Name="AoE" Id="cdf3ed55-2d20-43a0-87ec-a65a3eaceaf9" RegularExpression="^.{15}14:(3D94|3D9C|3DA4|3E6D|3FC4|441B|40F7|40F8):">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3908,7 +3908,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="月环" Id="c819a045-2172-4903-919a-4b910730e695" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:(3D97|3E3C|4104):">
+              <Trigger Enabled="true" Name="月环" Id="c819a045-2172-4903-919a-4b910730e695" RegularExpression="^.{15}14:(3D97|3E3C|4104):">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="月环靠近" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3916,7 +3916,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="死刑" Id="b447e9b4-b9fe-4d03-9c8c-30a16f0cc77e" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:(3DA1|3E4E|3FC6|40F9):">
+              <Trigger Enabled="true" Name="死刑" Id="b447e9b4-b9fe-4d03-9c8c-30a16f0cc77e" RegularExpression="^.{15}14:(3DA1|3E4E|3FC6|40F9):">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3924,7 +3924,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="末日虚无断" Id="f6b38613-3212-4d0d-84fd-7e71b85ae8ad" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:3E3B">
+              <Trigger Enabled="true" Name="末日虚无断" Id="f6b38613-3212-4d0d-84fd-7e71b85ae8ad" RegularExpression="^.{15}14:3E3B">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="直线直线" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3932,7 +3932,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="地震波" Id="78fdf3e1-13dc-40c0-a392-eaaf73af3ed0" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:40F3:">
+              <Trigger Enabled="true" Name="地震波" Id="78fdf3e1-13dc-40c0-a392-eaaf73af3ed0" RegularExpression="^.{15}14:40F3:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="快找掩体" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3940,7 +3940,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="岩盘崩落" Id="2f523645-24ba-4a0f-a95d-dd23675cb0ae" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 14:40F1:">
+              <Trigger Enabled="true" Name="岩盘崩落" Id="2f523645-24ba-4a0f-a95d-dd23675cb0ae" RegularExpression="^.{15}14:40F1:">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="陨石" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -4087,15 +4087,12 @@
                         <Actions>
                           <Action OrderNumber="1" FolderId="7aeeeea9-b0d1-46f4-a23d-7a0c56acce4d" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" ActionType="Folder" ExecutionDelayExpression="3000">
                             <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" FolderId="ff41eaed-d9b1-4ccc-8659-9b7a7a23ac3a" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" ActionType="Folder">
                             <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="3" FolderOp="DisableFolder" FolderId="f3e1178a-2678-4d5a-9584-29d5896ed87f" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" ActionType="Folder">
                             <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -4465,23 +4462,30 @@
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="9" LogMessageText="Souma_TTS_Job:${name}" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage" ExecutionDelayExpression="(${time}-8)*1000">
+                      <Action OrderNumber="9" LogMessageText="Souma_TTS_Job:${name}" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage" ExecutionDelayExpression="(${time}-9)*1000">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="10" LogMessageText="Souma_Subtitle:轮到你了:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-                        <Condition Enabled="true" Grouping="Or">
+                      <Action OrderNumber="10" LogMessageText="Souma_Subtitle:撞头:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                        <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙之爪" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="11" UseTTSTextExpression="去撞头" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                      <Action OrderNumber="11" LogMessageText="Souma_Subtitle:吃球:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙之牙" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="12" UseTTSTextExpression="去撞头" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙之爪" ExpressionTypeR="String" ConditionType="RegexMatch" />
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="12" UseTTSTextExpression="去吃球" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                      <Action OrderNumber="13" UseTTSTextExpression="去吃球" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙之牙" ExpressionTypeR="String" ConditionType="RegexMatch" />
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -4604,7 +4608,7 @@
                       <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
                   </Trigger>
-                  <Trigger Enabled="false" Name="P3鏡" Id="dd72cea7-a77d-4e6c-993f-2493ae58c964" RegularExpression="^.{15}14:4D7(?&lt;type&gt;[56]):" PeriodRefire="Deny" RefirePeriodExpression="3000" Description="^.{15}15:.+:4D5A:">
+                  <Trigger Enabled="true" Name="P3鏡" Id="dd72cea7-a77d-4e6c-993f-2493ae58c964" RegularExpression="^.{15}14:4D7(?&lt;type&gt;[56]):" PeriodRefire="Deny" RefirePeriodExpression="3000" Description="^.{15}15:.+:4D5A:">
                     <Actions>
                       <Action OrderNumber="1" LogMessageText="Souma_Subtitle:找无色镜:21:0:-175:e8skagami0" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                         <Condition Enabled="false" Grouping="Or" />
@@ -4808,6 +4812,10 @@
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Team_Role}" ExpressionTypeL="String" ExpressionR="(?i)MT|H1|D1|D3" ExpressionTypeR="String" ConditionType="RegexMatch" />
                     </Condition>
+                  </Trigger>
+                  <Trigger Enabled="false" Name="挖坑:根据坐标判断左右" Id="a5839ff2-b554-407e-b4c3-c022e8356b83" RegularExpression="">
+                    <Actions />
+                    <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
                 </Triggers>
               </Folder>
