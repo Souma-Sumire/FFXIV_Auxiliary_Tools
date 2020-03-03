@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="8589934592" Id="88ed4488-0d52-4fe0-ad81-22fb2187cb90" Name="剑压3层提醒 v1.3" Enabled="true">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="8589934592" Id="88ed4488-0d52-4fe0-ad81-22fb2187cb90" Name="剑压3层提醒 v1.3.1" Enabled="true">
     <Folders>
       <Folder Id="d20d4f94-9215-4b79-9a06-140835e6095d" Name="居合变成照破" Enabled="true">
         <Folders />
@@ -48,7 +48,7 @@
       </Folder>
     </Folders>
     <Triggers>
-      <Trigger Enabled="true" Name="loses" Id="8d6cd317-b1d4-4558-b729-3fd7a7f3be0a" RegularExpression="\] 1E:.{8}:(?&lt;name&gt;.+?) loses the effect of 剑压 from |21:.{8}:4000001[026]">
+      <Trigger Enabled="true" Name="loses" Id="8d6cd317-b1d4-4558-b729-3fd7a7f3be0a" RegularExpression="\] 1E:.{8}:(?&lt;name&gt;.+?) loses the effect of 剑压 from">
         <Actions>
           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_剑压" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
@@ -100,10 +100,11 @@
           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Name="reset" Id="87656215-bf96-4f7e-ba3e-5f2d38da5f93" RegularExpression="的职业转换成了“武士”。|战斗开始">
+      <Trigger Enabled="true" Name="reset" Id="87656215-bf96-4f7e-ba3e-5f2d38da5f93" RegularExpression="的职业转换成了“武士”。|战斗开始|21:.{8}:4000001[026]">
         <Actions>
           <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8d6cd317-b1d4-4558-b729-3fd7a7f3be0a" TriggerForce="true" ActionType="Trigger">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
