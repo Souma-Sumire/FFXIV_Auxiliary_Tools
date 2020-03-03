@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏 v1.3" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Name="Read CSV" Id="c918b0fd-f219-4b40-bd47-6a5d68e6bffe" RegularExpression="^.{15}01:Changed Zone to|^.{15}00:0038:发(送副本)?宏">
+        <Actions>
+          <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="${_env[SoumaTriggerFolder]}\Triggernometry触发器\发送副本宏\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${elvar:ExtremeMacroText}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Sequential="True" Name="Send2" Id="f7784f7f-4551-4260-ae3f-aa3fa6ba01ce" RegularExpression="^.{15}00:0038:发(送副本)?宏 ?(?&lt;channel&gt;\w+?) ?(?&lt;map&gt;.+)$">
+        <Actions>
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="100" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${channel}" ExpressionTypeL="String" ExpressionR="(?i)y|sh|fc" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Sequential="True" Name="Send0" Id="fc1a5216-3bad-4ac6-8929-1c91a200ff8e" RegularExpression="^.{15}00:0038:发(送副本)?宏$">
+        <Actions>
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="100" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${channel}" ExpressionTypeL="String" ExpressionR="(?i)y|sh|fc" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Sequential="True" Name="Send1" Id="ca4f8735-2772-42c1-bab5-4e1cb3b9a039" RegularExpression="^.{15}00:0038:发(送副本)?宏 ?(?&lt;channel&gt;\w+)$">
+        <Actions>
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="100" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${channel}" ExpressionTypeL="String" ExpressionR="(?i)y|sh|fc" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
