@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.2.9.1" Enabled="true">
+  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.2.9.2" Enabled="true">
     <Folders>
       <Folder Id="f24d266c-beab-41b2-b183-2a433f253d9f" Name="大技能" Enabled="true">
         <Folders>
@@ -484,21 +484,25 @@
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="进攻之探戈" Id="361ac755-3e3d-4e5c-8cce-54a8d1631e6d" RegularExpression=":(?&lt;name&gt;[^:]+?) gains the effect of (攻めのタンゴ|进攻之探戈|Devilment) from" DebugLevel="Warning" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
+          <Trigger Enabled="true" Sequential="True" Name="进攻之探戈" Id="361ac755-3e3d-4e5c-8cce-54a8d1631e6d" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (攻めのタンゴ|进攻之探戈|Devilment) from" DebugLevel="Warning" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
               <Action OrderNumber="1" AuraName="Devilment" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003471.png" AuraXIniExpression="${var:RaidAuraX}+320" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="Devilment" TextAuraExpression="${numeric:+120-${_since}}" TextAuraXIniExpression="${var:RaidAuraX}+311" TextAuraYIniExpression="${var:RaidAuraY}+11" TextAuraWIniExpression="59" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="120-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" AuraImageMode="StretchImage" AuraName="DevilmentBorder" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\ComboGIF.gif" AuraXIniExpression="${var:RaidAuraX}+320" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraTTLTickExpression="20-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" UseTTSTextExpression="探戈" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
