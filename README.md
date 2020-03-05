@@ -87,6 +87,8 @@
 
 #### 配置 Triggernometry 环境
 
+<font color=red>使用任何触发器，我都默认你是做过这步的</font>
+
 1. **以管理员身份运行** `添加触发器目录与鲶鱼精邮差端口到环境变量.bat`
 
    ![环境变量](screenshots/环境变量.png)
