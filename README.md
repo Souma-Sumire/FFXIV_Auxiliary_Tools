@@ -5,7 +5,7 @@
   * [别像弱智一样提问](https://github.com/dogfight360/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md)
 
 1. [关于](#关于)
-1. [安装过程](#安装过程)
+1. [安装](#安装)
 1. [自定义](#自定义)
 1. [杂项说明](#杂项说明)
 
@@ -60,9 +60,9 @@
   * 生产物品数量计数
   * more..
 
-## 安装过程
+## 安装
 
-### 依赖
+### 基础
 
 1. 你必须启用 [DirectX 11](https://support.microsoft.com/zh-cn/help/179113/how-to-install-the-latest-version-of-directx) 来运行 最终幻想14
 1. 安装64位版本的 ACT
@@ -72,8 +72,8 @@
 1. 加载FF14解析插件 整合版 /
 [国际服](https://github.com/ravahn/FFXIV_ACT_Plugin/releases/latest)
 的最新版本，启用网络解析，并确保没有防火墙或安全软件阻止ACT。
-1. [Hojoring](https://github.com/anoyetta/ACT.Hojoring)
-[Triggernometry](https://github.com/paissaheavyindustriesTriggernometry)
+1. [Hojoring](https://github.com/anoyetta/ACT.Hojoring) /
+[Triggernometry](https://github.com/paissaheavyindustries/Triggernometry)
 1. **确保游戏中聊天框的消息没有被过滤（重要）**
 [设置过滤 - 视频演示](https://www.bilibili.com/video/av83704576/)
 1. 设置战斗间隔为50秒以上
@@ -85,23 +85,25 @@
 1. 右键压缩文件，点击属性，选中“解除锁定” (如果有)
 1. 解压缩至任意路径
 
-#### Triggernometry
+#### 配置 Triggernometry 环境
 
 1. **以管理员身份运行** `添加触发器目录与鲶鱼精邮差端口到环境变量.bat`
-  ![环境变量](screenshots/环境变量.png)
+
+   ![环境变量](screenshots/环境变量.png)
 
 1. 出现这个字样代表成功
-  ![环境变量成功](screenshots/环境变量成功.png)
+  
+   ![环境变量成功](screenshots/环境变量成功.png)
 1. **重新启动ACT**
-1. 在 Triggernometry中 右键 本地触发器 选择 导入 选择 需要的功能的xml文件
-1. 可选：在 *自定义设置 中 进行一些设置，比如坐标位置调整。
 
 #### 鲶鱼精邮差
 
 1. 下载并运行 [鲶鱼精邮差](https://nga.178.com/read.php?tid=19724323)
 1. 找一个端口 开始监听。比如2019
-1. 如果不是2019，在 Bat右键编辑 倒数第二行 修改为你监听的端口，并重新运行Bat与重启ACT。
-  ![修改邮差端口](screenshots/修改邮差端口.png)
+1. 如果不是2019，在 Bat右键编辑 倒数第二行 修改为你监听的端口
+1. **重新启动ACT**
+
+   ![修改邮差端口](screenshots/修改邮差端口.png)
 
 ## 自定义
 
@@ -146,7 +148,7 @@
 
 ## 杂项说明
 
-* 如果使用呆萌整合ACT，其Triggernometry的_ffixvplayer方法失效，可以尝试关闭界面汉化插件（改回英文）
+* 如果Triggernometry的_ffixvplayer方法失效，可以尝试关闭汉化（改回英文）
 
 * 设置E4S职能位置
   ![设置职能位置](screenshots/设置职能位置.gif)
