@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="56a40852-b1b5-49ec-98b0-833bee32b719" Name="Zeff v1.2.7.0" Enabled="true">
+  <ExportedFolder Id="56a40852-b1b5-49ec-98b0-833bee32b719" Name="Zeff v1.3.6" Enabled="true">
     <Folders>
       <Folder Id="c14f8e5e-98d9-44eb-bb26-eb04c454334d" Name="自身CD" Enabled="true">
         <Folders>
           <Folder Id="0795221e-8a8f-4bc0-8eff-decc50ff7112" Name="内部方法 Internal" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="解析技能 Skill Used" Id="3a1f85ca-64b1-4350-bfe5-e018adec54df" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):(?&lt;skillid&gt;[A-F0-9]{2,4}):">
+              <Trigger Enabled="true" Name="解析技能 Skill Used" Id="3a1f85ca-64b1-4350-bfe5-e018adec54df" RegularExpression="^.{15}1[56]:.{8}:(?&lt;player&gt;[^:]+?):(?&lt;skillid&gt;.{2,4}):">
                 <Actions>
                   <Action OrderNumber="1" JsonEndpointExpression="https://xivapi.com/Action/${numeric:hex2dec(${skillid})}" JsonFiringExpression="VCT-JSON ID:${_jsonresponse[ID]} Icon:${_jsonresponse[Icon]} Name:${_jsonresponse[Name]} Recast:${_jsonresponse[Recast100ms]} CategoryID:${_jsonresponse[ActionCategoryTargetID]}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
@@ -27,7 +27,7 @@
                 </Condition>
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="获得技速与咏速 Retrieve SkS and SpS" Id="8340416b-e517-472a-85c6-077927a58391" RegularExpression="0C:Player Stats: [0-9]{2}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:(?&lt;sks&gt;[0-9]{1,4}):(?&lt;sps&gt;[0-9]{1,4}):0:[0-9]{1,4}">
+              <Trigger Enabled="true" Name="获得技速与咏速 Retrieve SkS and SpS" Id="8340416b-e517-472a-85c6-077927a58391" RegularExpression="^.{15}0C:Player Stats: [0-9]{2}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:[0-9]{1,4}:(?&lt;sks&gt;[0-9]{1,4}):(?&lt;sps&gt;[0-9]{1,4}):0:[0-9]{1,4}">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="VCT-CurrentSkSModifier" VariableExpression="(1000 + ${numeric:floor(130 * (${sks} - 380)/3300)})/1000" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
@@ -41,7 +41,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="团灭重置 Reset on Wipe" Id="10d2d37a-6143-4dc9-b762-3ff281b029df" RegularExpression="21:[A-F0-9]{8}:40000010">
+              <Trigger Enabled="true" Name="团灭重置 Reset on Wipe" Id="10d2d37a-6143-4dc9-b762-3ff281b029df" RegularExpression="^.{15}21:.{8}:4000001[026]">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="EndEncounter" ExecutionDelayExpression="1000">
                     <Condition Enabled="false" Grouping="Or" />
@@ -65,7 +65,7 @@
                 </Condition>
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Sequential="True" Name="解析JSON响应并创建计时器 Parse JSON Response and create timer" Id="f8299d81-2735-4bb7-8fa2-a0a99deff1e2" RegularExpression="VCT-JSON ID:(?&lt;id&gt;[0-9]{1,5}) Icon:(?&lt;iconurl&gt;.*?) Name:(?&lt;skillname&gt;.*?) Recast:(?&lt;recast&gt;[0-9]{2,5}) CategoryID:(?&lt;categoryid&gt;[0-9])">
+              <Trigger Enabled="true" Sequential="True" Name="解析JSON响应并创建计时器 Parse JSON Response and create timer" Id="f8299d81-2735-4bb7-8fa2-a0a99deff1e2" RegularExpression="^VCT-JSON ID:(?&lt;id&gt;[0-9]{1,5}) Icon:(?&lt;iconurl&gt;.*?) Name:(?&lt;skillname&gt;.*?) Recast:(?&lt;recast&gt;[0-9]{2,5}) CategoryID:(?&lt;categoryid&gt;[0-9])$">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="VCT-X" VariableExpression="if(${evar:冷却监控X坐标},${var:冷却监控X坐标},500)" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -345,9 +345,9 @@
       </Folder>
       <Folder Id="1ce0cf8d-6366-40d5-bd5b-a7662588787f" Name="Buff追踪" Enabled="true">
         <Folders>
-          <Folder Id="6afa2226-fdd6-4b13-ae66-cd91f3589519" Name="内部方法 Internal" Enabled="true">
+          <Folder Id="6afa2226-fdd6-4b13-ae66-cd91f3589519" Name="内部 Internal" Enabled="true">
             <Folders>
-              <Folder Id="89668e88-9bd7-4049-9aa1-7fa67f709536" Name="函数 Functions" Enabled="true">
+              <Folder Id="89668e88-9bd7-4049-9aa1-7fa67f709536" Name="方法 Functions" Enabled="true">
                 <Folders />
                 <Triggers>
                   <Trigger Enabled="true" Name="清空激活的Buff与层数 Clear Active Buffs and Stacks" Id="e03e3f36-2843-4508-899e-a239a1e21f6a" RegularExpression="">
@@ -428,7 +428,7 @@
               </Folder>
             </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="职业转换 Job Change" Id="27233863-17e6-45dd-a3df-6572f6b99180" RegularExpression="\] 00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.)">
+              <Trigger Enabled="true" Name="职业转换 Job Change" Id="27233863-17e6-45dd-a3df-6572f6b99180" RegularExpression="^.{15}00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.)">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="694bb1d3-6c1f-4452-b0f7-e99e3939baf0" TriggerForce="regexp" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
@@ -441,7 +441,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="玩家死亡 Death" Id="8277c936-20b2-4078-80c0-3462788c9bb8" RegularExpression="19:(?&lt;player&gt;[^:]+?) was defeated">
+              <Trigger Enabled="true" Name="玩家死亡 Death" Id="8277c936-20b2-4078-80c0-3462788c9bb8" RegularExpression="^.{15}19:(?&lt;player&gt;[^:]+?) was defeated">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="694bb1d3-6c1f-4452-b0f7-e99e3939baf0" TriggerForce="regexp" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
@@ -456,7 +456,7 @@
                 </Condition>
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="改变区域 Zone Change" Id="f371acd0-b800-4a12-8e4b-7e6adc6f0927" RegularExpression="01:Changed Zone">
+              <Trigger Enabled="true" Name="改变区域 Zone Change" Id="f371acd0-b800-4a12-8e4b-7e6adc6f0927" RegularExpression="^.{15}01:Changed Zone">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="c5ac3ffa-0809-4761-9d26-a82d21139c85" TriggerForce="regexp" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -479,7 +479,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4294967296" Id="0cb308e7-5d69-4738-bbea-d401fc126deb" Name="占星术士 AST" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="占卜 DIV Timer" Id="b6fc65cf-a026-4e45-9bfc-eec35c76f83a" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):40A8:(?&lt;skill&gt;[^:]+?):[A-F0-9]{8}:(?&lt;player&gt;[^:]+?)">
+                  <Trigger Enabled="true" Name="占卜 DIV Timer" Id="b6fc65cf-a026-4e45-9bfc-eec35c76f83a" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):40A8:(?&lt;skill&gt;[^:]+?):.{8}:(?&lt;player&gt;[^:]+?)">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-DIV-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -551,7 +551,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="光速 LS Timer" Id="b52b61a6-e9bc-4840-bd89-c478a32ca0a5" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):E16:(?&lt;skill&gt;[^:]+?):[A-F0-9]{8}:(?&lt;player&gt;[^:]+?)">
+                  <Trigger Enabled="true" Name="光速 LS Timer" Id="b52b61a6-e9bc-4840-bd89-c478a32ca0a5" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):E16:(?&lt;skill&gt;[^:]+?):.{8}:(?&lt;player&gt;[^:]+?)">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="LS-Cooldown" VariableExpression="90" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
                         <Condition Enabled="true" Grouping="And">
@@ -639,7 +639,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4194304" Id="038c1351-ea21-4083-bc1a-9ea862d94d69" Name="吟游诗人 BRD" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="猛者强击 RS Timer" Id="94e1b440-646b-4798-933a-00f3842f1e37" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):65:">
+                  <Trigger Enabled="true" Name="猛者强击 RS Timer" Id="94e1b440-646b-4798-933a-00f3842f1e37" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):65:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-RS-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -715,7 +715,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="137438953472" Id="504748ca-9f6d-4fcb-8871-ac13ab022912" Name="舞者 DNC" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="进攻之探戈 DM Timer" Id="4dc53a2a-a983-4a61-a84f-b53f4e445241" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):3E8B:">
+                  <Trigger Enabled="true" Name="进攻之探戈 DM Timer" Id="4dc53a2a-a983-4a61-a84f-b53f4e445241" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):3E8B:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-DM-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -787,7 +787,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="即兴表演 IMP Timer" Id="8a274250-9716-412c-ae8a-32d58220d98b" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):3E8E:">
+                  <Trigger Enabled="true" Name="即兴表演 IMP Timer" Id="8a274250-9716-412c-ae8a-32d58220d98b" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):3E8E:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-IMP-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -859,7 +859,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="标准舞步 STF Timer" Id="d96bda4c-48d6-4d8e-bb76-53c2e5c4b36f" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):3(F3F|F40|E83):">
+                  <Trigger Enabled="true" Name="标准舞步 STF Timer" Id="d96bda4c-48d6-4d8e-bb76-53c2e5c4b36f" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):3(F3F|F40|E83):">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetString" VariableName="BarImageUrl" VariableExpression="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Images\Bar.png" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -902,7 +902,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="技巧舞步 TF Timer" Id="dbb84ac4-d286-41f1-8606-d37ed974814a" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):3F4[234]:">
+                  <Trigger Enabled="true" Name="技巧舞步 TF Timer" Id="dbb84ac4-d286-41f1-8606-d37ed974814a" RegularExpression="^.{15}1[56]:.{8}:(?&lt;player&gt;[^:]+?):3F4[234]:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-TF-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -979,7 +979,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="2097152" Id="8fdbc87a-5145-4f25-87cc-fdec28948512" Name="龙骑士 DRG" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="开膛枪 DB Timer" Id="806bf994-8edd-4f2d-9c28-ec39d6185ad4" RegularExpression="1A:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Disembowel|开膛枪|ディセムボウル) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
+                  <Trigger Enabled="true" Name="开膛枪 DB Timer" Id="806bf994-8edd-4f2d-9c28-ec39d6185ad4" RegularExpression="^.{15}1A:.{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Disembowel|开膛枪|ディセムボウル) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-DB-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1044,7 +1044,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="巨龙视线 DS Timer" Id="5e0a2a35-fdda-43dd-97dc-3d6ea89927d7" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CE6:">
+                  <Trigger Enabled="true" Name="巨龙视线 DS Timer" Id="5e0a2a35-fdda-43dd-97dc-3d6ea89927d7" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):1CE6:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-DS-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1115,7 +1115,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="猛枪 LC Timer" Id="9b8f5903-f49a-417b-8629-5a26bc3dcca3" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):55:">
+                  <Trigger Enabled="true" Name="猛枪 LC Timer" Id="9b8f5903-f49a-417b-8629-5a26bc3dcca3" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):55:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-LC-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1191,7 +1191,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="2147483648" Id="39a6d3d1-c08f-4d68-a7f9-7589d93f340c" Name="暗黑骑士 DRK" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="血乱 DEL Timer" Id="fbca1842-0fed-437c-91a7-5076823235a2" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CDE:">
+                  <Trigger Enabled="true" Name="血乱 DEL Timer" Id="fbca1842-0fed-437c-91a7-5076823235a2" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):1CDE:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-DEL-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1262,7 +1262,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="嗜血 BW Timer" Id="8dbe86ba-7eb9-4c4d-bcb0-cc38653256b3" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):E29:">
+                  <Trigger Enabled="true" Name="嗜血 BW Timer" Id="8dbe86ba-7eb9-4c4d-bcb0-cc38653256b3" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):E29:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-BW-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1338,7 +1338,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="68719476736" Id="f3017c8e-afbd-4eb3-89f9-a7bcdee63471" Name="绝枪战士 GNB" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="无情 NM Timer" Id="486cab77-3c7f-44ff-bd29-0ab810ce76de" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):3F0A:">
+                  <Trigger Enabled="true" Name="无情 NM Timer" Id="486cab77-3c7f-44ff-bd29-0ab810ce76de" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):3F0A:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-NM-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1414,7 +1414,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="1073741824" Id="5e308fce-d731-4166-8622-326066fc00ab" Name="机工士 MCH" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="超荷 HC Timer" Id="2ca9ac25-d8c8-4063-8232-8921e3ce5e17" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):4339:">
+                  <Trigger Enabled="true" Name="超荷 HC Timer" Id="2ca9ac25-d8c8-4063-8232-8921e3ce5e17" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):4339:">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetString" VariableName="BarImageUrl" VariableExpression="${var:Buff监控替代条样式网络地址}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -1456,7 +1456,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="野火 WF Timer" Id="f0611d28-e32b-4ce7-b39a-d4b60a24206f" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):B3E:">
+                  <Trigger Enabled="true" Name="野火 WF Timer" Id="f0611d28-e32b-4ce7-b39a-d4b60a24206f" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):B3E:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-WF-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1532,7 +1532,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="524288" Id="a8f4a871-22cc-4771-98ae-9e8804622b38" Name="武僧 MNK" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="双掌打 TS Timer" Id="ed556e13-d37d-4247-a1ef-644f2c796788" RegularExpression="1A:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Twin Snakes|双掌打|双掌打) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
+                  <Trigger Enabled="true" Name="双掌打 TS Timer" Id="ed556e13-d37d-4247-a1ef-644f2c796788" RegularExpression="^.{15}1A:.{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Twin Snakes|双掌打|双掌打) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-TS-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1597,7 +1597,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="红莲极意 ROF Timer" Id="01267853-acc9-46a0-88b0-d217a5520d69" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CE3:">
+                  <Trigger Enabled="true" Name="红莲极意 ROF Timer" Id="01267853-acc9-46a0-88b0-d217a5520d69" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):1CE3:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-ROF-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1673,7 +1673,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="262144" Id="388bcc79-606e-4abb-8d78-73e38a138d3c" Name="骑士 PLD" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="战逃反应 FF Timer" Id="a7900c87-e554-4ff7-9c75-729973a6b25c" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):14:">
+                  <Trigger Enabled="true" Name="战逃反应 FF Timer" Id="a7900c87-e554-4ff7-9c75-729973a6b25c" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):14:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-FF-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1744,7 +1744,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="安魂祈祷 RC Timer" Id="ca1dfa77-f458-4deb-b9b7-fd1f29b4931f" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CD7:">
+                  <Trigger Enabled="true" Name="安魂祈祷 RC Timer" Id="ca1dfa77-f458-4deb-b9b7-fd1f29b4931f" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):1CD7:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-RC-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1820,7 +1820,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="536870912" Id="b41cb065-ea5c-4fca-8350-47feb181086d" Name="忍者 NIN" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="风遁 HUT Timer" Id="f384c2e1-ec97-46a7-9ed4-f750fe5c0fd9" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):(?&lt;skill&gt;8DD|DEB):">
+                  <Trigger Enabled="true" Name="风遁 HUT Timer" Id="f384c2e1-ec97-46a7-9ed4-f750fe5c0fd9" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):(?&lt;skill&gt;8DD|DEB):">
                     <Actions>
                       <Action OrderNumber="1" LogMessageText="${_imageaura[HUT-Fill].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="LogMessage">
                         <Condition Enabled="false" Grouping="Or" />
@@ -1935,7 +1935,7 @@
                   <Folder Id="679c89f3-9faa-4800-a4ae-85706ea03545" Name="默想" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="获得默想深度 Meditate stack gained" Id="9c6b7774-0782-4733-a686-257badd5eade" RegularExpression="1A:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Meditation|默想深度|黙想深度)">
+                      <Trigger Enabled="true" Name="获得默想深度 Meditate stack gained" Id="9c6b7774-0782-4733-a686-257badd5eade" RegularExpression="^.{15}1A:.{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Meditation|默想深度|黙想深度)">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="VBT-MedStacks" VariableExpression="${var:VBT-MedStacks} + 1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
@@ -1949,7 +1949,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="默想深度 Meditate Tracker" Id="a9c815cb-3fdc-4b37-9cdd-f4de2d8812ff" RegularExpression="1A:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Meditation|默想深度|黙想深度)">
+                      <Trigger Enabled="true" Name="默想深度 Meditate Tracker" Id="a9c815cb-3fdc-4b37-9cdd-f4de2d8812ff" RegularExpression="^.{15}1A:.{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Meditation|默想深度|黙想深度)">
                         <Actions>
                           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="MedTrackerX" VariableExpression="if(${var:Zeff使用自定义设置},${var:Buff监控X坐标},650) + 5" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" Enabled="False" ActionType="Variable">
                             <Condition Enabled="false" Grouping="Or" />
@@ -1994,7 +1994,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="照破 Shoha used" Id="f237ce26-a094-4ca9-95f7-cfc4a9488520" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):4067:">
+                      <Trigger Enabled="true" Name="照破 Shoha used" Id="f237ce26-a094-4ca9-95f7-cfc4a9488520" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):4067:">
                         <Actions>
                           <Action OrderNumber="1" VariableName="VBT-MedStacks" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
@@ -2012,7 +2012,7 @@
                   </Folder>
                 </Folders>
                 <Triggers>
-                  <Trigger Enabled="true" Name="士风 JIN Timer" Id="5ed41187-bf91-438a-96d9-b20fc17bf4fd" RegularExpression="1A:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Jinpu|阵风|陣風) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
+                  <Trigger Enabled="true" Name="士风 JIN Timer" Id="5ed41187-bf91-438a-96d9-b20fc17bf4fd" RegularExpression="^.{15}1A:.{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Jinpu|阵风|陣風) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-JIN-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2077,7 +2077,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="阵风 SHI Timer" Id="9daaaf7f-b13b-4c7c-b794-69c0bf5e70b9" RegularExpression="1A:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Shifu|士风|士風) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
+                  <Trigger Enabled="true" Name="阵风 SHI Timer" Id="9daaaf7f-b13b-4c7c-b794-69c0bf5e70b9" RegularExpression="^.{15}1A:.{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Shifu|士风|士風) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-SHI-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2147,7 +2147,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="1048576" Id="0396669e-a3f1-4ddc-a19f-67fe0d0f5967" Name="战士 WAR" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="狂暴 BS Timer" Id="f7cad745-4990-460c-83f1-a15385e5d0f4" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):26:">
+                  <Trigger Enabled="true" Name="狂暴 BS Timer" Id="f7cad745-4990-460c-83f1-a15385e5d0f4" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):26:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-BS-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2218,7 +2218,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="原初的解放 IR Timer" Id="1b8d8e34-44a7-4fa2-a041-d29aa7421680" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CDD:">
+                  <Trigger Enabled="true" Name="原初的解放 IR Timer" Id="1b8d8e34-44a7-4fa2-a041-d29aa7421680" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):1CDD:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-IR-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2289,7 +2289,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="暴风碎 SE Timer" Id="622f080c-996c-4826-b0fe-137f0a1eeb5c" RegularExpression="1A:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Storm's Eye|暴风碎|シュトルムブレハ) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
+                  <Trigger Enabled="true" Name="暴风碎 SE Timer" Id="622f080c-996c-4826-b0fe-137f0a1eeb5c" RegularExpression="^.{15}1A:.{8}:(?&lt;player&gt;[^:]+?) gains the effect of (Storm's Eye|暴风碎|シュトルムブレハ) from (?&lt;caster&gt;[^:]+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-SE-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2359,7 +2359,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="8388608" Id="6ddde84b-587c-44de-86c1-46094f3fa97e" Name="白魔法师 WHM" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="神速咏唱 POM Timer" Id="3352ebe7-efed-4e27-be15-2121d774c7c3" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):88:">
+                  <Trigger Enabled="true" Name="神速咏唱 POM Timer" Id="3352ebe7-efed-4e27-be15-2121d774c7c3" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):88:">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VBT-POM-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2435,7 +2435,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="67108864" Id="8cf80728-123f-4d12-a225-81725c881121" Name="召唤师 SMN" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="毁坏 Ruin IV stack amount changed" Id="8af08d04-21b0-4b6b-bd1b-0eb4bf577430" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 26:\w{8}:(?&lt;player&gt;[^:]+?):\w{8}:.*?:0(?&lt;stacks&gt;[1-4])\w+?:0:\w+?:$">
+                  <Trigger Enabled="true" Name="毁坏 Ruin IV stack amount changed" Id="8af08d04-21b0-4b6b-bd1b-0eb4bf577430" RegularExpression="^.{15}26:.{8}:(?&lt;player&gt;[^:]+?):.{8}:.*?:0(?&lt;stacks&gt;[1-4])\w+?:0:\w+?:$">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="VBT-R4Stacks" VariableExpression="${stacks}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -2447,7 +2447,7 @@
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="毁坏 Ruin IV Tracker" Id="9e7616a8-5eb5-486a-ab7d-01ad772ccaf0" RegularExpression="^\[\d{2}:\d{2}:\d{2}\.\d{3}\] 26:\w{8}:(?&lt;player&gt;[^:]+?):\w{8}:.*?:0(?&lt;stacks&gt;[1-4])\w+?:0:\w+?:$">
+                  <Trigger Enabled="true" Name="毁坏 Ruin IV Tracker" Id="9e7616a8-5eb5-486a-ab7d-01ad772ccaf0" RegularExpression="^.{15}26:.{8}:(?&lt;player&gt;[^:]+?):.{8}:.*?:0(?&lt;stacks&gt;[1-4])\w+?:0:\w+?:$">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="R4TrackerX" VariableExpression="if(${var:Zeff使用自定义设置},${var:Buff监控X坐标},650) + 5" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2500,7 +2500,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="毁坏" Id="9fd6d4ba-61a2-4b49-94d9-f532cf265868" RegularExpression="\] 1E:\w{8}:(?&lt;player&gt;[^:]+?) loses the effect of (Further Ruin|毁坏强化|ルインラ強化).*from">
+                  <Trigger Enabled="true" Name="毁坏" Id="9fd6d4ba-61a2-4b49-94d9-f532cf265868" RegularExpression="^.{15}1E:.{8}:(?&lt;player&gt;[^:]+?) loses the effect of (Further Ruin|毁坏强化|ルインラ強化).*from">
                     <Actions>
                       <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="VBT-R4Stacks" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -2527,7 +2527,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4294967296" Id="0beacfdb-485c-44b4-bbc0-6c1f81b1f5c8" Name="占星术士 AST" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="焚灼 COM Timer" Id="3153f0d8-376c-47b2-acd6-ae037d87df6f" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (?&lt;dot&gt;Combust ?(I{2,3})?|烧灼|炽灼|焚灼|コンバス|コンバラ|コンバガ) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="焚灼 COM Timer" Id="3153f0d8-376c-47b2-acd6-ae037d87df6f" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (?&lt;dot&gt;Combust ?(I{2,3})?|烧灼|炽灼|焚灼|コンバス|コンバラ|コンバガ) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-COM-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2595,7 +2595,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="6ce0c026-5310-4f01-8259-4c33e13a8c2e" Name="黑魔法师 BLM" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="暴雷 T3 Timer" Id="7ff01823-2b48-4b74-abd8-6e4ab821b783" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (?&lt;dot&gt;Thunder ?(I{1,3}V?)?|闪雷|サンダー|震雷|サンダラ|霹雷|サンダジャ|暴雷|サンダガ) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
+                  <Trigger Enabled="true" Name="暴雷 T3 Timer" Id="7ff01823-2b48-4b74-abd8-6e4ab821b783" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (?&lt;dot&gt;Thunder ?(I{1,3}V?)?|闪雷|サンダー|震雷|サンダラ|霹雷|サンダジャ|暴雷|サンダガ) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.\d{1,2}) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-T3-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2663,7 +2663,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4194304" Id="2104bcfd-db45-480e-b903-5a6cb8860a71" Name="吟游诗人 BRD" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="狂风蚀箭 SB Timer" Id="d0781dea-7552-403b-9507-0cc4cae390ea" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (?&lt;dot&gt;Stormbite|Windbite|狂风蚀箭|ストームバイト|风蚀箭|ウィンドバイト) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="狂风蚀箭 SB Timer" Id="d0781dea-7552-403b-9507-0cc4cae390ea" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (?&lt;dot&gt;Stormbite|Windbite|狂风蚀箭|ストームバイト|风蚀箭|ウィンドバイト) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-SB-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2726,7 +2726,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="烈毒咬箭 CB Timer" Id="f1f96e84-119e-460d-adc4-f3e20b11ecfc" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (?&lt;dot&gt;Caustic Bite|Venomous Bite|烈毒咬箭|コースティックバイト|毒咬箭|ベノムバイト) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="烈毒咬箭 CB Timer" Id="f1f96e84-119e-460d-adc4-f3e20b11ecfc" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (?&lt;dot&gt;Caustic Bite|Venomous Bite|烈毒咬箭|コースティックバイト|毒咬箭|ベノムバイト) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-CB-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2794,7 +2794,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="2097152" Id="e7bc24ad-821b-4d08-a0cb-6226abf016f9" Name="龙骑士 DRG" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="樱花怒放 CT Timer" Id="7ee2b1c5-ec1c-4c92-ade1-9d440fafcbf8" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (Chaos Thrust|樱花怒放|桜華狂咲) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="樱花怒放 CT Timer" Id="7ee2b1c5-ec1c-4c92-ade1-9d440fafcbf8" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (Chaos Thrust|樱花怒放|桜華狂咲) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-CT-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2862,7 +2862,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="1073741824" Id="6c45b7ac-4917-4deb-a179-542bad0840d5" Name="机工士 MCH" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="毒菌冲击 BB Timer" Id="b90a00bd-e36a-4bb5-9a8a-400e4b8a0e63" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (Bioblaster|毒菌冲击|バイオブラスト) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="毒菌冲击 BB Timer" Id="b90a00bd-e36a-4bb5-9a8a-400e4b8a0e63" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (Bioblaster|毒菌冲击|バイオブラスト) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-BB-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2930,7 +2930,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="524288" Id="556a92fa-88e7-460d-8d6b-5c37ca59fd27" Name="武僧 MNK" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="破碎拳 DEM Timer" Id="ccf3e5c0-2070-4665-ba8d-18e3e9bc00f4" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (Demolish|破碎拳|破砕拳) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="破碎拳 DEM Timer" Id="ccf3e5c0-2070-4665-ba8d-18e3e9bc00f4" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (Demolish|破碎拳|破砕拳) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-DEM-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2998,7 +2998,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="536870912" Id="6d96738c-2c62-41d1-b6be-ebd56212aa07" Name="忍者 NIN" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="影牙 SF Timer" Id="34fa7aa7-6e20-4d5b-b10d-fd2ed5749fa3" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (Shadow Fang|影牙|影牙) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="影牙 SF Timer" Id="34fa7aa7-6e20-4d5b-b10d-fd2ed5749fa3" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (Shadow Fang|影牙|影牙) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-SF-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3066,7 +3066,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="262144" Id="2deaabcc-4fb8-4555-8f44-1be3688b4ad0" Name="骑士 PLD" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="沥血剑 GB Timer" Id="45743186-c352-4be7-9534-68b4b5a87a2e" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (Goring Blade|沥血剑|ゴアブレード) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="沥血剑 GB Timer" Id="45743186-c352-4be7-9534-68b4b5a87a2e" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (Goring Blade|沥血剑|ゴアブレード) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-GB-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3129,7 +3129,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="厄运流转 CS Timer" Id="f2891dca-d41c-4f82-867d-6134d390726d" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (Circle of Scorn|厄运流转|サークル・オブ・ドゥーム) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="厄运流转 CS Timer" Id="f2891dca-d41c-4f82-867d-6134d390726d" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (Circle of Scorn|厄运流转|サークル・オブ・ドゥーム) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-CS-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3197,7 +3197,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="8589934592" Id="7efcbf0d-eaae-47c8-923a-caeb6fef3524" Name="武士 SAM" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="彼岸花 HB Timer" Id="6e272008-452c-4fe4-9a4f-cb36d1739acc" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (Higanbana|彼岸花|彼岸花) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="彼岸花 HB Timer" Id="6e272008-452c-4fe4-9a4f-cb36d1739acc" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (Higanbana|彼岸花|彼岸花) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-HB-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3265,7 +3265,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="134217728" Id="a029f814-d46c-4cb3-9208-36941bf6847a" Name="学者 SCH" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="蛊毒法 BIO Timer" Id="2cdb665b-a5ae-458a-8456-772a324669d8" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (?&lt;dot&gt;Bio ?(I{2})?|猛?毒菌|バイオ|バイオラ|Biolysis|蛊毒法|蠱毒法) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds">
+                  <Trigger Enabled="true" Name="蛊毒法 BIO Timer" Id="2cdb665b-a5ae-458a-8456-772a324669d8" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (?&lt;dot&gt;Bio ?(I{2})?|猛?毒菌|バイオ|バイオラ|Biolysis|蛊毒法|蠱毒法) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-BIO-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3333,7 +3333,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="67108864" Id="a55b486b-af5b-48e1-97bf-1521dc2a8dff" Name="召唤师 SMN" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="瘴暍 M3 Timer" Id="d5e1803c-d7dc-4abb-ba76-8f170c524028" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (?&lt;dot&gt;Miasma ?(I{2,3})?|瘴气|瘴暍|ミアズマ|ミアズガ) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="瘴暍 M3 Timer" Id="d5e1803c-d7dc-4abb-ba76-8f170c524028" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (?&lt;dot&gt;Miasma ?(I{2,3})?|瘴气|瘴暍|ミアズマ|ミアズガ) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-M3-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3396,7 +3396,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="剧毒菌 B3 Timer" Id="dbf82cdf-0398-4dba-be12-197ed5dba4aa" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (?&lt;dot&gt;Bio ?(I{2,3})?|(猛|剧)?毒菌|バイオ|バイオラ|バイオガ) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="剧毒菌 B3 Timer" Id="dbf82cdf-0398-4dba-be12-197ed5dba4aa" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (?&lt;dot&gt;Bio ?(I{2,3})?|(猛|剧)?毒菌|バイオ|バイオラ|バイオガ) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-B3-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3464,7 +3464,7 @@
               <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="8388608" Id="500ecea4-db86-49e0-ad7f-08667590305b" Name="白魔法师 WHM" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="天辉 DIA Timer" Id="beea7391-8e50-4c2f-b30d-2b6127effddb" RegularExpression="1A:[A-F0-9]{8}:(.+?) gains the effect of (?&lt;dot&gt;Aero ?(I{2})?|疾风|エアロ|烈风|エアロラ|Dia|天辉|ディア) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
+                  <Trigger Enabled="true" Name="天辉 DIA Timer" Id="beea7391-8e50-4c2f-b30d-2b6127effddb" RegularExpression="^.{15}1A:.{8}:(.+?) gains the effect of (?&lt;dot&gt;Aero ?(I{2})?|疾风|エアロ|烈风|エアロラ|Dia|天辉|ディア) from (?&lt;player&gt;.+?) for (?&lt;duration&gt;\d{1,3}\.?(\d{1,2})?) Seconds\.">
                     <Actions>
                       <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="VDT-DIA-Fill-Flash" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                         <Condition Enabled="false" Grouping="Or" />
@@ -3532,9 +3532,9 @@
             </Folders>
             <Triggers />
           </Folder>
-          <Folder Id="9868967f-d6bd-4735-bec2-6c3950d47d2e" Name="内部方法 Internal" Enabled="true">
+          <Folder Id="9868967f-d6bd-4735-bec2-6c3950d47d2e" Name="内部 Internal" Enabled="true">
             <Folders>
-              <Folder Id="fea996e2-1b84-46f7-93e7-82289616150c" Name="函数 Functions" Enabled="true">
+              <Folder Id="fea996e2-1b84-46f7-93e7-82289616150c" Name="方法 Functions" Enabled="true">
                 <Folders />
                 <Triggers>
                   <Trigger Enabled="true" Name="清空计时器与层数 Clear Timers/Trackers" Id="be50d971-9b36-4876-8cee-5d2bfb94986a" RegularExpression="">
@@ -3555,7 +3555,7 @@
               </Folder>
             </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="职业转换 Job Change" Id="7f625973-1b20-4400-a090-ae1a686474d4" RegularExpression="\] 00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.)">
+              <Trigger Enabled="true" Name="职业转换 Job Change" Id="7f625973-1b20-4400-a090-ae1a686474d4" RegularExpression="^.{15}00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.)">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="be50d971-9b36-4876-8cee-5d2bfb94986a" TriggerForce="regexp" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
@@ -3568,7 +3568,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="玩家死亡 Death" Id="b2c8cecd-e470-41f3-82f9-7203703b8de2" RegularExpression="19:(?&lt;player&gt;[^:]+?) was defeated">
+              <Trigger Enabled="true" Name="玩家死亡 Death" Id="b2c8cecd-e470-41f3-82f9-7203703b8de2" RegularExpression="^.{15}19:(?&lt;player&gt;[^:]+?) was defeated">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="be50d971-9b36-4876-8cee-5d2bfb94986a" TriggerForce="regexp" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
@@ -3583,7 +3583,7 @@
                 </Condition>
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="改变区域 Zone Change" Id="7c02a501-02c3-4892-ba0b-29293abe0f5a" RegularExpression="01:Changed Zone">
+              <Trigger Enabled="true" Name="改变区域 Zone Change" Id="7c02a501-02c3-4892-ba0b-29293abe0f5a" RegularExpression="^.{15}01:Changed Zone">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="be50d971-9b36-4876-8cee-5d2bfb94986a" TriggerForce="regexp" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
@@ -3605,7 +3605,7 @@
           <Folder Id="2b75458d-ab8b-4f4b-92ce-d3b64dacd434" Name="团减 Damage Reduction" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="行吟 Troubadour" Id="c9a9a95b-8cc4-4e81-ab23-281243644046" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CED:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):">
+              <Trigger Enabled="true" Name="行吟 Troubadour" Id="c9a9a95b-8cc4-4e81-ab23-281243644046" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):1CED:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?):">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${caster}].order} ability:Troubadour image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\002612.png&quot; duration:15 cooldown:120" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="And">
@@ -3617,7 +3617,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="防守之桑巴 Shield Samba" Id="e525e126-80d7-4a9d-9790-10067756e6a0" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):3E8C:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):">
+              <Trigger Enabled="true" Name="防守之桑巴 Shield Samba" Id="e525e126-80d7-4a9d-9790-10067756e6a0" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):3E8C:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?):">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${caster}].order} ability:Shield Samba image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\003469.png&quot; duration:15 cooldown:120" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="And">
@@ -3629,7 +3629,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="策动 Tactician" Id="171a1c40-e447-4b34-bc8c-6326357bf223" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):41F9:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):">
+              <Trigger Enabled="true" Name="策动 Tactician" Id="171a1c40-e447-4b34-bc8c-6326357bf223" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):41F9:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?):">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${caster}].order} ability:Tactician image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\003040.png&quot; duration:15 cooldown:120" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="And">
@@ -3646,7 +3646,7 @@
           <Folder Id="08dbc876-5662-4e7b-b3f6-1647b6af023d" Name="职业技能 Role Actions" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="即刻咏唱 Swiftcast" Id="dbb87abe-ddcf-400c-9ef5-435ae9a61894" RegularExpression="1A:[A-Z0-9]{8}:(?&lt;player&gt;.+?) gains the effect of (Swiftcast|即刻咏唱|迅速魔) from [^:]+? for (?&lt;duration&gt;[\d]{2}[,\.][\d]{2})">
+              <Trigger Enabled="true" Name="即刻咏唱 Swiftcast" Id="dbb87abe-ddcf-400c-9ef5-435ae9a61894" RegularExpression="^.{15}1A:[A-Z0-9]{8}:(?&lt;player&gt;.+?) gains the effect of (Swiftcast|即刻咏唱|迅速魔) from [^:]+? for (?&lt;duration&gt;[\d]{2}[,\.][\d]{2})">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${player}].order} ability:Swiftcast image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\000866.png&quot; duration:${duration} cooldown:60" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3656,7 +3656,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="雪仇 Reprisal" Id="7c583d39-12fe-4955-bf98-325b3c2fcdd3" RegularExpression="1[56]:[A-Z0-9]{8}:(?&lt;player&gt;.+?):1D6F:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+              <Trigger Enabled="true" Name="雪仇 Reprisal" Id="7c583d39-12fe-4955-bf98-325b3c2fcdd3" RegularExpression="^.{15}1[56]:[A-Z0-9]{8}:(?&lt;player&gt;.+?):1D6F:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${player}].order} ability:Reprisal image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\000806.png&quot; duration:10 cooldown:60" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3671,7 +3671,7 @@
           <Folder Id="0ef78c0b-67fa-4db4-9754-7642539b57ea" Name="治疗 Heals" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="天赐祝福 Benediction" Id="6bff0f1a-1f72-4698-a449-5823e7571a7f" RegularExpression="15:[\w]+:(?&lt;player&gt;.+?):8C:">
+              <Trigger Enabled="true" Name="天赐祝福 Benediction" Id="6bff0f1a-1f72-4698-a449-5823e7571a7f" RegularExpression="^.{15}15:.+:(?&lt;player&gt;.+?):8C:">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${player}].order} ability:Benediction image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\002627.png&quot; duration:0 cooldown:180" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3686,7 +3686,7 @@
           <Folder Id="ff9a1e70-e240-4c45-9167-821bbadb68de" Name="无敌技 Cheat Death" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="行尸走肉 Living Dead" Id="78e728d0-2937-4ebb-b939-6bccf138c48a" RegularExpression="15:[\w]+:(?&lt;player&gt;.+?):E36:">
+              <Trigger Enabled="true" Name="行尸走肉 Living Dead" Id="78e728d0-2937-4ebb-b939-6bccf138c48a" RegularExpression="^.{15}15:.+:(?&lt;player&gt;.+?):E36:">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${player}].order} ability:Living Dead image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\003077.png&quot; duration:10 cooldown:300" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3696,7 +3696,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="神圣领域 Hallowed Ground" Id="bf5f9f36-1a85-4660-8b6f-ece9c1acd356" RegularExpression="15:[\w]+:(?&lt;player&gt;.+?):1E:">
+              <Trigger Enabled="true" Name="神圣领域 Hallowed Ground" Id="bf5f9f36-1a85-4660-8b6f-ece9c1acd356" RegularExpression="^.{15}15:.+:(?&lt;player&gt;.+?):1E:">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${player}].order} ability:Hallowed Ground image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\009128.png&quot; duration:10 cooldown:420" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3706,7 +3706,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="超火流星 Superbolide" Id="43523bb2-370b-4b78-bae1-b75977c8afeb" RegularExpression="15:[\w]+:(?&lt;player&gt;.+?):3F18:">
+              <Trigger Enabled="true" Name="超火流星 Superbolide" Id="43523bb2-370b-4b78-bae1-b75977c8afeb" RegularExpression="^.{15}15:.+:(?&lt;player&gt;.+?):3F18:">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${player}].order} ability:Superbolide image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\003416.png&quot; duration:8 cooldown:360" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3716,7 +3716,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="死斗 Holmgang" Id="6a4dd4b0-624a-4c4c-843f-4c2a4049f652" RegularExpression="15:[\w]+:(?&lt;player&gt;.+?):2B:">
+              <Trigger Enabled="true" Name="死斗 Holmgang" Id="6a4dd4b0-624a-4c4c-843f-4c2a4049f652" RegularExpression="^.{15}15:.+:(?&lt;player&gt;.+?):2B:">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${player}].order} ability:Holmgang image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\000266.png&quot; duration:8 cooldown:240" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -3731,7 +3731,7 @@
           <Folder Id="efffe781-56a3-4929-8a4f-d99465d3db81" Name="团减 Magic Damage Reductions (thanks Srxjo)" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="暗黑布道 Dark Missionary" Id="cc9de4c2-d214-41a2-88c4-4360b3f778a8" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):4057:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):">
+              <Trigger Enabled="true" Name="暗黑布道 Dark Missionary" Id="cc9de4c2-d214-41a2-88c4-4360b3f778a8" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):4057:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?):">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${caster}].order} ability:Dark Missionary image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\003087.png&quot; duration:15 cooldown:90" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="And">
@@ -3743,7 +3743,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="光之心 Heart of Light" Id="42411a0d-5456-4b45-8612-aa30592e0424" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):3F20:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):">
+              <Trigger Enabled="true" Name="光之心 Heart of Light" Id="42411a0d-5456-4b45-8612-aa30592e0424" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):3F20:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?):">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${caster}].order} ability:Heart of Light image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\003424.png&quot; duration:15 cooldown:90" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="And">
@@ -3755,7 +3755,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="武装戍卫 Passage of Arms" Id="3e8f9c81-2e5b-4b8f-adb9-def803fc9c05" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CD9:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):">
+              <Trigger Enabled="true" Name="武装戍卫 Passage of Arms" Id="3e8f9c81-2e5b-4b8f-adb9-def803fc9c05" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):1CD9:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?):">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${caster}].order} ability:Passage of Arms image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\002515.png&quot; duration:18 cooldown:120" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="And">
@@ -3767,7 +3767,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="摆脱 Shake It Off" Id="95bce561-64db-4ad8-bda1-83a0eeecd058" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;.+?):1CDC:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):">
+              <Trigger Enabled="true" Name="摆脱 Shake It Off" Id="95bce561-64db-4ad8-bda1-83a0eeecd058" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;.+?):1CDC:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?):">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="26037cfd-954f-4509-846d-35fe4e56aac1" TriggerText="index:${_ffxivparty[${caster}].order} ability:Shake It Off image:&quot;${_env[SoumaTriggerFolder]}\Triggernometry触发器\Zeff\Party Cooldowns\002563.png&quot; duration:15 cooldown:90" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="And">
@@ -3783,7 +3783,7 @@
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Name="主小队冷却监控 Main Party Cooldown Tracker" Id="26037cfd-954f-4509-846d-35fe4e56aac1" RegularExpression="index:(?&lt;index&gt;[\d]) ability:(?&lt;ability&gt;.*?) image:&quot;(?&lt;image&gt;.*?)&quot; (?:duration:(?&lt;duration&gt;[\d]{2}[,\.][\d]{2}|[\d]+) )?cooldown:(?&lt;cooldown&gt;[\d]+)" DebugLevel="None">
+          <Trigger Enabled="true" Name="主小队冷却监控 Main Party Cooldown Tracker" Id="26037cfd-954f-4509-846d-35fe4e56aac1" RegularExpression="^index:(?&lt;index&gt;[\d]) ability:(?&lt;ability&gt;.*?) image:&quot;(?&lt;image&gt;.*?)&quot; (?:duration:(?&lt;duration&gt;[\d]{2}[,\.][\d]{2}|[\d]+) )?cooldown:(?&lt;cooldown&gt;[\d]+)$" DebugLevel="None">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="PTracker-${index}-${ability}-CooldownMS" VariableExpression="${cooldown} * 1000" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -3845,7 +3845,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="清除列表中的能力 Clear Ability from list" Id="bd3b3d05-a734-4f61-a4a8-f80e1b5178d3" RegularExpression="index:(?&lt;index&gt;[\d]) abilityindex:(?&lt;abilityindex&gt;.*) cooldown:(?&lt;cooldown&gt;[\d]+)" DebugLevel="Verbose">
+          <Trigger Enabled="true" Name="清除列表中的能力 Clear Ability from list" Id="bd3b3d05-a734-4f61-a4a8-f80e1b5178d3" RegularExpression="^index:(?&lt;index&gt;[\d]) abilityindex:(?&lt;abilityindex&gt;.*) cooldown:(?&lt;cooldown&gt;[\d]+)$" DebugLevel="Verbose">
             <Actions>
               <Action OrderNumber="1" ListVariableOp="Remove" ListVariableName="PTrackerList${index}" ListVariableIndex="${numeric:${abilityindex}}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" ExecutionDelayExpression="${cooldown}*1000">
                 <Condition Enabled="false" Grouping="Or" />
@@ -3855,7 +3855,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="团灭重置 Wipe Reset" Id="12cf308f-d799-4b8e-8ee0-50a6cf4fc5a6" RegularExpression="21:........:40000010:|任务开始|has begun\.|の攻略を開始した。|任务结束了。|has ended\.|」の攻略を終了した。">
+          <Trigger Enabled="true" Name="团灭重置 Wipe Reset" Id="12cf308f-d799-4b8e-8ee0-50a6cf4fc5a6" RegularExpression="^.{15}21:........:4000001[026]:|任务开始|has begun\.|の攻略を開始した。|任务结束了。|has ended\.|」の攻略を終了した。">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="EndEncounter" ExecutionDelayExpression="1000">
                 <Condition Enabled="false" Grouping="Or" />
@@ -4056,7 +4056,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="在列表中为每个成员插入能力技 Insert abilities in list for each party member" Id="9def33d2-ecab-4027-a67d-a0c7c7543d57" RegularExpression="vdcindex:(?&lt;index&gt;\d)">
+              <Trigger Enabled="true" Name="在列表中为每个成员插入能力技 Insert abilities in list for each party member" Id="9def33d2-ecab-4027-a67d-a0c7c7543d57" RegularExpression="^vdcindex:(?&lt;index&gt;\d)$">
                 <Actions>
                   <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-LoadedAbilities" ListVariableExpression="${index}VDC-BL" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="And">
@@ -4262,7 +4262,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="绘制/更新能力技 Draw/update ability" Id="047a3fb5-8d81-4cc5-8bdd-6bbed45cc5e6" RegularExpression="index:(?&lt;index&gt;\d{1,2}) playerindex:(?&lt;playerindex&gt;\d) ability:(?&lt;ability&gt;.+?) image:&quot;(?&lt;image&gt;.+?)&quot; (?:duration:(?&lt;duration&gt;\d{1,3}))? cooldown:(?&lt;cooldown&gt;\d{1,3}) level:(?&lt;level&gt;\d{2}) used:(?&lt;used&gt;\d)(?: onyou:(?&lt;onyou&gt;\d))?(?: leavecd:(?&lt;leavecd&gt;\d))?(?: statustype:(?&lt;statustype&gt;\d))?(?: status:(?&lt;status&gt;.+?))?(?: notime:(?&lt;notime&gt;\d))?">
+              <Trigger Enabled="true" Name="绘制/更新能力技 Draw/update ability" Id="047a3fb5-8d81-4cc5-8bdd-6bbed45cc5e6" RegularExpression="^index:(?&lt;index&gt;\d{1,2}) playerindex:(?&lt;playerindex&gt;\d) ability:(?&lt;ability&gt;.+?) image:&quot;(?&lt;image&gt;.+?)&quot; (?:duration:(?&lt;duration&gt;\d{1,3}))? cooldown:(?&lt;cooldown&gt;\d{1,3}) level:(?&lt;level&gt;\d{2}) used:(?&lt;used&gt;\d)(?: onyou:(?&lt;onyou&gt;\d))?(?: leavecd:(?&lt;leavecd&gt;\d))?(?: statustype:(?&lt;statustype&gt;\d))?(?: status:(?&lt;status&gt;.+?))?(?: notime:(?&lt;notime&gt;\d))?$">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="VDCX" VariableExpression="if(${var:Zeff使用自定义设置},${var:团辅冷却X坐标},1420)" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -4385,7 +4385,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="停用能力技 Undraw ability" Id="a633a2c1-d363-4b42-a03e-cfb1a593777b" RegularExpression="index:(?&lt;index&gt;\d{1,2}) playerindex:(?&lt;playerindex&gt;\d) ability:(?&lt;ability&gt;.+?) image:">
+              <Trigger Enabled="true" Name="停用能力技 Undraw ability" Id="a633a2c1-d363-4b42-a03e-cfb1a593777b" RegularExpression="^index:(?&lt;index&gt;\d{1,2}) playerindex:(?&lt;playerindex&gt;\d) ability:(?&lt;ability&gt;.+?) image:$">
                 <Actions>
                   <Action OrderNumber="1" ListVariableOp="Remove" ListVariableName="VDC-ActiveAbilities" ListVariableIndex="${index}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable">
                     <Condition Enabled="true" Grouping="And">
@@ -4673,7 +4673,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="在列表中为每个成员插入占星能力技 Insert card abilities in list for each AST member" Id="e18752ab-933e-419a-9027-48daeac30162" RegularExpression="vdcindex:(?&lt;index&gt;\d)">
+              <Trigger Enabled="true" Name="在列表中为每个成员插入占星能力技 Insert card abilities in list for each AST member" Id="e18752ab-933e-419a-9027-48daeac30162" RegularExpression="^vdcindex:(?&lt;index&gt;\d)$">
                 <Actions>
                   <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-LoadedAbilities" ListVariableExpression="${index}VDC-AST-PLY" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="And">
@@ -4750,7 +4750,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="卡牌 Handle Card" Id="eb77fea1-433a-4446-96f3-9a5b00328799" RegularExpression="playerindex:(?&lt;playerindex&gt;\d) abilityvar:(?&lt;abilityvar&gt;.+?) statustype:(?&lt;statustype&gt;\d) power:(?&lt;power&gt;\d)" PrevActions="Interrupt">
+              <Trigger Enabled="true" Name="卡牌 Handle Card" Id="eb77fea1-433a-4446-96f3-9a5b00328799" RegularExpression="^playerindex:(?&lt;playerindex&gt;\d) abilityvar:(?&lt;abilityvar&gt;.+?) statustype:(?&lt;statustype&gt;\d) power:(?&lt;power&gt;\d)$" PrevActions="Interrupt">
                 <Actions>
                   <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${playerindex}${abilityvar}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -4807,7 +4807,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="在列表中为每个成员插入诗人能力技 Insert card abilities in list for each BRD member" Id="26fd9dd6-8248-49ee-aef4-5a8ffe79e49f" RegularExpression="vdcindex:(?&lt;index&gt;\d)">
+              <Trigger Enabled="true" Name="在列表中为每个成员插入诗人能力技 Insert card abilities in list for each BRD member" Id="26fd9dd6-8248-49ee-aef4-5a8ffe79e49f" RegularExpression="^vdcindex:(?&lt;index&gt;\d)$">
                 <Actions>
                   <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-LoadedAbilities" ListVariableExpression="${index}VDC-BRD-SONG" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="And">
@@ -4849,7 +4849,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="诗人Buff Handle BRD Buff" Id="268401af-0a1a-43fb-97bc-34ba4e3dac23" RegularExpression="playerindex:(?&lt;playerindex&gt;\d) abilityvar:(?&lt;abilityvar&gt;.+?) statustype:(?&lt;statustype&gt;\d)" PrevActions="Interrupt">
+              <Trigger Enabled="true" Name="诗人Buff Handle BRD Buff" Id="268401af-0a1a-43fb-97bc-34ba4e3dac23" RegularExpression="^playerindex:(?&lt;playerindex&gt;\d) abilityvar:(?&lt;abilityvar&gt;.+?) statustype:(?&lt;statustype&gt;\d)$" PrevActions="Interrupt">
                 <Actions>
                   <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${playerindex}${abilityvar}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
@@ -4884,7 +4884,7 @@
                 <Condition Enabled="false" Grouping="And" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="诗人Buff更新 Handle BRD Buff Update" Id="6f4680cf-1d30-489a-bf2f-56e8624c111e" RegularExpression="playerindex:(?&lt;playerindex&gt;\d) abilityvar:(?&lt;abilityvar&gt;.+?) statustype:(?&lt;statustype&gt;\d) onyou:(?&lt;onyou&gt;\d)" PrevActions="Interrupt">
+              <Trigger Enabled="true" Name="诗人Buff更新 Handle BRD Buff Update" Id="6f4680cf-1d30-489a-bf2f-56e8624c111e" RegularExpression="^playerindex:(?&lt;playerindex&gt;\d) abilityvar:(?&lt;abilityvar&gt;.+?) statustype:(?&lt;statustype&gt;\d) onyou:(?&lt;onyou&gt;\d)$" PrevActions="Interrupt">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="047a3fb5-8d81-4cc5-8bdd-6bbed45cc5e6" TriggerText="index:${lvar:VDC-ActiveAbilities.indexof(${playerindex}VDC-BRD-SONG)} playerindex:${playerindex} ${var:${abilityvar}} used:1 onyou:${onyou} statustype:${statustype} notime:1" TriggerForce="active" ActionType="Trigger" ExecutionDelayExpression="1" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -4901,7 +4901,7 @@
               <Folder Id="38093cb6-ffa7-4d81-b048-7f30e85d31db" Name="学者 SCH" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="连环计 Chain Stratagem" Id="329a51d5-f7d6-44a6-bbd8-b2f71778e87e" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):1D0C:" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="连环计 Chain Stratagem" Id="329a51d5-f7d6-44a6-bbd8-b2f71778e87e" RegularExpression="^.{15}1[56]:.{8}:(?&lt;player&gt;[^:]+?):1D0C:" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${player}].order}VDC-CS" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -4925,7 +4925,7 @@
               <Folder Id="cee959c1-f8e6-493b-9e45-61aed7a32f6f" Name="舞者 DNC" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="技巧舞步结束 Technical Finish" Id="0d175c49-dbe7-473d-aa8e-c9f017088700" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):(?&lt;skillid&gt;3(?:E84|F4[1-4])):" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="技巧舞步结束 Technical Finish" Id="0d175c49-dbe7-473d-aa8e-c9f017088700" RegularExpression="^.{15}1[56]:.{8}:(?&lt;player&gt;[^:]+?):(?&lt;skillid&gt;3(?:E84|F4[1-4])):" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${player}].order}VDC-TS" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -4970,7 +4970,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="标准舞步结束 Standard Finish" Id="f29d40d9-eaf1-48bc-a7d2-bb863235d832" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):3(?&lt;skillid&gt;F3F|F40|E83|E7D):" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="标准舞步结束 Standard Finish" Id="f29d40d9-eaf1-48bc-a7d2-bb863235d832" RegularExpression="^.{15}1[56]:.{8}:(?&lt;player&gt;[^:]+?):3(?&lt;skillid&gt;F3F|F40|E83|E7D):" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${player}].order}VDC-SS" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5009,7 +5009,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="进攻之探戈 Devilment" Id="cfdb5d90-1f78-4753-8743-5be9ffb7511f" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):3E8B:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="进攻之探戈 Devilment" Id="cfdb5d90-1f78-4753-8743-5be9ffb7511f" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):3E8B:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${caster}].order}VDC-DEV" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5041,7 +5041,7 @@
               <Folder Id="7fed6c55-636b-4291-b734-246f40f8b367" Name="召唤师 SMN" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="灵护(以太契约) Devotion (Aetherpact)" Id="57d6f95d-4a75-459f-ba29-e9a2d98f88ff" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):1CFF:" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="灵护(以太契约) Devotion (Aetherpact)" Id="57d6f95d-4a75-459f-ba29-e9a2d98f88ff" RegularExpression="^.{15}1[56]:.{8}:(?&lt;player&gt;[^:]+?):1CFF:" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${player}].order}VDC-DEV" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5065,7 +5065,7 @@
               <Folder Id="6a0536e6-5f3a-4c21-b3c0-77662e9ff7c9" Name="吟游诗人 BRD" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="战斗之声 Battle Voice" Id="d5f29235-b4d2-4722-8a1e-f5a32b0b20c2" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):76:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="战斗之声 Battle Voice" Id="d5f29235-b4d2-4722-8a1e-f5a32b0b20c2" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):76:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${caster}].order}VDC-BV" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5092,7 +5092,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="歌曲 Song Used" Id="5833072d-c37e-4b9a-b9fd-27a95d5018d3" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):(?&lt;skillid&gt;DE7|72|74):">
+                  <Trigger Enabled="true" Name="歌曲 Song Used" Id="5833072d-c37e-4b9a-b9fd-27a95d5018d3" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):(?&lt;skillid&gt;DE7|72|74):">
                     <Actions>
                       <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="268401af-0a1a-43fb-97bc-34ba4e3dac23" TriggerText="playerindex:${_ffxivparty[${caster}].order} abilityvar:VDC-BRD-WM statustype:1" TriggerForce="active" ActionType="Trigger" ExecutionDelayExpression="1" Asynchronous="False">
                         <Condition Enabled="true" Grouping="And">
@@ -5116,7 +5116,7 @@
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="歌曲 Song Update" Id="cbeac8b2-59a2-499c-8977-b1b4c514f379" RegularExpression="1[AE]:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?) (?&lt;status&gt;gains|loses) the effect of (?&lt;song&gt;The Wanderer's Minuet|Mage's Ballad|Army's Paeon|放浪神的小步舞曲|旅神のメヌエット|贤者的叙事谣|賢人のバラード|军神的赞美歌|軍神のパイオン) from (?&lt;caster&gt;[^:]+?)(?:\.| for)">
+                  <Trigger Enabled="true" Name="歌曲 Song Update" Id="cbeac8b2-59a2-499c-8977-b1b4c514f379" RegularExpression="^.{15}1[AE]:.{8}:(?&lt;player&gt;[^:]+?) (?&lt;status&gt;gains|loses) the effect of (?&lt;song&gt;The Wanderer's Minuet|Mage's Ballad|Army's Paeon|放浪神的小步舞曲|旅神のメヌエット|贤者的叙事谣|賢人のバラード|军神的赞美歌|軍神のパイオン) from (?&lt;caster&gt;[^:]+?)(?:\.| for)">
                     <Actions>
                       <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="6f4680cf-1d30-489a-bf2f-56e8624c111e" TriggerText="playerindex:${_ffxivparty[${caster}].order} abilityvar:VDC-BRD-WM statustype:1 onyou:1" TriggerForce="active" ActionType="Trigger" ExecutionDelayExpression="1" Asynchronous="False">
                         <Condition Enabled="true" Grouping="And">
@@ -5175,7 +5175,7 @@
               <Folder Id="65d87286-8719-4e17-8936-5cc9a1cef9f9" Name="龙骑 DRG" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="巨龙视线 Dragon Sight" Id="280aa755-de62-40ea-bbe8-9d66fb7f6418" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CE6:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="巨龙视线 Dragon Sight" Id="280aa755-de62-40ea-bbe8-9d66fb7f6418" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):1CE6:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${caster}].order}VDC-DS" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5202,7 +5202,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="战斗连祷 Battle Litany" Id="ef7569fc-cffe-4999-b517-463618d03cb4" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):DE5:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="战斗连祷 Battle Litany" Id="ef7569fc-cffe-4999-b517-463618d03cb4" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):DE5:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${caster}].order}VDC-BL" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5227,7 +5227,7 @@
               <Folder Id="1713708e-6cf8-4490-877f-8fe48828f7ee" Name="赤魔法师 RDM" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="鼓励 Embolden" Id="75b8db73-207e-4acd-ba49-116bfcb243fa" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1D60:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="鼓励 Embolden" Id="75b8db73-207e-4acd-ba49-116bfcb243fa" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):1D60:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${caster}].order}VDC-EMB" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5251,7 +5251,7 @@
               <Folder Id="0670be72-4159-4529-acdd-f586ed8937b5" Name="占星术士 AST" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="占卜 Divination" Id="85474dae-6249-408e-ac3a-9bc40a85fbaf" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):40A8:(?&lt;skill&gt;[^:]+?):[A-F0-9]{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="占卜 Divination" Id="85474dae-6249-408e-ac3a-9bc40a85fbaf" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):40A8:(?&lt;skill&gt;[^:]+?):.{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${caster}].order}VDC-DIV" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5271,7 +5271,7 @@
                     </Condition>
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="true" Name="发卡 Card played" Id="c7f508a8-bbc5-468f-b81d-96315122e1af" RegularExpression="15:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):(?&lt;cardid&gt;113[1-6]|1D1[56]):[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?):(?&lt;power&gt;\d)0F:" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="发卡 Card played" Id="c7f508a8-bbc5-468f-b81d-96315122e1af" RegularExpression="^.{15}15:.{8}:(?&lt;caster&gt;[^:]+?):(?&lt;cardid&gt;113[1-6]|1D1[56]):[^:]+?:.{8}:(?&lt;player&gt;[^:]+?):(?&lt;power&gt;\d)0F:" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${caster}].order}VDC-DIV" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5404,7 +5404,7 @@
               <Folder Id="ccfef409-bbf1-4881-82f8-ed1107d22f1e" Name="武僧 MNK" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="义结金兰 Brotherhood" Id="a2bd5b96-efcd-4806-94b2-704feca270ef" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):1CE4:[^:]+?:[A-F0-9]{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="义结金兰 Brotherhood" Id="a2bd5b96-efcd-4806-94b2-704feca270ef" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):1CE4:[^:]+?:.{8}:(?&lt;player&gt;[^:]+?)" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${caster}].order}VDC-BH" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
@@ -5429,7 +5429,7 @@
               <Folder Id="7c902ceb-bb27-484b-915b-5355b92eda21" Name="忍者 NIN" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="攻其不备 Trick Attack" Id="1a3388ef-979c-43b0-8610-6f377fa31640" RegularExpression="1[56]:[A-F0-9]{8}:(?&lt;caster&gt;[^:]+?):8D2:" DebugLevel="Warning" PrevActions="Interrupt">
+                  <Trigger Enabled="true" Name="攻其不备 Trick Attack" Id="1a3388ef-979c-43b0-8610-6f377fa31640" RegularExpression="^.{15}1[56]:.{8}:(?&lt;caster&gt;[^:]+?):8D2:" DebugLevel="Warning" PrevActions="Interrupt">
                     <Actions>
                       <Action OrderNumber="1" ListVariableOp="Push" ListVariableName="VDC-ActiveAbilities" ListVariableExpression="${_ffxivparty[${caster}].order}VDC-TA" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="And">
@@ -5456,7 +5456,7 @@
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Name="任务开始 Initiate VDC" Id="29109438-3849-45ea-8c64-0cdefe61408a" RegularExpression="00:.+?(has begun\.|任务开始。|の攻略を開始した。)">
+          <Trigger Enabled="true" Name="任务开始 Initiate VDC" Id="29109438-3849-45ea-8c64-0cdefe61408a" RegularExpression="^.{15}00:.+?(has begun\.|任务开始。|の攻略を開始した。)">
             <Actions>
               <Action OrderNumber="1" ListVariableName="VDC-LoadedAbilities" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -5478,7 +5478,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="团灭重置 Reset on Wipe" Id="9fdbfb2f-5c13-4ed5-b5fb-9ee6cfe08dbb" RegularExpression="21:[A-F0-9]{8}:40000010">
+          <Trigger Enabled="true" Name="团灭重置 Reset on Wipe" Id="9fdbfb2f-5c13-4ed5-b5fb-9ee6cfe08dbb" RegularExpression="^.{15}21:.{8}:4000001[026]">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="EndEncounter" ExecutionDelayExpression="1000">
                 <Condition Enabled="false" Grouping="Or" />
@@ -5504,7 +5504,7 @@
             </Condition>
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="任务结束 Exit VDC" Id="061ded55-ef94-4e0f-a5a3-5d392fbd6f23" RegularExpression="00:.+?(”任务结束了。|has ended.|」の攻略を終了した。)">
+          <Trigger Enabled="true" Name="任务结束 Exit VDC" Id="061ded55-ef94-4e0f-a5a3-5d392fbd6f23" RegularExpression="^.{15}00:.+?(”任务结束了。|has ended.|」の攻略を終了した。)">
             <Actions>
               <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" AuraName="VDC-Tracker.*" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
