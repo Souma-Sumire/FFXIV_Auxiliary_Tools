@@ -3,6 +3,7 @@
 * QQ群:868116069
   * [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)
   * [别像弱智一样提问](https://github.com/dogfight360/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md)
+  * [如何优雅的提问](http://www.360doc.com/content/19/1223/08/30422483_881502108.shtml)
 
 1. [关于](#关于)
 1. [安装](#安装)
@@ -102,7 +103,8 @@
 
 1. 下载并运行 [鲶鱼精邮差](https://nga.178.com/read.php?tid=19724323)
 1. 找一个端口 开始监听。比如2019
-1. 如果不是2019，在 Bat右键编辑 倒数第二行 修改为你监听的端口
+1. 如果不是2019，在 Bat右键编辑 倒数第二行 修改为你监听的端口并保存
+1. **以管理员身份运行** bat
 1. **重新启动ACT**
 
    ![修改邮差端口](screenshots/修改邮差端口.png)
