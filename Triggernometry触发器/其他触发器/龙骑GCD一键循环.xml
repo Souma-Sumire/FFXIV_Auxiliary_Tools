@@ -1,0 +1,374 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="2097152" Id="864e8b1f-034d-4afe-a22d-e513e3cb2e2f" Name="龙骑GCD合并 v1.1 Beta" Enabled="true">
+    <Folders>
+      <Folder Id="63344f0b-a638-4289-9774-ec4503a5980b" Name="方法" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="改变快捷栏" Id="db55ff56-8c11-4e17-88b6-936af8b6e172" RegularExpression="^SetHotbar:(?&lt;skill&gt;.+?):(?&lt;num1&gt;\d+):(?&lt;num2&gt;\d+)$">
+            <Actions>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set ${skill} ${num1} ${num2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="死亡" Id="a6164d9e-e48a-43b2-869e-57cc70663d7c" RegularExpression="^.{14} 19:(?&lt;name&gt;.+?) was defeated by ">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="da5baae4-12f3-401b-b66a-b7cade6a3f0f" TriggerForce="true" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" VariableName="DRGOK_龙血" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="Reset" Id="da5baae4-12f3-401b-b66a-b7cade6a3f0f" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="DRGOK_Loop[123]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:死天枪:${var:DRGOK_UsingHotbar_AoE}:${var:DRGOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="c9bbfb4f-57a2-4f5f-81b5-bfd04183be44" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="cdc2a5f6-6930-495d-af9d-4ef1b96a211c" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="50a472d6-d6e7-4b73-a461-2a4b8d990713" Name="群体循环" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="Loop" Id="3dda9c8a-5d4e-4110-968d-fa8b5e16ca42" RegularExpression=".*" PeriodRefire="Deny" RefirePeriodExpression="86400000">
+            <Actions>
+              <Action OrderNumber="1" ListVariableOp="UnsetRegex" ListVariableName="DRGOK_SkillList3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" ListVariableOp="Push" ListVariableName="DRGOK_SkillList3" ListVariableExpression="音速刺" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" ListVariableOp="Push" ListVariableName="DRGOK_SkillList3" ListVariableExpression="山境酷刑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" ListVariableOp="Push" ListVariableName="DRGOK_SkillList3" ListVariableExpression="死天枪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="AOE连" Id="5fbd620e-4988-4d87-a42f-2ca6aebf4276" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):(?:56|1CE5|405D):">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="DRGOK_Loop3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_Loop3}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="DRGOK_Loop3" VariableExpression="${var:DRGOK_Loop3}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:${lvar:DRGOK_SkillList3[${numeric:${var:DRGOK_Loop3}+0}]}:${var:DRGOK_UsingHotbar_AoE}:${var:DRGOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="da5baae4-12f3-401b-b66a-b7cade6a3f0f" TriggerForce="true" ActionType="Trigger" ExecutionDelayExpression="15000" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="走向歧途" Id="3eeb74ed-a37e-4a32-a9f1-d7cfa9eb1b5f" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):(4B|5A):">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="DRGOK_Loop3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:死天枪:${var:DRGOK_UsingHotbar_AoE}:${var:DRGOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="a258a49b-04d6-4457-a195-d0bf2ce6a954" Name="单体循环" Enabled="true">
+        <Folders>
+          <Folder Id="df24395d-11f8-4782-be82-479a791a2c90" Name="分支" Enabled="true">
+            <Folders>
+              <Folder Id="50c5a4e1-3805-4a30-827f-e967a70a0852" Name="苍天龙血" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="有" Id="b3e6b250-ec32-4609-854b-298e2174962e" RegularExpression="^.{15}1F:.{8}:[^:]+?:[A-F0-9]{2}[A-F0-9]+:">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="DRGOK_龙血" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="无" Id="86785f80-5b1a-4eab-9e0e-b94f0f498bde" RegularExpression="^.{15}1F:.{8}:[^:]+?:[A-F0-9]{2}:">
+                    <Actions>
+                      <Action OrderNumber="1" VariableName="DRGOK_龙血" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+            </Folders>
+            <Triggers>
+              <Trigger Enabled="true" Name="直刺" Id="56346250-84ff-4216-a626-c78d6fc41628" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):54:">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="DRGOK_Loop1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="c9bbfb4f-57a2-4f5f-81b5-bfd04183be44" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:DRGOK_龙血}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="DRGOK_龙牙龙爪" VariableExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:DRGOK_龙血}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="樱花怒放" Id="e80ee1fa-3fdb-4217-986c-ea2eab55b856" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):58:">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="DRGOK_Loop2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="cdc2a5f6-6930-495d-af9d-4ef1b96a211c" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:DRGOK_龙血}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="DRGOK_龙牙龙爪" VariableExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:DRGOK_龙血}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="返回" Id="44a94285-2aa0-4cd0-86f8-88c1cd5fc1e4" RegularExpression="^.{27}(?&lt;name&gt;.+) loses the effect of (?:龙牙龙爪|龙尾大回旋)效果提高">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="DRGOK_龙牙龙爪" VariableExpression="${var:DRGOK_龙牙龙爪}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="c9bbfb4f-57a2-4f5f-81b5-bfd04183be44" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_龙牙龙爪}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="cdc2a5f6-6930-495d-af9d-4ef1b96a211c" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_龙牙龙爪}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="走向歧途" Id="a5a980a4-a71c-40d8-a141-b84998f700a3" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):(56|5A):">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="DRGOK_Loop[12]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="开膛枪" Id="c77d9281-49a4-48d1-a616-ce65a8335f31" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):57:">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="贯通刺" Id="f57b1a97-6ba8-45c2-b3e1-bd74abba0cfc" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):4E:">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers>
+          <Trigger Enabled="true" Name="Loop" Id="9d836aa8-fb02-4925-9339-12623a836cc1" RegularExpression=".*" PeriodRefire="Deny" RefirePeriodExpression="86400000">
+            <Actions>
+              <Action OrderNumber="1" ListVariableOp="UnsetRegex" ListVariableName="DRGOK_SkillList[12]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" ListVariableOp="Push" ListVariableName="DRGOK_SkillList1" ListVariableExpression="开膛枪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" ListVariableOp="Push" ListVariableName="DRGOK_SkillList1" ListVariableExpression="樱花怒放" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" ListVariableOp="Push" ListVariableName="DRGOK_SkillList1" ListVariableExpression="龙尾大回旋" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" ListVariableOp="Push" ListVariableName="DRGOK_SkillList1" ListVariableExpression="龙牙龙爪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="6" ListVariableOp="Push" ListVariableName="DRGOK_SkillList1" ListVariableExpression="精准刺" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" ListVariableOp="Push" ListVariableName="DRGOK_SkillList2" ListVariableExpression="贯通刺" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="8" ListVariableOp="Push" ListVariableName="DRGOK_SkillList2" ListVariableExpression="直刺" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="9" ListVariableOp="Push" ListVariableName="DRGOK_SkillList2" ListVariableExpression="龙牙龙爪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="10" ListVariableOp="Push" ListVariableName="DRGOK_SkillList2" ListVariableExpression="龙尾大回旋" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="11" ListVariableOp="Push" ListVariableName="DRGOK_SkillList2" ListVariableExpression="精准刺" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="直刺连" Id="cdc2a5f6-6930-495d-af9d-4ef1b96a211c" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):(?:4B|4E|54|DE4|DE2|405F):">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="DRGOK_Loop2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_Loop2}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="DRGOK_Loop2" VariableExpression="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_Loop2}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:DRGOK_龙血}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="DRGOK_Loop2" VariableExpression="${var:DRGOK_Loop2}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:${lvar:DRGOK_SkillList2[${numeric:${var:DRGOK_Loop2}+0}]}:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="da5baae4-12f3-401b-b66a-b7cade6a3f0f" TriggerForce="true" ActionType="Trigger" ExecutionDelayExpression="15000" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="樱花连" Id="c9bbfb4f-57a2-4f5f-81b5-bfd04183be44" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):(?:4B|57|58|DE4|DE2|405F):">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="DRGOK_Loop1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_Loop1}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="DRGOK_Loop1" VariableExpression="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_Loop1}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:DRGOK_龙血}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="DRGOK_Loop1" VariableExpression="${var:DRGOK_Loop1}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:${lvar:DRGOK_SkillList1[${numeric:${var:DRGOK_Loop1}+0}]}:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="da5baae4-12f3-401b-b66a-b7cade6a3f0f" TriggerForce="true" ActionType="Trigger" ExecutionDelayExpression="15000" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers>
+      <Trigger Enabled="true" Name="设置" Id="25e2adc7-37a5-4134-ba0c-a87fac7149c3" RegularExpression=".*" PeriodRefire="Deny" RefirePeriodExpression="86400000">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="DRGOK_UsingHotbar" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="DRGOK_UsingHotbar_Number" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="DRGOK_UsingHotbar2" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="DRGOK_UsingHotbar2_Number" VariableExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="DRGOK_UsingHotbar_AoE" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="DRGOK_UsingHotbar_AoE_Number" VariableExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
