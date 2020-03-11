@@ -10,60 +10,7 @@
 1. [自定义](#自定义)
 1. [杂项说明](#杂项说明)
 
-## 关于
-
-此项目是依赖于ACT的 [最终幻想14](http://ff.sdo.com/) 副本辅助工具
-
-提供以下功能:
-
-* Hojoring - 技能监控 :
-
-  ![Hojoring技能监控](screenshots/Hojoring技能监控.png)
-
-* Hojoring - 时间轴:
-
-  ![Hojoring时间轴](screenshots/Hojoring时间轴.png)
-  
-* Triggernometry - 武僧无我/黑魔回蓝/诗人Dot监控
-
-  ![无我回蓝Tick监控](screenshots/无我回蓝Tick监控.gif)
-
-* Triggernometry - 副本发宏工具
-
-  ![副本发宏工具](screenshots/副本发宏工具.gif)
-
-* Triggernometry - 队友技能监控
-
-  ![减伤警察](screenshots/减伤警察.png)
-
-* Triggernometry - 副本触发器
-
-  没图...
-
-* Triggernometry - Zeffuro's Dot timers
-
-  ![可视化Buff跟踪器](screenshots/可视化Buff跟踪器.png)
-  ![可视化DoT计时器](screenshots/可视化DoT计时器.png)
-  ![可视化队友冷却](screenshots/可视化队友冷却.png)
-  ![可视化冷却跟踪器](screenshots/可视化冷却跟踪器.png)
-  ![可视化冷却跟踪器](screenshots/可视化团辅冷却.png)
-
-* Triggernometry - Aho's Raid Buff
-
-  ![Aho](screenshots/Aho.png)
-
-* Triggernomety - 其他触发器
-  * 武士剑压3层提醒 + 替换技能栏
-  * DK一键单体GCD循环
-  * 舞者一键标准、技巧舞步
-  * OBS自动录制
-  * 监控某单位的目标
-  * 生产物品数量计数
-  * more..
-
-## 安装
-
-### 基础
+## 基础依赖
 
 1. 你必须启用 [DirectX 11](https://support.microsoft.com/zh-cn/help/179113/how-to-install-the-latest-version-of-directx) 来运行 最终幻想14
 1. 安装64位版本的 ACT
@@ -80,15 +27,7 @@
 1. 设置战斗间隔为50秒以上
 ![设置战斗间隔](screenshots/设置战斗间隔.png)
 
-### 组装轮椅
-
-1. 下载 [最新版本](https://github.com/553469159/FFXIV_Auxiliary_Tools/archive/master.zip)
-1. 右键压缩文件，点击属性，选中“解除锁定” (如果有)
-1. 解压缩至任意路径
-
-#### 配置 Triggernometry 环境
-
-#### 使用任何触发器，我都默认你是做过这步的
+## 必读！！！！ 配置 Triggernometry 环境
 
 1. **以管理员身份运行** `添加触发器目录与鲶鱼精邮差端口到环境变量.bat`
 
@@ -99,7 +38,7 @@
    ![环境变量成功](screenshots/环境变量成功.png)
 1. **重新启动ACT**
 
-#### 鲶鱼精邮差
+### 鲶鱼精邮差
 
 1. 下载并运行 [鲶鱼精邮差](https://nga.178.com/read.php?tid=19724323)
 1. 找一个端口 开始监听。比如2019
@@ -109,7 +48,7 @@
 
    ![修改邮差端口](screenshots/修改邮差端口.png)
 
-## 自定义
+## 自定义项目
 
 ### 修改副本触发器的字幕样式
 
