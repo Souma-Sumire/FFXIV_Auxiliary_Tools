@@ -4,12 +4,7 @@
   * [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)
   * [别像弱智一样提问](https://github.com/dogfight360/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md)
   * [如何优雅的提问](http://www.360doc.com/content/19/1223/08/30422483_881502108.shtml)
-
-1. [关于](#关于)
-1. [安装](#安装)
-1. [自定义](#自定义)
-1. [杂项说明](#杂项说明)
-
+  
 ## 基础依赖
 
 1. 你必须启用 [DirectX 11](https://support.microsoft.com/zh-cn/help/179113/how-to-install-the-latest-version-of-directx) 来运行 最终幻想14
