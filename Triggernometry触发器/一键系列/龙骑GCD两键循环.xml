@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="2097152" Id="864e8b1f-034d-4afe-a22d-e513e3cb2e2f" Name="龙骑GCD合并 v1.2" Enabled="true">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="2097152" Id="864e8b1f-034d-4afe-a22d-e513e3cb2e2f" Name="龙骑GCD合并 v1.3.1" Enabled="true">
     <Folders>
       <Folder Id="63344f0b-a638-4289-9774-ec4503a5980b" Name="方法" Enabled="true">
         <Folders />
@@ -9,7 +9,6 @@
             <Actions>
               <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set ${skill} ${num1} ${num2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -28,11 +27,9 @@
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="5d3198b5-b44b-4231-8a3d-354f717213ea" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0cfa844c-5f5b-4b66-8e05-f414a56a9858" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -46,13 +43,11 @@
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:死天枪:${var:DRGOK_UsingHotbar_AoE}:${var:DRGOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="死天枪" Id="1a9d98b4-2597-486f-a553-5ea215a4febc" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):56:">
             <Actions>
@@ -61,56 +56,57 @@
                 <Conditions />
               </Action>
             </Actions>
-            <Condition Enabled="true" Grouping="Or">
+            <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="音速刺" Id="7ddf23ed-fc6a-4376-8e3c-8528ad9b6081" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):1CE5:">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:山境酷刑:${var:DRGOK_UsingHotbar_AoE}:${var:DRGOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="72" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:死天枪:${var:DRGOK_UsingHotbar_AoE}:${var:DRGOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="72" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                </Condition>
                 <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Break" Id="ef010800-5d9c-4b00-a8e9-0f426b8c1c59" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):(?:56|1CE5|405D):" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="da5baae4-12f3-401b-b66a-b7cade6a3f0f" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="15000" RefireInterrupt="True">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Reset" Id="0cfa844c-5f5b-4b66-8e05-f414a56a9858" RegularExpression="">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:死天枪:${var:DRGOK_UsingHotbar_AoE}:${var:DRGOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Break2" Id="34c3f4b8-1751-4268-b44c-8db42ca40a1b" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+?):(5A|4B|57|58|4E|54|405F|DE2|DE4):">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0cfa844c-5f5b-4b66-8e05-f414a56a9858" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -123,11 +119,9 @@
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -144,11 +138,24 @@
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
+                  <Action OrderNumber="3" UseTTSTextExpression="背" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_身位tts}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${skill}" ExpressionTypeL="String" ExpressionR="龙尾大回旋" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" UseTTSTextExpression="侧" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_身位tts}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${skill}" ExpressionTypeL="String" ExpressionR="龙牙龙爪" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -169,15 +176,29 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="开膛枪" Id="9e5d2e6b-3881-4f4a-ae3b-b488ec1770ed" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):57:">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:樱花怒放:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
-                    <Condition Enabled="false" Grouping="Or" />
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="50" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="50" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" UseTTSTextExpression="背" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:DRGOK_身位tts}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="50" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -185,7 +206,6 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -199,14 +219,21 @@
                     <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:直刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
-                    <Condition Enabled="false" Grouping="Or" />
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
                     <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="直刺" Id="19237437-100b-4547-8ec8-649d11668ceb" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):54:">
                 <Actions>
@@ -222,7 +249,6 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -238,49 +264,47 @@
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Break2" Id="9bfc1615-4d3c-4380-b8a1-9c86480f30d8" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+?):(5A|56|1CE5|405D):">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="5d3198b5-b44b-4231-8a3d-354f717213ea" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="精准刺（龙眼雷电）" Id="741610b5-a99f-49e7-9799-2ab7d74cf6b9" RegularExpression="^.{15}15:.{8}:(?&lt;name&gt;.+):(?:4B|405F):">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:开膛枪:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="18" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                </Condition>
                 <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:贯通刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                </Condition>
                 <Conditions />
               </Action>
             </Actions>
-            <Condition Enabled="true" Grouping="Or">
+            <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Reset" Id="5d3198b5-b44b-4231-8a3d-354f717213ea" RegularExpression="">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar}:${var:DRGOK_UsingHotbar_Number}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="db55ff56-8c11-4e17-88b6-936af8b6e172" TriggerText="SetHotbar:精准刺:${var:DRGOK_UsingHotbar2}:${var:DRGOK_UsingHotbar2_Number}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -309,6 +333,10 @@
             <Conditions />
           </Action>
           <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="DRGOK_UsingHotbar_AoE_Number" VariableExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="DRGOK_身位tts" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
