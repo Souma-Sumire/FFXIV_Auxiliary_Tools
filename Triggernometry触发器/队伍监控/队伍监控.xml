@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="7ac0b969-d7af-4a84-8851-c232b596b500" Name="队伍监控 v1.3.10.3" Enabled="true">
+  <ExportedFolder Id="7ac0b969-d7af-4a84-8851-c232b596b500" Name="队伍监控 v1.3.10.4" Enabled="true">
     <Folders>
       <Folder Id="cb501ed1-bb27-4e17-b2c3-b93aa4fbf4cc" Name="大技能" Enabled="true">
         <Folders>
@@ -9,16 +9,16 @@
             <Triggers>
               <Trigger Enabled="true" Name="死而不僵" Id="7d7beb56-3cfb-46ff-9694-7f147314edcd" RegularExpression="^.{15}1A:.{8}:(?&lt;CasterName&gt;[^:]+?) gains the effect of (?&lt;AbilityName&gt;死而不僵|Walking Dead|ウォーキングデッド) from [^:]+? for 10\.00 Seconds\.$">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} ${CasterName}陷入了“死而不僵”效果。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能_发送频道}} ${CasterName}陷入了“死而不僵”效果。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} 死而不僵 3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="7000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能_发送频道}} 死而不僵 3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="7000" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} 死而不僵 2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
+                  <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能_发送频道}} 死而不僵 2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} 死而不僵 1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
+                  <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能_发送频道}} 死而不僵 1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                 </Actions>
@@ -31,7 +31,7 @@
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="7d7beb56-3cfb-46ff-9694-7f147314edcd" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} “${AbilityName}”被解除了" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能_发送频道}} “${AbilityName}”被解除了" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                 </Actions>
@@ -46,7 +46,7 @@
             <Triggers>
               <Trigger Enabled="true" Name="巨星字幕提醒" Id="c4c17493-54ef-41c3-95c5-d8cb3e36de38" RegularExpression="^.{15}1A:.{8}:(?&lt;CasterName&gt;[^:]+?) gains the effect of (?&lt;AbilityName&gt;巨星主宰|Giant Dominance|巨星の支配者) from [^:]+? for 10\.00 Seconds\.$">
                 <Actions>
-                  <Action OrderNumber="-1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="-1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能CD_发送频道}} ${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="87b4fd03-bce1-4342-9ecc-6abb502c61e6" TriggerText="Souma_Subtitle:巨星:3:0:0:main" ActionType="Trigger">
@@ -62,12 +62,12 @@
               </Trigger>
               <Trigger Enabled="false" Name="地星" Id="56cf6973-dc6c-42ce-84f0-97be790e1ae9" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D0F:(?&lt;AbilityName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="60*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="60*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_大技能_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_大技能_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -77,12 +77,12 @@
               </Trigger>
               <Trigger Enabled="false" Name="秘策" Id="41008b1a-4d60-4f70-9188-438a12e18f07" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):409E:(?&lt;AbilityName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_大技能_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_大技能_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -92,12 +92,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="天赐祝福" Id="663345d8-2452-484f-a8d4-b716e27aaddb" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):8C:(?&lt;AbilityName&gt;[^:]+?):.{8}:(?&lt;TargetName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_大技能CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_大技能_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_大技能_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -136,7 +136,7 @@
         <Triggers>
           <Trigger Enabled="true" Name="读条" Id="16bc90a1-8de7-4452-934a-18fda19fd4a3" RegularExpression="^.{15}14:.{0,4}:(?&lt;SourceName&gt;[^:]+?) starts using (?&lt;AbilityName&gt;生辰|Ascend|アセンド|复(活|生)|Raise|蘇生|赤复活|Verraise|ヴァルレイズ) on (?&lt;TargetName&gt;[^:]+?)\.$">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_复活_发送频道}} 读条${AbilityName}：${var:${SourceName}职业} → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_复活_发送频道}} 读条${AbilityName}：${var:${SourceName}职业} → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
             </Actions>
@@ -146,10 +146,10 @@
           </Trigger>
           <Trigger Enabled="true" Name="判定" Id="1a41ec2f-6cf7-4ff0-ae38-52e0008b042d" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):.{0,4}:(?&lt;AbilityName&gt;生辰|Ascend|アセンド|复(活|生)|Raise|蘇生|赤复活|Verraise|ヴァルレイズ):.{8}:(?&lt;TargetName&gt;[^:]+?):">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）→${AbilityName} → ${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）→${AbilityName} → ${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）MP:${_ffxivparty[${CasterName}].currentmp} 醒梦CD:${numeric:max(round(60-(${_systemtimems}-${var:${CasterName}醒梦})/1000,1),0)}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）MP:${_ffxivparty[${CasterName}].currentmp} 醒梦CD:${numeric:max(round(60-(${_systemtimems}-${var:${CasterName}醒梦})/1000,1),0)}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
             </Actions>
@@ -256,12 +256,12 @@
             <Triggers>
               <Trigger Enabled="true" Name="暗黑布道" Id="8aadf985-b642-4e81-9b0e-d03b627a911d" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):4057:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -271,12 +271,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="摆脱" Id="573990ac-b773-465c-be07-44673c91dd1d" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1CDC:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -286,12 +286,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="亲疏自行" Id="30825d29-e0e6-4df5-aec5-f4f9589e4ead" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D7C:(?&lt;AbilityName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -311,12 +311,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="坦克通用30%" Id="ac567c8b-277f-446e-8ab6-10aca40cb8fe" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):(11|2C|3F14|E34):(?&lt;AbilityName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -326,12 +326,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="铁壁" Id="9f8a5234-69ed-4e36-988c-2c9c07f65b11" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D6B:(?&lt;AbilityName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -341,12 +341,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="武装戍卫" Id="c3a30a3f-bd48-43dc-a9c2-253106fce0a0" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1CD9:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -356,12 +356,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="雪仇" Id="efe886e3-c9e1-472e-b11b-04af05ab7518" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D6F:(?&lt;AbilityName&gt;[^:]+?):.{8}:(?&lt;TargetName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="60*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="60*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -371,12 +371,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="圣光幕帘" Id="c3c0e9d3-73f9-47f3-ad69-141f7c7673a6" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):DD4:(?&lt;AbilityName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -386,12 +386,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="至黑之夜" Id="93d68252-807c-4a98-afb5-f838d4a184c7" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1CE1:(?&lt;AbilityName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -406,12 +406,12 @@
             <Triggers>
               <Trigger Enabled="true" Name="节制" Id="ed1625c5-e820-4dd4-9295-0f6352b1bc69" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):4098:(?&lt;AbilityName&gt;[^:]+?):.{8}:(?&lt;TargetName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="120*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -421,12 +421,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="命运之轮" Id="f5cdf94c-9623-421c-bde1-8ccf0669390f" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):E1D:(?&lt;AbilityName&gt;[^:]+?):.{8}:(?&lt;TargetName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -436,12 +436,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="野战治疗阵" Id="f3d357db-26b8-4fab-bd4c-9e3c1edbe010" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):BC:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="30*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="30*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -459,15 +459,15 @@
                   <Action OrderNumber="0" VariableOp="SetString" VariableName="团减_行吟" VariableExpression="行吟10% " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                   <Action OrderNumber="3" VariableName="团减_行吟" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="15*1000">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000-15*1000" Asynchronous="False">
+                  <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000-15*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -477,12 +477,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="真言" Id="85ca6271-a769-4e12-8c1f-e8b419add6ea" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):41:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -492,12 +492,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="昏乱" Id="8a2c93b1-6019-4b71-99b8-4c8bad5a6ebc" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D88:(?&lt;AbilityName&gt;[^:]+?):.{8}:(?&lt;TargetName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -507,12 +507,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="防守之桑巴" Id="fb767ce2-b60c-456f-b125-c1bde7d46fb9" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):3E8C:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -522,12 +522,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="策动" Id="90a95157-1f19-4c83-a67f-c93ad7d04ea8" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):41F9:(?&lt;AbilityName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}]" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="180*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -537,12 +537,12 @@
               </Trigger>
               <Trigger Enabled="true" Name="牵制" Id="cacb85ed-0a33-4b45-bd08-6dbdd8720030" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D7D:(?&lt;AbilityName&gt;[^:]+?):.{8}:(?&lt;TargetName&gt;[^:]+?):">
                 <Actions>
-                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                  <Action OrderNumber="0" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤_发送频道}} ${var:${CasterName}职业} → [${AbilityName}] → ${TargetName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_减伤CD_发送频道}} ${var:${CasterName}职业} [${AbilityName}] 就绪" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="90*1000" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:_AT_减伤_CD刷新提示}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
                 </Actions>
@@ -764,7 +764,7 @@
                   </ConditionGroup>
                 </Condition>
               </Action>
-              <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_死亡_发送频道}} ${name}（${var:${name}职业}）死亡。即刻CD:${var:Souma_Defeated_Swiftcast_Party_CD_WHM}${var:Souma_Defeated_Swiftcast_Party_CD_SCH}${var:Souma_Defeated_Swiftcast_Party_CD_AST}${var:Souma_Defeated_Swiftcast_Party_CD_SMN}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_死亡_发送频道}} ${name}（${var:${name}职业}）死亡。即刻CD:${var:Souma_Defeated_Swiftcast_Party_CD_WHM}${var:Souma_Defeated_Swiftcast_Party_CD_SCH}${var:Souma_Defeated_Swiftcast_Party_CD_AST}${var:Souma_Defeated_Swiftcast_Party_CD_SMN}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Defeated_Swiftcast_Party_CD_WHM}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Defeated_Swiftcast_Party_CD_SCH}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
@@ -772,7 +772,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Defeated_Swiftcast_Party_CD_SMN}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                 </Condition>
               </Action>
-              <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_死亡_发送频道}} ${name}（${var:${name}职业}）死透了。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_死亡_发送频道}} ${name}（${var:${name}职业}）死透了。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Defeated_Swiftcast_Party_CD_WHM}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="String" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Defeated_Swiftcast_Party_CD_SCH}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="String" ConditionType="NumericEqual" />
@@ -850,7 +850,7 @@
             <Triggers>
               <Trigger Enabled="true" Name="背刺歪了" Id="eb203718-8f92-4baf-9eea-024a1e011d60" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):8D2:[^:]+?:.{1,8}:[^:]+?:710\d{3}:">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}的背刺打歪了！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName}的背刺打歪了！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                     </Condition>
@@ -860,7 +860,7 @@
               </Trigger>
               <Trigger Enabled="true" Name="搓兔" Id="978c7427-8cd4-40ca-806e-6d0c7e6aa1ab" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):8E0:">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}搓兔了，大家一起笑他！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName}搓兔了，大家一起笑他！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                     </Condition>
@@ -877,7 +877,7 @@
                 <Triggers>
                   <Trigger Enabled="true" Name="龙神附体" Id="79f13880-6e21-4bc7-a024-bdad149650a0" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):DFD:">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}的龙神附体居然没有打死星核爆，他在想什么啊！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="16000">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName}的龙神附体居然没有打死星核爆，他在想什么啊！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="16000">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                         </Condition>
@@ -906,7 +906,7 @@
                       <Action OrderNumber="2" VariableName="迫害召唤_死亡轮回数量" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="Or" />
                       </Action>
-                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 巴哈：真龙波（${var:迫害召唤_真龙波数量}/8） 死亡轮回（${var:迫害召唤_死亡轮回数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
+                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName} 巴哈：真龙波（${var:迫害召唤_真龙波数量}/8） 死亡轮回（${var:迫害召唤_死亡轮回数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${var:迫害召唤_真龙波数量}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:迫害召唤_死亡轮回数量}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
@@ -962,7 +962,7 @@
                       <Action OrderNumber="2" VariableName="迫害召唤_天启数量" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="Or" />
                       </Action>
-                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 不死鸟：赤焰（${var:迫害召唤_赤焰数量}/8） 天启（${var:迫害召唤_天启数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
+                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName} 不死鸟：赤焰（${var:迫害召唤_赤焰数量}/8） 天启（${var:迫害召唤_天启数量}/2）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="20000">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${var:迫害召唤_天启数量}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:迫害召唤_赤焰数量}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
@@ -1018,7 +1018,7 @@
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                     </Condition>
                   </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${caster} 原初的解放：裂石飞环（${var:${caster}裂石飞环}/5）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="11000">
+                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${caster} 原初的解放：裂石飞环（${var:${caster}裂石飞环}/5）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="11000">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${var:${caster}裂石飞环}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
@@ -1054,7 +1054,7 @@
               </Trigger>
               <Trigger Enabled="true" Name="森林冰火人" Id="1cea459d-bd81-4116-8976-0ece5b32ab26" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):(98|8D|A2|4079|9A|8E|9F|92|95|407A):" PrevActions="Interrupt">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}天语断了，快笑话他！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15000" Asynchronous="False" RefireInterrupt="True">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName}天语断了，快笑话他！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="15000" Asynchronous="False" RefireInterrupt="True">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${evar:${CasterName}天语}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
@@ -1110,17 +1110,20 @@
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="${caster}寂灭" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${caster} 血乱：（血溅 ${var:${caster}血溅}/5 寂灭 ${var:${caster}寂灭}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="11000">
+                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${caster} 血乱：（血溅 ${var:${caster}血溅}/5 寂灭 ${var:${caster}寂灭}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="11500">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:${caster}血溅}+${var:${caster}寂灭}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -1152,11 +1155,12 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="失去嗜血" Id="62dbb18d-f984-42b3-ab1e-072f15f9704d" RegularExpression="^.{15}1E:.{8}:(?&lt;caster&gt;.+?) loses the effect of (嗜血|Blood Weapon|ブラッドウェポン) from">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${caster} 嗜血覆盖战技（${var:${caster}嗜血计数器}/5）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${caster} 嗜血覆盖战技（${var:${caster}嗜血计数器}/5）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${var:${caster}嗜血计数器}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -1178,7 +1182,7 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="失去" Id="7352d031-e122-4968-a402-a9a491197131" RegularExpression="^.{15}1E:.{8}:(?&lt;TargetName&gt;[^:]+?) loses the effect of (至黑之夜|Blackest Night|ブラックナイト) from" Description="^.{15}1E:.{8}:(?&lt;TargetName&gt;[^:]+?) loses the effect of (至黑之夜|Blackest Night|ブラックナイト) from&#xD;&#xA;^.{15}00:(08b0|1130):.*(至黑之夜|Blackest Night|ブラックナイト)">
                     <Actions>
-                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} 经过${numeric:${_systemtimems}-${var:${TargetName}获得至黑之夜}}ms，${TargetName}的黑盾消失了。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} 经过${numeric:${_systemtimems}-${var:${TargetName}获得至黑之夜}}ms，${TargetName}的黑盾消失了。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${_systemtimems}-${var:${TargetName}获得至黑之夜}" ExpressionTypeL="Numeric" ExpressionR="6850" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${TargetName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
@@ -1203,7 +1207,7 @@
             <Triggers>
               <Trigger Enabled="true" Name="安魂祈祷" Id="f71335df-4428-4a98-ac45-5430300d2111" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;.+?):1CD7.*:(?&lt;CasterCurrentMp&gt;.+?):10000:0:1000:">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName}${CasterCurrentMp}蓝就打了安魂祈祷，真牛！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False" RefireInterrupt="True">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName}${CasterCurrentMp}蓝就打了安魂祈祷，真牛！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False" RefireInterrupt="True">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${CasterCurrentMp}" ExpressionTypeL="Numeric" ExpressionR="8000" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
@@ -1219,7 +1223,7 @@
             <Triggers>
               <Trigger Enabled="true" Name="占卜" Id="2d713183-b2ae-4c6b-96e6-333759db149e" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):40A8:(Divination|占卜|ディヴィネーション):.{8}:[^:]+?:(?&lt;power&gt;\d)0F:" PeriodRefire="Deny" RefirePeriodExpression="500">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 的占卜仅有${power}%" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName} 的占卜仅有${power}%" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${power}" ExpressionTypeL="String" ExpressionR="6" ExpressionTypeR="String" ConditionType="NumericLess" />
@@ -1235,7 +1239,7 @@
             <Triggers>
               <Trigger Enabled="true" Name="回返五剑" Id="21c50ba5-74ea-4c4a-afd1-327fe6a73306" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;.+?):4065:(回返五剑|Kaeshi: Goken|返し五剣):.{8}:(?&lt;Target&gt;.+?):" PrevActions="Interrupt" PrevActionsRefire="Deny">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 的回返五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500" RefireInterrupt="True" RefireRequeue="False">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName} 的回返五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500" RefireInterrupt="True" RefireRequeue="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                 </Actions>
@@ -1245,7 +1249,7 @@
               </Trigger>
               <Trigger Enabled="true" Name="天下五剑" Id="e5b7a3bf-00b0-43ec-8f9a-6a744b289a95" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;.+?):1D40:(天下五剑|Tenka Goken|天下五剣):.{8}:(?&lt;Target&gt;.+?):" PrevActions="Interrupt" PrevActionsRefire="Deny">
                 <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_迫害队友_发送频道}} ${CasterName} 的天下五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500" RefireInterrupt="True" RefireRequeue="False">
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_迫害队友_发送频道}} ${CasterName} 的天下五剑只打中了${Target}一个目标。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="500" RefireInterrupt="True" RefireRequeue="False">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                 </Actions>
@@ -1663,7 +1667,7 @@
         <Triggers>
           <Trigger Enabled="true" Name="技能判定" Id="d30f61d6-153b-4854-bea0-0ac5de805c75" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):(?&lt;AbilityID&gt;[^:]+?):(?&lt;AbilityName&gt;[^:]+?):" Description="木人|伊甸|至尊伊甸|伊甸守护者|虚无行者|厄瑞玻斯的巨腕|利维亚桑|泰坦|极大泰坦|guardian of paradise|エデン・ガーデナー|Voidwalker|ヴォイドウォーカー|the Hand of Erebos|エレボスの巨腕|Leviathan|リヴァイアサン|Titan|タイタン|Titan Maximum|マキシタイタン">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_技能判定_发送频道}} 判定：${CasterName} → ${AbilityName}    减伤：${var:单减_鼓舞}${var:单减_炽天的幕帘}${var:单减_雪仇_${CasterName}}${var:单减_牵制_${CasterName}}${var:单减_昏乱_${CasterName}}${var:团减_策动}${var:团减_守之桑巴}${var:团减_行吟}${var:团减_节制}${var:团减_命运之轮}${var:团减_野战治疗阵}${var:团减_异想的幻光}${var:团减_圣光幕帘}${var:团减_武装戍卫}${var:团减_摆脱}${var:团减_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_技能判定_发送频道}} 判定：${CasterName} → ${AbilityName}    减伤：${var:单减_鼓舞}${var:单减_炽天的幕帘}${var:单减_雪仇_${CasterName}}${var:单减_牵制_${CasterName}}${var:单减_昏乱_${CasterName}}${var:团减_策动}${var:团减_守之桑巴}${var:团减_行吟}${var:团减_节制}${var:团减_命运之轮}${var:团减_野战治疗阵}${var:团减_异想的幻光}${var:团减_圣光幕帘}${var:团减_武装戍卫}${var:团减_摆脱}${var:团减_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionGroup Enabled="true" Grouping="Or">
                     <ConditionSingle Enabled="true" ExpressionL="${_systemtimems}-${var:Souma_Eden_Ability_Last_Timems}" ExpressionTypeL="Numeric" ExpressionR="3000" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
@@ -1689,7 +1693,7 @@
                   </ConditionGroup>
                 </Condition>
               </Action>
-              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_技能判定_发送频道}} 判定：${CasterName} → ${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_技能判定_发送频道}} 判定：${CasterName} → ${AbilityName}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionGroup Enabled="true" Grouping="Or">
                     <ConditionSingle Enabled="true" ExpressionL="${_systemtimems}-${var:Souma_Eden_Ability_Last_Timems}" ExpressionTypeL="Numeric" ExpressionR="3000" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
@@ -1737,12 +1741,11 @@
         <Triggers>
           <Trigger Enabled="true" Name="攻击判定" Id="d404f81e-bc8e-4468-86af-d9dfd07941f2" RegularExpression="^.{15}15:.{8}:(?&lt;BossName&gt;至尊伊甸|伊甸守护者|虚无行者|利维亚桑|泰坦|极大泰坦):.+?:(?&lt;AbilityName&gt;攻击|Unknown_(42D9|413D|3E60|367)):.{8}:(?&lt;TargetName&gt;[^:]+?):.+?:(?&lt;damage&gt;.+?):">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:AT_伊甸平A职能_发送频道}} BOSS对 【${var:${TargetName}职业}】 的攻击造成了${numeric:hex2dec(${func:substring(0,4):${func:padleft(48,8):${damage}}})}点伤害！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_伊甸平A职能_发送频道}} BOSS对 【${var:${TargetName}职业}】 的攻击造成了${numeric:hex2dec(${func:substring(0,4):${func:padleft(48,8):${damage}}})}点伤害！" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${TargetName}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(4,1):${func:padleft(48,8):${damage}}}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="StringNotEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
@@ -1920,37 +1923,37 @@
           </Trigger>
           <Trigger Enabled="true" Name="AT - 小队监控 - 发动到哪个 聊天频道" Id="96d5046f-9d32-4e72-ad30-1fb6da42190d" RegularExpression=".*" PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
             <Actions>
-              <Action OrderNumber="1" VariableOp="SetString" VariableName="AT_大技能_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="_AT_大技能_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="2" VariableOp="SetString" VariableName="AT_大技能CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="2" VariableOp="SetString" VariableName="_AT_大技能CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="3" VariableOp="SetString" VariableName="AT_减伤_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="3" VariableOp="SetString" VariableName="_AT_减伤_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="4" VariableOp="SetString" VariableName="AT_减伤CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="4" VariableOp="SetString" VariableName="_AT_减伤CD_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="5" VariableOp="SetString" VariableName="AT_复活_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="5" VariableOp="SetString" VariableName="_AT_复活_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="6" VariableOp="SetString" VariableName="AT_死亡_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="6" VariableOp="SetString" VariableName="_AT_死亡_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="7" VariableOp="SetString" VariableName="AT_迫害队友_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="7" VariableOp="SetString" VariableName="_AT_迫害队友_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="8" VariableOp="SetString" VariableName="AT_技能判定_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="8" VariableOp="SetString" VariableName="_AT_技能判定_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="9" VariableOp="SetString" VariableName="AT_伊甸平A职能_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="9" VariableOp="SetString" VariableName="_AT_伊甸平A职能_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="10" VariableOp="SetNumeric" VariableName="AT_大技能_CD刷新提示" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="10" VariableOp="SetNumeric" VariableName="_AT_大技能_CD刷新提示" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="11" VariableOp="SetNumeric" VariableName="AT_减伤_CD刷新提示" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="11" VariableOp="SetNumeric" VariableName="_AT_减伤_CD刷新提示" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
             </Actions>
