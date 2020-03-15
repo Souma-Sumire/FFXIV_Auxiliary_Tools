@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="2147483648" Id="a607ed4f-062a-4615-b095-459bd768384d" Name="暗骑GCD一键循环 v1.5.3" Enabled="true">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="2147483648" Id="a607ed4f-062a-4615-b095-459bd768384d" Name="暗骑GCD一键循环 v1.6" Enabled="true">
     <Folders>
       <Folder Id="a5495c91-5e46-4442-bac8-1a1c6175bf48" Name="单体循环" Enabled="true">
         <Folders />
@@ -43,8 +43,9 @@
             </Actions>
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="3" Id="3ff6d684-0d71-43b6-88b5-6c9d363e34c1" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):E30:">
             <Actions>
@@ -52,27 +53,32 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger" ExecutionDelayExpression="50">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:寂灭:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="64" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetString" VariableName="SMOK_Next" VariableExpression="重斩" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="F" Id="0d21338f-3970-425c-8603-990075aac9ce" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):1CE0:">
             <Actions>
@@ -80,16 +86,19 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:${var:SMOK_NextA}:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="2" Id="80006b59-c587-4de2-a201-62a20c230aa2" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):E27:">
             <Actions>
@@ -136,25 +145,29 @@
             </Actions>
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="常回家看看" Id="6ec916d7-bbb9-4484-9d6e-77761ebccc2e" RegularExpression="^.{14} 1E:.{8}:(?&lt;CasterName&gt;.+?) loses the effect of (血乱|Delirium|ブラッドデリリアム) from">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:${var:SMOK_Next}:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Break" Id="d519b6cd-cfab-4a6b-879a-1a4bfb0fa087" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):E(21|27):" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:重斩:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger" ExecutionDelayExpression="15000" RefireInterrupt="True">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetString" VariableName="SMOK_Next" VariableExpression="重斩" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or">
@@ -167,41 +180,48 @@
                     <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}嗜血}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   </ConditionGroup>
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="全部成为F" Id="7dcc3712-7258-4075-8a2f-df19c519fc25" RegularExpression="^.{14} 1A:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (血乱|Delirium|ブラッドデリリアム) from">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="打电话给弗雷" Id="c04bbfe6-28f8-4ddc-b29b-dcb445aa78b1" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):4058:">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:${var:SMOK_Next}:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger" ExecutionDelayExpression="50">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
-                  <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Break2" Id="a959f53e-9d01-4045-a3e6-2128a4e6b74c" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):(E28|E25|4054):" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="100">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:重斩:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger" RefireInterrupt="True">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetString" VariableName="SMOK_Next" VariableExpression="重斩" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or">
@@ -214,19 +234,23 @@
                     <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}嗜血}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   </ConditionGroup>
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Reset" Id="bf7f7c89-699d-4940-baab-454104cb64eb" RegularExpression="">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:重斩:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -237,9 +261,11 @@
             <Actions>
               <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set ${skill} ${num1} ${num2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="死亡" Id="66327a38-b98c-4d38-9aa3-da9167affb3d" RegularExpression="^.{14} 19:(?&lt;name&gt;.+?) was defeated by ">
             <Actions>
@@ -247,35 +273,45 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Reset" Id="c40ac716-0e12-4d6d-8720-502198841fff" RegularExpression="^.{15}00:0039:战斗开始！|^.{14} 21:.{8}:4000001[026]|^.{15}00:0839:“.*?”任务" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Blood_Gauge" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableName="SMOK_${CasterName}血乱" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetString" VariableName="SMOK_Next" VariableExpression="重斩" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetString" VariableName="SMOK_NextA" VariableExpression="释放" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="SMOK_嗜血timems" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="bf7f7c89-699d-4940-baab-454104cb64eb" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7dbed18b-325d-407e-a37b-78f16162c458" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -288,27 +324,32 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${gauge}}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" UseTTSTextExpression="${numeric:hex2dec(${func:substring(0,2):${gauge}})}" VariableOp="SetNumeric" VariableName="Blood_Gauge" VariableExpression="hex2dec(${func:substring(0,2):${gauge}})" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${gauge}}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="3" UseTTSTextExpression="${numeric:hex2dec(${func:substring(0,1):${gauge}})}" VariableOp="SetNumeric" VariableName="Blood_Gauge" VariableExpression="${numeric:hex2dec(${func:substring(0,1):${gauge}})}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${gauge}}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="Blood_Gauge" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${gauge}}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DRK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="血乱" Id="7ace1cd9-b528-4411-8884-56aa4b01befa" RegularExpression="^.{14} 1[AE]:.{8}:(?&lt;CasterName&gt;.+?) (?&lt;type&gt;gains|loses) the effect of (?:血乱|Delirium|ブラッドデリリアム) from">
             <Actions>
@@ -316,26 +357,31 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="gains" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableName="SMOK_${CasterName}血乱" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="loses" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="嗜血" Id="0434ddff-0772-43d4-a565-e4fd6100592b" RegularExpression="^.{14} 1A:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (嗜血|Blood Weapon|ブラッドウェポン) from">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="SMOK_嗜血timems" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -348,25 +394,30 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:寂灭:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger" ExecutionDelayExpression="50">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetString" VariableName="SMOK_NextA" VariableExpression="释放" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="1A" Id="ddd4a6da-8651-488f-9d82-8ce3f9d413a9" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):E25:">
             <Actions>
@@ -375,34 +426,40 @@
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="72" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:寂灭:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger" ExecutionDelayExpression="50">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="64" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetString" VariableName="SMOK_NextA" VariableExpression="刚魂" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="72" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetString" VariableName="SMOK_NextA" VariableExpression="释放" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="72" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="FA" Id="bca90071-63f8-4d81-9ed6-d15e2063daac" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1CDF:">
             <Actions>
@@ -410,36 +467,42 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:${var:SMOK_Next}:${var:SMOK_UsingHotbar}:${var:SMOK_UsingHotbar_Number}" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="打电话给弗雷" Id="3cd1b372-df55-4082-9c4f-ebf161745c11" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):4058:">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:${var:SMOK_NextA}:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger" ExecutionDelayExpression="50">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Blood_Gauge}" ExpressionTypeL="Numeric" ExpressionR="${numeric:if((${_systemtimems}-${var:SMOK_嗜血timems})/1000&gt;(60-${var:SMOK_嗜血预备}),${var:SMOK_预备基准值},${var:SMOK_暗血切换基准})}" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
-                  <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Break" Id="72b619de-f5b5-4621-8847-e1f7578a1614" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):E25:" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:释放:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger" ExecutionDelayExpression="15000" RefireInterrupt="True">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetString" VariableName="SMOK_NextA" VariableExpression="释放" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or">
@@ -452,18 +515,21 @@
                     <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}嗜血}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   </ConditionGroup>
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Break2" Id="54e465fe-dff5-4350-b349-b0b7665bc128" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):E(21|27|28|30):" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:释放:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger" RefireInterrupt="True">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:SMOK_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetString" VariableName="SMOK_NextA" VariableExpression="释放" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:血溅:${var:SMOK_UsingHotbar}:1" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or">
@@ -476,39 +542,47 @@
                     <ConditionSingle Enabled="true" ExpressionL="${var:SMOK_${CasterName}嗜血}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   </ConditionGroup>
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="常回家看看" Id="c0cc9bad-5599-4654-84c0-bc655fe6d3ca" RegularExpression="^.{14} 1E:.{8}:(?&lt;CasterName&gt;.+?) loses the effect of (血乱|Delirium|ブラッドデリリアム) from">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:${var:SMOK_NextA}:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="全部成为FA" Id="07e134ed-4b5a-4fb7-a5a6-1437539ba124" RegularExpression="^.{14} 1A:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (血乱|Delirium|ブラッドデリリアム) from">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:寂灭:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Reset" Id="7dbed18b-325d-407e-a37b-78f16162c458" RegularExpression="">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="54faafac-665f-43b7-a7d1-bcaf827bffc0" TriggerText="SetHotbar:释放:${var:SMOK_UsingHotbar_AoE}:${var:SMOK_UsingHotbar_AoE_Number}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -570,6 +644,7 @@
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
