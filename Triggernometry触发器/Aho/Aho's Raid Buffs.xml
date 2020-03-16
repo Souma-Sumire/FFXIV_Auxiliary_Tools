@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.3.17.1" Enabled="true">
+  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.3.17.2" Enabled="true">
     <Folders>
       <Folder Id="f24d266c-beab-41b2-b183-2a433f253d9f" Name="大技能" Enabled="true">
         <Folders>
           <Folder FFXIVJobFilter="4437573664" Id="18d22ee1-a883-423b-ab13-4f77c58b8d77" Name="行尸走肉" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Sequential="True" Name="死而不僵" Id="a8dd485b-d5e8-49ee-bb13-5dd20af075aa" RegularExpression="^.{14} 1A:.{8}:(?&lt;CasterName&gt;.+?) gains the effect of (?&lt;AbilityName&gt;死而不僵|Walking Dead|ウォーキングデッド) from" PrevActions="Interrupt">
+              <Trigger Enabled="true" Sequential="True" Name="死而不僵" Id="a8dd485b-d5e8-49ee-bb13-5dd20af075aa" RegularExpression="^.{14} 1A:.{8}:(?&lt;CasterName&gt;[^:]+?) gains the effect of (?&lt;AbilityName&gt;死而不僵|Walking Dead|ウォーキングデッド) from" PrevActions="Interrupt">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="死而不僵" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -29,8 +29,9 @@
                 <Condition Enabled="false" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="死而不僵解除" Id="8d4163ce-dfe2-4be1-80e7-5a9f1b34767e" RegularExpression="^.{14} 1E:.{8}:(?&lt;CasterName&gt;.+?) loses the effect of (?&lt;AbilityName&gt;死而不僵|Walking Dead|ウォーキングデッド) from">
+              <Trigger Enabled="true" Name="死而不僵解除" Id="8d4163ce-dfe2-4be1-80e7-5a9f1b34767e" RegularExpression="^.{14} 1E:.{8}:(?&lt;CasterName&gt;[^:]+?) loses the effect of (?&lt;AbilityName&gt;死而不僵|Walking Dead|ウォーキングデッド) from">
                 <Actions>
                   <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="WalkingDead" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
@@ -44,13 +45,14 @@
                 <Condition Enabled="false" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
           <Folder FFXIVJobFilter="75305844736" Id="64c916b3-a171-4431-b657-7d6069326e3f" Name="挑退" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="挑衅" Id="0b906f7d-3f50-44be-a01c-6c7af61580a8" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):1D6D:">
+              <Trigger Enabled="true" Name="挑衅" Id="0b906f7d-3f50-44be-a01c-6c7af61580a8" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):1D6D:">
                 <Actions>
                   <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="ProvokeCallOutAura" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\000803.png" AuraXIniExpression="653" AuraYIniExpression="159" AuraWIniExpression="87" AuraHIniExpression="87" AuraOIniExpression="100" AuraTTLTickExpression="5-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
@@ -64,8 +66,9 @@
                 <Condition Enabled="false" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="退避" Id="1bd93a56-be71-4a07-beaf-0479b0a1f3e7" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):1D71:">
+              <Trigger Enabled="true" Name="退避" Id="1bd93a56-be71-4a07-beaf-0479b0a1f3e7" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):1D71:">
                 <Actions>
                   <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="ShirkCallOutAura" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\000810.png" AuraXIniExpression="740" AuraYIniExpression="159" AuraWIniExpression="87" AuraHIniExpression="87" AuraOIniExpression="100" AuraTTLTickExpression="5-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
@@ -79,12 +82,13 @@
                 <Condition Enabled="false" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Sequential="True" Name="天赐祝福" Id="5c569112-a2f6-476e-9ce1-aab158cc36da" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):8C:" PrevActions="Interrupt">
+          <Trigger Enabled="true" Sequential="True" Name="天赐祝福" Id="5c569112-a2f6-476e-9ce1-aab158cc36da" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):8C:" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" TextAuraOp="DeactivateAura" TextAuraFontSize="8.25" TextAuraName="BenedictionTeamCDText" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
@@ -106,8 +110,9 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="神圣领域" Id="1ac6a1cc-6815-40c1-93ab-e907915c7c83" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):1E:" PrevActions="Interrupt">
+          <Trigger Enabled="true" Sequential="True" Name="神圣领域" Id="1ac6a1cc-6815-40c1-93ab-e907915c7c83" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):1E:" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="无敌" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="false" Grouping="Or" />
@@ -133,8 +138,9 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="行尸走肉" Id="2f056bcc-8f60-4180-9be7-69febfd68576" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):E36:" PrevActions="Interrupt">
+          <Trigger Enabled="true" Sequential="True" Name="行尸走肉" Id="2f056bcc-8f60-4180-9be7-69febfd68576" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):E36:" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="行尸走肉" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="false" Grouping="Or" />
@@ -156,8 +162,9 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="死斗" Id="959ffcfb-c95c-4caf-82ae-bedabcefb083" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):2B:">
+          <Trigger Enabled="true" Sequential="True" Name="死斗" Id="959ffcfb-c95c-4caf-82ae-bedabcefb083" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):2B:">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="死斗" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="false" Grouping="Or" />
@@ -183,6 +190,7 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Sequential="True" Name="超火流星" Id="49bdab0b-1797-4b35-a61d-8d58a12429d6" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):3F18:" PrevActions="Interrupt">
             <Actions>
@@ -210,8 +218,9 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="圣光幕帘" Id="821930fa-fd20-4aae-a018-a67f5ec314d6" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):DD4:" RefirePeriodExpression="10">
+          <Trigger Enabled="true" Sequential="True" Name="圣光幕帘" Id="821930fa-fd20-4aae-a018-a67f5ec314d6" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):DD4:" RefirePeriodExpression="10">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="幕帘" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
                 <Condition Enabled="true" Grouping="And" />
@@ -241,13 +250,14 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
       <Folder Id="975aa113-8802-49d3-bdb2-4e610292f58b" Name="团辅" Enabled="true">
         <Folders />
         <Triggers>
-          <Trigger Enabled="true" Sequential="True" Name="攻其不备" Id="8c68f4ec-bf49-4505-a00c-83688a35e43e" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):8D2:" PrevActions="Interrupt">
+          <Trigger Enabled="true" Sequential="True" Name="攻其不备" Id="8c68f4ec-bf49-4505-a00c-83688a35e43e" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):8D2:" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" AuraName="TrickAttack" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\000618.png" AuraXIniExpression="${var:RaidAuraX}+360" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -273,8 +283,9 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="鼓励" Id="0d34fda1-25d5-4a05-84d7-885a13c0ffc1" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;.+?):1D60:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
+          <Trigger Enabled="true" Sequential="True" Name="鼓励" Id="0d34fda1-25d5-4a05-84d7-885a13c0ffc1" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D60:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
               <Action OrderNumber="1" AuraName="Embolden" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003218.png" AuraXIniExpression="${var:RaidAuraX}+240" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -296,6 +307,7 @@
             <Condition Enabled="false" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Sequential="True" Name="技巧舞步" Id="b302e5b1-b0b8-4fbf-93f7-3eb92f9ff689" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):3F4(2|3|4):" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
@@ -319,8 +331,9 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="连环计" Id="f72481bb-6009-40ab-9c1e-ad50544480cf" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;.+?):1D0C:" PrevActions="Interrupt">
+          <Trigger Enabled="true" Sequential="True" Name="连环计" Id="f72481bb-6009-40ab-9c1e-ad50544480cf" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):1D0C:" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" AuraName="ChainStratagem" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\002815.png" AuraXIniExpression="${var:RaidAuraX}+160" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -342,8 +355,9 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="灵护" Id="6b626cd6-eba3-48c5-9049-1a9d2a15d964" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;.+?):1CFF:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
+          <Trigger Enabled="true" Sequential="True" Name="灵护" Id="6b626cd6-eba3-48c5-9049-1a9d2a15d964" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1CFF:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
               <Action OrderNumber="1" AuraName="Devotion" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\002688.png" AuraXIniExpression="${var:RaidAuraX}+200" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -365,6 +379,7 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Sequential="True" Name="义结金兰" Id="38c5ccff-1a93-4fce-a4ee-abbbdc3c2c22" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1CE4:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
@@ -388,8 +403,9 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="占卜" Id="5cf01d1d-69ac-4d91-ada8-f95d9648aec7" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;.+?):40A8:(Divination|占卜|ディヴィネーション):.{8}:.+?:(?&lt;power&gt;\d)0F:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
+          <Trigger Enabled="true" Sequential="True" Name="占卜" Id="5cf01d1d-69ac-4d91-ada8-f95d9648aec7" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):40A8:(Divination|占卜|ディヴィネーション):.{8}:[^:]+?:(?&lt;power&gt;\d)0F:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
               <Action OrderNumber="1" AuraName="Divination" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003553.png" AuraXIniExpression="${var:RaidAuraX}+400" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -419,6 +435,7 @@
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Sequential="True" Name="占星卡牌" Id="b725ea68-9313-48c7-9237-30f6d11d4592" RegularExpression="^.{15}15:.{8}:(?&lt;cardcaster&gt;[^:]+?):(?&lt;cardID&gt;1\w{3}):(?&lt;card&gt;[^:]+?):\w{8}:(?&lt;cardtarget&gt;[^:]+?):(?&lt;cardpower&gt;\d)0F:">
             <Actions>
@@ -426,41 +443,49 @@
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="The Balance" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" AuraName="TheBole" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003111.png" AuraXIniExpression="${var:RaidAuraX}+440" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraTTLTickExpression="15-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="The Bole" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="3" AuraName="TheArrow" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003112.png" AuraXIniExpression="${var:RaidAuraX}+440" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraTTLTickExpression="15-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="The Arrow" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="4" AuraName="TheSpear" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003113.png" AuraXIniExpression="${var:RaidAuraX}+440" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraTTLTickExpression="15-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="The Spear" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="5" AuraName="TheEwer" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003114.png" AuraXIniExpression="${var:RaidAuraX}+440" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraTTLTickExpression="15-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="The Ewer" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="6" AuraName="TheSpire" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003115.png" AuraXIniExpression="${var:RaidAuraX}+440" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraTTLTickExpression="15-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="The Spire" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="7" AuraName="LadyOfCrowns" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003146.png" AuraXIniExpression="${var:RaidAuraX}+440" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraTTLTickExpression="15-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="Lady Of Crowns" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="8" AuraName="LordOfCrowns" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003147.png" AuraXIniExpression="${var:RaidAuraX}+440" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraTTLTickExpression="15-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="Lord Of Crowns" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="9" TextAuraFontSize="15.75" TextAuraName="CardDuration" TextAuraExpression="${numeric:+15-${_since}}" TextAuraXIniExpression="${var:RaidAuraX}+390+40" TextAuraYIniExpression="${var:RaidAuraY}+11" TextAuraWIniExpression="59" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="15-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
@@ -473,6 +498,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="Lord Of Crowns" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="Lady Of Crowns" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="10" TextAuraFontSize="15.75" TextAuraName="CardPower" TextAuraExpression="${cardpower}%" TextAuraXIniExpression="${var:RaidAuraX}+391+40" TextAuraYIniExpression="${var:RaidAuraY}-5" TextAuraWIniExpression="59" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="15-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
@@ -485,6 +511,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="Lord Of Crowns" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                   <ConditionSingle Enabled="true" ExpressionL="${card}" ExpressionTypeL="String" ExpressionR="Lady Of Crowns" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
@@ -493,6 +520,7 @@
                 <ConditionSingle Enabled="true" ExpressionL="${cardID}" ExpressionTypeL="String" ExpressionR="1D1A" ExpressionTypeR="String" ConditionType="StringEqualCase" />
               </ConditionGroup>
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Sequential="True" Name="战斗连祷" Id="873adefd-dd0f-4de8-8b60-c3c88b298933" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):DE5:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
@@ -516,6 +544,7 @@
             <Condition Enabled="false" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Sequential="True" Name="战斗之声" Id="fffd2eff-be25-42de-8dda-3f965a978a82" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):76:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
@@ -539,8 +568,9 @@
             <Condition Enabled="false" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="巨龙视线" Id="cb61578d-3d64-43f3-b625-ee5de400ef96" RegularExpression="^.{14} 1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (巨龙左眼|竜の左眼|Left Eye|巨龙右眼|巨龙左眼|Right Eye) from" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
+          <Trigger Enabled="true" Sequential="True" Name="巨龙视线" Id="cb61578d-3d64-43f3-b625-ee5de400ef96" RegularExpression="^.{14} 1A:.{8}:(?&lt;name&gt;[^:]+?) gains the effect of (巨龙左眼|竜の左眼|Left Eye|巨龙右眼|巨龙左眼|Right Eye) from" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
               <Action OrderNumber="1" AuraName="LeftRightEye" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\002587.png" AuraXIniExpression="${var:RaidAuraX}+40" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -564,8 +594,9 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="进攻之探戈" Id="361ac755-3e3d-4e5c-8cce-54a8d1631e6d" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (攻めのタンゴ|进攻之探戈|Devilment) from" PrevActions="Interrupt">
+          <Trigger Enabled="true" Sequential="True" Name="进攻之探戈" Id="361ac755-3e3d-4e5c-8cce-54a8d1631e6d" RegularExpression="^.{27}(?&lt;name&gt;[^:]+?) gains the effect of (攻めのタンゴ|进攻之探戈|Devilment) from" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" AuraName="Devilment" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003471.png" AuraXIniExpression="${var:RaidAuraX}+320" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -589,6 +620,7 @@
             <Condition Enabled="false" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -599,30 +631,39 @@
             <Actions>
               <Action OrderNumber="1" AuraName="团辅位置" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\团辅位置.jpg" AuraXIniExpression="100" AuraYIniExpression="795+50" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" AuraName="大技能位置" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\大技能位置.jpg" AuraXIniExpression="100" AuraYIniExpression="758+50" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="RaidAuraX" VariableExpression="${_imageaura[团辅位置].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" ExecutionDelayExpression="1000" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="RaidAuraY" VariableExpression="${_imageaura[团辅位置].y}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="TeamCDX" VariableExpression="${_imageaura[大技能位置].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="TeamCDY" VariableExpression="${_imageaura[大技能位置].y}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="7" AuraOp="DeactivateAura" AuraName="团辅位置" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1000" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="8" AuraOp="DeactivateAura" AuraName="大技能位置" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -648,6 +689,7 @@
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
       <Trigger Enabled="true" Name="任务开始" Id="9651838a-3db2-4bbf-99cc-2d3f35901c09" RegularExpression="^.{15}00:0839:.*(任务开始。|has begun\.|の攻略を開始した。)$">
         <Actions>
