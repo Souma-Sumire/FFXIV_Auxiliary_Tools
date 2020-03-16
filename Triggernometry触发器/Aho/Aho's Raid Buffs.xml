@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.3.17" Enabled="true">
+  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.3.17.1" Enabled="true">
     <Folders>
       <Folder Id="f24d266c-beab-41b2-b183-2a433f253d9f" Name="大技能" Enabled="true">
         <Folders>
@@ -628,16 +628,40 @@
       </Folder>
     </Folders>
     <Triggers>
-      <Trigger Enabled="true" Name="取消现有显示" Id="ecfd88e4-035d-4fb6-9ac0-306f10f3aedc" RegularExpression="You have entered a sanctuary|进入了休息区。|レストエリアに入った！">
+      <Trigger Enabled="true" Name="进入了休息区" Id="ecfd88e4-035d-4fb6-9ac0-306f10f3aedc" RegularExpression="^.{15}00:0039:(进入了休息区。|You have entered a sanctuary|レストエリアに入った！)">
         <Actions>
           <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" AuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="2" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="8.25" TextAuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" FolderOp="DisableFolder" FolderId="f24d266c-beab-41b2-b183-2a433f253d9f" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="4" FolderOp="DisableFolder" FolderId="975aa113-8802-49d3-bdb2-4e610292f58b" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="任务开始" Id="9651838a-3db2-4bbf-99cc-2d3f35901c09" RegularExpression="^.{15}00:0839:.*(任务开始。|has begun\.|の攻略を開始した。)$">
+        <Actions>
+          <Action OrderNumber="1" FolderId="f24d266c-beab-41b2-b183-2a433f253d9f" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" FolderId="975aa113-8802-49d3-bdb2-4e610292f58b" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
