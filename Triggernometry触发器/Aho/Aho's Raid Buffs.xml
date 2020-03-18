@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.3.17.3" Enabled="true">
+  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.3.19" Enabled="true">
     <Folders>
-      <Folder Id="f24d266c-beab-41b2-b183-2a433f253d9f" Name="大技能" Enabled="true">
+      <Folder Id="f24d266c-beab-41b2-b183-2a433f253d9f" Name="大技能" Enabled="false">
         <Folders>
           <Folder FFXIVJobFilter="4437573664" Id="18d22ee1-a883-423b-ab13-4f77c58b8d77" Name="行尸走肉" Enabled="true">
             <Folders />
@@ -205,7 +205,7 @@
           </Trigger>
         </Triggers>
       </Folder>
-      <Folder Id="975aa113-8802-49d3-bdb2-4e610292f58b" Name="团辅" Enabled="true">
+      <Folder Id="975aa113-8802-49d3-bdb2-4e610292f58b" Name="团辅" Enabled="false">
         <Folders />
         <Triggers>
           <Trigger Enabled="true" Sequential="True" Name="攻其不备" Id="8c68f4ec-bf49-4505-a00c-83688a35e43e" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):8D2:" PrevActions="Interrupt">
@@ -484,7 +484,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="进攻之探戈" Id="361ac755-3e3d-4e5c-8cce-54a8d1631e6d" RegularExpression="^.{27}(?&lt;name&gt;[^:]+?) gains the effect of (攻めのタンゴ|进攻之探戈|Devilment) from">
+          <Trigger Enabled="true" Sequential="True" Name="进攻之探戈" Id="361ac755-3e3d-4e5c-8cce-54a8d1631e6d" RegularExpression="^.{27}(?&lt;name&gt;[^:]+?) gains the effect of (攻めのタンゴ|进攻之探戈|Devilment) from.*?for 20\.00 Seconds\.">
             <Actions>
               <Action OrderNumber="1" AuraName="Devilment" AuraImage="${_env[SoumaTriggerFolder]}\Triggernometry触发器\Aho\003471.png" AuraXIniExpression="${var:RaidAuraX}+320" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
