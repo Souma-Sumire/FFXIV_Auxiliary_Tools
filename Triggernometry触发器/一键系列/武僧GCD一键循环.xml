@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="524288" Id="c6d60e50-8322-44d3-b0ed-359fdedc8787" Name="武僧GCD一键循环 v1.0 Beta" Enabled="true">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="524288" Id="c6d60e50-8322-44d3-b0ed-359fdedc8787" Name="武僧GCD一键循环 v1.0.1 Beta" Enabled="true">
     <Folders>
       <Folder Id="252cdaea-da4d-4107-8236-b71a914f6dbe" Name="BUFF" Enabled="true">
         <Folders>
@@ -21,7 +21,6 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${Name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="loses" Id="664ad379-77a4-4c0c-8774-142332ee50b5" RegularExpression="^.{15}1E:.{8}:(?&lt;Name&gt;.+?) loses the effect of 连击效果提高 from" PrevActions="Interrupt">
                 <Actions>
@@ -29,11 +28,14 @@
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="cdb5d9de-e898-4af6-8d99-87e3253331ed" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${Name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -43,11 +45,9 @@
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="MNKOK_破碎拳" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableName="MNKOK_破碎拳" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="${Time}*1000">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
@@ -58,27 +58,22 @@
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="MNKOK_双掌打" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableName="MNKOK_双掌打" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="${Time}*1000">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${Name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="疾风迅雷" Id="8269e81f-19b3-43e3-9419-fdab9a83e53e" RegularExpression="^.{15}1F:.{8}:[^:]+?:(?&lt;gauge&gt;.+?):">
             <Actions>
               <Action OrderNumber="1" UseTTSTextExpression="${numeric:hex2dec(${func:substring(0,2):${gauge}})}" VariableOp="SetNumeric" VariableName="GL_Gauge" VariableExpression="hex2dec(${func:substring(1,1):${func:padleft(48,8):${gauge}}})" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -91,13 +86,11 @@
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="MNKOK_演武" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="当前体式技能" Id="8d2cebad-a671-42f2-90ef-71b9195b5ddc" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;form&gt;盗龙形|猛豹形|魔猿形) from">
                 <Actions>
@@ -106,39 +99,33 @@
                       <ConditionSingle Enabled="true" ExpressionL="${form}" ExpressionTypeL="String" ExpressionR="盗龙形" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionSingle Enabled="true" ExpressionL="${var:MNKOK_演武}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="9978a5db-43a1-4804-8260-b044399381c9" TriggerText="[00:00:00.000] 15:00000000:${_ffxivplayer}:36:" ActionType="Trigger" Asynchronous="False">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${form}" ExpressionTypeL="String" ExpressionR="猛豹形" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionSingle Enabled="true" ExpressionL="${var:MNKOK_演武}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="22e3652d-5093-4a65-af81-6e8bfec5e291" TriggerText="[00:00:00.000] 15:00000000:${_ffxivplayer}:38:" ActionType="Trigger" Asynchronous="False">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${form}" ExpressionTypeL="String" ExpressionR="魔猿形" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionSingle Enabled="true" ExpressionL="${var:MNKOK_演武}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="8d2cebad-a671-42f2-90ef-71b9195b5ddc" Enabled="False" ActionType="Trigger" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${var:MNKOK_演武}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="5" VariableName="MNKOK_演武" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="8d2cebad-a671-42f2-90ef-71b9195b5ddc" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${var:MNKOK_演武}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -149,23 +136,19 @@
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="752d926d-240e-4d10-8f01-f69f3ba21c71" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="gains" Id="752d926d-240e-4d10-8f01-f69f3ba21c71" RegularExpression="^.{15}1A:.{8}:(?&lt;Name&gt;.+?) gains the effect of 连击效果提高 from" PrevActions="Interrupt">
                 <Actions>
                   <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 双龙脚 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="30000">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${Name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -176,29 +159,23 @@
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="22e3652d-5093-4a65-af81-6e8bfec5e291" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="e85b1141-635c-4c1f-a7d4-3ecb374acb83" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="9978a5db-43a1-4804-8260-b044399381c9" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="8d2cebad-a671-42f2-90ef-71b9195b5ddc" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="b0b79422-82ec-43e4-8ec1-1decc3e4b4c5" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 崩拳 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${var:GL_Gauge}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 双掌打 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
@@ -208,7 +185,6 @@
                         <ConditionSingle Enabled="true" ExpressionL="15-(${_systemtimems}-${var:MNKOK_双掌打})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_震脚中双掌打阈值}" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
                       </ConditionGroup>
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="8" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 双龙脚 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
@@ -225,7 +201,6 @@
                         <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_连击效果提高}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       </ConditionGroup>
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="9" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 连击 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
@@ -239,61 +214,48 @@
                         <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_连击效果提高}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       </ConditionGroup>
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="10" VariableOp="SetNumeric" VariableName="MNKOK_震脚" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="11" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7db8d7e9-daaf-4ad9-bc45-820b9c07dfac" TriggerForce="true" ActionType="Trigger" ExecutionDelayExpression="10000">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="loses" Id="7db8d7e9-daaf-4ad9-bc45-820b9c07dfac" RegularExpression="^.{15}1E:.{8}:(?&lt;name&gt;.+?) loses the effect of 震脚 from">
                 <Actions>
                   <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 双龙脚 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="22e3652d-5093-4a65-af81-6e8bfec5e291" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="e85b1141-635c-4c1f-a7d4-3ecb374acb83" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="9978a5db-43a1-4804-8260-b044399381c9" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="8d2cebad-a671-42f2-90ef-71b9195b5ddc" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="b0b79422-82ec-43e4-8ec1-1decc3e4b4c5" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="1befcf2c-c36a-429c-9503-fec5609516b4" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="8" VariableName="MNKOK_震脚" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="震脚:破碎拳&amp;崩拳&amp;双掌打" Id="d2352d68-763f-4763-8bb1-71033076a936" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):(?:42|38|3D):">
                 <Actions>
@@ -308,7 +270,6 @@
                         <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_连击效果提高}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       </ConditionGroup>
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 连击 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
@@ -318,14 +279,12 @@
                         <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_连击效果提高}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       </ConditionGroup>
                     </Condition>
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_震脚}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="震脚:双龙脚&amp;连击" Id="f8af471c-eeae-4975-bad2-680d2bf024ce" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):(?:4A|35):">
                 <Actions>
@@ -344,7 +303,6 @@
                       </ConditionGroup>
                       <ConditionSingle Enabled="true" ExpressionL="(${_systemtimems}-${var:MNKOK_form})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_震脚疾风迅雷阈值}" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 连击 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
@@ -358,7 +316,6 @@
                       </ConditionGroup>
                       <ConditionSingle Enabled="true" ExpressionL="(${_systemtimems}-${var:MNKOK_form})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_震脚疾风迅雷阈值}" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 双掌打 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
@@ -366,7 +323,6 @@
                       <ConditionSingle Enabled="true" ExpressionL="15-(${_systemtimems}-${var:MNKOK_双掌打})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_震脚中双掌打阈值}" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="(${_systemtimems}-${var:MNKOK_form})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_震脚疾风迅雷阈值}" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 崩拳 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
@@ -376,7 +332,6 @@
                         <ConditionSingle Enabled="true" ExpressionL="18-(${_systemtimems}-${var:MNKOK_破碎拳})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_破碎拳阈值}" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                       </ConditionGroup>
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 破碎拳 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="true" Grouping="And">
@@ -386,27 +341,23 @@
                         <ConditionSingle Enabled="true" ExpressionL="18-(${_systemtimems}-${var:MNKOK_破碎拳})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_破碎拳阈值}" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
                       </ConditionGroup>
                     </Condition>
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_震脚}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="破碎拳&amp;崩拳&amp;星岛六合脚&amp;无我" Id="a03eb8cd-ae2f-4132-b6c5-0068648bc8b0" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):(?:42|38|405C):|^.{15}1E:.{8}:(?&lt;name&gt;.+?) loses the effect of 无我 " PrevActions="Interrupt">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="MNKOK_form" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -419,20 +370,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_双掌打}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="15-(${_systemtimems}-${var:MNKOK_双掌打})/1000" ExpressionTypeL="Numeric" ExpressionR="if(${var:MNKOK_一拳双掌}=1,${var:MNKOK_一拳双掌阈值1},${var:MNKOK_一拳双掌阈值2})" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 正拳 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_双掌打}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="15-(${_systemtimems}-${var:MNKOK_双掌打})/1000" ExpressionTypeL="Numeric" ExpressionR="if(${var:MNKOK_一拳双掌}=1,${var:MNKOK_一拳双掌阈值1},${var:MNKOK_一拳双掌阈值2})" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="2双掌打&amp;正拳" Id="9978a5db-43a1-4804-8260-b044399381c9" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):(?:3D|36):">
             <Actions>
@@ -441,20 +389,17 @@
                   <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_破碎拳}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="18-(${_systemtimems}-${var:MNKOK_破碎拳})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_破碎拳阈值}" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 崩拳 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_破碎拳}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="18-(${_systemtimems}-${var:MNKOK_破碎拳})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_破碎拳阈值}" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="3破碎拳&amp;崩拳" Id="22e3652d-5093-4a65-af81-6e8bfec5e291" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):(?:42|38):">
             <Actions>
@@ -463,7 +408,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="30-(${_systemtimems}-${var:MNKOK_连击效果提高})/1000" ExpressionTypeL="Numeric" ExpressionR="${var:MNKOK_连击效果提高阈值}" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                   <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_连击效果提高}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 双龙脚 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="true" Grouping="Or">
@@ -473,25 +417,21 @@
                   </ConditionGroup>
                   <ConditionSingle Enabled="true" ExpressionL="${evar:MNKOK_连击效果提高}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Break" Id="5b5f655d-56a8-47a5-aaa9-c3661c7ed45e" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;form&gt;盗龙形|猛豹形|魔猿形) from" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set 双龙脚 ${var:MNKOK_Hotbar} ${var:MNKOK_Hotbar_Num}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="16000">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -504,15 +444,11 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a87e89ab-7f55-41b2-88f0-11546a7178ca" TriggerForce="true" ActionType="Trigger">
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="MNKOK_破碎拳_gauge" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="MNKOK_破碎拳_gauge" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="MNKOK_双掌打_gauge" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="MNKOK_双掌打_gauge" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -520,37 +456,29 @@
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="禁忌设置" Id="cd47ae6e-49ea-4f42-92ad-267b5a1be0fe" RegularExpression=".*" PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="MNKOK_一拳双掌阈值1" VariableExpression="6.1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="MNKOK_一拳双掌阈值2" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="MNKOK_连击效果提高阈值" VariableExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="MNKOK_破碎拳阈值" VariableExpression="6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="MNKOK_震脚中双掌打阈值" VariableExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="MNKOK_震脚疾风迅雷阈值" VariableExpression="10" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -560,27 +488,21 @@
         <Actions>
           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="MNKOK_Hotbar" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="MNKOK_Hotbar_Num" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="MNKOK_Hotbar_AoE" VariableExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="MNKOK_Hotbar_AoE_Num" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="MNKOK_一拳双掌" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
