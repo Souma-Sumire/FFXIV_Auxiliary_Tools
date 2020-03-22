@@ -1,8 +1,8 @@
-# FFXIV_Auxiliary_Tools (FF14 轮椅辅助工具)
+# FFXIV_Auxiliary_Tools
 
 * QQ群:868116069
   * [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)
-  * [别像弱智一样提问](https://github.com/dogfight360/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md)
+  * [别像Stupid一样提问](https://github.com/dogfight360/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md)
   * [如何优雅的提问](http://www.360doc.com/content/19/1223/08/30422483_881502108.shtml)
   
 ## 基础依赖
