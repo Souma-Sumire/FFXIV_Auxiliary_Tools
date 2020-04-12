@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="7ac0b969-d7af-4a84-8851-c232b596b500" Name="队伍监控 v1.4.12" Enabled="true">
+  <ExportedFolder Id="7ac0b969-d7af-4a84-8851-c232b596b500" Name="队伍监控 v1.4.12.1" Enabled="true">
     <Folders>
       <Folder Id="cb501ed1-bb27-4e17-b2c3-b93aa4fbf4cc" Name="大技能" Enabled="true">
         <Folders>
@@ -1475,15 +1475,13 @@
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Trigger>
                   <Trigger Enabled="true" Name="gains" Id="4bb2a5ee-745a-40df-9b18-1d3382c304db" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (天星冲日（夜）|Nocturnal Opposition|星天対抗［夜］) from (?&lt;CasterName&gt;.+)? for (?&lt;time&gt;[\d\.]+) Seconds\.">
                     <Actions>
-                      <Action OrderNumber="1" VariableOp="SetString" VariableName="单减_天星夜" VariableExpression="天星(夜) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                      <Action OrderNumber="1" VariableOp="SetString" VariableName="单减_天星夜" VariableExpression="天星冲日(夜) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
@@ -1492,7 +1490,6 @@
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Trigger>
                 </Triggers>
               </Folder>
@@ -1505,15 +1502,13 @@
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Trigger>
                   <Trigger Enabled="true" Name="gains" Id="c6bee7a5-9d88-4114-acd2-c745d0e81cc0" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (黑夜领域|Nocturnal Field|ノクターナルフィールド) from (?&lt;CasterName&gt;.+)? for (?&lt;time&gt;[\d\.]+) Seconds\.">
                     <Actions>
-                      <Action OrderNumber="1" VariableOp="SetString" VariableName="单减_夜占盾" VariableExpression="夜占盾 " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                      <Action OrderNumber="1" VariableOp="SetString" VariableName="单减_夜占盾" VariableExpression="黑夜领域 " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
@@ -1522,7 +1517,6 @@
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Trigger>
                 </Triggers>
               </Folder>
@@ -1610,11 +1604,9 @@
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetString" VariableName="团减_命运之轮" VariableExpression="命运之轮10% " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" VariableName="团减_命运之轮" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="${time}*1000">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -1700,7 +1692,7 @@
         <Triggers>
           <Trigger Enabled="true" Name="技能判定" Id="d30f61d6-153b-4854-bea0-0ac5de805c75" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):(?&lt;AbilityID&gt;[^:]+?):(?&lt;AbilityName&gt;[^:]+?):" Description="木人|伊甸|至尊伊甸|伊甸守护者|虚无行者|厄瑞玻斯的巨腕|利维亚桑|泰坦|极大泰坦|guardian of paradise|エデン・ガーデナー|Voidwalker|ヴォイドウォーカー|the Hand of Erebos|エレボスの巨腕|Leviathan|リヴァイアサン|Titan|タイタン|Titan Maximum|マキシタイタン">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_技能判定_发送频道}} 判定：${CasterName} → ${AbilityName}    减伤：${var:单减_鼓舞}${evar:单减_夜占盾}${var:单减_天星夜}${var:单减_炽天的幕帘}${var:单减_雪仇_${CasterName}}${var:单减_牵制_${CasterName}}${var:单减_昏乱_${CasterName}}${var:团减_策动}${var:团减_守之桑巴}${var:团减_行吟}${var:团减_节制}${var:团减_命运之轮}${var:团减_野战治疗阵}${var:团减_异想的幻光}${var:团减_圣光幕帘}${var:团减_武装戍卫}${var:团减_摆脱}${var:团减_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_技能判定_发送频道}} 判定：${CasterName} → ${AbilityName}    减伤：${var:单减_鼓舞}${var:单减_夜占盾}${var:单减_天星夜}${var:单减_炽天的幕帘}${var:单减_雪仇_${CasterName}}${var:单减_牵制_${CasterName}}${var:单减_昏乱_${CasterName}}${var:团减_策动}${var:团减_守之桑巴}${var:团减_行吟}${var:团减_节制}${var:团减_命运之轮}${var:团减_野战治疗阵}${var:团减_异想的幻光}${var:团减_圣光幕帘}${var:团减_武装戍卫}${var:团减_摆脱}${var:团减_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionGroup Enabled="true" Grouping="Or">
                     <ConditionSingle Enabled="true" ExpressionL="${_systemtimems}-${var:Souma_Eden_Ability_Last_Timems}" ExpressionTypeL="Numeric" ExpressionR="3000" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
@@ -1845,91 +1837,69 @@
             <Actions>
               <Action OrderNumber="1" ListVariableExpressionType="Numeric" ListVariableName="ATBossSkillNameBlacklist" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="攻击" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="攻撃" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="巨漩涡" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="旋转下潜" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="疯狗浪" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="畸形波" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="8" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="大暴风雨" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="9" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="震级5.0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="10" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="大地之铠" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="11" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="爆破岩石" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="12" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="地震波" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="13" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="爆炸" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="14" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="崩岩" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="15" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="余波" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="16" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="地裂" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="17" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="左侧地裂" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="18" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="右侧地裂" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="19" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="大地之拳" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="20" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="造山" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="21" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="岩盘粉碎" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="22" ListVariableOp="Push" ListVariableName="ATBossSkillNameBlacklist" ListVariableExpression="断罪" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
