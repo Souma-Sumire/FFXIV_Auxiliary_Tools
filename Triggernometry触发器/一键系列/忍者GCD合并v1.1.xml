@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="805306368" Id="59e995e2-bfdd-4470-ae45-b7cc371b77ef" Name="忍者GCD一键循环 v1.1" Enabled="true">
+    <Folders>
+      <Folder Id="15f99ec2-3cd1-446b-9b25-d441d9123a3f" Name="单体循环" Enabled="true">
+        <Folders>
+          <Folder Id="36534a12-552b-4d8c-aacb-27492865c44f" Name="断绝" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="loses" Id="986e83c3-1f91-4834-8ecc-3530afa880c7" RegularExpression="^.{27}(?&lt;name&gt;.+) loses the effect of 断绝预备">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:梦幻三段:${var:NINJA_UsingHotbar}:${var:NINJA_UsingHotbar_Number2}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="gains" Id="2de854e9-5976-4077-b6f4-7e599f4fb81e" RegularExpression="^.{27}(?&lt;name&gt;.+?) gains the effect of 断绝预备">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:断绝:${var:NINJA_UsingHotbar}:${var:NINJA_UsingHotbar_Number2}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers>
+          <Trigger Enabled="true" Name="1" Id="caf49a8a-5626-4f21-aac0-c06a3d877997" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):8C0:">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:绝风:${var:NINJA_UsingHotbar}:${var:NINJA_UsingHotbar_Number}" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="3" Id="aff5d481-47f3-4c5b-89ce-9c4618339169" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):8CF:">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:双刃旋:${var:NINJA_UsingHotbar}:${var:NINJA_UsingHotbar_Number}" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="2" Id="94ef3b23-2642-40e8-a675-87b67d71bf1f" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):8C2:">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:旋风刃:${var:NINJA_UsingHotbar}:${var:NINJA_UsingHotbar_Number}" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:双刃旋:${var:NINJA_UsingHotbar}:${var:NINJA_UsingHotbar_Number}" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="Break" Id="a4859b28-10bf-4445-ba6a-1e94f875088e" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):8C(0|2):" PrevActions="Interrupt">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:双刃旋:${var:NINJA_UsingHotbar}:${var:NINJA_UsingHotbar_Number}" ActionType="Trigger" ExecutionDelayExpression="15000" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:NINJA_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="Break2" Id="df4b63ee-04f2-48e8-a767-36f7176aab18" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):(8C7|8CE|4068|DEB):" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="100">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:双刃旋:${var:NINJA_UsingHotbar}:${var:NINJA_UsingHotbar_Number}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:NINJA_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="Reset" Id="a47eb73c-058d-41ae-b6f4-1522498216ae" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:双刃旋:${var:NINJA_UsingHotbar}:${var:NINJA_UsingHotbar_Number}" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="9566d24c-5318-4b0d-bbd9-c6ca3b07616a" Name="方法" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="死亡" Id="5278a8e6-8ea5-4a44-85c0-119b9a81df58" RegularExpression="^.{14} 19:(?&lt;name&gt;.+?) was defeated by ">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f2a89bd2-64a8-49b7-8139-5ba4679b746b" TriggerForce="true" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="Reset" Id="f2a89bd2-64a8-49b7-8139-5ba4679b746b" RegularExpression="^.{15}00:0039:战斗开始！|^.{14} 21:.{8}:4000001[026]|^.{15}00:0839:“.*?”任务" EditAutofire="True">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a47eb73c-058d-41ae-b6f4-1522498216ae" TriggerForce="regexp" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="86db670d-3663-4414-9a35-49d6a5e4305f" TriggerForce="regexp" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="改变快捷栏" Id="beb24c1c-2056-40a1-ae33-6c9162529a3c" RegularExpression="^SetHotbar:(?&lt;skill&gt;.+?):(?&lt;num1&gt;\d+):(?&lt;num2&gt;\d+)$">
+            <Actions>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set ${skill} ${num1} ${num2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="837e496d-494a-4459-88ae-055e24dd797f" Name="群体循环" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="2A" Id="47ad9dd7-116c-42e6-a1e6-1300d8dfc557" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):4068:">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:血雨飞花:${var:NINJA_UsingHotbar_AoE}:${var:NINJA_UsingHotbar_AoE_Number}" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="1A" Id="531a4226-8aa8-4d2a-92f7-e31da9f23f4c" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):8CE:">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:八卦无刃杀:${var:NINJA_UsingHotbar_AoE}:${var:NINJA_UsingHotbar_AoE_Number}" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].level}" ExpressionTypeL="Numeric" ExpressionR="52" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="Break" Id="2dd5a6ab-cad9-4501-b365-e65315fdd3fc" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):8CE:" PrevActions="Interrupt">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:血雨飞花:${var:NINJA_UsingHotbar_AoE}:${var:NINJA_UsingHotbar_AoE_Number}" ActionType="Trigger" ExecutionDelayExpression="15000" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:NINJA_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="Break2" Id="dc276756-a3ea-4cc8-b94e-f2dfb35ea8c4" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):(8C0|8C2|8CF|8C7|DEB):" PrevActions="Interrupt">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:血雨飞花:${var:NINJA_UsingHotbar_AoE}:${var:NINJA_UsingHotbar_AoE_Number}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:NINJA_${CasterName}血乱}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="Reset" Id="86db670d-3663-4414-9a35-49d6a5e4305f" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beb24c1c-2056-40a1-ae33-6c9162529a3c" TriggerText="SetHotbar:血雨飞花:${var:NINJA_UsingHotbar_AoE}:${var:NINJA_UsingHotbar_AoE_Number}" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers>
+      <Trigger Enabled="true" Name="*设置" Id="90709df1-f9c7-46c5-8915-94b4ec1303d3" RegularExpression=".*" PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="NINJA_UsingHotbar" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="NINJA_UsingHotbar_Number" VariableExpression="16" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="NINJA_UsingHotbar_Number2" VariableExpression="12" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="NINJA_UsingHotbar_AoE" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="NINJA_UsingHotbar_AoE_Number" VariableExpression="15" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
