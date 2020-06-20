@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.3.21" Enabled="true">
+  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.3.22" Enabled="true">
     <Folders>
-      <Folder Id="f24d266c-beab-41b2-b183-2a433f253d9f" Name="大技能" Enabled="true">
+      <Folder Id="f24d266c-beab-41b2-b183-2a433f253d9f" Name="大技能" Enabled="false">
         <Folders>
           <Folder FFXIVJobFilter="4437573664" Id="18d22ee1-a883-423b-ab13-4f77c58b8d77" Name="行尸走肉" Enabled="true">
             <Folders />
@@ -205,7 +205,7 @@
           </Trigger>
         </Triggers>
       </Folder>
-      <Folder Id="975aa113-8802-49d3-bdb2-4e610292f58b" Name="团辅" Enabled="true">
+      <Folder Id="975aa113-8802-49d3-bdb2-4e610292f58b" Name="团辅" Enabled="false">
         <Folders />
         <Triggers>
           <Trigger Enabled="true" Sequential="True" Name="攻其不备" Id="8c68f4ec-bf49-4505-a00c-83688a35e43e" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;[^:]+?):8D2:" PrevActions="Interrupt">
@@ -543,7 +543,7 @@
       </Folder>
     </Folders>
     <Triggers>
-      <Trigger Enabled="true" Name="进入了休息区" Id="ecfd88e4-035d-4fb6-9ac0-306f10f3aedc" RegularExpression="任务结束了。|has ended\.|の攻略を終了した。">
+      <Trigger Enabled="true" Name="进入了休息区" Id="ecfd88e4-035d-4fb6-9ac0-306f10f3aedc" RegularExpression="任务结束了。|has ended\.|の攻略を終了した。|进入了休息区">
         <Actions>
           <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" AuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
             <Condition Enabled="false" Grouping="Or" />
@@ -568,11 +568,9 @@
         <Actions>
           <Action OrderNumber="1" FolderId="f24d266c-beab-41b2-b183-2a433f253d9f" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="2" FolderId="975aa113-8802-49d3-bdb2-4e610292f58b" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
@@ -581,15 +579,12 @@
         <Actions>
           <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" AuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="2" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="8.25" TextAuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
