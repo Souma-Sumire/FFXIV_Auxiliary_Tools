@@ -1,14 +1,15 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="fb1cc9c9-8bbc-43bf-9353-05cd409b6b7b" Name="FF14信用查询 Beta6" Enabled="true">
+  <ExportedFolder Id="fb1cc9c9-8bbc-43bf-9353-05cd409b6b7b" Name="FF14信用查询 Beta7" Enabled="true">
     <Folders>
       <Folder Id="771d13d8-45c6-49a3-b3bf-d73bf84b5c31" Name="请不要禁用任何子触发器" Enabled="true">
         <Folders />
         <Triggers>
-          <Trigger Enabled="true" Name="R" Id="f0eb99de-9c63-4984-8fc7-9cd6bf7d3e47" RegularExpression="^.{14} 01:Changed Zone to |^.{14} 00:0039:进入了休息区。" PeriodRefire="Deny" RefirePeriodExpression="600000">
+          <Trigger Enabled="true" Name="R" Id="f0eb99de-9c63-4984-8fc7-9cd6bf7d3e47" RegularExpression="^.{14} 01:Changed Zone to |^.{14} 00:0039:进入了休息区。" PeriodRefire="Deny" RefirePeriodExpression="3600000">
             <Actions>
-              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/CSkip_BlackList/raw/master/csbl.csv" DiskFileOpVar="csbl" DiskFileCache="True" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/CSkip_BlackList/raw/master/csbl.csv" DiskFileOpVar="csbl" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -25,25 +26,25 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="3" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#80FF80" TextAuraOutline="Black" TextAuraName="csbl_text_${var:csbl_n}" TextAuraExpression="${tvarrl:csbl[$1][0]} ${tvarrl:csbl[$1][1]}星 ${tvarrl:csbl[$1][2]}" TextAuraXIniExpression="0.5*(${_screenwidth}-400)" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="1000" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+              <Action OrderNumber="3" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#FF8080" TextAuraOutline="Black" TextAuraName="csbl_text_${var:csbl_n}" TextAuraExpression="${tvarrl:csbl[$1][0]} ${tvarrl:csbl[$1][1]} 来源:${tvarrl:csbl[$1][2]}" TextAuraXIniExpression="0.5*(${_screenwidth}-400)" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="1000" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="30-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${tvarrl:csbl[$1][1]}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvarrl:csbl[$1][0]}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="4" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#FF8000" TextAuraOutline="Black" TextAuraName="csbl_text_${var:csbl_n}" TextAuraExpression="${tvarrl:csbl[$1][0]} ${tvarrl:csbl[$1][1]}星 ${tvarrl:csbl[$1][2]} 来源:${tvarrl:csbl[$1][3]}" TextAuraXIniExpression="0.5*(${_screenwidth}-400)" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="1000" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="10-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+              <Action OrderNumber="4" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#FF8000" TextAuraOutline="Black" TextAuraName="csbl_text_${var:csbl_n}" TextAuraExpression="${tvarrl:csbl[$1][0]} ${tvarrl:csbl[$1][1]}星 ${tvarrl:csbl[$1][2]} 来源:${tvarrl:csbl[$1][3]}" TextAuraXIniExpression="0.5*(${_screenwidth}-400)" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="1000" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="10-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" Enabled="False" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvarrl:csbl[$1][1]}" ExpressionTypeL="String" ExpressionR="[2-4]" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="5" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraName="csbl_text_${var:csbl_n}" TextAuraExpression="${tvarrl:csbl[$1][0]} ${tvarrl:csbl[$1][1]}星 ${tvarrl:csbl[$1][2]} 来源:${tvarrl:csbl[$1][3]}             (${numeric:19-${_since}})" TextAuraXIniExpression="0.5*(${_screenwidth}-400)" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="1000" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="19-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+              <Action OrderNumber="5" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraName="csbl_text_${var:csbl_n}" TextAuraExpression="${tvarrl:csbl[$1][0]} ${tvarrl:csbl[$1][1]}星 ${tvarrl:csbl[$1][2]} 来源:${tvarrl:csbl[$1][3]}             (${numeric:19-${_since}})" TextAuraXIniExpression="0.5*(${_screenwidth}-400)" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="1000" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="19-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" Enabled="False" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvarrl:csbl[$1][1]}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="6" LogLevel="-1" UseTTSTextExpression="${tvarrl:csbl[$1][1]}星,${tvarrl:csbl[$1][2]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" Asynchronous="False">
+              <Action OrderNumber="6" LogLevel="-1" UseTTSTextExpression="${tvarrl:csbl[$1][1]}星,${tvarrl:csbl[$1][2]}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvarrl:csbl[$1][1]}" ExpressionTypeL="String" ExpressionR="[1-4]" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
