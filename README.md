@@ -69,3 +69,11 @@
   * 没开`鲶鱼精邮差`的时候**不要启用**需要邮差的触发器
   * 尝试更改ACT的CPU优先级
     ![调整CPU优先级](screenshots/调整CPU优先级.jpg)
+
+## 说明
+
+  Aho与Zeff触发器是国际服触发器汉化而来，非原创。
+
+  Aho触发器 by Aho Senpai (Discord: Aho Senpai#0818).
+
+  Zeff触发器 by Zeffuro (Discord: Zeffuro#3033)
