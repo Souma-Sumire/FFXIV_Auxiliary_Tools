@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏 v1.3" Enabled="true">
+  <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏 v1.4" Enabled="true">
     <Folders />
     <Triggers>
-      <Trigger Enabled="true" Name="Read CSV" Id="c918b0fd-f219-4b40-bd47-6a5d68e6bffe" RegularExpression="^.{15}01:Changed Zone to|^.{15}00:0038:发(送副本)?宏">
+      <Trigger Enabled="true" Name="R" Id="c918b0fd-f219-4b40-bd47-6a5d68e6bffe" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000">
         <Actions>
-          <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="${_env[SoumaTriggerFolder]}\Triggernometry触发器\发送副本宏\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
+          <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E5%8F%91%E5%AE%8F%EF%BC%88%E5%8F%91%E6%94%BB%E7%95%A5%EF%BC%89%E5%B7%A5%E5%85%B7/%E5%AE%8F.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
@@ -13,38 +13,54 @@
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="${elvar:ExtremeMacroText}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
         </Condition>
-        <Conditions />
       </Trigger>
-      <Trigger Enabled="true" Sequential="True" Name="Send2" Id="f7784f7f-4551-4260-ae3f-aa3fa6ba01ce" RegularExpression="^.{15}00:0038:发(送副本)?宏 ?(?&lt;channel&gt;\w+?) ?(?&lt;map&gt;.+)$">
+      <Trigger Enabled="true" Sequential="True" Name="S" Id="fc1a5216-3bad-4ac6-8929-1c91a200ff8e" RegularExpression="^.{14} 00:0038:发宏$">
         <Actions>
-          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${map}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="100" Asynchronous="False">
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
             <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${channel}" ExpressionTypeL="String" ExpressionR="(?i)y|sh|fc" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+              <ConditionSingle Enabled="true" ExpressionL="${evar:AT_发宏}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:AT_发宏}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e 未组队状态下无法发送小队消息。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:AT_发宏}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].name}" ExpressionTypeL="String" ExpressionR="" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+              <ConditionGroup Enabled="true" Grouping="Not">
+                <ConditionSingle Enabled="true" ExpressionL="${tvarrl:ExtremeMacroText[${_zone}][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              </ConditionGroup>
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e 此副本暂未收录。如有意帮忙提交内容，请加群868116069。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${tvarrl:ExtremeMacroText[${_zone}][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="5" LogLevel="-1" UseTTSTextExpression="未配置鲶鱼精邮差。" UseTTSVolumeExpression="" UseTTSRateExpression="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="true" Grouping="Not">
+              <ConditionSingle Enabled="true" ExpressionL="${_env[PostNamazu]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="6" LogLevel="-1" VariableOp="SetString" VariableName="AT_发宏" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
-      <Trigger Enabled="true" Sequential="True" Name="Send0" Id="fc1a5216-3bad-4ac6-8929-1c91a200ff8e" RegularExpression="^.{15}00:0038:发(送副本)?宏$">
+      <Trigger Enabled="true" Name="B" Id="6943d754-1bbd-42b0-8386-d15bcfbc6102" RegularExpression="^.{14} 00:0038:发宏$">
         <Actions>
-          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="100" Asynchronous="False">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${channel}" ExpressionTypeL="String" ExpressionR="(?i)y|sh|fc" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-            </Condition>
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Sequential="True" Name="Send1" Id="ca4f8735-2772-42c1-bab5-4e1cb3b9a039" RegularExpression="^.{15}00:0038:发(送副本)?宏 ?(?&lt;channel&gt;\w+)$">
-        <Actions>
-          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${channel}} ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="100" Asynchronous="False">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${channel}" ExpressionTypeL="String" ExpressionR="(?i)y|sh|fc" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-            </Condition>
+          <Action OrderNumber="1" LogLevel="-1" VariableName="AT_发宏" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000" RefireInterrupt="True">
+            <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
         </Actions>
