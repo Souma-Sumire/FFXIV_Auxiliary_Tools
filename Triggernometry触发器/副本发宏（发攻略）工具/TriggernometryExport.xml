@@ -1,13 +1,12 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏 v1.4" Enabled="true">
+  <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏 v1.4.1" Enabled="true">
     <Folders />
     <Triggers>
       <Trigger Enabled="true" Name="R" Id="c918b0fd-f219-4b40-bd47-6a5d68e6bffe" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000">
         <Actions>
           <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E5%8F%91%E5%AE%8F%EF%BC%88%E5%8F%91%E6%94%BB%E7%95%A5%EF%BC%89%E5%B7%A5%E5%85%B7/%E5%AE%8F.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
@@ -28,7 +27,7 @@
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e 未组队状态下无法发送小队消息。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e 未组队状态下无法发送小队消息。&lt;se.11&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${evar:AT_发宏}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].name}" ExpressionTypeL="String" ExpressionR="" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -55,16 +54,28 @@
             <Conditions />
           </Action>
         </Actions>
-        <Condition Enabled="false" Grouping="Or" />
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="拉诺西亚|黑衣森林|萨纳兰|库尔札斯中央高地|摩杜纳|库尔札斯西部高地|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+        </Condition>
       </Trigger>
       <Trigger Enabled="true" Name="B" Id="6943d754-1bbd-42b0-8386-d15bcfbc6102" RegularExpression="^.{14} 00:0038:发宏$">
         <Actions>
           <Action OrderNumber="1" LogLevel="-1" VariableName="AT_发宏" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000" RefireInterrupt="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Sequential="True" Name="S2" Id="b95578b7-6332-47aa-83a4-90e0add7211c" RegularExpression="^.{14} 00:0038:发宏$">
+        <Actions>
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e 你得先进本啊！&lt;se.11&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="拉诺西亚|黑衣森林|萨纳兰|库尔札斯中央高地|摩杜纳|库尔札斯西部高地|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海" ExpressionTypeR="String" ConditionType="RegexMatch" />
+        </Condition>
         <Conditions />
       </Trigger>
     </Triggers>
