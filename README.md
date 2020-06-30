@@ -9,10 +9,10 @@
 
   1. 导入`Triggernometry触发器\Test.xml`
   1. 前往"中拉诺西亚-盛夏农庄"
-  1. 对木人 “行礼” 进行测试
-
-  1. 自助排障 ![Test窗口](https://i.loli.net/2020/07/01/1LxNji7IMXpzP6U.png)
-  1. 对木人 “告别” 关闭窗口
+  1. 对木人 “行礼” 进行测试 
+  
+  1. 正常状态![Test](https://i.loli.net/2020/07/01/Q3hyfNpnu54vemd.png)
+  1. 对木人 “告别” 以提前关闭窗口
   
 ## 基础依赖
 
