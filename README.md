@@ -5,6 +5,11 @@
   * [别像Stupid一样提问](https://github.com/dogfight360/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md)
   * [如何优雅的提问](http://www.360doc.com/content/19/1223/08/30422483_881502108.shtml)
 
+* 下载分流
+  * [Github](https://github.com/553469159/FFXIV_Auxiliary_Tools)
+  * [Gitee](https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools)
+  * [微云](https://share.weiyun.com/5iGr11Z)
+
 ## 自助排障
 
   1. 导入`Triggernometry触发器\Test.xml`
