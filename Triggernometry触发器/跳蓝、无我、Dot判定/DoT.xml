@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="5242880" Id="d62aa48a-adb0-4aa6-ade3-0197f8016fa4" Name="诗人Dot监控" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Name="呼出宏 /e !dotshow" Id="3e4e75c7-3cb9-4f34-8c93-d924efd61cc9" RegularExpression="^.{14} 00:0038:!dotshow">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Dot_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Dot_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" AuraName="Souma_Dot_Tick_1" AuraImage="https://i.loli.net/2020/07/07/9XbZL1cuOdmGJz8.png" AuraXIniExpression="${var:_AT_诗人Dot监控X坐标}-2" AuraYIniExpression="${var:_AT_诗人Dot监控Y坐标}-2" AuraWIniExpression="152" AuraHIniExpression="28" AuraOIniExpression="100" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" AuraName="Souma_Dot_Tick_2" AuraImage="https://i.loli.net/2020/07/07/CMfma7jSbp9L3ni.png" AuraXIniExpression="${var:_AT_诗人Dot监控X坐标}" AuraYIniExpression="${var:_AT_诗人Dot监控Y坐标}" AuraWIniExpression="0" AuraHIniExpression="28" AuraOIniExpression="100" AuraWTickExpression="if(${var:Souma_Dot_Tick_Timing}=0,1,((${_systemtimems}-${var:Souma_Dot_Tick_Timing})%3000)/3000*152)" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="团灭" Id="060660d7-fd0d-41fb-8de5-ec89b92e16cd" RegularExpression="^.{14} 21:........:4000001[026]:|^.{14} 01:Changed Zone to">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Dot_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Server_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="Dot" Id="3bf21173-547d-426c-b541-4bf948a832f7" RegularExpression="^.{14} 18:DoT Tick on (?&lt;target&gt;.+?) for \d+? damage\." PeriodRefire="Deny" RefirePeriodExpression="20000">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Dot_Tick_Timing" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Dot_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="隐藏宏 /e !dothide" Id="b7979b8f-892e-4cd8-8929-10fdd22d9ff5" RegularExpression="^.{14} 00:0038:!dothide">
+        <Actions>
+          <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="Souma_Dot_Tick_1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" AuraOp="DeactivateAura" AuraName="Souma_Dot_Tick_2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" VariableName="Souma_Dot_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Server_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="*自定义设置 - 显示坐标" Id="a66b93c6-dcf2-4d25-839f-ca496ea68ca4" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_诗人Dot监控X坐标" VariableExpression="1242" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_AT_诗人Dot监控Y坐标" VariableExpression="904" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
