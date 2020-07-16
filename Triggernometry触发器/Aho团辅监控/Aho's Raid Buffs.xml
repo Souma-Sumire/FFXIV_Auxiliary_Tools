@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.55" Enabled="true">
+  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.61" Enabled="true">
     <Folders>
       <Folder Id="f24d266c-beab-41b2-b183-2a433f253d9f" Name="大技能" Enabled="true">
         <Folders>
@@ -540,7 +540,7 @@
       </Folder>
     </Folders>
     <Triggers>
-      <Trigger Enabled="true" Name="团灭" Id="7b7afcd6-1ebe-4eda-865e-789e57ba9f85" RegularExpression="^.{14} 21:.{8}:400000(03|1[026]):">
+      <Trigger Enabled="true" Name="进入休息区" Id="7b7afcd6-1ebe-4eda-865e-789e57ba9f85" RegularExpression="^.{14} 00:0039:(?:进入了休息区。|You have entered a sanctuary\.|レストエリアに入った！)$">
         <Actions>
           <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" AuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
             <Condition Enabled="false" Grouping="Or" />
@@ -549,6 +549,14 @@
           <Action OrderNumber="2" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="8.25" TextAuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="团灭" Id="1a0ea226-0553-4a0f-94c1-8e2f4b60f7a7" RegularExpression="^.{14} 21:.{8}:4000001[026]:">
+        <Actions>
+          <Action OrderNumber="1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="8.25" TextAuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
