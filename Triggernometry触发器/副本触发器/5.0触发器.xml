@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f70e86ec-4af7-4a29-8c21-a1e66db8d3d6" Name="副本触发器 v1.5.2.5" Enabled="true">
+  <ExportedFolder Id="f70e86ec-4af7-4a29-8c21-a1e66db8d3d6" Name="副本触发器 v1.5.2.52" Enabled="true">
     <Folders>
       <Folder Id="7a62a08c-73e3-41bf-b3fb-0782ceb4b8f6" Name="极神" Enabled="true">
         <Folders>
@@ -908,27 +908,18 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="ストンピング" Id="b96f8f1e-b590-4f2f-bedd-955555bcf1bb" RegularExpression="^.{15}14:4B03:.* on (?&lt;name&gt;.+?)\.$">
                     <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="挑衅" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="And">
+                      <Action OrderNumber="1" UseTTSTextExpression="死刑" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Healer" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                         </Condition>
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="2" UseTTSTextExpression="死刑减伤" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="And">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="3" UseTTSTextExpression="死刑" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                      <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="94278783-12fe-45a0-8a67-e5ce67aef5e9" TriggerText="AT_TTS_Job:${name}" ActionType="Trigger" ExecutionDelayExpression="650">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Healer" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                      </Action>
-                      <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="94278783-12fe-45a0-8a67-e5ce67aef5e9" TriggerText="AT_TTS_Job:${name}" ActionType="Trigger" ExecutionDelayExpression="650">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Healer" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -1137,9 +1128,9 @@
                   </Folder>
                 </Folders>
                 <Triggers>
-                  <Trigger Enabled="true" Name="愤怒/悲叹" Id="90e7e4fb-7051-4204-add0-42df757ed120" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;type&gt;憤怒|悲嘆|Pall of Rage|Pall of Grief) from  for 9999\.00 Seconds\.$">
+                  <Trigger Enabled="true" Name="愤怒/悲叹" Id="90e7e4fb-7051-4204-add0-42df757ed120" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;type&gt;愤怒|悲叹|憤怒|悲嘆|Pall of Rage|Pall of Grief) from  for 9999\.00 Seconds\.$">
                     <Actions>
-                      <Action OrderNumber="1" VariableOp="SetString" VariableName="AT_红玉_Buff" VariableExpression="Red" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Variable">
+                      <Action OrderNumber="1" UseTTSTextExpression="打右侧" UseTTSRateExpression="2" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionGroup Enabled="true" Grouping="Or">
@@ -1148,18 +1139,9 @@
                             <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="Pall of Rage" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="2" UseTTSTextExpression="打右侧" UseTTSRateExpression="2" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="And">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionGroup Enabled="true" Grouping="Or">
-                            <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="憤怒" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                            <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="愤怒" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                            <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="Pall of Rage" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          </ConditionGroup>
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="3" VariableOp="SetString" VariableName="AT_红玉_Buff" VariableExpression="Blue" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Variable">
+                      <Action OrderNumber="2" UseTTSTextExpression="打左侧" UseTTSRateExpression="2" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionGroup Enabled="true" Grouping="Or">
@@ -1168,16 +1150,7 @@
                             <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="Pall of Grief" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           </ConditionGroup>
                         </Condition>
-                      </Action>
-                      <Action OrderNumber="4" UseTTSTextExpression="打左侧" UseTTSRateExpression="2" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="And">
-                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          <ConditionGroup Enabled="true" Grouping="Or">
-                            <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="悲嘆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                            <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="悲叹" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                            <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="Pall of Grief" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                          </ConditionGroup>
-                        </Condition>
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
