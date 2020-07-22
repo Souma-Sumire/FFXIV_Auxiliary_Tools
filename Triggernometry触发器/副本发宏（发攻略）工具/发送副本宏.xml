@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏 v1.4.2" Enabled="true">
+  <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="发送副本宏 v1.4.21" Enabled="true">
     <Folders />
     <Triggers>
       <Trigger Enabled="true" Name="R" Id="c918b0fd-f219-4b40-bd47-6a5d68e6bffe" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000">
@@ -19,19 +19,16 @@
             <Condition Enabled="true" Grouping="Not">
               <ConditionSingle Enabled="true" ExpressionL="${_env[PostNamazu]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${evar:AT_发宏}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p ${tvarrl:ExtremeMacroText[${_zone}][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${evar:AT_发宏}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e 未组队状态下无法发送小队消息。&lt;se.11&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
             <Condition Enabled="true" Grouping="And">
@@ -41,17 +38,14 @@
                 <ConditionSingle Enabled="true" ExpressionL="${tvarrl:ExtremeMacroText[${_zone}][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
               </ConditionGroup>
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e 此副本暂未收录。如有意帮忙提交内容，请加群868116069。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${tvarrl:ExtremeMacroText[${_zone}][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Action>
           <Action OrderNumber="6" LogLevel="-1" VariableOp="SetString" VariableName="AT_发宏" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
@@ -76,10 +70,9 @@
           <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="拉诺西亚|黑衣森林|萨纳兰|库尔札斯中央高地|摩杜纳|库尔札斯西部高地|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海" ExpressionTypeR="String" ConditionType="RegexMatch" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" IsReadme="True" Name="使用说明（双击打开描述）" Id="9a6eab83-db6b-4b88-992c-b4485d9efc6d" RegularExpression="" Description="1.开启依赖：[鲶鱼精邮差]&#xD;&#xA;&#xD;&#xA;2.配置鲶鱼精邮差的端口环境(bat)。重启ACT&#xD;&#xA;&#xD;&#xA;3.使用宏&#xD;&#xA;&#xD;&#xA;  &quot;/e 发宏&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;使用上面的宏，会将当前所在副本的对应喊话到默语频道(仅自己可见)。&#xD;&#xA;如3秒内连打2次宏，则发送到小队频道。&#xD;&#xA;&#xD;&#xA;附：&#xD;&#xA;  E1S-E4S写法&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章1)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章2)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章3)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章4)&#xD;&#xA;&#xD;&#xA;https://nga.178.com/read.php?&amp;tid=19753093">
+      <Trigger Enabled="false" IsReadme="True" Name="使用说明（双击打开描述）" Id="9a6eab83-db6b-4b88-992c-b4485d9efc6d" RegularExpression="" Description="使用远程触发器导入时，请勾选“允许触发器操作文件”！否则将无法使用。&#xD;&#xA;&#xD;&#xA;1.开启依赖：[鲶鱼精邮差]&#xD;&#xA;&#xD;&#xA;2.配置鲶鱼精邮差的端口环境(bat)。重启ACT&#xD;&#xA;&#xD;&#xA;3.使用宏&#xD;&#xA;&#xD;&#xA;  &quot;/e 发宏&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;使用上面的宏，会将当前所在副本的对应喊话到默语频道(仅自己可见)。&#xD;&#xA;如3秒内连打2次宏，则发送到小队频道。&#xD;&#xA;&#xD;&#xA;附：&#xD;&#xA;  E1S-E4S写法&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章1)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章2)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章3)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章4)&#xD;&#xA;&#xD;&#xA;https://nga.178.com/read.php?&amp;tid=19753093">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
