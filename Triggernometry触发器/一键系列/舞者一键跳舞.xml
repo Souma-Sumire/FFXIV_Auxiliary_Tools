@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="137438953472" Id="ff5742b3-0736-46dd-a8c9-f1f789c69dfd" Name="舞娘一键舞步 v1.5.1" Enabled="true">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="137438953472" Id="ff5742b3-0736-46dd-a8c9-f1f789c69dfd" Name="舞娘一键舞步 v1.5.2" Enabled="true">
     <Folders>
       <Folder Id="cfd2abbb-fd63-43a1-82b2-ef8cbe38d56f" Name="通用方法" Enabled="true">
         <Folders />
@@ -252,6 +252,31 @@
         </Triggers>
       </Folder>
     </Folders>
-    <Triggers />
+    <Triggers>
+      <Trigger Enabled="true" Name="15秒跳舞" Id="db45f607-325f-49d9-8c6b-108e55d07f6c" RegularExpression="^.{14} 00:00b9:距离战斗开始还有(..)秒！ （.+）$">
+        <Actions>
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 标准舞步" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="$1*1000-15000" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac ${var:DNCOK_Skill${var:DNCOK_first}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="2100" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac ${var:DNCOK_Skill${var:DNCOK_second}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1100" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac ${var:DNCOK_SkillF}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="11800" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="15" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+    </Triggers>
   </ExportedFolder>
 </TriggernometryExport>
