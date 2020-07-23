@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.6.7" Enabled="true">
+  <ExportedFolder Id="f10a3a71-2518-4779-8678-7b0d9dcf94a6" Name="Aho v1.6.8" Enabled="true">
     <Folders>
       <Folder Id="f24d266c-beab-41b2-b183-2a433f253d9f" Name="大技能" Enabled="true">
         <Folders>
@@ -322,26 +322,31 @@
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="占卜" Id="5cf01d1d-69ac-4d91-ada8-f95d9648aec7" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):40A8:(Divination|占卜|ディヴィネーション):.{8}:[^:]+?:(?&lt;power&gt;\d)0F:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
+          <Trigger Enabled="true" Sequential="True" Name="占卜" Id="5cf01d1d-69ac-4d91-ada8-f95d9648aec7" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):40A8:(Divination|占卜|ディヴィネーション):.{8}:[^:]+?:(?&lt;power&gt;.)..:" PrevActions="Interrupt" PeriodRefire="Deny" RefirePeriodExpression="2000">
             <Actions>
               <Action OrderNumber="1" AuraName="Divination" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/Aho%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/003553.png" AuraXIniExpression="${var:RaidAuraX}+400" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="Divination" TextAuraExpression="${numeric:+120-${_since}}" TextAuraXIniExpression="${var:RaidAuraX}+311+80" TextAuraYIniExpression="${var:RaidAuraY}+11" TextAuraWIniExpression="59" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="120-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" AuraImageMode="StretchImage" AuraName="DivinationBorder" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/Aho%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:RaidAuraX}+400" AuraYIniExpression="${var:RaidAuraY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraTTLTickExpression="15-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" UseTTSTextExpression="占卜${power}%" UseTTSRateExpression="2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${power}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="StringNotEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="5" UseTTSTextExpression="占卜" UseTTSRateExpression="2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="UseTTS">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${power}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
@@ -544,11 +549,9 @@
         <Actions>
           <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" AuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="2" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="8.25" TextAuraName="(TrickAttack|Embolden|TechnicalStep|Devilment|LeftRightEye|ChainStratagem|Devotion|Brotherhood|Divination|BattleLitany|BattleVoice|The).*|.*(OfCrowns|TeamCD)" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
