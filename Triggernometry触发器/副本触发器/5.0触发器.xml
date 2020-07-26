@@ -3539,7 +3539,7 @@
                 <Folders>
                   <Folder Id="fabaf90b-95c4-4723-9cd3-faac4256407b" Name="一旦启用电脑爆炸" Enabled="true">
                     <Folders>
-                      <Folder Id="7aeeeea9-b0d1-46f4-a23d-7a0c56acce4d" Name="光之暴走（Ayatori）" Enabled="false">
+                      <Folder Id="7aeeeea9-b0d1-46f4-a23d-7a0c56acce4d" Name="光之暴走（Ayatori）" Enabled="true">
                         <Folders />
                         <Triggers>
                           <Trigger Enabled="true" Name="光之暴走" Id="817a0da7-2276-47b1-a4bf-1645fab31b7b" RegularExpression="^.{15}14:4D73:">
@@ -3631,7 +3631,7 @@
                           </Trigger>
                         </Triggers>
                       </Folder>
-                      <Folder Id="ff41eaed-d9b1-4ccc-8659-9b7a7a23ac3a" Name="钻石冰霜" Enabled="false">
+                      <Folder Id="ff41eaed-d9b1-4ccc-8659-9b7a7a23ac3a" Name="钻石冰霜" Enabled="true">
                         <Folders />
                         <Triggers>
                           <Trigger Enabled="true" Name="红圈" Id="2dfafa9b-739a-4829-9225-b026c0eda5e6" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;.+?):....:....:0060:0000:0000:0000">
@@ -4055,7 +4055,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="false" Name="1回目" Id="e0789fb1-d06d-4548-87cf-7744c2c53573" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;buff&gt;Wyrmfang|Wyrmclaw|聖竜の爪|聖竜の牙|圣龙牙|圣龙爪) from  for (?&lt;time&gt;.+?)\.\d\d Seconds\.$">
+                      <Trigger Enabled="true" Name="1回目" Id="e0789fb1-d06d-4548-87cf-7744c2c53573" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;buff&gt;Wyrmfang|Wyrmclaw|聖竜の爪|聖竜の牙|圣龙牙|圣龙爪) from  for (?&lt;time&gt;.+?)\.\d\d Seconds\.$">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="第衣个撞头" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
@@ -4185,7 +4185,7 @@
                       </Trigger>
                     </Triggers>
                   </Folder>
-                  <Folder Id="b0de6fcc-f489-4529-b1cb-9be053424b55" Name="一旦启用电脑爆炸" Enabled="false">
+                  <Folder Id="b0de6fcc-f489-4529-b1cb-9be053424b55" Name="一旦启用电脑爆炸" Enabled="true">
                     <Folders>
                       <Folder Id="f3e1178a-2678-4d5a-9584-29d5896ed87f" Name="冰光龙诗" Enabled="false">
                         <Folders />
@@ -4257,43 +4257,41 @@
                         <Actions>
                           <Action OrderNumber="1" LogMessageText="AT_Subtitle:找无色镜:21:0:-175:e8skagami0" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="2" LogMessageText="AT_Subtitle:如果在西 → 顺时针:21:-275:-75:e8skagami1" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                          <Action OrderNumber="2" LogMessageText="AT_Subtitle:无色在西 → 顺时针:21:-275:-75:e8skagami1" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                             <Condition Enabled="false" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_e8s_p3_tsubasa_type}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                             </Condition>
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="3" LogMessageText="AT_Subtitle:如果在东 → 逆时针:21:275:-75:e8skagami2" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                          <Action OrderNumber="3" LogMessageText="AT_Subtitle:无色在东 → 逆时针:21:275:-75:e8skagami2" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                             <Condition Enabled="false" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${var:AT_e8s_p3_tsubasa_type}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="NumericEqual" />
                             </Condition>
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="4" LogMessageText="AT_Subtitle:↑:21:285:-110:e8skagami21" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                          <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="dd72cea7-a77d-4e6c-993f-2493ae58c964" ActionType="Trigger" ExecutionDelayExpression="3000">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="5" LogMessageText="AT_Subtitle:↖:21:275:-145:e8skagami22" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-                            <Condition Enabled="false" Grouping="Or" />
+                          <Action OrderNumber="5" LogLevel="-1" UseTTSTextExpression="斜穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3750">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${numeric:round(${_ffxiventity[${var:AT_E8S_ID}].heading},0)}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="6" LogMessageText="AT_Subtitle:↖:21:250:-170:e8skagami23" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-                            <Condition Enabled="false" Grouping="Or" />
+                          <Action OrderNumber="6" LogLevel="-1" UseTTSTextExpression="等" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${numeric:round(${_ffxiventity[${var:AT_E8S_ID}].heading},0)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="7" LogMessageText="AT_Subtitle:←:21:215:-175:e8skagami24" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-                            <Condition Enabled="false" Grouping="Or" />
-                          </Action>
-                          <Action OrderNumber="8" LogMessageText="AT_Subtitle:↑:21:-285:-110:e8skagami11" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-                            <Condition Enabled="false" Grouping="Or" />
-                          </Action>
-                          <Action OrderNumber="9" LogMessageText="AT_Subtitle:↗:21:-275:-145:e8skagami12" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-                            <Condition Enabled="false" Grouping="Or" />
-                          </Action>
-                          <Action OrderNumber="10" LogMessageText="AT_Subtitle:↗:21:-250:-170:e8skagami13" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-                            <Condition Enabled="false" Grouping="Or" />
-                          </Action>
-                          <Action OrderNumber="11" LogMessageText="AT_Subtitle:→:21:-215:-175:e8skagami14" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-                            <Condition Enabled="false" Grouping="Or" />
-                          </Action>
-                          <Action OrderNumber="12" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="dd72cea7-a77d-4e6c-993f-2493ae58c964" ActionType="Trigger" ExecutionDelayExpression="3000">
-                            <Condition Enabled="false" Grouping="Or" />
+                          <Action OrderNumber="7" LogLevel="-1" UseTTSTextExpression="斜穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="5000">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${numeric:round(${_ffxiventity[${var:AT_E8S_ID}].heading},0)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -6107,6 +6105,7 @@
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="EndEncounter">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
