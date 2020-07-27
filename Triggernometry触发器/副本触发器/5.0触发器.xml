@@ -5463,24 +5463,24 @@
                   </Trigger>
                 </Triggers>
               </Folder>
-              <Folder Id="98dc9cd6-ba0b-4cdd-ae57-5edbfde47119" Name="未被宽恕的盲崇 Beta" Enabled="true">
+              <Folder Id="98dc9cd6-ba0b-4cdd-ae57-5edbfde47119" Name="未被宽恕的盲崇" Enabled="true">
                 <Folders />
                 <Triggers>
                   <Trigger Enabled="true" Name="白光奔流1" Id="e96fa0db-1e22-4215-819f-50f86c054489" RegularExpression="^.{14} 15:.{8}:[^:]+?:4C37(?::[^:]+?){25}:([^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="5000">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="左左左" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="105" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                         </Condition>
                         <Conditions />
                       </Action>
                       <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="右右右" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="RegexMatch" />
+                          <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                         </Condition>
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="穿穿穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="7000">
+                      <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="穿穿穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="8000">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -5505,52 +5505,30 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="id" Id="47fac353-7772-43f8-ba3c-5209b6678625" RegularExpression="^.{14} 15:(.{8}):[^:]+?:4C37(?::[^:]+?){25}:([^:]+?):">
+                  <Trigger Enabled="true" Name="瞄准号令" Id="dd40c7d0-2e92-4dc6-a57b-039da9ec571d" RegularExpression="^.{14} 23:(.{8}):(?:未被宽恕的盲崇|unforgiven idolatry|アンフォーギヴン・アイドラトリー):.{8}:(.+?):.+:0000:0011:.{8}:000F:....:$">
                     <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="AT_E7S_盲崇" VariableExpression="${var:AT_E7S_盲崇}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="2" LogLevel="-1" TableVariableOp="Set" TableVariableName="AT_E7S_盲崇" TableVariableExpression="$1" TableVariableX="1" TableVariableY="${var:AT_E7S_盲崇}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="3" LogLevel="-1" TableVariableOp="Set" TableVariableName="AT_E7S_盲崇" TableVariableExpression="$2" TableVariableX="2" TableVariableY="${var:AT_E7S_盲崇}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="瞄准号令" Id="dd40c7d0-2e92-4dc6-a57b-039da9ec571d" RegularExpression="^.{14} 23:(.{8}):(未被宽恕的盲崇|unforgiven idolatry|アンフォーギヴン・アイドラトリー):.{8}:(.+?):.+:0000:0011:.{8}:000F:....:$">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="1号右上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="800">
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="1号右上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="250">
                         <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${tvarrl:AT_E7S_盲崇[$1][1]}" ExpressionTypeL="Numeric" ExpressionR="85" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="85" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
                         <Conditions />
                       </Action>
                       <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="2号右下" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${tvarrl:AT_E7S_盲崇[$1][1]}" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
                         <Conditions />
                       </Action>
                       <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="3号左下" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${tvarrl:AT_E7S_盲崇[$1][1]}" ExpressionTypeL="Numeric" ExpressionR="105" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="105" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
                         <Conditions />
                       </Action>
                       <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="4号左上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${tvarrl:AT_E7S_盲崇[$1][1]}" ExpressionTypeL="Numeric" ExpressionR="115" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="115" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="5" LogLevel="-1" TextAuraAlignment="TopLeft" TextAuraEffect="Bold" TextAuraFontSize="15" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraExpression="ID$1 ${_ffxiventity[$1].x}" TextAuraXIniExpression="0" TextAuraYIniExpression="380" TextAuraWIniExpression="148" TextAuraHIniExpression="42" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" Enabled="False" ActionType="TextAura">
-                        <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep">
-                        <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
                     </Actions>
