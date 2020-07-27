@@ -4200,29 +4200,24 @@
                         <Actions>
                           <Action OrderNumber="1" LogMessageText="AT_Subtitle:同背异前:21:0:-175:e8skagami0" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                             <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="dd72cea7-a77d-4e6c-993f-2493ae58c964" ActionType="Trigger" ExecutionDelayExpression="3000">
                             <Condition Enabled="false" Grouping="Or" />
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="斜穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3500">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="abs(round(${_ffxiventity[${var:AT_E8S_ID}].heading},0))" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="等等" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="abs(round(${_ffxiventity[${var:AT_E8S_ID}].heading},0))" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="5" LogLevel="-1" UseTTSTextExpression="斜穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="5000">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="abs(round(${_ffxiventity[${var:AT_E8S_ID}].heading},0))" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
@@ -4378,7 +4373,6 @@
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="AT_E8S_ID" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -4401,7 +4395,7 @@
                         </Condition>
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="5461c91d-606f-4bbb-b35a-fd488ea34d55" TriggerForce="regexp,conditions,refire,parent" ActionType="Trigger" ExecutionDelayExpression="3050">
+                      <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="5461c91d-606f-4bbb-b35a-fd488ea34d55" TriggerForce="regexp,conditions,refire,parent" ActionType="Trigger" ExecutionDelayExpression="2850">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -4488,6 +4482,17 @@
                       <Action OrderNumber="25" VariableOp="SetNumeric" VariableName="AT_e8s_double_tsubasa" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="false" Name="自动防击退 Beta" Id="5461c91d-606f-4bbb-b35a-fd488ea34d55" RegularExpression="">
+                    <Actions>
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 亲疏自行" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="false" Grouping="And" />
+                      </Action>
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 沉稳咏唱" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="false" Grouping="And" />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -4615,6 +4620,14 @@
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                     </Condition>
                   </Trigger>
+                  <Trigger Enabled="true" Name="HP" Id="0f9d2285-c7f0-4443-a11b-d302092d59b8" RegularExpression="^.{15}14:4D74:">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" TextAuraEffect="Bold" TextAuraFontSize="21.75" TextAuraName="E8S转阶段" TextAuraExpression="${numeric:round(${_ffxiventity[${var:AT_E8S_ID}].currenthp}/${_ffxiventity[${var:AT_E8S_ID}].maxhp}*100,2)}%" TextAuraXIniExpression="${_screenwidth}*0.5-150" TextAuraYIniExpression="${_screenheight}*0.5-150" TextAuraWIniExpression="300" TextAuraHIniExpression="300" TextAuraOIniExpression="100" TextAuraTTLTickExpression="10-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
                 </Triggers>
               </Folder>
             </Folders>
@@ -4628,20 +4641,6 @@
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-              <Trigger Enabled="false" Name="自动防击退 Beta" Id="5461c91d-606f-4bbb-b35a-fd488ea34d55" RegularExpression="">
-                <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 亲疏自行" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
-                    <Condition Enabled="false" Grouping="And" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 沉稳咏唱" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
-                    <Condition Enabled="false" Grouping="And" />
-                    <Conditions />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -5478,21 +5477,17 @@
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="右右右" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="穿穿穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="8000">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="e96fa0db-1e22-4215-819f-50f86c054489" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -5517,25 +5512,21 @@
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="85" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="2号右下" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="3号左下" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="105" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="4号左上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="115" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="true" Grouping="Or">
