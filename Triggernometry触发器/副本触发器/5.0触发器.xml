@@ -4726,24 +4726,56 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="夜袭号令" Id="d96d6680-ee3c-4332-965f-16e966b8d07c" RegularExpression="^.{15}14:4C2C:">
                     <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="去暗" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="6000">
+                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="56059999-bc8a-4840-b846-ff710fb45dce" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" UseTTSTextExpression="去暗" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="6000">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_属性}" ExpressionTypeL="String" ExpressionR="光" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="2" UseTTSTextExpression="去光" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                      <Action OrderNumber="3" UseTTSTextExpression="去光" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_属性}" ExpressionTypeL="String" ExpressionR="暗" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="3" UseTTSTextExpression="左后,右前" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3000">
+                      <Action OrderNumber="4" UseTTSTextExpression="左后,右前" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3000">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="红动蓝停" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="5000">
+                      <Action OrderNumber="5" LogLevel="-1" UseTTSTextExpression="红动蓝停" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="5000">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="false" Name="集合式判断" Id="56059999-bc8a-4840-b846-ff710fb45dce" RegularExpression="^.{14} 16:.{8}:(?:未被宽恕的盲崇|unforgiven idolat|アンフォーギヴン・アイドラトリー):(?:4C65|4C62):[^:]+?:.{8}:([^:]+?):(?:[^:]+?:){22}(?&lt;x&gt;[^:]+?):">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="前前前" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="后后后" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="56059999-bc8a-4840-b846-ff710fb45dce" ActionType="Trigger" ExecutionDelayExpression="1000">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
                   </Trigger>
                 </Triggers>
               </Folder>
