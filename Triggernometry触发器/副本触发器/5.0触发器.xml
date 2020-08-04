@@ -3491,7 +3491,7 @@
       </Folder>
       <Folder Id="928f6edb-8196-4999-92a0-0edf822a010a" Name="5.2" Enabled="true">
         <Folders>
-          <Folder ZoneFilterEnabled="True" Id="737ad38e-3d62-4911-8c1f-92977caad7a8" ZoneFilterRegularExpression="伊甸零式希望乐园 \(共鸣之章4\)|Eden's Verse: Refulgence \(Savage\)|希望の園エデン零式：共鳴編4" Name="E8S" Enabled="true">
+          <Folder Id="737ad38e-3d62-4911-8c1f-92977caad7a8" ZoneFilterRegularExpression="伊甸零式希望乐园 \(共鸣之章4\)|Eden's Verse: Refulgence \(Savage\)|希望の園エデン零式：共鳴編4" Name="E8S" Enabled="true">
             <Folders>
               <Folder Id="62b6b67c-b08a-4f22-a6d8-fc6596880197" Name="P1" Enabled="true">
                 <Folders>
@@ -3929,6 +3929,7 @@
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
                             <Conditions />
                           </Action>
@@ -3936,6 +3937,7 @@
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
                             <Conditions />
                           </Action>
@@ -3943,6 +3945,7 @@
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
                             <Conditions />
                           </Action>
@@ -3950,6 +3953,7 @@
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
                             <Conditions />
                           </Action>
@@ -4151,7 +4155,7 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="2回目 判断同色 前提是队友不乱j2站 Beta" Id="51eaaa4f-8a09-4d3d-9404-8529534ee0f0" RegularExpression="" PrevActionsRefire="Deny" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                      <Trigger Enabled="true" Name="2回目 判断同色 前提是队友不乱j2站 Beta" Id="51eaaa4f-8a09-4d3d-9404-8529534ee0f0" RegularExpression="" PrevActionsRefire="Deny" PeriodRefire="Deny" RefirePeriodExpression="10000">
                         <Actions>
                           <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="换换换" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
