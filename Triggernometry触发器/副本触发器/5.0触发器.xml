@@ -42,7 +42,7 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="false" Name="击退镜自动防击退" Id="5461c91d-606f-4bbb-b35a-fd488ea34d55" RegularExpression="">
+          <Trigger Enabled="true" Name="击退镜自动防击退 需邮差 自己处理GCD，卡GCD没放出来关我屁事" Id="5461c91d-606f-4bbb-b35a-fd488ea34d55" RegularExpression="">
             <Actions>
               <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 亲疏自行" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="false" Grouping="And" />
@@ -156,16 +156,19 @@
               <Action OrderNumber="25" FolderOp="DisableFolder" FolderId="f3e1178a-2678-4d5a-9584-29d5896ed87f" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="26" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="d8ee6c13-2971-4fa8-bd7c-6b7782ad8d78" ActionType="Trigger">
+              <Action OrderNumber="26" FolderOp="DisableFolder" FolderId="fb65dcdc-54f9-4943-8002-d3cd207f84ce" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="27" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="7ff01407-733e-4486-8d73-51aba71e2791" ActionType="Trigger">
+              <Action OrderNumber="27" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="d8ee6c13-2971-4fa8-bd7c-6b7782ad8d78" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="28" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="e96fa0db-1e22-4215-819f-50f86c054489" ActionType="Trigger">
+              <Action OrderNumber="28" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="7ff01407-733e-4486-8d73-51aba71e2791" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="29" LogLevel="-1" TableVariableName="AT_E7S_盲崇" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+              <Action OrderNumber="29" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="e96fa0db-1e22-4215-819f-50f86c054489" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="30" LogLevel="-1" TableVariableName="AT_E7S_盲崇" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
             </Actions>
@@ -3723,7 +3726,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="D" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 钢铁钢铁● &lt;se.3&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 钢铁钢铁●" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="D" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -3739,7 +3742,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="E" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 月环月环◎ &lt;se.5&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 月环月环◎" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="E" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -3760,7 +3763,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="6" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 后后后 &lt;se.3&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 后后后" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="6" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -3776,7 +3779,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="7" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 前前前 &lt;se.5&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 前前前" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="7" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -3863,7 +3866,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="9" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 钢铁 去场中 &lt;se.3&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 镜子钢铁 去场中" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="9" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -3874,7 +3877,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="A" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 月环 去镜子&lt;se.5&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 镜子月环 去镜子" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="A" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -3893,7 +3896,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 分摊分摊 &lt;se.3&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 分摊分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -3904,7 +3907,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 散开散开 &lt;se.5&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                      <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 散开散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -3922,39 +3925,86 @@
                     <Triggers>
                       <Trigger Enabled="false" Name="2回目" Id="d8ee6c13-2971-4fa8-bd7c-6b7782ad8d78" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;buff&gt;Wyrmfang|Wyrmclaw|聖竜の爪|聖竜の牙|圣龙牙|圣龙爪) from  for (?&lt;time&gt;.+?)\.\d\d Seconds\.$">
                         <Actions>
-                          <Action OrderNumber="1" LogMessageText="AT_TTS_Job:${name}" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage" ExecutionDelayExpression="(${time}-9)*1000">
+                          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="AT_E8S_同色互换_L" VariableExpression="${var:AT_E8S_同色互换_L}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="AT_E8S_同色互换_L" VariableExpression="${var:AT_E8S_同色互换_L}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="AT_E8S_同色互换_R" VariableExpression="${var:AT_E8S_同色互换_R}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="AT_E8S_同色互换_R" VariableExpression="${var:AT_E8S_同色互换_R}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer[${_ffxivplayer}].x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="5" LogMessageText="AT_TTS_Job:${name}" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage" ExecutionDelayExpression="(${time}-9)*1000">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                             </Condition>
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="2" LogMessageText="AT_Subtitle:撞头:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                          <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p ${name} → 撞头" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                              <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p ${name} → 吃球" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                              <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="8" LogMessageText="AT_Subtitle:撞头:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="RegexMatch" />
                             </Condition>
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="3" LogMessageText="AT_Subtitle:吃球:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                          <Action OrderNumber="9" LogMessageText="AT_Subtitle:吃球:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="RegexMatch" />
                             </Condition>
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="4" UseTTSTextExpression="去撞头" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                          <Action OrderNumber="10" UseTTSTextExpression="去撞头" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="RegexMatch" />
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
+                            <Conditions />
                           </Action>
-                          <Action OrderNumber="5" UseTTSTextExpression="去吃球" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                          <Action OrderNumber="11" UseTTSTextExpression="去吃球" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="RegexMatch" />
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="false" Name="1回目" Id="e0789fb1-d06d-4548-87cf-7744c2c53573" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;buff&gt;Wyrmfang|Wyrmclaw|聖竜の爪|聖竜の牙|圣龙牙|圣龙爪) from  for (?&lt;time&gt;.+?)\.\d\d Seconds\.$">
+                      <Trigger Enabled="true" Name="1回目" Id="e0789fb1-d06d-4548-87cf-7744c2c53573" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;buff&gt;Wyrmfang|Wyrmclaw|聖竜の爪|聖竜の牙|圣龙牙|圣龙爪) from  for (?&lt;time&gt;.+?)\.\d\d Seconds\.$">
                         <Actions>
                           <Action OrderNumber="1" UseTTSTextExpression="第衣个撞头" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
@@ -4049,38 +4099,72 @@
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                             </Condition>
                           </Action>
-                          <Action OrderNumber="10" LogMessageText="AT_Subtitle:撞头:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                          <Action OrderNumber="10" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p ${name} → 撞头" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                              <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="11" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p ${name} → 吃球" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                              <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="12" LogMessageText="AT_Subtitle:撞头:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="RegexMatch" />
                             </Condition>
                           </Action>
-                          <Action OrderNumber="11" LogMessageText="AT_Subtitle:吃球:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                          <Action OrderNumber="13" LogMessageText="AT_Subtitle:吃球:6:0:0:e8ssakebu" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="RegexMatch" />
                             </Condition>
                           </Action>
-                          <Action OrderNumber="12" UseTTSTextExpression="去撞头" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                          <Action OrderNumber="14" UseTTSTextExpression="去撞头" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmclaw|聖竜の爪|圣龙爪" ExpressionTypeR="String" ConditionType="RegexMatch" />
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
                           </Action>
-                          <Action OrderNumber="13" UseTTSTextExpression="去吃球" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                          <Action OrderNumber="15" UseTTSTextExpression="去吃球" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="And">
                               <ConditionSingle Enabled="true" ExpressionL="${buff}" ExpressionTypeL="String" ExpressionR="Wyrmfang|聖竜の牙|圣龙牙" ExpressionTypeR="String" ConditionType="RegexMatch" />
                               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                             </Condition>
                           </Action>
-                          <Action OrderNumber="14" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="d8ee6c13-2971-4fa8-bd7c-6b7782ad8d78" ActionType="Trigger" ExecutionDelayExpression="3000" RefireRequeue="False">
+                          <Action OrderNumber="16" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="d8ee6c13-2971-4fa8-bd7c-6b7782ad8d78" ActionType="Trigger" ExecutionDelayExpression="3000" RefireRequeue="False">
                             <Condition Enabled="false" Grouping="Or" />
                           </Action>
-                          <Action OrderNumber="15" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="e0789fb1-d06d-4548-87cf-7744c2c53573" ActionType="Trigger" RefireRequeue="False">
+                          <Action OrderNumber="17" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="e0789fb1-d06d-4548-87cf-7744c2c53573" ActionType="Trigger" RefireRequeue="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Action>
+                          <Action OrderNumber="18" FolderId="fb65dcdc-54f9-4943-8002-d3cd207f84ce" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
                             <Condition Enabled="false" Grouping="Or" />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="2回目 判断同色 前提是队友不乱j2站" Id="51eaaa4f-8a09-4d3d-9404-8529534ee0f0" RegularExpression="" PrevActionsRefire="Deny" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                        <Actions>
+                          <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="换换换" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionGroup Enabled="true" Grouping="Or">
+                                <ConditionSingle Enabled="true" ExpressionL="${var:AT_E8S_同色互换_L}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                                <ConditionSingle Enabled="true" ExpressionL="${var:AT_E8S_同色互换_L}" ExpressionTypeL="Numeric" ExpressionR="-2" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                              </ConditionGroup>
+                              <ConditionGroup Enabled="true" Grouping="Or">
+                                <ConditionSingle Enabled="true" ExpressionL="${var:AT_E8S_同色互换_R}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                                <ConditionSingle Enabled="true" ExpressionL="${var:AT_E8S_同色互换_R}" ExpressionTypeL="Numeric" ExpressionR="-2" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                              </ConditionGroup>
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Trigger>
                     </Triggers>
                   </Folder>
@@ -4152,7 +4236,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Trigger>
-                      <Trigger Enabled="false" Name="P3鏡" Id="dd72cea7-a77d-4e6c-993f-2493ae58c964" RegularExpression="^.{15}14:4D7(?&lt;type&gt;[56]):" PeriodRefire="Deny" RefirePeriodExpression="3000" Description="^.{15}15:.+:4D5A:">
+                      <Trigger Enabled="true" Name="P3鏡" Id="dd72cea7-a77d-4e6c-993f-2493ae58c964" RegularExpression="^.{15}14:4D7(?&lt;type&gt;[56]):" PeriodRefire="Deny" RefirePeriodExpression="3000" Description="^.{15}15:.+:4D5A:">
                         <Actions>
                           <Action OrderNumber="1" LogMessageText="AT_Subtitle:同背异前 C等A冲:21:0:-175:e8skagami0" LogProcess="True" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                             <Condition Enabled="false" Grouping="Or" />
@@ -4160,7 +4244,7 @@
                           <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="dd72cea7-a77d-4e6c-993f-2493ae58c964" ActionType="Trigger" ExecutionDelayExpression="3000">
                             <Condition Enabled="false" Grouping="Or" />
                           </Action>
-                          <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="斜穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3300">
+                          <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="斜穿" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3200">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="abs(round(${_ffxiventity[${var:AT_E8S_ID}].heading},0))" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
@@ -4217,8 +4301,20 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="2" UseTTSTextExpression="中间安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 场边安全" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="3" UseTTSTextExpression="中间安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 中间安全" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
@@ -4232,17 +4328,29 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="70" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="2" UseTTSTextExpression="钢铁远离" UseTTSRateExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 月环◎ → 钢铁●" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="70" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="3" UseTTSTextExpression="钢铁远离" UseTTSRateExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="6F" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="3" UseTTSTextExpression="钢铁远离" UseTTSRateExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="5000">
+                      <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 钢铁● → 月环◎" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="6F" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="5" UseTTSTextExpression="钢铁远离" UseTTSRateExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="5000">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="70" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="4" UseTTSTextExpression="月环靠近" UseTTSRateExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                      <Action OrderNumber="6" UseTTSTextExpression="月环靠近" UseTTSRateExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="6F" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
@@ -4257,8 +4365,20 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="8" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="2" UseTTSTextExpression="前前前，后后后" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 后后后，前前前" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="8" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="3" UseTTSTextExpression="前前前，后后后" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="9" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 前前前，后后后" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="9" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
@@ -4273,10 +4393,22 @@
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="2" UseTTSTextExpression="散开散开" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 分摊分摊" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="E" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="3" UseTTSTextExpression="散开散开" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="F" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 散开散开" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="F" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
                       </Action>
                     </Actions>
@@ -4335,7 +4467,7 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="ID" Id="908d6240-5f06-4bbc-943b-ad937cdb6f2e" RegularExpression="^.{14} 16:(.{8}):.+?:4DCC:">
+                  <Trigger Enabled="true" Name="希瓦ID" Id="908d6240-5f06-4bbc-943b-ad937cdb6f2e" RegularExpression="^.{14} 16:(.{8}):.+?:4DCC:">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="AT_E8S_ID" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
@@ -4626,25 +4758,21 @@
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="85" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="2点2点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="1点1点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="105" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="4点4点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="115" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="true" Grouping="Or">
@@ -4657,31 +4785,26 @@
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="85" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="2号右下" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="3号左下" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="105" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                           <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="4号左上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="round(${_ffxiventity[$1].x},0)" ExpressionTypeL="Numeric" ExpressionR="115" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
-                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Trigger>
                     </Triggers>
                   </Folder>
@@ -4722,15 +4845,12 @@
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="留在原地" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="12000">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="红动拦停" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="5000">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="相反行动" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="16000">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -4800,16 +4920,19 @@
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_E7S_小怪" VariableExpression="${var:AT_E7S_小怪}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" UseTTSTextExpression="月环靠近" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_小怪}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" UseTTSTextExpression="站进躺远" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" Asynchronous="False">
+                  <Action OrderNumber="3" UseTTSTextExpression="去竖着的" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" Asynchronous="False">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_小怪}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -4939,22 +5062,25 @@
               </Trigger>
               <Trigger Enabled="true" Name="乱舞号令" Id="2d7be77a-0f08-4bd7-ad6a-e81347e6f982" RegularExpression="^.{15}14:4C7B:">
                 <Actions>
-                  <Action OrderNumber="1" UseTTSTextExpression="去左上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="7000">
+                  <Action OrderNumber="1" UseTTSTextExpression="去左上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_属性}" ExpressionTypeL="String" ExpressionR="光" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="(?i)Tank" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" UseTTSTextExpression="去右上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_属性}" ExpressionTypeL="String" ExpressionR="暗" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="(?i)Tank" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" UseTTSTextExpression="去南侧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="(?i)Tank" ExpressionTypeR="String" ConditionType="RegexMatch" />
                     </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -5581,13 +5707,11 @@
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="雷云生成" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="近战吃球" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="1000">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${evar:AT_E5S_Surge}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -5742,19 +5866,15 @@
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="7ff01407-733e-4486-8d73-51aba71e2791" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="2844f858-94bf-4034-aadc-26c17c8292ef" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="看旗子" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="10000">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="准备雷云" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="42000">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
