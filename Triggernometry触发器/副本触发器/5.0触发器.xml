@@ -4948,7 +4948,7 @@
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="false" Name="2回目 判断同色 前提是队友不乱j2站 Beta" Id="51eaaa4f-8a09-4d3d-9404-8529534ee0f0" RegularExpression="" PrevActionsRefire="Deny" PeriodRefire="Deny" RefirePeriodExpression="10000">
+                      <Trigger Enabled="true" Name="互换判断" Id="51eaaa4f-8a09-4d3d-9404-8529534ee0f0" RegularExpression="" PrevActionsRefire="Deny" PeriodRefire="Deny" RefirePeriodExpression="10000">
                         <Actions>
                           <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="换换换" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                             <Condition Enabled="true" Grouping="Or">
@@ -5686,7 +5686,7 @@
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Trigger>
-                  <Trigger Enabled="false" Name="集合式判断" Id="56059999-bc8a-4840-b846-ff710fb45dce" RegularExpression="^.{14} 16:.{8}:(?:未被宽恕的盲崇|unforgiven idolat|アンフォーギヴン・アイドラトリー):(?:4C65|4C62):[^:]+?:.{8}:([^:]+?):(?:[^:]+?:){22}(?&lt;x&gt;[^:]+?):">
+                  <Trigger Enabled="false" Name="集合式前后判断" Id="56059999-bc8a-4840-b846-ff710fb45dce" RegularExpression="^.{14} 16:.{8}:(?:未被宽恕的盲崇|unforgiven idolat|アンフォーギヴン・アイドラトリー):(?:4C65|4C62):[^:]+?:.{8}:([^:]+?):(?:[^:]+?:){22}(?&lt;x&gt;[^:]+?):">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="前前前" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
@@ -5717,7 +5717,7 @@
                   <Folder Id="0171f677-958a-4b53-922b-ea49bc9d450d" Name="瞄准号令" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="false" Name="【二选一】炒股内场传送" Id="dd40c7d0-2e92-4dc6-a57b-039da9ec571d" RegularExpression="^.{14} 23:(.{8}):(?:未被宽恕的盲崇|unforgiven idolatry|アンフォーギヴン・アイドラトリー):.{8}:(.+?):.+:0000:0011:.{8}:000F:....:$">
+                      <Trigger Enabled="false" Name="【二选一】内场传送" Id="dd40c7d0-2e92-4dc6-a57b-039da9ec571d" RegularExpression="^.{14} 23:(.{8}):(?:未被宽恕的盲崇|unforgiven idolatry|アンフォーギヴン・アイドラトリー):.{8}:(.+?):.+:0000:0011:.{8}:000F:....:$">
                         <Actions>
                           <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="3点3点" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="250">
                             <Condition Enabled="true" Grouping="Or">
@@ -5749,7 +5749,7 @@
                         </Condition>
                         <Conditions />
                       </Trigger>
-                      <Trigger Enabled="true" Name="【二选一】野队正常子言" Id="dc819fe9-7d88-4996-9547-67d1e79d5497" RegularExpression="^.{14} 23:(.{8}):(?:未被宽恕的盲崇|unforgiven idolatry|アンフォーギヴン・アイドラトリー):.{8}:(.+?):.+:0000:0011:.{8}:000F:....:$">
+                      <Trigger Enabled="true" Name="【二选一】正常子言" Id="dc819fe9-7d88-4996-9547-67d1e79d5497" RegularExpression="^.{14} 23:(.{8}):(?:未被宽恕的盲崇|unforgiven idolatry|アンフォーギヴン・アイドラトリー):.{8}:(.+?):.+:0000:0011:.{8}:000F:....:$">
                         <Actions>
                           <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="1号右上" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="250">
                             <Condition Enabled="true" Grouping="Or">
@@ -5785,7 +5785,7 @@
                   </Folder>
                 </Folders>
                 <Triggers>
-                  <Trigger Enabled="true" Name="白光奔流1" Id="e96fa0db-1e22-4215-819f-50f86c054489" RegularExpression="^.{14} 15:.{8}:[^:]+?:4C37(?::[^:]+?){25}:([^:]+?):">
+                  <Trigger Enabled="false" Name="白光奔流1" Id="e96fa0db-1e22-4215-819f-50f86c054489" RegularExpression="^.{14} 15:.{8}:[^:]+?:4C37(?::[^:]+?){25}:([^:]+?):">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="左左左" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
@@ -5837,6 +5837,121 @@
                   </Trigger>
                 </Triggers>
               </Folder>
+              <Folder Id="231fe68c-0859-49df-ac36-ccbbefc3aef3" Name="包围号令" Enabled="true">
+                <Folders>
+                  <Folder Id="3b0f10b2-95a8-426c-9a0c-2af09db8b02d" Name="互换判断" Enabled="true">
+                    <Folders />
+                    <Triggers>
+                      <Trigger Enabled="true" Name="分组" Id="b502fb96-c394-4dc5-8088-f4d8d47abb07" RegularExpression="^.{14} 1[56]:.{8}:[^:]+?:4C93:[^:]+?:.{8}:([^:]+?):(?:[^:]+?:){22}(?&lt;x&gt;[^:]+?):(?&lt;y&gt;[^:]+?):">
+                        <Actions>
+                          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="AT_E7S_同色互换_DPS1" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AT_E7S_同色互换_DPS2" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${y}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="偏属性" Id="f0013868-ad1b-472a-a748-076217368b67" RegularExpression="^.{27}(?&lt;name&gt;.+?) gains the effect of ((偏属性：|偏属性：)(?&lt;type&gt;.)|(?&lt;type2&gt;Astral|Umbral) Effect) from">
+                        <Actions>
+                          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="AT_E7S_DPS1偏属性" VariableExpression="暗" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${var:AT_E7S_同色互换_DPS1}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionGroup Enabled="true" Grouping="Or">
+                                <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="暗|Umbral|闇" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                                <ConditionSingle Enabled="true" ExpressionL="${type2}" ExpressionTypeL="String" ExpressionR="暗|Umbral|闇" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                              </ConditionGroup>
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AT_E7S_DPS1偏属性" VariableExpression="光" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${var:AT_E7S_同色互换_DPS1}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionGroup Enabled="true" Grouping="Or">
+                                <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="光|Astral|光" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                                <ConditionSingle Enabled="true" ExpressionL="${type2}" ExpressionTypeL="String" ExpressionR="光|Astral|光" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                              </ConditionGroup>
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="AT_E7S_DPS2偏属性" VariableExpression="暗" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${var:AT_E7S_同色互换_DPS2}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionGroup Enabled="true" Grouping="Or">
+                                <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="暗|Umbral|闇" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                                <ConditionSingle Enabled="true" ExpressionL="${type2}" ExpressionTypeL="String" ExpressionR="暗|Umbral|闇" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                              </ConditionGroup>
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="AT_E7S_DPS2偏属性" VariableExpression="光" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="And">
+                              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${var:AT_E7S_同色互换_DPS2}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                              <ConditionGroup Enabled="true" Grouping="Or">
+                                <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="光|Astral|光" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                                <ConditionSingle Enabled="true" ExpressionL="${type2}" ExpressionTypeL="String" ExpressionR="光|Astral|光" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                              </ConditionGroup>
+                            </Condition>
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Trigger>
+                    </Triggers>
+                  </Folder>
+                </Folders>
+                <Triggers>
+                  <Trigger Enabled="true" Name="包围号令" Id="ec774ccc-91d7-443a-8b54-4728ee3a00a1" RegularExpression="^.{15}14:4C2E:">
+                    <Actions>
+                      <Action OrderNumber="1" UseTTSTextExpression="去标点处" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank|Healer" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" UseTTSTextExpression="场中集合等待踩塔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="换换换" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="2500">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_DPS1偏属性}" ExpressionTypeL="String" ExpressionR="${var:AT_E7S_DPS2偏属性}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" UseTTSTextExpression="去光" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="9000-2500">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_属性}" ExpressionTypeL="String" ExpressionR="暗" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="5" UseTTSTextExpression="去暗" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_属性}" ExpressionTypeL="String" ExpressionR="光" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                </Triggers>
+              </Folder>
             </Folders>
             <Triggers>
               <Trigger Enabled="true" Name="暗光之钉" Id="b5dbec32-008c-445b-8cb1-35fa9e718bd6" RegularExpression="^.{15}14:4C88:" PeriodRefire="Deny" RefirePeriodExpression="1000">
@@ -5853,36 +5968,6 @@
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="集中放圈" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Trigger>
-              <Trigger Enabled="true" Name="包围号令" Id="ec774ccc-91d7-443a-8b54-4728ee3a00a1" RegularExpression="^.{15}14:4C2E:">
-                <Actions>
-                  <Action OrderNumber="1" UseTTSTextExpression="去标点处" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank|Healer" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="2" UseTTSTextExpression="场中集合等待踩塔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="3" UseTTSTextExpression="去光" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="9000">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_属性}" ExpressionTypeL="String" ExpressionR="暗" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="4" UseTTSTextExpression="去暗" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:AT_E7S_属性}" ExpressionTypeL="String" ExpressionR="光" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
                     <Conditions />
                   </Action>
                 </Actions>
@@ -6329,6 +6414,99 @@
                   </Trigger>
                 </Triggers>
               </Folder>
+              <Folder Id="bb19df57-0b7f-407e-b21c-46483f2da00f" Name="互换判断" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="分组" Id="01a5fd8c-c8f5-4f9f-a89b-9384113e6f02" RegularExpression="^.{14} 16:.{8}:[^:]+?:4C01:[^:]+?:.{8}:([^:]+?):(?:[^:]+?:){22}(?&lt;x&gt;[^:]+?):(?&lt;y&gt;[^:]+?):">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="AT_E6S_同色互换_DPS1" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${y}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AT_E6S_同色互换_DPS2" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${y}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${x}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="计数" Id="0ffd75d6-b9f4-43c8-8cec-5c3025ec512c" RegularExpression="^.{14} 14:4BF9:.+? starts using .+? on (.+?)\.$">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="AT_E6S_计数点名" VariableExpression="${var:AT_E6S_计数点名}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AT_E6S_计数点名1" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:AT_E6S_计数点名}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="AT_E6S_计数点名2" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:AT_E6S_计数点名}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="火龙卷" Id="c16d121b-9e20-428a-b0f9-01c2c040ea50" RegularExpression="^.{14} 14:4C10:">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="火龙卷" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="东东东" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="西西西" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="月环" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="25000">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="5" LogLevel="-1" UseTTSTextExpression="换换换" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="2000">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionGroup Enabled="true" Grouping="And">
+                            <ConditionSingle Enabled="true" ExpressionL="${var:AT_E6S_计数点名1}" ExpressionTypeL="String" ExpressionR="${var:AT_E6S_同色互换_DPS1}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:AT_E6S_计数点名2}" ExpressionTypeL="String" ExpressionR="${var:AT_E6S_同色互换_DPS2}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          </ConditionGroup>
+                          <ConditionGroup Enabled="true" Grouping="And">
+                            <ConditionSingle Enabled="true" ExpressionL="${var:AT_E6S_计数点名2}" ExpressionTypeL="String" ExpressionR="${var:AT_E6S_同色互换_DPS1}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:AT_E6S_计数点名1}" ExpressionTypeL="String" ExpressionR="${var:AT_E6S_同色互换_DPS2}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          </ConditionGroup>
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="6" LogLevel="-1" UseTTSTextExpression="背后背后" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="4000">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                </Triggers>
+              </Folder>
             </Folders>
             <Triggers>
               <Trigger Enabled="true" Name="双体Buff" Id="d0ae59ab-ff7e-4e4b-beb6-8b5e0268d710" RegularExpression="^.{14} 1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;buff&gt;焔神の呪い|火神的诅咒|嵐神の呪い|风神的诅咒|Hated of Embers|Hated of the Vortex)">
@@ -6349,36 +6527,6 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
-              </Trigger>
-              <Trigger Enabled="true" Name="火龙卷" Id="c16d121b-9e20-428a-b0f9-01c2c040ea50" RegularExpression="^.{14} 14:4C10:">
-                <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="火龙卷" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="东东东" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="西西西" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="月环" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="25000">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="5" LogLevel="-1" UseTTSTextExpression="背后背后" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="6000">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="超级风暴/灼热咆哮" Id="a7fa3485-a06b-4241-8320-ff64c8e1eb72" RegularExpression="^.{14} 14:(?:4BF7|4C14):">
@@ -6507,7 +6655,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="业火拳" Id="8533c673-d378-4bb0-8b47-0cdf20cd372f" RegularExpression="^.{14} 14:4D01:">
+              <Trigger Enabled="true" Name="业火拳" Id="8533c673-d378-4bb0-8b47-0cdf20cd372f" RegularExpression="^.{15}1B:.{8}:[^:]+?:.{4}:.{4}:0016:">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="AT_E7S_业火拳" VariableExpression="${var:AT_E7S_业火拳}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
