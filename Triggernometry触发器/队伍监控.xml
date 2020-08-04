@@ -1376,10 +1376,11 @@
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Name="初始化" Id="bb8eef35-9968-44f2-9324-b223fe9bbbfd" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$|^.{15}21:.{8}:4000001[026]|^.{15}00:0839:.+?(”任务结束了。|has ended.|」の攻略を終了した。|任务开始|has begun\.|の攻略を開始した。)">
+          <Trigger Enabled="true" Name="初始化" Id="bb8eef35-9968-44f2-9324-b223fe9bbbfd" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$|^.{15}21:.{8}:4000001[026]|^.{15}00:0839:.+?(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。|)">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AT_Eden_Ability_Last_Timems" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
