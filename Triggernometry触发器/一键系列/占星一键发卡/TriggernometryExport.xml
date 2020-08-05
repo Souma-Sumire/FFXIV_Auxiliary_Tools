@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder FFXIVJobFilter="4294967296" Id="ccd7d2e5-ca6a-43bd-b42d-b4a66d258502" Name="占星术士自动发卡" Enabled="true">
+    <Folders>
+      <Folder Id="71cc8c4e-5d7f-4a82-9844-1499256bd5db" Name="出卡" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="出卡" Id="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" RegularExpression="^.{14} 00:0038:/出卡$">
+            <Actions />
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="小奥秘卡" Id="fa3624ef-37c1-4102-bfa9-924af26f5db1" RegularExpression="^.{14} 00:0038:/小奥秘卡$">
+            <Actions />
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="4e5d13f8-8924-428a-a74e-5644757e916f" Name="通用功能" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="DPS基准" Id="6157cc3b-a335-4d26-bb12-b0589676bb67" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+            <Actions>
+              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%B8%80%E9%94%AE%E7%B3%BB%E5%88%97/%E5%8D%A0%E6%98%9F%E4%B8%80%E9%94%AE%E5%8F%91%E5%8D%A1/aDPS0.csv" DiskFileOpVar="Ast_aDPS0" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%B8%80%E9%94%AE%E7%B3%BB%E5%88%97/%E5%8D%A0%E6%98%9F%E4%B8%80%E9%94%AE%E5%8F%91%E5%8D%A1/aDPS1.csv" DiskFileOpVar="Ast_aDPS1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="队伍列表" Id="972fb1d0-25d4-4642-be8b-e87e3fcd012f" RegularExpression="^.{14} 00:0038:AstTeamList:(.+):(.)$">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList$2" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$1}*${func:indexof(&quot;沃仙曦染&quot;):$1}*${func:indexof(&quot;宇宙和音&quot;):$1}*${func:indexof(&quot;红玉海&quot;):$1}*${func:indexof(&quot;萌芽池&quot;):$1}*${func:indexof(&quot;神意之地&quot;):$1}*${func:indexof(&quot;幻影群岛&quot;):$1}*${func:indexof(&quot;拉诺西亚&quot;):$1}*${func:indexof(&quot;拂晓之间&quot;):$1}*${func:indexof(&quot;龙巢神殿&quot;):$1}*${func:indexof(&quot;旅人栈桥&quot;):$1}*${func:indexof(&quot;白金幻象&quot;):$1}*${func:indexof(&quot;白银乡&quot;):$1}*${func:indexof(&quot;神拳痕&quot;):$1}*${func:indexof(&quot;潮风亭&quot;):$1}*${func:indexof(&quot;琥珀原&quot;):$1}*${func:indexof(&quot;柔风海湾&quot;):$1}*${func:indexof(&quot;海猫茶屋&quot;):$1}*${func:indexof(&quot;延夏&quot;):$1}*${func:indexof(&quot;静语庄园&quot;):$1}*${func:indexof(&quot;摩杜纳&quot;):$1}*${func:indexof(&quot;紫水栈桥&quot;):$1}}):$1}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;晨曦王座&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;宇宙和音&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;神拳痕&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;海猫茶屋&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;旅人栈桥&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;幻影群岛&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;红玉海&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;萌芽池&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;龙巢神殿&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;神意之地&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;拂晓之间&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;拉诺西亚&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;白金幻象&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;白银乡&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;潮风亭&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;延夏&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;琥珀原&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;柔风海湾&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;摩杜纳&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;沃仙曦染&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;静语庄园&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;紫水栈桥&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList$2" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$1}*${func:indexof(&quot;沃仙曦染&quot;):$1}*${func:indexof(&quot;宇宙和音&quot;):$1}*${func:indexof(&quot;红玉海&quot;):$1}*${func:indexof(&quot;萌芽池&quot;):$1}*${func:indexof(&quot;神意之地&quot;):$1}*${func:indexof(&quot;幻影群岛&quot;):$1}*${func:indexof(&quot;拉诺西亚&quot;):$1}*${func:indexof(&quot;拂晓之间&quot;):$1}*${func:indexof(&quot;龙巢神殿&quot;):$1}*${func:indexof(&quot;旅人栈桥&quot;):$1}*${func:indexof(&quot;白金幻象&quot;):$1}*${func:indexof(&quot;白银乡&quot;):$1}*${func:indexof(&quot;神拳痕&quot;):$1}*${func:indexof(&quot;潮风亭&quot;):$1}*${func:indexof(&quot;琥珀原&quot;):$1}*${func:indexof(&quot;柔风海湾&quot;):$1}*${func:indexof(&quot;海猫茶屋&quot;):$1}*${func:indexof(&quot;延夏&quot;):$1}*${func:indexof(&quot;静语庄园&quot;):$1}*${func:indexof(&quot;摩杜纳&quot;):$1}*${func:indexof(&quot;紫水栈桥&quot;):$1}}):$1}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;晨曦王座&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;宇宙和音&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;神拳痕&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;海猫茶屋&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;旅人栈桥&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;幻影群岛&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;红玉海&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;萌芽池&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;龙巢神殿&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;神意之地&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;拂晓之间&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;拉诺西亚&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;白金幻象&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;白银乡&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;潮风亭&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;延夏&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;琥珀原&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;柔风海湾&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;摩杜纳&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;沃仙曦染&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;静语庄园&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;紫水栈桥&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="获取队伍" Id="41adf12e-eb56-46ee-9f4b-f37783fba4d0" RegularExpression="^.{14} 00:0839:(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。)">
+            <Actions>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;1&gt;:1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;2&gt;:2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;3&gt;:3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;4&gt;:4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;5&gt;:5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;6&gt;:6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;7&gt;:7" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;8&gt;:8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Sequential="True" Name="量谱" Id="d5a64fd1-732d-44a4-9b6d-814a10c31d93" RegularExpression="^.{14} 1F:.{8}:[^:]+?:21:(?&lt;gauge&gt;[^:]+?):0(?&lt;no3&gt;.):..$">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="Ast量谱" VariableExpression="${func:substring(3,1):${func:padleft(48,8):${gauge}}}${func:substring(1,1):${func:padleft(48,8):${gauge}}}${no3}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="Ast卡片" VariableExpression="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="Ast职能" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[134]" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="Ast职能" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[256]" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers />
+  </ExportedFolder>
+</TriggernometryExport>
