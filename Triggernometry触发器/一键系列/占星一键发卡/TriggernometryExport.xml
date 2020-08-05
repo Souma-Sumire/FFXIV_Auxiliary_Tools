@@ -1,17 +1,368 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder FFXIVJobFilter="4294967296" Id="ccd7d2e5-ca6a-43bd-b42d-b4a66d258502" Name="占星术士自动发卡" Enabled="true">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4294967296" Id="ccd7d2e5-ca6a-43bd-b42d-b4a66d258502" Name="占星术士自动发卡" Enabled="true">
     <Folders>
       <Folder Id="71cc8c4e-5d7f-4a82-9844-1499256bd5db" Name="出卡" Enabled="true">
         <Folders />
         <Triggers>
-          <Trigger Enabled="true" Name="出卡" Id="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" RegularExpression="^.{14} 00:0038:/出卡$">
-            <Actions />
+          <Trigger Enabled="true" Name="出卡" Id="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" RegularExpression="^.{14} 00:0038:/出卡$" PeriodRefire="Deny" RefirePeriodExpression="666">
+            <Actions>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast手中卡日月星}" ExpressionTypeL="String" ExpressionR="日" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast手中卡日月星}" ExpressionTypeL="String" ExpressionR="月" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast手中卡日月星}" ExpressionTypeL="String" ExpressionR="星" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast手中卡日月星}" ExpressionTypeL="String" ExpressionR="日" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast手中卡日月星}" ExpressionTypeL="String" ExpressionR="月" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast手中卡日月星}" ExpressionTypeL="String" ExpressionR="星" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS0近战倒序发卡" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS0远程倒序发卡" VariableExpression="9" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="e1de00be-8f2d-49b1-9725-efa3ec788ed5" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="aDPS0近战倒序发卡" Id="f6ef77ac-09f2-48eb-977e-d34d5b27778a" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0近战倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0近战倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0近战倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0近战倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0近战倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0近战倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0近战倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0近战倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0近战倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0近战倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0近战倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0近战倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0近战倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0近战倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0近战倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_近战修正2}=1,${var:Ast_近战修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_近战修正1}=1,${var:Ast_近战修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_近战修正3}=1,${var:Ast_近战修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_近战修正5}=1,${var:Ast_近战修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_近战修正4}=1,${var:Ast_近战修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_近战修正6}=1,${var:Ast_近战修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_近战修正8}=1,${var:Ast_近战修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_近战修正7}=1,${var:Ast_近战修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0近战倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS0近战倒序发卡" VariableExpression="${var:aDPS0近战倒序发卡}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0近战倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0近战倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" TriggerForce="regexp,parent" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0近战倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0近战倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="11" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0近战倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0近战倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="小奥秘卡" Id="fa3624ef-37c1-4102-bfa9-924af26f5db1" RegularExpression="^.{14} 00:0038:/小奥秘卡$">
-            <Actions />
+          <Trigger Enabled="true" Name="aDPS1远程倒序发卡" Id="e1de00be-8f2d-49b1-9725-efa3ec788ed5" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0远程倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0远程倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0远程倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0远程倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0远程倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0远程倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0远程倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0远程倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0远程倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0远程倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0远程倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0远程倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0远程倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0远程倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0远程倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0远程倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:aDPS0远程倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][2]}*if(${evar:Ast_远程修正2}=1,${var:Ast_远程修正2},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][3]}*if(${evar:Ast_远程修正3}=1,${var:Ast_远程修正3},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*if(${evar:Ast_远程修正4}=1,${var:Ast_远程修正4},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*if(${evar:Ast_远程修正5}=1,${var:Ast_远程修正5},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][6]}*if(${evar:Ast_远程修正6}=1,${var:Ast_远程修正6},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*if(${evar:Ast_远程修正7}=1,${var:Ast_远程修正7},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*if(${evar:Ast_远程修正8}=1,${var:Ast_远程修正8},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][9]}*if(${evar:Ast_远程修正9}=1,${var:Ast_远程修正9},1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*if(${evar:Ast_远程修正1}=1,${var:Ast_远程修正1},1)" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0远程倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][9]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS0远程倒序发卡" VariableExpression="${var:aDPS0远程倒序发卡}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0远程倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="9" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0远程倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="11" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="e1de00be-8f2d-49b1-9725-efa3ec788ed5" TriggerForce="regexp,parent" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0远程倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0远程倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="9" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="12" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0远程倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="13" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="e1de00be-8f2d-49b1-9725-efa3ec788ed5" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0远程倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
@@ -32,67 +383,23 @@
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="队伍列表" Id="972fb1d0-25d4-4642-be8b-e87e3fcd012f" RegularExpression="^.{14} 00:0038:AstTeamList:(.+):(.)$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList$2" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$1}*${func:indexof(&quot;沃仙曦染&quot;):$1}*${func:indexof(&quot;宇宙和音&quot;):$1}*${func:indexof(&quot;红玉海&quot;):$1}*${func:indexof(&quot;萌芽池&quot;):$1}*${func:indexof(&quot;神意之地&quot;):$1}*${func:indexof(&quot;幻影群岛&quot;):$1}*${func:indexof(&quot;拉诺西亚&quot;):$1}*${func:indexof(&quot;拂晓之间&quot;):$1}*${func:indexof(&quot;龙巢神殿&quot;):$1}*${func:indexof(&quot;旅人栈桥&quot;):$1}*${func:indexof(&quot;白金幻象&quot;):$1}*${func:indexof(&quot;白银乡&quot;):$1}*${func:indexof(&quot;神拳痕&quot;):$1}*${func:indexof(&quot;潮风亭&quot;):$1}*${func:indexof(&quot;琥珀原&quot;):$1}*${func:indexof(&quot;柔风海湾&quot;):$1}*${func:indexof(&quot;海猫茶屋&quot;):$1}*${func:indexof(&quot;延夏&quot;):$1}*${func:indexof(&quot;静语庄园&quot;):$1}*${func:indexof(&quot;摩杜纳&quot;):$1}*${func:indexof(&quot;紫水栈桥&quot;):$1}}):$1}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;晨曦王座&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;宇宙和音&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;神拳痕&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;海猫茶屋&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;旅人栈桥&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;幻影群岛&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;红玉海&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;萌芽池&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;龙巢神殿&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;神意之地&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;拂晓之间&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;拉诺西亚&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;白金幻象&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;白银乡&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;潮风亭&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;延夏&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;琥珀原&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;柔风海湾&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;摩杜纳&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;沃仙曦染&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;静语庄园&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;紫水栈桥&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList$2" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$1}*${func:indexof(&quot;沃仙曦染&quot;):$1}*${func:indexof(&quot;宇宙和音&quot;):$1}*${func:indexof(&quot;红玉海&quot;):$1}*${func:indexof(&quot;萌芽池&quot;):$1}*${func:indexof(&quot;神意之地&quot;):$1}*${func:indexof(&quot;幻影群岛&quot;):$1}*${func:indexof(&quot;拉诺西亚&quot;):$1}*${func:indexof(&quot;拂晓之间&quot;):$1}*${func:indexof(&quot;龙巢神殿&quot;):$1}*${func:indexof(&quot;旅人栈桥&quot;):$1}*${func:indexof(&quot;白金幻象&quot;):$1}*${func:indexof(&quot;白银乡&quot;):$1}*${func:indexof(&quot;神拳痕&quot;):$1}*${func:indexof(&quot;潮风亭&quot;):$1}*${func:indexof(&quot;琥珀原&quot;):$1}*${func:indexof(&quot;柔风海湾&quot;):$1}*${func:indexof(&quot;海猫茶屋&quot;):$1}*${func:indexof(&quot;延夏&quot;):$1}*${func:indexof(&quot;静语庄园&quot;):$1}*${func:indexof(&quot;摩杜纳&quot;):$1}*${func:indexof(&quot;紫水栈桥&quot;):$1}}):$1}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList$2" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;晨曦王座&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;宇宙和音&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;神拳痕&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;海猫茶屋&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;旅人栈桥&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;幻影群岛&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;红玉海&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;萌芽池&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;龙巢神殿&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;神意之地&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;拂晓之间&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;拉诺西亚&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;白金幻象&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;白银乡&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;潮风亭&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;延夏&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;琥珀原&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;柔风海湾&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;摩杜纳&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;沃仙曦染&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;静语庄园&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${func:indexof(&quot;紫水栈桥&quot;):$1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                 </Condition>
                 <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="获取队伍" Id="41adf12e-eb56-46ee-9f4b-f37783fba4d0" RegularExpression="^.{14} 00:0839:(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。)">
             <Actions>
@@ -130,7 +437,6 @@
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Sequential="True" Name="量谱" Id="d5a64fd1-732d-44a4-9b6d-814a10c31d93" RegularExpression="^.{14} 1F:.{8}:[^:]+?:21:(?&lt;gauge&gt;[^:]+?):0(?&lt;no3&gt;.):..$">
             <Actions>
@@ -138,19 +444,276 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="Ast卡片" VariableExpression="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="Ast手中卡日月星" VariableExpression="日" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="Ast职能" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="Ast手中卡日月星" VariableExpression="月" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="Ast手中卡日月星" VariableExpression="星" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="5" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="6" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" VariableOp="SetString" VariableName="Ast职能" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[134]" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="Ast职能" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="6" LogLevel="-1" VariableOp="SetString" VariableName="Ast职能" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[256]" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="0273beae-6ce4-4978-a34e-3eca28a57542" Name="小奥秘卡" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="小奥秘卡" Id="fa3624ef-37c1-4102-bfa9-924af26f5db1" RegularExpression="^.{14} 00:0038:/小奥秘卡$">
+            <Actions />
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="435f2223-2684-4582-8e34-8d8555650d56" Name="偏差值" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="任务开始" Id="65b8774a-e4b7-4814-af7d-d5e1c3ae8ee4" RegularExpression="^.{14} 00:0839:(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。)">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正4" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正5" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正6" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正7" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正8" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="11" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正4" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="13" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正5" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="14" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正6" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="15" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正7" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="16" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正8" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="17" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正9" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[2][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                 </Condition>
                 <Conditions />
               </Action>
