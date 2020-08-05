@@ -1,185 +1,173 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="fb1cc9c9-8bbc-43bf-9353-05cd409b6b7b" Name="FF14信用查询 Beta10.1" Enabled="true">
-    <Folders />
+  <ExportedFolder Id="fb1cc9c9-8bbc-43bf-9353-05cd409b6b7b" Name="FF14信用查询 Beta11" Enabled="true">
+    <Folders>
+      <Folder Id="29f46c49-6d49-4bcc-b991-c9fd32b7ed41" Name="加入小队" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Sequential="True" Name="J1" Id="ad74111c-6d0e-437e-900c-e89250b53919" RegularExpression="^.{14} 00:0039:加入了(.+)组建的“.+”队伍。$">
+            <Actions>
+              <Action OrderNumber="1" LogMessageText="Query:$1" LogProcess="True" LogLevel="-1" MessageBoxText="异服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" LogMessageText="Query:$1${_ffxivparty[${_ffxivplayer}].worldname}" LogProcess="True" LogLevel="-1" MessageBoxText="同服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Sequential="True" Name="J2" Id="7e71658f-1d6b-4c0e-b82a-064d0c12ec52" RegularExpression="^.{14} 00:1039:加入了(.+)的小队。$">
+            <Actions>
+              <Action OrderNumber="1" LogMessageText="Query:$1" LogProcess="True" LogLevel="-1" MessageBoxText="异服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" LogMessageText="Query:$1${_ffxivparty[${_ffxivplayer}].worldname}" LogProcess="True" LogLevel="-1" MessageBoxText="同服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Sequential="True" Name="J3" Id="b01bf637-64a4-4376-984d-c3ca4974c93b" RegularExpression="^.{14} 00:2239:(.+)加入了小队。$">
+            <Actions>
+              <Action OrderNumber="1" LogMessageText="Query:$1" LogProcess="True" LogLevel="-1" MessageBoxText="异服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" LogMessageText="Query:$1${_ffxivparty[${_ffxivplayer}].worldname}" LogProcess="True" LogLevel="-1" MessageBoxText="同服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="b6eb4485-134f-4732-a912-315ec0946ceb" Name="通用功能" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="宏" Id="e74b2836-efb5-4777-b12e-b943a270a304" RegularExpression="(?i)^.{14} 00:0038:(?:信用|credit|查询|query|查|cha|信|xin)[: ](.+)$">
+            <Actions>
+              <Action OrderNumber="1" LogMessageText="Query:$1" LogProcess="True" LogLevel="-1" MessageBoxText="异服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" LogMessageText="Query:$1${_ffxivparty[${_ffxivplayer}].worldname}" LogProcess="True" LogLevel="-1" MessageBoxText="同服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="排队" Id="11e755fc-7d44-4404-8fee-ae833b288bbb" RegularExpression="^Query" PrevActions="Interrupt">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="csbl_n" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="20000" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="查询" Id="8ab27e7d-9ce1-4050-a545-053ce701b387" RegularExpression="^Query:(.+)$" Scheduling="FromLastAction">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="csbl_n" VariableExpression="${var:csbl_n}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopCenter" TextAuraFontSize="18" TextAuraForeground="#80FF80" TextAuraOutline="Black" TextAuraName="csbl_text_$1" TextAuraExpression="$1 无数据" TextAuraXIniExpression="0" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="${_screenwidth}" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="7.5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="Not">
+                    <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单1[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单2[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单6[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单3[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单5[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单4[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:玩家举报名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:个人本地名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="3" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopCenter" TextAuraFontSize="18" TextAuraForeground="#FF8080" TextAuraOutline="Black" TextAuraName="csbl_text_$1" TextAuraExpression="$1${tvarrl:封号名单1[$1][1]}${tvarrl:封号名单1[$1][2]}${tvarrl:封号名单2[$1][1]}${tvarrl:封号名单2[$1][2]}${tvarrl:封号名单3[$1][1]}${tvarrl:封号名单3[$1][2]}${tvarrl:封号名单4[$1][1]}${tvarrl:封号名单4[$1][2]}${tvarrl:封号名单5[$1][1]}${tvarrl:封号名单5[$1][2]}${tvarrl:封号名单6[$1][1]}${tvarrl:封号名单6[$1][2]}${tvarrl:玩家举报名单[$1][1]}${tvarrl:玩家举报名单[$1][2]}${tvarrl:个人本地名单[$1][1]}${tvarrl:个人本地名单[$1][2]}(${numeric:30-${_since}})" TextAuraXIniExpression="0" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="${_screenwidth}" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="20-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单1[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单2[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单6[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单3[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单5[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单4[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:玩家举报名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:个人本地名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="${tvarrl:封号名单1[$1][1]}${tvarrl:封号名单2[$1][1]}${tvarrl:封号名单3[$1][1]}${tvarrl:封号名单4[$1][1]}${tvarrl:封号名单5[$1][1]}${tvarrl:封号名单6[$1][1]}${tvarrl:玩家举报名单[$1][1]}${tvarrl:个人本地名单[$1][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单1[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单2[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单3[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单4[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单5[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单6[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:个人本地名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:玩家举报名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage" ExecutionDelayExpression="500" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="在线名单" Id="f0eb99de-9c63-4984-8fc7-9cd6bf7d3e47" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" Description="^.{14} 01:Changed Zone to |^.{14} 00:0039:进入了休息区。&#xD;&#xA;3600000">
+            <Actions>
+              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList1.csv" DiskFileOpVar="封号名单1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList2.csv" DiskFileOpVar="封号名单2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList3.csv" DiskFileOpVar="封号名单3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList4.csv" DiskFileOpVar="封号名单4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList5.csv" DiskFileOpVar="封号名单5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="6" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList6.csv" DiskFileOpVar="封号名单6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList_Player.csv" DiskFileOpVar="玩家举报名单" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
     <Triggers>
-      <Trigger Enabled="true" Name="0038" Id="e74b2836-efb5-4777-b12e-b943a270a304" RegularExpression="(?i)^.{14} 00:0038:(?:信用|credit|查询|query|查|cha|信|xin)[: ](.+)$">
-        <Actions>
-          <Action OrderNumber="1" LogMessageText="Query:$1" LogProcess="True" LogLevel="-1" MessageBoxText="异服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexMatch" />
-            </Condition>
-            <Conditions />
-          </Action>
-          <Action OrderNumber="2" LogMessageText="Query:$1${_ffxivparty[${_ffxivplayer}].worldname}" LogProcess="True" LogLevel="-1" MessageBoxText="同服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-            </Condition>
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="B" Id="11e755fc-7d44-4404-8fee-ae833b288bbb" RegularExpression="^Query" PrevActions="Interrupt">
-        <Actions>
-          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="csbl_n" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="20000" RefireInterrupt="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="Init" Id="2afd9c99-8130-4b2d-97da-df48fa708e25" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000">
-        <Actions>
-          <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f0eb99de-9c63-4984-8fc7-9cd6bf7d3e47" TriggerForce="true" ActionType="Trigger">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Sequential="True" Name="J1" Id="ad74111c-6d0e-437e-900c-e89250b53919" RegularExpression="^.{14} 00:0039:加入了(.+)组建的“.+”队伍。$">
-        <Actions>
-          <Action OrderNumber="1" LogMessageText="Query:$1" LogProcess="True" LogLevel="-1" MessageBoxText="异服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexMatch" />
-            </Condition>
-            <Conditions />
-          </Action>
-          <Action OrderNumber="2" LogMessageText="Query:$1${_ffxivparty[${_ffxivplayer}].worldname}" LogProcess="True" LogLevel="-1" MessageBoxText="同服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-            </Condition>
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Sequential="True" Name="J2" Id="7e71658f-1d6b-4c0e-b82a-064d0c12ec52" RegularExpression="^.{14} 00:1039:加入了(.+)的小队。$">
-        <Actions>
-          <Action OrderNumber="1" LogMessageText="Query:$1" LogProcess="True" LogLevel="-1" MessageBoxText="异服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexMatch" />
-            </Condition>
-            <Conditions />
-          </Action>
-          <Action OrderNumber="2" LogMessageText="Query:$1${_ffxivparty[${_ffxivplayer}].worldname}" LogProcess="True" LogLevel="-1" MessageBoxText="同服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-            </Condition>
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Sequential="True" Name="J3" Id="b01bf637-64a4-4376-984d-c3ca4974c93b" RegularExpression="^.{14} 00:2239:(.+)加入了小队。$">
-        <Actions>
-          <Action OrderNumber="1" LogMessageText="Query:$1" LogProcess="True" LogLevel="-1" MessageBoxText="异服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexMatch" />
-            </Condition>
-            <Conditions />
-          </Action>
-          <Action OrderNumber="2" LogMessageText="Query:$1${_ffxivparty[${_ffxivplayer}].worldname}" LogProcess="True" LogLevel="-1" MessageBoxText="同服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-            </Condition>
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="Q" Id="8ab27e7d-9ce1-4050-a545-053ce701b387" RegularExpression="^Query:(.+)$" Scheduling="FromLastAction">
-        <Actions>
-          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="csbl_n" VariableExpression="${var:csbl_n}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="2" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopCenter" TextAuraFontSize="18" TextAuraForeground="#80FF80" TextAuraOutline="Black" TextAuraName="csbl_text_$1" TextAuraExpression="$1 无数据" TextAuraXIniExpression="0" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="${_screenwidth}" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="7.5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="false" ExpressionL="${tvarrl:封号名单1[$1][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              <ConditionSingle Enabled="false" ExpressionL="${tvarrl:封号名单2[$1][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              <ConditionSingle Enabled="false" ExpressionL="${tvarrl:封号名单5[$1][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              <ConditionSingle Enabled="false" ExpressionL="${tvarrl:封号名单4[$1][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              <ConditionSingle Enabled="false" ExpressionL="${tvarrl:封号名单3[$1][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              <ConditionSingle Enabled="false" ExpressionL="${tvarrl:封号名单6[$1][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              <ConditionSingle Enabled="false" ExpressionL="${tvarrl:玩家举报名单[$1][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              <ConditionGroup Enabled="true" Grouping="Not">
-                <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单1[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单2[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单6[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单3[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单5[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单4[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:玩家举报名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-              </ConditionGroup>
-            </Condition>
-            <Conditions />
-          </Action>
-          <Action OrderNumber="3" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopCenter" TextAuraFontSize="18" TextAuraForeground="#FF8080" TextAuraOutline="Black" TextAuraName="csbl_text_$1" TextAuraExpression="$1${tvarrl:封号名单1[$1][1]}${tvarrl:封号名单1[$1][2]}${tvarrl:封号名单2[$1][1]}${tvarrl:封号名单2[$1][2]}${tvarrl:封号名单3[$1][1]}${tvarrl:封号名单3[$1][2]}${tvarrl:封号名单4[$1][1]}${tvarrl:封号名单4[$1][2]}${tvarrl:封号名单5[$1][1]}${tvarrl:封号名单5[$1][2]}${tvarrl:封号名单6[$1][1]}${tvarrl:封号名单6[$1][2]}${tvarrl:玩家举报名单[$1][1]}${tvarrl:玩家举报名单[$1][2]}(${numeric:30-${_since}})" TextAuraXIniExpression="0" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="${_screenwidth}" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="20-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单1[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单2[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单6[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单3[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单5[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单4[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:玩家举报名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-            </Condition>
-            <Conditions />
-          </Action>
-          <Action OrderNumber="4" LogProcess="True" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage" ExecutionDelayExpression="500" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="R" Id="f0eb99de-9c63-4984-8fc7-9cd6bf7d3e47" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" Description="^.{14} 01:Changed Zone to |^.{14} 00:0039:进入了休息区。&#xD;&#xA;3600000">
-        <Actions>
-          <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList1.csv" DiskFileOpVar="封号名单1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="2" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList2.csv" DiskFileOpVar="封号名单2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="3" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList3.csv" DiskFileOpVar="封号名单3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="4" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList4.csv" DiskFileOpVar="封号名单4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="5" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList5.csv" DiskFileOpVar="封号名单5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="6" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList6.csv" DiskFileOpVar="封号名单6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="7" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/BlackList_Player.csv" DiskFileOpVar="玩家举报名单" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="false" IsReadme="True" Name="使用说明（双击打开描述）" Id="4898f85d-42bb-4716-92f7-a146bcd2d661" RegularExpression="" Description="自动查询：&#xD;&#xA;&#xD;&#xA;  当玩家加入某个队伍时、当某位玩家进入队伍时，在屏幕上方显示查询结果。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;手动查询：&#xD;&#xA;&#xD;&#xA;  使用宏：   /e (信用|credit|查询|query|查|cha|信|xin) &lt;小队序号&gt;&#xD;&#xA;&#xD;&#xA; /e cha &lt;2&gt;&#xD;&#xA; &#xD;/e cha &lt;3&gt;&#xD;&#xA; &#xD;/e cha &lt;4&gt;&#xD;&#xA; &#xD;/e cha &lt;5&gt;&#xD;&#xD;&#xA; /e cha &lt;6&gt;&#xD;&#xD;&#xA; /e cha &lt;7&gt;&#xD;&#xA; &#xD;/e cha &lt;8&gt;&#xD;&#xA;&#xD;&#xA;上报信用问题（举报他人）：&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  【腾讯文档】艾欧泽亚非专业个人信用信息服务-举报窗口&#xD;&#xA;  https://docs.qq.com/form/fill/DU01WbkN2bW9lbm1J?_w_tencentdocx_form=1&#xD;&#xA;&#xD;&#xA;  【腾讯文档】艾欧泽亚非专业个人信用信息服务-举报窗口（收集结果）&#xD;&#xA;　https://docs.qq.com/sheet/DU2pNdm9JSkl1RG5G&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;翻案群：847174172">
+      <Trigger Enabled="false" IsReadme="True" Name="使用说明（双击打开描述）" Id="4898f85d-42bb-4716-92f7-a146bcd2d661" RegularExpression="" Description="自动查询：&#xD;&#xA;&#xD;&#xA;  当玩家加入某个队伍时、当某位玩家进入队伍时，在屏幕上方显示查询结果。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;手动查询：&#xD;&#xA;&#xD;&#xA;  使用宏：   /e (信用|credit|查询|query|查|cha|信|xin) &lt;小队序号&gt;&#xD;&#xA;&#xD;&#xA; /e cha &lt;2&gt;&#xD;&#xA; &#xD;/e cha &lt;3&gt;&#xD;&#xA; &#xD;/e cha &lt;4&gt;&#xD;&#xA; &#xD;/e cha &lt;5&gt;&#xD;&#xD;&#xA; /e cha &lt;6&gt;&#xD;&#xD;&#xA; /e cha &lt;7&gt;&#xD;&#xA; &#xD;/e cha &lt;8&gt;&#xD;&#xA;&#xD;&#xA;加入你个人本地的黑名单：&#xD;&#xA;&#xD;&#xA;  1、复制【个人本地名单】触发器到本地触发器并&quot;启用&quot;&#xD;&#xA;&#xD;&#xA;  2、&quot;禁用&quot;远程触发器中的【个人本地名单】&#xD;&#xA;&#xD;&#xA;  3、编辑本地触发器内的路径为你自己电脑里的本地csv文件，并可自行编写内部的黑名单玩家。&#xD;&#xA;&#xD;&#xA;  创建csv文件:打开你的Office Excel 新建空白工作簿 第一列是玩家ID+区服(例:丝瓜卡夫卡紫水栈桥) 第二列是原因(例:打游戏太菜被关起来) 第三列是举报人ID+区服,保存时选择csv格式即可.&#xD;&#xA;&#xD;&#xA;上报信用问题（举报他人）：&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  【腾讯文档】艾欧泽亚非专业个人信用信息服务-举报窗口&#xD;&#xA;  https://docs.qq.com/form/fill/DU01WbkN2bW9lbm1J?_w_tencentdocx_form=1&#xD;&#xA;&#xD;&#xA;  【腾讯文档】艾欧泽亚非专业个人信用信息服务-举报窗口（收集结果）&#xD;&#xA;　https://docs.qq.com/sheet/DU2pNdm9JSkl1RG5G&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;翻案群：847174172">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
+      </Trigger>
+      <Trigger Enabled="false" Name="个人本地名单（请复制到本地触发器中启用）" Id="0a327c45-28d4-4f16-8dc9-21b0dbfa1911" RegularExpression="^.{15}00:0839:.+?(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。|)">
+        <Actions>
+          <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="D:\FF14\黑名单.csv" DiskFileOpVar="个人本地名单" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
       </Trigger>
     </Triggers>
   </ExportedFolder>
