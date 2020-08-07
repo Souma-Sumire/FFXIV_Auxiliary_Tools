@@ -38,14 +38,16 @@
                     </ConditionGroup>
                   </ConditionGroup>
                   <ConditionGroup Enabled="true" Grouping="Not">
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    <ConditionGroup Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </ConditionGroup>
                   </ConditionGroup>
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="e8cf2e45-5912-4359-8d75-11ff33b00f1b" ActionType="Trigger" Asynchronous="False">
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c07d4139-26dd-4f95-b808-b14e8fbb71a5" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                   <ConditionGroup Enabled="true" Grouping="Or">
@@ -76,14 +78,16 @@
                     </ConditionGroup>
                   </ConditionGroup>
                   <ConditionGroup Enabled="true" Grouping="Not">
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    <ConditionGroup Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </ConditionGroup>
                   </ConditionGroup>
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" MessageBoxText="${func:substring(0,3):${var:Ast_即将发送}} 小奥秘卡 ${func:substring(7,3):${var:Ast_即将发送}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="MessageBox">
+              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="${func:substring(0,3):${var:Ast_即将发送}} 小奥秘卡 ${func:substring(7,3):${var:Ast_即将发送}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -93,7 +97,7 @@
           </Trigger>
           <Trigger Enabled="true" Name="出卡" Id="c07d4139-26dd-4f95-b808-b14e8fbb71a5" RegularExpression="^.{14} 00:0038:/出卡$">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac 重抽" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                   <ConditionGroup Enabled="true" Grouping="Or">
@@ -124,14 +128,16 @@
                     </ConditionGroup>
                   </ConditionGroup>
                   <ConditionGroup Enabled="true" Grouping="Not">
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    <ConditionGroup Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </ConditionGroup>
                   </ConditionGroup>
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c07d4139-26dd-4f95-b808-b14e8fbb71a5" TriggerText="AstJSON:/ac 重抽" ActionType="Trigger" Asynchronous="False">
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c07d4139-26dd-4f95-b808-b14e8fbb71a5" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                   <ConditionGroup Enabled="true" Grouping="Or">
@@ -162,15 +168,17 @@
                     </ConditionGroup>
                   </ConditionGroup>
                   <ConditionGroup Enabled="true" Grouping="Not">
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    <ConditionGroup Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </ConditionGroup>
                   </ConditionGroup>
                 </Condition>
                 <Conditions />
               </Action>
               <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="${var:Ast_即将发送}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
-                <Condition Enabled="false" Grouping="Or" />
+                <Condition Enabled="false" Grouping="And" />
                 <Conditions />
               </Action>
             </Actions>
