@@ -13,7 +13,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" TriggerForce="regexp" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -21,7 +20,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac 重抽" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -54,7 +52,6 @@
                     </ConditionGroup>
                   </ConditionGroup>
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" TriggerText="AstJSON:/ac 重抽" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -87,89 +84,74 @@
                     </ConditionGroup>
                   </ConditionGroup>
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS0倒序发卡" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS1倒序发卡" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1496049e-9837-48df-ac22-ac9224366d24" TriggerText="发:出卡" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" TriggerText="发:出卡" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="10" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" TriggerText="发:出卡" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="11" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1496049e-9837-48df-ac22-ac9224366d24" TriggerText="发:出卡" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="小奥秘卡" Id="fa3624ef-37c1-4102-bfa9-924af26f5db1" RegularExpression="^.{14} 00:0038:/小奥秘卡$" PrevActionsRefire="Deny" PeriodRefire="Deny" RefirePeriodExpression="666">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS0倒序发卡" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS1倒序发卡" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" TriggerText="发:小奥秘卡" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1496049e-9837-48df-ac22-ac9224366d24" TriggerText="发:小奥秘卡" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -180,15 +162,12 @@
             <Actions>
               <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%B8%80%E9%94%AE%E7%B3%BB%E5%88%97/%E5%8D%A0%E6%98%9F%E4%B8%80%E9%94%AE%E5%8F%91%E5%8D%A1/aDPS0.csv" DiskFileOpVar="Ast_aDPS0" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%B8%80%E9%94%AE%E7%B3%BB%E5%88%97/%E5%8D%A0%E6%98%9F%E4%B8%80%E9%94%AE%E5%8F%91%E5%8D%A1/aDPS1.csv" DiskFileOpVar="Ast_aDPS1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="队伍列表" Id="972fb1d0-25d4-4642-be8b-e87e3fcd012f" RegularExpression="^.{14} 00:0038:AstTeamList:(.+):(.)$">
             <Actions>
@@ -196,140 +175,113 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList$2" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="获取队伍" Id="41adf12e-eb56-46ee-9f4b-f37783fba4d0" RegularExpression="^.{14} 00:0839:(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。)">
             <Actions>
               <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;1&gt;:1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;2&gt;:2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;3&gt;:3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;4&gt;:4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;5&gt;:5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;6&gt;:6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;7&gt;:7" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;8&gt;:8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Sequential="True" Name="量谱" Id="d5a64fd1-732d-44a4-9b6d-814a10c31d93" RegularExpression="^.{14} 1F:.{8}:[^:]+?:21:(?&lt;gauge&gt;[^:]+?):0(?&lt;no3&gt;.):..$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="Ast量谱" VariableExpression="${func:substring(3,1):${func:padleft(48,8):${gauge}}}${func:substring(1,1):${func:padleft(48,8):${gauge}}}${no3}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="Ast手中卡日月星" VariableExpression="日" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="Ast手中卡日月星" VariableExpression="月" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="5" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="Ast手中卡日月星" VariableExpression="星" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="6" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" VariableOp="SetString" VariableName="Ast职能" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[134]" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="6" LogLevel="-1" VariableOp="SetString" VariableName="Ast职能" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[256]" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="木桩测试" Id="37374694-9f1a-4277-9107-140577c2e5ec" RegularExpression="^.{15}00:001d:(?&lt;name&gt;.+?):.+?恭敬地对木人行礼。">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c352e2ac-2c1c-432f-a514-ef5766bf1766" TriggerForce="true" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="Reset" Id="c352e2ac-2c1c-432f-a514-ef5766bf1766" RegularExpression="^.{14} 00:0839:(.+)的职业转换成了">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="69a6aa59-29b6-492c-9c85-12f71eecb021" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3784b769-3066-40d5-aae8-80ba7b665063" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="65b8774a-e4b7-4814-af7d-d5e1c3ae8ee4" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="41adf12e-eb56-46ee-9f4b-f37783fba4d0" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="发aDPS0" Id="f6ef77ac-09f2-48eb-977e-d34d5b27778a" RegularExpression="^发:(.+)$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -342,7 +294,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][1]}*${var:Ast_近战修正1}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*${var:Ast_近战修正8}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -355,7 +306,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][2]}*${var:Ast_近战修正2}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][4]}*${var:Ast_近战修正4}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -368,7 +318,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][3]}*${var:Ast_近战修正3}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*${var:Ast_近战修正8}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -381,7 +330,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][4]}*${var:Ast_近战修正4}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*${var:Ast_近战修正8}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -394,7 +342,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][5]}*${var:Ast_近战修正5}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][1]}*${var:Ast_近战修正1}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -407,7 +354,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*${var:Ast_近战修正6}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*${var:Ast_近战修正5}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][6]}*${var:Ast_近战修正6}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*${var:Ast_近战修正8}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="8" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -420,7 +366,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*${var:Ast_近战修正7}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][5]}*${var:Ast_近战修正5}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][7]}*${var:Ast_近战修正7}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][8]}*${var:Ast_近战修正8}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="9" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS0倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -433,21 +378,18 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[2][8]}*${var:Ast_近战修正8}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}}=1,(${_systemtimems}-${var:Ast_已出卡${_ffxivparty[${var:aDPS0倒序发卡}].name}})/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS0[2][7]}*${var:Ast_近战修正7}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS0倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS0倒序发卡" VariableExpression="${var:aDPS0倒序发卡}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="11" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" TriggerText="${_event}" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS1倒序发卡" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
@@ -455,7 +397,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="小奥秘卡" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="13" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1496049e-9837-48df-ac22-ac9224366d24" TriggerText="${_event}" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -463,17 +404,14 @@
                   <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="小奥秘卡" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="发aDPS1" Id="1496049e-9837-48df-ac22-ac9224366d24" RegularExpression="^发:(.+)$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -487,7 +425,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS1倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -501,7 +438,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS1倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -515,7 +451,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS1倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -529,7 +464,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS1倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -543,7 +477,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS1倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -557,7 +490,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][6]}*${var:Ast_远程修正6}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -571,7 +503,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][7]}*${var:Ast_远程修正7}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="9" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -585,7 +516,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList${var:aDPS1倒序发卡}}].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="10" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -599,7 +529,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][1]}*${var:Ast_远程修正1}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="11" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" TriggerText="AstJSON:/ac $1 &lt;${var:aDPS1倒序发卡}&gt;" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -613,21 +542,18 @@
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][8]}*${var:Ast_远程修正8}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS1[2][9]}*${var:Ast_远程修正9}*if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,(${_systemtimems}-if(${evar:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}}=1,${var:Ast_已出卡${_ffxivparty[${var:aDPS1倒序发卡}].name}},0))/1000/15,1)" ExpressionTypeL="Numeric" ExpressionR="${tvar:Ast_aDPS1[2][1]}*${var:Ast_远程修正1}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS1倒序发卡" VariableExpression="${var:aDPS1倒序发卡}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:aDPS1倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:aDPS1倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="13" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1496049e-9837-48df-ac22-ac9224366d24" TriggerText="${_event}" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:aDPS1倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:aDPS1倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="14" LogLevel="-1" VariableOp="SetNumeric" VariableName="aDPS0倒序发卡" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
@@ -635,7 +561,6 @@
                   <ConditionSingle Enabled="true" ExpressionL="${var:aDPS0倒序发卡}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="小奥秘卡" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="15" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" TriggerText="${_event}" TriggerForce="parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
@@ -643,243 +568,185 @@
                   <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="小奥秘卡" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast职能}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Sequential="True" Name="发送JSON" Id="15821349-dba6-4a1b-8f9f-0317e4a9c82d" RegularExpression="^AstJSON:(.+)$" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="fa3624ef-37c1-4102-bfa9-924af26f5db1" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="1496049e-9837-48df-ac22-ac9224366d24" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="8" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="9" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="10" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="11" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="12" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="13" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="14" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="15" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="16" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="17" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="18" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="19" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="20" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="21" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="22" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="23" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="24" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="25" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="26" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="27" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="28" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="29" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="30" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="31" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="32" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="33" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="34" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="35" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="36" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="37" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="38" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="39" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="40" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="41" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="42" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="43" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="44" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="45" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="分类完成" Id="ed01bd88-78b2-4337-a414-75c67ac32df3" RegularExpression="^.{14} 15:.{8}:([^:]+?):(?:113[1-6]|1D1[45]|E09):">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="15821349-dba6-4a1b-8f9f-0317e4a9c82d" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="6a7794db-ad7e-46d1-bbc4-1f37c8947fdb" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="fa3624ef-37c1-4102-bfa9-924af26f5db1" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="f6ef77ac-09f2-48eb-977e-d34d5b27778a" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="1496049e-9837-48df-ac22-ac9224366d24" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="6" LogLevel="-1" VariableName="Ast职能" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="7" LogLevel="-1" VariableName="Ast手中卡日月星" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="宏测试" Id="78a341ce-1e4c-4584-9ec3-e5a86dacab84" RegularExpression="^.{14} 00:0038:AstTest$">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c352e2ac-2c1c-432f-a514-ef5766bf1766" TriggerForce="true" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="And" />
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -890,29 +757,23 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast重抽" VariableExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c94549d0-9655-4ecb-9acf-3081a33af60b" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="重抽" Id="e7843f31-9280-459c-bcf3-040dab1bcb71" RegularExpression="^.{14} 15:.{8}:[^:]+?:E09:">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast重抽" VariableExpression="${var:Ast重抽}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c94549d0-9655-4ecb-9acf-3081a33af60b" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False" RefireRequeue="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="重抽+1" Id="c94549d0-9655-4ecb-9acf-3081a33af60b" RegularExpression="" PeriodRefire="Deny" RefirePeriodExpression="30000">
             <Actions>
@@ -920,23 +781,19 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c94549d0-9655-4ecb-9acf-3081a33af60b" TriggerForce="regexp,refire,parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c94549d0-9655-4ecb-9acf-3081a33af60b" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -947,263 +804,219 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="Ast_已出卡$2" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="重置已出卡" Id="3784b769-3066-40d5-aae8-80ba7b665063" RegularExpression="^.{15}21:.{8}:4000001[026]|^.{15}00:0839:(?:“.+”任务开始。|.+ has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。)" PeriodRefire="Deny" RefirePeriodExpression="5000">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="UnsetRegex" VariableName="^Ast_已出卡" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="红莲极意" Id="13a149b6-41f9-4d09-966f-dcd4d5b52636" RegularExpression="^.{14} 15:.{8}:([^:]+?):1CE3:">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="temp_MNK" VariableExpression="${var:temp_MNK}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_MNK}" VariableExpression="1.3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_MNK}]}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" VariableName="temp_MNK" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:temp_MNK}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="13a149b6-41f9-4d09-966f-dcd4d5b52636" TriggerText="${_event}" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:temp_MNK}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_MNK}" VariableExpression="1.2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="5000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_MNK}]}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_MNK}" VariableExpression="0.97" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="5000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_MNK}]}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="明镜止水" Id="78d1e29d-006a-4dd4-a587-8caf38bcef85" RegularExpression="^.{14} 15:.{8}:([^:]+?):1D4B:">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="temp_SAM" VariableExpression="${var:temp_SAM}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_SAM}" VariableExpression="1.2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_SAM}]}" ExpressionTypeL="String" ExpressionR="SAM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" VariableName="temp_SAM" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:temp_SAM}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="78d1e29d-006a-4dd4-a587-8caf38bcef85" TriggerText="${_event}" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:temp_SAM}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_SAM}" VariableExpression="0.96" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="10000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_SAM}]}" ExpressionTypeL="String" ExpressionR="SAM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="水遁之术" Id="4f598de5-fa4c-451f-913c-30e08037e50f" RegularExpression="^.{14} 15:.{8}:([^:]+?):8DF:">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="temp_NIN" VariableExpression="${var:temp_NIN}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_NIN}" VariableExpression="1.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_NIN}]}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" VariableName="temp_NIN" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:temp_NIN}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="4f598de5-fa4c-451f-913c-30e08037e50f" TriggerText="${_event}" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:temp_NIN}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_NIN}" VariableExpression="1.25" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="10000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_NIN}]}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_NIN}" VariableExpression="0.86" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="5000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_NIN}]}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="血乱" Id="dfe2de3c-1257-4dbe-ba05-d96612d712df" RegularExpression="^.{14} 15:.{8}:([^:]+?):1CDE:">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="temp_DRK" VariableExpression="${var:temp_DRK}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_DRK}" VariableExpression="1.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_DRK}]}" ExpressionTypeL="String" ExpressionR="DRK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" VariableName="temp_DRK" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:temp_DRK}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="dfe2de3c-1257-4dbe-ba05-d96612d712df" TriggerText="${_event}" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:temp_DRK}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_DRK}" VariableExpression="1.25" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="5000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_DRK}]}" ExpressionTypeL="String" ExpressionR="DRK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_DRK}" VariableExpression="0.93" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="5000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_DRK}]}" ExpressionTypeL="String" ExpressionR="DRK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="原初的解放" Id="8500c5f3-a3db-4a82-8257-78b8e18395b2" RegularExpression="^.{14} 15:.{8}:([^:]+?):1CDD:">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="temp_WAR" VariableExpression="${var:temp_WAR}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_WAR}" VariableExpression="1.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_WAR}]}" ExpressionTypeL="String" ExpressionR="WAR" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" VariableName="temp_WAR" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:temp_WAR}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8500c5f3-a3db-4a82-8257-78b8e18395b2" TriggerText="${_event}" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:temp_WAR}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_WAR}" VariableExpression="1.25" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="5000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_WAR}]}" ExpressionTypeL="String" ExpressionR="WAR" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正${var:temp_WAR}" VariableExpression="0.93" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="5000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_WAR}]}" ExpressionTypeL="String" ExpressionR="WAR" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="不死鸟附体" Id="78ef9967-fd48-4a89-9333-fa9ffeb0548a" RegularExpression="^.{14} 15:.{8}:([^:]+?):40A5:">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="temp_SMN" VariableExpression="${var:temp_SMN}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正${var:temp_SMN}" VariableExpression="1.75" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_SMN}]}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" VariableName="temp_SMN" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:temp_SMN}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="78ef9967-fd48-4a89-9333-fa9ffeb0548a" TriggerText="${_event}" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${evar:temp_SMN}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正${var:temp_SMN}" VariableExpression="0.93" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="15000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:Ast_aDPS0[1][${var:temp_SMN}]}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="技巧舞步" Id="ae172176-983e-4db3-b7fe-638828afd89e" RegularExpression="^.{14} 15:.{8}:([^:]+?):3E7E:">
             <Actions>
@@ -1239,47 +1052,50 @@
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="重置修正值" Id="65b8774a-e4b7-4814-af7d-d5e1c3ae8ee4" RegularExpression="^.{15}21:.{8}:4000001[026]|^.{15}00:0839:(?:“.+”任务开始。|.+ has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。)" PeriodRefire="Deny" RefirePeriodExpression="5000">
             <Actions>
-              <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="10215add-0d7f-45b2-8e07-96b1c6f2c432" ActionType="Trigger">
+              <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="836821f6-7c71-4c5f-8413-f3e197f20190" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="ae172176-983e-4db3-b7fe-638828afd89e" ActionType="Trigger">
+              <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="829e0c50-6737-4d21-896a-7d36ef8f19fa" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="78ef9967-fd48-4a89-9333-fa9ffeb0548a" ActionType="Trigger">
+              <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="ae172176-983e-4db3-b7fe-638828afd89e" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="8500c5f3-a3db-4a82-8257-78b8e18395b2" ActionType="Trigger">
+              <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="78ef9967-fd48-4a89-9333-fa9ffeb0548a" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="78d1e29d-006a-4dd4-a587-8caf38bcef85" ActionType="Trigger">
+              <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="8500c5f3-a3db-4a82-8257-78b8e18395b2" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="4f598de5-fa4c-451f-913c-30e08037e50f" ActionType="Trigger">
+              <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="78d1e29d-006a-4dd4-a587-8caf38bcef85" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="13a149b6-41f9-4d09-966f-dcd4d5b52636" ActionType="Trigger">
+              <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="4f598de5-fa4c-451f-913c-30e08037e50f" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="dfe2de3c-1257-4dbe-ba05-d96612d712df" ActionType="Trigger">
+              <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="13a149b6-41f9-4d09-966f-dcd4d5b52636" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="9" LogLevel="-1" VariableOp="UnsetRegex" VariableName="^Ast_..修正.$" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+              <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="dfe2de3c-1257-4dbe-ba05-d96612d712df" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正1" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="10" LogLevel="-1" VariableOp="UnsetRegex" VariableName="^Ast_..修正.$" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="11" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正1" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1292,7 +1108,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="11" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正2" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正2" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1305,7 +1121,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正3" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="13" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正3" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1318,7 +1134,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="13" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正4" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="14" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正4" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1331,7 +1147,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="14" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正5" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="15" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正5" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1344,7 +1160,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="15" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正6" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="16" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正6" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1357,7 +1173,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="16" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正7" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="17" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正7" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1370,7 +1186,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="17" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正8" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="18" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正8" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1383,7 +1199,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="18" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正1" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="19" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正1" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1396,7 +1212,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="19" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正2" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="20" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正2" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1409,7 +1225,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="20" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正3" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="21" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正3" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1422,7 +1238,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="21" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正4" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="22" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正4" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1435,7 +1251,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="22" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正5" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="23" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正5" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1448,7 +1264,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="23" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正6" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="24" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正6" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1461,7 +1277,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="24" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正7" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="25" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正7" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1474,7 +1290,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="25" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正8" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="26" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正8" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1487,7 +1303,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="26" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正9" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="27" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正9" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][9]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][9]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -1500,7 +1316,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="27" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="28" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1513,7 +1329,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="28" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="29" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1526,7 +1342,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="29" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="30" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1539,7 +1355,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="30" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正4" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="31" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正4" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1552,7 +1368,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="31" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正5" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="32" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正5" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1565,7 +1381,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="32" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正6" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="33" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正6" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1578,7 +1394,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="33" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正7" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="34" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正7" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1591,7 +1407,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="34" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正8" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="35" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正8" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1604,7 +1420,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="35" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="36" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][1]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1617,7 +1433,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="36" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="37" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][2]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1630,7 +1446,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="37" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="38" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][3]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1643,7 +1459,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="38" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正4" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="39" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正4" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][4]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1656,7 +1472,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="39" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正5" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="40" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正5" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][5]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1669,7 +1485,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="40" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正6" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="41" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正6" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][6]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1682,7 +1498,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="41" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正7" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="42" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正7" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][7]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1695,7 +1511,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="42" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正8" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="43" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正8" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][8]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1708,7 +1524,7 @@
                 </Condition>
                 <Conditions />
               </Action>
-              <Action OrderNumber="43" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正9" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="44" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正9" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][9]}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
@@ -1723,14 +1539,228 @@
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="*死亡" Id="836821f6-7c71-4c5f-8413-f3e197f20190" RegularExpression="^.{14} 19:(.+?) was defeated by ">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正4" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正5" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正6" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正7" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正8" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="11" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正4" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="13" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正5" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="14" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正6" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="15" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正7" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="16" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正8" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="17" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正9" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][9]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="*伤害降低 黑头" Id="10215add-0d7f-45b2-8e07-96b1c6f2c432" RegularExpression="">
-            <Actions />
-            <Condition Enabled="false" Grouping="Or" />
+          <Trigger Enabled="true" Name="*伤害降低/黑头" Id="829e0c50-6737-4d21-896a-7d36ef8f19fa" RegularExpression="^.{14} 1A:.{8}:(.+) gains the effect of 衰弱 from .*? for (.+?) Seconds\.$">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正1" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正2" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正3" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正4" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正5" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正6" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正7" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_近战修正8" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS0[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正1" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][1]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正2" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][2]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="11" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正3" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][3]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正4" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][4]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="13" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正5" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][5]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="14" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正6" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][6]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="15" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正7" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][7]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="16" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正8" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][8]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="17" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_远程修正9" VariableExpression="0.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$name}.job}" ExpressionTypeL="String" ExpressionR="${tvar:Ast_aDPS1[1][9]}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="*死亡" Id="79804dda-5f42-49c8-aa6a-c60451bcbc3d" RegularExpression="">
+          <Trigger Enabled="false" Name="被LB复活 伤害降低/黑头恢复" Id="a062232a-f95a-4e38-a69c-e4ede2ba0b1b" RegularExpression="">
             <Actions />
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
@@ -1742,7 +1772,6 @@
       <Trigger Enabled="false" IsReadme="True" Name="使用说明（双击打开描述）" Id="b475d4cd-0afd-45ce-a2dd-4dcf21c8967c" RegularExpression="" Description="使用远程触发器导入时，请勾选“允许触发器操作文件”，并手动右键更新一次触发器，否则将无法使用。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;1.开启依赖：[鲶鱼精邮差]&#xD;&#xA;&#xD;&#xA;2.配置鲶鱼精邮差的端口环境(bat)。重启ACT&#xD;&#xA;&#xD;&#xA;3.使用宏（建议在煞星读条到一半就按，因为触发器也需要一定时间来响应，特别是高唱速的情况下容易被下一个技能队列打断而发不出去卡。）&#xD;&#xA;&#xD;&#xA;  &quot;/e /出卡&quot;　会优先发普通卡，如果已经3印了则会转为小奥秘卡&#xD;&#xA;&#xD;&#xA;  &quot;/e /小奥秘卡＂ 会优先发小奥秘卡&#xD;&#xA;&#xD;&#xA;  最好别激情连打，以免出现Bug&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;4.本触发器不考虑重复职业的情况&#xD;&#xA;&#xD;&#xA;5.使用木桩测试时请先确保队伍为非跨服小队，然后对木人使用一次在 &quot;消息栏显示文字提示&quot; 的 [行礼] 进行初始化。&#xD;&#xA;  或使用宏&quot;/e AstTest&quot;">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
