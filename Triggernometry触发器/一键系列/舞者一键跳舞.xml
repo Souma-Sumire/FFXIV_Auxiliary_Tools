@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="137438953472" Id="ff5742b3-0736-46dd-a8c9-f1f789c69dfd" Name="舞娘一键舞步 v1.5.5 没开邮差别勾选启动" Enabled="true">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="137438953472" Id="ff5742b3-0736-46dd-a8c9-f1f789c69dfd" Name="舞娘一键舞步 by Souma" Enabled="true">
     <Folders>
       <Folder Id="cfd2abbb-fd63-43a1-82b2-ef8cbe38d56f" Name="通用方法" Enabled="true">
         <Folders />
@@ -13,7 +13,7 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="Reset" Id="f698c61d-c35c-4b69-9330-35ca86156940" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$|^.{15}21:.{8}:4000001[026]|^.{15}00:0839:.+?(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。)">
+          <Trigger Enabled="true" Name="Reset" Id="f698c61d-c35c-4b69-9330-35ca86156940" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$|^.{15}21:.{8}:4000001[026]|^.{15}00:0839:(?:“.+”任务开始。|.+ has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。)">
             <Actions>
               <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" ExecutionDelayExpression="500" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -200,23 +200,18 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="84b53c8d-886a-4f54-9930-95207a6c8fcb" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill${var:DNCOK_no1}}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" ExecutionDelayExpression="${var:DNCOK_延迟时间}" Asynchronous="False">
                 <Condition Enabled="false" Grouping="And" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF2}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" ExecutionDelayExpression="15000" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="84b53c8d-886a-4f54-9930-95207a6c8fcb" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
@@ -268,6 +263,11 @@
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="15" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
         </Condition>
+      </Trigger>
+      <Trigger Enabled="false" IsReadme="True" Name="使用说明（双击打开描述）" Id="e1ee9d0f-bde9-4911-b91a-cbce9537baf1" RegularExpression="" Description="1.开启依赖：[鲶鱼精邮差]&#xD;&#xA;&#xD;&#xA;2.配置鲶鱼精邮差的端口环境(bat)。重启ACT&#xD;&#xA;&#xD;&#xA;3.在[*设置]中设置你的舞步键位">
+        <Actions />
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
