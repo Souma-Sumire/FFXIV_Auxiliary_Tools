@@ -1,0 +1,1181 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4294967296" Id="ccd7d2e5-ca6a-43bd-b42d-b4a66d258502" Name="占星术士自动发卡 by Souma" Enabled="true">
+    <Folders>
+      <Folder Id="a6d7ec15-72e4-45df-b69f-0ecefdb33257" Name="重抽" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="重置重抽" Id="69a6aa59-29b6-492c-9c85-12f71eecb021" RegularExpression="^.{14} 21:.{8}:400000(03|1[026]):">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c94549d0-9655-4ecb-9acf-3081a33af60b" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast重抽" VariableExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="重抽" Id="e7843f31-9280-459c-bcf3-040dab1bcb71" RegularExpression="^.{14} 15:.{8}:[^:]+?:E09:">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast重抽" VariableExpression="${var:Ast重抽}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c94549d0-9655-4ecb-9acf-3081a33af60b" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False" RefireRequeue="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="重抽+1" Id="c94549d0-9655-4ecb-9acf-3081a33af60b" RegularExpression="" Scheduling="FromLastAction">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast重抽" VariableExpression="${var:Ast重抽}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="30000" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c94549d0-9655-4ecb-9acf-3081a33af60b" TriggerForce="regexp,refire,parent" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c94549d0-9655-4ecb-9acf-3081a33af60b" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="435f2223-2684-4582-8e34-8d8555650d56" Name="修正" Enabled="true">
+        <Folders>
+          <Folder Id="4ea3fdc4-5e4e-42eb-97e1-0153d9e4476c" Name="降低" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="死亡" Id="836821f6-7c71-4c5f-8413-f3e197f20190" RegularExpression="^.{14} 19:(.+?) was defeated by ">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低$1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="从无法战斗状态复苏了1" Id="a062232a-f95a-4e38-a69c-e4ede2ba0b1b" RegularExpression="^.{14} 00:103a:(.+)(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)从无法战斗状态复苏了。">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="e9985ae3-39df-486f-a209-63efe411ac29" TriggerText="Revive:$1" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="从无法战斗状态复苏了2" Id="dfe2d59c-7241-4be9-b4ed-1d0d3d06c98a" RegularExpression="^.{14} 00:103a:(.+)从无法战斗状态复苏了。">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="e9985ae3-39df-486f-a209-63efe411ac29" TriggerText="Revive:$1" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="复活" Id="e9985ae3-39df-486f-a209-63efe411ac29" RegularExpression="^Revive:(.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低$1" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="伤害降低 衰弱" Id="2c64cadd-bf06-48ce-ae5e-6429b98a5395" RegularExpression="^.{14} 1A:.{8}:(.+?) gains the effect of (?:伤害降低|衰弱) from.+ for (.+) Seconds\.$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低$1" VariableExpression="0.4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低$1" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="$2*1000">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder Id="d33c374a-96e7-475c-92fa-a9f89b1beb24" Name="特殊技" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="1.4 1.2 0.8" Id="78ef9967-fd48-4a89-9333-fa9ffeb0548a" RegularExpression="^.{14} 15:.{8}:([^:]+?):(40A5|8D2|1CDE|1CDD):" Description="不死鸟附体 攻其不备 血乱 原初的解放">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="1.4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="1.2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="7500" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="0.8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="7500" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="1.2 0.977" Id="b0865ffc-a791-4cb1-b472-3bea591ba88f" RegularExpression="^.{14} 15:.{8}:([^:]+?):1D4B:" Description="明镜止水">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="1.2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="0.977" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="10000" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="1.6 1.3 0.91" Id="d04b432d-d212-4170-8ee7-3bab3f38f792" RegularExpression="^.{14} 15:.{8}:([^:]+?):3E7E:" Description="技巧舞步">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="1.6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="1.3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="10000" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="0.91" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="5000" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="1.3 1.15 0.96" Id="40c21535-e131-4345-b9a5-ccc359547fd9" RegularExpression="^.{14} 15:.{8}:([^:]+?):1CE3:" Description="红莲极意">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="1.3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="1.15" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="7500" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正$1" VariableExpression="0.96" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="7500" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder Id="656a178f-79f2-4550-8af9-c833c25e8626" Name="出卡" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="出卡" Id="eb57540b-b3de-45de-b54b-1aa3dd76810f" RegularExpression="^.{14} 15:.{8}:([^:]+?):(?:113[1-6]|1D1[45]):[^:]+?:.{8}:([^:]+?):">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="Ast_出卡$2" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="重置出卡" Id="3784b769-3066-40d5-aae8-80ba7b665063" RegularExpression="^.{14} 21:.{8}:400000(03|1[026]):" PeriodRefire="Deny" RefirePeriodExpression="5000">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_出卡${var:AstTeamList1}" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList1}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_出卡${var:AstTeamList2}" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList2}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_出卡${var:AstTeamList3}" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList3}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_出卡${var:AstTeamList4}" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList4}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_出卡${var:AstTeamList5}" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList5}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_出卡${var:AstTeamList6}" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList6}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="7" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_出卡${var:AstTeamList7}" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList7}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="8" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_出卡${var:AstTeamList8}" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList8}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="清变量" Id="5bf70100-a7da-4763-84a9-95988e6e9023" RegularExpression="^.{14} 00:0039:(?:进入了休息区。|You have entered a sanctuary\.|レストエリアに入った！)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="UnsetRegex" VariableName="^Ast_出卡.+" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers>
+          <Trigger Enabled="true" Name="重置修正" Id="65b8774a-e4b7-4814-af7d-d5e1c3ae8ee4" RegularExpression="^.{14} 21:.{8}:400000(03|1[026]):" PeriodRefire="Deny" RefirePeriodExpression="5000">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="2c64cadd-bf06-48ce-ae5e-6429b98a5395" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="e9985ae3-39df-486f-a209-63efe411ac29" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="836821f6-7c71-4c5f-8413-f3e197f20190" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="b0865ffc-a791-4cb1-b472-3bea591ba88f" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="40c21535-e131-4345-b9a5-ccc359547fd9" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="78ef9967-fd48-4a89-9333-fa9ffeb0548a" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="d04b432d-d212-4170-8ee7-3bab3f38f792" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="8" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正${var:AstTeamList1}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="false" ExpressionL="${evar:AstTeamList1}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="9" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低${var:AstTeamList1}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList1}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正${var:AstTeamList2}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList2}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="11" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低${var:AstTeamList2}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList2}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正${var:AstTeamList3}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList3}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="13" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低${var:AstTeamList3}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList3}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="14" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正${var:AstTeamList4}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList4}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="15" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低${var:AstTeamList4}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList4}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="16" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正${var:AstTeamList5}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList5}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="17" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低${var:AstTeamList5}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList5}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="18" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正${var:AstTeamList6}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList6}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="19" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低${var:AstTeamList6}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList6}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="20" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正${var:AstTeamList7}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList7}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="21" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低${var:AstTeamList7}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList7}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="22" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_修正${var:AstTeamList8}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList8}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="23" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_降低${var:AstTeamList8}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:AstTeamList8}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="清变量" Id="8dd52246-0f07-4b7d-9588-4719850c17d5" RegularExpression="^.{14} 00:0039:(?:进入了休息区。|You have entered a sanctuary\.|レストエリアに入った！)$">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="UnsetRegex" VariableName="^Ast_(修正|降低).+" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="false" ExpressionL="${evar:AstTeamList1}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="1ce18311-4e10-4c81-b77d-b98619d59ec9" Name="抽卡" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Sequential="True" Name="量谱" Id="d5a64fd1-732d-44a4-9b6d-814a10c31d93" RegularExpression="^.{14} 1F:.{8}:[^:]+?:21:(?&lt;gauge&gt;[^:]+?):[^:]+?(?&lt;no3&gt;.):.+$" PrevActionsRefire="Deny" Scheduling="FromLastAction">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableName="Ast_即将发送" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="Ast_量谱" VariableExpression="${func:substring(3,1):${func:padleft(48,8):${gauge}}}${func:substring(1,1):${func:padleft(48,8):${gauge}}}${no3}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="Ast_手中卡日月星" VariableExpression="日" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="Ast_手中卡日月星" VariableExpression="月" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="5" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" VariableOp="SetString" VariableName="Ast_手中卡日月星" VariableExpression="星" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="4" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="6" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="6" LogLevel="-1" VariableOp="SetString" VariableName="Ast_职能" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[134]" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="7" LogLevel="-1" VariableOp="SetString" VariableName="Ast_职能" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[256]" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1d135fbf-08bd-4592-b4fe-2bdef9f2198f" TriggerForce="regexp" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="挑选心动女生" Id="1d135fbf-08bd-4592-b4fe-2bdef9f2198f" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_即将发送" VariableExpression="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_即将发送" VariableExpression="7" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_即将发送" VariableExpression="6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_即将发送" VariableExpression="5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_即将发送" VariableExpression="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_即将发送" VariableExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="7" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_即将发送" VariableExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="8" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_即将发送" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player8_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player2_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player3_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player4_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player5_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player6_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${var:Ast_职能}].text}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${_textaura[_Ast_Player1_${var:Ast_职能}].text}" ExpressionTypeL="Numeric" ExpressionR="${_textaura[_Ast_Player7_${numeric:if(${var:Ast_职能}=1,0,1)}].text}/2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast_职能" VariableExpression="if(${var:Ast_职能}=1,0,1)" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1d135fbf-08bd-4592-b4fe-2bdef9f2198f" TriggerForce="regexp" Enabled="False" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:Ast_即将发送}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="11" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1d135fbf-08bd-4592-b4fe-2bdef9f2198f" TriggerForce="regexp" Enabled="False" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:Ast_即将发送}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="71cc8c4e-5d7f-4a82-9844-1499256bd5db" Name="宏" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="小奥秘卡" Id="e8cf2e45-5912-4359-8d75-11ff33b00f1b" RegularExpression="^.{14} 00:0038:/小奥秘卡$">
+            <Actions>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 小奥秘卡 &lt;${var:Ast_即将发送}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="出卡" Id="c07d4139-26dd-4f95-b808-b14e8fbb71a5" RegularExpression="^.{14} 00:0038:/出卡$">
+            <Actions>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionGroup Enabled="true" Grouping="Not">
+                    <ConditionGroup Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </ConditionGroup>
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="Or">
+                    <ConditionGroup Enabled="true" Grouping="Or">
+                      <ConditionGroup Enabled="true" Grouping="And">
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_手中卡日月星}" ExpressionTypeL="String" ExpressionR="日" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      </ConditionGroup>
+                      <ConditionGroup Enabled="true" Grouping="And">
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_手中卡日月星}" ExpressionTypeL="String" ExpressionR="月" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      </ConditionGroup>
+                      <ConditionGroup Enabled="true" Grouping="And">
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_手中卡日月星}" ExpressionTypeL="String" ExpressionR="星" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      </ConditionGroup>
+                    </ConditionGroup>
+                    <ConditionGroup Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast_职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList2}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList4}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList3}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList5}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList6}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList7}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList8}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    </ConditionGroup>
+                  </ConditionGroup>
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 重抽" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c07d4139-26dd-4f95-b808-b14e8fbb71a5" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                  <ConditionGroup Enabled="true" Grouping="Or">
+                    <ConditionGroup Enabled="true" Grouping="Or">
+                      <ConditionGroup Enabled="true" Grouping="And">
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_手中卡日月星}" ExpressionTypeL="String" ExpressionR="日" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      </ConditionGroup>
+                      <ConditionGroup Enabled="true" Grouping="And">
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_手中卡日月星}" ExpressionTypeL="String" ExpressionR="月" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      </ConditionGroup>
+                      <ConditionGroup Enabled="true" Grouping="And">
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_手中卡日月星}" ExpressionTypeL="String" ExpressionR="星" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      </ConditionGroup>
+                    </ConditionGroup>
+                    <ConditionGroup Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast_职能}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList2}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList4}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList3}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList5}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList6}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList7}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:AstTeamListRole${var:AstTeamList8}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                    </ConditionGroup>
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="Not">
+                    <ConditionGroup Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </ConditionGroup>
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 小奥秘卡 &lt;${var:Ast_即将发送}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 小奥秘卡 &lt;${var:Ast_即将发送}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c07d4139-26dd-4f95-b808-b14e8fbb71a5" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:Ast_即将发送}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                <Condition Enabled="false" Grouping="And" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="4e5d13f8-8924-428a-a74e-5644757e916f" Name="通用功能" Enabled="true">
+        <Folders>
+          <Folder Id="d2b3dcb7-e258-4468-b014-a330c6b8789d" Name="Reset" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="Reset" Id="c352e2ac-2c1c-432f-a514-ef5766bf1766" RegularExpression="^.{14} 00:0839:.+的职业转换成了|^.{14} 0B:">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="41adf12e-eb56-46ee-9f4b-f37783fba4d0" TriggerForce="regexp" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="宏" Id="78a341ce-1e4c-4584-9ec3-e5a86dacab84" RegularExpression="^.{14} 00:0038:AstTest$">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c352e2ac-2c1c-432f-a514-ef5766bf1766" TriggerForce="true" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="And" />
+              </Trigger>
+              <Trigger Enabled="true" Name="行礼" Id="37374694-9f1a-4277-9107-140577c2e5ec" RegularExpression="^.{15}00:001d:(?&lt;name&gt;.+?):.+?恭敬地对木人行礼。">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c352e2ac-2c1c-432f-a514-ef5766bf1766" TriggerForce="true" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Name="Reset2" Id="af517ba3-f19a-4886-bc81-af9fbe218731" RegularExpression="">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3784b769-3066-40d5-aae8-80ba7b665063" TriggerForce="regexp" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="65b8774a-e4b7-4814-af7d-d5e1c3ae8ee4" TriggerForce="regexp" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="69a6aa59-29b6-492c-9c85-12f71eecb021" TriggerForce="regexp" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a33c4435-9c26-466c-b086-69fb3987cc92" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="500" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a33c4435-9c26-466c-b086-69fb3987cc92" TriggerForce="regexp" Enabled="False" ActionType="Trigger" ExecutionDelayExpression="2000" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder Id="483d6f82-44b5-40ed-ac69-e04d5dd8b319" Name="Debug" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="false" Name="Test" Id="e0815fa5-22d9-4bd3-8a80-6379e7402da5" RegularExpression="" DebugLevel="Info">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraAlignment="TopLeft" TextAuraFontSize="10.5" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_gauge" TextAuraExpression="重抽${var:Ast重抽} 职能${var:Ast_职能} 量谱${var:Ast_量谱} 抽卡${var:Ast_手中卡日月星}" TextAuraXIniExpression="1250" TextAuraYIniExpression="120" TextAuraWIniExpression="200" TextAuraHIniExpression="28" TextAuraOIniExpression="100" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_p1" TextAuraExpression="#1: ${_ffxivparty[${var:AstTeamList1}].name} ${_ffxivparty[${var:AstTeamList1}].job} ${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})})}]} 修正${var:Ast_修正${var:AstTeamList1}} 降低${var:Ast_降低${var:AstTeamList1}} 出卡${numeric:round(min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList1}})/1000/15),2)} 结果${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})})}]}*${var:Ast_修正${var:AstTeamList1}}*${var:Ast_降低${var:AstTeamList1}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList1}})/1000/15),2)}" TextAuraXIniExpression="1250" TextAuraYIniExpression="160" TextAuraWIniExpression="400" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_p2" TextAuraExpression="#2: ${_ffxivparty[${var:AstTeamList2}].name} ${_ffxivparty[${var:AstTeamList2}].job} ${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})})}]} 修正${var:Ast_修正${var:AstTeamList2}} 降低${var:Ast_降低${var:AstTeamList2}} 出卡${numeric:round(min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList2}})/1000/15),2)} 结果${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})})}]}*${var:Ast_修正${var:AstTeamList2}}*${var:Ast_降低${var:AstTeamList2}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList2}})/1000/15),2)}" TextAuraXIniExpression="1250" TextAuraYIniExpression="200" TextAuraWIniExpression="400" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_p3" TextAuraExpression="#3: ${_ffxivparty[${var:AstTeamList3}].name} ${_ffxivparty[${var:AstTeamList3}].job} ${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})})}]} 修正${var:Ast_修正${var:AstTeamList3}} 降低${var:Ast_降低${var:AstTeamList3}} 出卡${numeric:round(min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList3}})/1000/15),2)} 结果${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})})}]}*${var:Ast_修正${var:AstTeamList3}}*${var:Ast_降低${var:AstTeamList3}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList3}})/1000/15),2)}" TextAuraXIniExpression="1250" TextAuraYIniExpression="240" TextAuraWIniExpression="400" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_p4" TextAuraExpression="#4: ${_ffxivparty[${var:AstTeamList4}].name} ${_ffxivparty[${var:AstTeamList4}].job} ${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})})}]} 修正${var:Ast_修正${var:AstTeamList4}} 降低${var:Ast_降低${var:AstTeamList4}} 出卡${numeric:round(min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList4}})/1000/15),2)} 结果${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})})}]}*${var:Ast_修正${var:AstTeamList4}}*${var:Ast_降低${var:AstTeamList4}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList4}})/1000/15),2)}" TextAuraXIniExpression="1250" TextAuraYIniExpression="280" TextAuraWIniExpression="400" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="6" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_p5" TextAuraExpression="#5: ${_ffxivparty[${var:AstTeamList5}].name} ${_ffxivparty[${var:AstTeamList5}].job} ${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})})}]} 修正${var:Ast_修正${var:AstTeamList5}} 降低${var:Ast_降低${var:AstTeamList5}} 出卡${numeric:round(min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList5}})/1000/15),2)} 结果${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})})}]}*${var:Ast_修正${var:AstTeamList5}}*${var:Ast_降低${var:AstTeamList5}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList5}})/1000/15),2)}" TextAuraXIniExpression="1250" TextAuraYIniExpression="320" TextAuraWIniExpression="400" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="7" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_p6" TextAuraExpression="#6: ${_ffxivparty[${var:AstTeamList6}].name} ${_ffxivparty[${var:AstTeamList6}].job} ${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})})}]} 修正${var:Ast_修正${var:AstTeamList6}} 降低${var:Ast_降低${var:AstTeamList6}} 出卡${numeric:round(min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList6}})/1000/15),2)} 结果${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})})}]}*${var:Ast_修正${var:AstTeamList6}}*${var:Ast_降低${var:AstTeamList6}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList6}})/1000/15),2)}" TextAuraXIniExpression="1250" TextAuraYIniExpression="360" TextAuraWIniExpression="400" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="8" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_p7" TextAuraExpression="#7: ${_ffxivparty[${var:AstTeamList7}].name} ${_ffxivparty[${var:AstTeamList7}].job} ${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})})}]} 修正${var:Ast_修正${var:AstTeamList7}} 降低${var:Ast_降低${var:AstTeamList7}} 出卡${numeric:round(min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList7}})/1000/15),2)} 结果${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})})}]}*${var:Ast_修正${var:AstTeamList7}}*${var:Ast_降低${var:AstTeamList7}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList7}})/1000/15),2)}" TextAuraXIniExpression="1250" TextAuraYIniExpression="400" TextAuraWIniExpression="400" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="9" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_p8" TextAuraExpression="#8: ${_ffxivparty[${var:AstTeamList8}].name} ${_ffxivparty[${var:AstTeamList8}].job} ${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})})}]} 修正${var:Ast_修正${var:AstTeamList8}} 降低${var:Ast_降低${var:AstTeamList8}} 出卡${numeric:round(min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList8}})/1000/15),2)} 结果${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})})}]}*${var:Ast_修正${var:AstTeamList8}}*${var:Ast_降低${var:AstTeamList8}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList8}})/1000/15),2)}" TextAuraXIniExpression="1250" TextAuraYIniExpression="440" TextAuraWIniExpression="400" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="10" LogLevel="-1" TextAuraAlignment="TopLeft" TextAuraFontSize="10.5" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_debug_readytosend" TextAuraExpression="${var:Ast_即将发送}" TextAuraXIniExpression="1250" TextAuraYIniExpression="480" TextAuraWIniExpression="200" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="Hide" Id="998ddfae-6c17-4137-b527-9310e4a109fa" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="_debug_display" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers>
+          <Trigger Enabled="true" Name="基础值" Id="6157cc3b-a335-4d26-bb12-b0589676bb67" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+            <Actions>
+              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%B8%80%E9%94%AE%E7%B3%BB%E5%88%97/%E5%8D%A0%E6%98%9F%E4%B8%80%E9%94%AE%E5%8F%91%E5%8D%A1/aDPS0.csv" DiskFileOpVar="Ast_aDPS0" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%B8%80%E9%94%AE%E7%B3%BB%E5%88%97/%E5%8D%A0%E6%98%9F%E4%B8%80%E9%94%AE%E5%8F%91%E5%8D%A1/aDPS1.csv" DiskFileOpVar="Ast_aDPS1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" ListVariableName="Ast_aDPS0_Job" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" ListVariableName="Ast_aDPS0_Dps" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" ListVariableName="Ast_aDPS1_Job" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="6" ListVariableName="Ast_aDPS1_Dps" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Job" ListVariableExpression="${tvar:Ast_aDPS0[1][1]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="8" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Job" ListVariableExpression="${tvar:Ast_aDPS1[1][1]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="9" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Job" ListVariableExpression="${tvar:Ast_aDPS0[1][2]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="10" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Job" ListVariableExpression="${tvar:Ast_aDPS1[1][2]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="11" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Job" ListVariableExpression="${tvar:Ast_aDPS0[1][3]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="12" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Job" ListVariableExpression="${tvar:Ast_aDPS1[1][3]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="13" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Job" ListVariableExpression="${tvar:Ast_aDPS0[1][4]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="14" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Job" ListVariableExpression="${tvar:Ast_aDPS1[1][4]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="15" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Job" ListVariableExpression="${tvar:Ast_aDPS0[1][5]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="16" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Job" ListVariableExpression="${tvar:Ast_aDPS1[1][5]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="17" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Job" ListVariableExpression="${tvar:Ast_aDPS0[1][6]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="18" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Job" ListVariableExpression="${tvar:Ast_aDPS1[1][6]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="19" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Job" ListVariableExpression="${tvar:Ast_aDPS0[1][7]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="20" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Job" ListVariableExpression="${tvar:Ast_aDPS1[1][7]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="21" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Job" ListVariableExpression="${tvar:Ast_aDPS0[1][8]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="22" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Job" ListVariableExpression="${tvar:Ast_aDPS1[1][8]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="23" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Job" ListVariableExpression="${tvar:Ast_aDPS1[1][9]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="24" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Dps" ListVariableExpression="${tvar:Ast_aDPS0[2][1]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="25" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Dps" ListVariableExpression="${tvar:Ast_aDPS1[2][1]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="26" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Dps" ListVariableExpression="${tvar:Ast_aDPS0[2][2]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="27" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Dps" ListVariableExpression="${tvar:Ast_aDPS1[2][2]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="28" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Dps" ListVariableExpression="${tvar:Ast_aDPS0[2][3]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="29" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Dps" ListVariableExpression="${tvar:Ast_aDPS1[2][3]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="30" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Dps" ListVariableExpression="${tvar:Ast_aDPS0[2][4]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="31" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Dps" ListVariableExpression="${tvar:Ast_aDPS1[2][4]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="32" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Dps" ListVariableExpression="${tvar:Ast_aDPS0[2][5]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="33" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Dps" ListVariableExpression="${tvar:Ast_aDPS1[2][5]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="34" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Dps" ListVariableExpression="${tvar:Ast_aDPS0[2][6]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="35" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Dps" ListVariableExpression="${tvar:Ast_aDPS1[2][6]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="36" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Dps" ListVariableExpression="${tvar:Ast_aDPS0[2][7]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="37" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Dps" ListVariableExpression="${tvar:Ast_aDPS1[2][7]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="38" ListVariableOp="Push" ListVariableName="Ast_aDPS0_Dps" ListVariableExpression="${tvar:Ast_aDPS0[2][8]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="39" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Dps" ListVariableExpression="${tvar:Ast_aDPS1[2][8]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="40" ListVariableOp="Push" ListVariableName="Ast_aDPS1_Dps" ListVariableExpression="${tvar:Ast_aDPS1[2][9]}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="队伍列表" Id="972fb1d0-25d4-4642-be8b-e87e3fcd012f" RegularExpression="^.{14} 00:0038:AstTeamList:(.+):(.)$">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList$2" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$1}*${func:indexof(&quot;沃仙曦染&quot;):$1}*${func:indexof(&quot;宇宙和音&quot;):$1}*${func:indexof(&quot;红玉海&quot;):$1}*${func:indexof(&quot;萌芽池&quot;):$1}*${func:indexof(&quot;神意之地&quot;):$1}*${func:indexof(&quot;幻影群岛&quot;):$1}*${func:indexof(&quot;拉诺西亚&quot;):$1}*${func:indexof(&quot;拂晓之间&quot;):$1}*${func:indexof(&quot;龙巢神殿&quot;):$1}*${func:indexof(&quot;旅人栈桥&quot;):$1}*${func:indexof(&quot;白金幻象&quot;):$1}*${func:indexof(&quot;白银乡&quot;):$1}*${func:indexof(&quot;神拳痕&quot;):$1}*${func:indexof(&quot;潮风亭&quot;):$1}*${func:indexof(&quot;琥珀原&quot;):$1}*${func:indexof(&quot;柔风海湾&quot;):$1}*${func:indexof(&quot;海猫茶屋&quot;):$1}*${func:indexof(&quot;延夏&quot;):$1}*${func:indexof(&quot;静语庄园&quot;):$1}*${func:indexof(&quot;摩杜纳&quot;):$1}*${func:indexof(&quot;紫水栈桥&quot;):$1}}):$1}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList$2" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole$2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList$2}].job}" ExpressionTypeL="String" ExpressionR="^(SAM|MNK|DRG|NIN|GNB|PLD|DRK|WAR)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole$2" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList$2}].job}" ExpressionTypeL="String" ExpressionR="^(BLM|SMN|MCH|RDM|BRD|DNC|WHM|SCH|AST)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="af517ba3-f19a-4886-bc81-af9fbe218731" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="500" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="获取队伍" Id="41adf12e-eb56-46ee-9f4b-f37783fba4d0" RegularExpression="" PeriodRefire="Deny" RefirePeriodExpression="1000">
+            <Actions>
+              <Action OrderNumber="0" LogLevel="-1" VariableOp="UnsetRegex" VariableName="^AstTeamList.+" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;1&gt;:1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;2&gt;:2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;3&gt;:3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;4&gt;:4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;5&gt;:5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="6" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;6&gt;:6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;7&gt;:7" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;8&gt;:8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="中转站" Id="a33c4435-9c26-466c-b086-69fb3987cc92" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_Ast_Player1_${var:AstTeamListRole1}" TextAuraExpression="${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList1}].job})})}]}*${var:Ast_修正${var:AstTeamList1}}*${var:Ast_降低${var:AstTeamList1}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList1}})/1000/15),2)}" TextAuraXIniExpression="800+200*${var:AstTeamListRole1}" TextAuraYIniExpression="120+40*1-if(${var:_debug_display}=1,${_screenheight},0)" TextAuraWIniExpression="175" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_Ast_Player2_${var:AstTeamListRole2}" TextAuraExpression="${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList2}].job})})}]}*${var:Ast_修正${var:AstTeamList2}}*${var:Ast_降低${var:AstTeamList2}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList2}})/1000/15),2)}" TextAuraXIniExpression="800+200*${var:AstTeamListRole2}" TextAuraYIniExpression="120+40*2-if(${var:_debug_display}=1,${_screenheight},0)" TextAuraWIniExpression="175" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_Ast_Player3_${var:AstTeamListRole3}" TextAuraExpression="${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList3}].job})})}]}*${var:Ast_修正${var:AstTeamList3}}*${var:Ast_降低${var:AstTeamList3}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList3}})/1000/15),2)}" TextAuraXIniExpression="800+200*${var:AstTeamListRole3}" TextAuraYIniExpression="120+40*3-if(${var:_debug_display}=1,${_screenheight},0)" TextAuraWIniExpression="175" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_Ast_Player4_${var:AstTeamListRole4}" TextAuraExpression="${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList4}].job})})}]}*${var:Ast_修正${var:AstTeamList4}}*${var:Ast_降低${var:AstTeamList4}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList4}})/1000/15),2)}" TextAuraXIniExpression="800+200*${var:AstTeamListRole4}" TextAuraYIniExpression="120+40*4-if(${var:_debug_display}=1,${_screenheight},0)" TextAuraWIniExpression="175" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_Ast_Player5_${var:AstTeamListRole5}" TextAuraExpression="${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList5}].job})})}]}*${var:Ast_修正${var:AstTeamList5}}*${var:Ast_降低${var:AstTeamList5}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList5}})/1000/15),2)}" TextAuraXIniExpression="800+200*${var:AstTeamListRole5}" TextAuraYIniExpression="120+40*5-if(${var:_debug_display}=1,${_screenheight},0)" TextAuraWIniExpression="175" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_Ast_Player6_${var:AstTeamListRole6}" TextAuraExpression="${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList6}].job})})}]}*${var:Ast_修正${var:AstTeamList6}}*${var:Ast_降低${var:AstTeamList6}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList6}})/1000/15),2)}" TextAuraXIniExpression="800+200*${var:AstTeamListRole6}" TextAuraYIniExpression="120+40*6-if(${var:_debug_display}=1,${_screenheight},0)" TextAuraWIniExpression="175" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_Ast_Player7_${var:AstTeamListRole7}" TextAuraExpression="${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList7}].job})})}]}*${var:Ast_修正${var:AstTeamList7}}*${var:Ast_降低${var:AstTeamList7}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList7}})/1000/15),2)}" TextAuraXIniExpression="800+200*${var:AstTeamListRole7}" TextAuraYIniExpression="120+40*7-if(${var:_debug_display}=1,${_screenheight},0)" TextAuraWIniExpression="175" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" TextAuraAlignment="MiddleLeft" TextAuraFontSize="8.25" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_Ast_Player8_${var:AstTeamListRole8}" TextAuraExpression="${numeric:round(${lvar:Ast_aDPS${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})}=0,1,0)}_Dps[${numeric:if(${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})}&gt;0,${lvar:Ast_aDPS0_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})},${lvar:Ast_aDPS1_Job.indexof(${_ffxivparty[${var:AstTeamList8}].job})})}]}*${var:Ast_修正${var:AstTeamList8}}*${var:Ast_降低${var:AstTeamList8}}*min(1,(${_systemtimems}-${var:Ast_出卡${var:AstTeamList8}})/1000/15),2)}" TextAuraXIniExpression="800+200*${var:AstTeamListRole8}" TextAuraYIniExpression="120+40*8-if(${var:_debug_display}=1,${_screenheight},0)" TextAuraWIniExpression="175" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="e0815fa5-22d9-4bd3-8a80-6379e7402da5" TriggerForce="regexp" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers>
+      <Trigger Enabled="false" IsReadme="True" Name="使用说明（双击打开描述）" Id="b475d4cd-0afd-45ce-a2dd-4dcf21c8967c" RegularExpression="" Description="使用远程触发器导入时，请勾选“允许触发器操作文件”，并手动右键更新一次触发器，否则将无法使用。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;1.开启依赖：[鲶鱼精邮差]&#xD;&#xA;&#xD;&#xA;2.配置鲶鱼精邮差的端口环境(bat)。重启ACT。&#xD;&#xA;&#xD;&#xA;3.使用宏&#xD;&#xA;&#xD;&#xA;  &quot;/e /出卡&quot;&#xD;&#xA;&#xD;&#xA;  &quot;/e /小奥秘卡&quot;&#xD;&#xA;&#xD;&#xA;4.不考虑重复职业的情况。&#xD;&#xA;&#xD;&#xA;5.使用木桩测试时请先确保队伍为非跨服小队，然后对木人使用一次在 &quot;消息栏显示文字提示&quot; 的 [行礼] 或使用宏 &quot;/e AstTest&quot; 进行初始化。">
+        <Actions />
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
