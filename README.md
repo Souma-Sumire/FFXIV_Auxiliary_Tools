@@ -55,6 +55,9 @@ https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8
 OBS自动录制
 https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/OBS%E8%87%AA%E5%8A%A8%E5%BD%95%E5%88%B6.xml
 
+一键占星出卡（使用时需开启【鲶鱼精邮差】）
+https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%B8%80%E9%94%AE%E7%B3%BB%E5%88%97/%E5%8D%A0%E6%98%9F%E4%B8%80%E9%94%AE%E5%8F%91%E5%8D%A1/AstAutoCard.xml
+
 一键跳舞（使用时需开启【鲶鱼精邮差】）
 https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%B8%80%E9%94%AE%E7%B3%BB%E5%88%97/%E8%88%9E%E8%80%85%E4%B8%80%E9%94%AE%E8%B7%B3%E8%88%9E.xml
 
