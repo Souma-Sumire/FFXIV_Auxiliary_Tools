@@ -477,11 +477,7 @@
                 <Triggers>
                   <Trigger Enabled="true" Name="gains" Id="b8730a44-70cb-49c4-b2e9-f97653ca6028" RegularExpression="^.{15}1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (摆脱|Shake It Off|シェイクオフ) from " PrevActions="Interrupt">
                     <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="${var:团减_摆脱百分比}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="2" VariableOp="SetString" VariableName="团减_摆脱" VariableExpression="摆脱(${var:团减_摆脱百分比}) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                      <Action OrderNumber="1" VariableOp="SetString" VariableName="团减_摆脱" VariableExpression="摆脱" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -494,43 +490,12 @@
                     <Actions>
                       <Action OrderNumber="1" VariableName="团减_摆脱" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
-                  </Trigger>
-                  <Trigger Enabled="true" Name="power" Id="677213e2-5317-4edb-801d-cc1f54d2e831" RegularExpression="^.{14} 15:.{8}:([^:]+?):1CDC:[^:]+?:.{8}:[^:]+?:.([^:]+?)..:">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="团减_摆脱百分比" VariableExpression="15" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="76" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="团减_摆脱百分比" VariableExpression="17" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="78" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="团减_摆脱百分比" VariableExpression="19" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="95" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="团减_摆脱百分比" VariableExpression="21" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="B3" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                        <Conditions />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                    <Conditions />
                   </Trigger>
                 </Triggers>
               </Folder>
