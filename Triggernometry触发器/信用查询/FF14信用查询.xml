@@ -11,11 +11,13 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" LogMessageText="Query:$1${_ffxivparty[${_ffxivplayer}].worldname}" LogProcess="True" LogLevel="-1" MessageBoxText="同服" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -82,6 +84,7 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="csbl_n" VariableExpression="${var:csbl_n}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopCenter" TextAuraFontSize="18" TextAuraForeground="#80FF80" TextAuraOutline="Black" TextAuraName="csbl_text_$1" TextAuraExpression="$1 无数据" TextAuraXIniExpression="0" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="${_screenwidth}" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="7.5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
@@ -96,6 +99,7 @@
                     <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:个人本地名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                   </ConditionGroup>
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="3" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraAlignment="TopCenter" TextAuraFontSize="18" TextAuraForeground="#FF8080" TextAuraOutline="Black" TextAuraName="csbl_text_$1" TextAuraExpression="$1${tvarrl:封号名单1[$1][1]}${tvarrl:封号名单1[$1][2]}${tvarrl:封号名单2[$1][1]}${tvarrl:封号名单2[$1][2]}${tvarrl:封号名单3[$1][1]}${tvarrl:封号名单3[$1][2]}${tvarrl:封号名单4[$1][1]}${tvarrl:封号名单4[$1][2]}${tvarrl:封号名单5[$1][1]}${tvarrl:封号名单5[$1][2]}${tvarrl:封号名单6[$1][1]}${tvarrl:封号名单6[$1][2]}${tvarrl:玩家举报名单[$1][1]}${tvarrl:玩家举报名单[$1][2]}${tvarrl:个人本地名单[$1][1]}${tvarrl:个人本地名单[$1][2]}(${numeric:30-${_since}})" TextAuraXIniExpression="0" TextAuraYIniExpression="0+${var:csbl_n}*35-35" TextAuraWIniExpression="${_screenwidth}" TextAuraHIniExpression="35" TextAuraOIniExpression="100" TextAuraTTLTickExpression="20-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
@@ -108,8 +112,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:玩家举报名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:个人本地名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="${tvarrl:封号名单1[$1][1]}${tvarrl:封号名单2[$1][1]}${tvarrl:封号名单3[$1][1]}${tvarrl:封号名单4[$1][1]}${tvarrl:封号名单5[$1][1]}${tvarrl:封号名单6[$1][1]}${tvarrl:玩家举报名单[$1][1]}${tvarrl:个人本地名单[$1][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+              <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="发现黑名单" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单1[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:封号名单2[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
@@ -120,9 +125,11 @@
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:个人本地名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${func:length:${string:${tvarrl:玩家举报名单[$1][0]}}}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage" ExecutionDelayExpression="500" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -161,7 +168,7 @@
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="false" Name="个人本地名单（请复制到本地触发器中启用）" Id="0a327c45-28d4-4f16-8dc9-21b0dbfa1911" RegularExpression="^.{15}00:0839:(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。|)">
+      <Trigger Enabled="true" Name="个人本地名单（请复制到本地触发器中启用）" Id="0a327c45-28d4-4f16-8dc9-21b0dbfa1911" RegularExpression="^.{15}00:0839:(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。|)" EditAutofire="True">
         <Actions>
           <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="D:\FF14\黑名单.csv" DiskFileOpVar="个人本地名单" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
             <Condition Enabled="false" Grouping="Or" />
