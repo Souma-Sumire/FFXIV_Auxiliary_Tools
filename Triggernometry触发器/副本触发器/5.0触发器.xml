@@ -5539,6 +5539,50 @@
                   </Trigger>
                 </Triggers>
               </Folder>
+              <Folder Id="fe679549-b758-4822-adf9-32f3b538d0eb" Name="火龙卷锁链" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="发到队伍" Id="d0dbf112-46ea-4371-925d-0498cbbd80ca" RegularExpression="^.{14} 23:.{8}:([^:]+?):.{8}:([^:]+?):03BD">
+                    <Actions>
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/p 锁链【$1】 【$2】" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="false" Grouping="And" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$2].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${evar:_AT_指挥模式}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="锁链连线" Id="afeaea9c-d276-4356-8236-9368d88e33c7" RegularExpression="^.{14} 23:.{8}:([^:]+?):.{8}:([^:]+?):03BD">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="94278783-12fe-45a0-8a67-e5ce67aef5e9" TriggerText="AT_TTS_Job:$2" ActionType="Trigger">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="94278783-12fe-45a0-8a67-e5ce67aef5e9" TriggerText="AT_TTS_Job:$1" ActionType="Trigger">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$1].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionGroup Enabled="true" Grouping="Or">
+                        <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      </ConditionGroup>
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$2].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank|Healer" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </Condition>
+                  </Trigger>
+                </Triggers>
+              </Folder>
             </Folders>
             <Triggers>
               <Trigger Enabled="true" Name="双体Buff" Id="d0ae59ab-ff7e-4e4b-beb6-8b5e0268d710" RegularExpression="^.{14} 1A:.{8}:(?&lt;name&gt;.+?) gains the effect of (?&lt;buff&gt;焔神の呪い|火神的诅咒|嵐神の呪い|风神的诅咒|Hated of Embers|Hated of the Vortex)">
@@ -5701,17 +5745,6 @@
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-              <Trigger Enabled="true" Name="锁链连线" Id="afeaea9c-d276-4356-8236-9368d88e33c7" RegularExpression="^.{14} 23:.{8}:([^:]+?):.{8}:([^:]+?):0000:0000:">
-                <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="94278783-12fe-45a0-8a67-e5ce67aef5e9" TriggerText="AT_TTS_Job:$2" ActionType="Trigger">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                </Actions>
-                <Condition Enabled="true" Grouping="And">
-                  <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$2].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                </Condition>
               </Trigger>
             </Triggers>
           </Folder>
