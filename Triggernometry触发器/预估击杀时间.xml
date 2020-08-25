@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="fe7ab5f9-e107-4265-abc2-a7200390ed7e" Name="预估击杀时间" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Name="位置" Id="f161cc3f-09ce-41c9-ba70-49e3a91fe438" RegularExpression="^.{14} 1[56]:(.{8}):.+?:(?:4BB[56]|4C14|4DCC|4C(?:8A|AF)):" PeriodRefire="Deny" RefirePeriodExpression="5000">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" TextAuraAlignment="MiddleLeft" TextAuraEffect="Bold" TextAuraFontSize="15" TextAuraForeground="White" TextAuraOutline="Black" TextAuraName="预估击杀时间" TextAuraExpression="预测击杀${func:padleft(48,2):${numeric:floor(${numeric:round(${_duration}/(1-${_ffxiventity[$1].currenthp}/${_ffxiventity[$1].maxhp}),1)}/60)}}:${func:padleft(48,2):${numeric:round(${numeric:${_duration}/(1-${_ffxiventity[$1].currenthp}/${_ffxiventity[$1].maxhp})}%60)}}" TextAuraXIniExpression="522" TextAuraYIniExpression="1" TextAuraWIniExpression="150" TextAuraHIniExpression="45" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="f161cc3f-09ce-41c9-ba70-49e3a91fe438" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="Reset" Id="71f24fc2-1fd1-428e-9c02-51efc613cc91" RegularExpression="^.{14} 00:0839:“.+”任务开始。|^.{15}21:.{8}:4000001[026]">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="预估击杀时间" TextAuraFontName="宋体" ActionType="TextAura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="f161cc3f-09ce-41c9-ba70-49e3a91fe438" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
