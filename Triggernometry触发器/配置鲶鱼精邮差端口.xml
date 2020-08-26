@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedTrigger Enabled="false" Name="配置【鲶鱼精邮差】监听端口" Id="16132c5d-96fb-4544-a369-a511105786f8" RegularExpression="" EditAutofire="True">
+  <ExportedTrigger Enabled="false" Name="配置【鲶鱼精邮差】监听端口" Id="16132c5d-96fb-4544-a369-a511105786f8" RegularExpression="^." PrevActionsRefire="Deny" EditAutofire="True">
     <Actions>
       <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="_temp_PostNamazu" VariableExpression="2987" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
         <Condition Enabled="false" Grouping="Or" />
@@ -54,7 +54,7 @@
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
       </Action>
-      <Action OrderNumber="14" LaunchProcessPathExpression="C:\Windows\System32\cmd.exe" LaunchProcessCmdlineExpression="/c reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment&quot; /v PostNamazu /t REG_SZ /d &quot;${var:_temp_PostNamazu}&quot; /f" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LaunchProcess">
+      <Action OrderNumber="14" LaunchProcessWindowStyle="Hidden" LaunchProcessPathExpression="C:\Windows\System32\cmd.exe" LaunchProcessCmdlineExpression="/c reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment&quot; /v PostNamazu /t REG_SZ /d &quot;${var:_temp_PostNamazu}&quot; /f" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LaunchProcess">
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
       </Action>

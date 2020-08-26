@@ -16,12 +16,6 @@
   1. 安装 [ACT呆萌整合](https://nga.178.com/read.php?tid=19019884) / [Triggernometry](https://github.com/paissaheavyindustries/Triggernometry)
   1. **聊天框消息没有被过滤** [视频演示](https://www.bilibili.com/video/av83704576/)
 
-## 统一为所有触发器设置鲶鱼精邮差端口
-
-1. 运行 `配置环境变量.bat`
-
-1. **重新启动ACT**
-
 ## 导入触发器
 
 ![远程触发器](screenshots/远程触发器.png)
@@ -30,9 +24,13 @@
 远程仓库地址：
 
 ```仓库地址:
-
-副本触发器
+5.0副本触发器
 https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E8%A7%A6%E5%8F%91%E5%99%A8/5.0%E8%A7%A6%E5%8F%91%E5%99%A8.xml
+
+配置【鲶鱼精邮差】监听端口（导入时需勾选“允许触发器启动进程”）
+//复制到本地以修改端口
+//已经下载到本地的可以也选择运行'设置鲶鱼精邮差端口.bat'进行设置
+https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E9%85%8D%E7%BD%AE%E9%B2%B6%E9%B1%BC%E7%B2%BE%E9%82%AE%E5%B7%AE%E7%AB%AF%E5%8F%A3.xml
 
 Aho 团辅监控
 https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/Aho%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/Aho's%20Raid%20Buffs.xml
