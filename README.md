@@ -1,9 +1,8 @@
 # FFXIV_Auxiliary_Tools
 
 * QQ群:868116069
-  * [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)
-  * [别像Stupid一样提问](https://github.com/dogfight360/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md)
-  * [如何优雅的提问](http://www.360doc.com/content/19/1223/08/30422483_881502108.shtml)
+  * [提问前请看](http://www.360doc.com/content/19/1223/08/30422483_881502108.shtml)
+  
 * 下载分流
   * [Github](https://github.com/553469159/FFXIV_Auxiliary_Tools)
   * [Gitee](https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools)
@@ -13,7 +12,7 @@
 ## 基础依赖
 
   1. 启用 DirectX 11 运行 最终幻想14
-  1. 安装 [ACT呆萌整合](https://nga.178.com/read.php?tid=19019884) / [Triggernometry](https://github.com/paissaheavyindustries/Triggernometry)
+  1. 安装 [ACT呆萌整合](https://nga.178.com/read.php?tid=19019884) / [FFCafe国服整合](https://ffcafe.org/act/) / [Triggernometry](https://github.com/paissaheavyindustries/Triggernometry)
   1. **聊天框消息没有被过滤** [视频演示](https://www.bilibili.com/video/av83704576/)
 
 ## 导入触发器
