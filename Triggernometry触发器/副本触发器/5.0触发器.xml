@@ -226,17 +226,15 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TextAuraEffect="Bold" TextAuraFontSize="36" TextAuraForeground="#008040" TextAuraOutline="Black" TextAuraName="_DX11_Check" TextAuraExpression="您正运行于DX9模式哦！" TextAuraXIniExpression="${_screenwidth}/2-300" TextAuraYIniExpression="${_screenheight}/2-150" TextAuraWIniExpression="600" TextAuraHIniExpression="300" TextAuraOTickExpression="80+(sin(${_sincems}/75)*20)" TextAuraTTLTickExpression="2-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivprocname}" ExpressionTypeL="String" ExpressionR="ffxiv_dx11" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
             </Condition>
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
-      <Folder Id="42be056c-b0a9-4ca5-8cec-4977392a1393" Name="5.0-5.1" Enabled="false">
+      <Folder Id="42be056c-b0a9-4ca5-8cec-4977392a1393" Name="5.0-5.1" Enabled="true">
         <Folders>
           <Folder ZoneFilterEnabled="True" Id="8a3eabbe-b057-4b6a-8ea8-d378f5e60efb" ZoneFilterRegularExpression="伊甸零式希望乐园\ \(觉醒之章1\)|Eden's\ Gate:\ Resurrection\ \(Savage\)|希望の園エデン零式：覚醒編1" Name="E1S" Enabled="true">
             <Folders />
@@ -2587,13 +2585,15 @@
               <Folder Id="0a04a5a0-b947-4fa3-a14e-63506dd8d389" Name="P1" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="暗影扩散" Id="94cb2ba5-06db-4186-85af-62a458118bd7" RegularExpression="^.{15}14:47(A[8A]|E4):">
+                  <Trigger Enabled="true" Name="暗影扩散" Id="94cb2ba5-06db-4186-85af-62a458118bd7" RegularExpression="^.{15}14:47(A8|E4):" PeriodRefire="Deny" RefirePeriodExpression="10000">
                     <Actions>
                       <Action OrderNumber="1" UseTTSTextExpression="水波" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" UseTTSTextExpression="穿" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="??" ActionType="UseTTS" ExecutionDelayExpression="5000">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -2765,32 +2765,44 @@
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" UseTTSTextExpression="引导" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" LogMessageText="AT_Count_Down:9" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LogMessage">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="4" UseTTSTextExpression="远离人群" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="17500">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <Action OrderNumber="4" UseTTSTextExpression="左右分摊" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="17500">
+                        <Condition Enabled="false" Grouping="Or">
+                          <ConditionSingle Enabled="false" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                         </Condition>
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="5" UseTTSTextExpression="左右分摊" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="6" UseTTSTextExpression="AoE" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="6500">
+                      <Action OrderNumber="5" UseTTSTextExpression="AoE" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="6500">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="红圈" Id="ef54dae4-022c-46ee-8345-9b25ad99cc2c" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;.+?):....:....:0060:0000:0000:0000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="远离人群" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivplayer}" ExpressionTypeL="String" ExpressionR="${name}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
                   </Trigger>
                 </Triggers>
               </Folder>
@@ -5235,7 +5247,6 @@
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="AoE" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -6157,13 +6168,10 @@
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="7ff01407-733e-4486-8d73-51aba71e2791" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="2844f858-94bf-4034-aadc-26c17c8292ef" ActionType="Trigger">
+                  <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="看旗子" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="10000">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
-                  <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="看旗子" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="10000">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="准备雷云" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="42000">
+                  <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="准备雷云" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="42000">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                 </Actions>
@@ -6569,7 +6577,6 @@
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_指挥模式" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
