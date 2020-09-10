@@ -799,19 +799,23 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="触发" Id="6b3f7594-5284-4332-9372-51fa9e945791" RegularExpression="^.{14} 21:.{8}:4000001[026]|^.{15}00:0839:.+?(”任务结束了。|has ended.|」の攻略を終了した。|任务开始|has begun\.|の攻略を開始した。)" PrevActions="Interrupt" Scheduling="FromRefirePeriod" PeriodRefire="Deny" RefirePeriodExpression="20000">
+              <Trigger Enabled="true" Name="触发" Id="6b3f7594-5284-4332-9372-51fa9e945791" RegularExpression="^.{14} 21:.{8}:4000001[026]|^.{15}00:0839:(”任务结束了。|has ended.|」の攻略を終了した。|任务开始|has begun\.|の攻略を開始した。)" PrevActions="Interrupt" Scheduling="FromRefirePeriod" PeriodRefire="Deny" RefirePeriodExpression="20000">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName=".*职业" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="1" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="1" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="00501ec3-caee-411b-aee5-db4eb76af3a9" TriggerText="[00:00:00.000] 00:0038:获取职业（长）" ActionType="Trigger" ExecutionDelayExpression="1000" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" UseTTSTextExpression="${var:${_ffxivplayer}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS" ExecutionDelayExpression="50" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
