@@ -17,9 +17,11 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" PlaySoundFileExpression="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%BA%A6%E5%B0%8F%E7%BE%8E.mp3" PlaySoundMyself="True" UseTTSTextExpression="3" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound" ExecutionDelayExpression="(${time}-3)*1000-180">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="1" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" ExecutionDelayExpression="3150">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
@@ -2596,7 +2598,7 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="背信" Id="0863b4dc-33fc-4d95-816d-69b8b195c9ff" RegularExpression="^.{15}14:47B1:">
+                  <Trigger Enabled="false" Name="背信" Id="0863b4dc-33fc-4d95-816d-69b8b195c9ff" RegularExpression="^.{15}14:47B1:">
                     <Actions>
                       <Action OrderNumber="1" UseTTSTextExpression="天降大饼" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="false" Grouping="Or" />
@@ -2642,7 +2644,7 @@
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="91850000011306" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
                       </Action>
-                      <Action OrderNumber="3" UseTTSTextExpression="衣点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="200" RefireInterrupt="True">
+                      <Action OrderNumber="3" UseTTSTextExpression="衣点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="300" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionGroup Enabled="true" Grouping="And">
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(94.65,113)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
@@ -3082,17 +3084,14 @@
                     <Actions>
                       <Action OrderNumber="1" UseTTSTextExpression="AoE" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" UseTTSTextExpression="左右踩塔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3000">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" UseTTSTextExpression="AoE" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS" ExecutionDelayExpression="10000">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -3118,28 +3117,24 @@
               <Folder Id="f99acaed-0436-4ab5-b074-71871fb71d35" Name="P6" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="动态演练自动按键" Id="20b83352-ad5a-40ef-9637-7820651aa445" RegularExpression="^.{15}00:0839:(英雄们心中的光明就要消失了……|The Light within Her champions grows faint\.\.\.|英雄たちの内なる光が消えようとしている……)">
+                  <Trigger Enabled="true" Name="英雄们心中的光明就要消失了" Id="20b83352-ad5a-40ef-9637-7820651aa445" RegularExpression="^.{15}00:0839:(英雄们心中的光明就要消失了……|The Light within Her champions grows faint\.\.\.|英雄たちの内なる光が消えようとしている……)">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" TriggerForce="regexp,conditions,refire,parent" ActionType="Trigger" ExecutionDelayExpression="6000">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" ActionType="Trigger" ExecutionDelayExpression="15000">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="按按按按按按按按按按按按按按" Id="06b47501-0bd2-4267-82e8-ba8326e1c3b4" RegularExpression="">
+                  <Trigger Enabled="true" Name="自动按键" Id="06b47501-0bd2-4267-82e8-ba8326e1c3b4" RegularExpression="">
                     <Actions>
                       <Action OrderNumber="1" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress">
                         <Condition Enabled="false" Grouping="Or" />
@@ -5688,7 +5683,7 @@
                         <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                       </ConditionGroup>
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[$2].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank|Healer" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="false" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank|Healer" ExpressionTypeR="String" ConditionType="RegexMatch" />
                     </Condition>
                   </Trigger>
                 </Triggers>
@@ -6657,7 +6652,7 @@
           <Folder Id="ed8da93a-b7bd-4ee2-b2b0-c14d41f1fad8" Name="*设置" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="false" Name="将提醒文字发送到小队频道中（危 野队 危）" Id="0f894d55-b6f2-44ff-9f2c-1aa955ba801f" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$" EditAutofire="True">
+              <Trigger Enabled="false" Name="要邮差  将提醒文字发送到小队频道中（危 野队 危）" Id="0f894d55-b6f2-44ff-9f2c-1aa955ba801f" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$" EditAutofire="True">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_指挥模式" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000">
                     <Condition Enabled="false" Grouping="Or" />
@@ -6676,7 +6671,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="false" Name="亚瑟自动防击退（卡GCD没放出来关我屁事）" Id="5461c91d-606f-4bbb-b35a-fd488ea34d55" RegularExpression="">
+              <Trigger Enabled="false" Name="要邮差  亚瑟自动防击退（卡GCD没放出来关我屁事）" Id="5461c91d-606f-4bbb-b35a-fd488ea34d55" RegularExpression="">
                 <Actions>
                   <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 亲疏自行" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
                     <Condition Enabled="false" Grouping="And" />
