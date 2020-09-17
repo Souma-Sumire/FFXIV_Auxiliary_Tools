@@ -19,7 +19,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="1" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" ExecutionDelayExpression="3150">
+              <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="1" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" ExecutionDelayExpression="3160">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -2208,7 +2208,7 @@
           </Folder>
           <Folder Id="d777789d-c67b-4628-99b1-855882131625" Name="通用功能" Enabled="true">
             <Folders>
-              <Folder Id="767428aa-259c-40b5-99d0-c24e0f700805" Name="E4S白流沙位置" Enabled="true">
+              <Folder Id="767428aa-259c-40b5-99d0-c24e0f700805" Name="E4S白流沙" Enabled="true">
                 <Folders />
                 <Triggers>
                   <Trigger Enabled="true" Name="动作" Id="ecf8ff61-5ccc-411e-b825-3f60417fef70" RegularExpression="(?i)^.{14} 00:(000[ae]:[\ue090]?(?&lt;name&gt;.+?)|(?&lt;num&gt;0038)):(?&lt;role&gt;[smhd][t1-4])$" Description="在/s或/p喊话：&#xD;&#xA;&#xD;&#xA;你是D1就喊话D1&#xD;&#xA;你是D2就喊话D2&#xD;&#xA;你是D3就喊话D3&#xD;&#xA;你是D4就喊话D4&#xD;&#xA;你是H1就喊话H1&#xD;&#xA;你是H2就喊话H2&#xD;&#xA;你是MT就喊话MT&#xD;&#xA;你是ST就喊话ST&#xD;&#xA;&#xD;&#xA;设置成功会有字幕提醒&#xD;&#xA;&#xD;&#xA;字母仅限英文半角，全角不可以">
@@ -2638,11 +2638,13 @@
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="91840000011305" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" ListVariableOp="Push" ListVariableName="AT_立体魔法阵" ListVariableExpression="${pos}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="91850000011306" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" UseTTSTextExpression="衣点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="300" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2655,6 +2657,7 @@
                             <ConditionSingle Enabled="true" ExpressionL="${elvar:AT_球体魔法阵}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" UseTTSTextExpression="两点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2667,6 +2670,7 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_球体魔法阵.indexof(113,94.65)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="5" UseTTSTextExpression="四点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2679,6 +2683,7 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(87,94.65)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="6" UseTTSTextExpression="五点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2691,8 +2696,9 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(94.65,87)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="7" UseTTSTextExpression="七点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
+                      <Action OrderNumber="7" UseTTSTextExpression="拐点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionGroup Enabled="true" Grouping="And">
                             <ConditionSingle Enabled="true" ExpressionL="${elvar:AT_球体魔法阵}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
@@ -2703,6 +2709,7 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(105.35,87)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="8" UseTTSTextExpression="八点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2715,6 +2722,7 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_球体魔法阵.indexof(87,105.35)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="9" UseTTSTextExpression="十点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2727,6 +2735,7 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(113,105.35)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="10" UseTTSTextExpression="十一点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2739,9 +2748,11 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(105.35,113)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="11" ListVariableOp="UnsetRegex" ListVariableName="AT_(球|立)体魔法阵" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="1000" RefireRequeue="False">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -3134,7 +3145,7 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="自动按键" Id="06b47501-0bd2-4267-82e8-ba8326e1c3b4" RegularExpression="">
+                  <Trigger Enabled="true" Name="要邮差 自动按键" Id="06b47501-0bd2-4267-82e8-ba8326e1c3b4" RegularExpression="">
                     <Actions>
                       <Action OrderNumber="1" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress">
                         <Condition Enabled="false" Grouping="Or" />
