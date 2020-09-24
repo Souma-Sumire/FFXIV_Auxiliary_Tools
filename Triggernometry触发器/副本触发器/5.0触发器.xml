@@ -2,239 +2,514 @@
 <TriggernometryExport Version="1">
   <ExportedFolder Id="f70e86ec-4af7-4a29-8c21-a1e66db8d3d6" Name="5.X副本触发器 by Souma" Enabled="true">
     <Folders>
-      <Folder Id="da002a90-f506-4a86-baf0-4d445bd17c69" Name="通用功能" Enabled="true">
-        <Folders />
-        <Triggers>
-          <Trigger Enabled="true" Name="字幕" Id="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" RegularExpression="^AT_Subtitle:(?&lt;text&gt;.+?):(?&lt;time&gt;.+?):(?&lt;offset_x&gt;.+?):(?&lt;offset_y&gt;.+?):(?&lt;id&gt;.+?)$">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraEffect="Bold" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraName="AT_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-1000)+${offset_x}+${var:_AT_显示字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-200)+${offset_y}+${var:_AT_显示字幕Y偏移}" TextAuraWIniExpression="1000" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+      <Folder Id="da002a90-f506-4a86-baf0-4d445bd17c69" Name="选项" Enabled="true">
+        <Folders>
+          <Folder Id="1e019f62-4c4c-462a-8702-267efb5c9cc3" Name="可选开启" Enabled="true">
+            <Folders>
+              <Folder Id="48f04e23-11de-4619-98e2-3c4f41c6a390" Name="依赖鲶鱼精邮差的功能" Enabled="true">
+                <Folders>
+                  <Folder Id="de633389-9387-401c-8957-f89e8b89a65c" Name="了解鲶鱼精邮差" Enabled="true">
+                    <Folders />
+                    <Triggers>
+                      <Trigger Enabled="true" Name="1.What is 鲶鱼精邮差？" Id="997d1268-855f-4db4-9cef-a48bdef3c6e1" RegularExpression="">
+                        <Actions>
+                          <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" Description="鲶鱼精邮差是一个用于拓展ACT与相关插件的功能的插件程序。可以接收Triggernometry高级触发器等插件传递过来的游戏文本指令，并投递至游戏内执行。&#xD;&#xA;仅限于最终幻想14自己支持的、可以在游戏内由宏或由文本聊天栏中输入并执行的指令。如/em(自定义情感动作) /greet(打招呼) /focustarget(显示焦点目标)等。&#xD;&#xA;不支持任何游戏本身不提供的文本指令，也不包含除此以外的任何功能，并且也没有追加任何功能的意向。&#xD;&#xA;可以用于解决目前游戏内现有宏指令系统的一些不便之处，例如复活喊话宏、翻页宏、死而不僵提醒宏等。" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" Description="插件发布页&#xD;&#xA;&#xD;&#xA;https://nga.178.com/read.php?tid=19724323" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Trigger>
+                      <Trigger Enabled="false" Name="2.如果你已经下载并打开鲶鱼精邮差，那么可以启动这个触发器来进行配置端口环境了。" Id="16132c5d-96fb-4544-a369-a511105786f8" RegularExpression="^." PrevActionsRefire="Deny" EditAutofire="True">
+                        <Actions>
+                          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="_temp_PostNamazu" VariableExpression="2987" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="-------------改上面的这个就可以-------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="------远程触发器请复制到本地中进行修改------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="10" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="11" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="12" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="13" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="--------------------------------------------" DescriptionOverride="True">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="14" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="16132c5d-96fb-4544-a369-a511105786f8" ActionType="Trigger" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="15" LaunchProcessWindowStyle="Hidden" LaunchProcessPathExpression="C:\Windows\System32\cmd.exe" LaunchProcessCmdlineExpression="/c reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment&quot; /v PostNamazu /t REG_SZ /d &quot;${var:_temp_PostNamazu}&quot; /f" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="LaunchProcess" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="16" LogLevel="-1" TextAuraEffect="Bold" TextAuraFontSize="36" TextAuraForeground="Maroon" TextAuraName="AT_环境变量" TextAuraExpression="已设置${var:_temp_PostNamazu}，请确保彻底关闭ACT，再次启动ACT以生效。" TextAuraXIniExpression="0" TextAuraYIniExpression="0" TextAuraWIniExpression="${_screenwidth}" TextAuraHIniExpression="${_screenheight}" TextAuraOIniExpression="100" TextAuraOTickExpression="80+(sin(${_sincems}/175)*50)" TextAuraTTLTickExpression="5-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                          <Action OrderNumber="17" LogLevel="-1" VariableName="_temp_PostNamazu" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="6000">
+                            <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                    </Triggers>
+                  </Folder>
+                </Folders>
+                <Triggers>
+                  <Trigger Enabled="true" Name="动态演练自动按0" Id="06b47501-0bd2-4267-82e8-ba8326e1c3b4" RegularExpression="">
+                    <Actions>
+                      <Action OrderNumber="1" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="5" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="6" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="7" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="8" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="9" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="10" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="11" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="12" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="13" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="14" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="15" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="16" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="17" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="18" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="19" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="20" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="21" KeypressType="WindowMessage" KeyPressCode="48" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="22" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" TriggerForce="regexp,conditions,refire,parent" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="false" Name="将提醒文字发送到小队频道中（危 野队 危）" Id="0f894d55-b6f2-44ff-9f2c-1aa955ba801f" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$" EditAutofire="True">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_指挥模式" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="亚瑟自动防击退（卡GCD没放出来关我屁事）" Id="5461c91d-606f-4bbb-b35a-fd488ea34d55" RegularExpression="">
+                    <Actions>
+                      <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 亲疏自行" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="false" Grouping="And" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 沉稳咏唱" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
+                        <Condition Enabled="false" Grouping="And" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+            </Folders>
+            <Triggers>
+              <Trigger Enabled="true" Name="字幕" Id="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" RegularExpression="^AT_Subtitle:(?&lt;text&gt;[^:]+):(?&lt;time&gt;[^:]+):(?&lt;offset_x&gt;[^:]+):(?&lt;offset_y&gt;[^:]+):(?&lt;id&gt;[^:]+)$">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraEffect="Bold" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraName="AT_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-1000)+${offset_x}+${var:_AT_显示字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-200)+${offset_y}+${var:_AT_显示字幕Y偏移}" TextAuraWIniExpression="1000" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="3 2 1 哔" Id="f7811f38-d5bb-4445-a06f-4c29635a8d29" RegularExpression="^AT_Count_Down:(?&lt;time&gt;.+)$">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" PlaySoundFileExpression="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%BA%A6%E5%B0%8F%E7%BE%8E.mp3" PlaySoundMyself="True" UseTTSTextExpression="3" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound" ExecutionDelayExpression="(${time}-3)*1000-180">
+              </Trigger>
+              <Trigger Enabled="true" Name="显示视频攻略截图" Id="376f0d38-a2c3-4ab0-ac6c-c503854fb493" RegularExpression="^AT_Tips:(?&lt;url&gt;[^:]+):(?&lt;time&gt;[^:]+):(?&lt;id&gt;[^:]+)$">
+                <Actions>
+                  <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="AT_Tips_${id}" AuraImage="https://i.loli.net${url}" AuraXIniExpression="0.5*${_screenwidth}-150" AuraYIniExpression="0.5*${_screenheight}-350" AuraWIniExpression="300" AuraHIniExpression="294" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="1" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" ExecutionDelayExpression="3160">
+              </Trigger>
+              <Trigger Enabled="false" Name="团灭重置战斗记录" Id="e3474a03-42aa-4ad2-adb7-9e2e0478885d" RegularExpression="^.{14} 21:.{8}:400000(03|1[026])" PeriodRefire="Deny" RefirePeriodExpression="5000">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="EndEncounter">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${time}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
-            </Condition>
-          </Trigger>
-          <Trigger Enabled="true" Name="初始化" Id="7bb9916e-91f9-4215-94b5-debb0a232b7a" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$|^.{15}21:.{8}:4000001[026]|^.{15}00:0839:(?:“.+”任务开始。|.+ has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。)" PeriodRefire="Deny" RefirePeriodExpression="5000">
-            <Actions>
-              <Action OrderNumber="1" VariableName="AT_Crumbling_Down" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="AT_.*" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" VariableOp="UnsetRegex" VariableName="AT_Winged_Reprobation|AT_Thunder_Rune|AT_Pucks_Breath|AT_I_Have_BurningBrand|AT_Hades_P2|AT_I_Have_FreezingBrand|AT_GuruGuru|AT_Blue|AT_Tectonic_Uplift|AT_Tectonic_Uplift_Fixed|AT_Rock_Throw|AT_Plate_Fracture|AT_Crumbling_Down|AT_Waiting_Unholy_Darkness|AT_E2S_即时1血|AT_Spell_In_Waiting|AT_tsunami|AT_Temporary_Current|AT_I_Have_Flare|AT_E8S_I_Have_Chain|AT_E8S_前后脚|AT_e8s_double_tsubasa|AT_E7S_小怪|AT_E5S_Surge|AT_E5S_Bolt|AT_E7S_真空斩|AT_E7S_业火拳|AT_E7S_盲崇|AT_E7S_别念了|AT_E8S_ID" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="AT_Eden_Ability_Last_Timems" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="4" VariableName="_AT_指挥模式" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="5" FolderOp="DisableFolder" FolderId="d97f9b2f-2981-4625-a86f-cb7d9737e249" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="6" FolderOp="DisableFolder" FolderId="faa783bf-ec60-4245-af25-bd9f86064acd" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="dc2a5bc1-e666-44f8-a8ce-9b23703862ec" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="970cea32-6ecb-44c7-8481-58f5b9966e21" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="9" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="f05df394-2355-4162-ba6e-3e06ecdfec86" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="10" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="21f93d3b-6b68-495f-8d45-7604d6e5532b" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="11" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="1ad592cf-1d19-4bb1-83c4-eeb614ecf8ed" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="12" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="1dbd873c-5f85-4d58-90ca-62770596e56d" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="13" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="817a0da7-2276-47b1-a4bf-1645fab31b7b" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="14" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="2dfafa9b-739a-4829-9225-b026c0eda5e6" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="15" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="8be9159c-4a68-4242-8c00-46e57256a4c0" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="16" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="cde430ca-d3cd-4001-ad8d-49964796263d" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="17" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="7103b5eb-b4b8-43ab-9a5e-7560c0bc3d28" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="18" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c0a1923c-5636-4f69-8020-b84461961033" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="19" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c3c08cac-de1b-4b24-9c43-a70b012e95e7" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="20" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="3a80620b-b272-45bc-8fac-2a5ce9179ddf" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="21" FolderOp="DisableFolder" FolderId="b0de6fcc-f489-4529-b1cb-9be053424b55" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="2b6ed3cd-b2c8-4cb7-9838-e0979e505858" ActionType="Folder">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="22" FolderOp="DisableFolder" FolderId="7aeeeea9-b0d1-46f4-a23d-7a0c56acce4d" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="23" FolderOp="DisableFolder" FolderId="ff41eaed-d9b1-4ccc-8659-9b7a7a23ac3a" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="24" FolderOp="DisableFolder" FolderId="f3e1178a-2678-4d5a-9584-29d5896ed87f" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="25" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="d8ee6c13-2971-4fa8-bd7c-6b7782ad8d78" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="26" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="7ff01407-733e-4486-8d73-51aba71e2791" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="27" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="e96fa0db-1e22-4215-819f-50f86c054489" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="28" VariableName="AT_E8S_前后脚" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="29" LogLevel="-1" TableVariableName="AT_E7S_盲崇" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="30" FolderId="0171f677-958a-4b53-922b-ea49bc9d450d" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="31" ListVariableOp="UnsetRegex" ListVariableName="^AT_E8S_.+" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="false" Name="团灭重置战斗记录" Id="e3474a03-42aa-4ad2-adb7-9e2e0478885d" RegularExpression="^.{14} 21:.{8}:400000(03|1[026])" PeriodRefire="Deny" RefirePeriodExpression="5000">
-            <Actions>
-              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="EndEncounter">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="TTS职业" Id="94278783-12fe-45a0-8a67-e5ce67aef5e9" RegularExpression="^AT_TTS_Job:(?&lt;name&gt;.+)$" Scheduling="FromRefirePeriod" RefirePeriodExpression="500">
-            <Actions>
-              <Action OrderNumber="1" UseTTSTextExpression="骑士" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+              </Trigger>
+              <Trigger Enabled="true" Name="3 2 1 哔" Id="f7811f38-d5bb-4445-a06f-4c29635a8d29" RegularExpression="^AT_Count_Down:(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" PlaySoundFileExpression="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%BA%A6%E5%B0%8F%E7%BE%8E.mp3" PlaySoundMyself="True" UseTTSTextExpression="3" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound" ExecutionDelayExpression="(${time}-3)*1000-180">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="1" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep" ExecutionDelayExpression="3160">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Pld" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${time}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
-              </Action>
-              <Action OrderNumber="2" UseTTSTextExpression="战士" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+              </Trigger>
+              <Trigger Enabled="true" Name="DX11检测" Id="3eeed1a4-d84e-4b0c-a183-81546b566afc" RegularExpression="^.{14} 00:0039:进入了休息区。$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraEffect="Bold" TextAuraFontSize="36" TextAuraForeground="#008040" TextAuraOutline="Black" TextAuraName="_DX11_Check" TextAuraExpression="您正运行于DX9模式哦！" TextAuraXIniExpression="${_screenwidth}/2-300" TextAuraYIniExpression="${_screenheight}/2-150" TextAuraWIniExpression="600" TextAuraHIniExpression="300" TextAuraOTickExpression="80+(sin(${_sincems}/75)*20)" TextAuraTTLTickExpression="2-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="War" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivprocname}" ExpressionTypeL="String" ExpressionR="ffxiv_dx11" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
-              </Action>
-              <Action OrderNumber="3" UseTTSTextExpression="暗骑" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Drk" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="4" UseTTSTextExpression="枪刃" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Gnb" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="5" UseTTSTextExpression="白魔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Whm" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="6" UseTTSTextExpression="学者" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Sch" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="7" UseTTSTextExpression="占星" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Ast" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="8" UseTTSTextExpression="武僧" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Mnk" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="9" UseTTSTextExpression="龙骑" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Drg" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="10" UseTTSTextExpression="忍者" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Nin" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="11" UseTTSTextExpression="武士" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Sam" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="12" UseTTSTextExpression="诗人" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Brd" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="13" UseTTSTextExpression="机工" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Mch" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="14" UseTTSTextExpression="舞者" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Dnc" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="15" UseTTSTextExpression="黑魔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Blm" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="16" UseTTSTextExpression="召唤" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Smn" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="17" UseTTSTextExpression="赤魔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Rdm" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="DX11检测" Id="3eeed1a4-d84e-4b0c-a183-81546b566afc" RegularExpression="^.{14} 00:0039:进入了休息区。$">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" TextAuraEffect="Bold" TextAuraFontSize="36" TextAuraForeground="#008040" TextAuraOutline="Black" TextAuraName="_DX11_Check" TextAuraExpression="您正运行于DX9模式哦！" TextAuraXIniExpression="${_screenwidth}/2-300" TextAuraYIniExpression="${_screenheight}/2-150" TextAuraWIniExpression="600" TextAuraHIniExpression="300" TextAuraOTickExpression="80+(sin(${_sincems}/75)*20)" TextAuraTTLTickExpression="2-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
+              </Trigger>
+              <Trigger Enabled="true" Sequential="True" Name="TTS职业" Id="94278783-12fe-45a0-8a67-e5ce67aef5e9" RegularExpression="^AT_TTS_Job:(?&lt;name&gt;.+)$" Scheduling="FromRefirePeriod" RefirePeriodExpression="500">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="骑士" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Pld" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="2" UseTTSTextExpression="战士" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="War" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="3" UseTTSTextExpression="暗骑" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Drk" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="4" UseTTSTextExpression="枪刃" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Gnb" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="5" UseTTSTextExpression="白魔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Whm" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="6" UseTTSTextExpression="学者" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Sch" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="7" UseTTSTextExpression="占星" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Ast" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="8" UseTTSTextExpression="武僧" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Mnk" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="9" UseTTSTextExpression="龙骑" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Drg" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="10" UseTTSTextExpression="忍者" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Nin" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="11" UseTTSTextExpression="武士" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Sam" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="12" UseTTSTextExpression="诗人" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Brd" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="13" UseTTSTextExpression="机工" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Mch" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="14" UseTTSTextExpression="舞者" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Dnc" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="15" UseTTSTextExpression="黑魔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Blm" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="16" UseTTSTextExpression="召唤" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Smn" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="17" UseTTSTextExpression="赤魔" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${name}].job}" ExpressionTypeL="String" ExpressionR="Rdm" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${_ffxivprocname}" ExpressionTypeL="String" ExpressionR="ffxiv_dx11" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
-            </Condition>
-          </Trigger>
-        </Triggers>
+              </Trigger>
+              <Trigger Enabled="true" Name="字幕坐标" Id="e60123a7-48bb-40cd-a766-a0f85073241b" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_显示字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_AT_显示字幕Y偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder Id="ecee819e-0ab4-41f9-b625-162d02eafe73" Name="必须开启" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="初始化" Id="7bb9916e-91f9-4215-94b5-debb0a232b7a" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$|^.{15}21:.{8}:4000001[026]|^.{15}00:0839:(?:“.+”任务开始。|.+ has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。)" PeriodRefire="Deny" RefirePeriodExpression="5000">
+                <Actions>
+                  <Action OrderNumber="1" VariableName="AT_Crumbling_Down" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="AT_.*" TextAuraFontName="宋体" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="UnsetRegex" VariableName="AT_Winged_Reprobation|AT_Thunder_Rune|AT_Pucks_Breath|AT_I_Have_BurningBrand|AT_Hades_P2|AT_I_Have_FreezingBrand|AT_GuruGuru|AT_Blue|AT_Tectonic_Uplift|AT_Tectonic_Uplift_Fixed|AT_Rock_Throw|AT_Plate_Fracture|AT_Crumbling_Down|AT_Waiting_Unholy_Darkness|AT_E2S_即时1血|AT_Spell_In_Waiting|AT_tsunami|AT_Temporary_Current|AT_I_Have_Flare|AT_E8S_I_Have_Chain|AT_E8S_前后脚|AT_e8s_double_tsubasa|AT_E7S_小怪|AT_E5S_Surge|AT_E5S_Bolt|AT_E7S_真空斩|AT_E7S_业火拳|AT_E7S_盲崇|AT_E7S_别念了|AT_E8S_ID" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="AT_Eden_Ability_Last_Timems" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" VariableName="_AT_指挥模式" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" FolderOp="DisableFolder" FolderId="d97f9b2f-2981-4625-a86f-cb7d9737e249" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="6" FolderOp="DisableFolder" FolderId="faa783bf-ec60-4245-af25-bd9f86064acd" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="dc2a5bc1-e666-44f8-a8ce-9b23703862ec" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="970cea32-6ecb-44c7-8481-58f5b9966e21" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="9" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="f05df394-2355-4162-ba6e-3e06ecdfec86" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="10" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="21f93d3b-6b68-495f-8d45-7604d6e5532b" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="11" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="1ad592cf-1d19-4bb1-83c4-eeb614ecf8ed" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="12" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="1dbd873c-5f85-4d58-90ca-62770596e56d" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="13" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="817a0da7-2276-47b1-a4bf-1645fab31b7b" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="14" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="2dfafa9b-739a-4829-9225-b026c0eda5e6" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="15" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="8be9159c-4a68-4242-8c00-46e57256a4c0" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="16" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="cde430ca-d3cd-4001-ad8d-49964796263d" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="17" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="7103b5eb-b4b8-43ab-9a5e-7560c0bc3d28" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="18" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c0a1923c-5636-4f69-8020-b84461961033" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="19" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c3c08cac-de1b-4b24-9c43-a70b012e95e7" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="20" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="3a80620b-b272-45bc-8fac-2a5ce9179ddf" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="21" FolderOp="DisableFolder" FolderId="b0de6fcc-f489-4529-b1cb-9be053424b55" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="2b6ed3cd-b2c8-4cb7-9838-e0979e505858" ActionType="Folder">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="22" FolderOp="DisableFolder" FolderId="7aeeeea9-b0d1-46f4-a23d-7a0c56acce4d" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="23" FolderOp="DisableFolder" FolderId="ff41eaed-d9b1-4ccc-8659-9b7a7a23ac3a" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="24" FolderOp="DisableFolder" FolderId="f3e1178a-2678-4d5a-9584-29d5896ed87f" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" ActionType="Folder">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="25" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="d8ee6c13-2971-4fa8-bd7c-6b7782ad8d78" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="26" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="7ff01407-733e-4486-8d73-51aba71e2791" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="27" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="e96fa0db-1e22-4215-819f-50f86c054489" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="28" VariableName="AT_E8S_前后脚" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="29" LogLevel="-1" TableVariableName="AT_E7S_盲崇" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="30" FolderId="0171f677-958a-4b53-922b-ea49bc9d450d" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="31" ListVariableOp="UnsetRegex" ListVariableName="^AT_E8S_.+" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers />
       </Folder>
       <Folder Id="42be056c-b0a9-4ca5-8cec-4977392a1393" Name="5.0-5.1" Enabled="true">
         <Folders>
@@ -1340,7 +1615,43 @@
           <Folder ZoneFilterEnabled="True" Id="5ddf1d2b-e39e-40f9-9b9c-35fd4d63f9bc" ZoneFilterRegularExpression="伊甸零式希望乐园\ \(觉醒之章4\)|Eden's\ Gate:\ Sepulture\ \(Savage\)|希望の園エデン零式：覚醒編4" Name="E4S" Enabled="true">
             <Folders>
               <Folder Id="d0bff393-6f3e-4cf6-9a7c-ec1a0bc08b0e" Name="转圈圈（白流沙）" Enabled="true">
-                <Folders />
+                <Folders>
+                  <Folder ZoneFilterEnabled="True" Id="767428aa-259c-40b5-99d0-c24e0f700805" ZoneFilterRegularExpression="伊甸零式希望乐园\ \(觉醒之章4\)|Eden's\ Gate:\ Sepulture\ \(Savage\)|希望の園エデン零式：覚醒編4" Name="E4S 白流沙" Enabled="true">
+                    <Folders />
+                    <Triggers>
+                      <Trigger Enabled="true" Name="动作" Id="ecf8ff61-5ccc-411e-b825-3f60417fef70" RegularExpression="(?i)^.{14} 00:(000[ae]:[\ue090]?(?&lt;name&gt;.+?)|(?&lt;num&gt;0038)):(?&lt;role&gt;[smhd][t1-4])$" Description="在/s或/p喊话：&#xD;&#xA;&#xD;&#xA;你是D1就喊话D1&#xD;&#xA;你是D2就喊话D2&#xD;&#xA;你是D3就喊话D3&#xD;&#xA;你是D4就喊话D4&#xD;&#xA;你是H1就喊话H1&#xD;&#xA;你是H2就喊话H2&#xD;&#xA;你是MT就喊话MT&#xD;&#xA;你是ST就喊话ST&#xD;&#xA;&#xD;&#xA;设置成功会有字幕提醒&#xD;&#xA;&#xD;&#xA;字母仅限英文半角，全角不可以">
+                        <Actions>
+                          <Action OrderNumber="1" UseTTSTextExpression="${name}" VariableOp="SetString" VariableName="AT_Team_Role" VariableExpression="${role}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Action>
+                          <Action OrderNumber="2" LogMessageText="AT_Subtitle:已设置${func:toupper:${var:AT_Team_Role}}:3.00:0:0:jobpos" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="LogMessage">
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${num}" ExpressionTypeL="Numeric" ExpressionR="0038" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Trigger>
+                      <Trigger Enabled="true" Name="切换职业" Id="47c6ffdc-0440-4a7d-a7e8-30448a377912" RegularExpression="^.{15}00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.)">
+                        <Actions>
+                          <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="AT_Subtitle:职业变动，${func:toupper:${var:AT_Team_Role}}取消:3:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="${evar:AT_Team_Role}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="2" VariableName="AT_Team_Role" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${isyou}" ExpressionTypeL="String" ExpressionR="you" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Trigger>
+                    </Triggers>
+                  </Folder>
+                </Folders>
                 <Triggers>
                   <Trigger Enabled="true" Name="*菓子 区别：(D1:323 D2:121 MT:232 ST:212)" Id="0d21384e-19fc-4d78-a162-cb6fa75e374c" RegularExpression="^.{15}14:413A:">
                     <Actions>
@@ -2206,154 +2517,6 @@
               </Trigger>
             </Triggers>
           </Folder>
-          <Folder Id="d777789d-c67b-4628-99b1-855882131625" Name="通用功能" Enabled="true">
-            <Folders>
-              <Folder Id="767428aa-259c-40b5-99d0-c24e0f700805" Name="E4S白流沙" Enabled="true">
-                <Folders />
-                <Triggers>
-                  <Trigger Enabled="true" Name="动作" Id="ecf8ff61-5ccc-411e-b825-3f60417fef70" RegularExpression="(?i)^.{14} 00:(000[ae]:[\ue090]?(?&lt;name&gt;.+?)|(?&lt;num&gt;0038)):(?&lt;role&gt;[smhd][t1-4])$" Description="在/s或/p喊话：&#xD;&#xA;&#xD;&#xA;你是D1就喊话D1&#xD;&#xA;你是D2就喊话D2&#xD;&#xA;你是D3就喊话D3&#xD;&#xA;你是D4就喊话D4&#xD;&#xA;你是H1就喊话H1&#xD;&#xA;你是H2就喊话H2&#xD;&#xA;你是MT就喊话MT&#xD;&#xA;你是ST就喊话ST&#xD;&#xA;&#xD;&#xA;设置成功会有字幕提醒&#xD;&#xA;&#xD;&#xA;字母仅限英文半角，全角不可以">
-                    <Actions>
-                      <Action OrderNumber="1" UseTTSTextExpression="${name}" VariableOp="SetString" VariableName="AT_Team_Role" VariableExpression="${role}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="2" LogMessageText="AT_Subtitle:已设置${func:toupper:${var:AT_Team_Role}}:3.00:0:0:jobpos" LogProcess="True" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="LogMessage">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${num}" ExpressionTypeL="Numeric" ExpressionR="0038" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Trigger>
-                  <Trigger Enabled="true" Name="切换职业" Id="47c6ffdc-0440-4a7d-a7e8-30448a377912" RegularExpression="^.{15}00:0839:((?&lt;name&gt;.+?)?(的职业转换成了“|は「)(?&lt;class&gt;.+?)(”|」にチェンジした。)|(?&lt;isyou&gt;[Yy]ou) change to (?&lt;class2&gt;.+?)\.)">
-                    <Actions>
-                      <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="AT_Subtitle:职业变动，${func:toupper:${var:AT_Team_Role}}取消:3:0:0:jobpos" ActionType="Trigger" Asynchronous="False">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${evar:AT_Team_Role}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="2" VariableName="AT_Team_Role" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${isyou}" ExpressionTypeL="String" ExpressionR="you" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Trigger>
-                </Triggers>
-              </Folder>
-            </Folders>
-            <Triggers>
-              <Trigger Enabled="true" Sequential="True" Name="E2S 倒计时" Id="f1514cd2-fbb8-4d60-ae57-a7b56a6cf606" RegularExpression="^AT_Countdown_Caption:(?&lt;text&gt;\S+?):(?&lt;time&gt;[\d\.]+?):(?&lt;offset_x&gt;[\d\.]+?):(?&lt;offset_y&gt;[\d\.]+?)$" PeriodRefire="Deny" RefirePeriodExpression="1000">
-                <Actions>
-                  <Action OrderNumber="1" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption" TextAuraExpression="${text}${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Not">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="2" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_1" TextAuraExpression="一血${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*1" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="3" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_2" TextAuraExpression="核爆${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*2" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="4" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_3" TextAuraExpression="分散${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*3" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="5" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_4" TextAuraExpression="分摊${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*4" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="6" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_5" TextAuraExpression="石化${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*5" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="7" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption" TextAuraExpression="${text}${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" ExecutionDelayExpression="(${time}-${var:_AT_X秒前改为警报颜色})*1000" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Not">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="8" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_1" TextAuraExpression="一血${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*1" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="9" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_2" TextAuraExpression="核爆${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*2" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="10" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_3" TextAuraExpression="分散${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*3" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="11" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_4" TextAuraExpression="分摊${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*4" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="12" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_5" TextAuraExpression="石化${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*5" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-              <Trigger Enabled="true" Name="E2S 石化地图" Id="94e9bfce-124f-4c1d-995d-b8caeb3146c1" RegularExpression="^AT_Distance:(?&lt;name&gt;[^:]+?):(?&lt;text&gt;[^:]+?):(?&lt;time&gt;[\d\.]+?)$">
-                <Actions>
-                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraName="AT_Map_YOU" TextAuraExpression="你" TextAuraXIniExpression="0.5*${_screenwidth}-15+${var:_AT_目标的位置X偏移}" TextAuraYIniExpression="0.5*${_screenheight}-15+${var:_AT_目标的位置Y偏移}" TextAuraWIniExpression="30" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraOTickExpression="(75+(cos(${_sincems}/50)*25))" TextAuraTTLTickExpression="${time}-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="2" TextAuraFontSize="11.25" TextAuraForeground="White" TextAuraBackground="Red" TextAuraName="AT_Map_${text}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*${_screenwidth}-19+(${_ffxiventity[${name}].x}-${_ffxiventity[${_ffxivplayer}].x})*7+${var:_AT_目标的位置X偏移}" TextAuraYIniExpression="0.5*${_screenheight}-19+(${_ffxiventity[${name}].y}-${_ffxiventity[${_ffxivplayer}].y})*7+${var:_AT_目标的位置Y偏移}" TextAuraWIniExpression="38" TextAuraHIniExpression="38" TextAuraOIniExpression="100" TextAuraOTickExpression="(75+(cos(${_sincems}/50)*10))" TextAuraTTLTickExpression="${time}-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-              <Trigger Enabled="true" Name="*设置" Id="92008bdb-16e5-40c7-9a40-e27587ee2b7b" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
-                <Actions>
-                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_倒计时字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_AT_倒计时字幕Y偏移" VariableExpression="-300" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="_AT_倒计时字幕Y间隔" VariableExpression="40" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="_AT_X秒前改为警报颜色" VariableExpression="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="_AT_目标的位置X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="_AT_目标的位置Y偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-            </Triggers>
-          </Folder>
           <Folder ZoneFilterEnabled="True" Id="e794a647-a998-496a-a0c4-a9e2e191babb" ZoneFilterRegularExpression="复制工厂废墟|The\ Copied\ Factory|複製サレタ工場廃墟" Name="复制工厂废墟" Enabled="true">
             <Folders />
             <Triggers>
@@ -2638,13 +2801,11 @@
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="91840000011305" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" ListVariableOp="Push" ListVariableName="AT_立体魔法阵" ListVariableExpression="${pos}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="91850000011306" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" UseTTSTextExpression="衣点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="300" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2657,7 +2818,6 @@
                             <ConditionSingle Enabled="true" ExpressionL="${elvar:AT_球体魔法阵}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" UseTTSTextExpression="两点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2670,7 +2830,6 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_球体魔法阵.indexof(113,94.65)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="5" UseTTSTextExpression="四点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2683,7 +2842,6 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(87,94.65)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="6" UseTTSTextExpression="五点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2696,7 +2854,6 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(94.65,87)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="7" UseTTSTextExpression="拐点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2709,7 +2866,6 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(105.35,87)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="8" UseTTSTextExpression="八点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2722,7 +2878,6 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_球体魔法阵.indexof(87,105.35)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="9" UseTTSTextExpression="十点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2735,7 +2890,6 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(113,105.35)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="10" UseTTSTextExpression="十一点安全" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" RefireInterrupt="True">
                         <Condition Enabled="true" Grouping="Or">
@@ -2748,11 +2902,9 @@
                             <ConditionSingle Enabled="true" ExpressionL="${lvar:AT_立体魔法阵.indexof(105.35,113)}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                           </ConditionGroup>
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="11" ListVariableOp="UnsetRegex" ListVariableName="AT_(球|立)体魔法阵" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="1000" RefireRequeue="False">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -3145,77 +3297,6 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="要邮差 自动按键" Id="06b47501-0bd2-4267-82e8-ba8326e1c3b4" RegularExpression="">
-                    <Actions>
-                      <Action OrderNumber="1" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="2" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="3" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="4" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="5" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="6" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="7" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="8" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="9" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="10" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="11" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="12" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="13" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="14" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="15" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="16" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="17" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="18" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="19" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="20" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="21" KeypressType="WindowMessage" KeyPressCode="65" KeyPressWindow="最终幻想XIV" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="KeyPress" ExecutionDelayExpression="50">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="22" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" TriggerForce="regexp,conditions,refire,parent" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
                 </Triggers>
               </Folder>
             </Folders>
@@ -3567,10 +3648,128 @@
               </Trigger>
             </Triggers>
           </Folder>
+          <Folder Id="d777789d-c67b-4628-99b1-855882131625" Name="选项" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Sequential="True" Name="E2S 倒计时" Id="f1514cd2-fbb8-4d60-ae57-a7b56a6cf606" RegularExpression="^AT_Countdown_Caption:(?&lt;text&gt;\S+?):(?&lt;time&gt;[\d\.]+?):(?&lt;offset_x&gt;[\d\.]+?):(?&lt;offset_y&gt;[\d\.]+?)$" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption" TextAuraExpression="${text}${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Not">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="2" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_1" TextAuraExpression="一血${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*1" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="3" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_2" TextAuraExpression="核爆${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*2" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="4" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_3" TextAuraExpression="分散${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*3" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="5" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_4" TextAuraExpression="分摊${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*4" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="6" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraName="AT_Countdown_Caption_E2S_5" TextAuraExpression="石化${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*5" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="7" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption" TextAuraExpression="${text}${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" ExecutionDelayExpression="(${time}-${var:_AT_X秒前改为警报颜色})*1000" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Not">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="8" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_1" TextAuraExpression="一血${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*1" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="地狱之风" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="9" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_2" TextAuraExpression="核爆${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*2" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="核爆" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="10" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_3" TextAuraExpression="分散${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*3" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗爆炎" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="11" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_4" TextAuraExpression="分摊${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*4" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="黑暗神圣" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="12" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraName="AT_Countdown_Caption_E2S_5" TextAuraExpression="石化${numeric:round(${time})-${_since}}" TextAuraXIniExpression="0.5*(${_screenwidth}-500)+${offset_x}+${var:_AT_倒计时字幕X偏移}" TextAuraYIniExpression="0.5*(${_screenheight}-100)+${offset_y}+${var:_AT_倒计时字幕Y偏移}+${var:_AT_倒计时字幕Y间隔}*5" TextAuraWIniExpression="500" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${text}" ExpressionTypeL="String" ExpressionR="暗影之眼" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="E2S 石化地图" Id="94e9bfce-124f-4c1d-995d-b8caeb3146c1" RegularExpression="^AT_Distance:(?&lt;name&gt;[^:]+?):(?&lt;text&gt;[^:]+?):(?&lt;time&gt;[\d\.]+?)$">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraName="AT_Map_YOU" TextAuraExpression="你" TextAuraXIniExpression="0.5*${_screenwidth}-15+${var:_AT_目标的位置X偏移}" TextAuraYIniExpression="0.5*${_screenheight}-15+${var:_AT_目标的位置Y偏移}" TextAuraWIniExpression="30" TextAuraHIniExpression="30" TextAuraOIniExpression="100" TextAuraOTickExpression="(75+(cos(${_sincems}/50)*25))" TextAuraTTLTickExpression="${time}-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="11.25" TextAuraForeground="White" TextAuraBackground="Red" TextAuraName="AT_Map_${text}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*${_screenwidth}-19+(${_ffxiventity[${name}].x}-${_ffxiventity[${_ffxivplayer}].x})*7+${var:_AT_目标的位置X偏移}" TextAuraYIniExpression="0.5*${_screenheight}-19+(${_ffxiventity[${name}].y}-${_ffxiventity[${_ffxivplayer}].y})*7+${var:_AT_目标的位置Y偏移}" TextAuraWIniExpression="38" TextAuraHIniExpression="38" TextAuraOIniExpression="100" TextAuraOTickExpression="(75+(cos(${_sincems}/50)*10))" TextAuraTTLTickExpression="${time}-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="E2S 设置" Id="92008bdb-16e5-40c7-9a40-e27587ee2b7b" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_倒计时字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_AT_倒计时字幕Y偏移" VariableExpression="-300" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="_AT_倒计时字幕Y间隔" VariableExpression="40" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="_AT_X秒前改为警报颜色" VariableExpression="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="_AT_目标的位置X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="_AT_目标的位置Y偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+            </Triggers>
+          </Folder>
         </Folders>
         <Triggers />
       </Folder>
-      <Folder Id="928f6edb-8196-4999-92a0-0edf822a010a" Name="5.2" Enabled="true">
+      <Folder Id="928f6edb-8196-4999-92a0-0edf822a010a" Name="5.2-5.25" Enabled="true">
         <Folders>
           <Folder ZoneFilterEnabled="True" Id="737ad38e-3d62-4911-8c1f-92977caad7a8" ZoneFilterRegularExpression="伊甸零式希望乐园 \(共鸣之章4\)|Eden's Verse: Refulgence \(Savage\)|希望の園エデン零式：共鳴編4" Name="E8S" Enabled="true">
             <Folders>
@@ -6173,7 +6372,7 @@
               </Trigger>
               <Trigger Enabled="true" Name="雷暴" Id="58584db2-f8ab-490d-bf05-249779f5ad5b" RegularExpression="^.{14} 14:4BBF:">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="保持移动" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3000">
+                  <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="雷暴" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3000">
                     <Condition Enabled="false" Grouping="Or" />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="吃球" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="1000">
@@ -6660,40 +6859,338 @@
             </Folders>
             <Triggers />
           </Folder>
-          <Folder Id="ed8da93a-b7bd-4ee2-b2b0-c14d41f1fad8" Name="*设置" Enabled="true">
-            <Folders />
-            <Triggers>
-              <Trigger Enabled="false" Name="要邮差  将提醒文字发送到小队频道中（危 野队 危）" Id="0f894d55-b6f2-44ff-9f2c-1aa955ba801f" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$" EditAutofire="True">
-                <Actions>
-                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_指挥模式" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000">
+          <Folder ZoneFilterEnabled="True" Id="b9882737-21e0-4cd7-908c-13995e277831" ZoneFilterRegularExpression="博兹雅堡垒追忆战|Memoria Misera \(Extreme\)|極シタデル・ボズヤ追憶戦" Name="博兹雅堡垒追忆战" Enabled="true">
+            <Folders>
+              <Folder Id="3976fc79-9889-4aa4-bc39-a269c2e2829e" Name="P2" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Source="FFXIVNetwork" Name="自动拼刀" Id="b9047401-c0cf-414e-8051-4b2bede670a9" RegularExpression="^26\|[^\\]+?\|4f7\|(?:[^\\]+?\|){5}([^\\]+?)\|">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" TriggerForce="regexp,conditions,refire,parent" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Trigger>
+                  <Trigger Enabled="true" Name="生者战也" Id="5b8bcd5b-a308-4c7d-ab7c-0a744fb5ddff" RegularExpression="^.{14} 16:.{8}:[^:]+?:4CCF:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="06b47501-0bd2-4267-82e8-ba8326e1c3b4" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
                     <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-              <Trigger Enabled="true" Name="字幕坐标" Id="e60123a7-48bb-40cd-a766-a0f85073241b" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
-                <Actions>
-                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_显示字幕X偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                  </Trigger>
+                </Triggers>
+              </Folder>
+              <Folder Id="fc70100d-461a-4edf-8c8b-09dd599cf79d" Name="P1" Enabled="true">
+                <Folders>
+                  <Folder Id="227efdb8-8e37-42cd-9f50-6a0489589322" Name="枪盾技" Enabled="true">
+                    <Folders>
+                      <Folder Id="7c4b4042-30a1-4116-a5da-fa1acaf71808" Name="能量表(选其一)" Enabled="true">
+                        <Folders />
+                        <Triggers>
+                          <Trigger Enabled="true" Name="85%提醒" Id="90e71e16-f064-429d-9622-7cf898b34e04" RegularExpression="^.{14} 21:80034E66:8000000C:27:2341:00:00">
+                            <Actions>
+                              <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="${var:AT_MMEx_Gunshield}" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                                <Condition Enabled="false" Grouping="Or" />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Trigger>
+                          <Trigger Enabled="false" Name="95%提醒" Id="0c325c50-30d6-4354-8d6d-708aa2fe469b" RegularExpression="^.{14} 21:80034E66:8000000C:27:251C:00:00">
+                            <Actions>
+                              <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="${var:AT_MMEx_Gunshield}" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                                <Condition Enabled="false" Grouping="Or" />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Trigger>
+                          <Trigger Enabled="false" Name="90%提醒" Id="80cb4eaf-51b4-4c58-bc0a-0ec2ff7cc4d3" RegularExpression="^.{14} 21:80034E66:8000000C:27:2107:00:00">
+                            <Actions>
+                              <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="${var:AT_MMEx_Gunshield}" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                                <Condition Enabled="false" Grouping="Or" />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Trigger>
+                          <Trigger Enabled="false" Name="80%提醒" Id="4b360c64-b04c-4426-a923-fc387ee73d3d" RegularExpression="^.{14} 21:80034E66:8000000C:27:1F2C:00:00">
+                            <Actions>
+                              <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="${var:AT_MMEx_Gunshield}" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                                <Condition Enabled="false" Grouping="Or" />
+                              </Action>
+                            </Actions>
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Trigger>
+                        </Triggers>
+                      </Folder>
+                    </Folders>
+                    <Triggers>
+                      <Trigger Enabled="true" Name="枪盾：？" Id="c4d53e24-22f2-4b54-a385-1e41796c5849" RegularExpression="^.{14} 14:4CD([7-9]):">
+                        <Actions>
+                          <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="AT_Subtitle:魔导冲击:60:0:-400:枪盾技" ActionType="Trigger">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="7" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AT_MMEx_Gunshield" VariableExpression="防击退" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="AT_Subtitle:魔导冲击:999:0:-400:枪盾技" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="7" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="AT_Subtitle:魔导爆发:60:0:-400:枪盾技" ActionType="Trigger">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="8" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="AT_MMEx_Gunshield" VariableExpression="散开" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="AT_Subtitle:魔导冲击:999:0:-400:枪盾技" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="8" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="AT_Subtitle:魔导反击:60:0:-400:枪盾技" ActionType="Trigger">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="9" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                          <Action OrderNumber="6" LogLevel="-1" VariableOp="SetString" VariableName="AT_MMEx_Gunshield" VariableExpression="准备停手" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="AT_Subtitle:魔导冲击:999:0:-400:枪盾技" ActionType="Variable">
+                            <Condition Enabled="true" Grouping="Or">
+                              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="9" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                            </Condition>
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                      <Trigger Enabled="true" Name="Reset" Id="1fbc7a89-d1fb-4edc-be86-9953d80592fb" RegularExpression="^.{14} 21:80034E66:8000000C:27:FFFFFFFF:00:00">
+                        <Actions>
+                          <Action OrderNumber="1" LogLevel="-1" VariableName="AT_MMEx_Gunshield" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="AT_Subtitle:魔导冲击:999:0:-400:枪盾技" ActionType="Variable">
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Action>
+                          <Action OrderNumber="2" LogLevel="-1" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="AT_Subtitle_枪盾技" TextAuraFontName="宋体" ActionType="TextAura">
+                            <Condition Enabled="false" Grouping="Or" />
+                          </Action>
+                        </Actions>
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Trigger>
+                    </Triggers>
+                  </Folder>
+                </Folders>
+                <Triggers>
+                  <Trigger Enabled="true" Name="1.大局已定" Id="a23525fa-560c-4d23-b2f5-1dea03548bfc" RegularExpression="^.{14} 14:4CD[2-6]:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="背后背后" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="穿" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="6000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
                     <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_AT_显示字幕Y偏移" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                  </Trigger>
+                  <Trigger Enabled="true" Name="2.更快" Id="9d5e0411-c74f-4361-a739-4ee564a53f88" RegularExpression="^.{14} 14:4CF0:">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="死刑" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
                     <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-              <Trigger Enabled="false" Name="要邮差  亚瑟自动防击退（卡GCD没放出来关我屁事）" Id="5461c91d-606f-4bbb-b35a-fd488ea34d55" RegularExpression="">
-                <Actions>
-                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 亲疏自行" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
-                    <Condition Enabled="false" Grouping="And" />
-                  </Action>
-                  <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 沉稳咏唱" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
-                    <Condition Enabled="false" Grouping="And" />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-            </Triggers>
+                  </Trigger>
+                  <Trigger Enabled="true" Name="3.从容不迫" Id="bb60621f-04aa-4f1f-a067-a6f812bf53ed" RegularExpression="^.{14} 1B:.{8}:[^:]+?:.{4}:.{4}:00A1:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="分摊" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="4.更高" Id="aeb6a8a7-1224-4b20-99a1-b647640957fd" RegularExpression="^.{14} 14:4CCA:">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="AoE" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="背后背后" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="666">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="5.恩惠终结" Id="3a0dcdd4-eff6-453d-b09b-b42f4981b727" RegularExpression="^.{14} 14:4CB4:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="躲剑气" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="6.是为烈火(BOSS)" Id="69dba444-6239-471c-889f-497b01915428" RegularExpression="^.{14} 14:4CB5:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="背后" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="7.是为烈火(是为烈火)" Id="70db4e20-ba1c-4d8b-9466-42e9cf1de895" RegularExpression="^.{14} 14:(4CC5|4CB6):" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="铁火远离" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="1000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="8.是为疾风(BOSS)" Id="eda6b1ae-4981-4430-abb2-3e064613b2bb" RegularExpression="^.{14} 14:4CC6:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="背后" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="9.是为疾风(是为疾风)" Id="3c02629c-3863-46de-97d4-37c21872dcc6" RegularExpression="^.{14} 14:4CC[78]:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="环风靠近" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="1000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="X.居然有人会被击退到场边" Id="c703d0b7-6685-4542-9729-9a9b02af1272" RegularExpression="^.{14} 03:.+ \(93420000011598\)\.$">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="救救队友" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+              <Folder Id="c04d17d5-d314-439b-8f16-636815ff59f5" Name="P3" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="恩惠终结" Id="6af23cc1-fb2c-45f6-b442-d5b9458a81c8" RegularExpression="^.{14} 03:.+ Pos: \((?&lt;x&gt;[^,]+?),(?&lt;y&gt;[^,]+?),[^,]+?\) \(93600000011592\)\.$">
+                    <Actions>
+                      <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraForeground="White" TextAuraBackground="Red" TextAuraOutline="Black" TextAuraName="AT_老屁股_Map_${x}" TextAuraExpression="↓" TextAuraXIniExpression="0.5*${_screenwidth}-25+${x}*5-89-42" TextAuraYIniExpression="0.5*${_screenheight}-200" TextAuraWIniExpression="50" TextAuraHIniExpression="40" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" ExecutionDelayExpression="500" Asynchronous="False">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${y}" ExpressionTypeL="Numeric" ExpressionR="-705" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="支援命令" Id="5a49422c-c904-42f0-8ea6-574c5fd6ffb7" RegularExpression="^.{14} 14:4CEA:">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="接线" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="5000">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="转火" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                        </Condition>
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="背景" Id="e850ad00-c00b-4984-8c1d-d760b7534bb5" RegularExpression="^.{14} 03:.+ Pos: \((?&lt;x&gt;[^,]+?),(?&lt;y&gt;[^,]+?),[^,]+?\) \(93600000011592\)\.$" PeriodRefire="Deny" RefirePeriodExpression="5000">
+                    <Actions>
+                      <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraForeground="White" TextAuraBackground="Lime" TextAuraOutline="Black" TextAuraName="AT_老屁股_Map_BG" TextAuraXIniExpression="0.5*${_screenwidth}-20-42" TextAuraYIniExpression="0.5*${_screenheight}-200" TextAuraWIniExpression="300-90" TextAuraHIniExpression="40" TextAuraOIniExpression="100" TextAuraTTLTickExpression="6-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+              <Folder Id="6ffb396d-5885-4989-9523-584191758b58" Name="P4" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="魔导火焰" Id="ee2afe31-c2d8-46a6-b05a-e63965aea73a" RegularExpression="^.{14} 14:4E4F:">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="分摊" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="魔导光刃 (图片截自子言姐姐团队攻略视频)" Id="89abfd8a-a1f0-43f1-bd2d-39b042a96445" RegularExpression="^.{14} 14:4E50:">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="散开" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="376f0d38-a2c3-4ab0-ac6c-c503854fb493" TriggerText="AT_Tips:/2020/09/24/F4ly93dwJeWf7hP.png:6:MMex" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="SystemBeep" Description="https://www.bilibili.com/video/BV1X5411a7te" DescriptionOverride="True">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+              <Folder Id="ba374f2c-7bda-4f5a-a598-6b72922d0e5a" Name="P5" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="更强" Id="8146c93c-ca6f-4739-bb39-e2870dd08400" RegularExpression="^.{14} 14:4CE[56]:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="远离" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3000">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" UseTTSTextExpression="靠近" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3800">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="3" LogLevel="-1" UseTTSTextExpression="穿" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="3200">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="4" LogLevel="-1" UseTTSTextExpression="穿" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="2600">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="狂暴（未知）" Id="3718ba72-3ca8-4a87-8273-102203042b30" RegularExpression="">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="狂暴" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+            </Folders>
+            <Triggers />
           </Folder>
         </Folders>
         <Triggers />
