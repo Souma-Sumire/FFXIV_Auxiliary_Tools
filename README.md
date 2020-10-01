@@ -34,6 +34,9 @@ https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8
 Aho 团辅监控
 https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/Aho%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/Aho's%20Raid%20Buffs.xml
 
+Zeffuro's Trigger Repository 精致的各种监控
+https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/Zeffuro's%20Trigger%20Repository%20%E5%9B%BD%E6%9C%8D%E7%8E%AF%E5%A2%83%E9%80%82%E9%85%8D.xml
+
 副本发宏工具 （导入时需勾选“允许触发器操作文件”）
 https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E5%8F%91%E5%AE%8F%EF%BC%88%E5%8F%91%E6%94%BB%E7%95%A5%EF%BC%89%E5%B7%A5%E5%85%B7/%E5%8F%91%E9%80%81%E5%89%AF%E6%9C%AC%E5%AE%8F.xml
 
