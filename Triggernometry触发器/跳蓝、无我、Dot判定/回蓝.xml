@@ -1,29 +1,85 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="5ca3fe26-2c41-4353-a3d1-a2cd75c1f1a1" Name="黑魔回蓝监控" Enabled="true">
-    <Folders />
-    <Triggers>
-      <Trigger Enabled="true" Name="呼出宏 /e !mpshow" Id="fd967e01-41b7-49b0-8ed3-077df9099040" RegularExpression="^.{14} 00:0038:!mpshow">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_MP_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+  <ExportedFolder FFXIVJobFilter="16777216" Id="f90d27b8-585b-44b5-a529-c2c882d8438d" Name="黑魔回蓝监控" Enabled="true">
+    <Folders>
+      <Folder FFXIVJobFilter="16777216" Id="550e8082-e476-417c-8214-9c89a8156464" Name="这是一个隐藏+只读的文件夹" Enabled="true">
+        <Folders>
+          <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="bb0aebe6-d0c4-4de1-914a-d0fbdde724e7" Name="R18+" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="27" Id="fe00b535-85b9-4d42-8dc8-fe5cda1574e3" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:[^:]+?:10000:">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_MP_Tick_Timing" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_MP_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="ACE" Id="893cde02-2334-4b72-b6df-4498faab01c4" RegularExpression="^.{14} 21:.{8}:400000(0[16]|1[02])|^.{14} 01:Changed Zone to">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_MP_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers>
+          <Trigger Enabled="true" Name="OC25" Id="def8c71f-c0d4-4396-8407-699de0fc770a" RegularExpression="^.{14} 0C:Player Stats: 25:">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="81305aaa-8107-4f3f-bb99-37192bd73bbd" TriggerForce="true" ActionType="Trigger" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_MP_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_MP_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" AuraName="Souma_MP_Tick_Timing_1" AuraImage="https://i.loli.net/2020/07/07/9XbZL1cuOdmGJz8.png" AuraXIniExpression="${var:_AT_黑魔回蓝监控X坐标}-2" AuraYIniExpression="${var:_AT_黑魔回蓝监控Y坐标}-2" AuraWIniExpression="152" AuraHIniExpression="28" AuraOIniExpression="100" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" AuraName="Souma_MP_Tick_Timing" AuraImage="https://i.loli.net/2020/07/07/wzck7tmMOVK3TZF.png" AuraXIniExpression="${var:_AT_黑魔回蓝监控X坐标}" AuraYIniExpression="${var:_AT_黑魔回蓝监控Y坐标}" AuraWIniExpression="0" AuraHIniExpression="28" AuraOIniExpression="100" AuraWTickExpression="if(${var:Souma_MP_Tick_Timing}=0,1,((${_systemtimems}-${var:Souma_MP_Tick_Timing})%3000)/3000*152)" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="false" IsReadme="True" Name="请不要更改此文件夹内的任何内容，除非你非常明白你正在做什么。" Id="c1973392-eaad-447a-aead-1d7f3e66a82e" RegularExpression="">
+            <Actions />
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="OC^25" Id="77d55053-96e3-4b46-8f2f-ed76f7420edb" RegularExpression="^.{14} 0C:Player Stats: (.{1,2}):">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="dc0554de-458f-4ab7-8aae-0addcf87a562" TriggerForce="true" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
             <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_MP_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="25" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
             </Condition>
             <Conditions />
-          </Action>
-          <Action OrderNumber="2" AuraName="Souma_MP_Tick_Timing_1" AuraImage="https://i.loli.net/2020/07/07/9XbZL1cuOdmGJz8.png" AuraXIniExpression="${var:_AT_黑魔回蓝监控X坐标}-2" AuraYIniExpression="${var:_AT_黑魔回蓝监控Y坐标}-2" AuraWIniExpression="152" AuraHIniExpression="28" AuraOIniExpression="100" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="3" AuraName="Souma_MP_Tick_Timing" AuraImage="https://i.loli.net/2020/07/07/wzck7tmMOVK3TZF.png" AuraXIniExpression="${var:_AT_黑魔回蓝监控X坐标}" AuraYIniExpression="${var:_AT_黑魔回蓝监控Y坐标}" AuraWIniExpression="0" AuraHIniExpression="28" AuraOIniExpression="100" AuraWTickExpression="if(${var:Souma_MP_Tick_Timing}=0,1,((${_systemtimems}-${var:Souma_MP_Tick_Timing})%3000)/3000*152)" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="隐藏宏 /e !mphide" Id="a66de100-f346-4621-b892-1199cf56894b" RegularExpression="^.{14} 00:0038:!mphide">
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers>
+      <Trigger Enabled="false" Sequential="True" Name="启用此触发器来关闭显示" Id="dc0554de-458f-4ab7-8aae-0addcf87a562" RegularExpression="^.">
         <Actions>
           <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="Souma_MP_Tick_Timing_1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
             <Condition Enabled="false" Grouping="Or" />
@@ -39,13 +95,7 @@
             </Condition>
             <Conditions />
           </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="团灭" Id="3d770067-c5e3-4f28-9033-4fc291df7180" RegularExpression="^.{14} 21:........:4000001[026]:|^.{14} 01:Changed Zone to">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_MP_Tick_Timing" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+          <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="dc0554de-458f-4ab7-8aae-0addcf87a562" ActionType="Trigger">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
@@ -53,27 +103,31 @@
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
       </Trigger>
-      <Trigger Enabled="true" Name="回蓝" Id="67b4c0cc-c0b0-443e-90e5-e4195b3a714d" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;.+):\d+:\d+:\d+:10000:">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_MP_Tick_Timing" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-            </Condition>
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_MP_Tick_Timing}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-        </Condition>
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="*自定义设置 - 显示坐标" Id="08621107-a3b7-4526-b9a4-4667412d8c30" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+      <Trigger Enabled="true" Name="* 设置 - 显示坐标" Id="81305aaa-8107-4f3f-bb99-37192bd73bbd" RegularExpression="">
         <Actions>
           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_黑魔回蓝监控X坐标" VariableExpression="1242" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
           <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_AT_黑魔回蓝监控Y坐标" VariableExpression="944" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="false" Sequential="True" Name="启用此触发器来强制开启" Id="324f811b-23d9-4145-a9b8-1a4457bcc3b6" RegularExpression="^.">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="已强制开启" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="def8c71f-c0d4-4396-8407-699de0fc770a" TriggerForce="true" ActionType="Trigger" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="324f811b-23d9-4145-a9b8-1a4457bcc3b6" ActionType="Trigger" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
