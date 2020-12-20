@@ -70,14 +70,9 @@ https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8
 两键龙骑（使用时需开启【鲶鱼精邮差】）
 https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%B8%80%E9%94%AE%E7%B3%BB%E5%88%97/%E9%BE%99%E9%AA%91GCD%E4%B8%A4%E9%94%AE%E5%BE%AA%E7%8E%AF.xml
 
-Dot Server Tick
-https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E8%B7%B3%E8%93%9D%E3%80%81%E6%97%A0%E6%88%91%E3%80%81Dot%E5%88%A4%E5%AE%9A/DoT.xml
-
 MP Server Tick
 https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E8%B7%B3%E8%93%9D%E3%80%81%E6%97%A0%E6%88%91%E3%80%81Dot%E5%88%A4%E5%AE%9A/%E5%9B%9E%E8%93%9D.xml
 
-Hot Server Tick
-https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E8%B7%B3%E8%93%9D%E3%80%81%E6%97%A0%E6%88%91%E3%80%81Dot%E5%88%A4%E5%AE%9A/%E6%97%A0%E6%88%91.xml
 ```
 
 ## 让Triggernometry触发器使用ACT的TTS插件
