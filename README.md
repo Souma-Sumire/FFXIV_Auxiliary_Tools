@@ -40,8 +40,8 @@ https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry
 副本发宏工具 （导入时需勾选“允许触发器操作文件”）
 https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E5%8F%91%E5%AE%8F%EF%BC%88%E5%8F%91%E6%94%BB%E7%95%A5%EF%BC%89%E5%B7%A5%E5%85%B7/%E5%8F%91%E9%80%81%E5%89%AF%E6%9C%AC%E5%AE%8F.xml
 
-舞者连击中断倒计时
-https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E8%88%9E%E8%80%85%E8%BF%9E%E5%87%BB15%E7%A7%92%E5%80%92%E8%AE%A1%E6%97%B6.xml
+连击中断倒计时(战骑暗枪忍舞机)
+https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E8%BF%9E%E5%87%BB15%E7%A7%92%E5%80%92%E8%AE%A1%E6%97%B6.xml
 
 FF14信用查询（导入时需勾选“允许触发器操作文件”）
 https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/FF14%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2.xml
