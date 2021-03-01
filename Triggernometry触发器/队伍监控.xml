@@ -71,125 +71,7 @@
           </Trigger>
         </Triggers>
       </Folder>
-      <Folder Id="9bd0e807-b039-4876-916a-b9faa32223d4" Name="复活&amp;MP&amp;醒梦" Enabled="true">
-        <Folders />
-        <Triggers>
-          <Trigger Enabled="true" Name="读条" Id="16bc90a1-8de7-4452-934a-18fda19fd4a3" RegularExpression="^.{15}14:.{0,4}:(?&lt;SourceName&gt;[^:]+?) starts using (?&lt;AbilityName&gt;生辰|Ascend|アセンド|复(活|生)|Raise|蘇生|赤复活|Verraise|ヴァルレイズ) on (?&lt;TargetName&gt;[^:]+?)\.$">
-            <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_复活_发送频道}} 读条${AbilityName}：${var:${SourceName}职业} → ${var:${TargetName}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${TargetName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
-            </Condition>
-          </Trigger>
-          <Trigger Enabled="true" Name="判定" Id="1a41ec2f-6cf7-4ff0-ae38-52e0008b042d" RegularExpression="^.{15}15:.{8}:(?&lt;CasterName&gt;[^:]+?):.{0,4}:(?&lt;AbilityName&gt;生辰|Ascend|アセンド|复(活|生)|Raise|蘇生|赤复活|Verraise|ヴァルレイズ):.{8}:(?&lt;TargetName&gt;[^:]+?):">
-            <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）→${AbilityName} → ${TargetName}（${var:${TargetName}职业}）" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_复活_发送频道}} ${CasterName}（${var:${CasterName}职业}）MP:${_ffxivparty[${CasterName}].currentmp} 醒梦CD:${numeric:max(round(60-(${_systemtimems}-${var:${CasterName}醒梦})/1000,1),0)}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1000" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
-            </Condition>
-          </Trigger>
-          <Trigger Enabled="true" Name="醒梦" Id="3a5098b2-075f-4803-b0e6-a4c88502c22d" RegularExpression="^.{15}1A:.{8}:(?&lt;CasterName&gt;[^:]+?) gains the effect of (醒梦|Lucid Dreaming|ルーシッドドリーム) from [^:]+? for 21\.00 Seconds\.$">
-            <Actions>
-              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="${CasterName}醒梦" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${CasterName}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
-            </Condition>
-          </Trigger>
-          <Trigger Enabled="true" Name="重置" Id="f5ba4df8-bd98-4096-a2a0-938bd91b92bc" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$|^.{15}21:.{8}:4000001[026]|^.{15}00:0839:(?:“.+”任务开始。| has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。)">
-            <Actions>
-              <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName=".+醒梦" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[1].name}醒梦" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[1].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="3" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[2].name}醒梦" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="4" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[3].name}醒梦" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[3].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="5" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[4].name}醒梦" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[4].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="6" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[5].name}醒梦" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[5].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="7" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[6].name}醒梦" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="8" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[7].name}醒梦" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[7].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="9" ListVariableOp="Push" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="${_ffxivparty[8].name}醒梦" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-        </Triggers>
-      </Folder>
-      <Folder Id="a2e48e30-9756-40b0-89d5-6f14c8007729" Name="死亡&amp;即刻" Enabled="true">
+      <Folder Id="a2e48e30-9756-40b0-89d5-6f14c8007729" Name="死亡&amp;即刻 好像不好用哦 " Enabled="false">
         <Folders />
         <Triggers>
           <Trigger Enabled="true" Sequential="True" Name="死亡" Id="7b2dd0a0-b715-46a6-acd0-0ab2823e03d9" RegularExpression="^.{15}19:(?&lt;name&gt;.+?) was defeated by (?&lt;target&gt;.+?)\.$">
@@ -489,7 +371,7 @@
         <Triggers>
           <Trigger Enabled="true" Name="聊天频道" Id="96d5046f-9d32-4e72-ad30-1fb6da42190d" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
             <Actions>
-              <Action OrderNumber="1" VariableOp="SetString" VariableName="_AT_技能判定_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="_AT_技能判定_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -505,7 +387,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="5" VariableOp="SetString" VariableName="_AT_死亡_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="5" VariableOp="SetString" VariableName="_AT_死亡_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -516,171 +398,247 @@
             <Actions>
               <Action OrderNumber="1" ListVariableExpressionType="Numeric" ListVariableName="AT_监控ID" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="44F8" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3D8B" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3D7F" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3D8F" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="44F4" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="7" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3D70" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="8" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3E71" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="9" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3E59" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="10" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3E63" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="11" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3E6F" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="12" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3FF3" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="13" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3FDC" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="14" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3FDE" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="15" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="400C" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="16" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="400B" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="17" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="3FF2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="18" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4124" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="19" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4139" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="20" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4114" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="21" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="412A" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="22" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4BB5" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="23" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4BB6" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="24" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4BF7" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="25" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4C14" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="26" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4C00" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="27" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4BF9" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="28" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4C6D" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="29" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4C75" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="30" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4C7E" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="31" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4C8A" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="32" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4E56" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="33" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4DCC" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="34" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D80" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="35" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D64" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="36" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D98" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="37" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D7B" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="38" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D82" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="39" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D83" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="40" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D6C" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="41" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D9E" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="42" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D73" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="43" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4DA1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="44" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4DA8" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="45" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4DA9" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="46" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4D7C" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="47" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4DBD" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="48" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4DBB" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="49" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="4DC7" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="50" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="47A7" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="51" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="47A8" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="52" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="47A9" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="53" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="478A" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="54" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="47E4" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="55" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="47AA" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="56" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="47B8" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="57" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="47BC" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="58" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="2B42" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="59" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="2B54" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="60" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="2B55" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="61" ListVariableOp="Push" ListVariableName="AT_监控ID" ListVariableExpression="2B47" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -799,7 +757,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="触发" Id="6b3f7594-5284-4332-9372-51fa9e945791" RegularExpression="^.{14} 21:.{8}:4000001[026]|^.{15}00:0839:(”任务结束了。|has ended.|」の攻略を終了した。|任务开始|has begun\.|の攻略を開始した。)" PrevActions="Interrupt" Scheduling="FromRefirePeriod" PeriodRefire="Deny" RefirePeriodExpression="20000">
+              <Trigger Enabled="true" Name="触发" Id="6b3f7594-5284-4332-9372-51fa9e945791" RegularExpression="^.{14} 0B:|^.{14} 21:.{8}:400000(03|1[026]):" PrevActions="Interrupt" Scheduling="FromRefirePeriod" PeriodRefire="Deny" RefirePeriodExpression="20000">
                 <Actions>
                   <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName=".*职业" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="1" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -937,16 +895,73 @@
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Name="技能判定" Id="d30f61d6-153b-4854-bea0-0ac5de805c75" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):(?&lt;AbilityID&gt;[^:]+?):(?&lt;AbilityName&gt;[^:]+?):(?&lt;Damage&gt;.+?):(?&lt;TargetName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="100" Description="木人|伊甸|至尊伊甸|伊甸守护者|虚无行者|厄瑞玻斯的巨腕|利维亚桑|泰坦|极大泰坦|guardian of paradise|エデン・ガーデナー|Voidwalker|ヴォイドウォーカー|the Hand of Erebos|エレボスの巨腕|Leviathan|リヴァイアサン|Titan|タイタン|Titan Maximum|マキシタイタン">
+          <Trigger Enabled="true" Name="技能判定" Id="d30f61d6-153b-4854-bea0-0ac5de805c75" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):(?&lt;AbilityID&gt;[^:]+?):(?&lt;AbilityName&gt;[^:]+?):(?&lt;Damage&gt;.+?):(?&lt;TargetName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="100" Description="木人|伊甸|至尊伊甸|伊甸守护者|虚无行者|厄瑞玻斯的巨腕|利维亚桑|泰坦|极大泰坦|guardian of paradise|エデン?ガーデナー|Voidwalker|ヴォイドウォーカー|the Hand of Erebos|エレボスの巨腕|Leviathan|リヴァイアサン|Titan|タイタン|Titan Maximum|マキシタイタン">
             <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_技能判定_发送频道}} ${CasterName} → ${AbilityName}    减伤:${var:减伤_鼓舞}${var:减伤_夜占盾}${var:减伤_天星夜}${var:减伤_炽天的幕帘}${var:减伤_雪仇_${CasterName}}${var:减伤_牵制_${CasterName}}${var:减伤_昏乱_${CasterName}}${var:减伤_策动}${var:减伤_防守之桑巴}${var:减伤_行吟}${var:减伤_节制}${var:减伤_命运之轮}${var:减伤_野战治疗阵}${var:减伤_异想的幻光}${var:减伤_圣光幕帘}${var:减伤_武装戍卫}${var:减伤_光之心}${var:减伤_摆脱}${var:减伤_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/${func:tolower:${var:_AT_技能判定_发送频道}} ${CasterName} → ${AbilityName}    减伤:${var:减伤_鼓舞}${var:减伤_黑夜领域}${var:减伤_天星冲日（夜）}${var:减伤_炽天的幕帘}${var:减伤_雪仇_${CasterName}}${var:减伤_牵制_${CasterName}}${var:减伤_昏乱_${CasterName}}${var:减伤_策动}${var:减伤_防守之桑巴}${var:减伤_行吟}${var:减伤_节制}${var:减伤_命运之轮}${var:减伤_野战治疗阵}${var:减伤_异想的幻光}${var:减伤_圣光幕帘}${var:减伤_武装}${var:减伤_光之心}${var:减伤_摆脱}${var:减伤_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
                 <Condition Enabled="false" Grouping="And" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${TargetName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               <ConditionSingle Enabled="true" ExpressionL="AT_监控ID" ExpressionTypeL="String" ExpressionR="${AbilityID}" ExpressionTypeR="String" ConditionType="ListContains" />
             </Condition>
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="4c7c1d24-444c-4d23-a278-abd7790198a4" Name="即刻重写" Enabled="false">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="即刻" Id="8ced9a7f-0b44-4524-b4b6-024dffd9cb69" RegularExpression="^.{14} 1A:.{8}:(?&lt;CasterName&gt;[^:]+?) gains the effect of (即刻咏唱|Swiftcast|迅速魔) ">
+            <Actions />
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Reset" Id="0caa2d29-6cbf-4acd-b6f4-07e82f1e328e" RegularExpression="^.{14} 21:.{8}:400000(03|1[026]):" EditAutofire="True">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" TableVariableName="队伍监控_即刻" TableVariableX="3" TableVariableY="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" TableVariableOp="Resize" TableVariableName="队伍监控_即刻" TableVariableX="3" TableVariableY="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" TableVariableOp="Set" TableVariableName="队伍监控_即刻" TableVariableExpression="WHM" TableVariableX="1" TableVariableY="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" TableVariableOp="Set" TableVariableName="队伍监控_即刻" TableVariableExpression="AST" TableVariableX="1" TableVariableY="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" LogLevel="-1" TableVariableOp="Set" TableVariableName="队伍监控_即刻" TableVariableExpression="SCH" TableVariableX="1" TableVariableY="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" LogLevel="-1" TableVariableOp="Set" TableVariableName="队伍监控_即刻" TableVariableExpression="SMN" TableVariableX="1" TableVariableY="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" LogLevel="-1" TableVariableOp="Set" TableVariableName="队伍监控_即刻" TableVariableExpression="白" TableVariableX="2" TableVariableY="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" LogLevel="-1" TableVariableOp="Set" TableVariableName="队伍监控_即刻" TableVariableExpression="占" TableVariableX="2" TableVariableY="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" LogLevel="-1" TableVariableOp="Set" TableVariableName="队伍监控_即刻" TableVariableExpression="学" TableVariableX="2" TableVariableY="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="10" LogLevel="-1" TableVariableOp="Set" TableVariableName="队伍监控_即刻" TableVariableExpression="召" TableVariableX="2" TableVariableY="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
