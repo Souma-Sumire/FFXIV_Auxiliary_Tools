@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4294967296" Id="dedb5863-3e94-46b9-bff7-19675139c5e2" Name="占星术士地星进度条" Enabled="true">
+    <Folders>
+      <Folder Id="018787d7-3db9-4714-84d0-d293c6531371" Name="地星" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="地星" Id="316eaf1d-1b77-4648-8411-278b39b43449" RegularExpression="^.{14} 16:.{8}:([^:]+?):1D0F:">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="EDCD_ICON" VariableExpression="☆" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraBackground="White" TextAuraName="EDCD_L" TextAuraXIniExpression="${var:EDCD_坐标X}" TextAuraYIniExpression="${var:EDCD_坐标Y}" TextAuraWIniExpression="${var:EDCD_长度}+18" TextAuraHIniExpression="15" TextAuraOIniExpression="100" TextAuraFontName="宋体" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" TextAuraAlignment="TopLeft" TextAuraFontSize="9" TextAuraBackground="Red" TextAuraName="EDCD_M" TextAuraXIniExpression="${var:EDCD_坐标X}+${var:EDCD_长度}/2+9" TextAuraYIniExpression="${var:EDCD_坐标Y}" TextAuraWIniExpression="2" TextAuraHIniExpression="15" TextAuraOIniExpression="100" TextAuraFontName="宋体" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" TextAuraAlignment="TopLeft" TextAuraFontSize="9" TextAuraForeground="#0080FF" TextAuraName="EDCD_S" TextAuraExpression="${var:EDCD_ICON}" TextAuraXIniExpression="${var:EDCD_坐标X}" TextAuraYIniExpression="${var:EDCD_坐标Y}" TextAuraWIniExpression="18" TextAuraHIniExpression="18" TextAuraOIniExpression="100" TextAuraXTickExpression="${var:EDCD_坐标X}+(${_sincems}/20000*${var:EDCD_长度})" TextAuraFontName="宋体" ActionType="TextAura" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="巨星" Id="81d14552-2892-470a-84a1-63c5e4719e1e" RegularExpression="^.{14} 1A:.{8}:([^:]+?) gains the effect of (巨星主宰|Giant Dominance|巨星の支配者) ">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="EDCD_ICON" VariableExpression="★" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="aedfd701-a040-4861-826d-2eb598fed7f9" TriggerForce="regexp,conditions" ActionType="Trigger" ExecutionDelayExpression="10000">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="星体暴轰" Id="aedfd701-a040-4861-826d-2eb598fed7f9" RegularExpression="^.{14} 15:.{8}:([^:]+?):2084:">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^EDCD.+" TextAuraFontName="宋体" ActionType="TextAura">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers>
+      <Trigger Enabled="true" Name="*设置" Id="965e0024-778e-4a45-ab6b-0e9689c3e1bf" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="EDCD_坐标X" VariableExpression="1090" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="EDCD_坐标Y" VariableExpression="944" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="EDCD_长度" VariableExpression="206" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
