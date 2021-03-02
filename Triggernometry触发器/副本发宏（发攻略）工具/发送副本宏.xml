@@ -1,12 +1,40 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
   <ExportedFolder Id="d99dc292-e5f6-40e8-93c8-1f19ba63f545" Name="副本发宏工具 by Souma" Enabled="true">
-    <Folders />
+    <Folders>
+      <Folder Id="050e288c-d71c-4454-93c1-6f1b27d0b209" Name="Debug" Enabled="false">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Sequential="True" Name="DebugSend" Id="b95578b7-6332-47aa-83a4-90e0add7211c" RegularExpression="^.{14} 00:0038:发宏 (.+)$">
+            <Actions>
+              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e ${tvarrl:ExtremeMacroText[$1][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="拉诺西亚|利姆萨·罗敏萨|黑衣森林|萨纳兰|乌尔达哈现世回廊|薰衣草苗圃|海雾村|狼狱停船场|高脚孤丘|金蝶游乐场|白银乡|库尔札斯|摩杜纳|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|田园郡|神拳痕|黄金港|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海|游末绑|水晶都" ExpressionTypeR="String" ConditionType="RegexMatch" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="DebugRead" Id="ffe64671-466d-4167-b135-4d68ae167073" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" TableVariableName="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="D:\Github\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" ExecutionDelayExpression="1000" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
     <Triggers>
       <Trigger Enabled="true" Name="R" Id="c918b0fd-f219-4b40-bd47-6a5d68e6bffe" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000">
         <Actions>
-          <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E5%8F%91%E5%AE%8F%EF%BC%88%E5%8F%91%E6%94%BB%E7%95%A5%EF%BC%89%E5%B7%A5%E5%85%B7/%E5%AE%8F.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
+          <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E5%8F%91%E5%AE%8F%EF%BC%88%E5%8F%91%E6%94%BB%E7%95%A5%EF%BC%89%E5%B7%A5%E5%85%B7/%E5%AE%8F.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
@@ -49,7 +77,7 @@
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="拉诺西亚|黑衣森林|萨纳兰|库尔札斯中央高地|摩杜纳|库尔札斯西部高地|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+          <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="拉诺西亚|利姆萨·罗敏萨|黑衣森林|萨纳兰|乌尔达哈现世回廊|薰衣草苗圃|海雾村|狼狱停船场|高脚孤丘|金蝶游乐场|白银乡|库尔札斯|摩杜纳|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|田园郡|神拳痕|黄金港|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海|游末绑|水晶都" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
         </Condition>
       </Trigger>
       <Trigger Enabled="true" Name="B" Id="6943d754-1bbd-42b0-8386-d15bcfbc6102" RegularExpression="^.{14} 00:0038:发宏$">
@@ -60,19 +88,19 @@
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" Sequential="True" Name="S2" Id="b95578b7-6332-47aa-83a4-90e0add7211c" RegularExpression="^.{14} 00:0038:发宏$">
+      <Trigger Enabled="false" IsReadme="True" Name="使用说明（双击打开描述）" Id="9a6eab83-db6b-4b88-992c-b4485d9efc6d" RegularExpression="" Description="使用远程触发器导入时，请勾选“允许触发器操作文件”，并手动右键更新一次触发器，否则将无法使用。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;1.开启依赖：[鲶鱼精邮差]&#xD;&#xA;&#xD;&#xA;2.配置鲶鱼精邮差的端口环境(bat)。重启ACT&#xD;&#xA;&#xD;&#xA;3.使用宏&#xD;&#xA;&#xD;&#xA;  &quot;/e 发宏&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;使用上面的宏，会将当前所在副本的对应喊话到默语频道(仅自己可见)。&#xD;&#xA;如3秒内连打2次宏，则发送到小队频道。&#xD;&#xA;&#xD;&#xA;附：&#xD;&#xA;  E1S-E4S写法&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章1)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章2)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章3)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章4)&#xD;&#xA;&#xD;&#xA;https://nga.178.com/read.php?&amp;tid=19753093">
+        <Actions />
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Sequential="True" Name="S2" Id="14a149c4-80e0-45e9-824f-6cc5c405ee65" RegularExpression="^.{14} 00:0038:发宏$">
         <Actions>
           <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e 你得先进本啊！&lt;se.11&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="拉诺西亚|黑衣森林|萨纳兰|库尔札斯中央高地|摩杜纳|库尔札斯西部高地|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海" ExpressionTypeR="String" ConditionType="RegexMatch" />
+          <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="拉诺西亚|利姆萨·罗敏萨|黑衣森林|萨纳兰|乌尔达哈现世回廊|薰衣草苗圃|海雾村|狼狱停船场|高脚孤丘|金蝶游乐场|白银乡|库尔札斯|摩杜纳|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|田园郡|神拳痕|黄金港|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海|游末绑|水晶都" ExpressionTypeR="String" ConditionType="RegexMatch" />
         </Condition>
-      </Trigger>
-      <Trigger Enabled="false" IsReadme="True" Name="使用说明（双击打开描述）" Id="9a6eab83-db6b-4b88-992c-b4485d9efc6d" RegularExpression="" Description="使用远程触发器导入时，请勾选“允许触发器操作文件”，并手动右键更新一次触发器，否则将无法使用。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;1.开启依赖：[鲶鱼精邮差]&#xD;&#xA;&#xD;&#xA;2.配置鲶鱼精邮差的端口环境(bat)。重启ACT&#xD;&#xA;&#xD;&#xA;3.使用宏&#xD;&#xA;&#xD;&#xA;  &quot;/e 发宏&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;使用上面的宏，会将当前所在副本的对应喊话到默语频道(仅自己可见)。&#xD;&#xA;如3秒内连打2次宏，则发送到小队频道。&#xD;&#xA;&#xD;&#xA;附：&#xD;&#xA;  E1S-E4S写法&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章1)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章2)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章3)&#xD;&#xA;  伊甸零式希望乐园 (觉醒之章4)&#xD;&#xA;&#xD;&#xA;https://nga.178.com/read.php?&amp;tid=19753093">
-        <Actions />
-        <Condition Enabled="false" Grouping="Or" />
       </Trigger>
     </Triggers>
   </ExportedFolder>
