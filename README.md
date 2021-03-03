@@ -13,7 +13,11 @@
 
   1. 启用 DirectX 11 运行 最终幻想14
   1. 安装 [ACT呆萌整合](https://nga.178.com/read.php?tid=19019884) / [FFCafe国服整合](https://ffcafe.org/act/) / [Triggernometry](https://github.com/paissaheavyindustries/Triggernometry)
-  1. **聊天框消息没有被过滤** [视频演示](https://www.bilibili.com/video/av83704576/)
+
+## 可选依赖
+
+  1. [鲶鱼精邮差](https://github.com/Natsukage/PostNamazu)
+  2. [设置端口](https://share.weiyun.com/R0Eisy92)
 
 ## 导入触发器
 
