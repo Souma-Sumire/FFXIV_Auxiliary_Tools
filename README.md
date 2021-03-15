@@ -93,4 +93,4 @@ https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry
   * 关闭不需要的触发器组
   * 没开`鲶鱼精邮差`的时候**不要启用**需要邮差的触发器
   * 尝试更改ACT的CPU优先级
-* Aho是国际服触发器汉化而来，非原创。@Discord: Aho Senpai#0818
+* Aho是国际服触发器改编而来，非原创。@Discord: Aho Senpai#0818
