@@ -373,7 +373,137 @@
             </Triggers>
           </Folder>
           <Folder Id="e0e52132-82b7-4b61-bbd4-6ed3a4688fe9" Name="普攻非T玩家" Enabled="false">
-            <Folders />
+            <Folders>
+              <Folder Id="7b6b0d76-55a2-47f2-a8c4-27adbd8feb33" Name="获取职业" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Sequential="True" Name="长" Id="00501ec3-caee-411b-aee5-db4eb76af3a9" RegularExpression="^.{15}00:0038:获取职业（长）$">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="${var:Souma_Get_Team_Role_Reset}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="3" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="骑士" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="PLD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="4" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="战士" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="WAR" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="5" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="暗骑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="DRK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="6" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="枪刃" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="GNB" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="7" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="白魔" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="8" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="学者" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="9" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="占星" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="10" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="武僧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="11" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="龙骑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="12" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="忍者" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="13" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="武士" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="SAM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="14" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="诗人" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="BRD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="15" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="机工" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="MCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="16" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="舞者" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="17" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="黑魔" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="BLM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="18" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="召唤" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="19" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="赤魔" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="20" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="00501ec3-caee-411b-aee5-db4eb76af3a9" TriggerText="[00:00:00.000] 00:0038:获取职业（长）" ActionType="Trigger" ExecutionDelayExpression="1" Asynchronous="False">
+                        <Condition Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                        </Condition>
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="触发" Id="6b3f7594-5284-4332-9372-51fa9e945791" RegularExpression="^.{14} 0B:|^.{14} 21:.{8}:400000(03|1[026]):" PrevActions="Interrupt" Scheduling="FromRefirePeriod" PeriodRefire="Deny" RefirePeriodExpression="20000">
+                    <Actions>
+                      <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName=".*职业" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="1" Asynchronous="False">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="1" Asynchronous="False">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="00501ec3-caee-411b-aee5-db4eb76af3a9" TriggerText="[00:00:00.000] 00:0038:获取职业（长）" ActionType="Trigger" ExecutionDelayExpression="1000" Asynchronous="False">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="4" UseTTSTextExpression="${var:${_ffxivplayer}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS" ExecutionDelayExpression="50" Asynchronous="False">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+            </Folders>
             <Triggers>
               <Trigger Enabled="true" Name="攻击判定" Id="d404f81e-bc8e-4468-86af-d9dfd07941f2" RegularExpression="^.{15}15:.{8}:(?&lt;Caster&gt;[^:]+?):[^:]+?:(?&lt;AbilityName&gt;攻击|[Aa]ttack|攻撃):.{8}:(?&lt;Target&gt;[^:]+?):.+?:(?&lt;Damage&gt;.+?):">
                 <Actions>
@@ -635,135 +765,6 @@
                   <Action OrderNumber="4" VariableOp="SetString" VariableName="_AT_即刻_发送频道" VariableExpression="${var:_AT_即刻_发送频道bak}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="300" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-            </Triggers>
-          </Folder>
-          <Folder Id="7b6b0d76-55a2-47f2-a8c4-27adbd8feb33" Name="获取职业" Enabled="true">
-            <Folders />
-            <Triggers>
-              <Trigger Enabled="true" Sequential="True" Name="长" Id="00501ec3-caee-411b-aee5-db4eb76af3a9" RegularExpression="^.{15}00:0038:获取职业（长）$">
-                <Actions>
-                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="${var:Souma_Get_Team_Role_Reset}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${evar:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="3" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="骑士" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="PLD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="4" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="战士" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="WAR" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="5" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="暗骑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="DRK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="6" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="枪刃" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="GNB" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="7" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="白魔" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="WHM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="8" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="学者" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="9" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="占星" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="10" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="武僧" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="11" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="龙骑" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="12" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="忍者" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="13" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="武士" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="SAM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="14" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="诗人" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="BRD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="15" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="机工" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="MCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="16" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="舞者" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="17" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="黑魔" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="BLM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="18" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="召唤" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="19" VariableOp="SetString" VariableName="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].name}职业" VariableExpression="赤魔" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:Souma_Get_Team_Role_Reset}].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Action>
-                  <Action OrderNumber="20" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="00501ec3-caee-411b-aee5-db4eb76af3a9" TriggerText="[00:00:00.000] 00:0038:获取职业（长）" ActionType="Trigger" ExecutionDelayExpression="1" Asynchronous="False">
-                    <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:Souma_Get_Team_Role_Reset}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
-                    </Condition>
-                  </Action>
-                </Actions>
-                <Condition Enabled="false" Grouping="Or" />
-              </Trigger>
-              <Trigger Enabled="true" Name="触发" Id="6b3f7594-5284-4332-9372-51fa9e945791" RegularExpression="^.{14} 0B:|^.{14} 21:.{8}:400000(03|1[026]):" PrevActions="Interrupt" Scheduling="FromRefirePeriod" PeriodRefire="Deny" RefirePeriodExpression="20000">
-                <Actions>
-                  <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName=".*职业" VariableExpression="true" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="1" Asynchronous="False">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="2" VariableName="Souma_Get_Team_Role_Reset" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="1" Asynchronous="False">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="00501ec3-caee-411b-aee5-db4eb76af3a9" TriggerText="[00:00:00.000] 00:0038:获取职业（长）" ActionType="Trigger" ExecutionDelayExpression="1000" Asynchronous="False">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="4" UseTTSTextExpression="${var:${_ffxivplayer}职业}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="UseTTS" ExecutionDelayExpression="50" Asynchronous="False">
-                    <Condition Enabled="false" Grouping="Or" />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
