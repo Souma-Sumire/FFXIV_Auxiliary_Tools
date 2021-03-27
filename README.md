@@ -84,8 +84,7 @@ https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry
 ## 其他说明
 
 * 如果Triggernometry的_ffixvplayer方法失效，可以尝试取消其自定义职业排序
-* 触发器延迟
-  * 关闭不需要的触发器组
-  * 没开`鲶鱼精邮差`的时候**不要启用**需要邮差的触发器
+* 如果触发器延迟
+  * 尝试禁用其他效率低下的触发器
   * 尝试更改ACT的CPU优先级
-* Aho是国际服触发器改编而来，非原创。@Discord: Aho Senpai#0818
+* Aho与Zeff触发器是国际服触发器改编而来，非原创。@Discord: Aho Senpai#0818 @Discord:?
