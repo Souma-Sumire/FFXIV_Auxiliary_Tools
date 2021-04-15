@@ -42,7 +42,7 @@
 - FF14信用查询（导入时需勾选“允许触发器操作文件”）
 `https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2/FF14%E4%BF%A1%E7%94%A8%E6%9F%A5%E8%AF%A2.xml`
 
-- 队伍监控 （使用时需开启【鲶鱼精邮差】）
+- 队伍监控 （使用时需开启【鲶鱼精邮差】）（导入时需勾选“允许触发器操作文件”）
 `https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E9%98%9F%E4%BC%8D%E7%9B%91%E6%8E%A7.xml`
 
 - 施法监控
