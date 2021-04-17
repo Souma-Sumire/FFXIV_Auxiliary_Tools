@@ -11,9 +11,8 @@
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+          <ConditionSingle Enabled="true" ExpressionL="${target}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
         </Condition>
-        <Conditions />
       </Trigger>
       <Trigger Enabled="true" Source="FFXIVNetwork" Name="受伤加重" Id="2f215121-aad0-43f7-910a-c44483fbe5e4" RegularExpression="^26\|[^\|]+?\|(40|ca|1bc|233|27e|2ca|326|37d|41e|4b8|57a|584|63d|6fd|735|8a5|92b)\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]+?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|">
         <Actions>
@@ -23,11 +22,10 @@
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+          <ConditionSingle Enabled="true" ExpressionL="${target}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
         </Condition>
-        <Conditions />
       </Trigger>
-      <Trigger Enabled="true" Source="FFXIVNetwork" Name="被复活" Id="6b3dce8b-6b5e-4354-865f-477673c7dca4" RegularExpression="^26\|[^\|]+?\|(2c|2b)\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]+?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|">
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="被复活(黑头)" Id="6b3dce8b-6b5e-4354-865f-477673c7dca4" RegularExpression="^26\|[^\|]+?\|(2c|2b)\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]+?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|">
         <Actions>
           <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3b6cc920-b78f-48f8-9d7a-ba42bc7bab4f" TriggerForce="regexp" ActionType="Trigger">
             <Condition Enabled="false" Grouping="Or" />
@@ -35,19 +33,16 @@
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
-          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+          <ConditionSingle Enabled="true" ExpressionL="${target}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
         </Condition>
-        <Conditions />
       </Trigger>
       <Trigger Enabled="true" Name="*设置音量" Id="3b6cc920-b78f-48f8-9d7a-ba42bc7bab4f" RegularExpression="">
         <Actions>
           <Action OrderNumber="1" LogLevel="-1" PlaySoundFileExpression="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%E9%92%89%E5%AE%AB%E7%90%86%E6%83%A0%E8%AF%AD%E9%9F%B3%E5%8C%85/${numeric:random(1,60)}.mp3" PlaySoundVolumeExpression="50" UseTTSVolumeExpression="" UseTTSRateExpression="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound" Description="双击此处进入设置" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
