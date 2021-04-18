@@ -7,7 +7,7 @@
           <Folder Id="1e019f62-4c4c-462a-8702-267efb5c9cc3" Name="功能开关" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="字幕" Id="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" RegularExpression="^Text:(?&lt;text&gt;[^:]+):(?&lt;time&gt;[^:]+):(?&lt;offset_x&gt;[^:]+):(?&lt;offset_y&gt;[^:]+):(?&lt;id&gt;[^:]+)$">
+              <Trigger Enabled="true" Source="None" Name="字幕" Id="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" RegularExpression="^Text:(?&lt;text&gt;[^:]+):(?&lt;time&gt;[^:]+):(?&lt;offset_x&gt;[^:]+):(?&lt;offset_y&gt;[^:]+):(?&lt;id&gt;[^:]+)$">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraEffect="Bold" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraName="AT_Subtitle_${id}" TextAuraExpression="${text}" TextAuraXIniExpression="0.5*(${_screenwidth}-1000)+${offset_x}" TextAuraYIniExpression="0.5*(${_screenheight}-200)+${offset_y}" TextAuraWIniExpression="1000" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}*1000-${_sincems}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -15,7 +15,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="显示视频攻略截图(博兹雅堡垒追忆战)" Id="376f0d38-a2c3-4ab0-ac6c-c503854fb493" RegularExpression="^AT_Tips:(?&lt;url&gt;[^:]+):(?&lt;time&gt;[^:]+):(?&lt;id&gt;[^:]+)$">
+              <Trigger Enabled="true" Source="None" Name="显示视频攻略截图(博兹雅堡垒追忆战)" Id="376f0d38-a2c3-4ab0-ac6c-c503854fb493" RegularExpression="^AT_Tips:(?&lt;url&gt;[^:]+):(?&lt;time&gt;[^:]+):(?&lt;id&gt;[^:]+)$">
                 <Actions>
                   <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="AT_Tips_${id}" AuraImage="https://i.loli.net${url}" AuraXIniExpression="0.5*${_screenwidth}-150" AuraYIniExpression="0.5*${_screenheight}-350" AuraWIniExpression="300" AuraHIniExpression="294" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
@@ -115,7 +115,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="字幕简单" Id="092f8d32-dd0c-45b2-b83d-b016334ecfb1" RegularExpression="^Text:(.+):(.+)">
+              <Trigger Enabled="true" Source="None" Name="字幕简单" Id="092f8d32-dd0c-45b2-b83d-b016334ecfb1" RegularExpression="^Text:(.+):(.+)">
                 <Actions>
                   <Action OrderNumber="1" UseTTSTextExpression="${var:AT_Team_Role}" TextAuraEffect="Bold" TextAuraFontSize="21.75" TextAuraForeground="Red" TextAuraOutline="Black" TextAuraName="AT_Subtitle_Simple" TextAuraExpression="$1" TextAuraXIniExpression="0.5*${_screenwidth}-300" TextAuraYIniExpression="0.5*${_screenheight}-100" TextAuraWIniExpression="600" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="$2-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
@@ -237,7 +237,7 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="背对" Id="0a344823-6f14-4a75-83ab-386ac91cd837" RegularExpression="">
+                  <Trigger Enabled="true" Source="None" Name="背对" Id="0a344823-6f14-4a75-83ab-386ac91cd837" RegularExpression="">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="背对" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="false" Grouping="Or" />
@@ -663,7 +663,7 @@
               </Folder>
             </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="副本特化" Id="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" RegularExpression="^TTS:(.+)$">
+              <Trigger Enabled="true" Source="None" Name="副本特化" Id="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" RegularExpression="^TTS:(.+)$">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="$1" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
@@ -2772,17 +2772,17 @@
               </Trigger>
               <Trigger Enabled="true" Name="三色标" Id="1b03df0c-a4c8-4be5-a1c0-375e615b5f16" RegularExpression="^.{15}1B:.{8}:(?&lt;name&gt;[^:]+?):.{4}:.{4}:00B(?&lt;type&gt;9|A|B):">
                 <Actions>
-                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Text:黄标?散开:4:0:0:main" ActionType="Trigger">
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Text:黄标 散开:4:0:0:main" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="9" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
                   </Action>
-                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Text:橙标?集合:4:0:0:main" ActionType="Trigger">
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Text:橙标 集合:4:0:0:main" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="A" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
                   </Action>
-                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Text:蓝标?远离:4:0:0:main" ActionType="Trigger">
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7fb7071-bc91-4a04-b9ac-ab11d05a3210" TriggerText="Text:蓝标 远离:4:0:0:main" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="String" ExpressionR="B" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
@@ -6454,11 +6454,9 @@
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:看球" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -7853,17 +7851,6 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="true" Name="P1风神无读条技能" Id="294c0d4e-1677-438c-9779-a6d81b9f8e7f" RegularExpression="^.{14} 00:0044:(迦楼罗|Garuda|ガルーダ):(哈哈哈哈哈！ 你们这些蝼蚁只有被我的狂风吹散的下场|Heehee HAHA hahaha HEEHEE haha HEEEEEE!!!|無残に散れッ！)">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7de2f8c2-835c-4f64-980b-26c6644c1f2d" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="24000">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7de2f8c2-835c-4f64-980b-26c6644c1f2d" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="100000">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
                 </Triggers>
               </Folder>
               <Folder Id="85111f51-7923-4323-bc6e-3bf1262591f9" Name="2.火" Enabled="true">
@@ -8184,43 +8171,6 @@
                   <Trigger Enabled="true" Name="1.地狱之火炎" Id="c09ff355-4aa4-4d73-8f3f-26237d310e68" RegularExpression="^.{14} 14:2B5E:">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d0e85ec0-ea0a-4957-aa3c-0a5ec6e294c5" TriggerForce="regexp" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="P2火神无读条技能" Id="df4eb546-44d5-44ec-96cb-2623e0e7ab84" RegularExpression="^.{14} 00:0044:(迦楼罗|Garuda|ガルーダ):(怎……怎么可能……区区蝼蚁……|My power\.\.\. No\.\.\.|お、おのれ……クソ虫がぁぁぁぁぁッ！！！)">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:捡碎片" ActionType="Trigger">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Dps" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="2" LogLevel="-1" VariableName="AT_绝神兵_二柱先炸" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="3" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="4" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="d4fb8d12-9d79-4c31-bcab-a4e2795f4525" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="5" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="a66d3c7d-6193-4281-8698-803f4a4224ad" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="294c0d4e-1677-438c-9779-a6d81b9f8e7f" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d0e85ec0-ea0a-4957-aa3c-0a5ec6e294c5" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="17000">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beec0cbb-a70f-4922-8dfc-c4b6f17ffb10" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="1000">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="ecf1c12a-8c43-43d8-adb6-fab352fce6af" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="97000">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="10" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="ef2b7aad-c52f-472e-a264-b74a3d378709" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="6000">
                         <Condition Enabled="false" Grouping="Or" />
                       </Action>
                     </Actions>
@@ -8565,40 +8515,6 @@
               <Folder Id="71fac9cf-b7f3-459a-bfb0-4a0375e2c1a8" Name="3.土" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="P3土神无读条" Id="479a8614-5cc1-4690-96d8-089f5287c6a0" RegularExpression="^.{14} 00:0044:(伊弗利特|Ifrit|イフリート):(不共戴天……|The blessing of Light\.\.\.defies me\!\?|不倶戴天……)">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:捡碎片" ActionType="Trigger">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="df4eb546-44d5-44ec-96cb-2623e0e7ab84" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="3" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="d4fb8d12-9d79-4c31-bcab-a4e2795f4525" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="4" FolderOp="DisableFolder" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d0e85ec0-ea0a-4957-aa3c-0a5ec6e294c5" TriggerForce="regexp" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7de2f8c2-835c-4f64-980b-26c6644c1f2d" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="16000">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:看面向" ActionType="Trigger" ExecutionDelayExpression="12000">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d0e85ec0-ea0a-4957-aa3c-0a5ec6e294c5" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="28000">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="9" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:看面向" ActionType="Trigger" ExecutionDelayExpression="23000">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
                   <Trigger Enabled="true" Name="1.大地之怒" Id="7627c10b-fcdd-4541-9a2d-819876e487e9" RegularExpression="^.{14} 14:2B90:">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d0e85ec0-ea0a-4957-aa3c-0a5ec6e294c5" TriggerForce="regexp" ActionType="Trigger">
@@ -8624,19 +8540,6 @@
               <Folder Id="a5565aa9-2b85-4d89-a4df-31b9a4514a3a" Name="4.本体" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="0.进本体" Id="713ea97d-dbbe-4dcd-b41d-c54cd2b8ba77" RegularExpression="^.{14} 00:0044:(泰坦|Titan|タイタン):(我的……孩子们……终有一日……|Hie, my children, into the dark!|ぬぬぬぬ……無念……)">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="479a8614-5cc1-4690-96d8-089f5287c6a0" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:捡碎片" ActionType="Trigger">
-                        <Condition Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Healer" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                        </Condition>
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Trigger>
                   <Trigger Enabled="true" Name="1.一运" Id="8a831ab6-32b8-4b69-8429-9d5270aa1420" RegularExpression="^.{14} 14:2B76:">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:一运" ActionType="Trigger">
@@ -8735,6 +8638,106 @@
                         <Condition Enabled="false" Grouping="Or" />
                       </Action>
                       <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f7811f38-d5bb-4445-a06f-4c29635a8d29" TriggerText="AT_Count_Down:4" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                </Triggers>
+              </Folder>
+              <Folder ZoneFilterEnabled="True" Id="bd151b49-1cff-4acd-a8a2-3a4ad74befd8" ZoneFilterRegularExpression="究极神兵绝境战" Name="台词匹配所以单独限制一下区域" Enabled="true">
+                <Folders />
+                <Triggers>
+                  <Trigger Enabled="true" Name="0.进本体" Id="713ea97d-dbbe-4dcd-b41d-c54cd2b8ba77" RegularExpression="^.{14} 00:0044:(泰坦|Titan|タイタン):(我的……孩子们……终有一日……|Hie, my children, into the dark!|ぬぬぬぬ……無念……)">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="479a8614-5cc1-4690-96d8-089f5287c6a0" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:捡碎片" ActionType="Trigger">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Healer" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="P3土神无读条" Id="479a8614-5cc1-4690-96d8-089f5287c6a0" RegularExpression="^.{14} 00:0044:(伊弗利特|Ifrit|イフリート):(不共戴天……|The blessing of Light\.\.\.defies me\!\?|不倶戴天……)">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:捡碎片" ActionType="Trigger">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Tank" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="df4eb546-44d5-44ec-96cb-2623e0e7ab84" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="3" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="d4fb8d12-9d79-4c31-bcab-a4e2795f4525" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="4" FolderOp="DisableFolder" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d0e85ec0-ea0a-4957-aa3c-0a5ec6e294c5" TriggerForce="regexp" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7de2f8c2-835c-4f64-980b-26c6644c1f2d" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="16000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:看面向" ActionType="Trigger" ExecutionDelayExpression="12000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d0e85ec0-ea0a-4957-aa3c-0a5ec6e294c5" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="28000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="9" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:看面向" ActionType="Trigger" ExecutionDelayExpression="23000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="P2火神无读条技能" Id="df4eb546-44d5-44ec-96cb-2623e0e7ab84" RegularExpression="^.{14} 00:0044:(迦楼罗|Garuda|ガルーダ):(怎……怎么可能……区区蝼蚁……|My power\.\.\. No\.\.\.|お、おのれ……クソ虫がぁぁぁぁぁッ！！！)">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fee37dc-d45b-4ed7-b02c-d1ac85b05089" TriggerText="TTS:捡碎片" ActionType="Trigger">
+                        <Condition Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].role}" ExpressionTypeL="String" ExpressionR="Dps" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                        </Condition>
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" VariableName="AT_绝神兵_二柱先炸" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="3" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Folder">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="4" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="d4fb8d12-9d79-4c31-bcab-a4e2795f4525" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="5" FolderId="8ffbb528-a7f1-47ec-8c4c-56c4673749f1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="a66d3c7d-6193-4281-8698-803f4a4224ad" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="294c0d4e-1677-438c-9779-a6d81b9f8e7f" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d0e85ec0-ea0a-4957-aa3c-0a5ec6e294c5" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="17000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="beec0cbb-a70f-4922-8dfc-c4b6f17ffb10" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="1000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="ecf1c12a-8c43-43d8-adb6-fab352fce6af" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="97000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="10" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="ef2b7aad-c52f-472e-a264-b74a3d378709" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="6000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Trigger>
+                  <Trigger Enabled="true" Name="P1风神无读条技能" Id="294c0d4e-1677-438c-9779-a6d81b9f8e7f" RegularExpression="^.{14} 00:0044:(迦楼罗|Garuda|ガルーダ):(哈哈哈哈哈！ 你们这些蝼蚁只有被我的狂风吹散的下场|Heehee HAHA hahaha HEEHEE haha HEEEEEE!!!|無残に散れッ！)">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7de2f8c2-835c-4f64-980b-26c6644c1f2d" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="24000">
+                        <Condition Enabled="false" Grouping="Or" />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7de2f8c2-835c-4f64-980b-26c6644c1f2d" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="100000">
                         <Condition Enabled="false" Grouping="Or" />
                       </Action>
                     </Actions>
