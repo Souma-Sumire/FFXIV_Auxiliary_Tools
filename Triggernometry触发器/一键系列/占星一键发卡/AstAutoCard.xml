@@ -7,9 +7,8 @@
         <Triggers>
           <Trigger Enabled="true" Name="开场允许几次重抽" Id="0e4d7827-c7be-4c52-9dc3-5469c4391b51" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
             <Actions>
-              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast开场最多重抽" VariableExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast开场最多重抽" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -421,7 +420,7 @@
                       <ConditionGroup Enabled="true" Grouping="And">
                         <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="${var:Ast_手中卡日月星}" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         <ConditionGroup Enabled="true" Grouping="Or">
-                          <ConditionSingle Enabled="true" ExpressionL="(${_systemtimems}-${var:Ast占卜})" ExpressionTypeL="Numeric" ExpressionR="85000" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                          <ConditionSingle Enabled="true" ExpressionL="(${_systemtimems}-${var:Ast占卜})" ExpressionTypeL="Numeric" ExpressionR="110000" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                           <ConditionSingle Enabled="true" ExpressionL="${evar:Ast开场}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         </ConditionGroup>
                       </ConditionGroup>
@@ -439,7 +438,7 @@
                   <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 出卡 &lt;${var:Ast_即将发送}&gt;" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac 出卡 &lt;${var:Ast_即将发送}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${var:Ast_量谱}" ExpressionTypeL="String" ExpressionR="${var:Ast_手中卡日月星}" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                      <ConditionSingle Enabled="true" ExpressionL="(${_systemtimems}-${var:Ast占卜})" ExpressionTypeL="Numeric" ExpressionR="85000" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="(${_systemtimems}-${var:Ast占卜})" ExpressionTypeL="Numeric" ExpressionR="11000" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                     </Condition>
                     <Conditions />
                   </Action>
@@ -455,16 +454,18 @@
                   <Folder Id="c16f9f32-8589-4dcc-ba57-6abbdd95b11f" Name="0.触发" Enabled="true">
                     <Folders />
                     <Triggers>
-                      <Trigger Enabled="true" Name="宏" Id="e5d93c6a-34a5-476f-b5b1-c634a4d2da55" RegularExpression="(?i)^.{14} 00:(0038|0010:.+?):Ast(Reset|Test)$" MutexToCapture="AstTeamList01">
+                      <Trigger Enabled="true" Name="宏" Id="e5d93c6a-34a5-476f-b5b1-c634a4d2da55" RegularExpression="(?i)^.{14} 00:(0038|0010:.+?):(Get|Ast)(Reset|Test)$" MutexToCapture="AstTeamList01">
                         <Actions>
                           <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2a6a929e-3996-4b1a-a30c-fc2cfbec0433" TriggerForce="regexp,refire,parent" ActionType="Trigger" Asynchronous="False">
                             <Condition Enabled="true" Grouping="Or">
                               <ConditionSingle Enabled="true" ExpressionL="${etvar:Ast_aDPS0}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                               <ConditionSingle Enabled="true" ExpressionL="${etvar:Ast_aDPS1}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                             </Condition>
+                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f5768d16-0136-4c5b-91c7-1c3a9f0506cb" TriggerForce="regexp,parent" ActionType="Trigger" ExecutionDelayExpression="500" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="false" Grouping="And" />
@@ -477,13 +478,15 @@
                         </Actions>
                         <Condition Enabled="false" Grouping="Or" />
                       </Trigger>
-                      <Trigger Enabled="true" Name="小队变动" Id="3cbf25ad-36ec-413d-839b-ef4a83f2f4be" RegularExpression="^.{14} 0B:" PrevActions="Interrupt" MutexToCapture="AstTeamList03">
+                      <Trigger Enabled="true" Name="小队变动" Id="3cbf25ad-36ec-413d-839b-ef4a83f2f4be" RegularExpression="^.{14} 0B:" MutexToCapture="AstTeamList03">
                         <Actions>
                           <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f5768d16-0136-4c5b-91c7-1c3a9f0506cb" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                           <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Placeholder" ExecutionDelayExpression="5000">
                             <Condition Enabled="false" Grouping="Or" />
+                            <Conditions />
                           </Action>
                         </Actions>
                         <Condition Enabled="true" Grouping="Or" />
@@ -496,23 +499,18 @@
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="04d530c8-0991-4123-8138-a4ab98f717e0" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="2fb422af-4b3b-4227-8889-c08457cde230" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="92c1fa16-fa8b-44b5-8193-860c28353b10" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="33c3682d-16af-4c94-8515-f33cee8723b6" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="e4955646-7009-4a45-8c89-0cb8b4a0bde6" TriggerForce="regexp,parent" ActionType="Trigger" ExecutionDelayExpression="1000" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -535,6 +533,26 @@
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
+                      <Action OrderNumber="5" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e ---------------------" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="NamedCallback">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="6" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e ---------------------" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="NamedCallback">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="7" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e ---------------------" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="NamedCallback">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="8" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e ---------------------" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="NamedCallback">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="9" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e ---------------------" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="NamedCallback">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
@@ -542,179 +560,149 @@
                     <Actions>
                       <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/e AstTeamList:&lt;1&gt;:1" VariableOp="SetString" VariableName="AstTeamList1" VariableExpression="${_ffxivplayer}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList2" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$2}*${func:indexof(&quot;沃仙曦染&quot;):$2}*${func:indexof(&quot;宇宙和音&quot;):$2}*${func:indexof(&quot;红玉海&quot;):$2}*${func:indexof(&quot;萌芽池&quot;):$2}*${func:indexof(&quot;神意之地&quot;):$2}*${func:indexof(&quot;幻影群岛&quot;):$2}*${func:indexof(&quot;拉诺西亚&quot;):$2}*${func:indexof(&quot;拂晓之间&quot;):$2}*${func:indexof(&quot;龙巢神殿&quot;):$2}*${func:indexof(&quot;旅人栈桥&quot;):$2}*${func:indexof(&quot;白金幻象&quot;):$2}*${func:indexof(&quot;白银乡&quot;):$2}*${func:indexof(&quot;神拳痕&quot;):$2}*${func:indexof(&quot;潮风亭&quot;):$2}*${func:indexof(&quot;琥珀原&quot;):$2}*${func:indexof(&quot;柔风海湾&quot;):$2}*${func:indexof(&quot;海猫茶屋&quot;):$2}*${func:indexof(&quot;延夏&quot;):$2}*${func:indexof(&quot;静语庄园&quot;):$2}*${func:indexof(&quot;摩杜纳&quot;):$2}*${func:indexof(&quot;紫水栈桥&quot;):$2}}):$2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList3" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$3}*${func:indexof(&quot;沃仙曦染&quot;):$3}*${func:indexof(&quot;宇宙和音&quot;):$3}*${func:indexof(&quot;红玉海&quot;):$3}*${func:indexof(&quot;萌芽池&quot;):$3}*${func:indexof(&quot;神意之地&quot;):$3}*${func:indexof(&quot;幻影群岛&quot;):$3}*${func:indexof(&quot;拉诺西亚&quot;):$3}*${func:indexof(&quot;拂晓之间&quot;):$3}*${func:indexof(&quot;龙巢神殿&quot;):$3}*${func:indexof(&quot;旅人栈桥&quot;):$3}*${func:indexof(&quot;白金幻象&quot;):$3}*${func:indexof(&quot;白银乡&quot;):$3}*${func:indexof(&quot;神拳痕&quot;):$3}*${func:indexof(&quot;潮风亭&quot;):$3}*${func:indexof(&quot;琥珀原&quot;):$3}*${func:indexof(&quot;柔风海湾&quot;):$3}*${func:indexof(&quot;海猫茶屋&quot;):$3}*${func:indexof(&quot;延夏&quot;):$3}*${func:indexof(&quot;静语庄园&quot;):$3}*${func:indexof(&quot;摩杜纳&quot;):$3}*${func:indexof(&quot;紫水栈桥&quot;):$3}}):$3}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$3" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList4" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$4}*${func:indexof(&quot;沃仙曦染&quot;):$4}*${func:indexof(&quot;宇宙和音&quot;):$4}*${func:indexof(&quot;红玉海&quot;):$4}*${func:indexof(&quot;萌芽池&quot;):$4}*${func:indexof(&quot;神意之地&quot;):$4}*${func:indexof(&quot;幻影群岛&quot;):$4}*${func:indexof(&quot;拉诺西亚&quot;):$4}*${func:indexof(&quot;拂晓之间&quot;):$4}*${func:indexof(&quot;龙巢神殿&quot;):$4}*${func:indexof(&quot;旅人栈桥&quot;):$4}*${func:indexof(&quot;白金幻象&quot;):$4}*${func:indexof(&quot;白银乡&quot;):$4}*${func:indexof(&quot;神拳痕&quot;):$4}*${func:indexof(&quot;潮风亭&quot;):$4}*${func:indexof(&quot;琥珀原&quot;):$4}*${func:indexof(&quot;柔风海湾&quot;):$4}*${func:indexof(&quot;海猫茶屋&quot;):$4}*${func:indexof(&quot;延夏&quot;):$4}*${func:indexof(&quot;静语庄园&quot;):$4}*${func:indexof(&quot;摩杜纳&quot;):$4}*${func:indexof(&quot;紫水栈桥&quot;):$4}}):$4}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="5" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList5" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$5}*${func:indexof(&quot;沃仙曦染&quot;):$5}*${func:indexof(&quot;宇宙和音&quot;):$5}*${func:indexof(&quot;红玉海&quot;):$5}*${func:indexof(&quot;萌芽池&quot;):$5}*${func:indexof(&quot;神意之地&quot;):$5}*${func:indexof(&quot;幻影群岛&quot;):$5}*${func:indexof(&quot;拉诺西亚&quot;):$5}*${func:indexof(&quot;拂晓之间&quot;):$5}*${func:indexof(&quot;龙巢神殿&quot;):$5}*${func:indexof(&quot;旅人栈桥&quot;):$5}*${func:indexof(&quot;白金幻象&quot;):$5}*${func:indexof(&quot;白银乡&quot;):$5}*${func:indexof(&quot;神拳痕&quot;):$5}*${func:indexof(&quot;潮风亭&quot;):$5}*${func:indexof(&quot;琥珀原&quot;):$5}*${func:indexof(&quot;柔风海湾&quot;):$5}*${func:indexof(&quot;海猫茶屋&quot;):$5}*${func:indexof(&quot;延夏&quot;):$5}*${func:indexof(&quot;静语庄园&quot;):$5}*${func:indexof(&quot;摩杜纳&quot;):$5}*${func:indexof(&quot;紫水栈桥&quot;):$5}}):$5}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$5" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="6" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList6" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$6}*${func:indexof(&quot;沃仙曦染&quot;):$6}*${func:indexof(&quot;宇宙和音&quot;):$6}*${func:indexof(&quot;红玉海&quot;):$6}*${func:indexof(&quot;萌芽池&quot;):$6}*${func:indexof(&quot;神意之地&quot;):$6}*${func:indexof(&quot;幻影群岛&quot;):$6}*${func:indexof(&quot;拉诺西亚&quot;):$6}*${func:indexof(&quot;拂晓之间&quot;):$6}*${func:indexof(&quot;龙巢神殿&quot;):$6}*${func:indexof(&quot;旅人栈桥&quot;):$6}*${func:indexof(&quot;白金幻象&quot;):$6}*${func:indexof(&quot;白银乡&quot;):$6}*${func:indexof(&quot;神拳痕&quot;):$6}*${func:indexof(&quot;潮风亭&quot;):$6}*${func:indexof(&quot;琥珀原&quot;):$6}*${func:indexof(&quot;柔风海湾&quot;):$6}*${func:indexof(&quot;海猫茶屋&quot;):$6}*${func:indexof(&quot;延夏&quot;):$6}*${func:indexof(&quot;静语庄园&quot;):$6}*${func:indexof(&quot;摩杜纳&quot;):$6}*${func:indexof(&quot;紫水栈桥&quot;):$6}}):$6}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$6" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="7" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList7" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$7}*${func:indexof(&quot;沃仙曦染&quot;):$7}*${func:indexof(&quot;宇宙和音&quot;):$7}*${func:indexof(&quot;红玉海&quot;):$7}*${func:indexof(&quot;萌芽池&quot;):$7}*${func:indexof(&quot;神意之地&quot;):$7}*${func:indexof(&quot;幻影群岛&quot;):$7}*${func:indexof(&quot;拉诺西亚&quot;):$7}*${func:indexof(&quot;拂晓之间&quot;):$7}*${func:indexof(&quot;龙巢神殿&quot;):$7}*${func:indexof(&quot;旅人栈桥&quot;):$7}*${func:indexof(&quot;白金幻象&quot;):$7}*${func:indexof(&quot;白银乡&quot;):$7}*${func:indexof(&quot;神拳痕&quot;):$7}*${func:indexof(&quot;潮风亭&quot;):$7}*${func:indexof(&quot;琥珀原&quot;):$7}*${func:indexof(&quot;柔风海湾&quot;):$7}*${func:indexof(&quot;海猫茶屋&quot;):$7}*${func:indexof(&quot;延夏&quot;):$7}*${func:indexof(&quot;静语庄园&quot;):$7}*${func:indexof(&quot;摩杜纳&quot;):$7}*${func:indexof(&quot;紫水栈桥&quot;):$7}}):$7}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$7" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="8" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList8" VariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$8}*${func:indexof(&quot;沃仙曦染&quot;):$8}*${func:indexof(&quot;宇宙和音&quot;):$8}*${func:indexof(&quot;红玉海&quot;):$8}*${func:indexof(&quot;萌芽池&quot;):$8}*${func:indexof(&quot;神意之地&quot;):$8}*${func:indexof(&quot;幻影群岛&quot;):$8}*${func:indexof(&quot;拉诺西亚&quot;):$8}*${func:indexof(&quot;拂晓之间&quot;):$8}*${func:indexof(&quot;龙巢神殿&quot;):$8}*${func:indexof(&quot;旅人栈桥&quot;):$8}*${func:indexof(&quot;白金幻象&quot;):$8}*${func:indexof(&quot;白银乡&quot;):$8}*${func:indexof(&quot;神拳痕&quot;):$8}*${func:indexof(&quot;潮风亭&quot;):$8}*${func:indexof(&quot;琥珀原&quot;):$8}*${func:indexof(&quot;柔风海湾&quot;):$8}*${func:indexof(&quot;海猫茶屋&quot;):$8}*${func:indexof(&quot;延夏&quot;):$8}*${func:indexof(&quot;静语庄园&quot;):$8}*${func:indexof(&quot;摩杜纳&quot;):$8}*${func:indexof(&quot;紫水栈桥&quot;):$8}}):$8}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$8" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="9" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList2" VariableExpression="$2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="10" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList3" VariableExpression="$3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$3" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="11" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList4" VariableExpression="$4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="12" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList5" VariableExpression="$5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$5" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="13" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList6" VariableExpression="$6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$6" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="14" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList7" VariableExpression="$7" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$7" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="15" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamList8" VariableExpression="$8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="$8" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="16" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole1" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="17" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole2" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList2}].job}" ExpressionTypeL="String" ExpressionR="^(SAM|MNK|DRG|NIN|GNB|PLD|DRK|WAR)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="18" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole3" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList3}].job}" ExpressionTypeL="String" ExpressionR="^(SAM|MNK|DRG|NIN|GNB|PLD|DRK|WAR)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="19" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole4" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList4}].job}" ExpressionTypeL="String" ExpressionR="^(SAM|MNK|DRG|NIN|GNB|PLD|DRK|WAR)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="20" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole5" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList5}].job}" ExpressionTypeL="String" ExpressionR="^(SAM|MNK|DRG|NIN|GNB|PLD|DRK|WAR)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="21" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole6" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList6}].job}" ExpressionTypeL="String" ExpressionR="^(SAM|MNK|DRG|NIN|GNB|PLD|DRK|WAR)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="22" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole7" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList7}].job}" ExpressionTypeL="String" ExpressionR="^(SAM|MNK|DRG|NIN|GNB|PLD|DRK|WAR)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="23" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole8" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList8}].job}" ExpressionTypeL="String" ExpressionR="^(SAM|MNK|DRG|NIN|GNB|PLD|DRK|WAR)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="24" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole2" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList2}].job}" ExpressionTypeL="String" ExpressionR="^(BLM|SMN|MCH|RDM|BRD|DNC|WHM|SCH|AST)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="25" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole3" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList3}].job}" ExpressionTypeL="String" ExpressionR="^(BLM|SMN|MCH|RDM|BRD|DNC|WHM|SCH|AST)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="26" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole4" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList4}].job}" ExpressionTypeL="String" ExpressionR="^(BLM|SMN|MCH|RDM|BRD|DNC|WHM|SCH|AST)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="27" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole5" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList5}].job}" ExpressionTypeL="String" ExpressionR="^(BLM|SMN|MCH|RDM|BRD|DNC|WHM|SCH|AST)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="28" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole6" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList6}].job}" ExpressionTypeL="String" ExpressionR="^(BLM|SMN|MCH|RDM|BRD|DNC|WHM|SCH|AST)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="29" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole7" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList7}].job}" ExpressionTypeL="String" ExpressionR="^(BLM|SMN|MCH|RDM|BRD|DNC|WHM|SCH|AST)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                       <Action OrderNumber="30" LogLevel="-1" VariableOp="SetString" VariableName="AstTeamListRole8" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                         <Condition Enabled="true" Grouping="Or">
                           <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${var:AstTeamList8}].job}" ExpressionTypeL="String" ExpressionR="^(BLM|SMN|MCH|RDM|BRD|DNC|WHM|SCH|AST)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
                         </Condition>
-                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
@@ -1226,11 +1214,9 @@
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast重抽" VariableExpression="${var:Ast重抽}-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="b378c55d-6da9-406a-ae2f-38ab6a63e5d2" TriggerForce="regexp,parent" ActionType="Trigger" Asynchronous="False" RefireRequeue="False">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -1277,15 +1263,12 @@
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${var:Ast重抽}" ExpressionTypeL="Numeric" ExpressionR="${var:Ast开场最多重抽}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast开场" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="f8d835d4-2562-44ac-b635-9495b314e51c" ActionType="Trigger" ExecutionDelayExpression="1000">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -1299,7 +1282,6 @@
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast占卜" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -1310,28 +1292,23 @@
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast占卜" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="f8d835d4-2562-44ac-b635-9495b314e51c" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="首次占卜" Id="f8d835d4-2562-44ac-b635-9495b314e51c" RegularExpression="^.{14} 1[56]:.{8}:([^:]+?):40A8:" PeriodRefire="Deny" RefirePeriodExpression="10000">
+              <Trigger Enabled="false" Name="首次占卜" Id="f8d835d4-2562-44ac-b635-9495b314e51c" RegularExpression="^.{14} 1[56]:.{8}:([^:]+?):40A8:" PeriodRefire="Deny" RefirePeriodExpression="10000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="Ast重抽" VariableExpression="min(${var:Ast重抽},${var:Ast开场最多重抽})" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="f8d835d4-2562-44ac-b635-9495b314e51c" ActionType="Trigger" ExecutionDelayExpression="1000">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" LogLevel="-1" VariableName="Ast开场" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
