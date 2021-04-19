@@ -4,277 +4,103 @@
     <Folders>
       <Folder Id="d1ec75f7-d89a-4696-bba3-3fa0f8662390" Name="(Don't touch)" Enabled="true">
         <Folders>
-          <Folder Id="a35db9b8-4e89-4080-bbfa-0f20ee7ad798" Name="(Don't touch)" Enabled="true">
-            <Folders>
-              <Folder Id="22b5ee0c-65ae-438d-886b-59f76cb6be3a" Name="0.触发" Enabled="true">
-                <Folders />
-                <Triggers>
-                  <Trigger Enabled="true" Name="宏" Id="7924322b-464f-4622-b60c-3229bce34281" RegularExpression="(?i)^.{14} 00:(0038|0010:.+?):(Get|Ast)(Reset|Test)$" MutexToCapture="GetTeamList01">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0ecf412b-16f8-44ee-afa8-dc4ed3f5de03" TriggerForce="regexp,parent" ActionType="Trigger" ExecutionDelayExpression="500">
-                        <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="And" />
-                    <Conditions />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="任务开始" Id="0fdab7d8-d6b1-40b0-a153-a2aa64edf09d" RegularExpression="^.{15}00:0839:“.+”任务(开始|结束了)。" MutexToCapture="GetTeamList02">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0ecf412b-16f8-44ee-afa8-dc4ed3f5de03" TriggerForce="regexp,parent" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Trigger>
-                  <Trigger Enabled="true" Name="小队变动" Id="b45b4a80-7431-4bbb-af5a-28ab4b343c50" RegularExpression="^.{14} 0[BC]:" MutexToCapture="GetTeamList03">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0ecf412b-16f8-44ee-afa8-dc4ed3f5de03" TriggerForce="regexp,parent" ActionType="Trigger" ExecutionDelayExpression="1500">
-                        <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Placeholder" ExecutionDelayExpression="3500">
-                        <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="true" Grouping="Or" />
-                    <Conditions />
-                  </Trigger>
-                </Triggers>
-              </Folder>
-            </Folders>
+          <Folder Id="a35db9b8-4e89-4080-bbfa-0f20ee7ad798" Name="(Don't touch) " Enabled="true">
+            <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="1.获取队伍" Id="0ecf412b-16f8-44ee-afa8-dc4ed3f5de03" RegularExpression="" Scheduling="FromLastAction" PeriodRefire="Deny" RefirePeriodExpression="1000" MutexToCapture="AstTeamList1">
+              <Trigger Enabled="true" Name="1.小队变化" Id="0ecf412b-16f8-44ee-afa8-dc4ed3f5de03" RegularExpression="^.{14} 0[BC]:" Scheduling="FromLastAction" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="1" AuraImageMode="Zoom" TextAuraFontSize="8.25" TextAuraBackground="Black" TextAuraName="TeamWatchBackground" TextAuraXIniExpression="${var:_TeamWatchX}+176-(4*${var:_TeamWatchInterval}+5*30*${var:_TeamWatchZoom}+${var:_TeamWatchLeftRightPadding}*2)" TextAuraYIniExpression="${var:_TeamWatchY}" TextAuraWIniExpression="4*${var:_TeamWatchInterval}+5*30*${var:_TeamWatchZoom}+${var:_TeamWatchLeftRightPadding}*2" TextAuraHIniExpression="0*${var:_TeamWatchIntervalRow}+1*30*${var:_TeamWatchZoom}+${var:_TeamWatchTopDownPadding}*2" TextAuraOIniExpression="${var:_TeamWatchBackgroundOpacity}" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                  <Action OrderNumber="1" AuraImageMode="Zoom" TextAuraFontSize="8.25" TextAuraBackground="Black" TextAuraName="TeamWatchBackground" TextAuraXIniExpression="${var:_TeamWatchX}+176-((${var:_TeamWatchBackgroundWidthIconsCount}-1)*${var:_TeamWatchInterval}+${var:_TeamWatchBackgroundWidthIconsCount}*30*${var:_TeamWatchZoom}+${var:_TeamWatchLeftRightPadding}*2)" TextAuraYIniExpression="${var:_TeamWatchY}" TextAuraWIniExpression="(${var:_TeamWatchBackgroundWidthIconsCount}-1)*${var:_TeamWatchInterval}+${var:_TeamWatchBackgroundWidthIconsCount}*30*${var:_TeamWatchZoom}+${var:_TeamWatchLeftRightPadding}*2" TextAuraHIniExpression="1" TextAuraOIniExpression="1" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                  <Action OrderNumber="2" AuraOp="DeactivateAuraRegex" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^TeamWatch_.+" TextAuraFontName="宋体" ActionType="TextAura" Description="(Don't touch)">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="500">
+                  <Action OrderNumber="3" AuraOp="DeactivateAuraRegex" AuraName="^TeamWatch_.+" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="4" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="5" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="6" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="7" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="8" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="9" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="10" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="11" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e GetTeamList:&lt;1&gt;:&lt;2&gt;:&lt;3&gt;:&lt;4&gt;:&lt;5&gt;:&lt;6&gt;:&lt;7&gt;:&lt;8&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="500">
+                  <Action OrderNumber="4" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e GetTeamList:&lt;1&gt;:&lt;2&gt;:&lt;3&gt;:&lt;4&gt;:&lt;5&gt;:&lt;6&gt;:&lt;7&gt;:&lt;8&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="500">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
-              <Trigger Enabled="true" Name="2.队伍列表" Id="1d5a1157-1777-4d62-a69d-56fdca675dd3" RegularExpression="^.{14} 00:0038:GetTeamList:([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?)$" MutexToCapture="AstTeamList2">
+              <Trigger Enabled="true" Name="2.获得小队" Id="1d5a1157-1777-4d62-a69d-56fdca675dd3" RegularExpression="^.{14} 00:0038:GetTeamList:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?$" Description="^.{14} 00:0038:GetTeamList:([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?)$">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${_ffxivplayer}].job},Num:1" ActionType="Trigger">
+                  <Action OrderNumber="1" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$1" ListVariableIndex="1" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$1" ListVariableIndex="1" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
+                  <Action OrderNumber="2" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$2" ListVariableIndex="2" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$2}*${func:indexof(&quot;沃仙曦染&quot;):$2}*${func:indexof(&quot;宇宙和音&quot;):$2}*${func:indexof(&quot;红玉海&quot;):$2}*${func:indexof(&quot;萌芽池&quot;):$2}*${func:indexof(&quot;神意之地&quot;):$2}*${func:indexof(&quot;幻影群岛&quot;):$2}*${func:indexof(&quot;拉诺西亚&quot;):$2}*${func:indexof(&quot;拂晓之间&quot;):$2}*${func:indexof(&quot;龙巢神殿&quot;):$2}*${func:indexof(&quot;旅人栈桥&quot;):$2}*${func:indexof(&quot;白金幻象&quot;):$2}*${func:indexof(&quot;白银乡&quot;):$2}*${func:indexof(&quot;神拳痕&quot;):$2}*${func:indexof(&quot;潮风亭&quot;):$2}*${func:indexof(&quot;琥珀原&quot;):$2}*${func:indexof(&quot;柔风海湾&quot;):$2}*${func:indexof(&quot;海猫茶屋&quot;):$2}*${func:indexof(&quot;延夏&quot;):$2}*${func:indexof(&quot;静语庄园&quot;):$2}*${func:indexof(&quot;摩杜纳&quot;):$2}*${func:indexof(&quot;紫水栈桥&quot;):$2}}):$2}}].job},Num:2" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="3" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$3" ListVariableIndex="3" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="4" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$2}*${func:indexof(&quot;沃仙曦染&quot;):$2}*${func:indexof(&quot;宇宙和音&quot;):$2}*${func:indexof(&quot;红玉海&quot;):$2}*${func:indexof(&quot;萌芽池&quot;):$2}*${func:indexof(&quot;神意之地&quot;):$2}*${func:indexof(&quot;幻影群岛&quot;):$2}*${func:indexof(&quot;拉诺西亚&quot;):$2}*${func:indexof(&quot;拂晓之间&quot;):$2}*${func:indexof(&quot;龙巢神殿&quot;):$2}*${func:indexof(&quot;旅人栈桥&quot;):$2}*${func:indexof(&quot;白金幻象&quot;):$2}*${func:indexof(&quot;白银乡&quot;):$2}*${func:indexof(&quot;神拳痕&quot;):$2}*${func:indexof(&quot;潮风亭&quot;):$2}*${func:indexof(&quot;琥珀原&quot;):$2}*${func:indexof(&quot;柔风海湾&quot;):$2}*${func:indexof(&quot;海猫茶屋&quot;):$2}*${func:indexof(&quot;延夏&quot;):$2}*${func:indexof(&quot;静语庄园&quot;):$2}*${func:indexof(&quot;摩杜纳&quot;):$2}*${func:indexof(&quot;紫水栈桥&quot;):$2}}):$2}" ListVariableIndex="2" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="4" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$4" ListVariableIndex="4" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="5" ListVariableOp="Set" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$3}*${func:indexof(&quot;沃仙曦染&quot;):$3}*${func:indexof(&quot;宇宙和音&quot;):$3}*${func:indexof(&quot;红玉海&quot;):$3}*${func:indexof(&quot;萌芽池&quot;):$3}*${func:indexof(&quot;神意之地&quot;):$3}*${func:indexof(&quot;幻影群岛&quot;):$3}*${func:indexof(&quot;拉诺西亚&quot;):$3}*${func:indexof(&quot;拂晓之间&quot;):$3}*${func:indexof(&quot;龙巢神殿&quot;):$3}*${func:indexof(&quot;旅人栈桥&quot;):$3}*${func:indexof(&quot;白金幻象&quot;):$3}*${func:indexof(&quot;白银乡&quot;):$3}*${func:indexof(&quot;神拳痕&quot;):$3}*${func:indexof(&quot;潮风亭&quot;):$3}*${func:indexof(&quot;琥珀原&quot;):$3}*${func:indexof(&quot;柔风海湾&quot;):$3}*${func:indexof(&quot;海猫茶屋&quot;):$3}*${func:indexof(&quot;延夏&quot;):$3}*${func:indexof(&quot;静语庄园&quot;):$3}*${func:indexof(&quot;摩杜纳&quot;):$3}*${func:indexof(&quot;紫水栈桥&quot;):$3}}):$3}].job},Num:3" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$3" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="5" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$5" ListVariableIndex="5" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="6" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$3}*${func:indexof(&quot;沃仙曦染&quot;):$3}*${func:indexof(&quot;宇宙和音&quot;):$3}*${func:indexof(&quot;红玉海&quot;):$3}*${func:indexof(&quot;萌芽池&quot;):$3}*${func:indexof(&quot;神意之地&quot;):$3}*${func:indexof(&quot;幻影群岛&quot;):$3}*${func:indexof(&quot;拉诺西亚&quot;):$3}*${func:indexof(&quot;拂晓之间&quot;):$3}*${func:indexof(&quot;龙巢神殿&quot;):$3}*${func:indexof(&quot;旅人栈桥&quot;):$3}*${func:indexof(&quot;白金幻象&quot;):$3}*${func:indexof(&quot;白银乡&quot;):$3}*${func:indexof(&quot;神拳痕&quot;):$3}*${func:indexof(&quot;潮风亭&quot;):$3}*${func:indexof(&quot;琥珀原&quot;):$3}*${func:indexof(&quot;柔风海湾&quot;):$3}*${func:indexof(&quot;海猫茶屋&quot;):$3}*${func:indexof(&quot;延夏&quot;):$3}*${func:indexof(&quot;静语庄园&quot;):$3}*${func:indexof(&quot;摩杜纳&quot;):$3}*${func:indexof(&quot;紫水栈桥&quot;):$3}}):$3}" ListVariableIndex="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$3" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="6" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$6" ListVariableIndex="6" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="7" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$4}*${func:indexof(&quot;沃仙曦染&quot;):$4}*${func:indexof(&quot;宇宙和音&quot;):$4}*${func:indexof(&quot;红玉海&quot;):$4}*${func:indexof(&quot;萌芽池&quot;):$4}*${func:indexof(&quot;神意之地&quot;):$4}*${func:indexof(&quot;幻影群岛&quot;):$4}*${func:indexof(&quot;拉诺西亚&quot;):$4}*${func:indexof(&quot;拂晓之间&quot;):$4}*${func:indexof(&quot;龙巢神殿&quot;):$4}*${func:indexof(&quot;旅人栈桥&quot;):$4}*${func:indexof(&quot;白金幻象&quot;):$4}*${func:indexof(&quot;白银乡&quot;):$4}*${func:indexof(&quot;神拳痕&quot;):$4}*${func:indexof(&quot;潮风亭&quot;):$4}*${func:indexof(&quot;琥珀原&quot;):$4}*${func:indexof(&quot;柔风海湾&quot;):$4}*${func:indexof(&quot;海猫茶屋&quot;):$4}*${func:indexof(&quot;延夏&quot;):$4}*${func:indexof(&quot;静语庄园&quot;):$4}*${func:indexof(&quot;摩杜纳&quot;):$4}*${func:indexof(&quot;紫水栈桥&quot;):$4}}):$4}},Num:4" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="7" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$7" ListVariableIndex="7" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="8" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$4}*${func:indexof(&quot;沃仙曦染&quot;):$4}*${func:indexof(&quot;宇宙和音&quot;):$4}*${func:indexof(&quot;红玉海&quot;):$4}*${func:indexof(&quot;萌芽池&quot;):$4}*${func:indexof(&quot;神意之地&quot;):$4}*${func:indexof(&quot;幻影群岛&quot;):$4}*${func:indexof(&quot;拉诺西亚&quot;):$4}*${func:indexof(&quot;拂晓之间&quot;):$4}*${func:indexof(&quot;龙巢神殿&quot;):$4}*${func:indexof(&quot;旅人栈桥&quot;):$4}*${func:indexof(&quot;白金幻象&quot;):$4}*${func:indexof(&quot;白银乡&quot;):$4}*${func:indexof(&quot;神拳痕&quot;):$4}*${func:indexof(&quot;潮风亭&quot;):$4}*${func:indexof(&quot;琥珀原&quot;):$4}*${func:indexof(&quot;柔风海湾&quot;):$4}*${func:indexof(&quot;海猫茶屋&quot;):$4}*${func:indexof(&quot;延夏&quot;):$4}*${func:indexof(&quot;静语庄园&quot;):$4}*${func:indexof(&quot;摩杜纳&quot;):$4}*${func:indexof(&quot;紫水栈桥&quot;):$4}}):$4}" ListVariableIndex="4" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="8" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$8" ListVariableIndex="8" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="9" ListVariableOp="Set" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$5}*${func:indexof(&quot;沃仙曦染&quot;):$5}*${func:indexof(&quot;宇宙和音&quot;):$5}*${func:indexof(&quot;红玉海&quot;):$5}*${func:indexof(&quot;萌芽池&quot;):$5}*${func:indexof(&quot;神意之地&quot;):$5}*${func:indexof(&quot;幻影群岛&quot;):$5}*${func:indexof(&quot;拉诺西亚&quot;):$5}*${func:indexof(&quot;拂晓之间&quot;):$5}*${func:indexof(&quot;龙巢神殿&quot;):$5}*${func:indexof(&quot;旅人栈桥&quot;):$5}*${func:indexof(&quot;白金幻象&quot;):$5}*${func:indexof(&quot;白银乡&quot;):$5}*${func:indexof(&quot;神拳痕&quot;):$5}*${func:indexof(&quot;潮风亭&quot;):$5}*${func:indexof(&quot;琥珀原&quot;):$5}*${func:indexof(&quot;柔风海湾&quot;):$5}*${func:indexof(&quot;海猫茶屋&quot;):$5}*${func:indexof(&quot;延夏&quot;):$5}*${func:indexof(&quot;静语庄园&quot;):$5}*${func:indexof(&quot;摩杜纳&quot;):$5}*${func:indexof(&quot;紫水栈桥&quot;):$5}}):$5}].job},Num:5" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$5" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="fc9d47bb-a9f9-40eb-ac78-d0005e4ad18e" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="500">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="10" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$5}*${func:indexof(&quot;沃仙曦染&quot;):$5}*${func:indexof(&quot;宇宙和音&quot;):$5}*${func:indexof(&quot;红玉海&quot;):$5}*${func:indexof(&quot;萌芽池&quot;):$5}*${func:indexof(&quot;神意之地&quot;):$5}*${func:indexof(&quot;幻影群岛&quot;):$5}*${func:indexof(&quot;拉诺西亚&quot;):$5}*${func:indexof(&quot;拂晓之间&quot;):$5}*${func:indexof(&quot;龙巢神殿&quot;):$5}*${func:indexof(&quot;旅人栈桥&quot;):$5}*${func:indexof(&quot;白金幻象&quot;):$5}*${func:indexof(&quot;白银乡&quot;):$5}*${func:indexof(&quot;神拳痕&quot;):$5}*${func:indexof(&quot;潮风亭&quot;):$5}*${func:indexof(&quot;琥珀原&quot;):$5}*${func:indexof(&quot;柔风海湾&quot;):$5}*${func:indexof(&quot;海猫茶屋&quot;):$5}*${func:indexof(&quot;延夏&quot;):$5}*${func:indexof(&quot;静语庄园&quot;):$5}*${func:indexof(&quot;摩杜纳&quot;):$5}*${func:indexof(&quot;紫水栈桥&quot;):$5}}):$5}" ListVariableIndex="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$5" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="3.绘制图标" Id="fc9d47bb-a9f9-40eb-ac78-d0005e4ad18e" RegularExpression="">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:${_ffxivparty[${_ffxivplayer}].jobid},Num:1" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="11" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$6}*${func:indexof(&quot;沃仙曦染&quot;):$6}*${func:indexof(&quot;宇宙和音&quot;):$6}*${func:indexof(&quot;红玉海&quot;):$6}*${func:indexof(&quot;萌芽池&quot;):$6}*${func:indexof(&quot;神意之地&quot;):$6}*${func:indexof(&quot;幻影群岛&quot;):$6}*${func:indexof(&quot;拉诺西亚&quot;):$6}*${func:indexof(&quot;拂晓之间&quot;):$6}*${func:indexof(&quot;龙巢神殿&quot;):$6}*${func:indexof(&quot;旅人栈桥&quot;):$6}*${func:indexof(&quot;白金幻象&quot;):$6}*${func:indexof(&quot;白银乡&quot;):$6}*${func:indexof(&quot;神拳痕&quot;):$6}*${func:indexof(&quot;潮风亭&quot;):$6}*${func:indexof(&quot;琥珀原&quot;):$6}*${func:indexof(&quot;柔风海湾&quot;):$6}*${func:indexof(&quot;海猫茶屋&quot;):$6}*${func:indexof(&quot;延夏&quot;):$6}*${func:indexof(&quot;静语庄园&quot;):$6}*${func:indexof(&quot;摩杜纳&quot;):$6}*${func:indexof(&quot;紫水栈桥&quot;):$6}}):$6}].job},Num:6" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$6" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[2]}].jobid},Num:2" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="12" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$6}*${func:indexof(&quot;沃仙曦染&quot;):$6}*${func:indexof(&quot;宇宙和音&quot;):$6}*${func:indexof(&quot;红玉海&quot;):$6}*${func:indexof(&quot;萌芽池&quot;):$6}*${func:indexof(&quot;神意之地&quot;):$6}*${func:indexof(&quot;幻影群岛&quot;):$6}*${func:indexof(&quot;拉诺西亚&quot;):$6}*${func:indexof(&quot;拂晓之间&quot;):$6}*${func:indexof(&quot;龙巢神殿&quot;):$6}*${func:indexof(&quot;旅人栈桥&quot;):$6}*${func:indexof(&quot;白金幻象&quot;):$6}*${func:indexof(&quot;白银乡&quot;):$6}*${func:indexof(&quot;神拳痕&quot;):$6}*${func:indexof(&quot;潮风亭&quot;):$6}*${func:indexof(&quot;琥珀原&quot;):$6}*${func:indexof(&quot;柔风海湾&quot;):$6}*${func:indexof(&quot;海猫茶屋&quot;):$6}*${func:indexof(&quot;延夏&quot;):$6}*${func:indexof(&quot;静语庄园&quot;):$6}*${func:indexof(&quot;摩杜纳&quot;):$6}*${func:indexof(&quot;紫水栈桥&quot;):$6}}):$6}" ListVariableIndex="6" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$6" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[3]}].jobid},Num:3" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="13" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$7}*${func:indexof(&quot;沃仙曦染&quot;):$7}*${func:indexof(&quot;宇宙和音&quot;):$7}*${func:indexof(&quot;红玉海&quot;):$7}*${func:indexof(&quot;萌芽池&quot;):$7}*${func:indexof(&quot;神意之地&quot;):$7}*${func:indexof(&quot;幻影群岛&quot;):$7}*${func:indexof(&quot;拉诺西亚&quot;):$7}*${func:indexof(&quot;拂晓之间&quot;):$7}*${func:indexof(&quot;龙巢神殿&quot;):$7}*${func:indexof(&quot;旅人栈桥&quot;):$7}*${func:indexof(&quot;白金幻象&quot;):$7}*${func:indexof(&quot;白银乡&quot;):$7}*${func:indexof(&quot;神拳痕&quot;):$7}*${func:indexof(&quot;潮风亭&quot;):$7}*${func:indexof(&quot;琥珀原&quot;):$7}*${func:indexof(&quot;柔风海湾&quot;):$7}*${func:indexof(&quot;海猫茶屋&quot;):$7}*${func:indexof(&quot;延夏&quot;):$7}*${func:indexof(&quot;静语庄园&quot;):$7}*${func:indexof(&quot;摩杜纳&quot;):$7}*${func:indexof(&quot;紫水栈桥&quot;):$7}}):$7}].job},Num:7" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$7" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[4]}].jobid},Num:4" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="14" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$7}*${func:indexof(&quot;沃仙曦染&quot;):$7}*${func:indexof(&quot;宇宙和音&quot;):$7}*${func:indexof(&quot;红玉海&quot;):$7}*${func:indexof(&quot;萌芽池&quot;):$7}*${func:indexof(&quot;神意之地&quot;):$7}*${func:indexof(&quot;幻影群岛&quot;):$7}*${func:indexof(&quot;拉诺西亚&quot;):$7}*${func:indexof(&quot;拂晓之间&quot;):$7}*${func:indexof(&quot;龙巢神殿&quot;):$7}*${func:indexof(&quot;旅人栈桥&quot;):$7}*${func:indexof(&quot;白金幻象&quot;):$7}*${func:indexof(&quot;白银乡&quot;):$7}*${func:indexof(&quot;神拳痕&quot;):$7}*${func:indexof(&quot;潮风亭&quot;):$7}*${func:indexof(&quot;琥珀原&quot;):$7}*${func:indexof(&quot;柔风海湾&quot;):$7}*${func:indexof(&quot;海猫茶屋&quot;):$7}*${func:indexof(&quot;延夏&quot;):$7}*${func:indexof(&quot;静语庄园&quot;):$7}*${func:indexof(&quot;摩杜纳&quot;):$7}*${func:indexof(&quot;紫水栈桥&quot;):$7}}):$7}" ListVariableIndex="7" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$7" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[5]}].jobid},Num:5" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="15" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$8}*${func:indexof(&quot;沃仙曦染&quot;):$8}*${func:indexof(&quot;宇宙和音&quot;):$8}*${func:indexof(&quot;红玉海&quot;):$8}*${func:indexof(&quot;萌芽池&quot;):$8}*${func:indexof(&quot;神意之地&quot;):$8}*${func:indexof(&quot;幻影群岛&quot;):$8}*${func:indexof(&quot;拉诺西亚&quot;):$8}*${func:indexof(&quot;拂晓之间&quot;):$8}*${func:indexof(&quot;龙巢神殿&quot;):$8}*${func:indexof(&quot;旅人栈桥&quot;):$8}*${func:indexof(&quot;白金幻象&quot;):$8}*${func:indexof(&quot;白银乡&quot;):$8}*${func:indexof(&quot;神拳痕&quot;):$8}*${func:indexof(&quot;潮风亭&quot;):$8}*${func:indexof(&quot;琥珀原&quot;):$8}*${func:indexof(&quot;柔风海湾&quot;):$8}*${func:indexof(&quot;海猫茶屋&quot;):$8}*${func:indexof(&quot;延夏&quot;):$8}*${func:indexof(&quot;静语庄园&quot;):$8}*${func:indexof(&quot;摩杜纳&quot;):$8}*${func:indexof(&quot;紫水栈桥&quot;):$8}}):$8}].job},Num:8" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$8" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[6]}].jobid},Num:6" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="16" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$8}*${func:indexof(&quot;沃仙曦染&quot;):$8}*${func:indexof(&quot;宇宙和音&quot;):$8}*${func:indexof(&quot;红玉海&quot;):$8}*${func:indexof(&quot;萌芽池&quot;):$8}*${func:indexof(&quot;神意之地&quot;):$8}*${func:indexof(&quot;幻影群岛&quot;):$8}*${func:indexof(&quot;拉诺西亚&quot;):$8}*${func:indexof(&quot;拂晓之间&quot;):$8}*${func:indexof(&quot;龙巢神殿&quot;):$8}*${func:indexof(&quot;旅人栈桥&quot;):$8}*${func:indexof(&quot;白金幻象&quot;):$8}*${func:indexof(&quot;白银乡&quot;):$8}*${func:indexof(&quot;神拳痕&quot;):$8}*${func:indexof(&quot;潮风亭&quot;):$8}*${func:indexof(&quot;琥珀原&quot;):$8}*${func:indexof(&quot;柔风海湾&quot;):$8}*${func:indexof(&quot;海猫茶屋&quot;):$8}*${func:indexof(&quot;延夏&quot;):$8}*${func:indexof(&quot;静语庄园&quot;):$8}*${func:indexof(&quot;摩杜纳&quot;):$8}*${func:indexof(&quot;紫水栈桥&quot;):$8}}):$8}" ListVariableIndex="8" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$8" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    </Condition>
+                  <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[7]}].jobid},Num:7" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="17" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$2}*${func:indexof(&quot;沃仙曦染&quot;):$2}*${func:indexof(&quot;宇宙和音&quot;):$2}*${func:indexof(&quot;红玉海&quot;):$2}*${func:indexof(&quot;萌芽池&quot;):$2}*${func:indexof(&quot;神意之地&quot;):$2}*${func:indexof(&quot;幻影群岛&quot;):$2}*${func:indexof(&quot;拉诺西亚&quot;):$2}*${func:indexof(&quot;拂晓之间&quot;):$2}*${func:indexof(&quot;龙巢神殿&quot;):$2}*${func:indexof(&quot;旅人栈桥&quot;):$2}*${func:indexof(&quot;白金幻象&quot;):$2}*${func:indexof(&quot;白银乡&quot;):$2}*${func:indexof(&quot;神拳痕&quot;):$2}*${func:indexof(&quot;潮风亭&quot;):$2}*${func:indexof(&quot;琥珀原&quot;):$2}*${func:indexof(&quot;柔风海湾&quot;):$2}*${func:indexof(&quot;海猫茶屋&quot;):$2}*${func:indexof(&quot;延夏&quot;):$2}*${func:indexof(&quot;静语庄园&quot;):$2}*${func:indexof(&quot;摩杜纳&quot;):$2}*${func:indexof(&quot;紫水栈桥&quot;):$2}}):$2}}].job},Num:2" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="18" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$2" ListVariableIndex="2" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$2" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="19" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$3}*${func:indexof(&quot;沃仙曦染&quot;):$3}*${func:indexof(&quot;宇宙和音&quot;):$3}*${func:indexof(&quot;红玉海&quot;):$3}*${func:indexof(&quot;萌芽池&quot;):$3}*${func:indexof(&quot;神意之地&quot;):$3}*${func:indexof(&quot;幻影群岛&quot;):$3}*${func:indexof(&quot;拉诺西亚&quot;):$3}*${func:indexof(&quot;拂晓之间&quot;):$3}*${func:indexof(&quot;龙巢神殿&quot;):$3}*${func:indexof(&quot;旅人栈桥&quot;):$3}*${func:indexof(&quot;白金幻象&quot;):$3}*${func:indexof(&quot;白银乡&quot;):$3}*${func:indexof(&quot;神拳痕&quot;):$3}*${func:indexof(&quot;潮风亭&quot;):$3}*${func:indexof(&quot;琥珀原&quot;):$3}*${func:indexof(&quot;柔风海湾&quot;):$3}*${func:indexof(&quot;海猫茶屋&quot;):$3}*${func:indexof(&quot;延夏&quot;):$3}*${func:indexof(&quot;静语庄园&quot;):$3}*${func:indexof(&quot;摩杜纳&quot;):$3}*${func:indexof(&quot;紫水栈桥&quot;):$3}}):$3}].job},Num:3" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$3" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="20" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$3" ListVariableIndex="3" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$3" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="21" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$4}*${func:indexof(&quot;沃仙曦染&quot;):$4}*${func:indexof(&quot;宇宙和音&quot;):$4}*${func:indexof(&quot;红玉海&quot;):$4}*${func:indexof(&quot;萌芽池&quot;):$4}*${func:indexof(&quot;神意之地&quot;):$4}*${func:indexof(&quot;幻影群岛&quot;):$4}*${func:indexof(&quot;拉诺西亚&quot;):$4}*${func:indexof(&quot;拂晓之间&quot;):$4}*${func:indexof(&quot;龙巢神殿&quot;):$4}*${func:indexof(&quot;旅人栈桥&quot;):$4}*${func:indexof(&quot;白金幻象&quot;):$4}*${func:indexof(&quot;白银乡&quot;):$4}*${func:indexof(&quot;神拳痕&quot;):$4}*${func:indexof(&quot;潮风亭&quot;):$4}*${func:indexof(&quot;琥珀原&quot;):$4}*${func:indexof(&quot;柔风海湾&quot;):$4}*${func:indexof(&quot;海猫茶屋&quot;):$4}*${func:indexof(&quot;延夏&quot;):$4}*${func:indexof(&quot;静语庄园&quot;):$4}*${func:indexof(&quot;摩杜纳&quot;):$4}*${func:indexof(&quot;紫水栈桥&quot;):$4}}):$4}},Num:4" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="22" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$4" ListVariableIndex="4" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="23" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$5}*${func:indexof(&quot;沃仙曦染&quot;):$5}*${func:indexof(&quot;宇宙和音&quot;):$5}*${func:indexof(&quot;红玉海&quot;):$5}*${func:indexof(&quot;萌芽池&quot;):$5}*${func:indexof(&quot;神意之地&quot;):$5}*${func:indexof(&quot;幻影群岛&quot;):$5}*${func:indexof(&quot;拉诺西亚&quot;):$5}*${func:indexof(&quot;拂晓之间&quot;):$5}*${func:indexof(&quot;龙巢神殿&quot;):$5}*${func:indexof(&quot;旅人栈桥&quot;):$5}*${func:indexof(&quot;白金幻象&quot;):$5}*${func:indexof(&quot;白银乡&quot;):$5}*${func:indexof(&quot;神拳痕&quot;):$5}*${func:indexof(&quot;潮风亭&quot;):$5}*${func:indexof(&quot;琥珀原&quot;):$5}*${func:indexof(&quot;柔风海湾&quot;):$5}*${func:indexof(&quot;海猫茶屋&quot;):$5}*${func:indexof(&quot;延夏&quot;):$5}*${func:indexof(&quot;静语庄园&quot;):$5}*${func:indexof(&quot;摩杜纳&quot;):$5}*${func:indexof(&quot;紫水栈桥&quot;):$5}}):$5}].job},Num:5" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$5" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="24" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$5" ListVariableIndex="5" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="25" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$6}*${func:indexof(&quot;沃仙曦染&quot;):$6}*${func:indexof(&quot;宇宙和音&quot;):$6}*${func:indexof(&quot;红玉海&quot;):$6}*${func:indexof(&quot;萌芽池&quot;):$6}*${func:indexof(&quot;神意之地&quot;):$6}*${func:indexof(&quot;幻影群岛&quot;):$6}*${func:indexof(&quot;拉诺西亚&quot;):$6}*${func:indexof(&quot;拂晓之间&quot;):$6}*${func:indexof(&quot;龙巢神殿&quot;):$6}*${func:indexof(&quot;旅人栈桥&quot;):$6}*${func:indexof(&quot;白金幻象&quot;):$6}*${func:indexof(&quot;白银乡&quot;):$6}*${func:indexof(&quot;神拳痕&quot;):$6}*${func:indexof(&quot;潮风亭&quot;):$6}*${func:indexof(&quot;琥珀原&quot;):$6}*${func:indexof(&quot;柔风海湾&quot;):$6}*${func:indexof(&quot;海猫茶屋&quot;):$6}*${func:indexof(&quot;延夏&quot;):$6}*${func:indexof(&quot;静语庄园&quot;):$6}*${func:indexof(&quot;摩杜纳&quot;):$6}*${func:indexof(&quot;紫水栈桥&quot;):$6}}):$6}].job},Num:6" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$6" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="26" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$6" ListVariableIndex="6" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="27" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$7}*${func:indexof(&quot;沃仙曦染&quot;):$7}*${func:indexof(&quot;宇宙和音&quot;):$7}*${func:indexof(&quot;红玉海&quot;):$7}*${func:indexof(&quot;萌芽池&quot;):$7}*${func:indexof(&quot;神意之地&quot;):$7}*${func:indexof(&quot;幻影群岛&quot;):$7}*${func:indexof(&quot;拉诺西亚&quot;):$7}*${func:indexof(&quot;拂晓之间&quot;):$7}*${func:indexof(&quot;龙巢神殿&quot;):$7}*${func:indexof(&quot;旅人栈桥&quot;):$7}*${func:indexof(&quot;白金幻象&quot;):$7}*${func:indexof(&quot;白银乡&quot;):$7}*${func:indexof(&quot;神拳痕&quot;):$7}*${func:indexof(&quot;潮风亭&quot;):$7}*${func:indexof(&quot;琥珀原&quot;):$7}*${func:indexof(&quot;柔风海湾&quot;):$7}*${func:indexof(&quot;海猫茶屋&quot;):$7}*${func:indexof(&quot;延夏&quot;):$7}*${func:indexof(&quot;静语庄园&quot;):$7}*${func:indexof(&quot;摩杜纳&quot;):$7}*${func:indexof(&quot;紫水栈桥&quot;):$7}}):$7}].job},Num:7" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$7" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="28" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$7" ListVariableIndex="7" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="29" ListVariableOp="Set" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:${_ffxivparty[${func:substring(0,${numeric:-1*${func:indexof(&quot;晨曦王座&quot;):$8}*${func:indexof(&quot;沃仙曦染&quot;):$8}*${func:indexof(&quot;宇宙和音&quot;):$8}*${func:indexof(&quot;红玉海&quot;):$8}*${func:indexof(&quot;萌芽池&quot;):$8}*${func:indexof(&quot;神意之地&quot;):$8}*${func:indexof(&quot;幻影群岛&quot;):$8}*${func:indexof(&quot;拉诺西亚&quot;):$8}*${func:indexof(&quot;拂晓之间&quot;):$8}*${func:indexof(&quot;龙巢神殿&quot;):$8}*${func:indexof(&quot;旅人栈桥&quot;):$8}*${func:indexof(&quot;白金幻象&quot;):$8}*${func:indexof(&quot;白银乡&quot;):$8}*${func:indexof(&quot;神拳痕&quot;):$8}*${func:indexof(&quot;潮风亭&quot;):$8}*${func:indexof(&quot;琥珀原&quot;):$8}*${func:indexof(&quot;柔风海湾&quot;):$8}*${func:indexof(&quot;海猫茶屋&quot;):$8}*${func:indexof(&quot;延夏&quot;):$8}*${func:indexof(&quot;静语庄园&quot;):$8}*${func:indexof(&quot;摩杜纳&quot;):$8}*${func:indexof(&quot;紫水栈桥&quot;):$8}}):$8}].job},Num:8" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$8" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="30" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$8" ListVariableIndex="8" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="$4" ExpressionTypeL="String" ExpressionR="^.+(晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)$" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
-                    </Condition>
+                  <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[8]}].jobid},Num:8" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
                 </Actions>
@@ -286,43 +112,38 @@
           <Folder Id="898486a4-f255-4513-9460-78fc059f58b6" Name="Debug" Enabled="false">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="Debug - 2.绘制8人小队的图标" Id="e58a6063-6b2c-4890-a8f5-c256e6b95b80" RegularExpression="">
+              <Trigger Enabled="true" Name="Debug - 2.绘制假人的图标" Id="e58a6063-6b2c-4890-a8f5-c256e6b95b80" RegularExpression="">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:WAR,Num:1" Enabled="False" ActionType="Trigger">
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:19,Num:2" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:PLD,Num:2" ActionType="Trigger">
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:33,Num:3" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:AST,Num:3" ActionType="Trigger">
+                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:28,Num:4" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:SCH,Num:4" ActionType="Trigger">
+                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:30,Num:5" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:NIN,Num:5" ActionType="Trigger">
+                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:25,Num:6" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:BLM,Num:6" ActionType="Trigger">
+                  <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:38,Num:7" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:SMN,Num:7" ActionType="Trigger">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Job:MCH,Num:8" ActionType="Trigger">
+                  <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3e9089a0-8b13-4519-9822-fca11063393d" TriggerText="Jobid:27,Num:8" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="Debug - 1.伪造一个8人小队" Id="90b0dc61-d0c4-4054-9f15-50ad94dfebb8" RegularExpression="">
                 <Actions>
@@ -374,7 +195,6 @@
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Name="Debug - 3.假装触发" Id="66f1762d-06b6-4860-b343-f8f2fd7c99df" RegularExpression="">
                 <Actions>
@@ -382,82 +202,81 @@
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player2,Num:3,Time:120" ActionType="Trigger">
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player2,Num:${tvarrl:TeamWatch_SkillID[${numeric:7385}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:7385}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player3,Num:3,Time:60" ActionType="Trigger">
+                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player3,Num:${tvarrl:TeamWatch_SkillID[${numeric:16553}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:16553}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player4,Num:4,Time:60" ActionType="Trigger">
+                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player4,Num:${tvarrl:TeamWatch_SkillID[${numeric:16542}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:16542}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player5,Num:1,Time:90" ActionType="Trigger">
+                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player5,Num:${tvarrl:TeamWatch_SkillID[${numeric:2257}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:2257}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player6,Num:2,Time:90" ActionType="Trigger">
+                  <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player6,Num:${tvarrl:TeamWatch_SkillID[${numeric:3573}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:3573}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player7,Num:1,Time:90" ActionType="Trigger">
+                  <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player7,Num:${tvarrl:TeamWatch_SkillID[${numeric:7560}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:7560}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player8,Num:2,Time:120" ActionType="Trigger">
+                  <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3853256d-c5ce-4f31-b421-d98ba48a57ec" TriggerText="Player:Player8,Num:${tvarrl:TeamWatch_SkillID[${numeric:16889}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:16889}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
           <Folder Id="3e988902-77ea-4114-b000-ff7307c3c4d9" Name="(Don't touch)" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Source="None" Name="1.读取光之战士的记忆……" Id="3e9089a0-8b13-4519-9822-fca11063393d" RegularExpression="^Job:(?&lt;job&gt;.+?),Num:(?&lt;num&gt;.)$">
+              <Trigger Enabled="true" Source="None" Name="1.读取光之战士的记忆……" Id="3e9089a0-8b13-4519-9822-fca11063393d" RegularExpression="^Jobid:(?&lt;job&gt;.+?),Num:(?&lt;num&gt;.)$">
                 <Actions>
-                  <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_1" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_1.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*1*${var:_TeamWatchZoom}-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_1" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+1}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*1*${var:_TeamWatchZoom}-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_2" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_2.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*2*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(2-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="2" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_2" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+2}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*2*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(2-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_3" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_3.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*3*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(3-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_3" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+3}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*3*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(3-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="4" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_4" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_4.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*4*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(4-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="4" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_4" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+4}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*4*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(4-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="5" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_5" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_5.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*5*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(5-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="5" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_5" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+5}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*5*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(5-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="6" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_6" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_6.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*6*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(6-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
+                  <Action OrderNumber="6" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_6" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+6}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*6*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(6-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="7" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_7" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_7.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*7*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(7-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
+                  <Action OrderNumber="7" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_7" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+7}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*7*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(7-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="8" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_8" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_8.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*8*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(8-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
+                  <Action OrderNumber="8" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_8" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+8}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*8*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(8-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="9" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_9" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_9.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*9*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(9-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
+                  <Action OrderNumber="9" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_9" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+9}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*9*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(9-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="10" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_${job}_10" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch/${job}_10.png" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*10*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(10-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
+                  <Action OrderNumber="10" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_10" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+10}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*10*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(10-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -467,17 +286,15 @@
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="None" Name="3.唤起光之战士的记忆！" Id="3853256d-c5ce-4f31-b421-d98ba48a57ec" RegularExpression="^Player:(?&lt;player&gt;.+?),Num:(?&lt;num&gt;.+?),Time:(?&lt;time&gt;.+?)$" MutexToCapture="TeamWatch_Text">
                 <Actions>
-                  <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*${num}*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(${num}-1)-${var:_TeamWatchLeftRightPadding}" TextAuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${lvar:GetTeamList.indexof(${player})}-1)" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*${num}*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(${num}-1)-${var:_TeamWatchLeftRightPadding}" TextAuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(${var:_TeamWatchIntervalRow}+30*${var:_TeamWatchZoom})*(${lvar:GetTeamList.indexof(${player})}-1)" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Name="2.融合：光之战士" Id="f9dc6971-59d3-41f5-9277-fec13aa3542f" RegularExpression="^2[12]\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|">
                 <Actions>
@@ -490,27 +307,11 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][3]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
         </Folders>
-        <Triggers>
-          <Trigger Enabled="true" Name="取消显示" Id="86562c86-85d6-4bd0-b59b-b1dacbc1d6e1" RegularExpression="^.{14} 0[BC]:" Scheduling="FromLastAction" MutexToCapture="TeamWatchIcon">
-            <Actions>
-              <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^TeamWatch_.+" TextAuraFontName="宋体" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="2" AuraOp="DeactivateAuraRegex" AuraName="^TeamWatch_.+" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Trigger>
-        </Triggers>
+        <Triggers />
       </Folder>
     </Folders>
     <Triggers>
@@ -544,7 +345,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="86562c86-85d6-4bd0-b59b-b1dacbc1d6e1" TriggerForce="regexp" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
+          <Action OrderNumber="8" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchBackgroundWidthIconsCount" VariableExpression="6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="最大容纳几个图标 (背景)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
@@ -558,30 +359,66 @@
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="11" VariableOp="SetNumeric" VariableName="_TeamWatchX" VariableExpression="${_imageaura[TeamWatchPosition].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)" DescriptionOverride="True">
+          <Action OrderNumber="11" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="12" VariableOp="SetNumeric" VariableName="_TeamWatchY" VariableExpression="${_imageaura[TeamWatchPosition].y}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)" DescriptionOverride="True">
+          <Action OrderNumber="12" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="13" AuraOp="DeactivateAura" AuraName="TeamWatchPosition" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
+          <Action OrderNumber="13" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="14" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0ecf412b-16f8-44ee-afa8-dc4ed3f5de03" TriggerForce="regexp,parent" ActionType="Trigger" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
+          <Action OrderNumber="14" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="15" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="16" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="17" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="18" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="19" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="20" VariableOp="SetNumeric" VariableName="_TeamWatchX" VariableExpression="${_imageaura[TeamWatchPosition].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="21" VariableOp="SetNumeric" VariableName="_TeamWatchY" VariableExpression="${_imageaura[TeamWatchPosition].y}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="22" AuraOp="DeactivateAura" AuraName="TeamWatchPosition" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="23" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0ecf412b-16f8-44ee-afa8-dc4ed3f5de03" TriggerForce="regexp" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${_ffxivprocid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+            </Condition>
             <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
-      <Trigger Enabled="true" IsReadme="True" Name="说明：正常用户不要改动任何标记了&quot;Don't touch&quot;的内容，除非你真的了解自己在干什么。" Id="3be232f0-49ba-4e1f-914b-bccc2a3e081f" RegularExpression="" Description="如果你不满意我预设的技能组,可以下载本仓库,然后打开设置触发器,将读取csv的动作改为读取刚刚下载好的仓库中的的csv文件,之后修改里面的内容,填写第一列的技能ID(10进制),注意填写的行数与到时候显示的位置是一一对应的.然后将对应的技能图标放置在\screenshots\TeamWatch文件夹下,同时改变1.读取光之战士的记忆……的触发器的显示图片由原来的在线方式改为读取本地路径.注意名字要与excel中一一对应">
+      <Trigger Enabled="true" IsReadme="True" Name="警告：一般用户不需要改动任何标记了&quot;Don't touch&quot;的内容，除非你真的了解自己在干什么。" Id="3be232f0-49ba-4e1f-914b-bccc2a3e081f" RegularExpression="" Description="如果你不满意我预设的技能组,可以下载本仓库,然后打开设置触发器,将读取csv的动作改为读取刚刚下载好的仓库中的的csv文件,之后修改里面的内容,填写第一列的技能ID(10进制),注意填写的行数与到时候显示的位置是一一对应的.然后将对应的技能图标放置在\screenshots\TeamWatch文件夹下,同时改变1.读取光之战士的记忆……的触发器的显示图片由原来的在线方式改为读取本地路径.注意名字要与excel中一一对应">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
