@@ -21,7 +21,11 @@
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="4" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e GetTeamList:&lt;1&gt;:&lt;2&gt;:&lt;3&gt;:&lt;4&gt;:&lt;5&gt;:&lt;6&gt;:&lt;7&gt;:&lt;8&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="500">
+                  <Action OrderNumber="4" LogLevel="-1" TextAuraEffect="Bold" TextAuraFontSize="18" TextAuraForeground="#FF8040" TextAuraOutline="Black" TextAuraName="TeamWatchWaitingforGetTeamList" TextAuraExpression="等待宏触发……(${numeric:8-${_since}}秒后自动消失)" TextAuraXIniExpression="${_screenwidth}/2-150" TextAuraYIniExpression="${_screenheight}/2-75" TextAuraWIniExpression="400" TextAuraHIniExpression="150" TextAuraOIniExpression="100" TextAuraTTLTickExpression="8-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e GetTeamList:&lt;1&gt;:&lt;2&gt;:&lt;3&gt;:&lt;4&gt;:&lt;5&gt;:&lt;6&gt;:&lt;7&gt;:&lt;8&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="500">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -31,15 +35,19 @@
               </Trigger>
               <Trigger Enabled="true" Name="2.获得小队" Id="47e5c574-816d-4e7b-b0a1-9a122a44b0fc" RegularExpression="^.{14} 00:0038:GetTeamList:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?$" Description="^.{14} 00:0038:GetTeamList:([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?)$">
                 <Actions>
-                  <Action OrderNumber="1" ListVariableOp="Split" ListVariableExpression=":" LogLevel="-1" VariableOp="SetString" VariableName="GetTeamListString" VariableExpression="$1:$2:$3:$4:$5:$6:$7:$8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="TeamWatchWaitingforGetTeamList" TextAuraFontName="宋体" ActionType="TextAura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" ListVariableOp="Split" ListVariableName="GetTeamListString" ListVariableExpression=":" ListVariableTarget="GetTeamList" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                  <Action OrderNumber="2" ListVariableOp="Split" ListVariableExpression=":" LogLevel="-1" VariableOp="SetString" VariableName="GetTeamListString" VariableExpression="$1:$2:$3:$4:$5:$6:$7:$8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="30fa3609-507c-4719-afec-2a273eff4d39" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="500">
+                  <Action OrderNumber="3" ListVariableOp="Split" ListVariableName="GetTeamListString" ListVariableExpression=":" ListVariableTarget="GetTeamList" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="30fa3609-507c-4719-afec-2a273eff4d39" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="500">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
