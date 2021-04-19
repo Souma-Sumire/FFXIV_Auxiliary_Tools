@@ -199,7 +199,9 @@
                     <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="84189ec9-492e-41a8-9e37-a84785540f51" TriggerText="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][6]}" ActionType="Trigger">
-                    <Condition Enabled="false" Grouping="Or" />
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][6]}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                    </Condition>
                     <Conditions />
                   </Action>
                 </Actions>
@@ -207,6 +209,18 @@
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:GetTeamList.indexof(${caster})}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][3]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][7]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionGroup Enabled="true" Grouping="Or">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+8}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+3}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+7}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+4}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+5}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+6}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+11}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+9}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+10}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+2}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  </ConditionGroup>
                 </Condition>
                 <Conditions />
               </Trigger>
