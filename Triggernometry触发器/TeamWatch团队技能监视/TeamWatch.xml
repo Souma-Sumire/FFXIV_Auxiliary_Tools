@@ -31,39 +31,15 @@
               </Trigger>
               <Trigger Enabled="true" Name="2.获得小队" Id="47e5c574-816d-4e7b-b0a1-9a122a44b0fc" RegularExpression="^.{14} 00:0038:GetTeamList:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?:([^:]*?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥)?$" Description="^.{14} 00:0038:GetTeamList:([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?):([^:]*?)$">
                 <Actions>
-                  <Action OrderNumber="1" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$1" ListVariableIndex="1" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                  <Action OrderNumber="1" ListVariableOp="Split" ListVariableExpression=":" LogLevel="-1" VariableOp="SetString" VariableName="GetTeamListString" VariableExpression="$1:$2:$3:$4:$5:$6:$7:$8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$2" ListVariableIndex="2" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                  <Action OrderNumber="2" ListVariableOp="Split" ListVariableName="GetTeamListString" ListVariableExpression=":" ListVariableTarget="GetTeamList" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$3" ListVariableIndex="3" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="4" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$4" ListVariableIndex="4" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="5" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$5" ListVariableIndex="5" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="6" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$6" ListVariableIndex="6" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="7" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$7" ListVariableIndex="7" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="8" ListVariableOp="Set" ListVariableName="GetTeamList" ListVariableExpression="$8" ListVariableIndex="8" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                    <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
-                  </Action>
-                  <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="30fa3609-507c-4719-afec-2a273eff4d39" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="500">
+                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="30fa3609-507c-4719-afec-2a273eff4d39" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="500">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -202,35 +178,47 @@
               </Trigger>
               <Trigger Enabled="true" Name="Debug - 3.假装触发" Id="3d5f286f-110b-425c-9fb1-3dcc22596a7e" RegularExpression="">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Souma,Num:5,Time:240" ActionType="Trigger">
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Souma,Num:1,Time:60" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player2,Num:${tvarrl:TeamWatch_SkillID[${numeric:7385}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:7385}][3]}" ActionType="Trigger">
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Souma,Num:2,Time:90" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player3,Num:${tvarrl:TeamWatch_SkillID[${numeric:16553}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:16553}][3]}" ActionType="Trigger">
+                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Souma,Num:3,Time:120" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player4,Num:${tvarrl:TeamWatch_SkillID[${numeric:16542}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:16542}][3]}" ActionType="Trigger">
+                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Souma,Num:5,Time:420" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player5,Num:${tvarrl:TeamWatch_SkillID[${numeric:2257}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:2257}][3]}" ActionType="Trigger">
+                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player2,Num:${tvarrl:TeamWatch_SkillID[${numeric:7385}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:7385}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player6,Num:${tvarrl:TeamWatch_SkillID[${numeric:3573}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:3573}][3]}" ActionType="Trigger">
+                  <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player3,Num:${tvarrl:TeamWatch_SkillID[${numeric:16553}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:16553}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player7,Num:${tvarrl:TeamWatch_SkillID[${numeric:7560}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:7560}][3]}" ActionType="Trigger">
+                  <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player4,Num:${tvarrl:TeamWatch_SkillID[${numeric:16542}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:16542}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player8,Num:${tvarrl:TeamWatch_SkillID[${numeric:16889}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:16889}][3]}" ActionType="Trigger">
+                  <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player5,Num:${tvarrl:TeamWatch_SkillID[${numeric:2257}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:2257}][3]}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player6,Num:${tvarrl:TeamWatch_SkillID[${numeric:3573}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:3573}][3]}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="10" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player7,Num:${tvarrl:TeamWatch_SkillID[${numeric:7560}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:7560}][3]}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="11" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:Player8,Num:${tvarrl:TeamWatch_SkillID[${numeric:16889}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:16889}][3]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -245,43 +233,43 @@
             <Triggers>
               <Trigger Enabled="true" Source="None" Name="1.读取光之战士的记忆……" Id="1fdbd8c5-9697-4a85-845e-1b85fdc93964" RegularExpression="^Jobid:(?&lt;job&gt;.+?),Num:(?&lt;num&gt;.)$">
                 <Actions>
-                  <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_1" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+1}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*1*${var:_TeamWatchZoom}-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_1" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+2}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*1*${var:_TeamWatchZoom}-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_2" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+2}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*2*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(2-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="2" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_2" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+3}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*2*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(2-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_3" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+3}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*3*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(3-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_3" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+4}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*3*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(3-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="4" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_4" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+4}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*4*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(4-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="4" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_4" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+5}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*4*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(4-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="5" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_5" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+5}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*5*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(5-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="5" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_5" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+6}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*5*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(5-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="6" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_6" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+6}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*6*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(6-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                  <Action OrderNumber="6" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_6" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+7}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*6*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(6-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="7" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_7" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+7}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*7*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(7-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
+                  <Action OrderNumber="7" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_7" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+8}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*7*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(7-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="8" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_8" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+8}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*8*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(8-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
+                  <Action OrderNumber="8" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_8" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+9}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*8*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(8-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="9" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_9" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+9}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*9*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(9-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
+                  <Action OrderNumber="9" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_9" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+10}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*9*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(9-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="10" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_10" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+10}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*10*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(10-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
+                  <Action OrderNumber="10" AuraImageMode="Zoom" AuraName="TeamWatch_${num}_10" AuraImage="https://cafemaker.wakingsands.com${tvar:TeamWatch_SkillID[6][${numeric:(${job}-19)*10+11}]}" AuraXIniExpression="${var:_TeamWatchX}+176*${var:_TeamWatchZoom}-30*10*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(10-1)-${var:_TeamWatchLeftRightPadding}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${num}-1)" AuraWIniExpression="30*${var:_TeamWatchZoom}" AuraHIniExpression="30*${var:_TeamWatchZoom}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -327,13 +315,17 @@
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Name="2.融合：光之战士" Id="19a99abb-a756-403d-a387-86fa4494fab1" RegularExpression="^2[12]\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${caster},Num:${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][3]}" TriggerForce="conditions" ActionType="Trigger">
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${caster},Num:${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][3]}" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="84189ec9-492e-41a8-9e37-a84785540f51" TriggerText="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][6]}" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="And">
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:GetTeamList.indexof(${caster})}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                   <ConditionSingle Enabled="true" ExpressionL="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][3]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                 </Condition>
                 <Conditions />
@@ -341,11 +333,36 @@
             </Triggers>
           </Folder>
         </Folders>
-        <Triggers />
+        <Triggers>
+          <Trigger Enabled="true" Name="(Don't touch)" Id="ea0a5490-ff27-4a7f-bc04-0ba4d7c99b58" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_TeamWatchX" VariableExpression="${_imageaura[TeamWatchPosition].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_TeamWatchY" VariableExpression="${_imageaura[TeamWatchPosition].y}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" AuraOp="DeactivateAura" AuraName="TeamWatchPosition" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8850497a-28b0-45b3-b60e-33848dea39ed" TriggerForce="regexp" ActionType="Trigger" Description="(Don't touch)">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivprocid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
       </Folder>
     </Folders>
     <Triggers>
-      <Trigger Enabled="true" Name="*设置 - 界面" Id="df9e6dcd-6328-4960-bedb-a517cc58ac75" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+      <Trigger Enabled="true" Name="* 设置界面" Id="df9e6dcd-6328-4960-bedb-a517cc58ac75" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
         <Actions>
           <Action OrderNumber="1" AuraName="TeamWatchPosition" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch.png" AuraXIniExpression="115" AuraYIniExpression="385" AuraWIniExpression="176" AuraHIniExpression="340" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="整体位置 (改X和Y) (图片仅供参考)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
@@ -375,68 +392,14 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="8" DiskFileOp="ReadIntoListVariable" LogLevel="-1" TableVariableName="TeamWatch_SkillID" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="9" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/csv/TeamWatch.csv" DiskFileOpVar="TeamWatch_SkillID" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" ExecutionDelayExpression="1000" Description="在线获取csv (只有在网络连接不上，或有修改需求的情况下时，才需要选择本地文件)" DescriptionOverride="True">
+          <Action OrderNumber="8" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://raw.fastgit.org/Souma-Sumire/FFXIV_Auxiliary_Tools/master/csv/TeamWatch.csv" DiskFileOpVar="TeamWatch_SkillID" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Description="在线获取csv (只有在网络连接不上，或有修改需求的情况下时，才需要选择本地文件)" DescriptionOverride="True">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${elvar:TeamWatch_SkillID}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
             <Conditions />
           </Action>
-          <Action OrderNumber="10" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Asynchronous="False" Description="(Don't touch)" DescriptionOverride="True">
+          <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="ea0a5490-ff27-4a7f-bc04-0ba4d7c99b58" TriggerForce="regexp,refire" ActionType="Trigger" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="11" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="12" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="13" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="14" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="15" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="16" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="17" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="18" ListVariableOp="Push" ListVariableName="GetTeamList" LogLevel="-1" VariableOp="UnsetRegex" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="19" VariableOp="SetNumeric" VariableName="_TeamWatchX" VariableExpression="${_imageaura[TeamWatchPosition].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="20" VariableOp="SetNumeric" VariableName="_TeamWatchY" VariableExpression="${_imageaura[TeamWatchPosition].y}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="21" AuraOp="DeactivateAura" AuraName="TeamWatchPosition" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-          <Action OrderNumber="22" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8850497a-28b0-45b3-b60e-33848dea39ed" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${_ffxivprocid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-            </Condition>
             <Conditions />
           </Action>
         </Actions>
@@ -445,6 +408,16 @@
       </Trigger>
       <Trigger Enabled="true" IsReadme="True" Name="警告：一般用户不需要改动任何标记了&quot;Don't touch&quot;的内容，除非你真的了解自己在干什么。" Id="d864bd3c-6292-401a-b497-c0ee09c37a83" RegularExpression="">
         <Actions />
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="None" Name="* 开启TTS" Id="84189ec9-492e-41a8-9e37-a84785540f51" RegularExpression=".+">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="$0" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
       </Trigger>
