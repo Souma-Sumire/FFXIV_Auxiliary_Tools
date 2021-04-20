@@ -7,7 +7,7 @@
           <Folder Id="653a23db-d879-4cd7-84a4-ed16dd704a9f" Name="(Don't touch) " Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="1.小队变化" Id="8850497a-28b0-45b3-b60e-33848dea39ed" RegularExpression="^.{14} 0[BC]:" Scheduling="FromLastAction" PeriodRefire="Deny" RefirePeriodExpression="1000">
+              <Trigger Enabled="true" Name="1.任务开始" Id="8850497a-28b0-45b3-b60e-33848dea39ed" RegularExpression="^.{14} 21:.{8}:4000000[16]:" Scheduling="FromLastAction" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
                   <Action OrderNumber="1" AuraName="TeamWatchBackground" AuraImage="${var:_TeamWatchBackgroundCustomUrl}" AuraXIniExpression="${var:_TeamWatchX}" AuraYIniExpression="${var:_TeamWatchY}" AuraWIniExpression="(${var:_TeamWatchBackgroundWidthIconsCount}-1)*${var:_TeamWatchInterval}+${var:_TeamWatchBackgroundWidthIconsCount}*30*${var:_TeamWatchZoom}+${var:_TeamWatchLeftRightPadding}*2" AuraHIniExpression="1" AuraOIniExpression="${var:_TeamWatchBackgroundOpacity}" TextAuraFontSize="8.25" TextAuraBackground="Black" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
@@ -63,35 +63,27 @@
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${_ffxivplayer}].jobid},Num:1" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[2]}].jobid},Num:2" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[3]}].jobid},Num:3" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[4]}].jobid},Num:4" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[5]}].jobid},Num:5" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[6]}].jobid},Num:6" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[7]}].jobid},Num:7" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[8]}].jobid},Num:8" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Not">
@@ -105,11 +97,9 @@
                 <Actions>
                   <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^TeamWatch_.+" TextAuraFontName="宋体" ActionType="TextAura" Description="(Don't touch)">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -195,60 +185,132 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Source="None" Name="3.唤起光之战士的记忆！" Id="a17afe87-6b10-423a-a7a7-2098ea2f2479" RegularExpression="^Player:(?&lt;player&gt;.+?),Num:(?&lt;num&gt;.+?),Time:(?&lt;time&gt;.+?)$" MutexToCapture="TeamWatch_Text">
+              <Trigger Enabled="true" Source="None" Name="3.唤起光之战士的记忆！" Id="a17afe87-6b10-423a-a7a7-2098ea2f2479" RegularExpression="^Player:(?&lt;player&gt;.+?),Num:(?&lt;num&gt;.+?),Time:(?&lt;time&gt;.+?),TTS:(?&lt;tts&gt;.*?)$" MutexToCapture="TeamWatch_Text">
                 <Actions>
-                  <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="6.75" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${var:_TeamWatchX}+209*${var:_TeamWatchZoom}-30*${num}*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(${num}-1)-${var:_TeamWatchLeftRightPadding}" TextAuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${lvar:GetTeamList.indexof(${player})}-1)" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
+                  <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="6.75" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${_imageaura[TeamWatch_${player}_${num}].x}" TextAuraYIniExpression="${_imageaura[TeamWatch_${player}_${num}].y}" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchZoom}" ExpressionTypeL="Numeric" ExpressionR="0.75" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                     </Condition>
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="2" TextAuraEffect="Bold" TextAuraFontSize="9" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${var:_TeamWatchX}+209*${var:_TeamWatchZoom}-30*${num}*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(${num}-1)-${var:_TeamWatchLeftRightPadding}" TextAuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${lvar:GetTeamList.indexof(${player})}-1)" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
+                  <Action OrderNumber="2" TextAuraEffect="Bold" TextAuraFontSize="9" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${_imageaura[TeamWatch_${player}_${num}].x}" TextAuraYIniExpression="${_imageaura[TeamWatch_${player}_${num}].y}" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchZoom}" ExpressionTypeL="Numeric" ExpressionR="0.75" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchZoom}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                     </Condition>
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${var:_TeamWatchX}+209*${var:_TeamWatchZoom}-30*${num}*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(${num}-1)-${var:_TeamWatchLeftRightPadding}" TextAuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${lvar:GetTeamList.indexof(${player})}-1)" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
+                  <Action OrderNumber="3" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${_imageaura[TeamWatch_${player}_${num}].x}" TextAuraYIniExpression="${_imageaura[TeamWatch_${player}_${num}].y}" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchZoom}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchZoom}" ExpressionTypeL="Numeric" ExpressionR="1.5" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                     </Condition>
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="4" TextAuraEffect="Bold" TextAuraFontSize="18" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${var:_TeamWatchX}+209*${var:_TeamWatchZoom}-30*${num}*${var:_TeamWatchZoom}-${var:_TeamWatchInterval}*(${num}-1)-${var:_TeamWatchLeftRightPadding}" TextAuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchTopDownPadding}+(10*${var:_TeamWatchZoom}+30*${var:_TeamWatchZoom})*(${lvar:GetTeamList.indexof(${player})}-1)" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
+                  <Action OrderNumber="4" TextAuraEffect="Bold" TextAuraFontSize="18" TextAuraName="TeamWatch_${player}_${num}_Text" TextAuraExpression="${numeric:${time}-${_since}}" TextAuraXIniExpression="${_imageaura[TeamWatch_${player}_${num}].x}" TextAuraYIniExpression="${_imageaura[TeamWatch_${player}_${num}].y}" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${time}-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
                     <Condition Enabled="true" Grouping="And">
                       <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchZoom}" ExpressionTypeL="Numeric" ExpressionR="1.5" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                     </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="84189ec9-492e-41a8-9e37-a84785540f51" TriggerText="${tts}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${tts}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                    </Condition>
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Name="2.融合：光之战士" Id="19a99abb-a756-403d-a387-86fa4494fab1" RegularExpression="^2[12]\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${caster},Num:${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][2]},Time:${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][3]}" ActionType="Trigger">
-                    <Condition Enabled="false" Grouping="Or" />
-                  </Action>
-                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="84189ec9-492e-41a8-9e37-a84785540f51" TriggerText="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][6]}" ActionType="Trigger">
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][6]}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:1,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+2}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+2}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+2}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+2}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+2}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                     </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:2,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+3}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+3}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+3}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+3}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+3}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:3,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+4}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+4}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+4}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+4}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+4}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:4,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+5}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+5}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+5}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+5}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+5}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:5,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+6}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+6}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+6}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+6}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+6}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:6,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+7}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+7}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+7}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+7}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+7}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:7,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+8}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+8}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+8}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+8}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+8}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:8,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+9}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+9}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+9}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+9}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+9}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="9" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:9,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+10}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+10}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+10}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+10}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+10}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="10" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a17afe87-6b10-423a-a7a7-2098ea2f2479" TriggerText="Player:${lvar:GetTeamList.indexof(${caster})},Num:10,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+11}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+11}]}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+11}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvar:TeamWatch_SkillID[8][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+11}]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+11}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="11" LogLevel="-1" MessageBoxText="Player:${lvar:GetTeamList.indexof(${caster})},Num:1,Time:${tvar:TeamWatch_SkillID[4][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+2}]},TTS:${tvar:TeamWatch_SkillID[7][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+2}]}" TextAuraFontSize="9" TextAuraFontName="宋体" Enabled="False" ActionType="MessageBox">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
-                <Condition Enabled="true" Grouping="And">
+                <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:GetTeamList.indexof(${caster})}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][3]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].level}" ExpressionTypeL="Numeric" ExpressionR="${tvarrl:TeamWatch_SkillID[${numeric:hex2dec(${id})}][7]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
-                  <ConditionGroup Enabled="true" Grouping="Or">
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+8}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+3}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+7}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+4}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+5}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+6}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+11}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+9}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+10}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatch_SkillID[1][${numeric:(${_ffxivparty[${caster}].jobid}-19)*10+2}]}" ExpressionTypeL="Numeric" ExpressionR="hex2dec(${id})" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                  </ConditionGroup>
                 </Condition>
               </Trigger>
             </Triggers>
@@ -259,21 +321,17 @@
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_TeamWatchX" VariableExpression="${_imageaura[TeamWatchPosition].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_TeamWatchY" VariableExpression="${_imageaura[TeamWatchPosition].y}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" AuraOp="DeactivateAura" AuraName="TeamWatchPosition" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8850497a-28b0-45b3-b60e-33848dea39ed" TriggerForce="regexp" ActionType="Trigger" Description="(Don't touch)">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivprocid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -341,6 +399,7 @@
         <Actions>
           <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="$0" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
