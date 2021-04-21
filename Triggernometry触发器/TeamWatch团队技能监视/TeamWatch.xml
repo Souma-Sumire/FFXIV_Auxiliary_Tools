@@ -243,9 +243,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_imageaura[TeamWatch_${player}_${num}].opacity}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="2.融合：光之战士B" Id="19a99abb-a756-403d-a387-86fa4494fab1" RegularExpression="^22\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|" MutexToCapture="FusionLightWarrior">
+              <Trigger Enabled="true" Source="FFXIVNetwork" Name="2.融合：光之战士B" Id="19a99abb-a756-403d-a387-86fa4494fab1" RegularExpression="^22\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|">
                 <Actions>
-                  <Action OrderNumber="1" ListVariableOp="PopLast" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="TeamWatchLastAction" VariableExpression="${caster}${id}${_timestamp}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                  <Action OrderNumber="1" ListVariableOp="PopLast" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="TeamWatchLastAction" VariableExpression="${caster}${id}${_timestamp}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -256,7 +256,7 @@
                 </Actions>
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:GetTeamList.indexof(${caster})}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                  <ConditionSingle Enabled="true" ExpressionL="${caster}${id}${_timestamp}" ExpressionTypeL="String" ExpressionR="${var:TeamWatchLastAction}" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${caster}${id}${_timestamp}" ExpressionTypeL="String" ExpressionR="${var:TeamWatchLastAction}" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                 </Condition>
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Name="2.融合：光之战士A" Id="577cebc1-8e45-4747-ae99-00d56a51604f" RegularExpression="^21\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|">
