@@ -9,23 +9,27 @@
             <Triggers>
               <Trigger Enabled="true" Name="1.1任务开始" Id="8850497a-28b0-45b3-b60e-33848dea39ed" RegularExpression="^.{14} 21:.{8}:4000000[16]:" Scheduling="FromLastAction" PeriodRefire="Deny" RefirePeriodExpression="1000">
                 <Actions>
-                  <Action OrderNumber="1" AuraName="TeamWatchBackground" AuraImage="${var:_TeamWatchBackgroundCustomUrl}" AuraXIniExpression="${var:_TeamWatchX}" AuraYIniExpression="${var:_TeamWatchY}" AuraWIniExpression="(${var:_TeamWatchBackgroundWidthIconsCount}-1)*${var:_TeamWatchInterval}+${var:_TeamWatchBackgroundWidthIconsCount}*30*${var:_TeamWatchZoom}+${var:_TeamWatchLeftRightPadding}*2" AuraHIniExpression="1" AuraOIniExpression="${var:_TeamWatchBackgroundOpacity}" TextAuraFontSize="8.25" TextAuraBackground="Black" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+                  <Action OrderNumber="1" LogLevel="-1" MessageBoxText="$0" MouseX="" MouseY="" UseTTSTextExpression="$0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="MessageBox">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="2" AuraOp="DeactivateAuraRegex" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^TeamWatch_.+" TextAuraFontName="宋体" ActionType="TextAura" Description="(Don't touch)">
+                  <Action OrderNumber="2" AuraName="TeamWatchBackground" AuraImage="${var:_TeamWatchBackgroundCustomUrl}" AuraXIniExpression="${var:_TeamWatchX}" AuraYIniExpression="${var:_TeamWatchY}" AuraWIniExpression="(${var:_TeamWatchBackgroundWidthIconsCount}-1)*${var:_TeamWatchInterval}+${var:_TeamWatchBackgroundWidthIconsCount}*30*${var:_TeamWatchZoom}+${var:_TeamWatchLeftRightPadding}*2" AuraHIniExpression="1" AuraOIniExpression="${var:_TeamWatchBackgroundOpacity}" TextAuraFontSize="8.25" TextAuraBackground="Black" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraOp="DeactivateAuraRegex" AuraName="^TeamWatch_.+" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)">
+                  <Action OrderNumber="3" AuraOp="DeactivateAuraRegex" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^TeamWatch_.+" TextAuraFontName="宋体" ActionType="TextAura" Description="(Don't touch)">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="4" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e GetTeamList:&lt;1&gt;:&lt;2&gt;:&lt;3&gt;:&lt;4&gt;:&lt;5&gt;:&lt;6&gt;:&lt;7&gt;:&lt;8&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="1000">
+                  <Action OrderNumber="4" AuraOp="DeactivateAuraRegex" AuraName="^TeamWatch_.+" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
-                  <Action OrderNumber="5" LogLevel="-1" TextAuraEffect="Bold" TextAuraFontSize="18" TextAuraForeground="#FF8040" TextAuraOutline="Black" TextAuraName="TeamWatchWaitingforGetTeamList" TextAuraExpression="等待宏触发……(${numeric:8-${_since}}秒后自动消失)" TextAuraXIniExpression="${_screenwidth}/2-150" TextAuraYIniExpression="${_screenheight}/2-75" TextAuraWIniExpression="400" TextAuraHIniExpression="150" TextAuraOIniExpression="100" TextAuraTTLTickExpression="8-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" ExecutionDelayExpression="1000">
+                  <Action OrderNumber="5" LogLevel="-1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e GetTeamList:&lt;1&gt;:&lt;2&gt;:&lt;3&gt;:&lt;4&gt;:&lt;5&gt;:&lt;6&gt;:&lt;7&gt;:&lt;8&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="1000">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="6" LogLevel="-1" TextAuraEffect="Bold" TextAuraFontSize="18" TextAuraForeground="#FF8040" TextAuraOutline="Black" TextAuraName="TeamWatchWaitingforGetTeamList" TextAuraExpression="等待宏触发……(${numeric:8-${_since}}秒后自动消失)" TextAuraXIniExpression="${_screenwidth}/2-150" TextAuraYIniExpression="${_screenheight}/2-75" TextAuraWIniExpression="400" TextAuraHIniExpression="150" TextAuraOIniExpression="100" TextAuraTTLTickExpression="8-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" ExecutionDelayExpression="1000">
                     <Condition Enabled="false" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchShowTipsText}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
@@ -38,49 +42,41 @@
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${_ffxivplayer}].jobid},Num:1" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[2]}].jobid},Num:2" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${lvar:GetTeamList[2]}].jobid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[3]}].jobid},Num:3" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${lvar:GetTeamList[3]}].jobid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[4]}].jobid},Num:4" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${lvar:GetTeamList[4]}].jobid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[5]}].jobid},Num:5" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${lvar:GetTeamList[5]}].jobid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[6]}].jobid},Num:6" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${lvar:GetTeamList[6]}].jobid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[7]}].jobid},Num:7" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${lvar:GetTeamList[7]}].jobid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                     </Condition>
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="1fdbd8c5-9697-4a85-845e-1b85fdc93964" TriggerText="Jobid:${_ffxivparty[${lvar:GetTeamList[8]}].jobid},Num:8" ActionType="Trigger">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${lvar:GetTeamList[8]}].jobid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                     </Condition>
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Not">
@@ -105,30 +101,29 @@
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="8850497a-28b0-45b3-b60e-33848dea39ed" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="TeamWatchWaitingforGetTeamList" TextAuraFontName="宋体" ActionType="TextAura">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" ListVariableOp="Split" ListVariableExpression=":" LogLevel="-1" VariableOp="SetString" VariableName="GetTeamListString" VariableExpression="$1:$2:$3:$4:$5:$6:$7:$8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="4" ListVariableOp="Split" ListVariableName="GetTeamListString" ListVariableExpression=":" ListVariableTarget="GetTeamList" LogLevel="-1" VariableOp="SetString" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                   <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="30fa3609-507c-4719-afec-2a273eff4d39" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="500">
                     <Condition Enabled="false" Grouping="Or" />
-                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="1.0小队变动" Id="cc7395b7-72d7-4910-9472-f37c0d035403" RegularExpression="^.{14} 0[BC]:">
+              <Trigger Enabled="true" Name="1.0小队变动" Id="cc7395b7-72d7-4910-9472-f37c0d035403" RegularExpression="^.{14} 0B:">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8850497a-28b0-45b3-b60e-33848dea39ed" TriggerForce="regexp" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" MessageBoxText="$0" MouseX="" MouseY="" UseTTSTextExpression="$0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="MessageBox">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -136,7 +131,6 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_incombat}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -328,21 +322,17 @@
             <Actions>
               <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_TeamWatchX" VariableExpression="${_imageaura[TeamWatchPosition].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_TeamWatchY" VariableExpression="${_imageaura[TeamWatchPosition].y}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" AuraOp="DeactivateAura" AuraName="TeamWatchPosition" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8850497a-28b0-45b3-b60e-33848dea39ed" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="3000" Description="(Don't touch)">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivprocid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
                 </Condition>
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
