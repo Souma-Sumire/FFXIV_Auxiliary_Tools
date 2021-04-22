@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="e8d2f6b6-4e1b-46b7-be31-dd19a547b3a7" Name="读条美?化" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="1.(Don't touch)" Id="b744d9a1-c71a-4229-af9d-ee9da29cf63b" RegularExpression="^20\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|(?&lt;skill&gt;[^\|]+?)\|.{8}\|[^\|]+?\|(?&lt;cast&gt;[^\|]+?)\|">
+        <Actions>
+          <Action OrderNumber="1" JsonCacheRequest="True" JsonEndpointExpression="https://cafemaker.wakingsands.com/Action/${numeric:hex2dec(${id})}" JsonFiringExpression="CastForm Icon:${_jsonresponse[Icon]} Skill:${skill} Cast:${cast}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${caster}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="2.(Don't touch)" Id="038bd461-6079-4a94-b56a-5b232ff84bd9" RegularExpression="^CastForm Icon:(?&lt;icon&gt;[^ ]+?) Skill:(?&lt;skill&gt;[^ ]+?) Cast:(?&lt;cast&gt;[^ ]+?)$" PrevActions="Interrupt">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="CastFormCancelled" TextAuraFontName="宋体" ActionType="TextAura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraAlignment="TopRight" TextAuraEffect="Bold" TextAuraFontSize="18" TextAuraForeground="White" TextAuraOutline="#FF8080" TextAuraName="CastFormCast" TextAuraExpression="${func:format(System.Double,&quot;00.00&quot;):${numeric:${cast}-${_sincems}/1000}}" TextAuraXIniExpression="${var:_CastFormX}+50" TextAuraYIniExpression="${var:_CastFormY}+22" TextAuraWIniExpression="140" TextAuraHIniExpression="40" TextAuraOIniExpression="100" TextAuraOTickExpression="${var:CastFormOpacity}" TextAuraUseOutline="True" TextAuraFontName="NewsGoth Cn BT" ActionType="TextAura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="CastFormIcon" AuraImage="https://cafemaker.wakingsands.com/${icon}" AuraXIniExpression="${var:_CastFormX}" AuraYIniExpression="${var:_CastFormY}" AuraWIniExpression="40" AuraHIniExpression="40" AuraOIniExpression="100" AuraOTickExpression="${var:CastFormOpacity}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" TextAuraAlignment="TopLeft" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="#FF8080" TextAuraName="CastFormSkill" TextAuraExpression="${skill}" TextAuraXIniExpression="${var:_CastFormX}+47" TextAuraYIniExpression="${var:_CastFormY}-4" TextAuraWIniExpression="200" TextAuraHIniExpression="40" TextAuraOIniExpression="100" TextAuraOTickExpression="${var:CastFormOpacity}" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="TextAura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="5" AuraName="CastFormProgressBG" AuraImage="${var:_CastFormCastBGURL}" AuraXIniExpression="${var:_CastFormX}+45" AuraYIniExpression="${var:_CastFormY}+12" AuraWIniExpression="154" AuraHIniExpression="15" AuraOIniExpression="100" AuraOTickExpression="${var:CastFormOpacity}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="6" AuraName="CastFormProgress" AuraImage="${var:_CastFormCastURL}" AuraXIniExpression="${var:_CastFormX}+45" AuraYIniExpression="${var:_CastFormY}+12" AuraWIniExpression="154" AuraHIniExpression="15" AuraOIniExpression="100" AuraWTickExpression="154/${cast}*${_sincems}/1000" AuraOTickExpression="${var:CastFormOpacity}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="7" LogLevel="-1" MouseX="" MouseY="" TextAuraAlignment="TopLeft" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="#FF8080" TextAuraName="CastFormCasting" TextAuraExpression="发动中" TextAuraXIniExpression="${var:_CastFormX}+47" TextAuraYIniExpression="${var:_CastFormY}-4+28" TextAuraWIniExpression="200" TextAuraHIniExpression="40" TextAuraOIniExpression="100" TextAuraOTickExpression="${var:CastFormOpacity}" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="TextAura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="8" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="CastFormOpacity" VariableExpression="100" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="9" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="CastFormOpacity" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="${cast}*1000" RefireInterrupt="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="10" LogLevel="-1" MouseX="" MouseY="" TextAuraOp="DeactivateAura" TextAuraFontSize="9" TextAuraName="CastFormCancelled" TextAuraFontName="宋体" ActionType="TextAura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="*设置" Id="f468b263-967c-4fd0-8b2d-cf186acefc78" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="_CastFormX" VariableExpression="${_screenwidth}/2-100" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="X坐标" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="_CastFormY" VariableExpression="${_screenheight}/2+200" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="Y坐标" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" LogLevel="-1" VariableOp="SetString" VariableName="_CastFormCastBGURL" VariableExpression="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/Zeffuro-s-Trigger-Repository/master/Resources/Images/Bar.png" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="空施法条图片地址 (尺寸154x15)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="4" LogLevel="-1" VariableOp="SetString" VariableName="_CastFormCastURL" VariableExpression="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/Zeffuro-s-Trigger-Repository/master/Resources/Images/BS-Fill.png" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="进度条图片地址 (尺寸154x15)" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Name="3.(Don't touch)" Id="f5a42d6b-466d-4d7a-a5e3-54925285e9a4" RegularExpression="^23\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|(?&lt;skill&gt;[^\|]+?)\|Cancelled\|">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="CastFormOpacity" VariableExpression="50" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraOp="DeactivateAura" TextAuraAlignment="TopLeft" TextAuraFontSize="14.25" TextAuraForeground="White" TextAuraOutline="#FF8080" TextAuraName="CastFormCast" TextAuraExpression="${_textaura[CastFormCast].text}" TextAuraXIniExpression="${_textaura[CastFormCast].x}" TextAuraYIniExpression="${_textaura[CastFormCast].y}" TextAuraWIniExpression="${_textaura[CastFormCast].w}" TextAuraHIniExpression="${_textaura[CastFormCast].y}" TextAuraOIniExpression="100" TextAuraOTickExpression="${var:CastFormOpacity}" TextAuraTTLTickExpression="${cast}*1000-${_sincems}" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="TextAura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" AuraName="CastFormProgress" AuraImage="${var:_CastFormCastURL}" AuraXIniExpression="${var:_CastFormX}+45" AuraYIniExpression="${var:_CastFormY}+12" AuraWIniExpression="154" AuraHIniExpression="15" AuraOIniExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="14.25" TextAuraForeground="White" TextAuraOutline="#FF8080" TextAuraName="CastFormCancelled" TextAuraExpression="中断" TextAuraXIniExpression="${var:_CastFormX}" TextAuraYIniExpression="${var:_CastFormY}" TextAuraWIniExpression="200" TextAuraHIniExpression="40" TextAuraOIniExpression="100" TextAuraOTickExpression="${numeric:round(${_sincems}/250)%2*100}" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="TextAura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="Or">
+          <ConditionSingle Enabled="true" ExpressionL="${caster}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
