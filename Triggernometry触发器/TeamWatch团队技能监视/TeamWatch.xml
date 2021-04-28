@@ -178,7 +178,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="10" AuraName="TeamWatchBackground" AuraImage="${var:_TeamWatchBackgroundCustomUrl}" AuraXIniExpression="${var:_TeamWatchX}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchHidePlayer1}*30*${var:_TeamWatchZoom}" AuraWIniExpression="9*${var:_TeamWatchInterval}+10*30*${var:_TeamWatchZoom}+${var:_TeamWatchLeftRightPadding}*2" AuraHIniExpression="(if(${lvar:GetTeamList.indexof()}=0,9,${lvar:GetTeamList.indexof()})-2)*10*${var:_TeamWatchZoom}+(if(${lvar:GetTeamList.indexof()}=0,9,${lvar:GetTeamList.indexof()})-1)*30*${var:_TeamWatchZoom}+${var:_TeamWatchTopDownPadding}*2-(${var:_TeamWatchHidePlayer1}*30*${var:_TeamWatchZoom})" AuraOIniExpression="${var:_TeamWatchBackgroundOpacity}" TextAuraFontSize="8.25" TextAuraBackground="Black" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+              <Action OrderNumber="10" AuraName="TeamWatchBackground" AuraImage="${var:_TeamWatchBackgroundCustomUrl}" AuraXIniExpression="${var:_TeamWatchX}" AuraYIniExpression="${var:_TeamWatchY}+${var:_TeamWatchHidePlayer1}*(30*${var:_TeamWatchZoom}+10)" AuraWIniExpression="9*${var:_TeamWatchInterval}+10*30*${var:_TeamWatchZoom}+${var:_TeamWatchLeftRightPadding}*2" AuraHIniExpression="(if(${lvar:GetTeamList.indexof()}=0,9,${lvar:GetTeamList.indexof()})-2)*10*${var:_TeamWatchZoom}+(if(${lvar:GetTeamList.indexof()}=0,9,${lvar:GetTeamList.indexof()})-1)*30*${var:_TeamWatchZoom}+${var:_TeamWatchTopDownPadding}*2-(${var:_TeamWatchHidePlayer1}*(30*${var:_TeamWatchZoom}+10))" AuraOIniExpression="${var:_TeamWatchBackgroundOpacity}" TextAuraFontSize="8.25" TextAuraBackground="Black" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchHidePlayer1}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                   <ConditionGroup Enabled="true" Grouping="And">
@@ -522,7 +522,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchTopDownPadding" VariableExpression="15" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="上下内边距 (背景)" DescriptionOverride="True">
+          <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchTopDownPadding" VariableExpression="7" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="上下内边距 (背景)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
@@ -542,7 +542,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="11" LogLevel="-1" VariableOp="SetString" VariableName="_TeamWatchHidePlayer1" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="不显示自身 (是=1,否=0)" DescriptionOverride="True">
+          <Action OrderNumber="11" LogLevel="-1" VariableOp="SetString" VariableName="_TeamWatchHidePlayer1" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="不显示自身 (是=1,否=0)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
