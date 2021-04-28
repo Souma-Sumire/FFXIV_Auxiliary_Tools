@@ -11,11 +11,13 @@
                 <Triggers>
                   <Trigger Enabled="true" Name="昏乱减伤" Id="69cace14-c950-4e7a-a2b8-14b42df2af9b" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D88:(?&lt;AbilityName&gt;[^:]+?):.{8}:(?&lt;TargetName&gt;[^:]+?):">
                     <Actions>
-                      <Action OrderNumber="-1" VariableOp="SetString" VariableName="减伤_昏乱_${TargetName}" VariableExpression="昏乱(${CasterName}) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="500">
+                      <Action OrderNumber="-1" VariableOp="SetString" VariableName="减伤_昏乱_${TargetName}" VariableExpression="昏乱(${_ffxiventity[${CasterName}].job}) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="500">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" VariableName="减伤_昏乱_${TargetName}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="10*1000-500">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="true" Grouping="Or">
@@ -24,11 +26,13 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="雪仇减伤" Id="62d179db-0ba1-47c2-8dd5-d09fd6982585" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D6F:.+?:.{8}:(?&lt;TargetName&gt;[^:]+?):">
                     <Actions>
-                      <Action OrderNumber="-1" VariableOp="SetString" VariableName="减伤_雪仇_${TargetName}" VariableExpression="雪仇(${CasterName}) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="500">
+                      <Action OrderNumber="-1" VariableOp="SetString" VariableName="减伤_雪仇_${TargetName}" VariableExpression="雪仇(${_ffxiventity[${CasterName}].job}) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="500">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" VariableName="减伤_雪仇_${TargetName}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="10*1000-500">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="true" Grouping="Or">
@@ -63,11 +67,13 @@
                   </Trigger>
                   <Trigger Enabled="true" Name="牵制减伤" Id="3358bc19-5afa-485f-9d45-281880768386" RegularExpression="^.{15}1[56]:.{8}:(?&lt;CasterName&gt;[^:]+?):1D7D:(?&lt;AbilityName&gt;[^:]+?):.{8}:(?&lt;TargetName&gt;[^:]+?):">
                     <Actions>
-                      <Action OrderNumber="-1" VariableOp="SetString" VariableName="减伤_牵制_${TargetName}" VariableExpression="牵制(${CasterName}) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="500">
+                      <Action OrderNumber="-1" VariableOp="SetString" VariableName="减伤_牵制_${TargetName}" VariableExpression="牵制(${_ffxiventity[${CasterName}].job}) " TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="500">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="2" VariableName="减伤_牵制_${TargetName}" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="10*1000-500">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="true" Grouping="Or">
@@ -118,7 +124,7 @@
             <Triggers>
               <Trigger Enabled="true" Name="技能判定" Id="d30f61d6-153b-4854-bea0-0ac5de805c75" RegularExpression="^.{14} 16:.{8}:(?&lt;CasterName&gt;[^:]+?):(?&lt;AbilityID&gt;[^:]+?):(?&lt;AbilityName&gt;[^:]+?):[^:]+?:(?&lt;TargetName&gt;[^:]+?):(?&lt;Flag&gt;[^:]+?[356]):" PeriodRefire="Deny" RefirePeriodExpression="100" Description="木人|伊甸|至尊伊甸|伊甸守护者|虚无行者|厄瑞玻斯的巨腕|利维亚桑|泰坦|极大泰坦|guardian of paradise|エデン?ガーデナー|Voidwalker|ヴォイドウォーカー|the Hand of Erebos|エレボスの巨腕|Leviathan|リヴァイアサン|Titan|タイタン|Titan Maximum|マキシタイタン">
                 <Actions>
-                  <Action OrderNumber="1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/${func:tolower:${var:_AT_技能判定_发送频道}} ${AbilityName}：:${var:减伤_鼓舞}${var:减伤_黑夜领域}${var:减伤_天星冲日（夜）}${var:减伤_炽天的幕帘}${var:减伤_雪仇_${CasterName}}${var:减伤_牵制_${CasterName}}${var:减伤_昏乱_${CasterName}}${var:减伤_策动}${var:减伤_防守之桑巴}${var:减伤_行吟}${var:减伤_节制}${var:减伤_命运之轮}${var:减伤_野战治疗阵}${var:减伤_异想的幻光}${var:减伤_圣光幕帘}${var:减伤_武装}${var:减伤_光之心}${var:减伤_摆脱}${var:减伤_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False" Description="与鲶鱼精邮差进行加密对话(并不" DescriptionOverride="True">
+                  <Action OrderNumber="1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/${func:tolower:${var:_AT_技能判定_发送频道}} ${AbilityName}：${var:减伤_鼓舞}${var:减伤_黑夜领域}${var:减伤_天星冲日（夜）}${var:减伤_炽天的幕帘}${var:减伤_雪仇_${CasterName}}${var:减伤_牵制_${CasterName}}${var:减伤_昏乱_${CasterName}}${var:减伤_策动}${var:减伤_防守之桑巴}${var:减伤_行吟}${var:减伤_节制}${var:减伤_命运之轮}${var:减伤_野战治疗阵}${var:减伤_异想的幻光}${var:减伤_圣光幕帘}${var:减伤_武装}${var:减伤_光之心}${var:减伤_摆脱}${var:减伤_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False" Description="与鲶鱼精邮差进行加密对话(并不" DescriptionOverride="True">
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionGroup Enabled="true" Grouping="And">
                         <ConditionSingle Enabled="true" ExpressionL="${var:_AT_NoActionWhenReduction}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
