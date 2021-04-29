@@ -54,9 +54,9 @@
 
   `https://cdn.jsdelivr.net/gh/Souma-Sumire/FFXIV_Auxiliary_Tools@master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E9%98%9F%E4%BC%8D%E7%9B%91%E6%8E%A7.xml`
 
-- 施法监控
+- 队友施法监控
 
-  ![img](https://i.loli.net/2020/07/11/TYAoLi65U8wCy3u.png)
+  ![img](https://i.loli.net/2021/04/29/RLGho9x8b4wQvWU.png)
 
   `https://cdn.jsdelivr.net/gh/Souma-Sumire/FFXIV_Auxiliary_Tools@master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E6%96%BD%E6%B3%95%E7%9B%91%E6%8E%A7.xml`
 
