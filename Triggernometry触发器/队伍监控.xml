@@ -130,7 +130,7 @@
               </Folder>
             </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="技能判定" Id="d30f61d6-153b-4854-bea0-0ac5de805c75" RegularExpression="^.{14} 1[56]:4.{7}:(?&lt;CasterName&gt;[^:]+?):(?&lt;AbilityID&gt;[^:]+?):(?&lt;AbilityName&gt;[^:]+?):[^:]+?:(?&lt;TargetName&gt;[^:]+?):(?&lt;Flag&gt;[^:]*?(?&lt;Mask&gt;[12356])[^:]{3}[356]):(?&lt;Damage&gt;[^:]+?):(?&lt;S1&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000" Description="木人|伊甸|至尊伊甸|伊甸守护者|虚无行者|厄瑞玻斯的巨腕|利维亚桑|泰坦|极大泰坦|guardian of paradise|エデン?ガーデナー|Voidwalker|ヴォイドウォーカー|the Hand of Erebos|エレボスの巨腕|Leviathan|リヴァイアサン|Titan|タイタン|Titan Maximum|マキシタイタン">
+              <Trigger Enabled="true" Name="技能判定" Id="d30f61d6-153b-4854-bea0-0ac5de805c75" RegularExpression="^.{14} 16:4.{7}:(?&lt;CasterName&gt;[^:]+?):(?&lt;AbilityID&gt;[^:]+?):(?&lt;AbilityName&gt;[^:]+?):[^:]+?:(?&lt;TargetName&gt;[^:]+?):(?&lt;Flag&gt;[^:]*?(?&lt;Mask&gt;[12356])[^:]{3}[356]):(?&lt;Damage&gt;[^:]+?):(?&lt;S1&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="1000" Description="木人|伊甸|至尊伊甸|伊甸守护者|虚无行者|厄瑞玻斯的巨腕|利维亚桑|泰坦|极大泰坦|guardian of paradise|エデン?ガーデナー|Voidwalker|ヴォイドウォーカー|the Hand of Erebos|エレボスの巨腕|Leviathan|リヴァイアサン|Titan|タイタン|Titan Maximum|マキシタイタン">
                 <Actions>
                   <Action OrderNumber="1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/${func:tolower:${var:_AT_技能判定_发送频道}} ${AbilityName}(物理${numeric:round(hex2dec(${func:substring(0,4):${func:padleft(48,8):${Damage}}})/1000,2)}K)：${var:减伤_鼓舞}${var:减伤_黑夜领域}${var:减伤_天星冲日（夜）}${var:减伤_炽天的幕帘}${var:减伤_雪仇_${CasterName}}${var:减伤_牵制_${CasterName}}${var:减伤_策动}${var:减伤_防守之桑巴}${var:减伤_行吟}${var:减伤_节制}${var:减伤_命运之轮}${var:减伤_野战治疗阵}${var:减伤_圣光幕帘}${var:减伤_武装}${var:减伤_摆脱}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False" Description="物理(打击，斩击，突刺)1" DescriptionOverride="True">
                     <Condition Enabled="true" Grouping="And">
@@ -598,7 +598,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="_AT_NoActionWhenReduction" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="无减伤的技能不触发动作（1=是，0=否）" DescriptionOverride="True">
+          <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="_AT_NoActionWhenReduction" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="无减伤的技能不触发动作（1=是，0=否）" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
