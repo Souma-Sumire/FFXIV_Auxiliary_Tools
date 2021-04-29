@@ -34,25 +34,22 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Sequential="True" Name="1. 刷新触发：玩家切换职业" Id="86bc77ec-2739-44f3-9c9a-745c8a71c138" RegularExpression="^.{14} 0C:Player Stats:(?&lt;jobid&gt;.+?):">
+          <Trigger Enabled="true" Sequential="True" Name="1. 刷新触发：玩家状态" Id="86bc77ec-2739-44f3-9c9a-745c8a71c138" RegularExpression="^.{14} 0C:Player Stats:" PrevActions="Interrupt">
             <Actions>
-              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger" Asynchronous="False">
+              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="3000" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${jobid}" ExpressionTypeL="Numeric" ExpressionR="${var:_TeamWatchPlayerJobid}" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_incombat}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="_TeamWatchPlayerJobid" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${_incombat}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-            </Condition>
+            <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="1. 刷新触发：重新挑战" Id="f31448b8-44e2-463f-9812-bd2874ef56d7" RegularExpression="^.{14} 21:.{8}:40000006:">
+          <Trigger Enabled="true" Name="1. 重新挑战" Id="f31448b8-44e2-463f-9812-bd2874ef56d7" RegularExpression="^.{14} 21:.{8}:40000006:">
             <Actions>
               <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^TeamWatch_.+" TextAuraFontName="宋体" ActionType="TextAura" Description="(Don't touch)">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -61,28 +58,35 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TableVariableName="TeamWatchRecast" TableVariableX="8" TableVariableY="10" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="8.25" TextAuraName="_debug_p.+" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" AuraName="TeamWatchBackground" AuraImage="${var:_TeamWatchBackgroundCustomUrl}" AuraXIniExpression="1" AuraYIniExpression="1" AuraWIniExpression="1" AuraHIniExpression="1" AuraOIniExpression="1" TextAuraFontSize="8.25" TextAuraBackground="Black" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" AuraOp="DeactivateAuraRegex" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^TeamWatch_.+" TextAuraFontName="宋体" ActionType="TextAura" Description="(Don't touch)">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" AuraOp="DeactivateAuraRegex" AuraName="^TeamWatch_.+" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="57732884-7f31-41cf-a508-b2167dffa39c" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchChinaServer}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="7" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="6c5ec979-68e4-4b22-8326-cfb58bb7f95c" TriggerForce="regexp" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchChinaServer}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -467,26 +471,11 @@
               <ConditionSingle Enabled="true" ExpressionL="${var:_TeamWatchTTSEnable}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Name="1. 刷新触发：小队变动" Id="0c45f010-3759-4721-b8f2-e1f43431f702" RegularExpression="^.{14} 0B:">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="1. 刷新触发：用户宏" Id="ada5ba37-55a8-45f1-9a9b-2b37d6897e8e" RegularExpression="(?i)^.{14} 00:0038:TeamWatchReset$">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="1. 刷新触发：初次挑战" Id="8a152622-a5d6-4d79-b94a-7366cae26216" RegularExpression="^.{14} 21:.{8}:40000001:">
+          <Trigger Enabled="true" Name="1. 刷新触发：开始挑战、小队变化、用户宏" Id="8a152622-a5d6-4d79-b94a-7366cae26216" RegularExpression="^.{14} 21:.{8}:40000001:|^.{14} 0B:|(?i)^.{14} 00:0038:TeamWatchReset$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
