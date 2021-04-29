@@ -50,7 +50,7 @@
 
 - 减伤覆盖监控 （需邮差）（导入时需勾选“允许触发器操作文件”）
 
-  ![img](https://i.loli.net/2020/08/12/BEdyvV9g5CS7lpj.jpg)
+  ![img](https://i.loli.net/2021/04/30/jYGJiUnN3u4ReEF.png)
 
   `https://cdn.jsdelivr.net/gh/Souma-Sumire/FFXIV_Auxiliary_Tools@master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E9%98%9F%E4%BC%8D%E7%9B%91%E6%8E%A7.xml`
 
