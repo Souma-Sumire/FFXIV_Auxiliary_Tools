@@ -333,7 +333,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${_ffxiventity[${lvar:GetTeamList[${order}]}].level}" ExpressionTypeL="Numeric" ExpressionR="${level}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Source="FFXIVNetwork" Name="7.21" Id="f922ded4-9cdd-4168-b717-b5d66c97499c" RegularExpression="^21\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|">
+          <Trigger Enabled="true" Source="FFXIVNetwork" Name="7.21" Id="f922ded4-9cdd-4168-b717-b5d66c97499c" RegularExpression="^21\|[^\|]+?\|1.{7}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="059c21d5-30b7-4879-8902-823090e1483d" TriggerText="Order:${lvar:GetTeamList.indexof(${caster})},Num:1,TTS:${tvar:TeamWatch_SkillID[5][${numeric:(${_ffxiventity[${caster}].jobid}-19)*10+2}]}" ActionType="Trigger">
                 <Condition Enabled="true" Grouping="And">
@@ -400,7 +400,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${lvar:GetTeamList.indexof(${caster})}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Source="FFXIVNetwork" Name="7.22" Id="96a98655-cfef-481a-ad1e-666287cc445b" RegularExpression="^22\|[^\|]+?\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|" Scheduling="FromLastAction" MutexToCapture="7.22">
+          <Trigger Enabled="true" Source="FFXIVNetwork" Name="7.22" Id="96a98655-cfef-481a-ad1e-666287cc445b" RegularExpression="^22\|[^\|]+?\|1.{7}\|(?&lt;caster&gt;[^\|]+?)\|(?&lt;id&gt;[^\|]+?)\|" Scheduling="FromLastAction" MutexToCapture="7.22">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f922ded4-9cdd-4168-b717-b5d66c97499c" TriggerText="21|0|00000000|${caster}|${id}|" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Not">
@@ -417,7 +417,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${lvar:GetTeamList.indexof(${caster})}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Source="None" Name="8." Id="059c21d5-30b7-4879-8902-823090e1483d" RegularExpression="^Order:(?&lt;order&gt;.),Num:(?&lt;num&gt;..?),TTS:(?&lt;tts&gt;.*?)$" MutexToCapture="TeamWatch_Text">
+          <Trigger Enabled="true" Source="None" Name="8." Id="059c21d5-30b7-4879-8902-823090e1483d" RegularExpression="^Order:(?&lt;order&gt;.),Num:(?&lt;num&gt;..?),TTS:(?&lt;tts&gt;.*?)$">
             <Actions>
               <Action OrderNumber="1" TextAuraEffect="Bold" TextAuraFontSize="6.75" TextAuraName="TeamWatch_${order}_${num}_Text" TextAuraExpression="${numeric:${tvar:TeamWatchRecast[${order}][${num}]}-${_since}}" TextAuraXIniExpression="${_imageaura[TeamWatch_${order}_${num}].x}" TextAuraYIniExpression="${_imageaura[TeamWatch_${order}_${num}].y}" TextAuraWIniExpression="30*${var:_TeamWatchZoom}" TextAuraHIniExpression="30*${var:_TeamWatchZoom}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="${numeric:${tvar:TeamWatchRecast[${order}][${num}]}-${_since}}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Description="(Don't touch)">
                 <Condition Enabled="true" Grouping="And">
@@ -446,7 +446,7 @@
                 <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d50c5fd3-8e0a-482e-9fad-5ab0837d2510" TriggerText="${tts}" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or">
+                <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tts}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
                 <Conditions />
@@ -456,7 +456,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${tvar:TeamWatchRecast[${order}][${num}]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Source="None" Name="TTS." Id="d50c5fd3-8e0a-482e-9fad-5ab0837d2510" RegularExpression=".+" Scheduling="FromLastAction" PeriodRefire="Deny" RefirePeriodExpression="50">
+          <Trigger Enabled="true" Source="None" Name="TTS." Id="d50c5fd3-8e0a-482e-9fad-5ab0837d2510" RegularExpression=".+" Scheduling="FromLastAction" PeriodRefire="Deny" RefirePeriodExpression="100">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="$0" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                 <Condition Enabled="false" Grouping="Or" />
