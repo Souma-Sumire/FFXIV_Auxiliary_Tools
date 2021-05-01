@@ -7,73 +7,93 @@
         <Triggers>
           <Trigger Enabled="true" Name="坐标" Id="b036ff20-8121-4230-aaaa-9c9a0231b3a8" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
             <Actions>
-              <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="RaidEffectsPosition" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/RaidEffects.png" AuraXIniExpression="0" AuraYIniExpression="0" AuraWIniExpression="${var:_RaidEffectsSize}*11" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="设置位置(改X和Y 其他的不要动)" DescriptionOverride="True">
+              <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="RaidEffectsPosition" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/RaidEffects.png" AuraXIniExpression="0" AuraYIniExpression="0" AuraWIniExpression="${var:_RaidEffectsSize}*11" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="500" Description="设置位置(改X和Y 其他的不要动)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="_RaidEffectsX" VariableExpression="${_imageaura[RaidEffectsPosition].x}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="_RaidEffectsY" VariableExpression="${_imageaura[RaidEffectsPosition].y}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" AuraOp="DeactivateAura" AuraName="RaidEffectsPosition" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Source="None" Name="TTS总开关" Id="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" RegularExpression="^TTS:(.+)$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" UseTTSTextExpression="$1" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="更改排序" Id="229953d9-55c0-4f43-a2f6-9f8166fc00e6" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="RaidEffectsOrder" VariableExpression="战斗连祷|巨龙视线|义结金兰|攻其不备|战斗之声|技巧舞步结束|进攻之探戈|鼓励|灵护|连环计|占卜" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="设置排序，以&quot;|&quot;分隔" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" ListVariableOp="Split" ListVariableName="RaidEffectsOrder" ListVariableExpression="|" ListVariableTarget="RaidEffectsOrder" VariableOp="SetNumeric" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="TTS自定义" Id="b6caa06d-f787-4f32-8b4b-0e41aff47548" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="RaidEffectsTTSSkill" VariableExpression="战斗连祷|巨龙视线|战斗之声|义结金兰|连环计|灵护|鼓励|技巧舞步结束|进攻之探戈|攻其不备|占卜" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetString" VariableName="RaidEffectsTTSString" VariableExpression="连祷|龙肠|战歌|义结金兰|连环计|灵护|鼓励|技巧舞|探戈|背刺|占卜" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="设置TTS的内容（不要改变顺序）" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" ListVariableOp="Split" ListVariableName="RaidEffectsTTSSkill" ListVariableExpression="|" ListVariableTarget="RaidEffectsTTSSkill" VariableOp="SetNumeric" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" ListVariableOp="Split" ListVariableName="RaidEffectsTTSString" ListVariableExpression="|" ListVariableTarget="RaidEffectsTTSString" VariableOp="SetNumeric" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" ListVariableOp="InsertList" ListVariableName="RaidEffectsTTSString" ListVariableIndex="${lvar:RaidEffectsTTSSkill.size}+1" ListVariableTarget="RaidEffectsTTSSkill" VariableOp="SetNumeric" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" ListVariableName="RaidEffectsTTSString" VariableOp="SetNumeric" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="ListVariable" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="图标大小" Id="0d69a69d-f462-4f9d-8123-f6579d20f88f" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="_RaidEffectsSize" VariableExpression="40" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="设置图标尺寸 默认40" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="07bd8d5b-67f8-4ba1-abc9-3eb06e0a892d" TriggerForce="regexp" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -88,97 +108,121 @@
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${target}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:120-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="120-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="战斗连祷" Id="0baa39ab-c2b8-4c26-b27a-7ff971a3340b" RegularExpression="^26\|[^\|]+?\|312\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]*?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|" PeriodRefire="Deny" RefirePeriodExpression="2000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" TriggerText="TTS:${lvar:RaidEffectsTTSSkill[${numeric:${lvar:RaidEffectsTTSSkill.indexof(${_triggername})}+11}]}" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:180-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="180-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="义结金兰" Id="4d05881c-fac7-4946-a0f2-646d0dbcb8b6" RegularExpression="^26\|[^\|]+?\|4a1\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]*?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|" PeriodRefire="Deny" RefirePeriodExpression="2000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" TriggerText="TTS:${lvar:RaidEffectsTTSSkill[${numeric:${lvar:RaidEffectsTTSSkill.indexof(${_triggername})}+11}]}" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:90-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="90-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="战斗之声" Id="78cd6216-17f9-4b8e-a06f-7e1e28160038" RegularExpression="^26\|[^\|]+?\|8d\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]*?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|" PeriodRefire="Deny" RefirePeriodExpression="2000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" TriggerText="TTS:${lvar:RaidEffectsTTSSkill[${numeric:${lvar:RaidEffectsTTSSkill.indexof(${_triggername})}+11}]}" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:180-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="180-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="灵护" Id="a0457b33-1eae-492c-bb1f-3a7fa59bb7d3" RegularExpression="^26\|[^\|]+?\|4bd\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]*?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|" PeriodRefire="Deny" RefirePeriodExpression="2000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" TriggerText="TTS:${lvar:RaidEffectsTTSSkill[${numeric:${lvar:RaidEffectsTTSSkill.indexof(${_triggername})}+11}]}" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:180-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="180-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="鼓励" Id="50f69702-cc0a-48f5-976d-51608c1e56db" RegularExpression="^26\|[^\|]+?\|4d7\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]*?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|05\|" PeriodRefire="Deny" RefirePeriodExpression="2000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" TriggerText="TTS:${lvar:RaidEffectsTTSSkill[${numeric:${lvar:RaidEffectsTTSSkill.indexof(${_triggername})}+11}]}" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:120-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="120-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="进攻之探戈" Id="e142fe09-950b-46c8-bae2-e53ab525127c" RegularExpression="^26\|[^\|]+?\|721\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]*?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|" RefirePeriodExpression="2000">
                 <Actions>
@@ -186,82 +230,102 @@
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${target}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:120-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="120-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="攻其不备" Id="fb6a27ee-c4dd-4599-8ca5-910ed55eae09" RegularExpression="^26\|[^\|]+?\|27e\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|.{8}\|[^\|]+?\|" PeriodRefire="Deny" RefirePeriodExpression="2000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" TriggerText="TTS:${lvar:RaidEffectsTTSSkill[${numeric:${lvar:RaidEffectsTTSSkill.indexof(${_triggername})}+11}]}" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:60-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="60-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="占卜" Id="4ff7a108-da77-4943-bb81-702cdcfdef20" RegularExpression="^26\|[^\|]+?\|756\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]*?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|" PeriodRefire="Deny" RefirePeriodExpression="2000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" TriggerText="TTS:${lvar:RaidEffectsTTSSkill[${numeric:${lvar:RaidEffectsTTSSkill.indexof(${_triggername})}+11}]}" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:120-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="120-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="连环计" Id="47ea6416-025b-4fc0-927c-521496d0c8b3" RegularExpression="^26\|[^\|]+?\|4c5\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|(?&lt;caster&gt;[^\|]+?)\|.{8}\|[^\|]+?\|" PeriodRefire="Deny" RefirePeriodExpression="2000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" TriggerText="TTS:${lvar:RaidEffectsTTSSkill[${numeric:${lvar:RaidEffectsTTSSkill.indexof(${_triggername})}+11}]}" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:120-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="120-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
               <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="技巧舞步结束" Id="1d9d91f0-ee30-4dab-aca0-365527eb776b" RegularExpression="^26\|[^\|]+?\|71e\|[^\|]+?\|(?&lt;time&gt;[^\|]+?)\|.{8}\|[^\|]*?\|.{8}\|(?&lt;target&gt;[^\|]+?)\|" PeriodRefire="Deny" RefirePeriodExpression="2000">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="7d847ff8-8c70-45d1-806e-9a08a2fd16d5" TriggerText="TTS:${lvar:RaidEffectsTTSSkill[${numeric:${lvar:RaidEffectsTTSSkill.indexof(${_triggername})}+11}]}" ActionType="Trigger" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" TextAuraFontSize="15.75" TextAuraName="TeamEffects_${_triggername}Text" TextAuraExpression="${numeric:120-${_since}}" TextAuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" TextAuraYIniExpression="${var:_RaidEffectsY}" TextAuraWIniExpression="${var:_RaidEffectsSize}" TextAuraHIniExpression="${var:_RaidEffectsSize}" TextAuraOIniExpression="100" TextAuraTTLTickExpression="120-${_since}" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
-                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+                  <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_${_triggername}Effect" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/ComboGIF.gif" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(${_triggername})}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" AuraTTLTickExpression="${time}-${_since}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -271,11 +335,13 @@
             <Actions>
               <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^TeamEffects_.+" TextAuraFontName="宋体" ActionType="TextAura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" AuraOp="DeactivateAuraRegex" AuraName="^TeamEffects_.+" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_002585" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002585.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(战斗连祷)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="TeamEffects_002585" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002585.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(战斗连祷)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -286,8 +352,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="4" AuraImageMode="Zoom" AuraName="TeamEffects_002587" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002587.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(巨龙视线)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="4" AuraImageMode="Zoom" AuraName="TeamEffects_002587" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002587.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(巨龙视线)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -298,8 +365,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="DRG" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="5" AuraImageMode="Zoom" AuraName="TeamEffects_002601" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002601.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(战斗之声)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="5" AuraImageMode="Zoom" AuraName="TeamEffects_002601" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002601.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(战斗之声)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="BRD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="BRD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -310,8 +378,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="BRD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="BRD" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="6" AuraImageMode="Zoom" AuraName="TeamEffects_002542" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002542.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(义结金兰)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="6" AuraImageMode="Zoom" AuraName="TeamEffects_002542" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002542.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(义结金兰)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -322,8 +391,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="MNK" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="7" AuraImageMode="Zoom" AuraName="TeamEffects_002815" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002815.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(连环计)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="7" AuraImageMode="Zoom" AuraName="TeamEffects_002815" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002815.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(连环计)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -334,8 +404,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="SCH" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="8" AuraImageMode="Zoom" AuraName="TeamEffects_002688" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002688.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(灵护)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="8" AuraImageMode="Zoom" AuraName="TeamEffects_002688" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/002688.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(灵护)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -346,8 +417,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="SMN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="9" AuraImageMode="Zoom" AuraName="TeamEffects_003218" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/003218.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(鼓励)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="9" AuraImageMode="Zoom" AuraName="TeamEffects_003218" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/003218.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(鼓励)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -358,8 +430,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="RDM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="10" AuraImageMode="Zoom" AuraName="TeamEffects_003473" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/003473.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(技巧舞步结束)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="10" AuraImageMode="Zoom" AuraName="TeamEffects_003473" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/003473.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(技巧舞步结束)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -370,8 +443,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="11" AuraImageMode="Zoom" AuraName="TeamEffects_003471" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/003471.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(进攻之探戈)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="11" AuraImageMode="Zoom" AuraName="TeamEffects_003471" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/003471.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(进攻之探戈)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -382,8 +456,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="DNC" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="12" AuraImageMode="Zoom" AuraName="TeamEffects_000618" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/000618.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(攻其不备)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="12" AuraImageMode="Zoom" AuraName="TeamEffects_000618" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/000618.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(攻其不备)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -394,8 +469,9 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="NIN" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
-              <Action OrderNumber="13" AuraImageMode="Zoom" AuraName="TeamEffects_003553" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/003553.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(占卜)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
+              <Action OrderNumber="13" AuraImageMode="Zoom" AuraName="TeamEffects_003553" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/%EF%BC%88%E8%A2%AB%E4%B8%8A%E4%BD%8D%E6%9B%BF%E4%BB%A3%EF%BC%89%E5%9B%A2%E8%BE%85%E7%9B%91%E6%8E%A7/003553.png" AuraXIniExpression="${var:_RaidEffectsX}+${lvar:RaidEffectsOrder.indexof(占卜)}*${var:_RaidEffectsSize}-${var:_RaidEffectsSize}" AuraYIniExpression="${var:_RaidEffectsY}" AuraWIniExpression="${var:_RaidEffectsSize}" AuraHIniExpression="${var:_RaidEffectsSize}" AuraOIniExpression="100" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)" DescriptionOverride="True">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
@@ -406,9 +482,11 @@
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[6].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[8].job}" ExpressionTypeL="String" ExpressionR="AST" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -417,6 +495,7 @@
       <Trigger Enabled="true" Source="None" IsReadme="True" Name="正常用户【不】【要】改动任何标记了&quot;Don't touch&quot;的内容，除非你真的了解自己在干什么。" Id="f69a4b62-85c2-47dc-8152-05d702a8c531" RegularExpression="">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
