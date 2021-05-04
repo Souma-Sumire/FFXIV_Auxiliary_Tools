@@ -14,9 +14,9 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="Skill" Id="57021fe6-9ec1-4cdf-8c7d-c13b028a06b2" RegularExpression="^.{14} 1[56]:.{8}:([^:]+?):(.{2,4}):">
+          <Trigger Enabled="true" Name="Skill" Id="57021fe6-9ec1-4cdf-8c7d-c13b028a06b2" RegularExpression="^.{14} 1[56]:.{8}:([^:]+?):(.{1,4}):">
             <Actions>
-              <Action OrderNumber="1" JsonCacheRequest="True" JsonEndpointExpression="https://cafemaker.wakingsands.com/Action/${numeric:hex2dec($2)}" JsonFiringExpression="AT_SkillJSON ID:${_jsonresponse[ID]} Icon:${_jsonresponse[Icon]} Category:${_jsonresponse[ActionCategoryTargetID]}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="GenericJson">
+              <Action OrderNumber="1" JsonCacheRequest="True" JsonEndpointExpression="https://cafemaker.wakingsands.com/Action/${numeric:hex2dec($2)}?columns=ID,Icon,ActionCategoryTargetID" JsonFiringExpression="AT_SkillJSON ID:${_jsonresponse[ID]} Icon:${_jsonresponse[Icon]} Category:${_jsonresponse[ActionCategoryTargetID]}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="GenericJson">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -31,11 +31,9 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="ATST_Tar" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" TextAuraAlignment="BottomRight" TextAuraEffect="Bold" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraOutline="Black" TextAuraName="ATST_TarBg" TextAuraXIniExpression="${var:ATST_X}" TextAuraYIniExpression="${var:ATST_Y}-12*${var:ATST_Scale}-1" TextAuraWIniExpression="(${var:ATST_Speed}*${var:ATST_Time}+(40/62*40))*${var:ATST_Scale}" TextAuraHIniExpression="40*${var:ATST_Scale}-1" TextAuraOIniExpression="${var:ATST_BgOpacity}" TextAuraFontName="等线" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -44,15 +42,12 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TextAuraOp="DeactivateAura" TextAuraAlignment="BottomRight" TextAuraEffect="Bold" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraOutline="Black" TextAuraName="ATST_TarBg" TextAuraXIniExpression="${var:ATST_X}" TextAuraYIniExpression="${var:ATST_Y}-12*${var:ATST_Scale}-1" TextAuraWIniExpression="(${var:ATST_Speed}*${var:ATST_Time}+(40/62*40))*${var:ATST_Scale}" TextAuraHIniExpression="40*${var:ATST_Scale}-1" TextAuraOIniExpression="${var:ATST_BgOpacity}" TextAuraFontName="等线" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="UnsetRegex" VariableName="ATST_Tar" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" AuraOp="DeactivateAuraRegex" AuraName="ATST.*" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -63,38 +58,38 @@
     <Triggers>
       <Trigger Enabled="true" Name="*设置" Id="00b63d5d-b0b1-4470-b233-0b0325315784" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
         <Actions>
-          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_X" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_X" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="横坐标" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Y" VariableExpression="345" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Y" VariableExpression="345" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="纵坐标" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Time" VariableExpression="12" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Time" VariableExpression="15" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="时间线时间长度" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Speed" VariableExpression="26" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Speed" VariableExpression="14" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="技能图标移动速度" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Scale" VariableExpression="1.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Scale" VariableExpression="1.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="缩放" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_BgOpacity" VariableExpression="50" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_BgOpacity" VariableExpression="50" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="背景不透明度" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="7" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_oGCD" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+          <Action OrderNumber="7" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_oGCD" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="显示GCD技能 (1=是,0=否)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" Source="None" IsReadme="True" Name="使用说明（双击打开描述）" Id="e9430842-04a0-468f-8599-faf28e65293d" RegularExpression="" Description="宏： &#xD;&#xA;&#xD;&#xA;/e 目标监控:[对象名]&#xD;&#xA;&#xD;&#xA;取消显示：&#xD;&#xA;/e 取消监控&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;初次加载的技能，会卡一会去读取图片，时间取决于你的网络状况，建立过一次缓存后就可以流畅出现了。&#xD;&#xA;&#xD;&#xA;如需移动位置之类的自定义设置，请到[*设置]触发器中修改变量。&#xD;&#xA;&#xD;&#xA;ATST_X  横坐标&#xD;&#xA;ATST_Y  纵坐标&#xD;&#xA;ATST_Time 时间线时间长度&#xD;&#xA;ATST_Speed 技能图标移动速度&#xD;&#xA;ATST_Scale 整体缩放&#xD;&#xA;ATST_BgOpacity 背景颜色不透明度">
+      <Trigger Enabled="true" Source="None" IsReadme="True" Name="使用说明（双击打开描述）" Id="e9430842-04a0-468f-8599-faf28e65293d" RegularExpression="" Description="宏： &#xD;&#xA;&#xD;&#xA;/e 目标监控:&lt;t&gt;&#xD;&#xA;&#xD;&#xA;取消显示：&#xD;&#xA;&#xD;&#xA;/e 取消监控">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
