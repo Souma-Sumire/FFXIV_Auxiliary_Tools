@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="adf51c19-bed5-4498-9b85-56803545a071" Name="施法监控 By Souma" Enabled="true">
+  <ExportedFolder Id="adf51c19-bed5-4498-9b85-56803545a071" Name="施法监控 by Souma" Enabled="true">
     <Folders>
       <Folder Id="df09e655-6b33-4dbb-85b8-449bc93b6527" Name="(Don't touch)" Enabled="true">
         <Folders />
@@ -9,7 +9,6 @@
             <Actions>
               <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="ATST_Tar_${ID}_${_timestamp}" AuraImage="https://cafemaker.wakingsands.com${Icon}" AuraXIniExpression="${var:ATST_X}" AuraYIniExpression="${var:ATST_Y}-(if(${CategoryID}=4,12,0))*${var:ATST_Scale}" AuraWIniExpression="${var:ATST_Scale}*(40/62*40)*if(${CategoryID}=4,0.75,1)" AuraHIniExpression="${var:ATST_Scale}*(40/62*40)*if(${CategoryID}=4,0.75,1)" AuraOIniExpression="100" AuraXTickExpression="${var:ATST_X}+(${var:ATST_Time}*${var:ATST_Speed}-${_sincems}*(1/${var:ATST_Time})*(${var:ATST_Speed}*${var:ATST_Time}/1000))*${var:ATST_Scale}" AuraOTickExpression="if(${CategoryID}=4,100,${var:ATST_oGCD}*100)" AuraTTLTickExpression="${var:ATST_Time}-${_since}-1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -18,7 +17,6 @@
             <Actions>
               <Action OrderNumber="1" JsonCacheRequest="True" JsonEndpointExpression="https://cafemaker.wakingsands.com/Action/${numeric:hex2dec($2)}?columns=ID,Icon,ActionCategoryTargetID" JsonFiringExpression="AT_SkillJSON ID:${_jsonresponse[ID]} Icon:${_jsonresponse[Icon]} Category:${_jsonresponse[ActionCategoryTargetID]}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="GenericJson">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
@@ -60,31 +58,24 @@
         <Actions>
           <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_X" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="横坐标" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Y" VariableExpression="345" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="纵坐标" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Time" VariableExpression="15" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="时间线时间长度" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Speed" VariableExpression="14" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="技能图标移动速度" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_Scale" VariableExpression="1.5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="缩放" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_BgOpacity" VariableExpression="50" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="背景不透明度" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="7" LogLevel="-1" VariableOp="SetNumeric" VariableName="ATST_oGCD" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="显示GCD技能 (1=是,0=否)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
