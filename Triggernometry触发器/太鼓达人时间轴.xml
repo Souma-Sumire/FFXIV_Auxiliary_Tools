@@ -69,7 +69,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="2. Count Down" Id="fa8e82f9-80bf-44d4-89b8-8b8cff73bac3" RegularExpression="^.{14} 00:(?:00b9|0139):距离战斗开始还有(?&lt;time&gt;..?)秒！ （">
+          <Trigger Enabled="true" Name="2. Count Down" Id="fa8e82f9-80bf-44d4-89b8-8b8cff73bac3" RegularExpression="^.{14} 00:(?:00b9|0139):距离战斗开始还有(?&lt;time&gt;..?)秒！ （" PrevActions="Interrupt">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
@@ -87,7 +87,7 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9.75" TextAuraForeground="White" TextAuraOutline="Black" TextAuraName="TimelineTips_Since" TextAuraExpression="${func:padleft(48,2):${numeric:round((${_since}-${time})/60)}}:${func:padleft(48,2):${numeric:round((${_since}-${time})%60)}}" TextAuraXIniExpression="${pvar:TimelineTipsX}+9" TextAuraYIniExpression="${pvar:TimelineTipsY}+70" TextAuraWIniExpression="50" TextAuraHIniExpression="25" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
+              <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9.75" TextAuraForeground="White" TextAuraOutline="Black" TextAuraName="TimelineTips_Since" TextAuraExpression="${func:padleft(48,2):${func:substring(0,1):${numeric:(${_since}-${time})/60}}}:${func:padleft(48,2):${numeric:round((${_since}-${time})%60)}}" TextAuraXIniExpression="${pvar:TimelineTipsX}+9" TextAuraYIniExpression="${pvar:TimelineTipsY}+70" TextAuraWIniExpression="50" TextAuraHIniExpression="25" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
