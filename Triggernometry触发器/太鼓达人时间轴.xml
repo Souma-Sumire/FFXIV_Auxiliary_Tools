@@ -98,18 +98,26 @@
           <Trigger Enabled="true" Source="None" Name="3. For" Id="c45218a2-3f0e-4825-8e0c-83a240edf10e" RegularExpression="^Line:(?&lt;line&gt;.+)$">
             <Actions>
               <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="TimelineTips_Songs_${tvar:TimelineTips[2][${line}]}_${tvar:TimelineTips[1][${line}]}" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TimelineTips/${tvar:TimelineTips[2][${line}]}.png" AuraXIniExpression="${pvar:TimelineTipsX}" AuraYIniExpression="${pvar:TimelineTipsY}+78" AuraWIniExpression="50" AuraHIniExpression="50" AuraOIniExpression="100" AuraXTickExpression="${pvar:TimelineTipsX}+350-(350/(${pvar:TimelineTipsAdvanceTime}*1000))*${_sincems}+165-50" AuraOTickExpression="min(${_sincems}/3000*100,100)" AuraTTLTickExpression="${pvar:TimelineTipsAdvanceTime}-${_since}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="Aura">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${pvar:TimelineTipsIconcircular}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" AuraImageMode="Zoom" AuraName="TimelineTips_Songs_${tvar:TimelineTips[2][${line}]}_${tvar:TimelineTips[1][${line}]}" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TimelineTips/${tvar:TimelineTips[2][${line}]}.png" AuraXIniExpression="${pvar:TimelineTipsX}" AuraYIniExpression="${pvar:TimelineTipsY}+78" AuraWIniExpression="50" AuraHIniExpression="50" AuraOIniExpression="100" AuraXTickExpression="${pvar:TimelineTipsX}+350-(350/(${pvar:TimelineTipsAdvanceTime}*1000))*${_sincems}+165-50" AuraOTickExpression="min(${_sincems}/3000*100,100)" AuraTTLTickExpression="${pvar:TimelineTipsAdvanceTime}-${_since}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="Aura">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${pvar:TimelineTipsIconcircular}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" AuraImageMode="Zoom" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="Black" TextAuraName="TimelineTips_Songs_${tvar:TimelineTips[2][${line}]}_${tvar:TimelineTips[1][${line}]}_Text" TextAuraExpression="${tvar:TimelineTips[2][${line}]}" TextAuraXIniExpression="${pvar:TimelineTipsX}" TextAuraYIniExpression="${pvar:TimelineTipsY}+78+44" TextAuraWIniExpression="50" TextAuraHIniExpression="25" TextAuraOIniExpression="100" TextAuraXTickExpression="${pvar:TimelineTipsX}+350-(350/(${pvar:TimelineTipsAdvanceTime}*1000))*${_sincems}+165-50" TextAuraOTickExpression="min(${_sincems}/3000*100,100)" TextAuraTTLTickExpression="${pvar:TimelineTipsAdvanceTime}-${_since}" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" AuraImageMode="Zoom" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="Black" TextAuraName="TimelineTips_Songs_${tvar:TimelineTips[2][${line}]}_${tvar:TimelineTips[1][${line}]}_Text" TextAuraExpression="${tvar:TimelineTips[2][${line}]}" TextAuraXIniExpression="${pvar:TimelineTipsX}" TextAuraYIniExpression="${pvar:TimelineTipsY}+78+44" TextAuraWIniExpression="50" TextAuraHIniExpression="25" TextAuraOIniExpression="100" TextAuraXTickExpression="${pvar:TimelineTipsX}+350-(350/(${pvar:TimelineTipsAdvanceTime}*1000))*${_sincems}+165-50" TextAuraOTickExpression="min(${_sincems}/3000*100,100)" TextAuraTTLTickExpression="${pvar:TimelineTipsAdvanceTime}-${_since}" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="TextAura">
+              <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="df5680ba-3063-4519-b0e5-0bf430fc1fc5" TriggerText="${tvar:TimelineTips[3][${line}]}" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="df5680ba-3063-4519-b0e5-0bf430fc1fc5" TriggerText="${tvar:TimelineTips[3][${line}]}" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:${numeric:${line}+1}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][${numeric:${line}+1}]}-${tvar:TimelineTips[1][${line}]}}*1000">
+              <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:${numeric:${line}+1}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][${numeric:${line}+1}]}-${tvar:TimelineTips[1][${line}]}}*1000">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][${numeric:${line}+1}]}" ExpressionTypeL="String" ExpressionR=".+" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
@@ -184,6 +192,10 @@
             <Conditions />
           </Action>
           <Action OrderNumber="6" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="TimelineTipsTTSAdvanceTime" VariableExpression="4" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="TTS提前X秒播读" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="7" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="TimelineTipsIconcircular" VariableExpression="1" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="圆形ICON" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
