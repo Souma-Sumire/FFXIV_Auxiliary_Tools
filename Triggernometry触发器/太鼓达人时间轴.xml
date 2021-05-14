@@ -97,7 +97,7 @@
           </Trigger>
           <Trigger Enabled="true" Source="None" Name="3. For" Id="c45218a2-3f0e-4825-8e0c-83a240edf10e" RegularExpression="^Line:(?&lt;line&gt;.+)$">
             <Actions>
-              <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="TimelineTips_Songs_${tvar:TimelineTips[2][${line}]}_${tvar:TimelineTips[1][${line}]}" AuraImage="D:\Github\FFXIV_Auxiliary_Tools\screenshots\TimelineTips\${tvar:TimelineTips[2][${line}]}.png" AuraXIniExpression="${pvar:TimelineTipsX}" AuraYIniExpression="${pvar:TimelineTipsY}+78" AuraWIniExpression="50" AuraHIniExpression="50" AuraOIniExpression="100" AuraXTickExpression="${pvar:TimelineTipsX}+350-(350/(${pvar:TimelineTipsAdvanceTime}*1000))*${_sincems}+165-50" AuraOTickExpression="min(${_sincems}/3000*100,100)" AuraTTLTickExpression="${pvar:TimelineTipsAdvanceTime}-${_since}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="Aura">
+              <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="TimelineTips_Songs_${tvar:TimelineTips[2][${line}]}_${tvar:TimelineTips[1][${line}]}" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TimelineTips/${tvar:TimelineTips[2][${line}]}.png" AuraXIniExpression="${pvar:TimelineTipsX}" AuraYIniExpression="${pvar:TimelineTipsY}+78" AuraWIniExpression="50" AuraHIniExpression="50" AuraOIniExpression="100" AuraXTickExpression="${pvar:TimelineTipsX}+350-(350/(${pvar:TimelineTipsAdvanceTime}*1000))*${_sincems}+165-50" AuraOTickExpression="min(${_sincems}/3000*100,100)" AuraTTLTickExpression="${pvar:TimelineTipsAdvanceTime}-${_since}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -135,6 +135,28 @@
             </Condition>
             <Conditions />
           </Trigger>
+          <Trigger Enabled="true" Name="Shutdown" Id="818fea9d-978b-43a8-9d7b-c1190e20f76e" RegularExpression=".{14} 00:0038:taiko$">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="df5680ba-3063-4519-b0e5-0bf430fc1fc5" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" AuraOp="DeactivateAuraRegex" AuraImageMode="Zoom" AuraName="TimelineTips_.+" AuraImage="D:\Github\FFXIV_Auxiliary_Tools\screenshots\TimelineTips\${tvar:TimelineTips[2][${line}]}.png" AuraXIniExpression="${pvar:TimelineTipsX}" AuraYIniExpression="${pvar:TimelineTipsY}+78" AuraWIniExpression="50" AuraHIniExpression="50" AuraOIniExpression="100" AuraXTickExpression="${pvar:TimelineTipsX}+350-(350/(${pvar:TimelineTipsAdvanceTime}*1000))*${_sincems}+165-50" AuraOTickExpression="min(${_sincems}/3000*100,100)" AuraTTLTickExpression="${pvar:TimelineTipsAdvanceTime}-${_since}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="Aura">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="TimelineTips_.+" TextAuraFontName="宋体" ActionType="TextAura">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
         </Triggers>
       </Folder>
     </Folders>
@@ -169,7 +191,7 @@
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
       </Trigger>
-      <Trigger Enabled="true" Name="README" Id="52829279-8fda-4a0e-88bb-b8a085e1f327" RegularExpression="" Description="使用步骤&#xD;&#xA;&#xD;&#xA;1. 在设置中指定你的本地谱面路径，编写你的csv格式&quot;乐曲&quot;。&#xD;&#xA;&#xD;&#xA;2. &quot;/e taiko test&quot; 读取TEST谱面来预先调整界面位置 &#xD;&#xA;&#xD;&#xA;3. &quot;/e taiko e9s&quot; 读取谱面，倒计时开怪！&quot;">
+      <Trigger Enabled="true" IsReadme="True" Name="README" Id="52829279-8fda-4a0e-88bb-b8a085e1f327" RegularExpression="" Description="使用步骤&#xD;&#xA;&#xD;&#xA;1. 在设置中指定你的本地谱面路径，编写你的csv格式&quot;乐曲&quot;。&#xD;&#xA;&#xD;&#xA;&quot;乐曲&quot;格式&#xD;&#xA;&#xD;&#xA;    A列        B列        C列&#xD;&#xA;[+战斗时间] [技能全名] [TTS(可选)]&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;保存后记得关闭。&#xD;&#xA;&#xD;&#xA;然后比如你保存的是“H2专用.csv”。到游戏中则输入&quot;/e taiko H2专用&quot;来读取&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;2. &quot;/e taiko test&quot; 读取TEST谱面来测试界面位置…&#xD;&#xA;&#xD;&#xA;3. &quot;/e taiko [谱面名]&quot; 读取谱面 (不包括中括号)&#xD;&#xA;&#xD;&#xA;4. 倒计时开怪&#xD;&#xA;&#xD;&#xA;5. &quot;/e taiko&quot; 关闭界面。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;技能图标只提供了常用的88个技能，如有进阶需要，请自行修改。">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
