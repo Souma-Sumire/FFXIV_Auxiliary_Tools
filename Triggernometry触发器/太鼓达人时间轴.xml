@@ -49,6 +49,7 @@
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="1. Load Songs" Id="767ac43d-933d-4288-aa0a-ee2d7e2fbe94" RegularExpression="^.{14} 00:0038:(太鼓(达人)?|taiko|timeline)[ :](?&lt;fileName&gt;.+)$">
             <Actions>
@@ -130,6 +131,7 @@
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="2. Count Down" Id="fa8e82f9-80bf-44d4-89b8-8b8cff73bac3" RegularExpression="^.{14} 00:(?:00b9|0139):距离战斗开始还有(?&lt;time&gt;..?)秒！ （">
             <Actions>
@@ -186,6 +188,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
               <ConditionSingle Enabled="true" ExpressionL="${var:TimelineTipsLoaded}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Source="None" Name="3. For" Id="c45218a2-3f0e-4825-8e0c-83a240edf10e" RegularExpression="^Line:(?&lt;line&gt;.+)$">
             <Actions>
@@ -213,16 +216,19 @@
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Source="None" Name="4. TTS." Id="df5680ba-3063-4519-b0e5-0bf430fc1fc5" RegularExpression="^(?&lt;tts&gt;.+)$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="${tts}" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="(${pvar:TimelineTipsAdvanceTime}-${pvar:TimelineTipsTTSAdvanceTime})*1000">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${pvar:TimelineTipsTTSOn}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="StringEqualNocase" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="0. UserClose" Id="818fea9d-978b-43a8-9d7b-c1190e20f76e" RegularExpression=".{14} 00:0038:(太鼓(达人)?|taiko|timeline)$">
             <Actions>
@@ -260,6 +266,7 @@
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="6. Pong!" Id="49eed184-878c-4ac2-b8ec-d73a944aae93" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;caster&gt;[^:]+?):([^:]{1,4}):(?&lt;skillName&gt;[^:]+?):">
             <Actions>
@@ -288,6 +295,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${caster}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               <ConditionSingle Enabled="true" ExpressionL="TimelineTips_NextAction" ExpressionTypeL="String" ExpressionR="${skillName}" ExpressionTypeR="String" ConditionType="ListContains" />
             </Condition>
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Source="None" Name="5. Next Pong!" Id="28ac7c58-71ee-4df4-a48c-ec115bbcc6f3" RegularExpression="^(?&lt;pong&gt;.+)$">
             <Actions>
@@ -313,6 +321,7 @@
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="2.5 Cancel Count Down" Id="fb62d2bd-7f41-4eb6-9a87-b519c8d326c7" RegularExpression=".{14} 00:00b9:.+取消了战斗开始倒计时。">
             <Actions>
@@ -350,7 +359,7 @@
     <Triggers>
       <Trigger Enabled="true" Source="None" Name="* 初始化&amp;设置" Id="112ad4b3-c74f-4fd5-8b5f-03e909bf65a5" RegularExpression="" EditAutofire="True">
         <Actions>
-          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="TimelineTipsPath" VariableExpression="D:\Github\FFXIV_Auxiliary_Tools\csv\taikoSongs" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="【初次使用改这里】你的本地谱面路径" DescriptionOverride="True">
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="TimelineTipsPath" VariableExpression="E:\Downloads\FFXIV_Auxiliary_Tools-master\csv\taikoSongs" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="【初次使用改这里】你的本地谱面路径" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
@@ -392,10 +401,12 @@
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
-      <Trigger Enabled="true" IsReadme="True" Name="README" Id="52829279-8fda-4a0e-88bb-b8a085e1f327" RegularExpression="" Description="使用步骤&#xD;&#xA;&#xD;&#xA;1. 在&quot;* 初始化&amp;设置&quot;中指定你的本地谱面路径，编写你的csv格式&quot;乐曲&quot;。&#xD;&#xA;&#xD;&#xA;&quot;乐曲&quot;格式&#xD;&#xA;    A列           B列    &#xD;&#xA;[正数战斗时间] [技能全名]&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;保存后一定要关闭文件才能进行下一步的导入。&#xD;&#xA;&#xD;&#xA;3. &quot;/e taiko [谱面名]&quot; 读取谱面。&#xD;&#xA;然后比如谱面是“E9S.csv”。到游戏中则输入&quot;/e taiko E9S&quot;来读取（严格区分大小写）。&#xD;&#xA;&#xD;&#xA;4. 倒计时开怪&#xD;&#xA;&#xD;&#xA;5. &quot;/e taiko&quot; 关闭界面。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&quot;/e taiko test&quot; 可读取TEST谱面来进行测试。&#xD;&#xA;在&quot;TTSContrastive.csv&quot;中可设置对应TTS内容。">
+      <Trigger Enabled="true" IsReadme="True" Name="README" Id="52829279-8fda-4a0e-88bb-b8a085e1f327" RegularExpression="" Description="使用步骤&#xD;&#xA;&#xD;&#xA;1. 在&quot;* 初始化&amp;设置&quot;中指定你的本地谱面路径&#xD;&#xA;&#xD;&#xA;2. 调整太鼓的位置&#xD;&#xA;&#xD;&#xA;3. &quot;/e taiko [谱面名]&quot; 读取谱面。&#xD;&#xA;然后比如谱面是“E9S.csv”。到游戏中则输入&quot;/e taiko E9S&quot;来读取（严格区分大小写）。&#xD;&#xA;&#xD;&#xA;4. 倒计时开怪&#xD;&#xA;&#xD;&#xA;5. &quot;/e taiko&quot; 关闭界面。&#xD;&#xA;&#xD;&#xA;-----------------------------------------------&#xD;&#xA;自定义谱面：在谱面路径下创建csv文件，内容如下：&#xD;&#xA;    A列           B列    &#xD;&#xA;[正数战斗时间] [技能全名]&#xD;&#xA;&#xD;&#xA;-----------------------------------------------&#xD;&#xA;自定义TTS：编辑&quot;TTSContrastive.csv&quot;">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
