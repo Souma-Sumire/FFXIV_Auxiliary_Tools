@@ -2,12 +2,63 @@
 <TriggernometryExport Version="1">
   <ExportedFolder Id="e0b98d3e-e48f-4078-b886-b0df8d4f9444" Name="回蓝/醒梦 3秒监控" Enabled="true">
     <Folders>
-      <Folder Id="6287d10f-5cd8-43e5-a675-4b1983b3ba32" Name="Lucid Dreaming" Enabled="true">
-        <Folders />
+      <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="2a942fb6-6acb-4da7-922b-42e9b56eecc1" Name="Tick" Enabled="true">
+        <Folders>
+          <Folder FFXIVJobFilter="16777216" Id="6287d10f-5cd8-43e5-a675-4b1983b3ba32" Name="醒梦回蓝" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="26: NetworkStatusEffects" Id="105cd123-24a2-41bb-b427-f93ef5dcfb6a" RegularExpression="^.{14} 26:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
+                <Actions>
+                  <Action OrderNumber="1" AuraName="BLMMPPosition26" AuraImage="https://i.loli.net/2021/05/19/I3LtxQsp9mnSy5z.png" AuraXIniExpression="${_imageaura[BLMMPPosition26BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition26BG].y}" AuraWIniExpression="${_imageaura[BLMMPPosition26BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition26BG].h}" AuraOIniExpression="100" AuraWTickExpression="((${_systemtimems}-${_timestampms})%3000)/3000*${_imageaura[BLMMPPosition26BG].w}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="BLM_MP" VariableExpression="${_ffxiventity[${_ffxivplayer}].currentmp}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="SystemBeep">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${mp}-${var:BLM_MP}" ExpressionTypeL="Numeric" ExpressionR="500" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="15: NetworkAbility" Id="eb8d8b8d-7111-40b9-baac-aa42db45e356" RegularExpression="^.{14} 15:.{8}:(?&lt;caster&gt;[^:]+?):[^:]+?:(?:[^:]*?:){31}(?&lt;mp&gt;[^:]+?):">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="BLM_MP" VariableExpression="${_ffxiventity[${_ffxivplayer}].currentmp}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${caster}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="27: NetworkUpdateHP" Id="2aabf66b-f2f4-4a8e-ac90-e85dd7831db3" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="BLM_MP" VariableExpression="${_ffxiventity[${_ffxivplayer}].currentmp}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
         <Triggers>
-          <Trigger Enabled="false" Name="NetworkStatusEffects" Id="105cd123-24a2-41bb-b427-f93ef5dcfb6a" RegularExpression="^.{14} 26:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
+          <Trigger Enabled="true" Name="3秒回蓝" Id="d0a5280c-ce8d-4dfb-ab78-2031c1e275e0" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
             <Actions>
-              <Action OrderNumber="1" AuraName="BLMMPPosition26" AuraImage="https://i.loli.net/2021/05/19/I3LtxQsp9mnSy5z.png" AuraXIniExpression="${_imageaura[BLMMPPosition26BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition26BG].y}" AuraWIniExpression="${_imageaura[BLMMPPosition26BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition26BG].h}" AuraOIniExpression="100" AuraWTickExpression="((${_systemtimems}-${_timestampms}-20)%3000)/3000*${_imageaura[BLMMPPosition26BG].w}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+              <Action OrderNumber="1" AuraName="BLMMPPosition27" AuraImage="https://i.loli.net/2021/04/22/j4YFlKMe8vgb6us.png" AuraXIniExpression="${_imageaura[BLMMPPosition27BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition27BG].y}" AuraWIniExpression="${_imageaura[BLMMPPosition27BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition27BG].h}" AuraOIniExpression="100" AuraWTickExpression="((${_systemtimems}-${_timestampms})%3000)/3000*${_imageaura[BLMMPPosition27BG].w}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -15,69 +66,6 @@
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="BLM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="${mp}" ExpressionTypeL="Numeric" ExpressionR="${var:BLM_MP}" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-            </Condition>
-            <Conditions />
-          </Trigger>
-          <Trigger Enabled="true" Source="FFXIVNetwork" Name="First Lucid Dreaming" Id="aa763e29-3098-46d3-9cb9-6c76c08d93e6" RegularExpression="^26\|[^\|]+?\|4b4\|[^\|]+?\|21\.00\|.{8}\|(?&lt;name&gt;[^\|]+?)\|">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="105cd123-24a2-41bb-b427-f93ef5dcfb6a" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="aa763e29-3098-46d3-9cb9-6c76c08d93e6" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="105cd123-24a2-41bb-b427-f93ef5dcfb6a" ActionType="Trigger" ExecutionDelayExpression="21000">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="eb8d8b8d-7111-40b9-baac-aa42db45e356" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-            </Condition>
-            <Conditions />
-          </Trigger>
-          <Trigger Enabled="true" Name="Actor Control Lines" Id="831f644f-3666-4e7c-b68f-7f2bdf08b6ca" RegularExpression="^.{14} 21:.{8}:400000(0[16]|1[026])|^.{14} 0C:Player Stats: 25:" PeriodRefire="Deny" RefirePeriodExpression="5000">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="aa763e29-3098-46d3-9cb9-6c76c08d93e6" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="105cd123-24a2-41bb-b427-f93ef5dcfb6a" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="eb8d8b8d-7111-40b9-baac-aa42db45e356" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="aa763e29-3098-46d3-9cb9-6c76c08d93e6" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-              <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="BLM_MP" VariableExpression="0" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Trigger>
-          <Trigger Enabled="true" Name="Cast" Id="eb8d8b8d-7111-40b9-baac-aa42db45e356" RegularExpression="^.{14} 15:.{8}:(?&lt;caster&gt;[^:]+?):[^:]+?:(?:[^:]*?:){31}(?&lt;mp&gt;[^:]+?):">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetString" VariableName="BLM_MP" VariableExpression="${mp}-800" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${caster}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
             </Condition>
             <Conditions />
           </Trigger>
@@ -87,11 +75,11 @@
     <Triggers>
       <Trigger Enabled="true" Name="* 界面位置" Id="15264b3e-17e2-45da-acc7-5f15eb0d5e18" RegularExpression="^.{14} 0C:Player Stats: 25:" EditAutofire="True">
         <Actions>
-          <Action OrderNumber="1" AuraName="BLMMPPosition27BG" AuraImage="https://i.loli.net/2021/04/22/Lbw1gABk7WVEqKc.png" AuraXIniExpression="935" AuraYIniExpression="1036" AuraWIniExpression="148" AuraHIniExpression="14" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" Description="蓝条位置" DescriptionOverride="True">
+          <Action OrderNumber="1" AuraName="BLMMPPosition27BG" AuraImage="https://i.loli.net/2021/04/22/Lbw1gABk7WVEqKc.png" AuraXIniExpression="935" AuraYIniExpression="1036" AuraWIniExpression="148" AuraHIniExpression="14" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" Description="回蓝（在这里改X与Y坐标）" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="2" AuraName="BLMMPPosition26BG" AuraImage="https://i.loli.net/2021/04/22/Lbw1gABk7WVEqKc.png" AuraXIniExpression="${_imageaura[BLMMPPosition27BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition27BG].y}-14" AuraWIniExpression="${_imageaura[BLMMPPosition27BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition27BG].h}" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="(Dont't touch)" DescriptionOverride="True">
+          <Action OrderNumber="2" AuraName="BLMMPPosition26BG" AuraImage="https://i.loli.net/2021/04/22/Lbw1gABk7WVEqKc.png" AuraXIniExpression="${_imageaura[BLMMPPosition27BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition27BG].y}-14" AuraWIniExpression="${_imageaura[BLMMPPosition27BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition27BG].h}" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="醒梦（不需要改坐标，放在的意义是如果你不需要监控醒梦可以把它关掉）" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
@@ -99,22 +87,13 @@
         <Condition Enabled="false" Grouping="Or" />
         <Conditions />
       </Trigger>
-      <Trigger Enabled="true" Name="MP" Id="d0a5280c-ce8d-4dfb-ab78-2031c1e275e0" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
-        <Actions>
-          <Action OrderNumber="1" AuraName="BLMMPPosition27" AuraImage="https://i.loli.net/2021/04/22/j4YFlKMe8vgb6us.png" AuraXIniExpression="${_imageaura[BLMMPPosition27BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition27BG].y}" AuraWIniExpression="${_imageaura[BLMMPPosition27BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition27BG].h}" AuraOIniExpression="100" AuraWTickExpression="((${_systemtimems}-${_timestampms})%3000-20)/3000*${_imageaura[BLMMPPosition27BG].w}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
-            <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
-          </Action>
-        </Actions>
-        <Condition Enabled="true" Grouping="And">
-          <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].job}" ExpressionTypeL="String" ExpressionR="BLM" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-        </Condition>
-        <Conditions />
-      </Trigger>
       <Trigger Enabled="true" Name="Clear" Id="bfa5e6e1-4b2f-4361-bb85-7988c5f3f1b0" RegularExpression="^.{14} 0C:Player Stats: (.+?):">
         <Actions>
           <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" AuraImageMode="StretchImage" AuraName="^BLMMPPosition.+" AuraImage="https://i.loli.net/2021/04/22/Lbw1gABk7WVEqKc.png" AuraXIniExpression="342" AuraYIniExpression="370" AuraWIniExpression="148" AuraHIniExpression="13" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" VariableName="BLM_MP" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
