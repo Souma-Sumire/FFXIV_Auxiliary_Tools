@@ -6,7 +6,10 @@
 addOverlayListener('EnmityTargetData', (e) => update(e));
 startOverlayEvents();
 var Name2Dictionaries = {
+    "鬼哭队调查队长": "说明文字",
     "木人": "歪比歪比",
+    "地宫死亡鼠": "视觉感知",
+    "地宫羚羊": "视觉感知",
     "地宫黄蜂": "靠近感知",
     "地宫元精": "靠近感知",
     "地宫黄蜂": "靠近感知",
@@ -118,24 +121,21 @@ var Name2Dictionaries = {
     "爆弹怪教父": " 杀死蓝色爆弹怪(治疗爆弹怪)并把红色爆弹怪(熔岩爆弹怪)打到boss边。注意如果你被地面爆破打到或蓝色爆弹怪炸到，你会被冻住，你没有魔陶器强化防御的话基本就死了。",
     "地宫宁基南加": "靠近感知",
     "地宫南加": "靠近感知",
-
 }
 
 function update(e)
 {
-    var p = document.getElementById("p");
     // p.innerText = (`type：${e.type}|Target：${e.Target}|Focus：${e.Focus}|Hover：${e.Hover}|TargetOfTarget：${e.TargetOfTarget}|Entries：${e.Entries}'}`);
-    //if (typeof(Name2Dictionaries[e.Target.Name]) == "undefined")
-    //{
-    //p.innerText = e.Target.Name;
-    //}
-    //else
-    //{
-    //p.innerText = Name2Dictionaries[e.Target.Name][0];
-    //}
-
-    //p.innerText = Name2Dictionaries[e.Target.Name];
-    p.innerText = (Name2Dictionaries[e.Target.Name] == undefined) ? '...' : Name2Dictionaries[e.Target.Name];
-
-
+    let p1 = document.getElementById("TargetName");
+    let p2 = document.getElementById("TargetProperties");
+    if (e.Target == null)
+    {
+        p1.innerText = '';
+        p2.innerText = '';
+    }
+    else
+    {
+        p1.innerText = e.Target.Name;
+        p2.innerText = (Name2Dictionaries[e.Target.Name] == undefined) ? '' : Name2Dictionaries[e.Target.Name];
+    }
 }
