@@ -13,39 +13,55 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="Skill" Id="57021fe6-9ec1-4cdf-8c7d-c13b028a06b2" RegularExpression="^.{14} 1[56]:.{8}:([^:]+?):(.{1,4}):">
+          <Trigger Enabled="true" Name="Skill" Id="57021fe6-9ec1-4cdf-8c7d-c13b028a06b2" RegularExpression="^.{14} 1[56]:(?&lt;id&gt;.{8}):[^:]+?:(?&lt;skill&gt;.{1,4}):">
             <Actions>
-              <Action OrderNumber="1" JsonCacheRequest="True" JsonEndpointExpression="https://cafemaker.wakingsands.com/Action/${numeric:hex2dec($2)}?columns=ID,Icon,ActionCategoryTargetID" JsonFiringExpression="AT_SkillJSON ID:${_jsonresponse[ID]} Icon:${_jsonresponse[Icon]} Category:${_jsonresponse[ActionCategoryTargetID]}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="GenericJson">
+              <Action OrderNumber="1" JsonCacheRequest="True" JsonEndpointExpression="https://cafemaker.wakingsands.com/Action/${numeric:hex2dec(${skill})}?columns=ID,Icon,ActionCategoryTargetID" JsonFiringExpression="AT_SkillJSON ID:${_jsonresponse[ID]} Icon:${_jsonresponse[Icon]} Category:${_jsonresponse[ActionCategoryTargetID]}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="GenericJson">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
-              <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="String" ExpressionR="${var:ATST_Tar}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
-              <ConditionSingle Enabled="true" ExpressionL="${numeric:hex2dec($2)}" ExpressionTypeL="Numeric" ExpressionR="7" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${numeric:hex2dec($2)}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${id}" ExpressionTypeL="String" ExpressionR="${var:ATST_Tar}" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+              <ConditionSingle Enabled="true" ExpressionL="${numeric:hex2dec(${skill})}" ExpressionTypeL="Numeric" ExpressionR="7" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${numeric:hex2dec(${skill})}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Name="0038" Id="1d543ad3-97a4-4127-8f9a-c1f0311220e0" RegularExpression="^.{14} 00:0038:目标监控:([^:]+?)(?:晨曦王座|沃仙曦染|宇宙和音|红玉海|萌芽池|神意之地|幻影群岛|拉诺西亚|拂晓之间|龙巢神殿|旅人栈桥|白金幻象|白银乡|神拳痕|潮风亭|琥珀原|柔风海湾|海猫茶屋|延夏|静语庄园|摩杜纳|紫水栈桥|梦羽宝境)?$">
+          <Trigger Enabled="true" Name="0038" Id="1d543ad3-97a4-4127-8f9a-c1f0311220e0" RegularExpression="^.{14} 00:0038:(目标|施法)监控">
             <Actions>
-              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="ATST_Tar" VariableExpression="$1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="ATST_Tar" VariableExpression="${_ffxivparty[${_ffxivplayer}].targetid}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].targetid}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" TextAuraAlignment="BottomRight" TextAuraEffect="Bold" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraOutline="Black" TextAuraName="ATST_TarBg" TextAuraXIniExpression="${var:ATST_X}" TextAuraYIniExpression="${var:ATST_Y}-12*${var:ATST_Scale}-1" TextAuraWIniExpression="(${var:ATST_Speed}*${var:ATST_Time}+(40/62*40))*${var:ATST_Scale}" TextAuraHIniExpression="40*${var:ATST_Scale}-1" TextAuraOIniExpression="${var:ATST_BgOpacity}" TextAuraFontName="等线" ActionType="TextAura" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].targetid}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d85aa134-43ad-459a-9c52-23c402c297ff" TriggerForce="regexp" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${_ffxivplayer}].targetid}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="Clear" Id="d85aa134-43ad-459a-9c52-23c402c297ff" RegularExpression="^.{14} 00:003[89]:(取消监控|进入了休息区。)$">
+          <Trigger Enabled="true" Source="None" Name="Clear" Id="d85aa134-43ad-459a-9c52-23c402c297ff" RegularExpression="">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TextAuraOp="DeactivateAura" TextAuraAlignment="BottomRight" TextAuraEffect="Bold" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraOutline="Black" TextAuraName="ATST_TarBg" TextAuraXIniExpression="${var:ATST_X}" TextAuraYIniExpression="${var:ATST_Y}-12*${var:ATST_Scale}-1" TextAuraWIniExpression="(${var:ATST_Speed}*${var:ATST_Time}+(40/62*40))*${var:ATST_Scale}" TextAuraHIniExpression="40*${var:ATST_Scale}-1" TextAuraOIniExpression="${var:ATST_BgOpacity}" TextAuraFontName="等线" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="UnsetRegex" VariableName="ATST_Tar" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" AuraOp="DeactivateAuraRegex" AuraName="ATST.*" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -80,7 +96,7 @@
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" Source="None" IsReadme="True" Name="使用说明（双击打开描述）" Id="e9430842-04a0-468f-8599-faf28e65293d" RegularExpression="" Description="宏： &#xD;&#xA;&#xD;&#xA;/e 目标监控:&lt;t&gt;&#xD;&#xA;&#xD;&#xA;取消显示：&#xD;&#xA;&#xD;&#xA;/e 取消监控">
+      <Trigger Enabled="true" Source="None" IsReadme="True" Name="使用说明（双击打开描述）" Id="e9430842-04a0-468f-8599-faf28e65293d" RegularExpression="" Description="选中目标，发宏： &#xD;&#xA;&#xD;&#xA;/e 施法监控&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;选自己就是取消监控。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;由于我也不知道为什么的原因，只能对他人使用，不能看自己。">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
