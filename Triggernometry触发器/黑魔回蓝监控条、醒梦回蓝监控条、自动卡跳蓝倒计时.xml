@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="e0b98d3e-e48f-4078-b886-b0df8d4f9444" Name="回蓝/醒梦 3秒监控" Enabled="true">
+  <ExportedFolder Id="e0b98d3e-e48f-4078-b886-b0df8d4f9444" Name="回蓝/醒梦监控 + 自动卡跳蓝" Enabled="true">
     <Folders>
       <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="2a942fb6-6acb-4da7-922b-42e9b56eecc1" Name="Tick" Enabled="true">
         <Folders>
@@ -91,6 +91,10 @@
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
+                      <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" TextAuraEffect="Bold" TextAuraFontSize="24.75" TextAuraName="BLM_FirstIceTimeMs" TextAuraExpression="可以开始打起手了" TextAuraXIniExpression="${_screenwidth}/2-200" TextAuraYIniExpression="${_screenheight}/2-100" TextAuraWIniExpression="400" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
@@ -149,7 +153,7 @@
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" TextAuraEffect="Bold" TextAuraFontSize="24.75" TextAuraName="BLM_FirstIceTimeMs" TextAuraExpression="已自动配置：${numeric:${_systemtimems}-${var:BLM_Start}}" TextAuraXIniExpression="${_screenwidth}/2-200" TextAuraYIniExpression="${_screenheight}/2-100" TextAuraWIniExpression="400" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura">
+                      <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" TextAuraEffect="Bold" TextAuraFontSize="24.75" TextAuraName="BLM_FirstIceTimeMs" TextAuraExpression="已自动配置：${numeric:${_systemtimems}-${var:BLM_Start}}" TextAuraXIniExpression="${_screenwidth}/2-200" TextAuraYIniExpression="${_screenheight}/2-100" TextAuraWIniExpression="400" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -165,7 +169,7 @@
             <Triggers>
               <Trigger Enabled="true" Name="用户宏手动设置进冰时间" Id="b3803816-2379-45d6-a3e3-2e2ed607f58c" RegularExpression="^.{14} 00:0038:手动设置进冰时间 ?(?&lt;time&gt;\d+)">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraEffect="Bold" TextAuraFontSize="24.75" TextAuraName="BLM_FirstIceTimeMs" TextAuraExpression="已手动设置：${time}" TextAuraXIniExpression="${_screenwidth}/2-200" TextAuraYIniExpression="${_screenheight}/2-100" TextAuraWIniExpression="400" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraFontName="微软雅黑" ActionType="TextAura">
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraEffect="Bold" TextAuraFontSize="24.75" TextAuraName="BLM_FirstIceTimeMs" TextAuraExpression="已手动设置：${time}" TextAuraXIniExpression="${_screenwidth}/2-200" TextAuraYIniExpression="${_screenheight}/2-100" TextAuraWIniExpression="400" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -203,13 +207,13 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
-          <Trigger Enabled="false" Name="跳蓝 -&gt; 倒计时" Id="ea8f819c-f9ff-4c6a-9b60-0b8457ba8f6d" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
+          <Trigger Enabled="true" Name="跳蓝 -&gt; 倒计时" Id="ea8f819c-f9ff-4c6a-9b60-0b8457ba8f6d" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
             <Actions>
               <Action OrderNumber="0" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="ea8f819c-f9ff-4c6a-9b60-0b8457ba8f6d" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" NamedCallbackName="DoTextCommand" NamedCallbackParam="/cd ${var:BLM_CountDownTime}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="(3000-(${var:BLM_CountDownTime}*1000+${pvar:BLM_FirstIceTimeMs})%3000+3000-if(${epvar:BLM_CountDownUserAdvance}=1,${pvar:BLM_CountDownUserAdvance},0))%3000" Asynchronous="False">
+              <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" NamedCallbackName="DoTextCommand" NamedCallbackParam="/cd ${var:BLM_CountDownTime}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="(3000-(${var:BLM_CountDownTime}*1000+${pvar:BLM_FirstIceTimeMs})%3000+3000-if(${epvar:BLM_CountDownUserAdvance}=1,${pvar:BLM_CountDownUserAdvance},200))%3000" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
