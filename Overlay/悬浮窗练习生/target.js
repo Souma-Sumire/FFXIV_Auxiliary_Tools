@@ -3,6 +3,7 @@
 //console.log(e.detail.logs[i]);
 //}
 //});
+
 addOverlayListener('EnmityTargetData', (e) => update(e));
 startOverlayEvents();
 var Name2Dictionaries = {
@@ -137,4 +138,8 @@ function update(e)
         t1.innerText = e.Target.Name;
         t2.innerText = (Name2Dictionaries[e.Target.Name] == undefined) ? '' : Name2Dictionaries[e.Target.Name];
     }
+}
+window.onload = function()
+{
+    document.body.hidden = true;
 }
