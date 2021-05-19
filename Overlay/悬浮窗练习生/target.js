@@ -125,17 +125,16 @@ var Name2Dictionaries = {
 
 function update(e)
 {
-    // p.innerText = (`type：${e.type}|Target：${e.Target}|Focus：${e.Focus}|Hover：${e.Hover}|TargetOfTarget：${e.TargetOfTarget}|Entries：${e.Entries}'}`);
-    let p1 = document.getElementById("TargetName");
-    let p2 = document.getElementById("TargetProperties");
+    let t1 = document.getElementById("target-name");
+    let t2 = document.getElementById("target-properties");
     if (e.Target == null)
     {
-        p1.innerText = '';
-        p2.innerText = '';
+        document.body.hidden = true;
     }
     else
     {
-        p1.innerText = e.Target.Name;
-        p2.innerText = (Name2Dictionaries[e.Target.Name] == undefined) ? '' : Name2Dictionaries[e.Target.Name];
+        document.body.hidden = false;
+        t1.innerText = e.Target.Name;
+        t2.innerText = (Name2Dictionaries[e.Target.Name] == undefined) ? '' : Name2Dictionaries[e.Target.Name];
     }
 }
