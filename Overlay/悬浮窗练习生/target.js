@@ -5,7 +5,10 @@
 //});
 
 addOverlayListener('EnmityTargetData', (e) => target(e));
-addOverlayListener('ChangePrimaryPlayer', (e) => test(e));
+addOverlayListener('onZoneChangedEvent', (e) = function(e)
+{
+    console.log("oneZoneChangedEvent:" + e);
+})
 startOverlayEvents();
 var Name2Dictionaries = {
     "鬼哭队调查队长": "说明文字",
@@ -125,11 +128,24 @@ var Name2Dictionaries = {
     "地宫南加": "靠近感知",
 }
 
+window.onload = function()
+{
+    document.body.hidden = true;
+    document.getElementById("btn-test").onclick = btnFunc;
+}
+
+function btnFunc()
+{
+
+    let in_act_combat = Advanced_Combat_Tracker.ActGlobals.oFormActMain.InCombat;
+    console.log(in_act_combat);
+    console.log("click!");
+}
 
 function target(e)
 {
-    let t1 = document.getElementById("target-name");
-    let t2 = document.getElementById("target-properties");
+    let targetName = document.getElementById("target-name");
+    let targetProperties = document.getElementById("target-properties");
     if (e.Target == null)
     {
         document.body.hidden = true;
@@ -137,17 +153,7 @@ function target(e)
     else
     {
         document.body.hidden = false;
-        t1.innerText = e.Target.Name;
-        t2.innerText = (Name2Dictionaries[e.Target.Name] == undefined) ? '' : Name2Dictionaries[e.Target.Name];
+        targetName.innerText = `${e.Target.Name} (${(e.Target.ID).toString(16).toUpperCase()})`;
+        targetProperties.innerText = (Name2Dictionaries[e.Target.Name] == undefined) ? '' : Name2Dictionaries[e.Target.Name];
     }
-}
-
-function test(e)
-{
-    console.log(e);
-}
-
-window.onload = function()
-{
-    document.body.hidden = true;
 }

@@ -5,10 +5,11 @@
       <Folder Id="df09e655-6b33-4dbb-85b8-449bc93b6527" Name="(Don't touch)" Enabled="true">
         <Folders />
         <Triggers>
-          <Trigger Enabled="true" Name="JSON" Id="24947479-fdea-41f1-a434-fa1ab0f351aa" RegularExpression="^AT_SkillJSON ID:(?&lt;ID&gt;.+?) Icon:(?&lt;Icon&gt;.+?) Category:(?&lt;CategoryID&gt;.+?)$">
+          <Trigger Enabled="true" Name="JSON" Id="24947479-fdea-41f1-a434-fa1ab0f351aa" RegularExpression="^AT_SkillJSON ID:(?&lt;ID&gt;.+?) Icon:(?&lt;Icon&gt;.+?) Category:(?&lt;CategoryID&gt;.+?)$" PeriodRefire="Deny" RefirePeriodExpression="100">
             <Actions>
               <Action OrderNumber="1" AuraImageMode="Zoom" AuraName="ATST_Tar_${ID}_${_timestamp}" AuraImage="https://cafemaker.wakingsands.com${Icon}" AuraXIniExpression="${var:ATST_X}" AuraYIniExpression="${var:ATST_Y}-(if(${CategoryID}=4,12,0))*${var:ATST_Scale}" AuraWIniExpression="${var:ATST_Scale}*(40/62*40)*if(${CategoryID}=4,0.75,1)" AuraHIniExpression="${var:ATST_Scale}*(40/62*40)*if(${CategoryID}=4,0.75,1)" AuraOIniExpression="100" AuraXTickExpression="${var:ATST_X}+(${var:ATST_Time}*${var:ATST_Speed}-${_sincems}*(1/${var:ATST_Time})*(${var:ATST_Speed}*${var:ATST_Time}/1000))*${var:ATST_Scale}" AuraOTickExpression="if(${CategoryID}=4,100,${var:ATST_oGCD}*100)" AuraTTLTickExpression="${var:ATST_Time}-${_since}-1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -17,7 +18,6 @@
             <Actions>
               <Action OrderNumber="1" JsonCacheRequest="True" JsonEndpointExpression="https://cafemaker.wakingsands.com/Action/${numeric:hex2dec(${skill})}?columns=ID,Icon,ActionCategoryTargetID" JsonFiringExpression="AT_SkillJSON ID:${_jsonresponse[ID]} Icon:${_jsonresponse[Icon]} Category:${_jsonresponse[ActionCategoryTargetID]}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="GenericJson">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
@@ -26,7 +26,7 @@
               <ConditionSingle Enabled="true" ExpressionL="${numeric:hex2dec(${skill})}" ExpressionTypeL="Numeric" ExpressionR="8" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
             </Condition>
           </Trigger>
-          <Trigger Enabled="true" Name="0038" Id="1d543ad3-97a4-4127-8f9a-c1f0311220e0" RegularExpression="^.{14} 00:0038:(目标|施法)监控">
+          <Trigger Enabled="true" Name="0038" Id="1d543ad3-97a4-4127-8f9a-c1f0311220e0" RegularExpression="^.{14} 00:0038:施法监控$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="ATST_Tar" VariableExpression="${_ffxivparty[${_ffxivplayer}].targetid}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
@@ -53,18 +53,29 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TextAuraOp="DeactivateAura" TextAuraAlignment="BottomRight" TextAuraEffect="Bold" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraOutline="Black" TextAuraName="ATST_TarBg" TextAuraXIniExpression="${var:ATST_X}" TextAuraYIniExpression="${var:ATST_Y}-12*${var:ATST_Scale}-1" TextAuraWIniExpression="(${var:ATST_Speed}*${var:ATST_Time}+(40/62*40))*${var:ATST_Scale}" TextAuraHIniExpression="40*${var:ATST_Scale}-1" TextAuraOIniExpression="${var:ATST_BgOpacity}" TextAuraFontName="等线" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" VariableOp="UnsetRegex" VariableName="ATST_Tar" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" AuraOp="DeactivateAuraRegex" AuraName="ATST.*" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="0038myself" Id="9cfe6132-e5b3-4a0d-860e-0d3aac58ac4c" RegularExpression="^.{14} 00:0038:施法监控自己$">
+            <Actions>
+              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetString" VariableName="ATST_Tar" VariableExpression="${_ffxivparty[${_ffxivplayer}].id}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" LogLevel="-1" TextAuraAlignment="BottomRight" TextAuraEffect="Bold" TextAuraFontSize="9" TextAuraForeground="White" TextAuraBackground="Black" TextAuraOutline="Black" TextAuraName="ATST_TarBg" TextAuraXIniExpression="${var:ATST_X}" TextAuraYIniExpression="${var:ATST_Y}-12*${var:ATST_Scale}-1" TextAuraWIniExpression="(${var:ATST_Speed}*${var:ATST_Time}+(40/62*40))*${var:ATST_Scale}" TextAuraHIniExpression="40*${var:ATST_Scale}-1" TextAuraOIniExpression="${var:ATST_BgOpacity}" TextAuraFontName="等线" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -96,7 +107,7 @@
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" Source="None" IsReadme="True" Name="使用说明（双击打开描述）" Id="e9430842-04a0-468f-8599-faf28e65293d" RegularExpression="" Description="选中目标，发宏： &#xD;&#xA;&#xD;&#xA;/e 施法监控&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;选自己就是取消监控。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;由于我也不知道为什么的原因，只能对他人使用，不能看自己。">
+      <Trigger Enabled="true" Source="None" IsReadme="True" Name="使用说明（双击打开描述）" Id="e9430842-04a0-468f-8599-faf28e65293d" RegularExpression="" Description="选中目标，发宏： &#xD;&#xA;&#xD;&#xA;/e 施法监控&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;选自己就是取消监控。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;如果非要看自己：&#xD;&#xA;&#xD;&#xA;/e 施法监控自己">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
