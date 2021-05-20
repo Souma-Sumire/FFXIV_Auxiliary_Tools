@@ -4,7 +4,8 @@
 //}
 //});
 
-addOverlayListener('EnmityTargetData', (e) => update(e));
+addOverlayListener('EnmityTargetData', (e) => target(e));
+addOverlayListener('ChangePrimaryPlayer', (e) => test(e));
 startOverlayEvents();
 var Name2Dictionaries = {
     "鬼哭队调查队长": "说明文字",
@@ -124,7 +125,8 @@ var Name2Dictionaries = {
     "地宫南加": "靠近感知",
 }
 
-function update(e)
+
+function target(e)
 {
     let t1 = document.getElementById("target-name");
     let t2 = document.getElementById("target-properties");
@@ -139,6 +141,12 @@ function update(e)
         t2.innerText = (Name2Dictionaries[e.Target.Name] == undefined) ? '' : Name2Dictionaries[e.Target.Name];
     }
 }
+
+function test(e)
+{
+    console.log(e);
+}
+
 window.onload = function()
 {
     document.body.hidden = true;
