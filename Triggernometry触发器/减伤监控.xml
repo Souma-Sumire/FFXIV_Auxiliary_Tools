@@ -125,7 +125,7 @@
                         <ConditionSingle Enabled="true" ExpressionL="${Mask}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         <ConditionSingle Enabled="true" ExpressionL="${Mask}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       </ConditionGroup>
-                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,4):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,8):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                       <ConditionGroup Enabled="true" Grouping="Or">
                         <ConditionGroup Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:_AT_NoActionWhenReduction}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
@@ -143,7 +143,7 @@
                         <ConditionSingle Enabled="true" ExpressionL="${Mask}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                         <ConditionSingle Enabled="true" ExpressionL="${Mask}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       </ConditionGroup>
-                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,4):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,8):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionGroup Enabled="true" Grouping="Or">
                         <ConditionGroup Enabled="true" Grouping="And">
                           <ConditionSingle Enabled="true" ExpressionL="${var:_AT_NoActionWhenReduction}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
@@ -156,7 +156,7 @@
                   </Action>
                   <Action OrderNumber="3" NamedCallbackName="DoTextCommand" NamedCallbackParam="/${func:tolower:${var:_AT_技能判定_发送频道}} ${AbilityName}(魔法${numeric:round(hex2dec(${func:substring(0,4):${func:padleft(48,8):${Damage}}})/1000,2)}K)：${var:减伤_鼓舞}${var:减伤_黑夜领域}${var:减伤_天星冲日（夜）}${var:减伤_炽天的幕帘}${var:减伤_雪仇_${CasterName}}${var:减伤_昏乱_${CasterName}}${var:减伤_策动}${var:减伤_防守之桑巴}${var:减伤_行吟}${var:减伤_节制}${var:减伤_命运之轮}${var:减伤_野战治疗阵}${var:减伤_异想的幻光}${var:减伤_圣光幕帘}${var:减伤_武装}${var:减伤_光之心}${var:减伤_摆脱}${var:减伤_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False" Description="魔法(多属性)1" DescriptionOverride="True">
                     <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,4):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,8):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${Mask}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionGroup Enabled="true" Grouping="Or">
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -170,7 +170,7 @@
                   </Action>
                   <Action OrderNumber="4" NamedCallbackName="DoTextCommand" NamedCallbackParam="/${func:tolower:${var:_AT_技能判定_发送频道}} ${AbilityName}(魔法${numeric:round(hex2dec(${func:substring(6,2):${Damage}}${func:substring(0,2):${Damage}}${func:format(System.Int32,&quot;X&quot;):${numeric:hex2dec(${func:substring(2,2):${Damage}})-hex2dec(${func:substring(6,2):${Damage}})}})/1000,2)}K)：${var:减伤_鼓舞}${var:减伤_黑夜领域}${var:减伤_天星冲日（夜）}${var:减伤_炽天的幕帘}${var:减伤_雪仇_${CasterName}}${var:减伤_昏乱_${CasterName}}${var:减伤_策动}${var:减伤_防守之桑巴}${var:减伤_行吟}${var:减伤_节制}${var:减伤_命运之轮}${var:减伤_野战治疗阵}${var:减伤_异想的幻光}${var:减伤_圣光幕帘}${var:减伤_武装}${var:减伤_光之心}${var:减伤_摆脱}${var:减伤_暗黑布道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False" Description="魔法(多属性)2" DescriptionOverride="True">
                     <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,4):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,8):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${Mask}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionGroup Enabled="true" Grouping="Or">
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -184,7 +184,7 @@
                   </Action>
                   <Action OrderNumber="5" NamedCallbackName="DoTextCommand" NamedCallbackParam="/${func:tolower:${var:_AT_技能判定_发送频道}} ${AbilityName}(暗黑${numeric:round(hex2dec(${func:substring(0,4):${func:padleft(48,8):${Damage}}})/1000,2)}K)：${var:减伤_鼓舞}${var:减伤_黑夜领域}${var:减伤_天星冲日（夜）}${var:减伤_炽天的幕帘}${var:减伤_雪仇_${CasterName}}${var:减伤_策动}${var:减伤_防守之桑巴}${var:减伤_行吟}${var:减伤_节制}${var:减伤_命运之轮}${var:减伤_野战治疗阵}${var:减伤_圣光幕帘}${var:减伤_武装}${var:减伤_摆脱}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False" Description="暗黑1" DescriptionOverride="True">
                     <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,4):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,8):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${Mask}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionGroup Enabled="true" Grouping="Or">
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -198,7 +198,7 @@
                   </Action>
                   <Action OrderNumber="6" NamedCallbackName="DoTextCommand" NamedCallbackParam="/${func:tolower:${var:_AT_技能判定_发送频道}} ${AbilityName}(暗黑${numeric:round(hex2dec(${func:substring(6,2):${Damage}}${func:substring(0,2):${Damage}}${func:format(System.Int32,&quot;X&quot;):${numeric:hex2dec(${func:substring(2,2):${Damage}})-hex2dec(${func:substring(6,2):${Damage}})}})/1000,2)}K)：${var:减伤_鼓舞}${var:减伤_黑夜领域}${var:减伤_天星冲日（夜）}${var:减伤_炽天的幕帘}${var:减伤_雪仇_${CasterName}}${var:减伤_策动}${var:减伤_防守之桑巴}${var:减伤_行吟}${var:减伤_节制}${var:减伤_命运之轮}${var:减伤_野战治疗阵}${var:减伤_圣光幕帘}${var:减伤_武装}${var:减伤_摆脱}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False" Description="暗黑2" DescriptionOverride="True">
                     <Condition Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,4):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="hex2dec(${func:substring(4,1):${func:padleft(48,8):${Damage}}})" ExpressionTypeL="Numeric" ExpressionR="4" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionSingle Enabled="true" ExpressionL="${Mask}" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       <ConditionGroup Enabled="true" Grouping="Or">
                         <ConditionGroup Enabled="true" Grouping="And">
@@ -469,19 +469,15 @@
             <Actions>
               <Action OrderNumber="1" VariableOp="SetString" VariableName="_AT_即刻_发送频道bak" VariableExpression="${var:_AT_即刻_发送频道}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False" Description="保存用户设置" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetString" VariableName="_AT_即刻_发送频道" VariableExpression="p" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False" Description="临时改为p频道" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="66518d85-5589-433e-a25d-1898d05c3e6e" TriggerText="[00:00:00.000] 19:${_ffxivplayer} was" TriggerForce="refire,parent,active" ActionType="Trigger" Description="call" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetString" VariableName="_AT_即刻_发送频道" VariableExpression="${var:_AT_即刻_发送频道bak}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="300" Asynchronous="False" Description="复原用户设置" DescriptionOverride="True">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -498,19 +494,15 @@
         <Actions>
           <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_AT_Delay" VariableExpression="1000" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="常用聊天频道：e=默语, p=小队, l1=本地通讯贝1, cwl1=跨服贝1" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="2" VariableOp="SetString" VariableName="_AT_技能判定_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="减伤判定发送到哪个聊天频道中" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="3" VariableOp="SetString" VariableName="_AT_即刻_发送频道" VariableExpression="e" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="即刻CD发送到哪个聊天频道中" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
           <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="_AT_NoActionWhenReduction" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="无有效减伤时不触发（1=是，0=否）" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
