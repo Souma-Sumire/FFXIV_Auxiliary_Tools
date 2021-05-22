@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder FFXIVJobFilter="4294967296" Id="b1e78f73-5573-4d58-9ba8-c848375a86b1" Name="占星术士一键发卡 by Souma" Enabled="true">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4294967296" Id="b1e78f73-5573-4d58-9ba8-c848375a86b1" Name="占星术士一键发卡 by Souma" Enabled="true">
     <Folders>
       <Folder Id="7c245d1f-12f6-42ac-af4a-269264f591f8" Name="(Don't touch)" Enabled="true">
         <Folders>
@@ -240,19 +240,15 @@
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="2" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListDPS" ListVariableExpression="${ptvar:AstAutoCard[9][${row}]}*((${ptvar:AstAutoCard[4][${row}]}-1)/2+1)" ListVariableIndex="${order}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="${ptvar:AstAutoCard[5][${row}]}*250">
+                      <Action OrderNumber="2" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListDPS" ListVariableExpression="${ptvar:AstAutoCard[9][${row}]}*((${ptvar:AstAutoCard[4][${row}]}-1)/2+1)" ListVariableIndex="${order}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="${ptvar:AstAutoCard[5][${row}]}*500">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="3" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListDPS" ListVariableExpression="${ptvar:AstAutoCard[9][${row}]}" ListVariableIndex="${order}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="${ptvar:AstAutoCard[5][${row}]}*250">
+                      <Action OrderNumber="3" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListDPS" ListVariableExpression="${ptvar:AstAutoCard[9][${row}]}*${ptvar:AstAutoCard[7][${row}]}" ListVariableIndex="${order}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="${ptvar:AstAutoCard[5][${row}]}*500">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
-                      <Action OrderNumber="4" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListDPS" ListVariableExpression="${ptvar:AstAutoCard[9][${row}]}*${ptvar:AstAutoCard[7][${row}]}" ListVariableIndex="${order}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="${ptvar:AstAutoCard[5][${row}]}*500">
-                        <Condition Enabled="false" Grouping="Or" />
-                        <Conditions />
-                      </Action>
-                      <Action OrderNumber="5" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListDPS" ListVariableExpression="${ptvar:AstAutoCard[9][${row}]}*${ptvar:AstAutoCard[4][${row}]}" ListVariableIndex="${order}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="(${ptvar:AstAutoCard[6][${row}]}-${ptvar:AstAutoCard[5][${row}]}-3)*1000">
+                      <Action OrderNumber="4" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListDPS" ListVariableExpression="${ptvar:AstAutoCard[9][${row}]}*${ptvar:AstAutoCard[4][${row}]}" ListVariableIndex="${order}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="(${ptvar:AstAutoCard[6][${row}]}-${ptvar:AstAutoCard[5][${row}]}-3)*1000">
                         <Condition Enabled="false" Grouping="Or" />
                         <Conditions />
                       </Action>
@@ -792,7 +788,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Trigger>
-          <Trigger Enabled="false" Name="DEBUG" Id="6979f1b7-8703-4fc1-9a74-67b5c284700e" RegularExpression="">
+          <Trigger Enabled="true" Name="DEBUG" Id="6979f1b7-8703-4fc1-9a74-67b5c284700e" RegularExpression="">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraAlignment="MiddleRight" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug01f" TextAuraExpression="${numeric:round(${lvar:AstTeamListDPS[1]}*${numeric:round(${lvar:AstTeamListCorrection[1]},2)}*${lvar:AstTeamListCardRole[1]},2)}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370+40*1" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraWTickExpression="5+${numeric:round(${lvar:AstTeamListDPS[1]}*${numeric:round(${lvar:AstTeamListCorrection[1]},2)}*${lvar:AstTeamListCardRole[1]},2)}/100" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
