@@ -42,15 +42,16 @@
               </Trigger>
               <Trigger Enabled="true" Name="1. 区域移动" Id="4a7e564b-40fa-499e-9bde-c4517d25195d" RegularExpression="^.{14} 01:">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger">
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="1500">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Sequential="True" Name="1. 小队变动 / 任务开始" Id="7d8287ec-0481-4ef1-b1ff-21cc8de6260c" RegularExpression="^.{14} 0B:|^.{14} 21:.{8}:40000001:" PrevActions="Interrupt">
+              <Trigger Enabled="true" Sequential="True" Name="1. 小队变动" Id="7d8287ec-0481-4ef1-b1ff-21cc8de6260c" RegularExpression="^.{14} 0B:" PrevActions="Interrupt" Description="|^.{14} 21:.{8}:40000001:">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger" Asynchronous="False">
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="1500" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${_incombat}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                     </Condition>
