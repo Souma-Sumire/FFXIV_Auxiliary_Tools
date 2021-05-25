@@ -4,7 +4,7 @@
     <Folders>
       <Folder Id="a2f23f12-afac-4e27-97c1-9d602f3896a8" Name="&lt;&lt; 音乐包：你的原创音乐 &gt;&gt;" Enabled="true">
         <Folders>
-          <Folder Id="8a282d61-f74c-40dd-b009-1b5b415076fd" Name="打鼓相关(可关)" Enabled="true">
+          <Folder Id="8a282d61-f74c-40dd-b009-1b5b415076fd" Name="5. 打鼓相关(可关)" Enabled="true">
             <Folders />
             <Triggers>
               <Trigger Enabled="true" Source="None" Name="5. Next Pong!" Id="28ac7c58-71ee-4df4-a48c-ec115bbcc6f3" RegularExpression="^(?&lt;name&gt;.+)$">
@@ -50,6 +50,294 @@
                   <ConditionSingle Enabled="true" ExpressionL="${caster}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                   <ConditionSingle Enabled="true" ExpressionL="TimelineTips_NextAction" ExpressionTypeL="String" ExpressionR="${skillName}" ExpressionTypeR="String" ConditionType="ListContains" />
                 </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder Id="884477c9-cb7f-4c98-a4d7-d399dc6f1f20" Name="2. 短倒计时" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Source="None" Name="1" Id="fa8a54aa-8dd9-45c7-9e6e-48d03e23b587" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:1,Name:${tvar:TimelineTips[2][1]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][1]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="2" Id="d5a416d6-3977-4024-80ec-b4f6a6790aa8" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:2,Name:${tvar:TimelineTips[2][2]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][2]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="3" Id="a0ba2b4d-14e0-4b96-849e-70669542b5a2" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:3,Name:${tvar:TimelineTips[2][3]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][3]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="4" Id="74c43b47-1435-44c4-9e03-4b94e206bf56" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:4,Name:${tvar:TimelineTips[2][4]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][4]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="5" Id="425814a5-4c5b-4bb4-8387-ebcd64ccf71f" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:5,Name:${tvar:TimelineTips[2][5]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][5]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="6" Id="4abe020d-f81a-43ef-b02a-46800897e69a" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:6,Name:${tvar:TimelineTips[2][6]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][6]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="7" Id="cfe36a55-8a60-4788-b04e-0f7149d78f6d" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:7,Name:${tvar:TimelineTips[2][7]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][7]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="And" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="8" Id="0630f316-c07a-4e0a-b6eb-60e3f496cb9f" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:8,Name:${tvar:TimelineTips[2][8]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][8]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="And" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="9" Id="ad23f543-234f-43af-92aa-a47e8b0f6388" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:9,Name:${tvar:TimelineTips[2][9]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][9]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="And" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="None" Name="A" Id="68cb6a85-e6ed-4051-bb08-0648922e4401" RegularExpression="^(?&lt;time&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:10,Name:${tvar:TimelineTips[2][10]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][10]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
+                    <Condition Enabled="false" Grouping="And" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionGroup Enabled="true" Grouping="And">
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][3]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][2]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][4]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][5]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][10]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][7]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][9]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][6]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][8]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                  </ConditionGroup>
+                </Condition>
+                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -200,13 +488,48 @@
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
-              <Action OrderNumber="12" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:1,Name:${tvar:TimelineTips[2][1]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][1]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
-                <Condition Enabled="false" Grouping="Or" />
+              <Action OrderNumber="12" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="fa8a54aa-8dd9-45c7-9e6e-48d03e23b587" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="13" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="d5a416d6-3977-4024-80ec-b4f6a6790aa8" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="14" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="a0ba2b4d-14e0-4b96-849e-70669542b5a2" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="15" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="74c43b47-1435-44c4-9e03-4b94e206bf56" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="16" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="425814a5-4c5b-4bb4-8387-ebcd64ccf71f" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="17" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="4abe020d-f81a-43ef-b02a-46800897e69a" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="18" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="cfe36a55-8a60-4788-b04e-0f7149d78f6d" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="19" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0630f316-c07a-4e0a-b6eb-60e3f496cb9f" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="20" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="ad23f543-234f-43af-92aa-a47e8b0f6388" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="21" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="68cb6a85-e6ed-4051-bb08-0648922e4401" TriggerText="${time}" ActionType="Trigger" RefireInterrupt="True">
+                <Condition Enabled="false" Grouping="And" />
                 <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
-              <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
               <ConditionSingle Enabled="true" ExpressionL="${var:TimelineTipsLoaded}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
           </Trigger>
