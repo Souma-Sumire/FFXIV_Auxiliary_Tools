@@ -3,7 +3,57 @@
   <ExportedFolder Id="6277bb35-c115-4735-9303-8982c72e4c22" Name="太鼓ウェブ by Souma" Enabled="true">
     <Folders>
       <Folder Id="a2f23f12-afac-4e27-97c1-9d602f3896a8" Name="&lt;&lt; 音乐包：你的原创音乐 &gt;&gt;" Enabled="true">
-        <Folders />
+        <Folders>
+          <Folder Id="8a282d61-f74c-40dd-b009-1b5b415076fd" Name="打鼓相关(可关)" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Source="None" Name="5. Next Pong!" Id="28ac7c58-71ee-4df4-a48c-ec115bbcc6f3" RegularExpression="^(?&lt;name&gt;.+)$">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="TimelineTips_taikoNotes" VariableExpression="${var:TimelineTips_taikoNotes}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="(${pvar:TimelineTipsAdvanceTime}-5)*1000">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" ListVariableOp="Push" ListVariableName="TimelineTips_NextAction" ListVariableExpression="${name}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" ListVariableOp="Push" ListVariableExpressionType="Numeric" ListVariableName="TimelineTips_NextActionTime" ListVariableExpression="${_systemtimems}+5000" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="4" ListVariableOp="PopFirst" ListVariableName="TimelineTips_NextAction" ListVariableTarget="TimelineTips_WhatEver" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="5000+2000">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="5" ListVariableOp="PopFirst" ListVariableName="TimelineTips_NextActionTime" ListVariableExpression="${pong}" ListVariableTarget="TimelineTips_WhatEver" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="6. Pong!" Id="49eed184-878c-4ac2-b8ec-d73a944aae93" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;caster&gt;[^:]+?):([^:]{1,4}):(?&lt;skillName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="200">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" PlaySoundFileExpression="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/taiko/${ptvarrl:TimelineTipsAction[${skillName}][2]}.wav" PlaySoundVolumeExpression="${pvar:TimelineTipsSoundVolume}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="TimelineTips_taikoNotesCorrect" VariableExpression="${var:TimelineTips_taikoNotesCorrect}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" AuraName="TimelineTips_Songs_Pong" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/taiko/normal.png" AuraXIniExpression="${pvar:TimelineTipsX}+148" AuraYIniExpression="${pvar:TimelineTipsY}+42" AuraWIniExpression="31" AuraHIniExpression="37" AuraOIniExpression="100" AuraTTLTickExpression="3-${_since}" LogLevel="-1" MouseX="" MouseY="" TextAuraAlignment="TopLeft" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="Aura">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${numeric:abs(${lvar:TimelineTips_NextActionTime[1]}-${_systemtimems})}" ExpressionTypeL="Numeric" ExpressionR="1000" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="4" AuraName="TimelineTips_Songs_Pong" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/taiko/good.png" AuraXIniExpression="${pvar:TimelineTipsX}+148" AuraYIniExpression="${pvar:TimelineTipsY}+42" AuraWIniExpression="31" AuraHIniExpression="37" AuraOIniExpression="100" AuraTTLTickExpression="3-${_since}" LogLevel="-1" MouseX="" MouseY="" TextAuraAlignment="TopLeft" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="Aura">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${numeric:abs(${lvar:TimelineTips_NextActionTime[1]}-${_systemtimems})}" ExpressionTypeL="Numeric" ExpressionR="1000" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${caster}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="TimelineTips_NextAction" ExpressionTypeL="String" ExpressionR="${skillName}" ExpressionTypeR="String" ConditionType="ListContains" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
         <Triggers>
           <Trigger Enabled="true" Name="0. Battle Over" Id="2b50f13f-d427-4920-835c-c263542eced8" RegularExpression="^.{14} 21:.{8}:400000(03|1[026]):" PeriodRefire="Deny" RefirePeriodExpression="5000">
             <Actions>
@@ -108,39 +158,51 @@
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableName="TimelineTips_taikoNotes" VariableExpression="${pong}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" VariableName="TimelineTips_taikoNotesCorrect" VariableExpression="${pong}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="df5680ba-3063-4519-b0e5-0bf430fc1fc5" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="28ac7c58-71ee-4df4-a48c-ec115bbcc6f3" ActionType="Trigger" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" AuraOp="DeactivateAuraRegex" AuraImageMode="Zoom" AuraName="TimelineTips_Songs_.+" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="宋体" ActionType="Aura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="7" LogLevel="-1" MouseX="" MouseY="" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="TimelineTips_Songs_.+" TextAuraFontName="宋体" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="8" LogLevel="-1" MouseX="" MouseY="" VariableName="TimelineTips_taikoAction" VariableExpression="${pong}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="9" ListVariableName="TimelineTips_NextAction" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="10" ListVariableName="TimelineTips_NextActionTime" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="11" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9.75" TextAuraForeground="White" TextAuraOutline="Black" TextAuraName="TimelineTips_Since" TextAuraExpression="${func:substring(0,2):${func:padleft(48,2):${func:substring(0,1):${numeric:(${_since}-${time})/60}}}}:${func:padleft(48,2):${numeric:round((${_since}-${time})%60)}}" TextAuraXIniExpression="${pvar:TimelineTipsX}+9" TextAuraYIniExpression="${pvar:TimelineTipsY}+70" TextAuraWIniExpression="50" TextAuraHIniExpression="25" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="12" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:1,Name:${tvar:TimelineTips[2][1]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][1]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}}*1000" RefireInterrupt="True">
+              <Action OrderNumber="12" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:1,Name:${tvar:TimelineTips[2][1]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][1]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][1]}+${time}-${pvar:TimelineTipsAdvanceTime}+1}*1000" RefireInterrupt="True">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="And">
@@ -168,17 +230,18 @@
               </Action>
               <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c45218a2-3f0e-4825-8e0c-83a240edf10e" TriggerText="Line:${numeric:${line}+1},Name:${tvar:TimelineTips[2][${numeric:${line}+1}]},Icon:${ptvarrl:TimelineTipsAction[${tvar:TimelineTips[2][${numeric:${line}+1}]}][1]}" ActionType="Trigger" ExecutionDelayExpression="${numeric:${tvar:TimelineTips[1][${numeric:${line}+1}]}-${tvar:TimelineTips[1][${line}]}}*1000">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][${numeric:${line}+1}]}" ExpressionTypeL="String" ExpressionR="^." ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${tvar:TimelineTips[1][${numeric:${line}+1}]}" ExpressionTypeL="String" ExpressionR="" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
                 </Condition>
                 <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Source="None" Name="4. TTS." Id="df5680ba-3063-4519-b0e5-0bf430fc1fc5" RegularExpression="^(?&lt;tts&gt;.+)$">
+          <Trigger Enabled="true" Source="None" Name="4. TTS" Id="df5680ba-3063-4519-b0e5-0bf430fc1fc5" RegularExpression="^(?&lt;tts&gt;.+)$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="${tts}" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="(${pvar:TimelineTipsAdvanceTime}-${pvar:TimelineTipsTTSAdvanceTime})*1000">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
@@ -209,50 +272,6 @@
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
               <Action OrderNumber="8" LogLevel="-1" MouseX="" MouseY="" VariableName="TimelineTipsLoaded" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="6. Pong!" Id="49eed184-878c-4ac2-b8ec-d73a944aae93" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;caster&gt;[^:]+?):([^:]{1,4}):(?&lt;skillName&gt;[^:]+?):" PeriodRefire="Deny" RefirePeriodExpression="200">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" PlaySoundFileExpression="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/taiko/${ptvarrl:TimelineTipsAction[${skillName}][2]}.wav" PlaySoundVolumeExpression="${pvar:TimelineTipsSoundVolume}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="PlaySound">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="TimelineTips_taikoNotesCorrect" VariableExpression="${var:TimelineTips_taikoNotesCorrect}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" AuraName="TimelineTips_Songs_Pong" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/taiko/normal.png" AuraXIniExpression="${pvar:TimelineTipsX}+148" AuraYIniExpression="${pvar:TimelineTipsY}+42" AuraWIniExpression="31" AuraHIniExpression="37" AuraOIniExpression="100" AuraTTLTickExpression="3-${_since}" LogLevel="-1" MouseX="" MouseY="" TextAuraAlignment="TopLeft" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="Aura">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${numeric:abs(${lvar:TimelineTips_NextActionTime[1]}-${_systemtimems})}" ExpressionTypeL="Numeric" ExpressionR="1000" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="4" AuraName="TimelineTips_Songs_Pong" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/%E5%85%B6%E4%BB%96/taiko/good.png" AuraXIniExpression="${pvar:TimelineTipsX}+148" AuraYIniExpression="${pvar:TimelineTipsY}+42" AuraWIniExpression="31" AuraHIniExpression="37" AuraOIniExpression="100" AuraTTLTickExpression="3-${_since}" LogLevel="-1" MouseX="" MouseY="" TextAuraAlignment="TopLeft" TextAuraEffect="Bold" TextAuraFontSize="12" TextAuraForeground="White" TextAuraOutline="Black" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="Aura">
-                <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${numeric:abs(${lvar:TimelineTips_NextActionTime[1]}-${_systemtimems})}" ExpressionTypeL="Numeric" ExpressionR="1000" ExpressionTypeR="Numeric" ConditionType="NumericLessEqual" />
-                </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="And">
-              <ConditionSingle Enabled="true" ExpressionL="${caster}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-              <ConditionSingle Enabled="true" ExpressionL="TimelineTips_NextAction" ExpressionTypeL="String" ExpressionR="${skillName}" ExpressionTypeR="String" ConditionType="ListContains" />
-            </Condition>
-          </Trigger>
-          <Trigger Enabled="true" Source="None" Name="5. Next Pong!" Id="28ac7c58-71ee-4df4-a48c-ec115bbcc6f3" RegularExpression="^(?&lt;name&gt;.+)$">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="TimelineTips_taikoNotes" VariableExpression="${var:TimelineTips_taikoNotes}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="(${pvar:TimelineTipsAdvanceTime}-5)*1000">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" ListVariableOp="Push" ListVariableName="TimelineTips_NextAction" ListVariableExpression="${name}" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" ListVariableOp="Push" ListVariableExpressionType="Numeric" ListVariableName="TimelineTips_NextActionTime" ListVariableExpression="${_systemtimems}+5000" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="4" ListVariableOp="PopFirst" ListVariableName="TimelineTips_NextAction" ListVariableTarget="TimelineTips_WhatEver" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="5000+2000">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="5" ListVariableOp="PopFirst" ListVariableName="TimelineTips_NextActionTime" ListVariableExpression="${pong}" ListVariableTarget="TimelineTips_WhatEver" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
             </Actions>
@@ -295,7 +314,7 @@
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
-          <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="TimelineTipsAdvanceTime" VariableExpression="5" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="鼓音符提前出现时间 (不能比&quot;战斗倒计时+第一个技能&quot;还长！)" DescriptionOverride="True">
+          <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="TimelineTipsAdvanceTime" VariableExpression="10" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="鼓音符提前出现时间 (不能比&quot;战斗倒计时+第一个技能&quot;还长！)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
             <Conditions />
           </Action>
@@ -330,7 +349,7 @@
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" IsReadme="True" Name="README" Id="52829279-8fda-4a0e-88bb-b8a085e1f327" RegularExpression="" Description="使用步骤&#xD;&#xA;&#xD;&#xA;1. 在&quot;* 初始化&amp;设置&quot;中指定你的本地谱面路径&#xD;&#xA;&#xD;&#xA;2. 调整太鼓的位置&#xD;&#xA;&#xD;&#xA;3. &quot;/e taiko [谱面名]&quot; 读取谱面。&#xD;&#xA;然后比如谱面是“E9S.csv”。到游戏中则输入&quot;/e taiko E9S&quot;来读取（严格区分大小写）。&#xD;&#xA;&#xD;&#xA;4. 倒计时开怪&#xD;&#xA;&#xD;&#xA;5. &quot;/e taiko&quot; 关闭界面。&#xD;&#xA;&#xD;&#xA;-----------------------------------------------&#xD;&#xA;自定义谱面：在谱面路径下创建csv文件，内容如下：&#xD;&#xA;    A列           B列    &#xD;&#xA;[正数战斗时间] [技能全名]&#xD;&#xA;&#xD;&#xA;唯一特例：召唤师的“以太契约”技能需手动改为“灵护”（与学者的以太契约名称冲突）&#xD;&#xA;-----------------------------------------------&#xD;&#xA;自定义TTS：编辑&quot;TTSContrastive.csv&quot;">
+      <Trigger Enabled="true" IsReadme="True" Name="README" Id="52829279-8fda-4a0e-88bb-b8a085e1f327" RegularExpression="" Description="使用步骤&#xD;&#xA;&#xD;&#xA;===初次导入===&#xD;&#xA;&#xD;&#xA;1. 在&quot;* 初始化&amp;设置&quot;中指定你的本地谱面路径&#xD;&#xA;&#xD;&#xA;2. 在&quot;* 初始化&amp;设置&quot;中调整太鼓的位置&#xD;&#xA;&#xD;&#xA;===日常使用===&#xD;&#xA;&#xD;&#xA;1. &quot;/e taiko [谱面名]&quot; 读取谱面。&#xD;&#xA;然后比如谱面是“E9S.csv”。到游戏中则输入&quot;/e taiko E9S&quot;来读取&#xD;&#xA;&#xD;&#xA;2. 倒计时开怪（20秒以上）&#xD;&#xA;&#xD;&#xA;3. &quot;/e taiko&quot; 关闭界面。&#xD;&#xA;&#xD;&#xA;===自定义===&#xD;&#xA;&#xD;&#xA;在谱面路径下创建csv文件，内容如下：(&quot;FFXIV_Auxiliary_Tools\csv\taikoSongs\xxxx.csv&quot;)&#xD;&#xA;&#xD;&#xA;    A列           B列    &#xD;&#xA;[正数战斗时间] [技能全名]&#xD;&#xA;&#xD;&#xA;特例：召唤师的“以太契约”技能需手动改为“灵护”（与学者的以太契约名称冲突）&#xD;&#xA;&#xD;&#xA;===自定义TTS===&#xD;&#xA;编辑 &quot;FFXIV_Auxiliary_Tools\csv\taikoSongs\TTSContrastive.csv&quot;">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
