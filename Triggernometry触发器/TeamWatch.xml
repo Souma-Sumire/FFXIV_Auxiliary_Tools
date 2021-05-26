@@ -38,9 +38,21 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="1. 区域移动" Id="4a7e564b-40fa-499e-9bde-c4517d25195d" RegularExpression="^.{14} 01:">
+              <Trigger Enabled="true" Name="1. 区域移动清空" Id="4a7e564b-40fa-499e-9bde-c4517d25195d" RegularExpression="^.{14} 01:">
                 <Actions>
-                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="3000">
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TableVariableName="TeamWatchRecast" TableVariableX="8" TableVariableY="10" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" AuraOp="DeactivateAuraRegex" AuraName="^TeamWatch_.+" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Aura" Description="(Don't touch)">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="8.25" TextAuraName="_debug_p.+" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" AuraOp="DeactivateAuraRegex" LogLevel="-1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^TeamWatch_.+" TextAuraFontName="宋体" ActionType="TextAura" Description="(Don't touch)">
                     <Condition Enabled="false" Grouping="Or" />
                     <Conditions />
                   </Action>
@@ -56,6 +68,16 @@
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="1. 任务开始" Id="0f9fd31d-eb94-4477-b430-08b5c3f8f17a" RegularExpression="^.{14} 21:.{8}:40000001:">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Trigger>
             </Triggers>
           </Folder>
@@ -423,65 +445,85 @@
         <Actions>
           <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://cdn.jsdelivr.net/gh/Souma-Sumire/FFXIV_Auxiliary_Tools@master/csv/NewTeamWatchWatching.csv" DiskFileOpVar="TeamWatch_Watching" DiskPersist="True" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Description="CSV地址 (修改此项为本地文件可实现自定义，每次改动本地文件后都需要重新进入&quot;* 初始化&amp;设置&quot;点击保存更改）" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchZoom" VariableExpression="1" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="缩放 (整体)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="3" AuraName="TeamWatchPosition" AuraImage="https://gitee.com/soumasumire/FFXIV_Auxiliary_Tools/raw/master/screenshots/TeamWatch.png" AuraXIniExpression="0" AuraYIniExpression="392" AuraWIniExpression="341" AuraHIniExpression="340" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="位置 (改X和Y) (图片仅供参考)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchChinaServer" VariableExpression="1" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="用宏获取小队列表 (国服建议=1,国际服=0) Triggernometry自带的小队排序在国服时好时坏，无法稳定使用，故国服建议使用宏进行获取。" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="5" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchShowTipsText" VariableExpression="1" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="显示屏幕中间的&quot;等待宏触发&quot;的提示文字 (开=1,关=0)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="6" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchLevelNotEnoughIconOpacity" VariableExpression="30" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="等级不足的技能图标不透明度" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="7" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchInterval" VariableExpression="3" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="左右间隔 (同一行图标之间)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="8" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchTopDownPadding" VariableExpression="7" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="上下内边距 (背景)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="9" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchLeftRightPadding" VariableExpression="7" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="左右内边距 (背景)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="10" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchBackgroundOpacity" VariableExpression="50" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="不透明度 (背景)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="11" LogLevel="-1" VariableOp="SetString" VariableName="_TeamWatchBackgroundCustomUrl" VariableExpression="https://i.loli.net/2021/04/20/lZ6cNP8AzgCtBev.png" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="自定义背景图片" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="12" LogLevel="-1" VariableOp="SetNumeric" VariableName="_TeamWatchTTSEnable" VariableExpression="1" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="TTS开关 (开=1,关=0)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="13" LogLevel="-1" VariableOp="SetString" VariableName="_TeamWatchXIVAPI" VariableExpression="https://cafemaker.wakingsands.com/" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="XIVAPI链接（国内建议用默认的咖啡，海外用户可以改成XIVAPI原网址https://xivapi.com/）" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="14" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://cdn.jsdelivr.net/gh/Souma-Sumire/FFXIV_Auxiliary_Tools@master/csv/NewAction.csv" DiskFileOpVar="TeamWatch_Action" DiskPersist="True" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="15" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://cdn.jsdelivr.net/gh/Souma-Sumire/FFXIV_Auxiliary_Tools@master/csv/NewActionReverse.csv" DiskFileOpVar="TeamWatch_ActionReverse" DiskPersist="True" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="16" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://cdn.jsdelivr.net/gh/Souma-Sumire/FFXIV_Auxiliary_Tools@master/csv/NewTeamWatchTTSContrastive.csv" DiskFileOpVar="TeamWatch_TTSContrastive" DiskPersist="True" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="17" VariableOp="SetNumeric" VariableName="_TeamWatchX" VariableExpression="${_imageaura[TeamWatchPosition].x}" VariablePersist="True" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="18" VariableOp="SetNumeric" VariableName="_TeamWatchY" VariableExpression="${_imageaura[TeamWatchPosition].y}" VariablePersist="True" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="19" AuraOp="DeactivateAura" AuraName="TeamWatchPosition" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" ExecutionDelayExpression="1000" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="20" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f00cccdf-1c81-4d19-9b58-8df1bc0c7ebf" TriggerForce="regexp" ActionType="Trigger" ExecutionDelayExpression="5000" Description="(Don't touch)" DescriptionOverride="True">
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivprocid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
             </Condition>
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
