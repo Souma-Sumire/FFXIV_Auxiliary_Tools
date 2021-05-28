@@ -9,27 +9,22 @@
             <Actions>
               <Action OrderNumber="1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e ${tvarrl:ExtremeMacroText[$1][1]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
               <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="拉诺西亚|利姆萨·罗敏萨|黑衣森林|萨纳兰|乌尔达哈现世回廊|薰衣草苗圃|海雾村|狼狱停船场|高脚孤丘|金蝶游乐场|白银乡|库尔札斯|摩杜纳|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|田园郡|神拳痕|黄金港|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海|游末绑|水晶都" ExpressionTypeR="String" ConditionType="RegexMatch" />
             </Condition>
-            <Conditions />
           </Trigger>
           <Trigger Enabled="true" Name="DebugRead" Id="ffe64671-466d-4167-b135-4d68ae167073" RegularExpression="">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" TableVariableName="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="TableVariable">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
               <Action OrderNumber="2" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="D:\Github\宏.csv" DiskFileOpVar="ExtremeMacroText" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" ExecutionDelayExpression="1000" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
-                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
@@ -39,13 +34,11 @@
         <Actions>
           <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://cdn.jsdelivr.net/gh/Souma-Sumire/FFXIV_Auxiliary_Tools@master/Triggernometry%E8%A7%A6%E5%8F%91%E5%99%A8/%E5%89%AF%E6%9C%AC%E5%8F%91%E5%AE%8F%EF%BC%88%E5%8F%91%E6%94%BB%E7%95%A5%EF%BC%89%E5%B7%A5%E5%85%B7/%E5%AE%8F.csv" DiskFileOpVar="ExtremeMacroText" DiskPersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="${eplvar:ExtremeMacroText}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
         </Condition>
-        <Conditions />
       </Trigger>
       <Trigger Enabled="true" Sequential="True" Name="S" Id="fc1a5216-3bad-4ac6-8929-1c91a200ff8e" RegularExpression="^.{14} 00:0038:发宏$">
         <Actions>
@@ -66,14 +59,14 @@
               <ConditionSingle Enabled="true" ExpressionL="${evar:AT_发宏}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
               <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[2].name}" ExpressionTypeL="String" ExpressionR="" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
               <ConditionGroup Enabled="true" Grouping="Not">
-                <ConditionSingle Enabled="true" ExpressionL="${tvarrl:ExtremeMacroText[${_zone}][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                <ConditionSingle Enabled="true" ExpressionL="${ptvarrl:ExtremeMacroText[${_zone}][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
               </ConditionGroup>
             </Condition>
             <Conditions />
           </Action>
           <Action OrderNumber="4" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e 没有找到对应副本宏，可能是没有收录此副本，或网络故障。" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False">
             <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${tvarrl:ExtremeMacroText[${_zone}][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+              <ConditionSingle Enabled="true" ExpressionL="${ptvarrl:ExtremeMacroText[${_zone}][0]}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
             </Condition>
             <Conditions />
           </Action>
@@ -85,44 +78,36 @@
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="格里达尼亚|拉诺西亚|利姆萨·罗敏萨|黑衣森林|萨纳兰|乌尔达哈现世回廊|薰衣草苗圃|海雾村|狼狱停船场|高脚孤丘|金蝶游乐场|白银乡|库尔札斯|摩杜纳|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|田园郡|神拳痕|黄金港|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海|游末绑|水晶都" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
         </Condition>
-        <Conditions />
       </Trigger>
       <Trigger Enabled="true" Name="B" Id="6943d754-1bbd-42b0-8386-d15bcfbc6102" RegularExpression="^.{14} 00:0038:发宏$">
         <Actions>
           <Action OrderNumber="1" LogLevel="-1" VariableName="AT_发宏" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" ExecutionDelayExpression="3000" RefireInterrupt="True">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
       <Trigger Enabled="true" Source="None" IsReadme="True" Name="使用说明（见描述）" Id="9a6eab83-db6b-4b88-992c-b4485d9efc6d" RegularExpression="" Description="使用远程触发器导入时，请勾选“允许触发器操作文件”，并手动右键更新一次触发器，否则将无法使用。&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;1.开启依赖：[鲶鱼精邮差]v1.2+&#xD;&#xA;&#xD;&#xA;2.使用宏 &quot;/e 发宏&quot;&#xD;&#xA;&#xD;&#xA;使用上面的宏，会将当前所在副本的对应喊话到默语频道(仅自己可见)。&#xD;&#xA;如3秒内连打2次宏，则发送到小队频道。&#xD;&#xA;&#xD;&#xA;3.如果任何副本都没有宏，则使用宏 &quot;/e 下载宏&quot;，进行重新下载尝试。">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
       <Trigger Enabled="true" Sequential="True" Name="S2" Id="14a149c4-80e0-45e9-824f-6cc5c405ee65" RegularExpression="^.{14} 00:0038:发宏$">
         <Actions>
           <Action OrderNumber="1" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e 你得先进本啊！&lt;se.11&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="${_zone}" ExpressionTypeL="String" ExpressionR="格里达尼亚|拉诺西亚|利姆萨·罗敏萨|黑衣森林|萨纳兰|乌尔达哈现世回廊|薰衣草苗圃|海雾村|狼狱停船场|高脚孤丘|金蝶游乐场|白银乡|库尔札斯|摩杜纳|龙堡|翻云雾海|阿巴拉提亚云海|魔大陆阿济兹拉|基拉巴尼亚|田园郡|神拳痕|黄金港|红玉海|延夏|太阳神草原|雷克兰德|伊尔美格|珂露西亚|安穆·艾兰|拉凯提卡大森林|黑风海|游末绑|水晶都" ExpressionTypeR="String" ConditionType="RegexMatch" />
         </Condition>
-        <Conditions />
       </Trigger>
       <Trigger Enabled="true" Name="下载宏" Id="7781a0ab-e19f-45cf-b4d6-6e6c32b204f8" RegularExpression="^.{14} 00:0038:下载宏">
         <Actions>
           <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="c918b0fd-f219-4b40-bd47-6a5d68e6bffe" TriggerForce="true" ActionType="Trigger">
             <Condition Enabled="false" Grouping="Or" />
-            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
