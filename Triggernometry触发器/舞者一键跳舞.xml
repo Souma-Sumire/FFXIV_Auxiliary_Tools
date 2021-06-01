@@ -2,258 +2,320 @@
 <TriggernometryExport Version="1">
   <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="137438953472" Id="ff5742b3-0736-46dd-a8c9-f1f789c69dfd" Name="舞娘一键舞步 by Souma" Enabled="true">
     <Folders>
-      <Folder Id="cfd2abbb-fd63-43a1-82b2-ef8cbe38d56f" Name="通用方法" Enabled="true">
-        <Folders />
-        <Triggers>
-          <Trigger Enabled="true" Name="改变快捷栏" Id="0225b380-e46d-4f8e-830c-55570e481453" RegularExpression="^SetHotbar:(?&lt;skill&gt;.+?):(?&lt;num1&gt;\d+):(?&lt;num2&gt;\d+)$">
-            <Actions>
-              <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/hotbar set ${skill} ${num1} ${num2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" Asynchronous="False">
+      <Folder Id="982594f7-ec6e-47b4-bd1f-e980e6961cc1" Name="(Don't Touch)" Enabled="true">
+        <Folders>
+          <Folder Id="b8356b71-7556-407f-84a8-262c31cf178a" Name="Standard Step" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Sequential="True" Name="Gauge" Id="5aeb557f-8beb-4ba0-8767-99499cd95e2f" RegularExpression="^.{14} 1F:.{8}:[^:]+:(?&lt;first&gt;.).+?:.+?(?&lt;second&gt;.):">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_first" VariableExpression="${first}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_second" VariableExpression="${second}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="Reset" Id="f698c61d-c35c-4b69-9330-35ca86156940" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)$|^.{15}21:.{8}:4000001[026]|^.{15}00:0839:(?:“.+”任务开始。|.+ has begun\.|「.+」の攻略を開始した。|“.+”任务结束了。| has ended\.|「.+」の攻略を終了した。)">
-            <Actions>
-              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" ExecutionDelayExpression="500" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF2}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="aec332e5-f90b-49e6-b014-586b1a6d08c0" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="739d5658-171b-4048-b511-a9a1d2c56d55" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="84b53c8d-886a-4f54-9930-95207a6c8fcb" ActionType="Trigger" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="efed0c19-ac7c-46bf-8bf1-1417a84fc6af" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="4cc99383-3f9e-4e66-89ba-ba1d7e98084e" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="db45f607-325f-49d9-8c6b-108e55d07f6c" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="死亡" Id="08e1016d-ae7b-46df-9beb-3b101dcdfa9e" RegularExpression="^.{14} 19:(?&lt;name&gt;.+?) was defeated by ">
-            <Actions>
-              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f698c61d-c35c-4b69-9330-35ca86156940" TriggerForce="true" ActionType="Trigger">
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="Standard Step" Id="efed0c19-ac7c-46bf-8bf1-1417a84fc6af" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):3E7D:">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill${var:DNCOK_first}}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" ExecutionDelayExpression="${var:DNCOK_延迟时间}" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="And" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="aec332e5-f90b-49e6-b014-586b1a6d08c0" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" ExecutionDelayExpression="15000" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="技能名" Id="8c805ef5-fe3a-4b4b-8721-30c88edfc23f" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
-            <Actions>
-              <Action OrderNumber="1" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_Skill1" VariableExpression="瀑泻" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_Skill2" VariableExpression="喷泉" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_Skill3" VariableExpression="逆瀑泻" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="4" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_Skill4" VariableExpression="坠喷泉" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="5" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_SkillF" VariableExpression="标准舞步" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="6" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_SkillF2" VariableExpression="技巧舞步" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-        </Triggers>
-      </Folder>
-      <Folder Id="24d13c00-7561-48f2-b4a2-87de87af62c8" Name="*设置" Enabled="true">
-        <Folders />
-        <Triggers>
-          <Trigger Enabled="true" Name="设置" Id="6e53d43c-2c4e-4a7c-90bc-afe4ff1f14fa" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
-            <Actions>
-              <Action OrderNumber="1" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_第几快捷栏" VariableExpression="2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_其第几位" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_技巧第几快捷栏" VariableExpression="2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="4" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_技巧其第几位" VariableExpression="2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="5" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_延迟时间" VariableExpression="150" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-        </Triggers>
-      </Folder>
-      <Folder Id="b8356b71-7556-407f-84a8-262c31cf178a" Name="标准舞步重写" Enabled="true">
-        <Folders />
-        <Triggers>
-          <Trigger Enabled="true" Sequential="True" Name="量谱" Id="5aeb557f-8beb-4ba0-8767-99499cd95e2f" RegularExpression="^.{14} 1F:.{8}:[^:]+:(?&lt;first&gt;.).+?:.+?(?&lt;second&gt;.):">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_first" VariableExpression="${first}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_second" VariableExpression="${second}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="标准舞步" Id="efed0c19-ac7c-46bf-8bf1-1417a84fc6af" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):3E7D:">
-            <Actions>
-              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill${var:DNCOK_first}}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" ExecutionDelayExpression="${var:DNCOK_延迟时间}" Asynchronous="False">
-                <Condition Enabled="false" Grouping="And" />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="aec332e5-f90b-49e6-b014-586b1a6d08c0" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" ExecutionDelayExpression="15000" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-            </Condition>
-          </Trigger>
-          <Trigger Enabled="false" Name="标准2" Id="739d5658-171b-4048-b511-a9a1d2c56d55" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):(3E7F|3E80|3E81|3E82):">
-            <Actions>
-              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" Asynchronous="False">
-                <Condition Enabled="false" Grouping="And" />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="739d5658-171b-4048-b511-a9a1d2c56d55" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-            </Condition>
-          </Trigger>
-          <Trigger Enabled="false" Name="标准1" Id="aec332e5-f90b-49e6-b014-586b1a6d08c0" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):(3E7F|3E80|3E81|3E82):">
-            <Actions>
-              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill${var:DNCOK_second}}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" Asynchronous="False">
-                <Condition Enabled="false" Grouping="And" />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="739d5658-171b-4048-b511-a9a1d2c56d55" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="aec332e5-f90b-49e6-b014-586b1a6d08c0" ActionType="Trigger">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-            </Condition>
-          </Trigger>
-        </Triggers>
-      </Folder>
-      <Folder Id="2aff09e1-4a66-41a9-9321-ab1c6e4a7d3c" Name="技巧舞步重写" Enabled="true">
-        <Folders />
-        <Triggers>
-          <Trigger Enabled="true" Sequential="True" Name="量谱" Id="f7e23e84-a164-45e1-a2a8-8f824850bfbc" RegularExpression="^.{14} 1F:.{8}:(?&lt;CasterName&gt;.+?):(?&lt;no1&gt;.)......:(?&lt;no4&gt;.).(?&lt;no3&gt;.).(?&lt;no2&gt;.):">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no1" VariableExpression="${no1}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no2" VariableExpression="${no2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no3" VariableExpression="${no3}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no4" VariableExpression="${no4}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="技巧舞步" Id="4cc99383-3f9e-4e66-89ba-ba1d7e98084e" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):3E7E:">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="84b53c8d-886a-4f54-9930-95207a6c8fcb" ActionType="Trigger" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill${var:DNCOK_no1}}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" ExecutionDelayExpression="${var:DNCOK_延迟时间}" Asynchronous="False">
-                <Condition Enabled="false" Grouping="And" />
-              </Action>
-              <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF2}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" ExecutionDelayExpression="15000" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="84b53c8d-886a-4f54-9930-95207a6c8fcb" ActionType="Trigger" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-            </Condition>
-          </Trigger>
-          <Trigger Enabled="false" Name="技巧1234" Id="84b53c8d-886a-4f54-9930-95207a6c8fcb" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):(3E7F|3E80|3E81|3E82):">
-            <Actions>
-              <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no" VariableExpression="${var:DNCOK_no}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill${var:DNCOK_no${var:DNCOK_no}}}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" Asynchronous="False">
-                <Condition Enabled="true" Grouping="And">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:DNCOK_no}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="false" Name="Step2" Id="739d5658-171b-4048-b511-a9a1d2c56d55" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):(3E7F|3E80|3E81|3E82):">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="And" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="739d5658-171b-4048-b511-a9a1d2c56d55" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-              </Action>
-              <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF2}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger">
-                <Condition Enabled="true" Grouping="And">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:DNCOK_no}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="false" Name="Step1" Id="aec332e5-f90b-49e6-b014-586b1a6d08c0" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):(3E7F|3E80|3E81|3E82):">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill${var:DNCOK_second}}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="And" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="739d5658-171b-4048-b511-a9a1d2c56d55" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="aec332e5-f90b-49e6-b014-586b1a6d08c0" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-            </Condition>
-          </Trigger>
-        </Triggers>
+                <Conditions />
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder Id="2aff09e1-4a66-41a9-9321-ab1c6e4a7d3c" Name="Technical Step" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Sequential="True" Name="Gauge" Id="f7e23e84-a164-45e1-a2a8-8f824850bfbc" RegularExpression="^.{14} 1F:.{8}:(?&lt;CasterName&gt;.+?):(?&lt;no1&gt;.)......:(?&lt;no4&gt;.).(?&lt;no3&gt;.).(?&lt;no2&gt;.):">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no1" VariableExpression="${no1}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no2" VariableExpression="${no2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no3" VariableExpression="${no3}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no4" VariableExpression="${no4}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="Technical Step" Id="4cc99383-3f9e-4e66-89ba-ba1d7e98084e" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):3E7E:">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="84b53c8d-886a-4f54-9930-95207a6c8fcb" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill${var:DNCOK_no1}}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" ExecutionDelayExpression="${var:DNCOK_延迟时间}" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="And" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF2}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" ExecutionDelayExpression="15000" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="84b53c8d-886a-4f54-9930-95207a6c8fcb" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="false" Name="Step1234" Id="84b53c8d-886a-4f54-9930-95207a6c8fcb" RegularExpression="^.{14} 15:.{8}:(?&lt;CasterName&gt;.+?):(3E7F|3E80|3E81|3E82):">
+                <Actions>
+                  <Action OrderNumber="1" LogLevel="-1" VariableOp="SetNumeric" VariableName="DNCOK_no" VariableExpression="${var:DNCOK_no}+1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_Skill${var:DNCOK_no${var:DNCOK_no}}}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:DNCOK_no}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF2}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:DNCOK_no}" ExpressionTypeL="Numeric" ExpressionR="5" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${CasterName}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder Id="cfd2abbb-fd63-43a1-82b2-ef8cbe38d56f" Name="Function" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="SetHotbar" Id="0225b380-e46d-4f8e-830c-55570e481453" RegularExpression="^SetHotbar:(?&lt;skill&gt;.+?):(?&lt;num1&gt;\d+):(?&lt;num2&gt;\d+)$">
+                <Actions>
+                  <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" NamedCallbackName="DoTextCommand" NamedCallbackParam="/hotbar set ${skill} ${num1} ${num2}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="Reset" Id="f698c61d-c35c-4b69-9330-35ca86156940" RegularExpression="^.{15}00:0039:(戦闘開始！|Engage!|战斗开始！)|^.{14} 21:.{8}:400000(03|1[026]):" PeriodRefire="Deny" RefirePeriodExpression="500">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF}:${var:DNCOK_第几快捷栏}:${var:DNCOK_其第几位}" ActionType="Trigger" ExecutionDelayExpression="750" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0225b380-e46d-4f8e-830c-55570e481453" TriggerText="SetHotbar:${var:DNCOK_SkillF2}:${var:DNCOK_技巧第几快捷栏}:${var:DNCOK_技巧其第几位}" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="aec332e5-f90b-49e6-b014-586b1a6d08c0" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="739d5658-171b-4048-b511-a9a1d2c56d55" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="84b53c8d-886a-4f54-9930-95207a6c8fcb" ActionType="Trigger" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="6" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="efed0c19-ac7c-46bf-8bf1-1417a84fc6af" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="7" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="4cc99383-3f9e-4e66-89ba-ba1d7e98084e" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="8" LogLevel="-1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="db45f607-325f-49d9-8c6b-108e55d07f6c" ActionType="Trigger">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="Dead" Id="08e1016d-ae7b-46df-9beb-3b101dcdfa9e" RegularExpression="^.{14} 19:(?&lt;name&gt;.+?) was defeated by ">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="f698c61d-c35c-4b69-9330-35ca86156940" TriggerForce="true" ActionType="Trigger">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Name="AbilityName" Id="8c805ef5-fe3a-4b4b-8721-30c88edfc23f" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+                <Actions>
+                  <Action OrderNumber="1" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_Skill1" VariableExpression="瀑泻" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_Skill2" VariableExpression="喷泉" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_Skill3" VariableExpression="逆瀑泻" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_Skill4" VariableExpression="坠喷泉" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="5" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_SkillF" VariableExpression="标准舞步" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="6" ListVariableExpressionType="Numeric" VariableOp="SetString" VariableName="DNCOK_SkillF2" VariableExpression="技巧舞步" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers />
       </Folder>
     </Folders>
     <Triggers>
-      <Trigger Enabled="true" Name="15秒跳舞" Id="db45f607-325f-49d9-8c6b-108e55d07f6c" RegularExpression="^.{14} 00:(?:00b9|0139):距离战斗开始还有(..)秒！ （">
+      <Trigger Enabled="true" Name="倒计时15秒跳舞" Id="db45f607-325f-49d9-8c6b-108e55d07f6c" RegularExpression="^.{14} 00:(?:00b9|0139):距离战斗开始还有(..)秒！ （">
         <Actions>
-          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 标准舞步" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="$1*1000-15000" Asynchronous="False">
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 标准舞步" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac 标准舞步" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="$1*1000-15000" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
-          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac ${var:DNCOK_Skill${var:DNCOK_first}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="2100" Asynchronous="False">
+          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac ${var:DNCOK_Skill${var:DNCOK_first}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="2100" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
-          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac ${var:DNCOK_Skill${var:DNCOK_second}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="1100" Asynchronous="False">
+          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac ${var:DNCOK_Skill${var:DNCOK_second}}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="1100" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
-          <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac 速行" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="2000" Asynchronous="False">
+          <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac 速行" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="2000" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
-          <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" JsonPayloadExpression="/ac ${var:DNCOK_SkillF}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="GenericJson" ExecutionDelayExpression="9800" Asynchronous="False">
+          <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${_env[PostNamazu]}/command" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac ${var:DNCOK_SkillF}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="9800" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="15" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
         </Condition>
+        <Conditions />
       </Trigger>
-      <Trigger Enabled="false" IsReadme="True" Name="使用说明（双击打开描述）" Id="e1ee9d0f-bde9-4911-b91a-cbce9537baf1" RegularExpression="" Description="1.开启依赖：[鲶鱼精邮差]&#xD;&#xA;&#xD;&#xA;2.配置鲶鱼精邮差的端口环境(bat)。重启ACT&#xD;&#xA;&#xD;&#xA;3.在[*设置]中设置你的舞步键位">
+      <Trigger Enabled="true" Source="None" IsReadme="True" Name="使用说明（双击打开描述）" Id="e1ee9d0f-bde9-4911-b91a-cbce9537baf1" RegularExpression="" Description="1.开启依赖：[鲶鱼精邮差]&#xD;&#xA;&#xD;&#xA;2.在[*设置]中设置你的舞步键位">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Name="* 设置" Id="6e53d43c-2c4e-4a7c-90bc-afe4ff1f14fa" RegularExpression="^." PeriodRefire="Deny" RefirePeriodExpression="86400000" EditAutofire="True">
+        <Actions>
+          <Action OrderNumber="1" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_第几快捷栏" VariableExpression="2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False" Description="标准舞步在你的第几热键栏" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="2" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_其第几位" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False" Description="标准舞步在你的第几热键栏的第几个" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="3" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_技巧第几快捷栏" VariableExpression="2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False" Description="技巧舞步在你的第几热键栏" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="4" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_技巧其第几位" VariableExpression="2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False" Description="技巧舞步在你的第几热键栏第几个" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+          <Action OrderNumber="5" ListVariableExpressionType="Numeric" VariableOp="SetNumeric" VariableName="DNCOK_延迟时间" VariableExpression="150" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" Asynchronous="False" Description="延迟" DescriptionOverride="True">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
