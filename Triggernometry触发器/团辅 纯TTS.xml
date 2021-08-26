@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="8ea4ffbb-2b62-4957-ba73-c33d19dd3aab" Name="团辅 纯TTS" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="攻其不备" Id="5da47890-a39b-4d98-8a6b-ea1d80b1f4d3" RegularExpression="^21\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|8D2\|">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="背刺" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="鼓励" Id="c7de2073-023c-40a8-a2ab-a03ce2e68f42" RegularExpression="^2[12]\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|1D60\|" PeriodRefire="Deny" RefirePeriodExpression="1000">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="鼓励" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="技巧舞步结束" Id="ed73cbd8-0e6e-4986-9b9e-074512f5b39c" RegularExpression="^2[12]\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|3F4[1-4]\|" PeriodRefire="Deny" RefirePeriodExpression="1000">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="技巧舞" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="进攻之探戈" Id="d332872c-be37-4591-ab7e-871341d87643" RegularExpression="^2[12]\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|3E8B\|[^\|]+\|1.{7}\|(?&lt;target&gt;[^\|]*)\|" PeriodRefire="Deny" RefirePeriodExpression="1000">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="探戈" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+          <ConditionSingle Enabled="true" ExpressionL="${target}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="巨龙视线" Id="25b7c0f3-c030-4835-a76c-feadfa4087ad" RegularExpression="^2[12]\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|1CE6\|[^\|]+\|1.{7}\|(?&lt;target&gt;[^\|]*)\|" PeriodRefire="Deny" RefirePeriodExpression="1000">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="龙肠" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+          <ConditionSingle Enabled="true" ExpressionL="${target}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="灵护" Id="99e3cc1b-c622-43e2-b78d-9efa33d9e52a" RegularExpression="^2[12]\|[^\|]+\|4.{7}\|(?&lt;caster&gt;[^\|]+)\|1D1A\|[^\|]+\|1.{7}\|(?&lt;target&gt;[^\|]*)\|">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="灵护" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${target}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="连环计" Id="e9e7a688-f81d-4b73-8a9d-b35aa361622e" RegularExpression="^21\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|1D0C\|">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="连环计" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="义结金兰" Id="ecb0f5d7-b3fe-4a99-92e4-5a73f209b4b4" RegularExpression="^2[12]\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|1CE4\|" PeriodRefire="Deny" RefirePeriodExpression="1000">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="义结金兰" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="占卜" Id="df90a405-46ed-4403-9ddc-393803efe2d3" RegularExpression="^2[12]\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|40A8\|" PeriodRefire="Deny" RefirePeriodExpression="1000">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="占卜" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="战斗连祷" Id="38c4877c-eb66-432b-9ed4-61f34fbe6cc4" RegularExpression="^2[12]\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|DE5\|" PeriodRefire="Deny" RefirePeriodExpression="1000">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="连祷" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+      <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="战斗之声" Id="11889d74-e5d7-44e2-b7c3-b37d2ea96004" RegularExpression="^2[12]\|[^\|]+\|1.{7}\|(?&lt;caster&gt;[^\|]+)\|76\|" PeriodRefire="Deny" RefirePeriodExpression="1000">
+        <Actions>
+          <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="战歌" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${caster}].inparty}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+        <Conditions />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
