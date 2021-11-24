@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="e0b98d3e-e48f-4078-b886-b0df8d4f9444" Name="回蓝/醒梦监控 + 自动卡跳蓝" Enabled="true">
+  <ExportedFolder Id="db31e171-0ac9-494a-b6c9-82c9f9cd56d9" Name="回蓝/醒梦监控 + 自动卡跳蓝" Enabled="true">
     <Folders>
-      <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="2a942fb6-6acb-4da7-922b-42e9b56eecc1" Name="Tick" Enabled="true">
+      <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="c37dea66-c4a9-47a2-9f68-655e18310f51" Name="Tick" Enabled="true">
         <Folders>
-          <Folder FFXIVJobFilter="16777216" Id="6287d10f-5cd8-43e5-a675-4b1983b3ba32" Name="醒梦回蓝" Enabled="true">
+          <Folder FFXIVJobFilter="16777216" Id="d7623954-d713-4aa1-aa4e-c8dc48641778" Name="醒梦回蓝" Enabled="true">
             <Folders />
             <Triggers>
-              <Trigger Enabled="true" Name="26: NetworkStatusEffects" Id="105cd123-24a2-41bb-b427-f93ef5dcfb6a" RegularExpression="^.{14} 26:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
+              <Trigger Enabled="true" Name="26: NetworkStatusEffects" Id="4ab6c848-ebf9-4cd2-a957-cfbc2355fffb" RegularExpression="^.{14} 26:1.{7}:(?&lt;name&gt;[^:]+):[^:]+:[^:]+:[^:]+:(?&lt;mp&gt;[^:]+):10000:">
                 <Actions>
                   <Action OrderNumber="1" AuraName="BLMMPPosition26" AuraImage="https://i.loli.net/2021/05/19/I3LtxQsp9mnSy5z.png" AuraXIniExpression="${_imageaura[BLMMPPosition26BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition26BG].y}" AuraWIniExpression="${_imageaura[BLMMPPosition26BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition26BG].h}" AuraOIniExpression="100" AuraWTickExpression="((${_sincems})%3000)/3000*${_imageaura[BLMMPPosition26BG].w}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                     <Condition Enabled="false" Grouping="Or" />
@@ -23,20 +23,22 @@
                   <ConditionSingle Enabled="true" ExpressionL="${mp}-${var:BLM_MP}" ExpressionTypeL="Numeric" ExpressionR="500" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="Action: Blizzard II" Id="eb8d8b8d-7111-40b9-baac-aa42db45e356" RegularExpression="^.{14} 15:.{8}:(?&lt;caster&gt;[^:]+?):92:(?:[^:]*?:){31}(?&lt;mp&gt;[^:]+?):">
+              <Trigger Enabled="true" Name="Action: Blizzard II" Id="cb4047bc-6e43-42c8-b518-eaf05bd37bd9" RegularExpression="^.{14} 15:.{8}:(?&lt;caster&gt;[^:]+):92:(?:[^:]*:){31}(?&lt;mp&gt;[^:]+):">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="BLM_MP" VariableExpression="${mp}-800" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${caster}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                 </Condition>
               </Trigger>
-              <Trigger Enabled="true" Name="27: NetworkUpdateHP" Id="2aabf66b-f2f4-4a8e-ac90-e85dd7831db3" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
+              <Trigger Enabled="true" Name="27: NetworkUpdateHP" Id="e243be8d-639f-4122-aa60-5053d881b6a8" RegularExpression="^.{14} 26:1.{7}:(?&lt;name&gt;[^:]+):[^:]+:[^:]+:(?&lt;mp&gt;[^:]+):10000:">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="BLM_MP" VariableExpression="${mp}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="And">
@@ -47,9 +49,15 @@
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Name="3秒回蓝" Id="d0a5280c-ce8d-4dfb-ab78-2031c1e275e0" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
+          <Trigger Enabled="true" Sequential="True" Name="3秒回蓝" Id="5277289d-8742-4b3f-b43d-505fda3262d6" RegularExpression="^.{14} 27:1.{7}:(?&lt;name&gt;[^:]+):[^:]+:[^:]+:(?&lt;mp&gt;[^:]+):10000:">
             <Actions>
-              <Action OrderNumber="1" AuraName="BLMMPPosition27" AuraImage="https://i.loli.net/2021/04/22/j4YFlKMe8vgb6us.png" AuraXIniExpression="${_imageaura[BLMMPPosition27BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition27BG].y}" AuraWIniExpression="${_imageaura[BLMMPPosition27BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition27BG].h}" AuraOIniExpression="100" AuraWTickExpression="((${_sincems})%3000)/3000*${_imageaura[BLMMPPosition27BG].w}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
+              <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="b2874993-042f-48ad-8609-038f516433b4" TriggerForce="regexp,conditions,refire,parent" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="Not">
+                  <ConditionSingle Enabled="true" ExpressionL="${_imageaura[BLMMPPosition27BG].w}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" AuraName="BLMMPPosition27" AuraImage="https://i.loli.net/2021/04/22/j4YFlKMe8vgb6us.png" AuraXIniExpression="${_imageaura[BLMMPPosition27BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition27BG].y}" AuraWIniExpression="${_imageaura[BLMMPPosition27BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition27BG].h}" AuraOIniExpression="100" AuraWTickExpression="((${_sincems})%3000)/3000*${_imageaura[BLMMPPosition27BG].w}" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
                 <Condition Enabled="false" Grouping="Or" />
                 <Conditions />
               </Action>
@@ -60,22 +68,22 @@
           </Trigger>
         </Triggers>
       </Folder>
-      <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="d841f1ac-6357-46bf-a247-348c58bba923" Name="自动倒计时 (需鲶鱼精邮差)" Enabled="true">
+      <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="16777216" Id="4f49e08c-25d1-4b53-83a8-427677c5e21b" Name="自动倒计时 (需鲶鱼精邮差)" Enabled="true">
         <Folders>
-          <Folder Id="59da6736-acb2-4593-95bd-29f5107148ee" Name="设置起手进冰时间" Enabled="true">
+          <Folder Id="38464658-d688-4246-a627-4987ef1ce4ff" Name="设置起手进冰时间" Enabled="true">
             <Folders>
-              <Folder Id="0eae392a-96cc-436c-830b-50415fc15834" Name="打木人自动设置" Enabled="true">
+              <Folder Id="aa3a58f4-d99a-422c-bebf-0c61cfbee3bf" Name="打木人自动设置" Enabled="true">
                 <Folders />
                 <Triggers>
-                  <Trigger Enabled="true" Name="1. 宏" Id="50c5aa4f-79b8-4ea0-bb81-84be5c5bc5f5" RegularExpression="^.{14} 00:0038:自动设置进冰时间">
+                  <Trigger Enabled="true" Name="1. 宏" Id="6fa80439-ad16-469d-bedf-5c77ae6cbc11" RegularExpression="^.{14} 00:0038:自动设置进冰时间">
                     <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="1eeba419-79c9-4bed-8880-4ed6a5c8acdb" ActionType="Trigger">
+                      <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="44ce9ada-03c6-4305-bce6-1f14b672cb4c" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
                       </Action>
-                      <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="91a2d55c-3cbc-47d4-a5ad-9e0006b46da9" ActionType="Trigger">
+                      <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="38253eec-6723-4981-bd26-c7de90d47730" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
                       </Action>
-                      <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="c0c98984-bc2f-43a3-987d-9fcee11e9319" ActionType="Trigger">
+                      <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="be168e6e-555e-4c25-a7f6-bf0594eb06f0" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
                       </Action>
                       <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="可以开始打起手了" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
@@ -87,51 +95,61 @@
                     </Actions>
                     <Condition Enabled="false" Grouping="Or" />
                   </Trigger>
-                  <Trigger Enabled="false" Name="2. 开怪" Id="1eeba419-79c9-4bed-8880-4ed6a5c8acdb" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;player&gt;[^:]+?):[^:]+?:[^:]+?:.{8}:木人:" PeriodRefire="Deny" RefirePeriodExpression="1000">
+                  <Trigger Enabled="false" Name="2. 开怪" Id="44ce9ada-03c6-4305-bce6-1f14b672cb4c" RegularExpression="^.{14} 1[56]:.{8}:(?&lt;player&gt;[^:]+):[^:]+:[^:]+:.{8}:木人:" PeriodRefire="Deny" RefirePeriodExpression="1000">
                     <Actions>
                       <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="BLM_Start" VariableExpression="${_systemtimems}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="1eeba419-79c9-4bed-8880-4ed6a5c8acdb" ActionType="Trigger">
+                      <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="44ce9ada-03c6-4305-bce6-1f14b672cb4c" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="91a2d55c-3cbc-47d4-a5ad-9e0006b46da9" ActionType="Trigger">
+                      <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="38253eec-6723-4981-bd26-c7de90d47730" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                    </Actions>
-                    <Condition Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${player}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
-                    </Condition>
-                  </Trigger>
-                  <Trigger Enabled="false" Name="3. 准备进冰" Id="91a2d55c-3cbc-47d4-a5ad-9e0006b46da9" RegularExpression="^.{14} 15:.{8}:(?&lt;player&gt;[^:]+?):4079:">
-                    <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="91a2d55c-3cbc-47d4-a5ad-9e0006b46da9" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
-                      </Action>
-                      <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="c0c98984-bc2f-43a3-987d-9fcee11e9319" ActionType="Trigger">
-                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="true" Grouping="Or">
                       <ConditionSingle Enabled="true" ExpressionL="${player}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
                     </Condition>
                   </Trigger>
-                  <Trigger Enabled="false" Name="4. 进冰" Id="c0c98984-bc2f-43a3-987d-9fcee11e9319" RegularExpression="^.{14} 1F:.{8}:([^:]+?):([^:]+?):(?&lt;g2&gt;[^:]+?):">
+                  <Trigger Enabled="false" Name="3. 准备进冰" Id="38253eec-6723-4981-bd26-c7de90d47730" RegularExpression="^.{14} 15:.{8}:(?&lt;player&gt;[^:]+):4079:">
                     <Actions>
-                      <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="1eeba419-79c9-4bed-8880-4ed6a5c8acdb" ActionType="Trigger">
+                      <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="38253eec-6723-4981-bd26-c7de90d47730" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
-                      <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="c0c98984-bc2f-43a3-987d-9fcee11e9319" ActionType="Trigger">
+                      <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="be168e6e-555e-4c25-a7f6-bf0594eb06f0" ActionType="Trigger">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                    </Actions>
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${player}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                  </Trigger>
+                  <Trigger Enabled="false" Name="4. 进冰" Id="be168e6e-555e-4c25-a7f6-bf0594eb06f0" RegularExpression="^.{14} 1F:.{8}:([^:]+):([^:]+):(?&lt;g2&gt;[^:]+):">
+                    <Actions>
+                      <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="44ce9ada-03c6-4305-bce6-1f14b672cb4c" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
+                      </Action>
+                      <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="be168e6e-555e-4c25-a7f6-bf0594eb06f0" ActionType="Trigger">
+                        <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="BLM_FirstIceTimeMs" VariableExpression="${_systemtimems}-${var:BLM_Start}" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="4" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="设置完成" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                       <Action OrderNumber="5" LogLevel="-1" MouseX="" MouseY="" TextAuraEffect="Bold" TextAuraFontSize="24.75" TextAuraName="BLM_FirstIceTimeMs" TextAuraExpression="已自动配置：${numeric:${_systemtimems}-${var:BLM_Start}}" TextAuraXIniExpression="${_screenwidth}/2-200" TextAuraYIniExpression="${_screenheight}/2-100" TextAuraWIniExpression="400" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
                         <Condition Enabled="false" Grouping="Or" />
+                        <Conditions />
                       </Action>
                     </Actions>
                     <Condition Enabled="true" Grouping="Or">
@@ -142,16 +160,19 @@
               </Folder>
             </Folders>
             <Triggers>
-              <Trigger Enabled="true" Name="用户宏手动设置进冰时间" Id="b3803816-2379-45d6-a3e3-2e2ed607f58c" RegularExpression="^.{14} 00:0038:手动设置进冰时间 ?(?&lt;time&gt;\d+)">
+              <Trigger Enabled="true" Name="用户宏手动设置进冰时间" Id="fb20e23d-fd6e-4bd7-b722-0f823e709bd4" RegularExpression="^.{14} 00:0038:手动设置进冰时间 ?(?&lt;time&gt;\d+)">
                 <Actions>
                   <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraEffect="Bold" TextAuraFontSize="24.75" TextAuraName="BLM_FirstIceTimeMs" TextAuraExpression="已手动设置：${time}" TextAuraXIniExpression="${_screenwidth}/2-200" TextAuraYIniExpression="${_screenheight}/2-100" TextAuraWIniExpression="400" TextAuraHIniExpression="200" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraUseOutline="True" TextAuraFontName="微软雅黑" ActionType="TextAura">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" UseTTSTextExpression="设置完成" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="BLM_FirstIceTimeMs" VariableExpression="${time}" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
@@ -160,27 +181,32 @@
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Name="宏 -&gt; 冰冻" Id="587f7aee-cee3-4618-be2e-a9f56109c7b8" RegularExpression="^.{14} 00:0038:自动倒计时 ?(?&lt;cd&gt;..?)秒?$">
+          <Trigger Enabled="true" Name="宏 -&gt; 冰冻" Id="bc597c27-3fff-485b-9056-0835061c8bcc" RegularExpression="^.{14} 00:0038:自动倒计时 ?(?&lt;cd&gt;..?)秒?$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="BLM_CountDownTime" VariableExpression="${cd}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="ea8f819c-f9ff-4c6a-9b60-0b8457ba8f6d" ActionType="Trigger">
+              <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="EnableTrigger" TriggerId="7e26a291-146f-4ec8-a026-5fa53675c0ee" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" LogLevel="-1" MouseX="" MouseY="" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac 冰冻" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="false" Name="跳蓝 -&gt; 倒计时" Id="ea8f819c-f9ff-4c6a-9b60-0b8457ba8f6d" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+?):[^:]+?:[^:]+?:(?&lt;mp&gt;[^:]+?):10000:">
+          <Trigger Enabled="false" Name="跳蓝 -&gt; 倒计时" Id="7e26a291-146f-4ec8-a026-5fa53675c0ee" RegularExpression="^.{14} 27:.{8}:(?&lt;name&gt;[^:]+):[^:]+:[^:]+:(?&lt;mp&gt;[^:]+):10000:">
             <Actions>
-              <Action OrderNumber="0" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="ea8f819c-f9ff-4c6a-9b60-0b8457ba8f6d" ActionType="Trigger">
+              <Action OrderNumber="0" LogLevel="-1" MouseX="" MouseY="" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="DisableTrigger" TriggerId="7e26a291-146f-4ec8-a026-5fa53675c0ee" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" NamedCallbackName="DoTextCommand" NamedCallbackParam="/cd ${var:BLM_CountDownTime}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="(3000-(${var:BLM_CountDownTime}*1000+${pvar:BLM_FirstIceTimeMs})%3000+3000-if(${epvar:BLM_CountDownUserAdvance}=1,${pvar:BLM_CountDownUserAdvance},200))%3000" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
@@ -191,31 +217,35 @@
       </Folder>
     </Folders>
     <Triggers>
-      <Trigger Enabled="true" Name="* 界面位置" Id="15264b3e-17e2-45da-acc7-5f15eb0d5e18" RegularExpression="^.{14} 0C:Player Stats: 25:" EditAutofire="True">
+      <Trigger Enabled="true" Name="* 界面位置" Id="b2874993-042f-48ad-8609-038f516433b4" RegularExpression="^.{14} 0C:Player Stats: 25:" EditAutofire="True">
         <Actions>
           <Action OrderNumber="1" AuraName="BLMMPPosition27BG" AuraImage="https://i.loli.net/2021/04/22/Lbw1gABk7WVEqKc.png" AuraXIniExpression="935" AuraYIniExpression="1036" AuraWIniExpression="148" AuraHIniExpression="14" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" Description="回蓝（在这里改X与Y坐标）" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
-          <Action OrderNumber="2" AuraName="BLMMPPosition26BG" AuraImage="https://i.loli.net/2021/04/22/Lbw1gABk7WVEqKc.png" AuraXIniExpression="${_imageaura[BLMMPPosition27BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition27BG].y}-14" AuraWIniExpression="${_imageaura[BLMMPPosition27BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition27BG].h}" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Description="醒梦（不需要改坐标，放在的意义是如果你不需要监控醒梦可以把它关掉）" DescriptionOverride="True">
+          <Action OrderNumber="2" AuraName="BLMMPPosition26BG" AuraImage="https://i.loli.net/2021/04/22/Lbw1gABk7WVEqKc.png" AuraXIniExpression="${_imageaura[BLMMPPosition27BG].x}" AuraYIniExpression="${_imageaura[BLMMPPosition27BG].y}-14" AuraWIniExpression="${_imageaura[BLMMPPosition27BG].w}" AuraHIniExpression="${_imageaura[BLMMPPosition27BG].h}" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" Enabled="False" ActionType="Aura" Description="醒梦（不需要改坐标，放在的意义是如果你不需要监控醒梦可以把它关掉）" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" Name="Clear" Id="bfa5e6e1-4b2f-4361-bb85-7988c5f3f1b0" RegularExpression="^.{14} 0C:Player Stats: (.+?):">
+      <Trigger Enabled="true" Name="Clear" Id="b8d6c2bf-e6c1-4b07-b3a7-b8484b24b21e" RegularExpression="^.{14} 0C:Player Stats: (.+):">
         <Actions>
           <Action OrderNumber="1" AuraOp="DeactivateAuraRegex" AuraImageMode="StretchImage" AuraName="^BLMMPPosition.+" AuraImage="https://i.loli.net/2021/04/22/Lbw1gABk7WVEqKc.png" AuraXIniExpression="342" AuraYIniExpression="370" AuraWIniExpression="148" AuraHIniExpression="13" AuraOIniExpression="100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
           <Action OrderNumber="2" LogLevel="-1" MouseX="" MouseY="" VariableName="BLM_MP" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Asynchronous="False">
             <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
           </Action>
         </Actions>
         <Condition Enabled="true" Grouping="Or">
           <ConditionSingle Enabled="true" ExpressionL="$1" ExpressionTypeL="Numeric" ExpressionR="25" ExpressionTypeR="Numeric" ConditionType="NumericNotEqual" />
         </Condition>
       </Trigger>
-      <Trigger Enabled="true" Name="* 自动倒计时 预留安全时间" Id="83296a04-b284-4b95-8116-d8c5d2f8a81b" RegularExpression="" EditAutofire="True">
+      <Trigger Enabled="true" Name="* 自动倒计时 预留安全时间" Id="b2c89c6c-8c66-47cf-adac-122eff13b650" RegularExpression="" EditAutofire="True">
         <Actions>
           <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" VariableOp="SetNumeric" VariableName="BLM_CountDownUserAdvance" VariableExpression="200" VariablePersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable" Description="设置为0的情况下，第一轮进冰的同时会立即跳蓝，但如果你的网卡了/开怪慢了/手抖了/卡GCD了，导致没跳出来这下蓝，结果你硬等了3秒，可以考虑稍微增加一点预留时间，保证蓝可以跳出来。（单位：毫秒）" DescriptionOverride="True">
             <Condition Enabled="false" Grouping="Or" />
@@ -223,10 +253,9 @@
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" IsReadme="True" Name="使用说明（打开描述）" Id="85d7d2bd-2968-4ea8-aaf5-5ecf3c6dac0a" RegularExpression="" Description="https://nga.178.com/read.php?tid=26811792">
+      <Trigger Enabled="true" IsReadme="True" Name="使用说明（打开描述）" Id="50565528-29d8-42b6-867f-2cbeacc539c6" RegularExpression="" Description="https://nga.178.com/read.php?tid=26811792">
         <Actions />
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
