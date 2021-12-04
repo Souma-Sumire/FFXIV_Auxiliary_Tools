@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="646d694b-2918-4846-a9d3-b4b647af5eea" Name="寻找 v1.1.0" Enabled="true">
+  <ExportedFolder Id="646d694b-2918-4846-a9d3-b4b647af5eea" Name="寻找 v1.1.6.0" Enabled="true">
     <Folders>
       <Folder Id="57969689-a52b-4cb0-b62f-92e41bd31eb4" Name="可让我逮着了" Enabled="true">
         <Folders />
         <Triggers>
-          <Trigger Enabled="true" Name="寻找" Id="1eba8463-2eab-4764-9ac1-0039b5c9672f" RegularExpression="^.{15}00:0038:(寻[找人怪物]?|找[寻人怪物]?|find) (?&lt;what&gt;.+?)$">
+          <Trigger Enabled="true" Name="寻找" Id="1eba8463-2eab-4764-9ac1-0039b5c9672f" RegularExpression="^.{14} ChatLog 00:0038::(寻[找人怪物]?|找[寻人怪物]?|find) (?&lt;what&gt;.+)$">
             <Actions>
               <Action OrderNumber="1" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^find.*" TextAuraFontName="宋体" ActionType="TextAura" Asynchronous="False">
                 <Condition Enabled="false" Grouping="Or" />
@@ -43,8 +43,9 @@
             <Condition Enabled="true" Grouping="And">
               <ConditionSingle Enabled="true" ExpressionL="abs(${numeric:round(${_ffxiventity[${what}].x}-${_ffxiventity[${_ffxivplayer}].x},1)})+abs(${numeric:round(${_ffxiventity[${what}].y}-${_ffxiventity[${_ffxivplayer}].y},1)})" ExpressionTypeL="Numeric" ExpressionR="400" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
             </Condition>
+            <Conditions />
           </Trigger>
-          <Trigger Enabled="true" Name="没找到:(" Id="1989cf6b-bad9-4bd1-a7e6-e44b59467c7d" RegularExpression="^.{15}00:0038:(寻[找人怪物]?|找[寻人怪物]?|find) (?&lt;what&gt;.+?)$">
+          <Trigger Enabled="true" Name="没找到:(" Id="1989cf6b-bad9-4bd1-a7e6-e44b59467c7d" RegularExpression="^.{14} ChatLog 00:0038::(寻[找人怪物]?|找[寻人怪物]?|find) (?&lt;what&gt;.+)$">
             <Actions>
               <Action OrderNumber="1" LogLevel="-1" MouseX="" MouseY="" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="9" TextAuraName="^find_Map_.+" TextAuraFontName="宋体" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
@@ -92,6 +93,7 @@
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
