@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="b273a359-d82e-4c8e-a3dd-393fd6452340" Name="占星术士一键发卡 by Souma" Enabled="true">
+  <ExportedFolder Id="b273a359-d82e-4c8e-a3dd-393fd6452340" Name="6.0占星术士一键发卡 by Souma" Enabled="true">
     <Folders>
       <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="4294967296" Id="a91d7a62-afe2-416e-b173-b97b217b721d" Name="(Don't touch)" Enabled="true">
         <Folders>
@@ -252,12 +252,15 @@
                 <Actions>
                   <Action OrderNumber="1" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCorrection" ListVariableExpression="${lvar:AstTeamListCorrection[${lvar:AstTeamList.indexof(${target})}]}*0.1" ListVariableIndex="${lvar:AstTeamList.indexof(${target})}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="2" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCorrection" ListVariableExpression="${lvar:AstTeamListCorrection[${lvar:AstTeamList.indexof(${target})}]}*4" ListVariableIndex="${lvar:AstTeamList.indexof(${target})}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="10000">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                   <Action OrderNumber="3" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCorrection" ListVariableExpression="${lvar:AstTeamListCorrection[${lvar:AstTeamList.indexof(${target})}]}*2.5" ListVariableIndex="${lvar:AstTeamList.indexof(${target})}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable" ExecutionDelayExpression="5000">
                     <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
                   </Action>
                 </Actions>
                 <Condition Enabled="true" Grouping="Or">
@@ -342,7 +345,7 @@
                 </Actions>
                 <Condition Enabled="false" Grouping="Or" />
               </Trigger>
-              <Trigger Enabled="true" Name="国际服" Id="71ef0258-adf2-4291-bb73-8576b8bbcca2" RegularExpression="^.{14} (?:\w+ |)00:0038:?:AstTeamList:([A-Z][a-z-]+ [A-z][a-z-]+)?(?:|[A-Z][a-z-]+):([A-Z][a-z-]+ [A-z][a-z-]+)?(?:|[A-Z][a-z-]+):([A-Z][a-z-]+ [A-z][a-z-]+)?(?:|[A-Z][a-z-]+):([A-Z][a-z-]+ [A-z][a-z-]+)?(?:|[A-Z][a-z-]+):([A-Z][a-z-]+ [A-z][a-z-]+)?(?:|[A-Z][a-z-]+):([A-Z][a-z-]+ [A-z][a-z-]+)?(?:|[A-Z][a-z-]+):([A-Z][a-z-]+ [A-z][a-z-]+)?(?:|[A-Z][a-z-]+):([A-Z][a-z-]+ [A-z][a-z-]+)?(?:|[A-Z][a-z-]+)$">
+              <Trigger Enabled="true" Name="国际服" Id="71ef0258-adf2-4291-bb73-8576b8bbcca2" RegularExpression="^.{14} (?:\w+ |)00:0038::?AstTeamList:([A-Z][^A-Z :]+ [A-Z][^A-Z :]+)?[^:]*:([A-Z][^A-Z :]+ [A-Z][^A-Z :]+)?[^:]*:([A-Z][^A-Z :]+ [A-Z][^A-Z :]+)?[^:]*:([A-Z][^A-Z :]+ [A-Z][^A-Z :]+)?[^:]*:([A-Z][^A-Z :]+ [A-Z][^A-Z :]+)?[^:]*:([A-Z][^A-Z :]+ [A-Z][^A-Z :]+)?[^:]*:([A-Z][^A-Z :]+ [A-Z][^A-Z :]+)?[^:]*:([A-Z][^A-Z :]+ [A-Z][^A-Z :]+)?[^:]*$">
                 <Actions>
                   <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="8c19ce66-da62-43bb-adc9-61914e59b06e" TriggerText="$1:$2:$3:$4:$5:$6:$7:$8" ActionType="Trigger">
                     <Condition Enabled="false" Grouping="Or" />
@@ -369,48 +372,63 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${eplvar:AstAutoCard}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" TextAuraOp="DeactivateAuraRegex" TextAuraFontSize="8.25" TextAuraName="^_Ast" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="3" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="35f52645-f600-47f6-bec4-70a74b3af169" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="60881d24-958c-4244-bcda-a567056aaf55" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="5" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="98adad1e-dd00-4166-ba66-20ffc1238e1d" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="6" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="54d27bbf-50a2-4dd1-a74b-f5826c42ef91" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="7" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="9e72218e-4188-4f19-b463-bdff0f67f5f9" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="8" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="77114dae-aed0-4d44-a440-578b8aef76c2" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="9" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="5f80d477-6331-4a62-9a19-822b7c8c2f4b" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="10" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="0dfa2de3-0037-4342-8548-777bded398b6" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="11" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="69aae6f0-81dc-45cb-99b8-116610ce789c" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="12" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="e15b17af-b219-492a-82c8-3f48125fa0b8" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="13" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="c9d18bf8-5e5a-4dad-9df9-ece28be5726d" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="14" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerOp="CancelTrigger" TriggerId="aaef084d-76e2-43e0-ba68-e004fd66b013" ActionType="Trigger">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="15" NamedCallbackName="DoTextCommand" NamedCallbackParam="/e AstTeamList:&lt;1&gt;:&lt;2&gt;:&lt;3&gt;:&lt;4&gt;:&lt;5&gt;:&lt;6&gt;:&lt;7&gt;:&lt;8&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
@@ -421,49 +439,59 @@
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[134]" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetString" VariableName="Ast_职能" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${func:substring(5,1):${func:padleft(48,8):${gauge}}}" ExpressionTypeL="String" ExpressionR="[256]" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="3" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCardRole" ListVariableExpression="if(${var:Ast_职能}=1,1,0.25)" ListVariableIndex="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
               </Action>
               <Action OrderNumber="4" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCardRole" ListVariableExpression="if(${ptvar:AstAutoCard[10][${numeric:max(${_ffxivparty[${lvar:AstTeamList[2]}].jobid}-17,1)}]}=${var:Ast_职能},1,0.25)" ListVariableIndex="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamList[2]}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="5" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCardRole" ListVariableExpression="if(${ptvar:AstAutoCard[10][${numeric:max(${_ffxivparty[${lvar:AstTeamList[3]}].jobid}-17,1)}]}=${var:Ast_职能},1,0.25)" ListVariableIndex="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamList[3]}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="6" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCardRole" ListVariableExpression="if(${ptvar:AstAutoCard[10][${numeric:max(${_ffxivparty[${lvar:AstTeamList[4]}].jobid}-17,1)}]}=${var:Ast_职能},1,0.25)" ListVariableIndex="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamList[4]}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="7" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCardRole" ListVariableExpression="if(${ptvar:AstAutoCard[10][${numeric:max(${_ffxivparty[${lvar:AstTeamList[5]}].jobid}-17,1)}]}=${var:Ast_职能},1,0.25)" ListVariableIndex="5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamList[5]}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="8" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCardRole" ListVariableExpression="if(${ptvar:AstAutoCard[10][${numeric:max(${_ffxivparty[${lvar:AstTeamList[6]}].jobid}-17,1)}]}=${var:Ast_职能},1,0.25)" ListVariableIndex="6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamList[6]}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="9" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCardRole" ListVariableExpression="if(${ptvar:AstAutoCard[10][${numeric:max(${_ffxivparty[${lvar:AstTeamList[7]}].jobid}-17,1)}]}=${var:Ast_职能},1,0.25)" ListVariableIndex="7" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamList[7]}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="10" ListVariableOp="Set" ListVariableExpressionType="Numeric" ListVariableName="AstTeamListCardRole" ListVariableExpression="if(${ptvar:AstAutoCard[10][${numeric:max(${_ffxivparty[${lvar:AstTeamList[8]}].jobid}-17,1)}]}=${var:Ast_职能},1,0.25)" ListVariableIndex="8" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="ListVariable">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamList[8]}" ExpressionTypeL="String" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
                 </Condition>
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="true" Grouping="Or">
@@ -482,6 +510,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[8]}*${lvar:AstTeamListCorrection[8]}*${lvar:AstTeamListCardRole[8]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[6]}*${lvar:AstTeamListCorrection[6]}*${lvar:AstTeamListCardRole[6]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[8]}*${lvar:AstTeamListCorrection[8]}*${lvar:AstTeamListCardRole[8]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[1]}*${lvar:AstTeamListCorrection[1]}*${lvar:AstTeamListCardRole[1]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Ast_出卡序号" VariableExpression="7" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
@@ -493,6 +522,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[7]}*${lvar:AstTeamListCorrection[7]}*${lvar:AstTeamListCardRole[7]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[6]}*${lvar:AstTeamListCorrection[6]}*${lvar:AstTeamListCardRole[6]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[7]}*${lvar:AstTeamListCorrection[7]}*${lvar:AstTeamListCardRole[7]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[1]}*${lvar:AstTeamListCorrection[1]}*${lvar:AstTeamListCardRole[1]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Ast_出卡序号" VariableExpression="6" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
@@ -504,6 +534,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[6]}*${lvar:AstTeamListCorrection[6]}*${lvar:AstTeamListCardRole[6]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[7]}*${lvar:AstTeamListCorrection[7]}*${lvar:AstTeamListCardRole[7]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[6]}*${lvar:AstTeamListCorrection[6]}*${lvar:AstTeamListCardRole[6]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[1]}*${lvar:AstTeamListCorrection[1]}*${lvar:AstTeamListCardRole[1]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="Ast_出卡序号" VariableExpression="5" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
@@ -515,6 +546,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[5]}*${lvar:AstTeamListCorrection[5]}*${lvar:AstTeamListCardRole[5]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[7]}*${lvar:AstTeamListCorrection[7]}*${lvar:AstTeamListCardRole[7]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[5]}*${lvar:AstTeamListCorrection[5]}*${lvar:AstTeamListCardRole[5]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[1]}*${lvar:AstTeamListCorrection[1]}*${lvar:AstTeamListCardRole[1]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="Ast_出卡序号" VariableExpression="4" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
@@ -526,6 +558,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[4]}*${lvar:AstTeamListCorrection[4]}*${lvar:AstTeamListCardRole[4]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[7]}*${lvar:AstTeamListCorrection[7]}*${lvar:AstTeamListCardRole[7]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[4]}*${lvar:AstTeamListCorrection[4]}*${lvar:AstTeamListCardRole[4]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[1]}*${lvar:AstTeamListCorrection[1]}*${lvar:AstTeamListCardRole[1]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="Ast_出卡序号" VariableExpression="3" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
@@ -537,6 +570,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[3]}*${lvar:AstTeamListCorrection[3]}*${lvar:AstTeamListCardRole[3]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[7]}*${lvar:AstTeamListCorrection[7]}*${lvar:AstTeamListCardRole[7]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[3]}*${lvar:AstTeamListCorrection[3]}*${lvar:AstTeamListCardRole[3]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[1]}*${lvar:AstTeamListCorrection[1]}*${lvar:AstTeamListCardRole[1]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="Ast_出卡序号" VariableExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
@@ -548,6 +582,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[2]}*${lvar:AstTeamListCorrection[2]}*${lvar:AstTeamListCardRole[2]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[7]}*${lvar:AstTeamListCorrection[7]}*${lvar:AstTeamListCardRole[7]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[2]}*${lvar:AstTeamListCorrection[2]}*${lvar:AstTeamListCardRole[2]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[1]}*${lvar:AstTeamListCorrection[1]}*${lvar:AstTeamListCardRole[1]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="8" VariableOp="SetNumeric" VariableName="Ast_出卡序号" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
                 <Condition Enabled="true" Grouping="And">
@@ -559,47 +594,27 @@
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[1]}*${lvar:AstTeamListCorrection[1]}*${lvar:AstTeamListCardRole[1]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[7]}*${lvar:AstTeamListCorrection[7]}*${lvar:AstTeamListCardRole[7]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${lvar:AstTeamListDPS[1]}*${lvar:AstTeamListCorrection[1]}*${lvar:AstTeamListCardRole[1]}" ExpressionTypeL="Numeric" ExpressionR="${lvar:AstTeamListDPS[2]}*${lvar:AstTeamListCorrection[2]}*${lvar:AstTeamListCardRole[2]}" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
+                <Conditions />
               </Action>
               <Action OrderNumber="9" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac &quot;$1&quot; &lt;${var:Ast_出卡序号}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback">
                 <Condition Enabled="false" Grouping="And" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="10" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac &quot;$1&quot; &lt;${var:Ast_出卡序号}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="100">
+              <Action OrderNumber="10" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac &quot;$1&quot; &lt;${var:Ast_出卡序号}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="And" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="11" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac &quot;$1&quot; &lt;${var:Ast_出卡序号}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="100">
+              <Action OrderNumber="11" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac &quot;$1&quot; &lt;${var:Ast_出卡序号}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="50">
                 <Condition Enabled="false" Grouping="And" />
+                <Conditions />
               </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="false" Name="Debug" Id="cb5b6888-c161-43d1-84f7-e8f3659f4590" RegularExpression="">
-            <Actions>
-              <Action OrderNumber="1" TextAuraAlignment="TopCenter" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug00f" TextAuraExpression="量谱${var:Ast_量谱}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370" TextAuraWIniExpression="50" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
+              <Action OrderNumber="12" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac &quot;$1&quot; &lt;${var:Ast_出卡序号}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="50">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
               </Action>
-              <Action OrderNumber="2" TextAuraAlignment="MiddleLeft" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug01f" TextAuraExpression="${numeric:round(${lvar:AstTeamListDPS[1]}*${numeric:round(${lvar:AstTeamListCorrection[1]},2)}*${lvar:AstTeamListCardRole[1]},2)}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370+40*1" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraWTickExpression="5+${numeric:round(${lvar:AstTeamListDPS[1]}*${numeric:round(${lvar:AstTeamListCorrection[1]},2)}*${lvar:AstTeamListCardRole[1]},2)}/100" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="3" TextAuraAlignment="MiddleLeft" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug02f" TextAuraExpression="${numeric:round(${lvar:AstTeamListDPS[2]}*${numeric:round(${lvar:AstTeamListCorrection[2]},1)}*${lvar:AstTeamListCardRole[2]},2)}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370+40*2" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraWTickExpression="5+${numeric:round(${lvar:AstTeamListDPS[2]}*${numeric:round(${lvar:AstTeamListCorrection[2]},1)}*${lvar:AstTeamListCardRole[2]},2)}/100" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="4" TextAuraAlignment="MiddleLeft" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug03f" TextAuraExpression="${numeric:round(${lvar:AstTeamListDPS[3]}*${numeric:round(${lvar:AstTeamListCorrection[3]},1)}*${lvar:AstTeamListCardRole[3]},2)}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370+40*3" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraWTickExpression="5+${numeric:round(${lvar:AstTeamListDPS[3]}*${numeric:round(${lvar:AstTeamListCorrection[3]},1)}*${lvar:AstTeamListCardRole[3]},2)}/100" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="5" TextAuraAlignment="MiddleLeft" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug04f" TextAuraExpression="${numeric:round(${lvar:AstTeamListDPS[4]}*${numeric:round(${lvar:AstTeamListCorrection[4]},1)}*${lvar:AstTeamListCardRole[4]},2)}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370+40*4" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraWTickExpression="5+${numeric:round(${lvar:AstTeamListDPS[4]}*${numeric:round(${lvar:AstTeamListCorrection[4]},1)}*${lvar:AstTeamListCardRole[4]},2)}/100" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="6" TextAuraAlignment="MiddleLeft" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug05f" TextAuraExpression="${numeric:round(${lvar:AstTeamListDPS[5]}*${numeric:round(${lvar:AstTeamListCorrection[5]},1)}*${lvar:AstTeamListCardRole[5]},2)}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370+40*5" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraWTickExpression="5+${numeric:round(${lvar:AstTeamListDPS[5]}*${numeric:round(${lvar:AstTeamListCorrection[5]},1)}*${lvar:AstTeamListCardRole[5]},2)}/100" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="7" TextAuraAlignment="MiddleLeft" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug06f" TextAuraExpression="${numeric:round(${lvar:AstTeamListDPS[6]}*${numeric:round(${lvar:AstTeamListCorrection[6]},1)}*${lvar:AstTeamListCardRole[6]},2)}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370+40*6" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraWTickExpression="5+${numeric:round(${lvar:AstTeamListDPS[6]}*${numeric:round(${lvar:AstTeamListCorrection[6]},1)}*${lvar:AstTeamListCardRole[6]},2)}/100" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="8" TextAuraAlignment="MiddleLeft" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug07f" TextAuraExpression="${numeric:round(${lvar:AstTeamListDPS[7]}*${numeric:round(${lvar:AstTeamListCorrection[7]},1)}*${lvar:AstTeamListCardRole[7]},2)}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370+40*7" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraWTickExpression="5+${numeric:round(${lvar:AstTeamListDPS[7]}*${numeric:round(${lvar:AstTeamListCorrection[7]},1)}*${lvar:AstTeamListCardRole[7]},2)}/100" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="9" TextAuraAlignment="MiddleLeft" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug08f" TextAuraExpression="${numeric:round(${lvar:AstTeamListDPS[8]}*${numeric:round(${lvar:AstTeamListCorrection[8]},1)}*${lvar:AstTeamListCardRole[8]},2)}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370+40*8" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraWTickExpression="5+${numeric:round(${lvar:AstTeamListDPS[8]}*${numeric:round(${lvar:AstTeamListCorrection[8]},1)}*${lvar:AstTeamListCardRole[8]},2)}/100" TextAuraFontName="宋体" ActionType="TextAura">
-                <Condition Enabled="false" Grouping="Or" />
+              <Action OrderNumber="13" NamedCallbackName="DoTextCommand" NamedCallbackParam="/ac &quot;$1&quot; &lt;${var:Ast_出卡序号}&gt;" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="NamedCallback" ExecutionDelayExpression="50">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
