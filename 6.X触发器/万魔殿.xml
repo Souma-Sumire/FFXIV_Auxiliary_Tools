@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="66be1b02-38e7-499b-987e-fcb28d37def1" Name="万魔殿 Souma" Enabled="true">
+    <Folders>
+      <Folder FfxivZoneFilterRegularExpression="^1009$" Id="3be86db6-5a68-4e53-aa67-81073108c3a2" Name="P4S Version:0.1" Enabled="true">
+        <Folders>
+          <Folder Id="f2d29751-4cd1-4a87-b745-c83556607e83" Name="六运" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Source="FFXIVNetwork" Name="茨の悲劇：カーテンコール" Id="ba3f88ec-0e9c-4d3d-a9ff-c7eae22acac7" RegularExpression="^20\|[^|]+\|4.{7}\|[^|]+\|6A36\|">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetString" VariableName="souma_p4s_6yun" VariableExpression="1" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="FFXIVNetwork" Name="エーテルソーン" Id="8756c613-8cfc-4ea6-a9ee-64d4cd314959" RegularExpression="(?i)^26\|[^|]+\|AF4\|[^|]+\|(?&lt;durationSeconds&gt;(?&lt;tenSeconds&gt;[1234])2\.00)\|[^|]*\|[^|]*\|(?&lt;targetObjectID&gt;1.{7})\|">
+                <Actions>
+                  <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3a8a5614-05a2-4275-a357-43bfd2419b83" TriggerText="${_ffxivparty[${targetObjectID}].jobid}" ActionType="Trigger" ExecutionDelayExpression="(${durationSeconds}-11.5)*1000">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${targetObjectID}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="3a8a5614-05a2-4275-a357-43bfd2419b83" TriggerText="${_ffxivparty[${targetObjectID}].jobid}" ActionType="Trigger" ExecutionDelayExpression="5*1000">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${targetObjectID}].role}" ExpressionTypeL="String" ExpressionR="^Tank|Healer$" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:souma_p4s_6yun}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+              <Trigger Enabled="true" Source="FFXIVNetwork" Name="エーテルソーン for you" Id="829bd8c7-fb9d-4a66-b484-50d5699e2548" RegularExpression="(?i)^26\|[^|]+\|AF4\|[^|]+\|(?&lt;durationSeconds&gt;(?&lt;tenSeconds&gt;[1234])2\.00)\|[^|]*\|[^|]*\|(?&lt;targetObjectID&gt;1.{7})\|">
+                <Actions>
+                  <Action OrderNumber="1" UseTTSTextExpression="第${tenSeconds}组" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${tenSeconds}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Placeholder" ExecutionDelayExpression="(${durationSeconds}-11.5)*1000">
+                    <Condition Enabled="false" Grouping="Or" />
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="3" UseTTSTextExpression="拉线" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="500">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${targetObjectID}].role}" ExpressionTypeL="String" ExpressionR="DPS" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                  <Action OrderNumber="4" UseTTSTextExpression="拉线" UseTTSRateExpression="2" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS" ExecutionDelayExpression="5*1000">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${targetObjectID}].role}" ExpressionTypeL="String" ExpressionR="^Tank|Healer$" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </Condition>
+                    <Conditions />
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:souma_p4s_6yun}" ExpressionTypeL="String" ExpressionR="1" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                  <ConditionSingle Enabled="true" ExpressionL="${_ffxivparty[${targetObjectID}].name}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers />
+      </Folder>
+      <Folder Id="3613e6df-f0ba-492e-8183-1adce78d5052" Name="通用" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Source="None" Name="id2Chs" Id="3a8a5614-05a2-4275-a357-43bfd2419b83" RegularExpression="^.+$">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="${ptvarrl:souma_job[$0][7]}" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Source="ACT" Name="handleCombatEnd" Id="c72cbade-eafe-4305-bc52-46b67101ad23" RegularExpression="^OnCombatEnd">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="^souma_.+" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Source="ACT" Name="handleCombatStart" Id="e474367c-7905-4bcc-9c3e-bd77f3b6dfe1" RegularExpression="^OnCombatStart">
+            <Actions>
+              <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="http://souma.diemoe.net/trigger/job.csv" DiskFileOpVar="souma_job" DiskFileCache="True" DiskPersist="True" TableVariableOp="Set" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers />
+  </ExportedFolder>
+</TriggernometryExport>
