@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="b273a359-d82e-4c8e-a3dd-393fd6452340" Name="6.0占星术士一键发卡 by Souma ver.2022.3.21" Enabled="true">
+  <ExportedFolder Id="b273a359-d82e-4c8e-a3dd-393fd6452340" Name="6.0占星术士一键发卡 by Souma ver.2022.3.21.003" Enabled="true">
     <Folders>
       <Folder FFXIVJobFilter="4294967296" Id="a91d7a62-afe2-416e-b173-b97b217b721d" Name="(Don't touch)" Enabled="true">
         <Folders>
@@ -310,7 +310,7 @@
           </Folder>
         </Folders>
         <Triggers>
-          <Trigger Enabled="true" Name="1. Reset" Id="0b084d39-74b3-487b-b8b1-65bb61d0bf26" RegularExpression="(?i)^.{14} \w+ 00:0038::AstReset|^.{14} \w+ (?:1B|01):|^.{14} \w+ 21:.{8}:400000(?:03|1[026])" PeriodRefire="Deny" RefirePeriodExpression="5000">
+          <Trigger Enabled="true" Name="1. Reset" Id="0b084d39-74b3-487b-b8b1-65bb61d0bf26" RegularExpression="(?i)^.{14} \w+ 00:0038::AstReset|^.{14} \w+ 01:|^.{14} \w+ 21:.{8}:400000(?:03|1[026])" PeriodRefire="Deny" RefirePeriodExpression="5000">
             <Actions>
               <Action OrderNumber="1" DiskFileOp="ReadCSVIntoTableVariable" DiskFileOpName="https://souma.diemoe.net/trigger/AstAutoCard.csv" DiskFileOpVar="AstAutoCard" DiskPersist="True" TextAuraFontSize="9" TextAuraFontName="宋体" ActionType="DiskFile" Asynchronous="False">
                 <Condition Enabled="true" Grouping="Or">
@@ -641,6 +641,18 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
+          <Trigger Enabled="true" Name="1. PartyList" Id="962cb341-59ed-4403-97a8-69de276babe2" RegularExpression="(?i)^.{14} \w+ 0B:">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="9" TextAuraFontName="宋体" TriggerId="0b084d39-74b3-487b-b8b1-65bb61d0bf26" TriggerForce="regexp" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${_duration}" ExpressionTypeL="String" ExpressionR="0" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+            <Conditions />
+          </Trigger>
         </Triggers>
       </Folder>
     </Folders>
@@ -678,7 +690,7 @@
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
       </Trigger>
-      <Trigger Enabled="true" Name="Debug" Id="540c7325-971a-40b8-8f54-d0bc035e8815" RegularExpression="">
+      <Trigger Enabled="false" Name="Debug" Id="540c7325-971a-40b8-8f54-d0bc035e8815" RegularExpression="">
         <Actions>
           <Action OrderNumber="1" TextAuraAlignment="TopCenter" TextAuraFontSize="9" TextAuraForeground="Yellow" TextAuraBackground="Black" TextAuraName="_AstAutoCardDebug00f" TextAuraExpression="量谱${var:Ast_量谱}" TextAuraXIniExpression="661+100" TextAuraYIniExpression="370" TextAuraWIniExpression="50" TextAuraHIniExpression="20" TextAuraOIniExpression="100" TextAuraFontName="宋体" ActionType="TextAura">
             <Condition Enabled="false" Grouping="Or" />
